@@ -1,0 +1,522 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>imblearn.datasets.fetch_datasets &mdash; imbalanced-learn 0.5.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/imbalanced-learn.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="imblearn.utils.estimator_checks.check_estimator" href="imblearn.utils.estimator_checks.check_estimator.html" />
+    <link rel="prev" title="imblearn.datasets.make_imbalance" href="imblearn.datasets.make_imbalance.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> imbalanced-learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install and contribution</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">imbalanced-learn API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.under_sampling"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.under_sampling</span></code>: Under-sampling methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.over_sampling"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.over_sampling</span></code>: Over-sampling methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.combine"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.combine</span></code>: Combination of over- and under-sampling methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.ensemble"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.ensemble</span></code>: Ensemble methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.keras"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.keras</span></code>: Batch generator for Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.tensorflow"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.tensorflow</span></code>: Batch generator for TensorFlow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#miscellaneous">Miscellaneous</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.pipeline"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.pipeline</span></code>: Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>: Metrics</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#module-imblearn.datasets"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.datasets</span></code>: Datasets</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="imblearn.datasets.make_imbalance.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.datasets</span></code>.make_imbalance</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.datasets</span></code>.fetch_datasets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#examples-using-imblearn-datasets-fetch-datasets">Examples using <code class="docutils literal notranslate"><span class="pre">imblearn.datasets.fetch_datasets</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.utils</span></code>: Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial - Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">General examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html#examples-based-on-real-world-datasets">Examples based on real world datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html#dataset-examples">Dataset examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html#evaluation-examples">Evaluation examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html#model-selection">Model Selection</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Addtional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Release history</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">imbalanced-learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">imbalanced-learn API</a> &raquo;</li>
+        
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.datasets</span></code>.fetch_datasets</li>
+    
+    
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="imblearn-datasets-fetch-datasets">
+<h1><a class="reference internal" href="../api.html#module-imblearn.datasets" title="imblearn.datasets"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.datasets</span></code></a>.fetch_datasets<a class="headerlink" href="#imblearn-datasets-fetch-datasets" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="imblearn.datasets.fetch_datasets">
+<code class="sig-prename descclassname">imblearn.datasets.</code><code class="sig-name descname">fetch_datasets</code><span class="sig-paren">(</span><em class="sig-param">data_home=None</em>, <em class="sig-param">filter_data=None</em>, <em class="sig-param">download_if_missing=True</em>, <em class="sig-param">random_state=None</em>, <em class="sig-param">shuffle=False</em>, <em class="sig-param">verbose=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/12b2e0d2/imblearn/datasets/_zenodo.py#L81"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.datasets.fetch_datasets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the benchmark datasets from Zenodo, downloading it if necessary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data_home</strong><span class="classifier">string, optional (default=None)</span></dt><dd><p>Specify another download and cache folder for the datasets. By default
+all scikit-learn data is stored in ‘~/scikit_learn_data’ subfolders.</p>
+</dd>
+<dt><strong>filter_data</strong><span class="classifier">tuple of str/int or None, optional (default=None)</span></dt><dd><p>A tuple containing the ID or the name of the datasets to be returned.
+Refer to the above table to get the ID and name of the datasets.</p>
+</dd>
+<dt><strong>download_if_missing</strong><span class="classifier">boolean, optional (default=True)</span></dt><dd><p>If False, raise a IOError if the data is not locally available
+instead of trying to download the data from the source site.</p>
+</dd>
+<dt><strong>random_state</strong><span class="classifier">int, RandomState instance or None, optional (default=None)</span></dt><dd><p>Random state for shuffling the dataset.
+If int, random_state is the seed used by the random number generator;
+If RandomState instance, random_state is the random number generator;
+If None, the random number generator is the RandomState instance used
+by <cite>np.random</cite>.</p>
+</dd>
+<dt><strong>shuffle</strong><span class="classifier">bool, optional (default=False)</span></dt><dd><p>Whether to shuffle dataset.</p>
+</dd>
+<dt><strong>verbose</strong><span class="classifier">bool, optional (default=False)</span></dt><dd><p>Show information regarding the fetching.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>datasets</strong><span class="classifier">OrderedDict of Bunch object,</span></dt><dd><p>The ordered is defined by <code class="docutils literal notranslate"><span class="pre">filter_data</span></code>. Each Bunch object —
+refered as dataset — have the following attributes:</p>
+</dd>
+<dt><strong>dataset.data</strong><span class="classifier">ndarray, shape (n_samples, n_features)</span></dt><dd></dd>
+<dt><strong>dataset.target</strong><span class="classifier">ndarray, shape (n_samples, )</span></dt><dd></dd>
+<dt><strong>dataset.DESCR</strong><span class="classifier">string</span></dt><dd><p>Description of the each dataset.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This collection of datasets have been proposed in <a class="reference internal" href="#r8a66b0fb709c-1" id="id1">[1]</a>. The
+characteristics of the available datasets are presented in the table
+below.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 3%" />
+<col style="width: 21%" />
+<col style="width: 46%" />
+<col style="width: 10%" />
+<col style="width: 13%" />
+<col style="width: 7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Repository &amp; Target</p></th>
+<th class="head"><p>Ratio</p></th>
+<th class="head"><p>#S</p></th>
+<th class="head"><p>#F</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>ecoli</p></td>
+<td><p>UCI, target: imU</p></td>
+<td><p>8.6:1</p></td>
+<td><p>336</p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>optical_digits</p></td>
+<td><p>UCI, target: 8</p></td>
+<td><p>9.1:1</p></td>
+<td><p>5,620</p></td>
+<td><p>64</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>satimage</p></td>
+<td><p>UCI, target: 4</p></td>
+<td><p>9.3:1</p></td>
+<td><p>6,435</p></td>
+<td><p>36</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>pen_digits</p></td>
+<td><p>UCI, target: 5</p></td>
+<td><p>9.4:1</p></td>
+<td><p>10,992</p></td>
+<td><p>16</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>abalone</p></td>
+<td><p>UCI, target: 7</p></td>
+<td><p>9.7:1</p></td>
+<td><p>4,177</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>sick_euthyroid</p></td>
+<td><p>UCI, target: sick euthyroid</p></td>
+<td><p>9.8:1</p></td>
+<td><p>3,163</p></td>
+<td><p>42</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>spectrometer</p></td>
+<td><p>UCI, target: &gt;=44</p></td>
+<td><p>11:1</p></td>
+<td><p>531</p></td>
+<td><p>93</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>car_eval_34</p></td>
+<td><p>UCI, target: good, v good</p></td>
+<td><p>12:1</p></td>
+<td><p>1,728</p></td>
+<td><p>21</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>isolet</p></td>
+<td><p>UCI, target: A, B</p></td>
+<td><p>12:1</p></td>
+<td><p>7,797</p></td>
+<td><p>617</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>us_crime</p></td>
+<td><p>UCI, target: &gt;0.65</p></td>
+<td><p>12:1</p></td>
+<td><p>1,994</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>yeast_ml8</p></td>
+<td><p>LIBSVM, target: 8</p></td>
+<td><p>13:1</p></td>
+<td><p>2,417</p></td>
+<td><p>103</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>scene</p></td>
+<td><p>LIBSVM, target: &gt;one label</p></td>
+<td><p>13:1</p></td>
+<td><p>2,407</p></td>
+<td><p>294</p></td>
+</tr>
+<tr class="row-even"><td><p>13</p></td>
+<td><p>libras_move</p></td>
+<td><p>UCI, target: 1</p></td>
+<td><p>14:1</p></td>
+<td><p>360</p></td>
+<td><p>90</p></td>
+</tr>
+<tr class="row-odd"><td><p>14</p></td>
+<td><p>thyroid_sick</p></td>
+<td><p>UCI, target: sick</p></td>
+<td><p>15:1</p></td>
+<td><p>3,772</p></td>
+<td><p>52</p></td>
+</tr>
+<tr class="row-even"><td><p>15</p></td>
+<td><p>coil_2000</p></td>
+<td><p>KDD, CoIL, target: minority</p></td>
+<td><p>16:1</p></td>
+<td><p>9,822</p></td>
+<td><p>85</p></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>arrhythmia</p></td>
+<td><p>UCI, target: 06</p></td>
+<td><p>17:1</p></td>
+<td><p>452</p></td>
+<td><p>278</p></td>
+</tr>
+<tr class="row-even"><td><p>17</p></td>
+<td><p>solar_flare_m0</p></td>
+<td><p>UCI, target: M-&gt;0</p></td>
+<td><p>19:1</p></td>
+<td><p>1,389</p></td>
+<td><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>18</p></td>
+<td><p>oil</p></td>
+<td><p>UCI, target: minority</p></td>
+<td><p>22:1</p></td>
+<td><p>937</p></td>
+<td><p>49</p></td>
+</tr>
+<tr class="row-even"><td><p>19</p></td>
+<td><p>car_eval_4</p></td>
+<td><p>UCI, target: vgood</p></td>
+<td><p>26:1</p></td>
+<td><p>1,728</p></td>
+<td><p>21</p></td>
+</tr>
+<tr class="row-odd"><td><p>20</p></td>
+<td><p>wine_quality</p></td>
+<td><p>UCI, wine, target: &lt;=4</p></td>
+<td><p>26:1</p></td>
+<td><p>4,898</p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="row-even"><td><p>21</p></td>
+<td><p>letter_img</p></td>
+<td><p>UCI, target: Z</p></td>
+<td><p>26:1</p></td>
+<td><p>20,000</p></td>
+<td><p>16</p></td>
+</tr>
+<tr class="row-odd"><td><p>22</p></td>
+<td><p>yeast_me2</p></td>
+<td><p>UCI, target: ME2</p></td>
+<td><p>28:1</p></td>
+<td><p>1,484</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-even"><td><p>23</p></td>
+<td><p>webpage</p></td>
+<td><p>LIBSVM, w7a, target: minority</p></td>
+<td><p>33:1</p></td>
+<td><p>34,780</p></td>
+<td><p>300</p></td>
+</tr>
+<tr class="row-odd"><td><p>24</p></td>
+<td><p>ozone_level</p></td>
+<td><p>UCI, ozone, data</p></td>
+<td><p>34:1</p></td>
+<td><p>2,536</p></td>
+<td><p>72</p></td>
+</tr>
+<tr class="row-even"><td><p>25</p></td>
+<td><p>mammography</p></td>
+<td><p>UCI, target: minority</p></td>
+<td><p>42:1</p></td>
+<td><p>11,183</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-odd"><td><p>26</p></td>
+<td><p>protein_homo</p></td>
+<td><p>KDD CUP 2004, minority</p></td>
+<td><p>111:1</p></td>
+<td><p>145,751</p></td>
+<td><p>74</p></td>
+</tr>
+<tr class="row-even"><td><p>27</p></td>
+<td><p>abalone_19</p></td>
+<td><p>UCI, target: 19</p></td>
+<td><p>130:1</p></td>
+<td><p>4,177</p></td>
+<td><p>10</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<dl class="citation">
+<dt class="label" id="r8a66b0fb709c-1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Ding, Zejin, “Diversified Ensemble Classifiers for Highly
+Imbalanced Data Learning and their Application in Bioinformatics.”
+Dissertation, Georgia State University, (2011).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="section" id="examples-using-imblearn-datasets-fetch-datasets">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">imblearn.datasets.fetch_datasets</span></code><a class="headerlink" href="#examples-using-imblearn-datasets-fetch-datasets" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="Ensembling classifiers have shown to improve classification performance compare to single learn..."><div class="figure align-default" id="id3">
+<img alt="../_images/sphx_glr_plot_comparison_ensemble_classifier_thumb.png" src="../_images/sphx_glr_plot_comparison_ensemble_classifier_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/ensemble/plot_comparison_ensemble_classifier.html#sphx-glr-auto-examples-ensemble-plot-comparison-ensemble-classifier-py"><span class="std std-ref">Comparison of ensembling classifiers internally using sampling</span></a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</div><div style='clear:both'></div></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="imblearn.utils.estimator_checks.check_estimator.html" class="btn btn-neutral float-right" title="imblearn.utils.estimator_checks.check_estimator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="imblearn.datasets.make_imbalance.html" class="btn btn-neutral" title="imblearn.datasets.make_imbalance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016 - 2017, G. Lemaitre, F. Nogueira, D. Oliveira, C. Aridas
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/js/copybutton.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

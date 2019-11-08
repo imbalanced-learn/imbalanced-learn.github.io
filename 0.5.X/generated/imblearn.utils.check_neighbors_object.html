@@ -1,0 +1,278 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>imblearn.utils.check_neighbors_object &mdash; imbalanced-learn 0.5.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/imbalanced-learn.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="imblearn.utils.check_ratio" href="imblearn.utils.check_ratio.html" />
+    <link rel="prev" title="imblearn.utils.estimator_checks.check_estimator" href="imblearn.utils.estimator_checks.check_estimator.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> imbalanced-learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install and contribution</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">imbalanced-learn API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.under_sampling"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.under_sampling</span></code>: Under-sampling methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.over_sampling"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.over_sampling</span></code>: Over-sampling methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.combine"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.combine</span></code>: Combination of over- and under-sampling methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.ensemble"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.ensemble</span></code>: Ensemble methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.keras"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.keras</span></code>: Batch generator for Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.tensorflow"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.tensorflow</span></code>: Batch generator for TensorFlow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#miscellaneous">Miscellaneous</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.pipeline"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.pipeline</span></code>: Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>: Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.datasets"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.datasets</span></code>: Datasets</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#module-imblearn.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.utils</span></code>: Utilities</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="imblearn.utils.estimator_checks.check_estimator.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.utils.estimator_checks</span></code>.check_estimator</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.utils</span></code>.check_neighbors_object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imblearn.utils.check_ratio.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.utils</span></code>.check_ratio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imblearn.utils.check_sampling_strategy.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.utils</span></code>.check_sampling_strategy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial - Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">General examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html#examples-based-on-real-world-datasets">Examples based on real world datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html#dataset-examples">Dataset examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html#evaluation-examples">Evaluation examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html#model-selection">Model Selection</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Addtional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Release history</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">imbalanced-learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">imbalanced-learn API</a> &raquo;</li>
+        
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.utils</span></code>.check_neighbors_object</li>
+    
+    
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="imblearn-utils-check-neighbors-object">
+<h1><a class="reference internal" href="../api.html#module-imblearn.utils" title="imblearn.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.utils</span></code></a>.check_neighbors_object<a class="headerlink" href="#imblearn-utils-check-neighbors-object" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="imblearn.utils.check_neighbors_object">
+<code class="sig-prename descclassname">imblearn.utils.</code><code class="sig-name descname">check_neighbors_object</code><span class="sig-paren">(</span><em class="sig-param">nn_name</em>, <em class="sig-param">nn_object</em>, <em class="sig-param">additional_neighbor=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/12b2e0d2/imblearn/utils/_validation.py#L25"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.utils.check_neighbors_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the objects is consistent to be a NN.</p>
+<p>Several methods in imblearn relies on NN. Until version 0.4, these
+objects can be passed at initialisation as an integer or a
+KNeighborsMixin. After only KNeighborsMixin will be accepted. This
+utility allows for type checking and raise if the type is wrong.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>nn_name</strong><span class="classifier">str,</span></dt><dd><p>The name associated to the object to raise an error if needed.</p>
+</dd>
+<dt><strong>nn_object</strong><span class="classifier">int or KNeighborsMixin,</span></dt><dd><p>The object to be checked</p>
+</dd>
+<dt><strong>additional_neighbor</strong><span class="classifier">int, optional (default=0)</span></dt><dd><p>Sometimes, some algorithm need an additional neighbors.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>nn_object</strong><span class="classifier">KNeighborsMixin</span></dt><dd><p>The k-NN object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<div style='clear:both'></div></div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="imblearn.utils.check_ratio.html" class="btn btn-neutral float-right" title="imblearn.utils.check_ratio" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="imblearn.utils.estimator_checks.check_estimator.html" class="btn btn-neutral" title="imblearn.utils.estimator_checks.check_estimator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016 - 2017, G. Lemaitre, F. Nogueira, D. Oliveira, C. Aridas
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/js/copybutton.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
