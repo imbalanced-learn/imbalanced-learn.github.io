@@ -1,0 +1,293 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Version 0.5.0 &mdash; imbalanced-learn 0.6.0.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/imbalanced-learn.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> imbalanced-learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.0.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install and contribution</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">imbalanced-learn API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial - Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">General examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html#examples-based-on-real-world-datasets">Examples based on real world datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html#dataset-examples">Dataset examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html#evaluation-examples">Evaluation examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html#model-selection">Model Selection</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Addtional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Release history</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">imbalanced-learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Version 0.5.0</li>
+    
+    
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="version-0-5-0">
+<span id="changes-0-5"></span><h1>Version 0.5.0<a class="headerlink" href="#version-0-5-0" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="changelog">
+<h2>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="changed-models">
+<h3>Changed models<a class="headerlink" href="#changed-models" title="Permalink to this headline">¶</a></h3>
+<p>The following models or function might give different results even if the
+same data <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are the same.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../generated/imblearn.ensemble.RUSBoostClassifier.html#imblearn.ensemble.RUSBoostClassifier" title="imblearn.ensemble.RUSBoostClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.ensemble.RUSBoostClassifier</span></code></a> default estimator changed from
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier" title="(in scikit-learn v0.21.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.tree.DecisionTreeClassifier</span></code></a> with full depth to a decision
+stump (i.e., tree with <code class="docutils literal notranslate"><span class="pre">max_depth=1</span></code>).</p></li>
+</ul>
+</div>
+<div class="section" id="documentation">
+<h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Correct the definition of the ratio when using a <code class="docutils literal notranslate"><span class="pre">float</span></code> in sampling
+strategy for the over-sampling and under-sampling.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/issues/525">#525</a> by <a class="reference external" href="https://github.com/arielrossanigo">Ariel Rossanigo</a>.</p></li>
+<li><p>Add <a class="reference internal" href="../generated/imblearn.over_sampling.BorderlineSMOTE.html#imblearn.over_sampling.BorderlineSMOTE" title="imblearn.over_sampling.BorderlineSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.BorderlineSMOTE</span></code></a> and
+<a class="reference internal" href="../generated/imblearn.over_sampling.SVMSMOTE.html#imblearn.over_sampling.SVMSMOTE" title="imblearn.over_sampling.SVMSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.SVMSMOTE</span></code></a> in the API documenation.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/issues/530">#530</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+</ul>
+</div>
+<div class="section" id="enhancement">
+<h3>Enhancement<a class="headerlink" href="#enhancement" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Add Parallelisation for SMOTEENN and SMOTETomek.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/547">#547</a> by <a class="reference external" href="https://github.com/Microsheep">Michael Hsieh</a>.</p></li>
+<li><p>Add <code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.utils._show_versions</span></code>. Updated the contribution guide
+and issue template showing how to print system and dependency information
+from the command line. <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/557">#557</a> by <a class="reference external" href="https://github.com/batflyer">Alexander L. Hayes</a>.</p></li>
+<li><p>Add <a class="reference internal" href="../generated/imblearn.over_sampling.KMeansSMOTE.html#imblearn.over_sampling.KMeansSMOTE" title="imblearn.over_sampling.KMeansSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.KMeansSMOTE</span></code></a> which is an over-sampler
+clustering points before to apply SMOTE.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/435">#435</a> by <a class="reference external" href="https://github.com/StephanHeijl">Stephan Heijl</a>.</p></li>
+</ul>
+</div>
+<div class="section" id="maintenance">
+<h3>Maintenance<a class="headerlink" href="#maintenance" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Make it possible to <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">imblearn</span></code> and access submodule.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/500">#500</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+<li><p>Remove support for Python 2, remove deprecation warning from
+scikit-learn 0.21.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/576">#576</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+</ul>
+</div>
+<div class="section" id="bug">
+<h3>Bug<a class="headerlink" href="#bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Fix wrong usage of <code class="xref py py-class docutils literal notranslate"><span class="pre">keras.layers.BatchNormalization</span></code> in
+<code class="docutils literal notranslate"><span class="pre">porto_seguro_keras_under_sampling.py</span></code> example. The batch normalization
+was moved before the activation function and the bias was removed from the
+dense layer.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/531">#531</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+<li><p>Fix bug which converting to COO format sparse when stacking the matrices in
+<a class="reference internal" href="../generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.SMOTENC</span></code></a>. This bug was only old scipy version.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/539">#539</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+<li><p>Fix bug in <a class="reference internal" href="../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="imblearn.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.pipeline.Pipeline</span></code></a> where None could be the final
+estimator.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/554">#554</a> by <a class="reference external" href="https://github.com/orausch">Oliver Rausch</a>.</p></li>
+<li><p>Fix bug in <a class="reference internal" href="../generated/imblearn.over_sampling.SVMSMOTE.html#imblearn.over_sampling.SVMSMOTE" title="imblearn.over_sampling.SVMSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.SVMSMOTE</span></code></a> and
+<a class="reference internal" href="../generated/imblearn.over_sampling.BorderlineSMOTE.html#imblearn.over_sampling.BorderlineSMOTE" title="imblearn.over_sampling.BorderlineSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.BorderlineSMOTE</span></code></a> where the default parameter
+of <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> was not set properly.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/578">#578</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+<li><p>Fix bug by changing the default depth in
+<a class="reference internal" href="../generated/imblearn.ensemble.RUSBoostClassifier.html#imblearn.ensemble.RUSBoostClassifier" title="imblearn.ensemble.RUSBoostClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.ensemble.RUSBoostClassifier</span></code></a> to get a decision stump as a
+weak learner as in the original paper.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/545">#545</a> by <a class="reference external" href="https://github.com/chkoar">Christos Aridas</a>.</p></li>
+<li><p>Allow to import <code class="docutils literal notranslate"><span class="pre">keras</span></code> directly from <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> in the
+<a class="reference internal" href="../api.html#module-imblearn.keras" title="imblearn.keras"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.keras</span></code></a>.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/531">#531</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016 - 2017, G. Lemaitre, F. Nogueira, D. Oliveira, C. Aridas
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/js/copybutton.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
