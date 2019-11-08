@@ -1,0 +1,531 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>imblearn.ensemble._weight_boosting &mdash; imbalanced-learn 0.4.3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/imbalanced-learn.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> imbalanced-learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.4.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Install and contribution</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">imbalanced-learn API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial - Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../auto_examples/index.html">General examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../auto_examples/index.html#examples-based-on-real-world-datasets">Examples based on real world datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../auto_examples/index.html#dataset-examples">Dataset examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../auto_examples/index.html#evaluation-examples">Evaluation examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../auto_examples/index.html#model-selection">Model Selection</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Addtional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../whats_new.html">Release history</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">imbalanced-learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>imblearn.ensemble._weight_boosting</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for imblearn.ensemble._weight_boosting</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numbers</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="k">import</span> <span class="n">deepcopy</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="k">import</span> <span class="n">clone</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">AdaBoostClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble.base</span> <span class="k">import</span> <span class="n">_set_random_states</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="k">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="k">import</span> <span class="n">safe_indexing</span>
+
+<span class="kn">from</span> <span class="nn">..under_sampling.base</span> <span class="k">import</span> <span class="n">BaseUnderSampler</span>
+<span class="kn">from</span> <span class="nn">..under_sampling</span> <span class="k">import</span> <span class="n">RandomUnderSampler</span>
+<span class="kn">from</span> <span class="nn">..pipeline</span> <span class="k">import</span> <span class="n">make_pipeline</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="k">import</span> <span class="n">Substitution</span>
+<span class="kn">from</span> <span class="nn">..utils._docstring</span> <span class="k">import</span> <span class="n">_random_state_docstring</span>
+
+
+<div class="viewcode-block" id="RUSBoostClassifier"><a class="viewcode-back" href="../../../generated/imblearn.ensemble.RUSBoostClassifier.html#imblearn.ensemble.RUSBoostClassifier">[docs]</a><span class="nd">@Substitution</span><span class="p">(</span>
+    <span class="n">sampling_strategy</span><span class="o">=</span><span class="n">BaseUnderSampler</span><span class="o">.</span><span class="n">_sampling_strategy_docstring</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="n">_random_state_docstring</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">RUSBoostClassifier</span><span class="p">(</span><span class="n">AdaBoostClassifier</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Random under-sampling integrating in the learning of an AdaBoost</span>
+<span class="sd">    classifier.</span>
+
+<span class="sd">    During learning, the problem of class balancing is alleviated by random</span>
+<span class="sd">    under-sampling the sample at each iteration of the boosting algorithm.</span>
+
+<span class="sd">    Read more in the :ref:`User Guide &lt;boosting&gt;`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    base_estimator : object, optional (default=DecisionTreeClassifier)</span>
+<span class="sd">        The base estimator from which the boosted ensemble is built.</span>
+<span class="sd">        Support for sample weighting is required, as well as proper `classes_`</span>
+<span class="sd">        and `n_classes_` attributes.</span>
+
+<span class="sd">    n_estimators : integer, optional (default=50)</span>
+<span class="sd">        The maximum number of estimators at which boosting is terminated.</span>
+<span class="sd">        In case of perfect fit, the learning procedure is stopped early.</span>
+
+<span class="sd">    learning_rate : float, optional (default=1.)</span>
+<span class="sd">        Learning rate shrinks the contribution of each classifier by</span>
+<span class="sd">        ``learning_rate``. There is a trade-off between ``learning_rate`` and</span>
+<span class="sd">        ``n_estimators``.</span>
+
+<span class="sd">    algorithm : {{&#39;SAMME&#39;, &#39;SAMME.R&#39;}}, optional (default=&#39;SAMME.R&#39;)</span>
+<span class="sd">        If &#39;SAMME.R&#39; then use the SAMME.R real boosting algorithm.</span>
+<span class="sd">        ``base_estimator`` must support calculation of class probabilities.</span>
+<span class="sd">        If &#39;SAMME&#39; then use the SAMME discrete boosting algorithm.</span>
+<span class="sd">        The SAMME.R algorithm typically converges faster than SAMME,</span>
+<span class="sd">        achieving a lower test error with fewer boosting iterations.</span>
+
+<span class="sd">    {sampling_strategy}</span>
+
+<span class="sd">    replacement : bool, optional (default=False)</span>
+<span class="sd">        Whether or not to sample randomly with replacement or not.</span>
+
+<span class="sd">    {random_state}</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    estimators_ : list of classifiers</span>
+<span class="sd">        The collection of fitted sub-estimators.</span>
+
+<span class="sd">    samplers_ : list of RandomUnderSampler</span>
+<span class="sd">        The collection of fitted samplers.</span>
+
+<span class="sd">    pipelines_ : list of Pipeline.</span>
+<span class="sd">        The collection of fitted pipelines (samplers + trees).</span>
+
+<span class="sd">    classes_ : ndarray, shape (n_classes,)</span>
+<span class="sd">        The classes labels.</span>
+
+<span class="sd">    n_classes_ : int</span>
+<span class="sd">        The number of classes.</span>
+
+<span class="sd">    estimator_weights_ : ndarray, shape (n_estimator,)</span>
+<span class="sd">        Weights for each estimator in the boosted ensemble.</span>
+
+<span class="sd">    estimator_errors_ : ndarray, shape (n_estimator,)</span>
+<span class="sd">        Classification error for each estimator in the boosted</span>
+<span class="sd">        ensemble.</span>
+
+<span class="sd">    feature_importances_ : ndarray, shape (n_features,)</span>
+<span class="sd">        The feature importances if supported by the ``base_estimator``.</span>
+
+<span class="sd">    See also</span>
+<span class="sd">    --------</span>
+<span class="sd">    BalancedBaggingClassifier, BalancedRandomForestClassifier,</span>
+<span class="sd">    EasyEnsembleClassifier</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] Seiffert, C., Khoshgoftaar, T. M., Van Hulse, J., &amp; Napolitano, A.</span>
+<span class="sd">       &quot;RUSBoost: A hybrid approach to alleviating class imbalance.&quot; IEEE</span>
+<span class="sd">       Transactions on Systems, Man, and Cybernetics-Part A: Systems and Humans</span>
+<span class="sd">       40.1 (2010): 185-197.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from imblearn.ensemble import RUSBoostClassifier</span>
+<span class="sd">    &gt;&gt;&gt; from sklearn.datasets import make_classification</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; X, y = make_classification(n_samples=1000, n_classes=3,</span>
+<span class="sd">    ...                            n_informative=4, weights=[0.2, 0.3, 0.5],</span>
+<span class="sd">    ...                            random_state=0)</span>
+<span class="sd">    &gt;&gt;&gt; clf = RUSBoostClassifier(random_state=0)</span>
+<span class="sd">    &gt;&gt;&gt; clf.fit(X, y)  # doctest: +ELLIPSIS</span>
+<span class="sd">    RUSBoostClassifier(...)</span>
+<span class="sd">    &gt;&gt;&gt; clf.predict(X)  # doctest: +ELLIPSIS</span>
+<span class="sd">    array([...])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="RUSBoostClassifier.__init__"><a class="viewcode-back" href="../../../generated/imblearn.ensemble.RUSBoostClassifier.html#imblearn.ensemble.RUSBoostClassifier.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_estimator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span>
+                 <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;SAMME.R&#39;</span><span class="p">,</span> <span class="n">sampling_strategy</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+                 <span class="n">replacement</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RUSBoostClassifier</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">base_estimator</span><span class="o">=</span><span class="n">base_estimator</span><span class="p">,</span>
+            <span class="n">n_estimators</span><span class="o">=</span><span class="n">n_estimators</span><span class="p">,</span>
+            <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span>
+            <span class="n">algorithm</span><span class="o">=</span><span class="n">algorithm</span><span class="p">,</span>
+            <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sampling_strategy</span> <span class="o">=</span> <span class="n">sampling_strategy</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">replacement</span> <span class="o">=</span> <span class="n">replacement</span></div>
+
+<div class="viewcode-block" id="RUSBoostClassifier.fit"><a class="viewcode-back" href="../../../generated/imblearn.ensemble.RUSBoostClassifier.html#imblearn.ensemble.RUSBoostClassifier.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sample_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Build a boosted classifier from the training set (X, y).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : {array-like, sparse matrix}, shape (n_samples, n_features)</span>
+<span class="sd">            The training input samples. Sparse matrix can be CSC, CSR, COO,</span>
+<span class="sd">            DOK, or LIL. DOK and LIL are converted to CSR.</span>
+
+<span class="sd">        y : array-like, shape (n_samples,)</span>
+<span class="sd">            The target values (class labels).</span>
+
+<span class="sd">        sample_weight : array-like, shape (n_samples,), optional</span>
+<span class="sd">            Sample weights. If None, the sample weights are initialized to</span>
+<span class="sd">            ``1 / n_samples``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self : object</span>
+<span class="sd">            Returns self.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">samplers_</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pipelines_</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RUSBoostClassifier</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sample_weight</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+    <span class="k">def</span> <span class="nf">_validate_estimator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">DecisionTreeClassifier</span><span class="p">()):</span>
+        <span class="sd">&quot;&quot;&quot;Check the estimator and the n_estimator attribute, set the</span>
+<span class="sd">        `base_estimator_` attribute.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span><span class="p">,</span> <span class="p">(</span><span class="n">numbers</span><span class="o">.</span><span class="n">Integral</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">integer</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;n_estimators must be an integer, &quot;</span>
+                             <span class="s2">&quot;got </span><span class="si">{0}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span><span class="p">)))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;n_estimators must be greater than zero, &quot;</span>
+                             <span class="s2">&quot;got </span><span class="si">{0}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_estimator</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base_estimator_</span> <span class="o">=</span> <span class="n">clone</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_estimator</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base_estimator_</span> <span class="o">=</span> <span class="n">clone</span><span class="p">(</span><span class="n">default</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_sampler_</span> <span class="o">=</span> <span class="n">RandomUnderSampler</span><span class="p">(</span>
+            <span class="n">sampling_strategy</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sampling_strategy</span><span class="p">,</span>
+            <span class="n">replacement</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">replacement</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_make_sampler_estimator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Make and configure a copy of the `base_estimator_` attribute.</span>
+<span class="sd">        Warning: This method should be used to properly instantiate new</span>
+<span class="sd">        sub-estimators.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">estimator</span> <span class="o">=</span> <span class="n">clone</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_estimator_</span><span class="p">)</span>
+        <span class="n">estimator</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="o">**</span><span class="nb">dict</span><span class="p">((</span><span class="n">p</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">))</span>
+                                    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimator_params</span><span class="p">))</span>
+        <span class="n">sampler</span> <span class="o">=</span> <span class="n">clone</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_sampler_</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">random_state</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_set_random_states</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">random_state</span><span class="p">)</span>
+            <span class="n">_set_random_states</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">random_state</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">append</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">estimators_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">estimator</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">samplers_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sampler</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pipelines_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">make_pipeline</span><span class="p">(</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">sampler</span><span class="p">),</span>
+                                                 <span class="n">deepcopy</span><span class="p">(</span><span class="n">estimator</span><span class="p">)))</span>
+
+        <span class="k">return</span> <span class="n">estimator</span><span class="p">,</span> <span class="n">sampler</span>
+
+    <span class="k">def</span> <span class="nf">_boost_real</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iboost</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sample_weight</span><span class="p">,</span> <span class="n">random_state</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Implement a single boost using the SAMME.R real algorithm.&quot;&quot;&quot;</span>
+        <span class="n">estimator</span><span class="p">,</span> <span class="n">sampler</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_sampler_estimator</span><span class="p">(</span>
+            <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">)</span>
+
+        <span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">sample_weight_res</span> <span class="o">=</span> <span class="n">safe_indexing</span><span class="p">(</span><span class="n">sample_weight</span><span class="p">,</span>
+                                          <span class="n">sampler</span><span class="o">.</span><span class="n">sample_indices_</span><span class="p">)</span>
+        <span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span><span class="p">,</span> <span class="n">sample_weight</span><span class="o">=</span><span class="n">sample_weight_res</span><span class="p">)</span>
+
+        <span class="n">y_predict_proba</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">iboost</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="s1">&#39;classes_&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">n_classes_</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+
+        <span class="n">y_predict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y_predict_proba</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+                                       <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># Instances incorrectly classified</span>
+        <span class="n">incorrect</span> <span class="o">=</span> <span class="n">y_predict</span> <span class="o">!=</span> <span class="n">y</span>
+
+        <span class="c1"># Error fraction</span>
+        <span class="n">estimator_error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">incorrect</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">sample_weight</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+        <span class="c1"># Stop if classification is perfect</span>
+        <span class="k">if</span> <span class="n">estimator_error</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">sample_weight</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span>
+
+        <span class="c1"># Construct y coding as described in Zhu et al [2]:</span>
+        <span class="c1">#</span>
+        <span class="c1">#    y_k = 1 if c == k else -1 / (K - 1)</span>
+        <span class="c1">#</span>
+        <span class="c1"># where K == n_classes_ and c, k in [0, K) are indices along the second</span>
+        <span class="c1"># axis of the y coding with c being the index corresponding to the true</span>
+        <span class="c1"># class label.</span>
+        <span class="n">n_classes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_classes_</span>
+        <span class="n">classes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span>
+        <span class="n">y_codes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_classes</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="mf">1.</span><span class="p">])</span>
+        <span class="n">y_coding</span> <span class="o">=</span> <span class="n">y_codes</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">classes</span> <span class="o">==</span> <span class="n">y</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span>
+
+        <span class="c1"># Displace zero probabilities so the log is defined.</span>
+        <span class="c1"># Also fix negative elements which may occur with</span>
+        <span class="c1"># negative sample weights.</span>
+        <span class="n">proba</span> <span class="o">=</span> <span class="n">y_predict_proba</span>  <span class="c1"># alias for readability</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">proba</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="n">proba</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">proba</span><span class="p">)</span>
+
+        <span class="c1"># Boost weight using multi-class AdaBoost SAMME.R alg</span>
+        <span class="n">estimator_weight</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span>
+                            <span class="o">*</span> <span class="p">((</span><span class="n">n_classes</span> <span class="o">-</span> <span class="mf">1.</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_classes</span><span class="p">)</span>
+                            <span class="o">*</span> <span class="p">(</span><span class="n">y_coding</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">y_predict_proba</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+        <span class="c1"># Only boost the weights if it will fit again</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">iboost</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># Only boost positive weights</span>
+            <span class="n">sample_weight</span> <span class="o">*=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">estimator_weight</span> <span class="o">*</span>
+                                    <span class="p">((</span><span class="n">sample_weight</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span>
+                                     <span class="p">(</span><span class="n">estimator_weight</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)))</span>
+
+        <span class="k">return</span> <span class="n">sample_weight</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="n">estimator_error</span>
+
+    <span class="k">def</span> <span class="nf">_boost_discrete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iboost</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sample_weight</span><span class="p">,</span> <span class="n">random_state</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Implement a single boost using the SAMME discrete algorithm.&quot;&quot;&quot;</span>
+        <span class="n">estimator</span><span class="p">,</span> <span class="n">sampler</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_sampler_estimator</span><span class="p">(</span>
+            <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">)</span>
+
+        <span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">sample_weight_res</span> <span class="o">=</span> <span class="n">safe_indexing</span><span class="p">(</span><span class="n">sample_weight</span><span class="p">,</span>
+                                          <span class="n">sampler</span><span class="o">.</span><span class="n">sample_indices_</span><span class="p">)</span>
+        <span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span><span class="p">,</span> <span class="n">sample_weight</span><span class="o">=</span><span class="n">sample_weight_res</span><span class="p">)</span>
+
+        <span class="n">y_predict</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">iboost</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="s1">&#39;classes_&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">n_classes_</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+
+        <span class="c1"># Instances incorrectly classified</span>
+        <span class="n">incorrect</span> <span class="o">=</span> <span class="n">y_predict</span> <span class="o">!=</span> <span class="n">y</span>
+
+        <span class="c1"># Error fraction</span>
+        <span class="n">estimator_error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">incorrect</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">sample_weight</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+        <span class="c1"># Stop if classification is perfect</span>
+        <span class="k">if</span> <span class="n">estimator_error</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">sample_weight</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span>
+
+        <span class="n">n_classes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_classes_</span>
+
+        <span class="c1"># Stop if the error is at least as bad as random guessing</span>
+        <span class="k">if</span> <span class="n">estimator_error</span> <span class="o">&gt;=</span> <span class="mf">1.</span> <span class="o">-</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">/</span> <span class="n">n_classes</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">estimators_</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">samplers_</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pipelines_</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">estimators_</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;BaseClassifier in AdaBoostClassifier &#39;</span>
+                                 <span class="s1">&#39;ensemble is worse than random, ensemble &#39;</span>
+                                 <span class="s1">&#39;can not be fit.&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+
+        <span class="c1"># Boost weight using multi-class AdaBoost SAMME alg</span>
+        <span class="n">estimator_weight</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span> <span class="o">*</span> <span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="mf">1.</span> <span class="o">-</span> <span class="n">estimator_error</span><span class="p">)</span> <span class="o">/</span> <span class="n">estimator_error</span><span class="p">)</span> <span class="o">+</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">n_classes</span> <span class="o">-</span> <span class="mf">1.</span><span class="p">))</span>
+
+        <span class="c1"># Only boost the weights if I will fit again</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">iboost</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># Only boost positive weights</span>
+            <span class="n">sample_weight</span> <span class="o">*=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">estimator_weight</span> <span class="o">*</span> <span class="n">incorrect</span> <span class="o">*</span>
+                                    <span class="p">((</span><span class="n">sample_weight</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span>
+                                     <span class="p">(</span><span class="n">estimator_weight</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)))</span>
+
+        <span class="k">return</span> <span class="n">sample_weight</span><span class="p">,</span> <span class="n">estimator_weight</span><span class="p">,</span> <span class="n">estimator_error</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016 - 2017, G. Lemaitre, F. Nogueira, D. Oliveira, C. Aridas
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/js/copybutton.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

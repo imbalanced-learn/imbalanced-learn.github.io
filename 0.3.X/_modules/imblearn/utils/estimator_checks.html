@@ -1,0 +1,536 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>imblearn.utils.estimator_checks &mdash; imbalanced-learn 0.3.3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/imbalanced-learn.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> imbalanced-learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Install and contribution</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">imbalanced-learn API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial - Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../auto_examples/index.html">General examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../auto_examples/index.html#examples-based-on-real-world-datasets">Examples based on real world datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../auto_examples/index.html#dataset-examples">Dataset examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../auto_examples/index.html#evaluation-examples">Evaluation examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../auto_examples/index.html#model-selection">Model Selection</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Addtional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../whats_new.html">Release history</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">imbalanced-learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>imblearn.utils.estimator_checks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for imblearn.utils.estimator_checks</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Utils to check the samplers and compatibility with scikit-learn&quot;&quot;&quot;</span>
+
+<span class="c1"># Adapated from scikit-learn</span>
+<span class="c1"># Authors: Guillaume Lemaitre &lt;g.lemaitre58@gmail.com&gt;</span>
+<span class="c1"># License: MIT</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Counter</span>
+
+<span class="kn">import</span> <span class="nn">pytest</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">sparse</span>
+<span class="kn">from</span> <span class="nn">pytest</span> <span class="k">import</span> <span class="n">raises</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">make_classification</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="k">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">sklearn.utils.estimator_checks</span> <span class="k">import</span> <span class="n">_yield_all_checks</span> \
+    <span class="k">as</span> <span class="n">sklearn_yield_all_checks</span><span class="p">,</span> <span class="n">check_estimator</span> \
+    <span class="k">as</span> <span class="n">sklearn_check_estimator</span><span class="p">,</span> <span class="n">check_parameters_default_constructible</span>
+<span class="kn">from</span> <span class="nn">sklearn.exceptions</span> <span class="k">import</span> <span class="n">NotFittedError</span>
+<span class="kn">from</span> <span class="nn">sklearn.utils.testing</span> <span class="k">import</span> <span class="n">assert_allclose</span>
+<span class="kn">from</span> <span class="nn">sklearn.utils.testing</span> <span class="k">import</span> <span class="n">set_random_state</span>
+
+<span class="kn">from</span> <span class="nn">imblearn.base</span> <span class="k">import</span> <span class="n">SamplerMixin</span>
+<span class="kn">from</span> <span class="nn">imblearn.over_sampling.base</span> <span class="k">import</span> <span class="n">BaseOverSampler</span>
+<span class="kn">from</span> <span class="nn">imblearn.under_sampling.base</span> <span class="k">import</span> <span class="n">BaseCleaningSampler</span><span class="p">,</span> <span class="n">BaseUnderSampler</span>
+<span class="kn">from</span> <span class="nn">imblearn.ensemble.base</span> <span class="k">import</span> <span class="n">BaseEnsembleSampler</span>
+<span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="k">import</span> <span class="n">SMOTE</span>
+<span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="k">import</span> <span class="n">NearMiss</span><span class="p">,</span> <span class="n">ClusterCentroids</span>
+
+<span class="kn">from</span> <span class="nn">imblearn.utils.testing</span> <span class="k">import</span> <span class="n">warns</span>
+
+
+<span class="k">def</span> <span class="nf">_yield_sampler_checks</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">Estimator</span><span class="p">):</span>
+    <span class="k">yield</span> <span class="n">check_target_type</span>
+    <span class="k">yield</span> <span class="n">check_samplers_one_label</span>
+    <span class="k">yield</span> <span class="n">check_samplers_no_fit_error</span>
+    <span class="k">yield</span> <span class="n">check_samplers_X_consistancy_sample</span>
+    <span class="k">yield</span> <span class="n">check_samplers_fit</span>
+    <span class="k">yield</span> <span class="n">check_samplers_fit_sample</span>
+    <span class="k">yield</span> <span class="n">check_samplers_ratio_fit_sample</span>
+    <span class="k">yield</span> <span class="n">check_samplers_sparse</span>
+    <span class="k">yield</span> <span class="n">check_samplers_pandas</span>
+
+
+<span class="k">def</span> <span class="nf">_yield_all_checks</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">Estimator</span><span class="p">):</span>
+    <span class="c1"># make the checks from scikit-learn</span>
+    <span class="n">sklearn_yield_all_checks</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">Estimator</span><span class="p">)</span>
+    <span class="c1"># trigger our checks if this is a SamplerMixin</span>
+    <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">Estimator</span><span class="p">,</span> <span class="n">SamplerMixin</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">check</span> <span class="ow">in</span> <span class="n">_yield_sampler_checks</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">Estimator</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">check</span>
+    <span class="c1"># FIXME already present in scikit-learn 0.19</span>
+    <span class="k">yield</span> <span class="n">check_dont_overwrite_parameters</span>
+
+
+<div class="viewcode-block" id="check_estimator"><a class="viewcode-back" href="../../../generated/imblearn.utils.estimator_checks.check_estimator.html#imblearn.utils.estimator_checks.check_estimator">[docs]</a><span class="k">def</span> <span class="nf">check_estimator</span><span class="p">(</span><span class="n">Estimator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check if estimator adheres to scikit-learn conventions and</span>
+<span class="sd">    imbalanced-learn</span>
+
+<span class="sd">    This estimator will run an extensive test-suite for input validation,</span>
+<span class="sd">    shapes, etc.</span>
+<span class="sd">    Additional tests samplers if the Estimator inherits from the corresponding</span>
+<span class="sd">    mixin from imblearn.base</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Estimator : class</span>
+<span class="sd">        Class to check. Estimator is a class object (not an instance).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">Estimator</span><span class="o">.</span><span class="vm">__name__</span>
+    <span class="c1"># test scikit-learn compatibility</span>
+    <span class="n">sklearn_check_estimator</span><span class="p">(</span><span class="n">Estimator</span><span class="p">)</span>
+    <span class="n">check_parameters_default_constructible</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">Estimator</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">check</span> <span class="ow">in</span> <span class="n">_yield_all_checks</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">Estimator</span><span class="p">):</span>
+        <span class="n">check</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">Estimator</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">check_target_type</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">Estimator</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="n">estimator</span> <span class="o">=</span> <span class="n">Estimator</span><span class="p">()</span>
+    <span class="n">set_random_state</span><span class="p">(</span><span class="n">estimator</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">warns</span><span class="p">(</span><span class="ne">UserWarning</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;should be of types&#39;</span><span class="p">):</span>
+        <span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">multioutput_estimator_convert_y_2d</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="c1"># Estimators in mono_output_task_error raise ValueError if y is of 1-D</span>
+    <span class="c1"># Convert into a 2-D y for those estimators.</span>
+    <span class="k">if</span> <span class="s2">&quot;MultiTask&quot;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">y</span>
+
+
+<span class="k">def</span> <span class="nf">is_public_parameter</span><span class="p">(</span><span class="n">attr</span><span class="p">):</span>
+    <span class="k">return</span> <span class="ow">not</span> <span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">attr</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">check_dont_overwrite_parameters</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">Estimator</span><span class="p">):</span>
+    <span class="c1"># check that fit method only changes or sets private attributes</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">Estimator</span><span class="o">.</span><span class="fm">__init__</span><span class="p">,</span> <span class="s2">&quot;deprecated_original&quot;</span><span class="p">):</span>
+        <span class="c1"># to not check deprecated classes</span>
+        <span class="k">return</span>
+    <span class="n">rnd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">rnd</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">multioutput_estimator_convert_y_2d</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">estimator</span> <span class="o">=</span> <span class="n">Estimator</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="s2">&quot;n_components&quot;</span><span class="p">):</span>
+        <span class="n">estimator</span><span class="o">.</span><span class="n">n_components</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="s2">&quot;n_clusters&quot;</span><span class="p">):</span>
+        <span class="n">estimator</span><span class="o">.</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="n">set_random_state</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">dict_before_fit</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="n">dict_after_fit</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="vm">__dict__</span>
+
+    <span class="n">public_keys_after_fit</span> <span class="o">=</span> <span class="p">[</span><span class="n">key</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">dict_after_fit</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+                             <span class="k">if</span> <span class="n">is_public_parameter</span><span class="p">(</span><span class="n">key</span><span class="p">)]</span>
+
+    <span class="n">attrs_added_by_fit</span> <span class="o">=</span> <span class="p">[</span><span class="n">key</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">public_keys_after_fit</span>
+                          <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dict_before_fit</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
+
+    <span class="c1"># check that fit doesn&#39;t add any public attribute</span>
+    <span class="k">assert</span> <span class="ow">not</span> <span class="n">attrs_added_by_fit</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;Estimator adds public attribute(s) during&#39;</span>
+                                    <span class="s1">&#39; the fit method. Estimators are only&#39;</span>
+                                    <span class="s1">&#39; allowed to add private attributes either&#39;</span>
+                                    <span class="s1">&#39; started with _ or ended with _ but </span><span class="si">%s</span><span class="s1">&#39;</span>
+                                    <span class="s1">&#39; added&#39;</span> <span class="o">%</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">attrs_added_by_fit</span><span class="p">))</span>
+
+    <span class="c1"># check that fit doesn&#39;t change any public attribute</span>
+    <span class="n">attrs_changed_by_fit</span> <span class="o">=</span> <span class="p">[</span><span class="n">key</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">public_keys_after_fit</span>
+                            <span class="k">if</span> <span class="p">(</span><span class="n">dict_before_fit</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                                <span class="ow">is</span> <span class="ow">not</span> <span class="n">dict_after_fit</span><span class="p">[</span><span class="n">key</span><span class="p">])]</span>
+
+    <span class="k">assert</span> <span class="ow">not</span> <span class="n">attrs_changed_by_fit</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;Estimator changes public attribute(s)&#39;</span>
+                                      <span class="s1">&#39; during the fit method. Estimators are&#39;</span>
+                                      <span class="s1">&#39; only allowed to change attributes&#39;</span>
+                                      <span class="s1">&#39; started or ended with _, but </span><span class="si">%s</span><span class="s1">&#39;</span>
+                                      <span class="s1">&#39; changed&#39;</span> <span class="o">%</span>
+                                      <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">attrs_changed_by_fit</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">check_samplers_one_label</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">Sampler</span><span class="p">):</span>
+    <span class="n">error_string_fit</span> <span class="o">=</span> <span class="s2">&quot;Sampler can&#39;t balance when only one class is present.&quot;</span>
+    <span class="n">sampler</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">()</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">sampler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;class&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">repr</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">error_string_fit</span><span class="p">,</span> <span class="n">Sampler</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+            <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">e</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">error_string_fit</span><span class="p">,</span> <span class="n">traceback</span><span class="p">,</span> <span class="n">exc</span><span class="p">)</span>
+        <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">exc</span>
+
+
+<span class="k">def</span> <span class="nf">check_samplers_no_fit_error</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">Sampler</span><span class="p">):</span>
+    <span class="n">sampler</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">()</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">15</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">raises</span><span class="p">(</span><span class="n">NotFittedError</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="s2">&quot;instance is not fitted yet.&quot;</span><span class="p">):</span>
+        <span class="n">sampler</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">check_samplers_X_consistancy_sample</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">Sampler</span><span class="p">):</span>
+    <span class="n">sampler</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">()</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">30</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">20</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">sampler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">X_different</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">40</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">y_different</span> <span class="o">=</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">25</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">15</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">raises</span><span class="p">(</span><span class="ne">RuntimeError</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="s2">&quot;X and y need to be same array earlier&quot;</span><span class="p">):</span>
+        <span class="n">sampler</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">X_different</span><span class="p">,</span> <span class="n">y_different</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">check_samplers_fit</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">Sampler</span><span class="p">):</span>
+    <span class="n">sampler</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">()</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">30</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">20</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">sampler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="s1">&#39;ratio_&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">check_samplers_fit_sample</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">Sampler</span><span class="p">):</span>
+    <span class="n">sampler</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                               <span class="n">n_informative</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+                               <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">target_stats</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">fit_sample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">BaseOverSampler</span><span class="p">):</span>
+        <span class="n">target_stats_res</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y_res</span><span class="p">)</span>
+        <span class="n">n_samples</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">target_stats</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">value</span> <span class="o">&gt;=</span> <span class="n">n_samples</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y_res</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">BaseUnderSampler</span><span class="p">):</span>
+        <span class="n">n_samples</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">target_stats</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">value</span> <span class="o">==</span> <span class="n">n_samples</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y_res</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">BaseCleaningSampler</span><span class="p">):</span>
+        <span class="n">target_stats_res</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y_res</span><span class="p">)</span>
+        <span class="n">class_minority</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">target_stats</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">target_stats</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">target_stats</span><span class="p">[</span><span class="n">class_sample</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">target_stats_res</span><span class="p">[</span><span class="n">class_sample</span><span class="p">]</span>
+                   <span class="k">for</span> <span class="n">class_sample</span> <span class="ow">in</span> <span class="n">target_stats</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+                   <span class="k">if</span> <span class="n">class_sample</span> <span class="o">!=</span> <span class="n">class_minority</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">BaseEnsembleSampler</span><span class="p">):</span>
+        <span class="n">y_ensemble</span> <span class="o">=</span> <span class="n">y_res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">n_samples</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">target_stats</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">value</span> <span class="o">==</span> <span class="n">n_samples</span>
+                   <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y_ensemble</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+
+<span class="k">def</span> <span class="nf">check_samplers_ratio_fit_sample</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">Sampler</span><span class="p">):</span>
+    <span class="c1"># in this test we will force all samplers to not change the class 1</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                               <span class="n">n_informative</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+                               <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">sampler</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">expected_stat</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">BaseOverSampler</span><span class="p">):</span>
+        <span class="n">ratio</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">:</span> <span class="mi">498</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="mi">498</span><span class="p">}</span>
+        <span class="n">sampler</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">ratio</span><span class="o">=</span><span class="n">ratio</span><span class="p">)</span>
+        <span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">fit_sample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y_res</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">expected_stat</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">BaseUnderSampler</span><span class="p">):</span>
+        <span class="n">ratio</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">:</span> <span class="mi">201</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="mi">201</span><span class="p">}</span>
+        <span class="n">sampler</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">ratio</span><span class="o">=</span><span class="n">ratio</span><span class="p">)</span>
+        <span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">fit_sample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y_res</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">expected_stat</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">BaseCleaningSampler</span><span class="p">):</span>
+        <span class="n">ratio</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">:</span> <span class="mi">201</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="mi">201</span><span class="p">}</span>
+        <span class="n">sampler</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">ratio</span><span class="o">=</span><span class="n">ratio</span><span class="p">)</span>
+        <span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">fit_sample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y_res</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">expected_stat</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">BaseEnsembleSampler</span><span class="p">):</span>
+        <span class="n">ratio</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">:</span> <span class="mi">201</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="mi">201</span><span class="p">}</span>
+        <span class="n">sampler</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">ratio</span><span class="o">=</span><span class="n">ratio</span><span class="p">)</span>
+        <span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">fit_sample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">y_ensemble</span> <span class="o">=</span> <span class="n">y_res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">assert</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y_ensemble</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">expected_stat</span>
+
+
+<span class="k">def</span> <span class="nf">check_samplers_sparse</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">Sampler</span><span class="p">):</span>
+    <span class="c1"># check that sparse matrices can be passed through the sampler leading to</span>
+    <span class="c1"># the same results than dense</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                               <span class="n">n_informative</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+                               <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">X_sparse</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">csr_matrix</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">Sampler</span><span class="p">(),</span> <span class="n">SMOTE</span><span class="p">):</span>
+        <span class="n">samplers</span> <span class="o">=</span> <span class="p">[</span><span class="n">Sampler</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">kind</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;regular&#39;</span><span class="p">,</span> <span class="s1">&#39;borderline1&#39;</span><span class="p">,</span>
+                                 <span class="s1">&#39;borderline2&#39;</span><span class="p">,</span> <span class="s1">&#39;svm&#39;</span><span class="p">)]</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">Sampler</span><span class="p">(),</span> <span class="n">NearMiss</span><span class="p">):</span>
+        <span class="n">samplers</span> <span class="o">=</span> <span class="p">[</span><span class="n">Sampler</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">version</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">Sampler</span><span class="p">(),</span> <span class="n">ClusterCentroids</span><span class="p">):</span>
+        <span class="c1"># set KMeans to full since it support sparse and dense</span>
+        <span class="n">samplers</span> <span class="o">=</span> <span class="p">[</span><span class="n">Sampler</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                            <span class="n">voting</span><span class="o">=</span><span class="s1">&#39;soft&#39;</span><span class="p">,</span>
+                            <span class="n">estimator</span><span class="o">=</span><span class="n">KMeans</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                             <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">))]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">samplers</span> <span class="o">=</span> <span class="p">[</span><span class="n">Sampler</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">sampler</span> <span class="ow">in</span> <span class="n">samplers</span><span class="p">:</span>
+        <span class="n">X_res_sparse</span><span class="p">,</span> <span class="n">y_res_sparse</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">fit_sample</span><span class="p">(</span><span class="n">X_sparse</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">fit_sample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">BaseEnsembleSampler</span><span class="p">):</span>
+                <span class="k">assert</span> <span class="n">sparse</span><span class="o">.</span><span class="n">issparse</span><span class="p">(</span><span class="n">X_res_sparse</span><span class="p">)</span>
+                <span class="n">assert_allclose</span><span class="p">(</span><span class="n">X_res_sparse</span><span class="o">.</span><span class="n">A</span><span class="p">,</span> <span class="n">X_res</span><span class="p">)</span>
+                <span class="n">assert_allclose</span><span class="p">(</span><span class="n">y_res_sparse</span><span class="p">,</span> <span class="n">y_res</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">x_sp</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y_sp</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X_res_sparse</span><span class="p">,</span> <span class="n">X_res</span><span class="p">,</span>
+                                        <span class="n">y_res_sparse</span><span class="p">,</span> <span class="n">y_res</span><span class="p">):</span>
+                <span class="k">assert</span> <span class="n">sparse</span><span class="o">.</span><span class="n">issparse</span><span class="p">(</span><span class="n">x_sp</span><span class="p">)</span>
+                <span class="n">assert_allclose</span><span class="p">(</span><span class="n">x_sp</span><span class="o">.</span><span class="n">A</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+                <span class="n">assert_allclose</span><span class="p">(</span><span class="n">y_sp</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">check_samplers_pandas</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">Sampler</span><span class="p">):</span>
+    <span class="n">pd</span> <span class="o">=</span> <span class="n">pytest</span><span class="o">.</span><span class="n">importorskip</span><span class="p">(</span><span class="s2">&quot;pandas&quot;</span><span class="p">)</span>
+    <span class="c1"># Check that the samplers handle pandas dataframe and pandas series</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                               <span class="n">n_informative</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+                               <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">X_pd</span><span class="p">,</span> <span class="n">y_pd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">sampler</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">Sampler</span><span class="p">(),</span> <span class="n">SMOTE</span><span class="p">):</span>
+        <span class="n">samplers</span> <span class="o">=</span> <span class="p">[</span><span class="n">Sampler</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">kind</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;regular&#39;</span><span class="p">,</span> <span class="s1">&#39;borderline1&#39;</span><span class="p">,</span>
+                                 <span class="s1">&#39;borderline2&#39;</span><span class="p">,</span> <span class="s1">&#39;svm&#39;</span><span class="p">)]</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">Sampler</span><span class="p">(),</span> <span class="n">NearMiss</span><span class="p">):</span>
+            <span class="n">samplers</span> <span class="o">=</span> <span class="p">[</span><span class="n">Sampler</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">)</span>
+                        <span class="k">for</span> <span class="n">version</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">samplers</span> <span class="o">=</span> <span class="p">[</span><span class="n">Sampler</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">sampler</span> <span class="ow">in</span> <span class="n">samplers</span><span class="p">:</span>
+        <span class="n">X_res_pd</span><span class="p">,</span> <span class="n">y_res_pd</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">fit_sample</span><span class="p">(</span><span class="n">X_pd</span><span class="p">,</span> <span class="n">y_pd</span><span class="p">)</span>
+        <span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">fit_sample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">assert_allclose</span><span class="p">(</span><span class="n">X_res_pd</span><span class="p">,</span> <span class="n">X_res</span><span class="p">)</span>
+        <span class="n">assert_allclose</span><span class="p">(</span><span class="n">y_res_pd</span><span class="p">,</span> <span class="n">y_res</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, G. Lemaitre, F. Nogueira, D. Oliveira, C. Aridas
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/js/copybutton.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
