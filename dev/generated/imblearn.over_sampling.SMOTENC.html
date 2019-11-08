@@ -17,13 +17,21 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/js/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/imbalanced-learn.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
@@ -33,21 +41,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="imblearn.over_sampling.SVMSMOTE" href="imblearn.over_sampling.SVMSMOTE.html" />
     <link rel="prev" title="imblearn.over_sampling.SMOTE" href="imblearn.over_sampling.SMOTE.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -194,7 +197,7 @@
 <h1><a class="reference internal" href="../api.html#module-imblearn.over_sampling" title="imblearn.over_sampling"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.over_sampling</span></code></a>.SMOTENC<a class="headerlink" href="#imblearn-over-sampling-smotenc" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="imblearn.over_sampling.SMOTENC">
-<em class="property">class </em><code class="sig-prename descclassname">imblearn.over_sampling.</code><code class="sig-name descname">SMOTENC</code><span class="sig-paren">(</span><em class="sig-param">categorical_features</em>, <em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">random_state=None</em>, <em class="sig-param">k_neighbors=5</em>, <em class="sig-param">n_jobs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/8cc00941/imblearn/over_sampling/_smote.py#L767"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.SMOTENC" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">imblearn.over_sampling.</code><code class="sig-name descname">SMOTENC</code><span class="sig-paren">(</span><em class="sig-param">categorical_features</em>, <em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">random_state=None</em>, <em class="sig-param">k_neighbors=5</em>, <em class="sig-param">n_jobs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/68123d0/imblearn/over_sampling/_smote.py#L767"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.SMOTENC" title="Permalink to this definition">¶</a></dt>
 <dd><p>Synthetic Minority Over-sampling Technique for Nominal and Continuous
 (SMOTE-NC).</p>
 <p>Unlike <a class="reference internal" href="imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTE</span></code></a>, SMOTE-NC for dataset containing continuous and
@@ -319,13 +322,13 @@ intelligence research, 321-357, 2002.</p>
 </div>
 <dl class="method">
 <dt id="imblearn.over_sampling.SMOTENC.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">categorical_features</em>, <em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">random_state=None</em>, <em class="sig-param">k_neighbors=5</em>, <em class="sig-param">n_jobs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/8cc00941/imblearn/over_sampling/_smote.py#L894"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.SMOTENC.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">categorical_features</em>, <em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">random_state=None</em>, <em class="sig-param">k_neighbors=5</em>, <em class="sig-param">n_jobs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/68123d0/imblearn/over_sampling/_smote.py#L894"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.SMOTENC.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="imblearn.over_sampling.SMOTENC.fit">
-<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/8cc00941/imblearn/base.py#L28"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.SMOTENC.fit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/68123d0/imblearn/base.py#L28"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.SMOTENC.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check inputs and statistics of the sampler.</p>
 <p>You should use <code class="docutils literal notranslate"><span class="pre">fit_resample</span></code> in all cases.</p>
 <dl class="field-list simple">
@@ -348,7 +351,7 @@ intelligence research, 321-357, 2002.</p>
 
 <dl class="method">
 <dt id="imblearn.over_sampling.SMOTENC.fit_resample">
-<code class="sig-name descname">fit_resample</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/8cc00941/imblearn/base.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.SMOTENC.fit_resample" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit_resample</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/68123d0/imblearn/base.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.SMOTENC.fit_resample" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resample the dataset.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -372,7 +375,7 @@ intelligence research, 321-357, 2002.</p>
 
 <dl class="method">
 <dt id="imblearn.over_sampling.SMOTENC.fit_sample">
-<code class="sig-name descname">fit_sample</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/8cc00941/imblearn/base.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.SMOTENC.fit_sample" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit_sample</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/68123d0/imblearn/base.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.SMOTENC.fit_sample" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resample the dataset.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -396,12 +399,12 @@ intelligence research, 321-357, 2002.</p>
 
 <dl class="method">
 <dt id="imblearn.over_sampling.SMOTENC.get_params">
-<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">deep=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/8cc00941/imblearn/../../scikit-learn/sklearn/base.py#L169"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.SMOTENC.get_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">deep=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/68123d0/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L169"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.SMOTENC.get_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>deep</strong><span class="classifier">boolean, optional</span></dt><dd><p>If True, will return the parameters for this estimator and
+<dt><strong>deep</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
 </dd>
 </dl>
@@ -417,16 +420,23 @@ contained subobjects that are estimators.</p>
 
 <dl class="method">
 <dt id="imblearn.over_sampling.SMOTENC.set_params">
-<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/8cc00941/imblearn/../../scikit-learn/sklearn/base.py#L200"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.SMOTENC.set_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/68123d0/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L201"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.SMOTENC.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The latter have parameters of the form
 <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s possible to update each
 component of a nested object.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt>self</dt><dd></dd>
+<dt><strong>**params</strong><span class="classifier">dict</span></dt><dd><p>Estimator parameters.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">object</span></dt><dd><p>Estimator instance.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -454,7 +464,7 @@ component of a nested object.</p>
         <a href="imblearn.over_sampling.SVMSMOTE.html" class="btn btn-neutral float-right" title="imblearn.over_sampling.SVMSMOTE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="imblearn.over_sampling.SMOTE.html" class="btn btn-neutral" title="imblearn.over_sampling.SMOTE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="imblearn.over_sampling.SMOTE.html" class="btn btn-neutral float-left" title="imblearn.over_sampling.SMOTE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -480,27 +490,16 @@ component of a nested object.</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script type="text/javascript" src="../_static/js/copybutton.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

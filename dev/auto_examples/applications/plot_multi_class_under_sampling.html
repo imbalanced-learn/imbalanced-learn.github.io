@@ -17,13 +17,21 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../_static/css/imbalanced-learn.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
@@ -33,21 +41,16 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Example of topic classification in text documents" href="plot_topic_classication.html" />
     <link rel="prev" title="Usage of the sampling_strategy parameter for the different algorithms" href="../plot_sampling_strategy_usage.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -184,6 +187,8 @@ not differ from the binary case.</p>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Training target statistics: Counter({1: 38, 2: 38, 0: 17})
 Testing target statistics: Counter({1: 12, 2: 12, 0: 8})
+/home/circleci/miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/svm/_base.py:947: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  &quot;the number of iterations.&quot;, ConvergenceWarning)
                    pre       rec       spe        f1       geo       iba       sup
 
           0       1.00      1.00      1.00      1.00      1.00      1.00         8
@@ -196,46 +201,47 @@ avg / total       0.95      0.94      0.96      0.94      0.95      0.90        
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: Guillaume Lemaitre &lt;g.lemaitre58@gmail.com&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: Guillaume Lemaitre &lt;g.lemaitre58@gmail.com&gt;</span>
 <span class="c1"># License: MIT</span>
 
-<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Counter</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris" title="View documentation for sklearn.datasets.load_iris"><span class="n">load_iris</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="View documentation for sklearn.svm.LinearSVC"><span class="n">LinearSVC</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="View documentation for sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris" title="View documentation for sklearn.datasets.load_iris"><span class="n">load_iris</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="View documentation for sklearn.svm.LinearSVC"><span class="n">LinearSVC</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="View documentation for sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
 
-<span class="kn">from</span> <span class="nn">imblearn.datasets</span> <span class="kn">import</span> <a href="../../generated/imblearn.datasets.make_imbalance.html#imblearn.datasets.make_imbalance" title="View documentation for imblearn.datasets.make_imbalance"><span class="n">make_imbalance</span></a>
-<span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <a href="../../generated/imblearn.under_sampling.NearMiss.html#imblearn.under_sampling.NearMiss" title="View documentation for imblearn.under_sampling.NearMiss"><span class="n">NearMiss</span></a>
-<span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="kn">import</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="View documentation for imblearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a>
-<span class="kn">from</span> <span class="nn">imblearn.metrics</span> <span class="kn">import</span> <a href="../../generated/imblearn.metrics.classification_report_imbalanced.html#imblearn.metrics.classification_report_imbalanced" title="View documentation for imblearn.metrics.classification_report_imbalanced"><span class="n">classification_report_imbalanced</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.datasets</span> <span class="k">import</span> <a href="../../generated/imblearn.datasets.make_imbalance.html#imblearn.datasets.make_imbalance" title="View documentation for imblearn.datasets.make_imbalance"><span class="n">make_imbalance</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="k">import</span> <a href="../../generated/imblearn.under_sampling.NearMiss.html#imblearn.under_sampling.NearMiss" title="View documentation for imblearn.under_sampling.NearMiss"><span class="n">NearMiss</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="k">import</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="View documentation for imblearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.metrics</span> <span class="k">import</span> <a href="../../generated/imblearn.metrics.classification_report_imbalanced.html#imblearn.metrics.classification_report_imbalanced" title="View documentation for imblearn.metrics.classification_report_imbalanced"><span class="n">classification_report_imbalanced</span></a>
 
-<span class="k">print</span><span class="p">(</span><span class="vm">__doc__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="vm">__doc__</span><span class="p">)</span>
 
-<span class="n">RANDOM_STATE</span> <span class="o">=</span> <span class="mi">42</span>
+<a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">RANDOM_STATE</span></a> <span class="o">=</span> <span class="mi">42</span>
 
 <span class="c1"># Create a folder to fetch the dataset</span>
 <span class="n">iris</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris" title="View documentation for sklearn.datasets.load_iris"><span class="n">load_iris</span></a><span class="p">()</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a href="../../generated/imblearn.datasets.make_imbalance.html#imblearn.datasets.make_imbalance" title="View documentation for imblearn.datasets.make_imbalance"><span class="n">make_imbalance</span></a><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">,</span>
+<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">X</span></a><span class="p">,</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y</span></a> <span class="o">=</span> <a href="../../generated/imblearn.datasets.make_imbalance.html#imblearn.datasets.make_imbalance" title="View documentation for imblearn.datasets.make_imbalance"><span class="n">make_imbalance</span></a><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">,</span>
                       <span class="n">sampling_strategy</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">50</span><span class="p">},</span>
-                      <span class="n">random_state</span><span class="o">=</span><span class="n">RANDOM_STATE</span><span class="p">)</span>
+                      <span class="n">random_state</span><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">RANDOM_STATE</span></a><span class="p">)</span>
 
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="View documentation for sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a><span class="p">(</span>
-    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">RANDOM_STATE</span><span class="p">)</span>
+<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">X_train</span></a><span class="p">,</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">X_test</span></a><span class="p">,</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_train</span></a><span class="p">,</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_test</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="View documentation for sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a><span class="p">(</span>
+    <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">X</span></a><span class="p">,</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y</span></a><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">RANDOM_STATE</span></a><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Training target statistics: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y_train</span><span class="p">)))</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Testing target statistics: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y_test</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Training target statistics: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_train</span></a><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Testing target statistics: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_test</span></a><span class="p">)))</span>
 
 <span class="c1"># Create a pipeline</span>
-<span class="n">pipeline</span> <span class="o">=</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="View documentation for imblearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a><span class="p">(</span><a href="../../generated/imblearn.under_sampling.NearMiss.html#imblearn.under_sampling.NearMiss" title="View documentation for imblearn.under_sampling.NearMiss"><span class="n">NearMiss</span></a><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
-                         <a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="View documentation for sklearn.svm.LinearSVC"><span class="n">LinearSVC</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="n">RANDOM_STATE</span><span class="p">))</span>
-<span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="View documentation for imblearn.pipeline.Pipeline"><span class="n">pipeline</span></a> <span class="o">=</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="View documentation for imblearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a><span class="p">(</span><a href="../../generated/imblearn.under_sampling.NearMiss.html#imblearn.under_sampling.NearMiss" title="View documentation for imblearn.under_sampling.NearMiss"><span class="n">NearMiss</span></a><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+                         <a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="View documentation for sklearn.svm.LinearSVC"><span class="n">LinearSVC</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">RANDOM_STATE</span></a><span class="p">))</span>
+<a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="View documentation for imblearn.pipeline.Pipeline"><span class="n">pipeline</span></a><span class="o">.</span><span class="n">fit</span><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">X_train</span></a><span class="p">,</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_train</span></a><span class="p">)</span>
 
 <span class="c1"># Classify and report the results</span>
-<span class="k">print</span><span class="p">(</span><a href="../../generated/imblearn.metrics.classification_report_imbalanced.html#imblearn.metrics.classification_report_imbalanced" title="View documentation for imblearn.metrics.classification_report_imbalanced"><span class="n">classification_report_imbalanced</span></a><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><a href="../../generated/imblearn.metrics.classification_report_imbalanced.html#imblearn.metrics.classification_report_imbalanced" title="View documentation for imblearn.metrics.classification_report_imbalanced"><span class="n">classification_report_imbalanced</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_test</span></a><span class="p">,</span> <a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="View documentation for imblearn.pipeline.Pipeline"><span class="n">pipeline</span></a><span class="o">.</span><span class="n">predict</span><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">X_test</span></a><span class="p">)))</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.025 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.165 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  8 MB</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-applications-plot-multi-class-under-sampling-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/ccab610c6e402e33be5ca758390f282e/plot_multi_class_under_sampling.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_multi_class_under_sampling.py</span></code></a></p>
@@ -244,7 +250,7 @@ avg / total       0.95      0.94      0.96      0.94      0.95      0.90        
 <p><a class="reference download internal" download="" href="../../_downloads/1a77f64a6f1f241d56c019390df95d38/plot_multi_class_under_sampling.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_multi_class_under_sampling.ipynb</span></code></a></p>
 </div>
 </div>
-<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>
 
 
@@ -258,7 +264,7 @@ avg / total       0.95      0.94      0.96      0.94      0.95      0.90        
         <a href="plot_topic_classication.html" class="btn btn-neutral float-right" title="Example of topic classification in text documents" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../plot_sampling_strategy_usage.html" class="btn btn-neutral" title="Usage of the sampling_strategy parameter for the different algorithms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../plot_sampling_strategy_usage.html" class="btn btn-neutral float-left" title="Usage of the sampling_strategy parameter for the different algorithms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -284,27 +290,16 @@ avg / total       0.95      0.94      0.96      0.94      0.95      0.90        
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-        <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
