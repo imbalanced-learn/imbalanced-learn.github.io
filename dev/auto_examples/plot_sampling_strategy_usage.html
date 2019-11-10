@@ -265,9 +265,9 @@ Information of the iris data set after making it imbalanced using a dict:
 <div class="section" id="sampling-strategy-as-a-float">
 <h3><code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> as a <code class="docutils literal notranslate"><span class="pre">float</span></code><a class="headerlink" href="#sampling-strategy-as-a-float" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> can be given a <code class="docutils literal notranslate"><span class="pre">float</span></code>. For <strong>under-sampling
-methods</strong>, it corresponds to the ratio <span class="math">\\alpha_{us}</span> defined by
-<span class="math">N_{rM} = \\alpha_{us} \\times N_{m}</span> where <span class="math">N_{rM}</span> and
-<span class="math">N_{m}</span> are the number of samples in the majority class after
+methods</strong>, it corresponds to the ratio <img class="math" src="../_images/math/5641af957e7a4488ddb8bf6c140c6293b20b1914.svg" alt="\\alpha_{us}"/> defined by
+<img class="math" src="../_images/math/b4027af4d612905f56d45c4dc4d0d5edeff6bfb1.svg" alt="N_{rM} = \\alpha_{us} \\times N_{m}"/> where <img class="math" src="../_images/math/af8cae27cbce4d779c6fd83f408d0115b6312d73.svg" alt="N_{rM}"/> and
+<img class="math" src="../_images/math/c291c39375eec8dbd9df5c7a77dfc3f720e67450.svg" alt="N_{m}"/> are the number of samples in the majority class after
 resampling and the number of samples in the minority class, respectively.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># select only 2 classes since the ratio make sense in this case</span>
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">binary_mask</span></a> <span class="o">=</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.bitwise_or.html#numpy.bitwise_or" title="View documentation for numpy.bitwise_or"><span class="n">np</span><span class="o">.</span><span class="n">bitwise_or</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y</span></a> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y</span></a> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
@@ -293,8 +293,8 @@ resampling and the number of samples in the minority class, respectively.</p>
 </pre></div>
 </div>
 <p>For <strong>over-sampling methods</strong>, it correspond to the ratio
-<span class="math">\\alpha_{os}</span> defined by <span class="math">N_{rm} = \\alpha_{os} \\times N_{M}</span>
-where <span class="math">N_{rm}</span> and <span class="math">N_{M}</span> are the number of samples in the
+<img class="math" src="../_images/math/411c06054649d67da644e14427c414d0287a3295.svg" alt="\\alpha_{os}"/> defined by <img class="math" src="../_images/math/5e9742d444323d8a037cfad00b11bd876969d539.svg" alt="N_{rm} = \\alpha_{os} \\times N_{M}"/>
+where <img class="math" src="../_images/math/4985d2eacb2937e16c6bf7ae35392a2ab86f26b5.svg" alt="N_{rm}"/> and <img class="math" src="../_images/math/2be1533ae94a10e0b0cdc0bb4456aa7afe6062ba.svg" alt="N_{M}"/> are the number of samples in the
 minority class after resampling and the number of samples in the majority
 class, respectively.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="../generated/imblearn.over_sampling.RandomOverSampler.html#imblearn.over_sampling.RandomOverSampler" title="View documentation for imblearn.over_sampling.RandomOverSampler"><span class="n">ros</span></a> <span class="o">=</span> <a href="../generated/imblearn.over_sampling.RandomOverSampler.html#imblearn.over_sampling.RandomOverSampler" title="View documentation for imblearn.over_sampling.RandomOverSampler"><span class="n">RandomOverSampler</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">sampling_strategy</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">sampling_strategy</span></a><span class="p">)</span>
@@ -463,11 +463,11 @@ number of samples for each class.</p>
 <img alt="../_images/sphx_glr_plot_sampling_strategy_usage_011.png" class="sphx-glr-single-img" src="../_images/sphx_glr_plot_sampling_strategy_usage_011.png" />
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Information of the iris data set after balancing using a callable mode:
- ratio=&lt;function ratio_multiplier at 0x7f3715716320&gt;
+ ratio=&lt;function ratio_multiplier at 0x7ff81c6b8c20&gt;
  y: Counter({2: 44, 1: 14, 0: 10})
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  2.385 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  3.126 seconds)</p>
 <p><strong>Estimated memory usage:</strong>  11 MB</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plot-sampling-strategy-usage-py">
 <div class="sphx-glr-download docutils container">
