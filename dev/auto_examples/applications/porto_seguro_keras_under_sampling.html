@@ -210,7 +210,7 @@ time.</p>
 </div>
 <div class="section" id="data-loading">
 <h3>Data loading<a class="headerlink" href="#data-loading" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Counter</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <a href="https://docs.python.org/3/library/collections.html#collections.Counter" title="View documentation for collections.Counter"><span class="n">Counter</span></a>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
@@ -226,7 +226,7 @@ link in the introduction.</p>
 </pre></div>
 </div>
 <p>The data set is imbalanced and it will have an effect on the fitting.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The data set is imbalanced: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">])))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The data set is imbalanced: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><a href="https://docs.python.org/3/library/collections.html#collections.Counter" title="View documentation for collections.Counter"><span class="n">Counter</span></a><span class="p">(</span><span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">])))</span>
 </pre></div>
 </div>
 </div>
@@ -266,7 +266,7 @@ encode the categorical features. In this regard, we make use of the
 
 <span class="c1"># Create an environment variable to avoid using the GPU. This can be changed.</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;CUDA_VISIBLE_DEVICES&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;-1&#39;</span>
+<a href="https://docs.python.org/3/library/os.html#os.environ" title="View documentation for os.environ"><span class="n">os</span><span class="o">.</span><span class="n">environ</span></a><span class="p">[</span><span class="s1">&#39;CUDA_VISIBLE_DEVICES&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;-1&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -306,15 +306,15 @@ encode the categorical features. In this regard, we make use of the
 </div>
 <p>We create a decorator to report the computation time</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">wraps</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <a href="https://docs.python.org/3/library/functools.html#functools.wraps" title="View documentation for functools.wraps"><span class="n">wraps</span></a>
 
 
 <span class="k">def</span> <span class="nf">timeit</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
     <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
-        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">start_time</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="View documentation for time.time"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-        <span class="n">elapsed_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+        <span class="n">elapsed_time</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="View documentation for time.time"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Elapsed computation time: </span><span class="si">{:.3f}</span><span class="s1"> secs&#39;</span>
               <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">elapsed_time</span><span class="p">))</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">elapsed_time</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
