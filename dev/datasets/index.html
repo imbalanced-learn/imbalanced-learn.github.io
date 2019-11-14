@@ -456,6 +456,24 @@ in the dictionary:</p>
 <span class="go">[(0, 25), (1, 35), (2, 47)]</span>
 </pre></div>
 </div>
+<p>It would also work with pandas dataframe:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">fetch_openml</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s1">&#39;iris&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">make_imbalance</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">df</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sampling_strategy</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Iris-setosa&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df_resampled</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="go">        sepallength  sepalwidth  petallength  petalwidth</span>
+<span class="go">  13          4.3         3.0          1.1         0.1</span>
+<span class="go">  39          5.1         3.4          1.5         0.2</span>
+<span class="go">  30          4.8         3.1          1.6         0.2</span>
+<span class="go">  45          4.8         3.0          1.4         0.3</span>
+<span class="go">  17          5.1         3.5          1.4         0.3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Counter</span><span class="p">(</span><span class="n">y_resampled</span><span class="p">)</span>
+<span class="go">Counter({&#39;Iris-virginica&#39;: 50, &#39;Iris-versicolor&#39;: 20, &#39;Iris-setosa&#39;: 10})</span>
+</pre></div>
+</div>
 <p>See <a class="reference internal" href="../auto_examples/datasets/plot_make_imbalance.html#sphx-glr-auto-examples-datasets-plot-make-imbalance-py"><span class="std std-ref">make_imbalance function</span></a> and
 <a class="reference internal" href="../auto_examples/plot_sampling_strategy_usage.html#sphx-glr-auto-examples-plot-sampling-strategy-usage-py"><span class="std std-ref">Usage of the sampling_strategy parameter for the different algorithms</span></a>.</p>
 </div>

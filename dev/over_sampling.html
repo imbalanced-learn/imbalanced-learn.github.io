@@ -249,6 +249,15 @@ function.</p>
 <span class="go">[0 0 1 1]</span>
 </pre></div>
 </div>
+<p>It would also work with pandas dataframe:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">fetch_openml</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df_adult</span><span class="p">,</span> <span class="n">y_adult</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s1">&#39;adult&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df_adult</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">ros</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">df_adult</span><span class="p">,</span> <span class="n">y_adult</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df_resampled</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>  
+</pre></div>
+</div>
 </div>
 <div class="section" id="from-random-over-sampling-to-smote-and-adasyn">
 <span id="smote-adasyn"></span><h3>2.1.2. From random over-sampling to SMOTE and ADASYN<a class="headerlink" href="#from-random-over-sampling-to-smote-and-adasyn" title="Permalink to this headline">¶</a></h3>
