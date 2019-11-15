@@ -214,6 +214,23 @@ to retain the 10 first elements of the array <code class="docutils literal notra
 <span class="go">True</span>
 </pre></div>
 </div>
+<p>In addition, the parameter <code class="docutils literal notranslate"><span class="pre">validate</span></code> control input checking. For instance,
+turning <code class="docutils literal notranslate"><span class="pre">validate=False</span></code> allows to pass any type of target <code class="docutils literal notranslate"><span class="pre">y</span></code> and do some
+sampling for regression targets.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">make_regression</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_reg</span><span class="p">,</span> <span class="n">y_reg</span> <span class="o">=</span> <span class="n">make_regression</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">dummy_sampler</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">indices</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">X</span><span class="p">[</span><span class="n">indices</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sampler</span> <span class="o">=</span> <span class="n">FunctionSampler</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">dummy_sampler</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X_reg</span><span class="p">,</span> <span class="n">y_reg</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_res</span>
+<span class="go">array([  41.49112498, -142.78526195,   85.55095317,  141.43321419,</span>
+<span class="go">         75.46571114,  -67.49177372,  159.72700509, -169.80498923,</span>
+<span class="go">        211.95889757,  211.95889757])</span>
+</pre></div>
+</div>
 <p>We illustrate the use of such sampler to implement an outlier rejection
 estimator which can be easily used within a
 <a class="reference internal" href="generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="imblearn.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.pipeline.Pipeline</span></code></a>:
