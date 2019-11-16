@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>1. Introduction &mdash; imbalanced-learn 0.6.0.dev0 documentation</title>
+  <title>10. References &mdash; imbalanced-learn 0.6.0.dev0 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2. Over-sampling" href="over_sampling.html" />
-    <link rel="prev" title="User Guide" href="user_guide.html" /> 
+    <link rel="next" title="imbalanced-learn API" href="api.html" />
+    <link rel="prev" title="9. Utilities for Developers" href="developers_utils.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -95,11 +95,7 @@
 <p class="caption"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="user_guide.html">User Guide</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Introduction</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#api-s-of-imbalanced-learn-samplers">1.1. API’s of imbalanced-learn samplers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#problem-statement-regarding-imbalanced-data-sets">1.2. Problem statement regarding imbalanced data sets</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="over_sampling.html">2. Over-sampling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="under_sampling.html">3. Under-sampling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="combine.html">4. Combination of over- and under-sampling</a></li>
@@ -108,7 +104,7 @@
 <li class="toctree-l2"><a class="reference internal" href="metrics.html">7. Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datasets/index.html">8. Dataset loading utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developers_utils.html">9. Utilities for Developers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="references.html">10. References</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">10. References</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">imbalanced-learn API</a></li>
@@ -172,7 +168,7 @@
         
           <li><a href="user_guide.html">User Guide</a> &raquo;</li>
         
-      <li>1. Introduction</li>
+      <li>10. References</li>
     
     
 
@@ -184,52 +180,50 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="introduction">
-<span id="id1"></span><h1>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="api-s-of-imbalanced-learn-samplers">
-<span id="api-imblearn"></span><h2>1.1. API’s of imbalanced-learn samplers<a class="headerlink" href="#api-s-of-imbalanced-learn-samplers" title="Permalink to this headline">¶</a></h2>
-<p>The available samplers follows the scikit-learn API using the base estimator
-and adding a sampling functionality through the <code class="docutils literal notranslate"><span class="pre">sample</span></code> method:</p>
-<dl class="field-list">
-<dt class="field-odd">Estimator</dt>
-<dd class="field-odd"><p>The base object, implements a <code class="docutils literal notranslate"><span class="pre">fit</span></code> method to learn from data, either:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">estimator</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span>
-</pre></div>
-</div>
+  <div class="section" id="references">
+<h1>10. References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<p id="bibtex-bibliography-references-0"><dl class="citation">
+<dt class="bibtex label" id="barandela2003strategies"><span class="brackets">BSanchezGR03</span></dt>
+<dd><p>Ricardo Barandela, José Salvador Sánchez, V Garca, and Edgar Rangel. Strategies for learning in class imbalance problems. <em>Pattern Recognition</em>, 36(3):849–851, 2003.</p>
 </dd>
-<dt class="field-even">Resampler</dt>
-<dd class="field-even"><p>To resample a data sets, each sampler implements:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data_resampled</span><span class="p">,</span> <span class="n">targets_resampled</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span>
-</pre></div>
-</div>
+<dt class="bibtex label" id="batista2003balancing"><span class="brackets">BBM03</span></dt>
+<dd><p>Gustavo EAPA Batista, Ana LC Bazzan, and Maria Carolina Monard. Balancing training data for automated annotation of keywords: a case study. In <em>WOB</em>, 10–18. 2003.</p>
+</dd>
+<dt class="bibtex label" id="batista2004study"><span class="brackets">BPM04</span></dt>
+<dd><p>Gustavo EAPA Batista, Ronaldo C Prati, and Maria Carolina Monard. A study of the behavior of several methods for balancing machine learning training data. <em>ACM SIGKDD explorations newsletter</em>, 6(1):20–29, 2004.</p>
+</dd>
+<dt class="bibtex label" id="chawla2002smote"><span class="brackets">CBHK02</span></dt>
+<dd><p>Nitesh V Chawla, Kevin W Bowyer, Lawrence O Hall, and W Philip Kegelmeyer. Smote: synthetic minority over-sampling technique. <em>Journal of artificial intelligence research</em>, 16:321–357, 2002.</p>
+</dd>
+<dt class="bibtex label" id="chen2004using"><span class="brackets">CLB+04</span></dt>
+<dd><p>Chao Chen, Andy Liaw, Leo Breiman, and others. Using random forest to learn imbalanced data. <em>University of California, Berkeley</em>, 110(1-12):24, 2004.</p>
+</dd>
+<dt class="bibtex label" id="garcia2012effectiveness"><span class="brackets">GarciaSanchezM12</span></dt>
+<dd><p>Vicente García, José Salvador Sánchez, and Ramón Alberto Mollineda. On the effectiveness of preprocessing methods when dealing with different levels of class imbalance. <em>Knowledge-Based Systems</em>, 25(1):13–21, 2012.</p>
+</dd>
+<dt class="bibtex label" id="han2005borderline"><span class="brackets">HWM05</span></dt>
+<dd><p>Hui Han, Wen-Yuan Wang, and Bing-Huan Mao. Borderline-smote: a new over-sampling method in imbalanced data sets learning. In <em>International conference on intelligent computing</em>, 878–887. Springer, 2005.</p>
+</dd>
+<dt class="bibtex label" id="he2008adasyn"><span class="brackets">HBGL08</span></dt>
+<dd><p>Haibo He, Yang Bai, Edwardo A Garcia, and Shutao Li. Adasyn: adaptive synthetic sampling approach for imbalanced learning. In <em>2008 IEEE International Joint Conference on Neural Networks (IEEE World Congress on Computational Intelligence)</em>, 1322–1328. IEEE, 2008.</p>
+</dd>
+<dt class="bibtex label" id="kubat1997addressing"><span class="brackets">KM+97</span></dt>
+<dd><p>Miroslav Kubat, Stan Matwin, and others. Addressing the curse of imbalanced training sets: one-sided selection. In <em>Icml</em>, volume 97, 179–186. Nashville, USA, 1997.</p>
+</dd>
+<dt class="bibtex label" id="last2017oversampling"><span class="brackets">LDB17</span></dt>
+<dd><p>Felix Last, Georgios Douzas, and Fernando Bacao. Oversampling for imbalanced learning based on k-means and smote. <em>arXiv preprint arXiv:1711.00837</em>, 2017.</p>
+</dd>
+<dt class="bibtex label" id="liu2008exploratory"><span class="brackets">LWZ08</span></dt>
+<dd><p>Xu-Ying Liu, Jianxin Wu, and Zhi-Hua Zhou. Exploratory undersampling for class-imbalance learning. <em>IEEE Transactions on Systems, Man, and Cybernetics, Part B (Cybernetics)</em>, 39(2):539–550, 2008.</p>
+</dd>
+<dt class="bibtex label" id="nguyen2009borderline"><span class="brackets">NCK09</span></dt>
+<dd><p>Hien M Nguyen, Eric W Cooper, and Katsuari Kamei. Borderline over-sampling for imbalanced data classification. In <em>Proceedings: Fifth International Workshop on Computational Intelligence &amp; Applications</em>, volume 2009, 24–29. IEEE SMC Hiroshima Chapter, 2009.</p>
+</dd>
+<dt class="bibtex label" id="seiffert2009rusboost"><span class="brackets">SKVHN09</span></dt>
+<dd><p>Chris Seiffert, Taghi M Khoshgoftaar, Jason Van Hulse, and Amri Napolitano. Rusboost: a hybrid approach to alleviating class imbalance. <em>IEEE Transactions on Systems, Man, and Cybernetics-Part A: Systems and Humans</em>, 40(1):185–197, 2009.</p>
 </dd>
 </dl>
-<p>Imbalanced-learn samplers accept the same inputs that in scikit-learn:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: array-like (2-D list, pandas.Dataframe, numpy.array) or sparse
-matrices;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">targets</span></code>: array-like (1-D list, pandas.Series, numpy.array).</p></li>
-</ul>
-<div class="topic">
-<p class="topic-title first">Sparse input</p>
-<p>For sparse input the data is <strong>converted to the Compressed Sparse Rows
-representation</strong> (see <code class="docutils literal notranslate"><span class="pre">scipy.sparse.csr_matrix</span></code>) before being fed to the
-sampler. To avoid unnecessary memory copies, it is recommended to choose the
-CSR representation upstream.</p>
-</div>
-</div>
-<div class="section" id="problem-statement-regarding-imbalanced-data-sets">
-<span id="problem-statement"></span><h2>1.2. Problem statement regarding imbalanced data sets<a class="headerlink" href="#problem-statement-regarding-imbalanced-data-sets" title="Permalink to this headline">¶</a></h2>
-<p>The learning phase and the subsequent prediction of machine learning algorithms
-can be affected by the problem of imbalanced data set. The balancing issue
-corresponds to the difference of the number of samples in the different
-classes. We illustrate the effect of training a linear SVM classifier with
-different level of class balancing.</p>
-<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_0011.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_0011.png" style="width: 900.0px; height: 720.0px;" /></a>
-<p>As expected, the decision function of the linear SVM is highly impacted. With a
-greater imbalanced ratio, the decision function favor the class with the larger
-number of samples, usually referred as the majority class.</p>
-</div>
+</p>
 </div>
 
 
@@ -240,10 +234,10 @@ number of samples, usually referred as the majority class.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="over_sampling.html" class="btn btn-neutral float-right" title="2. Over-sampling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="api.html" class="btn btn-neutral float-right" title="imbalanced-learn API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="user_guide.html" class="btn btn-neutral float-left" title="User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="developers_utils.html" class="btn btn-neutral float-left" title="9. Utilities for Developers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

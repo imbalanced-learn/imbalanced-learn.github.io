@@ -112,6 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="metrics.html">7. Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datasets/index.html">8. Dataset loading utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developers_utils.html">9. Utilities for Developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="references.html">10. References</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">imbalanced-learn API</a></li>
@@ -288,9 +289,9 @@ by considering independently each targeted class:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df_resampled</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>  
 </pre></div>
 </div>
-<p><a class="reference internal" href="generated/imblearn.under_sampling.NearMiss.html#imblearn.under_sampling.NearMiss" title="imblearn.under_sampling.NearMiss"><code class="xref py py-class docutils literal notranslate"><span class="pre">NearMiss</span></code></a> adds some heuristic rules to select samples <a class="reference internal" href="#mz2003" id="id2"><span>[MZ2003]</span></a>.
-<a class="reference internal" href="generated/imblearn.under_sampling.NearMiss.html#imblearn.under_sampling.NearMiss" title="imblearn.under_sampling.NearMiss"><code class="xref py py-class docutils literal notranslate"><span class="pre">NearMiss</span></code></a> implements 3 different types of heuristic which can be
-selected with the parameter <code class="docutils literal notranslate"><span class="pre">version</span></code>:</p>
+<p><a class="reference internal" href="generated/imblearn.under_sampling.NearMiss.html#imblearn.under_sampling.NearMiss" title="imblearn.under_sampling.NearMiss"><code class="xref py py-class docutils literal notranslate"><span class="pre">NearMiss</span></code></a> adds some heuristic rules to select samples
+<span class="bibtex" id="id2">[mani2003knn]</span>. <a class="reference internal" href="generated/imblearn.under_sampling.NearMiss.html#imblearn.under_sampling.NearMiss" title="imblearn.under_sampling.NearMiss"><code class="xref py py-class docutils literal notranslate"><span class="pre">NearMiss</span></code></a> implements 3 different types of
+heuristic which can be selected with the parameter <code class="docutils literal notranslate"><span class="pre">version</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="k">import</span> <span class="n">NearMiss</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nm1</span> <span class="o">=</span> <span class="n">NearMiss</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_resampled_nm1</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">nm1</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -304,17 +305,6 @@ and <code class="docutils literal notranslate"><span class="pre">n_neighbors_ver
 from scikit-learn. The former parameter is used to compute the average distance
 to the neighbors while the latter is used for the pre-selection of the samples
 of interest.</p>
-<div class="topic">
-<p class="topic-title first">References</p>
-<dl class="citation">
-<dt class="label" id="mz2003"><span class="brackets"><a class="fn-backref" href="#id2">MZ2003</a></span></dt>
-<dd><p>I. Mani, I. Zhang. “kNN approach to unbalanced data
-distributions: a case study involving information extraction,” In
-Proceedings of workshop on learning from imbalanced datasets,
-2003.</p>
-</dd>
-</dl>
-</div>
 <div class="section" id="mathematical-formulation">
 <h4>3.2.1.1. Mathematical formulation<a class="headerlink" href="#mathematical-formulation" title="Permalink to this headline">¶</a></h4>
 <p>Let <em>positive samples</em> be the samples belonging to the targeted class to be
@@ -353,9 +343,9 @@ samples to have in each class. In fact, each algorithm implement an heuristic
 which will clean the dataset.</p>
 <div class="section" id="tomek-s-links">
 <span id="tomek-links"></span><h4>3.2.2.1. Tomek’s links<a class="headerlink" href="#tomek-s-links" title="Permalink to this headline">¶</a></h4>
-<p><a class="reference internal" href="generated/imblearn.under_sampling.TomekLinks.html#imblearn.under_sampling.TomekLinks" title="imblearn.under_sampling.TomekLinks"><code class="xref py py-class docutils literal notranslate"><span class="pre">TomekLinks</span></code></a> detects the so-called Tomek’s links <a class="reference internal" href="#t2010" id="id3"><span>[T2010]</span></a>. A Tomek’s
-link between two samples of different class <img class="math" src="_images/math/888f7c323ac0341871e867220ae2d76467d74d6e.svg" alt="x"/> and <img class="math" src="_images/math/1b5e577d6216dca3af7d87aa122a0b9b360d6cb3.svg" alt="y"/> is defined
-such that for any sample <img class="math" src="_images/math/8d051150f8669295ecdbe92367941012175a824d.svg" alt="z"/>:</p>
+<p><a class="reference internal" href="generated/imblearn.under_sampling.TomekLinks.html#imblearn.under_sampling.TomekLinks" title="imblearn.under_sampling.TomekLinks"><code class="xref py py-class docutils literal notranslate"><span class="pre">TomekLinks</span></code></a> detects the so-called Tomek’s links <span class="bibtex" id="id3">[tomek1976two]</span>. A
+Tomek’s link between two samples of different class <img class="math" src="_images/math/888f7c323ac0341871e867220ae2d76467d74d6e.svg" alt="x"/> and <img class="math" src="_images/math/1b5e577d6216dca3af7d87aa122a0b9b360d6cb3.svg" alt="y"/> is
+defined such that for any sample <img class="math" src="_images/math/8d051150f8669295ecdbe92367941012175a824d.svg" alt="z"/>:</p>
 <div class="math">
 <p><img src="_images/math/f0bdfd2907e6c82b6d597672489e0ca6d9d49882.svg" alt="d(x, y) &lt; d(x, z) \text{ and } d(x, y) &lt; d(y, z)"/></p>
 </div><p>where <img class="math" src="_images/math/42dc0b82a24bfb8685340959db72b2afceea6d3d.svg" alt="d(.)"/> is the distance between the two samples. In some other
@@ -369,26 +359,17 @@ remove the sample from the majority class. Both samples from the majority and
 minority class can be removed by setting <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> to <code class="docutils literal notranslate"><span class="pre">'all'</span></code>. The
 figure illustrates this behaviour.</p>
 <a class="reference external image-reference" href="./auto_examples/under-sampling/plot_illustration_tomek_links.html"><img alt="_images/sphx_glr_plot_illustration_tomek_links_0021.png" class="align-center" src="_images/sphx_glr_plot_illustration_tomek_links_0021.png" style="width: 720.0px; height: 360.0px;" /></a>
-<div class="topic">
-<p class="topic-title first">References</p>
-<dl class="citation">
-<dt class="label" id="t2010"><span class="brackets"><a class="fn-backref" href="#id3">T2010</a></span></dt>
-<dd><p>I. Tomek, “Two modifications of CNN,” In Systems, Man, and
-Cybernetics, IEEE Transactions on, vol. 6, pp 769-772, 2010.</p>
-</dd>
-</dl>
-</div>
 </div>
 <div class="section" id="edited-data-set-using-nearest-neighbours">
 <span id="edited-nearest-neighbors"></span><h4>3.2.2.2. Edited data set using nearest neighbours<a class="headerlink" href="#edited-data-set-using-nearest-neighbours" title="Permalink to this headline">¶</a></h4>
 <p><a class="reference internal" href="generated/imblearn.under_sampling.EditedNearestNeighbours.html#imblearn.under_sampling.EditedNearestNeighbours" title="imblearn.under_sampling.EditedNearestNeighbours"><code class="xref py py-class docutils literal notranslate"><span class="pre">EditedNearestNeighbours</span></code></a> applies a nearest-neighbors algorithm and
 “edit” the dataset by removing samples which do not agree “enough” with their
-neighboorhood <a class="reference internal" href="#w1972" id="id4"><span>[W1972]</span></a>. For each sample in the class to be under-sampled, the
-nearest-neighbours are computed and if the selection criterion is not
-fulfilled, the sample is removed. Two selection criteria are currently
-available: (i) the majority (i.e., <code class="docutils literal notranslate"><span class="pre">kind_sel='mode'</span></code>) or (ii) all (i.e.,
-<code class="docutils literal notranslate"><span class="pre">kind_sel='all'</span></code>) the nearest-neighbors have to belong to the same class than
-the sample inspected to keep it in the dataset:</p>
+neighboorhood <span class="bibtex" id="id4">[wilson1972asymptotic]</span>. For each sample in the class to be
+under-sampled, the nearest-neighbours are computed and if the selection
+criterion is not fulfilled, the sample is removed. Two selection criteria are
+currently available: (i) the majority (i.e., <code class="docutils literal notranslate"><span class="pre">kind_sel='mode'</span></code>) or (ii) all
+(i.e., <code class="docutils literal notranslate"><span class="pre">kind_sel='all'</span></code>) the nearest-neighbors have to belong to the same
+class than the sample inspected to keep it in the dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
 <span class="go">[(0, 64), (1, 262), (2, 4674)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="k">import</span> <span class="n">EditedNearestNeighbours</span>
@@ -403,7 +384,8 @@ the sample inspected to keep it in the dataset:</p>
 the decision to keep a given sample or not.</p>
 <p><a class="reference internal" href="generated/imblearn.under_sampling.RepeatedEditedNearestNeighbours.html#imblearn.under_sampling.RepeatedEditedNearestNeighbours" title="imblearn.under_sampling.RepeatedEditedNearestNeighbours"><code class="xref py py-class docutils literal notranslate"><span class="pre">RepeatedEditedNearestNeighbours</span></code></a> extends
 <a class="reference internal" href="generated/imblearn.under_sampling.EditedNearestNeighbours.html#imblearn.under_sampling.EditedNearestNeighbours" title="imblearn.under_sampling.EditedNearestNeighbours"><code class="xref py py-class docutils literal notranslate"><span class="pre">EditedNearestNeighbours</span></code></a> by repeating the algorithm multiple times
-<a class="reference internal" href="#t1976" id="id5"><span>[T1976]</span></a>. Generally, repeating the algorithm will delete more data:</p>
+<span class="bibtex" id="id5">[tomek1976experiment]</span>. Generally, repeating the algorithm will delete
+more data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="k">import</span> <span class="n">RepeatedEditedNearestNeighbours</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">renn</span> <span class="o">=</span> <span class="n">RepeatedEditedNearestNeighbours</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">renn</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -413,7 +395,8 @@ the decision to keep a given sample or not.</p>
 </div>
 <p><a class="reference internal" href="generated/imblearn.under_sampling.AllKNN.html#imblearn.under_sampling.AllKNN" title="imblearn.under_sampling.AllKNN"><code class="xref py py-class docutils literal notranslate"><span class="pre">AllKNN</span></code></a> differs from the previous
 <a class="reference internal" href="generated/imblearn.under_sampling.RepeatedEditedNearestNeighbours.html#imblearn.under_sampling.RepeatedEditedNearestNeighbours" title="imblearn.under_sampling.RepeatedEditedNearestNeighbours"><code class="xref py py-class docutils literal notranslate"><span class="pre">RepeatedEditedNearestNeighbours</span></code></a> since the number of neighbors of the
-internal nearest neighbors algorithm is increased at each iteration <a class="reference internal" href="#t1976" id="id6"><span>[T1976]</span></a>:</p>
+internal nearest neighbors algorithm is increased at each iteration
+<span class="bibtex" id="id6">[tomek1976experiment]</span>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="k">import</span> <span class="n">AllKNN</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">allknn</span> <span class="o">=</span> <span class="n">AllKNN</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">allknn</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -424,27 +407,12 @@ internal nearest neighbors algorithm is increased at each iteration <a class="re
 <p>In the example below, it can be seen that the three algorithms have similar
 impact by cleaning noisy samples next to the boundaries of the classes.</p>
 <a class="reference external image-reference" href="./auto_examples/under-sampling/plot_comparison_under_sampling.html"><img alt="_images/sphx_glr_plot_comparison_under_sampling_0041.png" class="align-center" src="_images/sphx_glr_plot_comparison_under_sampling_0041.png" style="width: 900.0px; height: 1500.0px;" /></a>
-<div class="topic">
-<p class="topic-title first">References</p>
-<dl class="citation">
-<dt class="label" id="w1972"><span class="brackets"><a class="fn-backref" href="#id4">W1972</a></span></dt>
-<dd><p>D. Wilson, Asymptotic” Properties of Nearest Neighbor Rules Using
-Edited Data,” In IEEE Transactions on Systems, Man, and
-Cybernetrics, vol. 2 (3), pp. 408-421, 1972.</p>
-</dd>
-<dt class="label" id="t1976"><span class="brackets">T1976</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id6">2</a>)</span></dt>
-<dd><p>I. Tomek, “An Experiment with the Edited Nearest-Neighbor
-Rule,” IEEE Transactions on Systems, Man, and Cybernetics, vol.
-6(6), pp. 448-452, June 1976.</p>
-</dd>
-</dl>
-</div>
 </div>
 <div class="section" id="condensed-nearest-neighbors-and-derived-algorithms">
 <span id="condensed-nearest-neighbors"></span><h4>3.2.2.3. Condensed nearest neighbors and derived algorithms<a class="headerlink" href="#condensed-nearest-neighbors-and-derived-algorithms" title="Permalink to this headline">¶</a></h4>
 <p><a class="reference internal" href="generated/imblearn.under_sampling.CondensedNearestNeighbour.html#imblearn.under_sampling.CondensedNearestNeighbour" title="imblearn.under_sampling.CondensedNearestNeighbour"><code class="xref py py-class docutils literal notranslate"><span class="pre">CondensedNearestNeighbour</span></code></a> uses a 1 nearest neighbor rule to
-iteratively decide if a sample should be removed or not <a class="reference internal" href="#h1968" id="id7"><span>[H1968]</span></a>. The algorithm
-is running as followed:</p>
+iteratively decide if a sample should be removed or not
+<span class="bibtex" id="id7">[hart1968condensed]</span>. The algorithm is running as followed:</p>
 <ol class="arabic simple">
 <li><p>Get all minority samples in a set <img class="math" src="_images/math/4db5b6e16e06f929ce3f675c5e535d06ffb02ff7.svg" alt="C"/>.</p></li>
 <li><p>Add a sample from the targeted class (class to be under-sampled) in
@@ -465,10 +433,10 @@ using a 1 nearest neighbor rule.</p></li>
 <p>However as illustrated in the figure below, <a class="reference internal" href="generated/imblearn.under_sampling.CondensedNearestNeighbour.html#imblearn.under_sampling.CondensedNearestNeighbour" title="imblearn.under_sampling.CondensedNearestNeighbour"><code class="xref py py-class docutils literal notranslate"><span class="pre">CondensedNearestNeighbour</span></code></a>
 is sensitive to noise and will add noisy samples.</p>
 <p>In the contrary, <a class="reference internal" href="generated/imblearn.under_sampling.OneSidedSelection.html#imblearn.under_sampling.OneSidedSelection" title="imblearn.under_sampling.OneSidedSelection"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneSidedSelection</span></code></a> will use <a class="reference internal" href="generated/imblearn.under_sampling.TomekLinks.html#imblearn.under_sampling.TomekLinks" title="imblearn.under_sampling.TomekLinks"><code class="xref py py-class docutils literal notranslate"><span class="pre">TomekLinks</span></code></a> to
-remove noisy samples <a class="reference internal" href="#km1997" id="id8"><span>[KM1997]</span></a>. In addition, the 1 nearest neighbor rule is
-applied to all samples and the one which are misclassified will be added to the
-set <img class="math" src="_images/math/4db5b6e16e06f929ce3f675c5e535d06ffb02ff7.svg" alt="C"/>. No iteration on the set <img class="math" src="_images/math/b988975be41fd13b4d091c10202ba19374643586.svg" alt="S"/> will take place. The class can
-be used as:</p>
+remove noisy samples <span class="bibtex" id="id8">[hart1968condensed]</span>. In addition, the 1 nearest
+neighbor rule is applied to all samples and the one which are misclassified
+will be added to the set <img class="math" src="_images/math/4db5b6e16e06f929ce3f675c5e535d06ffb02ff7.svg" alt="C"/>. No iteration on the set <img class="math" src="_images/math/b988975be41fd13b4d091c10202ba19374643586.svg" alt="S"/> will take
+place. The class can be used as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="k">import</span> <span class="n">OneSidedSelection</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">oss</span> <span class="o">=</span> <span class="n">OneSidedSelection</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">oss</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -479,9 +447,9 @@ be used as:</p>
 <p>Our implementation offer to set the number of seeds to put in the set <img class="math" src="_images/math/4db5b6e16e06f929ce3f675c5e535d06ffb02ff7.svg" alt="C"/>
 originally by setting the parameter <code class="docutils literal notranslate"><span class="pre">n_seeds_S</span></code>.</p>
 <p><a class="reference internal" href="generated/imblearn.under_sampling.NeighbourhoodCleaningRule.html#imblearn.under_sampling.NeighbourhoodCleaningRule" title="imblearn.under_sampling.NeighbourhoodCleaningRule"><code class="xref py py-class docutils literal notranslate"><span class="pre">NeighbourhoodCleaningRule</span></code></a> will focus on cleaning the data than
-condensing them <a class="reference internal" href="#j2001" id="id9"><span>[J2001]</span></a>. Therefore, it will used the union of samples to be
-rejected between the <a class="reference internal" href="generated/imblearn.under_sampling.EditedNearestNeighbours.html#imblearn.under_sampling.EditedNearestNeighbours" title="imblearn.under_sampling.EditedNearestNeighbours"><code class="xref py py-class docutils literal notranslate"><span class="pre">EditedNearestNeighbours</span></code></a> and the output a 3
-nearest neighbors classifier. The class can be used as:</p>
+condensing them <span class="bibtex" id="id9">[laurikkala2001improving]</span>. Therefore, it will used the
+union of samples to be rejected between the <a class="reference internal" href="generated/imblearn.under_sampling.EditedNearestNeighbours.html#imblearn.under_sampling.EditedNearestNeighbours" title="imblearn.under_sampling.EditedNearestNeighbours"><code class="xref py py-class docutils literal notranslate"><span class="pre">EditedNearestNeighbours</span></code></a>
+and the output a 3 nearest neighbors classifier. The class can be used as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="k">import</span> <span class="n">NeighbourhoodCleaningRule</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ncr</span> <span class="o">=</span> <span class="n">NeighbourhoodCleaningRule</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">ncr</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -490,31 +458,12 @@ nearest neighbors classifier. The class can be used as:</p>
 </pre></div>
 </div>
 <a class="reference external image-reference" href="./auto_examples/under-sampling/plot_comparison_under_sampling.html"><img alt="_images/sphx_glr_plot_comparison_under_sampling_0051.png" class="align-center" src="_images/sphx_glr_plot_comparison_under_sampling_0051.png" style="width: 900.0px; height: 1500.0px;" /></a>
-<div class="topic">
-<p class="topic-title first">References</p>
-<dl class="citation">
-<dt class="label" id="h1968"><span class="brackets"><a class="fn-backref" href="#id7">H1968</a></span></dt>
-<dd><p>P. Hart, “The condensed nearest neighbor rule,”
-In Information Theory, IEEE Transactions on, vol. 14(3), pp.
-515-516, 1968.</p>
-</dd>
-<dt class="label" id="km1997"><span class="brackets"><a class="fn-backref" href="#id8">KM1997</a></span></dt>
-<dd><p>M. Kubat, S. Matwin, “Addressing the curse of imbalanced training
-sets: one-sided selection,” In ICML, vol. 97, pp. 179-186, 1997.</p>
-</dd>
-<dt class="label" id="j2001"><span class="brackets"><a class="fn-backref" href="#id9">J2001</a></span></dt>
-<dd><p>J. Laurikkala, “Improving identification of difficult small
-classes by balancing class distribution,” Springer Berlin
-Heidelberg, 2001.</p>
-</dd>
-</dl>
-</div>
 </div>
 <div class="section" id="instance-hardness-threshold">
 <span id="id10"></span><h4>3.2.2.4. Instance hardness threshold<a class="headerlink" href="#instance-hardness-threshold" title="Permalink to this headline">¶</a></h4>
 <p><a class="reference internal" href="generated/imblearn.under_sampling.InstanceHardnessThreshold.html#imblearn.under_sampling.InstanceHardnessThreshold" title="imblearn.under_sampling.InstanceHardnessThreshold"><code class="xref py py-class docutils literal notranslate"><span class="pre">InstanceHardnessThreshold</span></code></a> is a specific algorithm in which a
 classifier is trained on the data and the samples with lower probabilities are
-removed <a class="reference internal" href="#smmg2014" id="id11"><span>[SMMG2014]</span></a>. The class can be used as:</p>
+removed <span class="bibtex" id="id11">[smith2014instance]</span>. The class can be used as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="k">import</span> <span class="n">InstanceHardnessThreshold</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">iht</span> <span class="o">=</span> <span class="n">InstanceHardnessThreshold</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
@@ -537,16 +486,6 @@ is not always possible to get a specific number of samples.</p>
 </div>
 <p>The figure below gives another examples on some toy data.</p>
 <a class="reference external image-reference" href="./auto_examples/under-sampling/plot_comparison_under_sampling.html"><img alt="_images/sphx_glr_plot_comparison_under_sampling_0061.png" class="align-center" src="_images/sphx_glr_plot_comparison_under_sampling_0061.png" style="width: 1200.0px; height: 360.0px;" /></a>
-<div class="topic">
-<p class="topic-title first">References</p>
-<dl class="citation">
-<dt class="label" id="smmg2014"><span class="brackets"><a class="fn-backref" href="#id11">SMMG2014</a></span></dt>
-<dd><p>D. Smith, Michael R., Tony Martinez, and Christophe
-Giraud-Carrier. “An instance level analysis of data
-complexity.” Machine learning 95.2 (2014): 225-256.</p>
-</dd>
-</dl>
-</div>
 </div>
 </div>
 </div>
