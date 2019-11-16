@@ -194,7 +194,7 @@
 <h1><a class="reference internal" href="../api.html#module-imblearn.ensemble" title="imblearn.ensemble"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.ensemble</span></code></a>.BalancedRandomForestClassifier<a class="headerlink" href="#imblearn-ensemble-balancedrandomforestclassifier" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="imblearn.ensemble.BalancedRandomForestClassifier">
-<em class="property">class </em><code class="sig-prename descclassname">imblearn.ensemble.</code><code class="sig-name descname">BalancedRandomForestClassifier</code><span class="sig-paren">(</span><em class="sig-param">n_estimators=100</em>, <em class="sig-param">criterion='gini'</em>, <em class="sig-param">max_depth=None</em>, <em class="sig-param">min_samples_split=2</em>, <em class="sig-param">min_samples_leaf=2</em>, <em class="sig-param">min_weight_fraction_leaf=0.0</em>, <em class="sig-param">max_features='auto'</em>, <em class="sig-param">max_leaf_nodes=None</em>, <em class="sig-param">min_impurity_decrease=0.0</em>, <em class="sig-param">bootstrap=True</em>, <em class="sig-param">oob_score=False</em>, <em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">replacement=False</em>, <em class="sig-param">n_jobs=None</em>, <em class="sig-param">random_state=None</em>, <em class="sig-param">verbose=0</em>, <em class="sig-param">warm_start=False</em>, <em class="sig-param">class_weight=None</em>, <em class="sig-param">ccp_alpha=0.0</em>, <em class="sig-param">max_samples=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2c7ed0f/imblearn/ensemble/_forest.py#L73"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedRandomForestClassifier" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">imblearn.ensemble.</code><code class="sig-name descname">BalancedRandomForestClassifier</code><span class="sig-paren">(</span><em class="sig-param">n_estimators=100</em>, <em class="sig-param">criterion='gini'</em>, <em class="sig-param">max_depth=None</em>, <em class="sig-param">min_samples_split=2</em>, <em class="sig-param">min_samples_leaf=2</em>, <em class="sig-param">min_weight_fraction_leaf=0.0</em>, <em class="sig-param">max_features='auto'</em>, <em class="sig-param">max_leaf_nodes=None</em>, <em class="sig-param">min_impurity_decrease=0.0</em>, <em class="sig-param">bootstrap=True</em>, <em class="sig-param">oob_score=False</em>, <em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">replacement=False</em>, <em class="sig-param">n_jobs=None</em>, <em class="sig-param">random_state=None</em>, <em class="sig-param">verbose=0</em>, <em class="sig-param">warm_start=False</em>, <em class="sig-param">class_weight=None</em>, <em class="sig-param">ccp_alpha=0.0</em>, <em class="sig-param">max_samples=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/dd287c3/imblearn/ensemble/_forest.py#L75"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedRandomForestClassifier" title="Permalink to this definition">¶</a></dt>
 <dd><p>A balanced random forest classifier.</p>
 <p>A balanced random forest randomly under-samples each boostrap sample to
 balance it.</p>
@@ -202,17 +202,17 @@ balance it.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
-<dt><strong>n_estimators</strong><span class="classifier">integer, optional (default=100)</span></dt><dd><p>The number of trees in the forest.</p>
+<dt><strong>n_estimators</strong><span class="classifier">int, default=100</span></dt><dd><p>The number of trees in the forest.</p>
 </dd>
-<dt><strong>criterion</strong><span class="classifier">string, optional (default=”gini”)</span></dt><dd><p>The function to measure the quality of a split. Supported criteria are
+<dt><strong>criterion</strong><span class="classifier">str, default=”gini”</span></dt><dd><p>The function to measure the quality of a split. Supported criteria are
 “gini” for the Gini impurity and “entropy” for the information gain.
 Note: this parameter is tree-specific.</p>
 </dd>
-<dt><strong>max_depth</strong><span class="classifier">integer or None, optional (default=None)</span></dt><dd><p>The maximum depth of the tree. If None, then nodes are expanded until
+<dt><strong>max_depth</strong><span class="classifier">int, default=None</span></dt><dd><p>The maximum depth of the tree. If None, then nodes are expanded until
 all leaves are pure or until all leaves contain less than
 min_samples_split samples.</p>
 </dd>
-<dt><strong>min_samples_split</strong><span class="classifier">int, float, optional (default=2)</span></dt><dd><p>The minimum number of samples required to split an internal node:</p>
+<dt><strong>min_samples_split</strong><span class="classifier">int, float, default=2</span></dt><dd><p>The minimum number of samples required to split an internal node:</p>
 <ul class="simple">
 <li><p>If int, then consider <cite>min_samples_split</cite> as the minimum number.</p></li>
 <li><p>If float, then <cite>min_samples_split</cite> is a percentage and
@@ -220,7 +220,7 @@ min_samples_split samples.</p>
 number of samples for each split.</p></li>
 </ul>
 </dd>
-<dt><strong>min_samples_leaf</strong><span class="classifier">int, float, optional (default=1)</span></dt><dd><p>The minimum number of samples required to be at a leaf node:</p>
+<dt><strong>min_samples_leaf</strong><span class="classifier">int, float, default=1</span></dt><dd><p>The minimum number of samples required to be at a leaf node:</p>
 <ul class="simple">
 <li><p>If int, then consider <code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code> as the minimum number.</p></li>
 <li><p>If float, then <code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code> is a fraction and
@@ -228,11 +228,11 @@ number of samples for each split.</p></li>
 number of samples for each node.</p></li>
 </ul>
 </dd>
-<dt><strong>min_weight_fraction_leaf</strong><span class="classifier">float, optional (default=0.)</span></dt><dd><p>The minimum weighted fraction of the sum total of weights (of all
+<dt><strong>min_weight_fraction_leaf</strong><span class="classifier">float, default=0.0</span></dt><dd><p>The minimum weighted fraction of the sum total of weights (of all
 the input samples) required to be at a leaf node. Samples have
 equal weight when sample_weight is not provided.</p>
 </dd>
-<dt><strong>max_features</strong><span class="classifier">int, float, string or None, optional (default=”auto”)</span></dt><dd><p>The number of features to consider when looking for the best split:</p>
+<dt><strong>max_features</strong><span class="classifier">{“auto”, “sqrt”, “log2”}, int, float, or None,             default=”auto”</span></dt><dd><p>The number of features to consider when looking for the best split:</p>
 <ul class="simple">
 <li><p>If int, then consider <cite>max_features</cite> features at each split.</p></li>
 <li><p>If float, then <cite>max_features</cite> is a percentage and
@@ -247,11 +247,11 @@ split.</p></li>
 valid partition of the node samples is found, even if it requires to
 effectively inspect more than <code class="docutils literal notranslate"><span class="pre">max_features</span></code> features.</p>
 </dd>
-<dt><strong>max_leaf_nodes</strong><span class="classifier">int or None, optional (default=None)</span></dt><dd><p>Grow trees with <code class="docutils literal notranslate"><span class="pre">max_leaf_nodes</span></code> in best-first fashion.
+<dt><strong>max_leaf_nodes</strong><span class="classifier">int, default=None</span></dt><dd><p>Grow trees with <code class="docutils literal notranslate"><span class="pre">max_leaf_nodes</span></code> in best-first fashion.
 Best nodes are defined as relative reduction in impurity.
 If None then unlimited number of leaf nodes.</p>
 </dd>
-<dt><strong>min_impurity_decrease</strong><span class="classifier">float, optional (default=0.)</span></dt><dd><p>A node will be split if this split induces a decrease of the impurity
+<dt><strong>min_impurity_decrease</strong><span class="classifier">float, default=0.0</span></dt><dd><p>A node will be split if this split induces a decrease of the impurity
 greater than or equal to this value.
 The weighted impurity decrease equation is the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">N_t</span> <span class="o">/</span> <span class="n">N</span> <span class="o">*</span> <span class="p">(</span><span class="n">impurity</span> <span class="o">-</span> <span class="n">N_t_R</span> <span class="o">/</span> <span class="n">N_t</span> <span class="o">*</span> <span class="n">right_impurity</span>
@@ -264,12 +264,12 @@ left child, and <code class="docutils literal notranslate"><span class="pre">N_t
 <code class="docutils literal notranslate"><span class="pre">N</span></code>, <code class="docutils literal notranslate"><span class="pre">N_t</span></code>, <code class="docutils literal notranslate"><span class="pre">N_t_R</span></code> and <code class="docutils literal notranslate"><span class="pre">N_t_L</span></code> all refer to the weighted sum,
 if <code class="docutils literal notranslate"><span class="pre">sample_weight</span></code> is passed.</p>
 </dd>
-<dt><strong>bootstrap</strong><span class="classifier">boolean, optional (default=True)</span></dt><dd><p>Whether bootstrap samples are used when building trees.</p>
+<dt><strong>bootstrap</strong><span class="classifier">bool, default=True</span></dt><dd><p>Whether bootstrap samples are used when building trees.</p>
 </dd>
-<dt><strong>oob_score</strong><span class="classifier">bool (default=False)</span></dt><dd><p>Whether to use out-of-bag samples to estimate
+<dt><strong>oob_score</strong><span class="classifier">bool, default=False</span></dt><dd><p>Whether to use out-of-bag samples to estimate
 the generalization accuracy.</p>
 </dd>
-<dt><strong>sampling_strategy</strong><span class="classifier">float, str, dict, callable, (default=’auto’)</span></dt><dd><p>Sampling information to sample the data set.</p>
+<dt><strong>sampling_strategy</strong><span class="classifier">float, str, dict, callable, default=’auto’</span></dt><dd><p>Sampling information to sample the data set.</p>
 <ul>
 <li><p>When <code class="docutils literal notranslate"><span class="pre">float</span></code>, it corresponds to the desired ratio of the number of
 samples in the minority class over the number of samples in the
@@ -303,15 +303,15 @@ correspond to the targeted classes. The values correspond to the
 desired number of samples for each class.</p></li>
 </ul>
 </dd>
-<dt><strong>replacement</strong><span class="classifier">bool, optional (default=False)</span></dt><dd><p>Whether or not to sample randomly with replacement or not.</p>
+<dt><strong>replacement</strong><span class="classifier">bool, default=False</span></dt><dd><p>Whether or not to sample randomly with replacement or not.</p>
 </dd>
-<dt><strong>n_jobs</strong><span class="classifier">int or None, optional (default=None)</span></dt><dd><p>Number of CPU cores used during the cross-validation loop.
+<dt><strong>n_jobs</strong><span class="classifier">int, default=None</span></dt><dd><p>Number of CPU cores used during the cross-validation loop.
 <code class="docutils literal notranslate"><span class="pre">None</span></code> means 1 unless in a <code class="xref py py-obj docutils literal notranslate"><span class="pre">joblib.parallel_backend</span></code> context.
 <code class="docutils literal notranslate"><span class="pre">-1</span></code> means using all processors. See
 <a class="reference external" href="https://scikit-learn.org/stable/glossary.html#term-n-jobs">Glossary</a>
 for more details.</p>
 </dd>
-<dt><strong>random_state</strong><span class="classifier">int, RandomState instance or None, optional (default=None)</span></dt><dd><p>Control the randomization of the algorithm.</p>
+<dt><strong>random_state</strong><span class="classifier">int, RandomState instance, default=None</span></dt><dd><p>Control the randomization of the algorithm.</p>
 <ul class="simple">
 <li><p>If int, <code class="docutils literal notranslate"><span class="pre">random_state</span></code> is the seed used by the random number
 generator;</p></li>
@@ -321,14 +321,13 @@ generator;</p></li>
 instance used by <code class="docutils literal notranslate"><span class="pre">np.random</span></code>.</p></li>
 </ul>
 </dd>
-<dt><strong>verbose</strong><span class="classifier">int, optional (default=0)</span></dt><dd><p>Controls the verbosity of the tree building process.</p>
+<dt><strong>verbose</strong><span class="classifier">int, default=0</span></dt><dd><p>Controls the verbosity of the tree building process.</p>
 </dd>
-<dt><strong>warm_start</strong><span class="classifier">bool, optional (default=False)</span></dt><dd><p>When set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, reuse the solution of the previous call to fit
+<dt><strong>warm_start</strong><span class="classifier">bool, default=False</span></dt><dd><p>When set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, reuse the solution of the previous call to fit
 and add more estimators to the ensemble, otherwise, just fit a whole
 new forest.</p>
 </dd>
-<dt><strong>class_weight</strong><span class="classifier">dict, list of dicts, “balanced”,</span></dt><dd><p>“balanced_subsample” or None, optional (default=None)
-Weights associated with classes in the form dictionary with the key
+<dt><strong>class_weight</strong><span class="classifier">dict, list of dicts, {“balanced”, “balanced_subsample”},             default=None</span></dt><dd><p>Weights associated with classes in the form dictionary with the key
 being the class_label and the value the weight.
 If not given, all classes are supposed to have weight one. For
 multi-output problems, a list of dicts can be provided in the same
@@ -348,7 +347,7 @@ For multi-output, the weights of each column of y will be multiplied.
 Note that these weights will be multiplied with sample_weight (passed
 through the fit method) if sample_weight is specified.</p>
 </dd>
-<dt><strong>ccp_alpha</strong><span class="classifier">non-negative float, optional (default=0.0)</span></dt><dd><p>Complexity parameter used for Minimal Cost-Complexity Pruning. The
+<dt><strong>ccp_alpha</strong><span class="classifier">non-negative float, default=0.0</span></dt><dd><p>Complexity parameter used for Minimal Cost-Complexity Pruning. The
 subtree with the largest cost complexity that is smaller than
 <code class="docutils literal notranslate"><span class="pre">ccp_alpha</span></code> will be chosen. By default, no pruning is performed.</p>
 <div class="versionadded">
@@ -375,7 +374,12 @@ to train each base estimator.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="imblearn.ensemble.BalancedBaggingClassifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BalancedBaggingClassifier</span></code></a>, <a class="reference internal" href="imblearn.ensemble.EasyEnsembleClassifier.html#imblearn.ensemble.EasyEnsembleClassifier" title="imblearn.ensemble.EasyEnsembleClassifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EasyEnsembleClassifier</span></code></a>, <a class="reference internal" href="imblearn.ensemble.RUSBoostClassifier.html#imblearn.ensemble.RUSBoostClassifier" title="imblearn.ensemble.RUSBoostClassifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RUSBoostClassifier</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="imblearn.ensemble.BalancedBaggingClassifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BalancedBaggingClassifier</span></code></a></dt><dd><p>Bagging classifier for which each base estimator is trained on a balanced bootstrap.</p>
+</dd>
+<dt><a class="reference internal" href="imblearn.ensemble.EasyEnsembleClassifier.html#imblearn.ensemble.EasyEnsembleClassifier" title="imblearn.ensemble.EasyEnsembleClassifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EasyEnsembleClassifier</span></code></a></dt><dd><p>Ensemble of AdaBoost classifier trained on balanced bootstraps.</p>
+</dd>
+<dt><a class="reference internal" href="imblearn.ensemble.RUSBoostClassifier.html#imblearn.ensemble.RUSBoostClassifier" title="imblearn.ensemble.RUSBoostClassifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RUSBoostClassifier</span></code></a></dt><dd><p>AdaBoost classifier were each bootstrap is balanced using random-under sampling at each round of boosting.</p>
+</dd>
 </dl>
 </div>
 <p class="rubric">References</p>
@@ -412,7 +416,7 @@ learn imbalanced data.” University of California, Berkeley 110 (2004):
 </dd>
 <dt><strong>pipelines_</strong><span class="classifier">list of Pipeline.</span></dt><dd><p>The collection of fitted pipelines (samplers + trees).</p>
 </dd>
-<dt><strong>classes_</strong><span class="classifier">ndaray, shape (n_classes,) or a list of such arrays</span></dt><dd><p>The classes labels (single output problem), or a list of arrays of
+<dt><strong>classes_</strong><span class="classifier">ndarray of shape (n_classes,) or a list of such arrays</span></dt><dd><p>The classes labels (single output problem), or a list of arrays of
 class labels (multi-output problem).</p>
 </dd>
 <dt><strong>n_classes_</strong><span class="classifier">int or list</span></dt><dd><p>The number of classes (single output problem), or a list containing the
@@ -422,11 +426,11 @@ number of classes for each output (multi-output problem).</p>
 </dd>
 <dt><strong>n_outputs_</strong><span class="classifier">int</span></dt><dd><p>The number of outputs when <code class="docutils literal notranslate"><span class="pre">fit</span></code> is performed.</p>
 </dd>
-<dt><a class="reference internal" href="#imblearn.ensemble.BalancedRandomForestClassifier.feature_importances_" title="imblearn.ensemble.BalancedRandomForestClassifier.feature_importances_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">feature_importances_</span></code></a><span class="classifier">ndarray, shape (n_features,)</span></dt><dd><p>Return the feature importances (the higher, the more important the feature).</p>
+<dt><a class="reference internal" href="#imblearn.ensemble.BalancedRandomForestClassifier.feature_importances_" title="imblearn.ensemble.BalancedRandomForestClassifier.feature_importances_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">feature_importances_</span></code></a><span class="classifier">ndarray of shape (n_features,)</span></dt><dd><p>Return the feature importances (the higher, the more important the feature).</p>
 </dd>
 <dt><strong>oob_score_</strong><span class="classifier">float</span></dt><dd><p>Score of the training dataset obtained using an out-of-bag estimate.</p>
 </dd>
-<dt><strong>oob_decision_function_</strong><span class="classifier">ndarray, shape (n_samples, n_classes)</span></dt><dd><p>Decision function computed with out-of-bag estimate on the training
+<dt><strong>oob_decision_function_</strong><span class="classifier">ndarray of shape (n_samples, n_classes)</span></dt><dd><p>Decision function computed with out-of-bag estimate on the training
 set. If n_estimators is small it might be possible that a data point
 was never left out during the bootstrap. In this case,
 <cite>oob_decision_function_</cite> might contain NaN.</p>
@@ -436,13 +440,13 @@ was never left out during the bootstrap. In this case,
 </dl>
 <dl class="method">
 <dt id="imblearn.ensemble.BalancedRandomForestClassifier.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">n_estimators=100</em>, <em class="sig-param">criterion='gini'</em>, <em class="sig-param">max_depth=None</em>, <em class="sig-param">min_samples_split=2</em>, <em class="sig-param">min_samples_leaf=2</em>, <em class="sig-param">min_weight_fraction_leaf=0.0</em>, <em class="sig-param">max_features='auto'</em>, <em class="sig-param">max_leaf_nodes=None</em>, <em class="sig-param">min_impurity_decrease=0.0</em>, <em class="sig-param">bootstrap=True</em>, <em class="sig-param">oob_score=False</em>, <em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">replacement=False</em>, <em class="sig-param">n_jobs=None</em>, <em class="sig-param">random_state=None</em>, <em class="sig-param">verbose=0</em>, <em class="sig-param">warm_start=False</em>, <em class="sig-param">class_weight=None</em>, <em class="sig-param">ccp_alpha=0.0</em>, <em class="sig-param">max_samples=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2c7ed0f/imblearn/ensemble/_forest.py#L289"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedRandomForestClassifier.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">n_estimators=100</em>, <em class="sig-param">criterion='gini'</em>, <em class="sig-param">max_depth=None</em>, <em class="sig-param">min_samples_split=2</em>, <em class="sig-param">min_samples_leaf=2</em>, <em class="sig-param">min_weight_fraction_leaf=0.0</em>, <em class="sig-param">max_features='auto'</em>, <em class="sig-param">max_leaf_nodes=None</em>, <em class="sig-param">min_impurity_decrease=0.0</em>, <em class="sig-param">bootstrap=True</em>, <em class="sig-param">oob_score=False</em>, <em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">replacement=False</em>, <em class="sig-param">n_jobs=None</em>, <em class="sig-param">random_state=None</em>, <em class="sig-param">verbose=0</em>, <em class="sig-param">warm_start=False</em>, <em class="sig-param">class_weight=None</em>, <em class="sig-param">ccp_alpha=0.0</em>, <em class="sig-param">max_samples=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/dd287c3/imblearn/ensemble/_forest.py#L292"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedRandomForestClassifier.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="imblearn.ensemble.BalancedRandomForestClassifier.apply">
-<code class="sig-name descname">apply</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2c7ed0f/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_forest.py#L207"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedRandomForestClassifier.apply" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">apply</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/dd287c3/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_forest.py#L207"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedRandomForestClassifier.apply" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply trees in the forest to X, return leaf indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -465,7 +469,7 @@ return the index of the leaf x ends up in.</p>
 
 <dl class="method">
 <dt id="imblearn.ensemble.BalancedRandomForestClassifier.decision_path">
-<code class="sig-name descname">decision_path</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2c7ed0f/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_forest.py#L232"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedRandomForestClassifier.decision_path" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">decision_path</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/dd287c3/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_forest.py#L232"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedRandomForestClassifier.decision_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the decision path in the forest.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.18.</span></p>
@@ -513,19 +517,19 @@ array of zeros.</p>
 
 <dl class="method">
 <dt id="imblearn.ensemble.BalancedRandomForestClassifier.fit">
-<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">sample_weight=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2c7ed0f/imblearn/ensemble/_forest.py#L378"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedRandomForestClassifier.fit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">sample_weight=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/dd287c3/imblearn/ensemble/_forest.py#L381"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedRandomForestClassifier.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build a forest of trees from the training set (X, y).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">{array-like, sparse matrix}, shape (n_samples, n_features)</span></dt><dd><p>The training input samples. Internally, its dtype will be converted
+<dt><strong>X</strong><span class="classifier">{array-like, sparse matrix} of shape (n_samples, n_features)</span></dt><dd><p>The training input samples. Internally, its dtype will be converted
 to <code class="docutils literal notranslate"><span class="pre">dtype=np.float32</span></code>. If a sparse matrix is provided, it will be
 converted into a sparse <code class="docutils literal notranslate"><span class="pre">csc_matrix</span></code>.</p>
 </dd>
-<dt><strong>y</strong><span class="classifier">array-like, shape (n_samples,) or (n_samples, n_outputs)</span></dt><dd><p>The target values (class labels in classification, real numbers in
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,) or (n_samples, n_outputs)</span></dt><dd><p>The target values (class labels in classification, real numbers in
 regression).</p>
 </dd>
-<dt><strong>sample_weight</strong><span class="classifier">array-like, shape (n_samples,)</span></dt><dd><p>Sample weights. If None, then samples are equally weighted. Splits
+<dt><strong>sample_weight</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>Sample weights. If None, then samples are equally weighted. Splits
 that would create child nodes with net zero or negative weight are
 ignored while searching for a split in each node. In the case of
 classification, splits are also ignored if they would result in any
@@ -535,7 +539,8 @@ single class carrying a negative weight in either child node.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>self</strong><span class="classifier">object</span></dt><dd></dd>
+<dt><strong>self</strong><span class="classifier">object</span></dt><dd><p>The fitted instance.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -543,7 +548,7 @@ single class carrying a negative weight in either child node.</p>
 
 <dl class="method">
 <dt id="imblearn.ensemble.BalancedRandomForestClassifier.get_params">
-<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">deep=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2c7ed0f/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L169"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedRandomForestClassifier.get_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">deep=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/dd287c3/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L169"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedRandomForestClassifier.get_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -564,7 +569,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="method">
 <dt id="imblearn.ensemble.BalancedRandomForestClassifier.predict">
-<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2c7ed0f/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_forest.py#L591"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedRandomForestClassifier.predict" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/dd287c3/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_forest.py#L591"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedRandomForestClassifier.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict class for X.</p>
 <p>The predicted class of an input sample is a vote by the trees in
 the forest, weighted by their probability estimates. That is,
@@ -590,7 +595,7 @@ converted into a sparse <code class="docutils literal notranslate"><span class="
 
 <dl class="method">
 <dt id="imblearn.ensemble.BalancedRandomForestClassifier.predict_log_proba">
-<code class="sig-name descname">predict_log_proba</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2c7ed0f/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_forest.py#L679"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedRandomForestClassifier.predict_log_proba" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">predict_log_proba</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/dd287c3/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_forest.py#L679"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedRandomForestClassifier.predict_log_proba" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict class log-probabilities for X.</p>
 <p>The predicted class log-probabilities of an input sample is computed as
 the log of the mean predicted class probabilities of the trees in the
@@ -617,7 +622,7 @@ classes corresponds to that in the attribute <a class="reference external" href=
 
 <dl class="method">
 <dt id="imblearn.ensemble.BalancedRandomForestClassifier.predict_proba">
-<code class="sig-name descname">predict_proba</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2c7ed0f/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_forest.py#L631"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedRandomForestClassifier.predict_proba" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">predict_proba</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/dd287c3/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_forest.py#L631"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedRandomForestClassifier.predict_proba" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict class probabilities for X.</p>
 <p>The predicted class probabilities of an input sample are computed as
 the mean predicted class probabilities of the trees in the forest.
@@ -645,7 +650,7 @@ classes corresponds to that in the attribute <a class="reference external" href=
 
 <dl class="method">
 <dt id="imblearn.ensemble.BalancedRandomForestClassifier.score">
-<code class="sig-name descname">score</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">sample_weight=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2c7ed0f/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L339"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedRandomForestClassifier.score" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">score</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">sample_weight=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/dd287c3/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L339"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedRandomForestClassifier.score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the mean accuracy on the given test data and labels.</p>
 <p>In multi-label classification, this is the subset accuracy
 which is a harsh metric since you require for each sample that
@@ -672,7 +677,7 @@ each label set be correctly predicted.</p>
 
 <dl class="method">
 <dt id="imblearn.ensemble.BalancedRandomForestClassifier.set_params">
-<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2c7ed0f/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L201"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedRandomForestClassifier.set_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/dd287c3/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L201"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedRandomForestClassifier.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The latter have parameters of the form

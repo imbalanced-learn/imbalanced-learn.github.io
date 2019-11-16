@@ -197,7 +197,7 @@
 <h1><a class="reference internal" href="../api.html#module-imblearn.over_sampling" title="imblearn.over_sampling"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.over_sampling</span></code></a>.RandomOverSampler<a class="headerlink" href="#imblearn-over-sampling-randomoversampler" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="imblearn.over_sampling.RandomOverSampler">
-<em class="property">class </em><code class="sig-prename descclassname">imblearn.over_sampling.</code><code class="sig-name descname">RandomOverSampler</code><span class="sig-paren">(</span><em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">random_state=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2c7ed0f/imblearn/over_sampling/_random_over_sampler.py#L24"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">imblearn.over_sampling.</code><code class="sig-name descname">RandomOverSampler</code><span class="sig-paren">(</span><em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">random_state=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/dd287c3/imblearn/over_sampling/_random_over_sampler.py#L24"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class to perform random over-sampling.</p>
 <p>Object to over-sample the minority class(es) by picking samples at random
 with replacement.</p>
@@ -205,7 +205,7 @@ with replacement.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
-<dt><strong>sampling_strategy</strong><span class="classifier">float, str, dict or callable, (default=’auto’)</span></dt><dd><p>Sampling information to resample the data set.</p>
+<dt><strong>sampling_strategy</strong><span class="classifier">float, str, dict or callable, default=’auto’</span></dt><dd><p>Sampling information to resample the data set.</p>
 <ul>
 <li><p>When <code class="docutils literal notranslate"><span class="pre">float</span></code>, it corresponds to the desired ratio of the number of
 samples in the minority class over the number of samples in the
@@ -240,7 +240,7 @@ correspond to the targeted classes. The values correspond to the
 desired number of samples for each class.</p></li>
 </ul>
 </dd>
-<dt><strong>random_state</strong><span class="classifier">int, RandomState instance or None, optional (default=None)</span></dt><dd><p>Control the randomization of the algorithm.</p>
+<dt><strong>random_state</strong><span class="classifier">int, RandomState instance, default=None</span></dt><dd><p>Control the randomization of the algorithm.</p>
 <ul class="simple">
 <li><p>If int, <code class="docutils literal notranslate"><span class="pre">random_state</span></code> is the seed used by the random number
 generator;</p></li>
@@ -253,6 +253,13 @@ instance used by <code class="docutils literal notranslate"><span class="pre">np
 </dl>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SMOTE</span></code></a></dt><dd><p>Oversample by generating synthetic samples.</p>
+</dd>
+</dl>
+</div>
 <p class="rubric">Notes</p>
 <p>Supports multi-class resampling by sampling each class independently.
 Supports heterogeneous data as object array containing string and numeric
@@ -275,7 +282,7 @@ data.</p>
 <dl class="field-list">
 <dt class="field-odd">Attributes</dt>
 <dd class="field-odd"><dl>
-<dt><strong>sample_indices_</strong><span class="classifier">ndarray, shape (n_new_samples)</span></dt><dd><p>Indices of the samples selected.</p>
+<dt><strong>sample_indices_</strong><span class="classifier">ndarray of shape (n_new_samples)</span></dt><dd><p>Indices of the samples selected.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.4.</span></p>
 </div>
@@ -285,21 +292,21 @@ data.</p>
 </dl>
 <dl class="method">
 <dt id="imblearn.over_sampling.RandomOverSampler.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">random_state=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2c7ed0f/imblearn/over_sampling/_random_over_sampler.py#L70"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">random_state=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/dd287c3/imblearn/over_sampling/_random_over_sampler.py#L73"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="imblearn.over_sampling.RandomOverSampler.fit">
-<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2c7ed0f/imblearn/base.py#L28"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.fit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/dd287c3/imblearn/base.py#L28"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check inputs and statistics of the sampler.</p>
 <p>You should use <code class="docutils literal notranslate"><span class="pre">fit_resample</span></code> in all cases.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">{array-like, sparse matrix}, shape (n_samples, n_features)</span></dt><dd><p>Data array.</p>
+<dt><strong>X</strong><span class="classifier">{array-like, sparse matrix} of shape (n_samples, n_features)</span></dt><dd><p>Data array.</p>
 </dd>
-<dt><strong>y</strong><span class="classifier">array-like, shape (n_samples,)</span></dt><dd><p>Target array.</p>
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>Target array.</p>
 </dd>
 </dl>
 </dd>
@@ -314,22 +321,22 @@ data.</p>
 
 <dl class="method">
 <dt id="imblearn.over_sampling.RandomOverSampler.fit_resample">
-<code class="sig-name descname">fit_resample</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2c7ed0f/imblearn/base.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.fit_resample" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit_resample</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/dd287c3/imblearn/base.py#L52"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.fit_resample" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resample the dataset.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">{array-like, sparse matrix}, shape (n_samples, n_features)</span></dt><dd><p>Matrix containing the data which have to be sampled.</p>
+<dt><strong>X</strong><span class="classifier">{array-like, sparse matrix} of shape (n_samples, n_features)</span></dt><dd><p>Matrix containing the data which have to be sampled.</p>
 </dd>
-<dt><strong>y</strong><span class="classifier">array-like, shape (n_samples,)</span></dt><dd><p>Corresponding label for each sample in X.</p>
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>Corresponding label for each sample in X.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>X_resampled</strong><span class="classifier">{array-like, sparse matrix}, shape (n_samples_new, n_features)</span></dt><dd><p>The array containing the resampled data.</p>
+<dt><strong>X_resampled</strong><span class="classifier">{array-like, sparse matrix} of shape                 (n_samples_new, n_features)</span></dt><dd><p>The array containing the resampled data.</p>
 </dd>
-<dt><strong>y_resampled</strong><span class="classifier">array-like, shape (n_samples_new,)</span></dt><dd><p>The corresponding label of <cite>X_resampled</cite>.</p>
+<dt><strong>y_resampled</strong><span class="classifier">array-like of shape (n_samples_new,)</span></dt><dd><p>The corresponding label of <cite>X_resampled</cite>.</p>
 </dd>
 </dl>
 </dd>
@@ -338,22 +345,22 @@ data.</p>
 
 <dl class="method">
 <dt id="imblearn.over_sampling.RandomOverSampler.fit_sample">
-<code class="sig-name descname">fit_sample</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2c7ed0f/imblearn/base.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.fit_sample" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit_sample</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/dd287c3/imblearn/base.py#L52"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.fit_sample" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resample the dataset.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">{array-like, sparse matrix}, shape (n_samples, n_features)</span></dt><dd><p>Matrix containing the data which have to be sampled.</p>
+<dt><strong>X</strong><span class="classifier">{array-like, sparse matrix} of shape (n_samples, n_features)</span></dt><dd><p>Matrix containing the data which have to be sampled.</p>
 </dd>
-<dt><strong>y</strong><span class="classifier">array-like, shape (n_samples,)</span></dt><dd><p>Corresponding label for each sample in X.</p>
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>Corresponding label for each sample in X.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>X_resampled</strong><span class="classifier">{array-like, sparse matrix}, shape (n_samples_new, n_features)</span></dt><dd><p>The array containing the resampled data.</p>
+<dt><strong>X_resampled</strong><span class="classifier">{array-like, sparse matrix} of shape                 (n_samples_new, n_features)</span></dt><dd><p>The array containing the resampled data.</p>
 </dd>
-<dt><strong>y_resampled</strong><span class="classifier">array-like, shape (n_samples_new,)</span></dt><dd><p>The corresponding label of <cite>X_resampled</cite>.</p>
+<dt><strong>y_resampled</strong><span class="classifier">array-like of shape (n_samples_new,)</span></dt><dd><p>The corresponding label of <cite>X_resampled</cite>.</p>
 </dd>
 </dl>
 </dd>
@@ -362,7 +369,7 @@ data.</p>
 
 <dl class="method">
 <dt id="imblearn.over_sampling.RandomOverSampler.get_params">
-<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">deep=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2c7ed0f/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L169"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.get_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">deep=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/dd287c3/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L169"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.get_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -383,7 +390,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="method">
 <dt id="imblearn.over_sampling.RandomOverSampler.set_params">
-<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2c7ed0f/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L201"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.set_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/dd287c3/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L201"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The latter have parameters of the form

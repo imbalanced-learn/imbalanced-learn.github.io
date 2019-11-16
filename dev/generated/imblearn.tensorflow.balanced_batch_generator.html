@@ -188,7 +188,7 @@
 <h1><a class="reference internal" href="../api.html#module-imblearn.tensorflow" title="imblearn.tensorflow"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.tensorflow</span></code></a>.balanced_batch_generator<a class="headerlink" href="#imblearn-tensorflow-balanced-batch-generator" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="imblearn.tensorflow.balanced_batch_generator">
-<code class="sig-prename descclassname">imblearn.tensorflow.</code><code class="sig-name descname">balanced_batch_generator</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">sample_weight=None</em>, <em class="sig-param">sampler=None</em>, <em class="sig-param">batch_size=32</em>, <em class="sig-param">keep_sparse=False</em>, <em class="sig-param">random_state=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2c7ed0f/imblearn/tensorflow/_generator.py#L14"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.tensorflow.balanced_batch_generator" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">imblearn.tensorflow.</code><code class="sig-name descname">balanced_batch_generator</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">sample_weight=None</em>, <em class="sig-param">sampler=None</em>, <em class="sig-param">batch_size=32</em>, <em class="sig-param">keep_sparse=False</em>, <em class="sig-param">random_state=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/dd287c3/imblearn/tensorflow/_generator.py#L14"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.tensorflow.balanced_batch_generator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a balanced batch generator to train tensorflow model.</p>
 <p>Returns a generator — as well as the number of step per epoch — which
 is given to <code class="docutils literal notranslate"><span class="pre">fit_generator</span></code>. The sampler defines the sampling strategy
@@ -212,7 +212,7 @@ By default, the sampler used is a
 <dt><strong>keep_sparse</strong><span class="classifier">bool, optional (default=False)</span></dt><dd><p>Either or not to conserve or not the sparsity of the input <code class="docutils literal notranslate"><span class="pre">X</span></code>. By
 default, the returned batches will be dense.</p>
 </dd>
-<dt><strong>random_state</strong><span class="classifier">int, RandomState instance or None, optional (default=None)</span></dt><dd><p>Control the randomization of the algorithm.</p>
+<dt><strong>random_state</strong><span class="classifier">int, RandomState instance, default=None</span></dt><dd><p>Control the randomization of the algorithm.</p>
 <ul class="simple">
 <li><p>If int, <code class="docutils literal notranslate"><span class="pre">random_state</span></code> is the seed used by the random number
 generator;</p></li>
