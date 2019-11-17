@@ -194,7 +194,7 @@
 <h1><a class="reference internal" href="../api.html#module-imblearn.ensemble" title="imblearn.ensemble"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.ensemble</span></code></a>.RUSBoostClassifier<a class="headerlink" href="#imblearn-ensemble-rusboostclassifier" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="imblearn.ensemble.RUSBoostClassifier">
-<em class="property">class </em><code class="sig-prename descclassname">imblearn.ensemble.</code><code class="sig-name descname">RUSBoostClassifier</code><span class="sig-paren">(</span><em class="sig-param">base_estimator=None</em>, <em class="sig-param">n_estimators=50</em>, <em class="sig-param">learning_rate=1.0</em>, <em class="sig-param">algorithm='SAMME.R'</em>, <em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">replacement=False</em>, <em class="sig-param">random_state=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9b31677/imblearn/ensemble/_weight_boosting.py#L21"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">imblearn.ensemble.</code><code class="sig-name descname">RUSBoostClassifier</code><span class="sig-paren">(</span><em class="sig-param">base_estimator=None</em>, <em class="sig-param">n_estimators=50</em>, <em class="sig-param">learning_rate=1.0</em>, <em class="sig-param">algorithm='SAMME.R'</em>, <em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">replacement=False</em>, <em class="sig-param">random_state=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b606cb9/imblearn/ensemble/_weight_boosting.py#L21"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier" title="Permalink to this definition">¶</a></dt>
 <dd><p>Random under-sampling integrated in the learning of AdaBoost.</p>
 <p>During learning, the problem of class balancing is alleviated by random
 under-sampling the sample at each iteration of the boosting algorithm.</p>
@@ -330,13 +330,13 @@ ensemble.</p>
 </dl>
 <dl class="method">
 <dt id="imblearn.ensemble.RUSBoostClassifier.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">base_estimator=None</em>, <em class="sig-param">n_estimators=50</em>, <em class="sig-param">learning_rate=1.0</em>, <em class="sig-param">algorithm='SAMME.R'</em>, <em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">replacement=False</em>, <em class="sig-param">random_state=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9b31677/imblearn/ensemble/_weight_boosting.py#L123"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">base_estimator=None</em>, <em class="sig-param">n_estimators=50</em>, <em class="sig-param">learning_rate=1.0</em>, <em class="sig-param">algorithm='SAMME.R'</em>, <em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">replacement=False</em>, <em class="sig-param">random_state=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b606cb9/imblearn/ensemble/_weight_boosting.py#L123"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="imblearn.ensemble.RUSBoostClassifier.decision_function">
-<code class="sig-name descname">decision_function</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9b31677/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_weight_boosting.py#L669"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.decision_function" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">decision_function</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b606cb9/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_weight_boosting.py#L669"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.decision_function" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the decision function of <code class="docutils literal notranslate"><span class="pre">X</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -379,7 +379,7 @@ class in <code class="docutils literal notranslate"><span class="pre">classes_</
 
 <dl class="method">
 <dt id="imblearn.ensemble.RUSBoostClassifier.fit">
-<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">sample_weight=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9b31677/imblearn/ensemble/_weight_boosting.py#L143"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.fit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">sample_weight=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b606cb9/imblearn/ensemble/_weight_boosting.py#L143"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build a boosted classifier from the training set (X, y).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -405,7 +405,7 @@ DOK, or LIL. DOK and LIL are converted to CSR.</p>
 
 <dl class="method">
 <dt id="imblearn.ensemble.RUSBoostClassifier.get_params">
-<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">deep=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9b31677/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L169"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.get_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">deep=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b606cb9/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L169"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.get_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -426,7 +426,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="method">
 <dt id="imblearn.ensemble.RUSBoostClassifier.predict">
-<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9b31677/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_weight_boosting.py#L608"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.predict" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b606cb9/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_weight_boosting.py#L608"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict classes for X.</p>
 <p>The predicted class of an input sample is computed as the weighted mean
 prediction of the classifiers in the ensemble.</p>
@@ -449,7 +449,7 @@ DOK, or LIL. COO, DOK, and LIL are converted to CSR.</p>
 
 <dl class="method">
 <dt id="imblearn.ensemble.RUSBoostClassifier.predict_log_proba">
-<code class="sig-name descname">predict_log_proba</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9b31677/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_weight_boosting.py#L842"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.predict_log_proba" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">predict_log_proba</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b606cb9/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_weight_boosting.py#L842"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.predict_log_proba" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict class log-probabilities for X.</p>
 <p>The predicted class log-probabilities of an input sample is computed as
 the weighted mean predicted class log-probabilities of the classifiers
@@ -474,7 +474,7 @@ outputs is the same of that of the <a class="reference external" href="https://s
 
 <dl class="method">
 <dt id="imblearn.ensemble.RUSBoostClassifier.predict_proba">
-<code class="sig-name descname">predict_proba</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9b31677/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_weight_boosting.py#L781"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.predict_proba" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">predict_proba</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b606cb9/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_weight_boosting.py#L781"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.predict_proba" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict class probabilities for X.</p>
 <p>The predicted class probabilities of an input sample is computed as
 the weighted mean predicted class probabilities of the classifiers
@@ -499,7 +499,7 @@ outputs is the same of that of the <a class="reference external" href="https://s
 
 <dl class="method">
 <dt id="imblearn.ensemble.RUSBoostClassifier.score">
-<code class="sig-name descname">score</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">sample_weight=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9b31677/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L339"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.score" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">score</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">sample_weight=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b606cb9/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L339"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the mean accuracy on the given test data and labels.</p>
 <p>In multi-label classification, this is the subset accuracy
 which is a harsh metric since you require for each sample that
@@ -526,7 +526,7 @@ each label set be correctly predicted.</p>
 
 <dl class="method">
 <dt id="imblearn.ensemble.RUSBoostClassifier.set_params">
-<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9b31677/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L201"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.set_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b606cb9/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L201"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The latter have parameters of the form
@@ -550,7 +550,7 @@ component of a nested object.</p>
 
 <dl class="method">
 <dt id="imblearn.ensemble.RUSBoostClassifier.staged_decision_function">
-<code class="sig-name descname">staged_decision_function</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9b31677/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_weight_boosting.py#L709"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.staged_decision_function" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">staged_decision_function</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b606cb9/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_weight_boosting.py#L709"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.staged_decision_function" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute decision function of <code class="docutils literal notranslate"><span class="pre">X</span></code> for each boosting iteration.</p>
 <p>This method allows monitoring (i.e. determine error on testing set)
 after each boosting iteration.</p>
@@ -578,7 +578,7 @@ class in <code class="docutils literal notranslate"><span class="pre">classes_</
 
 <dl class="method">
 <dt id="imblearn.ensemble.RUSBoostClassifier.staged_predict">
-<code class="sig-name descname">staged_predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9b31677/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_weight_boosting.py#L634"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.staged_predict" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">staged_predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b606cb9/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_weight_boosting.py#L634"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.staged_predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return staged predictions for X.</p>
 <p>The predicted class of an input sample is computed as the weighted mean
 prediction of the classifiers in the ensemble.</p>
@@ -604,7 +604,7 @@ DOK, or LIL. COO, DOK, and LIL are converted to CSR.</p>
 
 <dl class="method">
 <dt id="imblearn.ensemble.RUSBoostClassifier.staged_predict_proba">
-<code class="sig-name descname">staged_predict_proba</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9b31677/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_weight_boosting.py#L811"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.staged_predict_proba" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">staged_predict_proba</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b606cb9/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_weight_boosting.py#L811"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.staged_predict_proba" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict class probabilities for X.</p>
 <p>The predicted class probabilities of an input sample is computed as
 the weighted mean predicted class probabilities of the classifiers
@@ -633,7 +633,7 @@ outputs is the same of that of the <a class="reference external" href="https://s
 
 <dl class="method">
 <dt id="imblearn.ensemble.RUSBoostClassifier.staged_score">
-<code class="sig-name descname">staged_score</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">sample_weight=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9b31677/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_weight_boosting.py#L207"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.staged_score" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">staged_score</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">sample_weight=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b606cb9/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/ensemble/_weight_boosting.py#L207"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.RUSBoostClassifier.staged_score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return staged scores for X, y.</p>
 <p>This generator method yields the ensemble score after each iteration of
 boosting and therefore allows monitoring, such as to determine the

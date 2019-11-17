@@ -237,6 +237,11 @@ scikit-learn:</p>
 <li><p><a class="reference internal" href="generated/imblearn.under_sampling.ClusterCentroids.html#imblearn.under_sampling.ClusterCentroids" title="imblearn.under_sampling.ClusterCentroids"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.under_sampling.ClusterCentroids</span></code></a></p></li>
 <li><p><a class="reference internal" href="generated/imblearn.under_sampling.InstanceHardnessThreshold.html#imblearn.under_sampling.InstanceHardnessThreshold" title="imblearn.under_sampling.InstanceHardnessThreshold"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.under_sampling.InstanceHardnessThreshold</span></code></a></p></li>
 </ul>
+<p>The following samplers will give different results due to change linked to
+the random state internal usage:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.SMOTENC</span></code></a></p></li>
+</ul>
 </div>
 <div class="section" id="bug-fixes">
 <h4>Bug fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h4>
@@ -284,6 +289,14 @@ to check or not the input <code class="docutils literal notranslate"><span class
 <a class="reference internal" href="generated/imblearn.over_sampling.RandomOverSampler.html#imblearn.over_sampling.RandomOverSampler" title="imblearn.over_sampling.RandomOverSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.RandomOverSampler</span></code></a> can resample when non
 finite values are present in <code class="docutils literal notranslate"><span class="pre">X</span></code>.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/643">#643</a> by <cite>Guillaume Lemaitre &lt;glemaitre&gt;</cite>.</p></li>
+<li><p>The samples generation in
+<a class="reference internal" href="generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.SMOTE</span></code></a>,
+<a class="reference internal" href="generated/imblearn.over_sampling.BorderlineSMOTE.html#imblearn.over_sampling.BorderlineSMOTE" title="imblearn.over_sampling.BorderlineSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.BorderlineSMOTE</span></code></a>,
+<a class="reference internal" href="generated/imblearn.over_sampling.SVMSMOTE.html#imblearn.over_sampling.SVMSMOTE" title="imblearn.over_sampling.SVMSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.SVMSMOTE</span></code></a>,
+<a class="reference internal" href="generated/imblearn.over_sampling.KMeansSMOTE.html#imblearn.over_sampling.KMeansSMOTE" title="imblearn.over_sampling.KMeansSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.KMeansSMOTE</span></code></a>,
+<a class="reference internal" href="generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.SMOTENC</span></code></a> is now vectorize with giving
+an additional speed-up when <cite>X</cite> in sparse.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/596">#596</a> by <a class="reference external" href="https://github.com/MattEding">Matt Edding</a>.</p></li>
 </ul>
 </div>
 <div class="section" id="deprecation">
