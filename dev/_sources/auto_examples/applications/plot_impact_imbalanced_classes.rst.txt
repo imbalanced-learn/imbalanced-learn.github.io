@@ -7,10 +7,9 @@
 .. _sphx_glr_auto_examples_applications_plot_impact_imbalanced_classes.py:
 
 
-========================================================================
-Model fitting on imbalanced dataset and comparison of methods to improve
-its performance
-========================================================================
+==========================================================
+Fitting model on imbalanced datasets and how to fight bias
+==========================================================
 
 This example illustrates the problem induced by learning on datasets having
 imbalanced classes. Subsequently, we compare different approaches alleviating
@@ -402,12 +401,12 @@ then evaluate our model.
             <tr>
               <th>Accuracy</th>
               <td>0.968</td>
-              <td>0.970</td>
+              <td>0.973</td>
             </tr>
             <tr>
               <th>Balanced accuracy</th>
               <td>0.500</td>
-              <td>0.557</td>
+              <td>0.599</td>
             </tr>
           </tbody>
         </table>
@@ -484,14 +483,14 @@ categorical data.
             <tr>
               <th>Accuracy</th>
               <td>0.968</td>
-              <td>0.970</td>
-              <td>0.971</td>
+              <td>0.973</td>
+              <td>0.974</td>
             </tr>
             <tr>
               <th>Balanced accuracy</th>
               <td>0.500</td>
-              <td>0.557</td>
-              <td>0.626</td>
+              <td>0.599</td>
+              <td>0.657</td>
             </tr>
           </tbody>
         </table>
@@ -561,16 +560,16 @@ linear model and tree-based model.
             <tr>
               <th>Accuracy</th>
               <td>0.968</td>
-              <td>0.970</td>
-              <td>0.971</td>
-              <td>0.790</td>
+              <td>0.973</td>
+              <td>0.974</td>
+              <td>0.811</td>
             </tr>
             <tr>
               <th>Balanced accuracy</th>
               <td>0.500</td>
-              <td>0.557</td>
-              <td>0.626</td>
-              <td>0.812</td>
+              <td>0.599</td>
+              <td>0.657</td>
+              <td>0.809</td>
             </tr>
           </tbody>
         </table>
@@ -626,18 +625,18 @@ linear model and tree-based model.
             <tr>
               <th>Accuracy</th>
               <td>0.968</td>
-              <td>0.970</td>
-              <td>0.971</td>
-              <td>0.790</td>
-              <td>0.964</td>
+              <td>0.973</td>
+              <td>0.974</td>
+              <td>0.811</td>
+              <td>0.966</td>
             </tr>
             <tr>
               <th>Balanced accuracy</th>
               <td>0.500</td>
-              <td>0.557</td>
-              <td>0.626</td>
-              <td>0.812</td>
-              <td>0.620</td>
+              <td>0.599</td>
+              <td>0.657</td>
+              <td>0.809</td>
+              <td>0.642</td>
             </tr>
           </tbody>
         </table>
@@ -714,20 +713,20 @@ to do such processing.
             <tr>
               <th>Accuracy</th>
               <td>0.968</td>
-              <td>0.970</td>
-              <td>0.971</td>
-              <td>0.790</td>
-              <td>0.964</td>
-              <td>0.783</td>
+              <td>0.973</td>
+              <td>0.974</td>
+              <td>0.811</td>
+              <td>0.966</td>
+              <td>0.806</td>
             </tr>
             <tr>
               <th>Balanced accuracy</th>
               <td>0.500</td>
-              <td>0.557</td>
-              <td>0.626</td>
-              <td>0.812</td>
-              <td>0.620</td>
-              <td>0.807</td>
+              <td>0.599</td>
+              <td>0.657</td>
+              <td>0.809</td>
+              <td>0.642</td>
+              <td>0.806</td>
             </tr>
           </tbody>
         </table>
@@ -790,22 +789,22 @@ to do such processing.
             <tr>
               <th>Accuracy</th>
               <td>0.968</td>
-              <td>0.970</td>
-              <td>0.971</td>
-              <td>0.790</td>
-              <td>0.964</td>
-              <td>0.783</td>
-              <td>0.794</td>
+              <td>0.973</td>
+              <td>0.974</td>
+              <td>0.811</td>
+              <td>0.966</td>
+              <td>0.806</td>
+              <td>0.798</td>
             </tr>
             <tr>
               <th>Balanced accuracy</th>
               <td>0.500</td>
-              <td>0.557</td>
-              <td>0.626</td>
+              <td>0.599</td>
+              <td>0.657</td>
+              <td>0.809</td>
+              <td>0.642</td>
+              <td>0.806</td>
               <td>0.812</td>
-              <td>0.620</td>
-              <td>0.807</td>
-              <td>0.790</td>
             </tr>
           </tbody>
         </table>
@@ -888,24 +887,24 @@ the base of the `BalancedRandomForestClassifier` and
             <tr>
               <th>Accuracy</th>
               <td>0.968</td>
-              <td>0.970</td>
-              <td>0.971</td>
-              <td>0.790</td>
-              <td>0.964</td>
-              <td>0.783</td>
-              <td>0.794</td>
-              <td>0.776</td>
+              <td>0.973</td>
+              <td>0.974</td>
+              <td>0.811</td>
+              <td>0.966</td>
+              <td>0.806</td>
+              <td>0.798</td>
+              <td>0.796</td>
             </tr>
             <tr>
               <th>Balanced accuracy</th>
               <td>0.500</td>
-              <td>0.557</td>
-              <td>0.626</td>
+              <td>0.599</td>
+              <td>0.657</td>
+              <td>0.809</td>
+              <td>0.642</td>
+              <td>0.806</td>
               <td>0.812</td>
-              <td>0.620</td>
-              <td>0.807</td>
-              <td>0.790</td>
-              <td>0.812</td>
+              <td>0.834</td>
             </tr>
           </tbody>
         </table>
@@ -980,26 +979,26 @@ classifier within a `BalancedBaggingClassifier`.
             <tr>
               <th>Accuracy</th>
               <td>0.968</td>
-              <td>0.970</td>
-              <td>0.971</td>
-              <td>0.790</td>
-              <td>0.964</td>
-              <td>0.783</td>
-              <td>0.794</td>
-              <td>0.776</td>
-              <td>0.831</td>
+              <td>0.973</td>
+              <td>0.974</td>
+              <td>0.811</td>
+              <td>0.966</td>
+              <td>0.806</td>
+              <td>0.798</td>
+              <td>0.796</td>
+              <td>0.843</td>
             </tr>
             <tr>
               <th>Balanced accuracy</th>
               <td>0.500</td>
-              <td>0.557</td>
-              <td>0.626</td>
+              <td>0.599</td>
+              <td>0.657</td>
+              <td>0.809</td>
+              <td>0.642</td>
+              <td>0.806</td>
               <td>0.812</td>
-              <td>0.620</td>
-              <td>0.807</td>
-              <td>0.790</td>
-              <td>0.812</td>
-              <td>0.815</td>
+              <td>0.834</td>
+              <td>0.829</td>
             </tr>
           </tbody>
         </table>
@@ -1117,26 +1116,26 @@ Increase imbalanced ratio
             <tr>
               <th>Accuracy</th>
               <td>0.99</td>
-              <td>0.991</td>
               <td>0.990</td>
-              <td>0.819</td>
+              <td>0.990</td>
+              <td>0.815</td>
               <td>0.988</td>
-              <td>0.766</td>
-              <td>0.761</td>
-              <td>0.791</td>
-              <td>0.847</td>
+              <td>0.763</td>
+              <td>0.776</td>
+              <td>0.800</td>
+              <td>0.842</td>
             </tr>
             <tr>
               <th>Balanced accuracy</th>
               <td>0.50</td>
-              <td>0.532</td>
-              <td>0.564</td>
-              <td>0.775</td>
-              <td>0.557</td>
-              <td>0.786</td>
-              <td>0.773</td>
-              <td>0.751</td>
-              <td>0.774</td>
+              <td>0.516</td>
+              <td>0.569</td>
+              <td>0.821</td>
+              <td>0.552</td>
+              <td>0.806</td>
+              <td>0.791</td>
+              <td>0.835</td>
+              <td>0.809</td>
             </tr>
           </tbody>
         </table>
@@ -1154,9 +1153,9 @@ learner.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 2 minutes  45.239 seconds)
+   **Total running time of the script:** ( 2 minutes  22.856 seconds)
 
-**Estimated memory usage:**  59 MB
+**Estimated memory usage:**  58 MB
 
 
 .. _sphx_glr_download_auto_examples_applications_plot_impact_imbalanced_classes.py:

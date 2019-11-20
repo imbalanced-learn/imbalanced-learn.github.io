@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Problem definition &mdash; imbalanced-learn 0.6.0.dev0 documentation</title>
+  <title>Fitting model on imbalanced datasets and how to fight bias &mdash; imbalanced-learn 0.6.0.dev0 documentation</title>
   
 
   
@@ -105,16 +105,19 @@
 <li class="toctree-l2"><a class="reference internal" href="plot_topic_classication.html">Example of topic classification in text documents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_over_sampling_benchmark_lfw.html">Benchmark over-sampling methods in a face recognition task</a></li>
 <li class="toctree-l2"><a class="reference internal" href="porto_seguro_keras_under_sampling.html">Porto Seguro: balancing samples in mini-batches with Keras</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Problem definition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#strategies-to-learn-from-an-imbalanced-dataset">Strategies to learn from an imbalanced dataset</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#dummy-baseline">Dummy baseline</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#linear-classifier-baseline">Linear classifier baseline</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#use-class-weight">Use <cite>class_weight</cite></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#resample-the-training-set-during-learning">Resample the training set during learning</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#use-of-balancedrandomforestclassifier-and-balancedbaggingclassifier">Use of <cite>BalancedRandomForestClassifier</cite> and <cite>BalancedBaggingClassifier</cite></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Fitting model on imbalanced datasets and how to fight bias</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#problem-definition">Problem definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#strategies-to-learn-from-an-imbalanced-dataset">Strategies to learn from an imbalanced dataset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dummy-baseline">Dummy baseline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linear-classifier-baseline">Linear classifier baseline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#use-class-weight">Use <cite>class_weight</cite></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resample-the-training-set-during-learning">Resample the training set during learning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#use-of-balancedrandomforestclassifier-and-balancedbaggingclassifier">Use of <cite>BalancedRandomForestClassifier</cite> and <cite>BalancedBaggingClassifier</cite></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#increase-imbalanced-ratio">Increase imbalanced ratio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#increase-imbalanced-ratio">Increase imbalanced ratio</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#examples-using-combine-class-methods">Examples using combine class methods</a></li>
 </ul>
 </li>
@@ -173,7 +176,7 @@
         
           <li><a href="../index.html">General examples</a> &raquo;</li>
         
-      <li>Problem definition</li>
+      <li>Fitting model on imbalanced datasets and how to fight bias</li>
     
     
 
@@ -189,7 +192,8 @@
 <p class="admonition-title">Note</p>
 <p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-applications-plot-impact-imbalanced-classes-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
-<hr class="sphx-glr-example-title docutils" />
+<div class="sphx-glr-example-title section" id="fitting-model-on-imbalanced-datasets-and-how-to-fight-bias">
+<span id="sphx-glr-auto-examples-applications-plot-impact-imbalanced-classes-py"></span><h1>Fitting model on imbalanced datasets and how to fight bias<a class="headerlink" href="#fitting-model-on-imbalanced-datasets-and-how-to-fight-bias" title="Permalink to this headline">¶</a></h1>
 <p>This example illustrates the problem induced by learning on datasets having
 imbalanced classes. Subsequently, we compare different approaches alleviating
 these negative effects.</p>
@@ -200,7 +204,7 @@ these negative effects.</p>
 </pre></div>
 </div>
 <div class="section" id="problem-definition">
-<h1>Problem definition<a class="headerlink" href="#problem-definition" title="Permalink to this headline">¶</a></h1>
+<h2>Problem definition<a class="headerlink" href="#problem-definition" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_openml.html#sklearn.datasets.fetch_openml" title="View documentation for sklearn.datasets.fetch_openml"><span class="n">fetch_openml</span></a>
 
 <span class="n">df</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_openml.html#sklearn.datasets.fetch_openml" title="View documentation for sklearn.datasets.fetch_openml"><span class="n">fetch_openml</span></a><span class="p">(</span><span class="s1">&#39;adult&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -280,7 +284,7 @@ take into account the balancing issue.</p>
 </div>
 </div>
 <div class="section" id="strategies-to-learn-from-an-imbalanced-dataset">
-<h1>Strategies to learn from an imbalanced dataset<a class="headerlink" href="#strategies-to-learn-from-an-imbalanced-dataset" title="Permalink to this headline">¶</a></h1>
+<h2>Strategies to learn from an imbalanced dataset<a class="headerlink" href="#strategies-to-learn-from-an-imbalanced-dataset" title="Permalink to this headline">¶</a></h2>
 <p>We will first define a helper function which will train a given model
 and compute both accuracy and balanced accuracy. The results will be stored
 in a dataframe</p>
@@ -310,7 +314,7 @@ in a dataframe</p>
 </pre></div>
 </div>
 <div class="section" id="dummy-baseline">
-<h2>Dummy baseline<a class="headerlink" href="#dummy-baseline" title="Permalink to this headline">¶</a></h2>
+<h3>Dummy baseline<a class="headerlink" href="#dummy-baseline" title="Permalink to this headline">¶</a></h3>
 <p>Before to train a real machine learning model, we can store the results
 obtained with our <cite>DummyClassifier</cite>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_scores</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">evaluate_classifier</span></a><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier" title="View documentation for sklearn.dummy.DummyClassifier"><span class="n">dummy_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;Dummy&quot;</span><span class="p">)</span>
@@ -353,7 +357,7 @@ obtained with our <cite>DummyClassifier</cite>.</p>
 <br />
 <br /></div>
 <div class="section" id="linear-classifier-baseline">
-<h2>Linear classifier baseline<a class="headerlink" href="#linear-classifier-baseline" title="Permalink to this headline">¶</a></h2>
+<h3>Linear classifier baseline<a class="headerlink" href="#linear-classifier-baseline" title="Permalink to this headline">¶</a></h3>
 <p>We will create a machine learning pipeline using a <cite>LogisticRegression</cite>
 classifier. In this regard, we will need to one-hot encode the categorical
 columns and standardized the numerical columns before to inject the data into
@@ -424,12 +428,12 @@ then evaluate our model.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.970</td>
+      <td>0.973</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.557</td>
+      <td>0.599</td>
     </tr>
   </tbody>
 </table>
@@ -490,14 +494,14 @@ categorical data.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.970</td>
-      <td>0.971</td>
+      <td>0.973</td>
+      <td>0.974</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.557</td>
-      <td>0.626</td>
+      <td>0.599</td>
+      <td>0.657</td>
     </tr>
   </tbody>
 </table>
@@ -508,7 +512,7 @@ slightly less than the linear model. Now, we will present different approach
 to improve the performance of these 2 models.</p>
 </div>
 <div class="section" id="use-class-weight">
-<h2>Use <cite>class_weight</cite><a class="headerlink" href="#use-class-weight" title="Permalink to this headline">¶</a></h2>
+<h3>Use <cite>class_weight</cite><a class="headerlink" href="#use-class-weight" title="Permalink to this headline">¶</a></h3>
 <p>Most of the models in <cite>scikit-learn</cite> have a parameter <cite>class_weight</cite>. This
 parameter will affect the computation of the loss in linear model or the
 criterion in the tree-based model to penalize differently a false
@@ -551,16 +555,16 @@ linear model and tree-based model.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.970</td>
-      <td>0.971</td>
-      <td>0.790</td>
+      <td>0.973</td>
+      <td>0.974</td>
+      <td>0.811</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.557</td>
-      <td>0.626</td>
-      <td>0.812</td>
+      <td>0.599</td>
+      <td>0.657</td>
+      <td>0.809</td>
     </tr>
   </tbody>
 </table>
@@ -602,18 +606,18 @@ linear model and tree-based model.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.970</td>
-      <td>0.971</td>
-      <td>0.790</td>
-      <td>0.964</td>
+      <td>0.973</td>
+      <td>0.974</td>
+      <td>0.811</td>
+      <td>0.966</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.557</td>
-      <td>0.626</td>
-      <td>0.812</td>
-      <td>0.620</td>
+      <td>0.599</td>
+      <td>0.657</td>
+      <td>0.809</td>
+      <td>0.642</td>
     </tr>
   </tbody>
 </table>
@@ -626,7 +630,7 @@ mainly due to the criterion which is not suited enough to fight the class
 imbalance.</p>
 </div>
 <div class="section" id="resample-the-training-set-during-learning">
-<h2>Resample the training set during learning<a class="headerlink" href="#resample-the-training-set-during-learning" title="Permalink to this headline">¶</a></h2>
+<h3>Resample the training set during learning<a class="headerlink" href="#resample-the-training-set-during-learning" title="Permalink to this headline">¶</a></h3>
 <p>Another way is to resample the training set by under-sampling or
 over-sampling some of the samples. <cite>imbalanced-learn</cite> provides some samplers
 to do such processing.</p>
@@ -674,20 +678,20 @@ to do such processing.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.970</td>
-      <td>0.971</td>
-      <td>0.790</td>
-      <td>0.964</td>
-      <td>0.783</td>
+      <td>0.973</td>
+      <td>0.974</td>
+      <td>0.811</td>
+      <td>0.966</td>
+      <td>0.806</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.557</td>
-      <td>0.626</td>
-      <td>0.812</td>
-      <td>0.620</td>
-      <td>0.807</td>
+      <td>0.599</td>
+      <td>0.657</td>
+      <td>0.809</td>
+      <td>0.642</td>
+      <td>0.806</td>
     </tr>
   </tbody>
 </table>
@@ -736,22 +740,22 @@ to do such processing.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.970</td>
-      <td>0.971</td>
-      <td>0.790</td>
-      <td>0.964</td>
-      <td>0.783</td>
-      <td>0.794</td>
+      <td>0.973</td>
+      <td>0.974</td>
+      <td>0.811</td>
+      <td>0.966</td>
+      <td>0.806</td>
+      <td>0.798</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.557</td>
-      <td>0.626</td>
+      <td>0.599</td>
+      <td>0.657</td>
+      <td>0.809</td>
+      <td>0.642</td>
+      <td>0.806</td>
       <td>0.812</td>
-      <td>0.620</td>
-      <td>0.807</td>
-      <td>0.790</td>
     </tr>
   </tbody>
 </table>
@@ -767,7 +771,7 @@ on the current dataset.</p>
 sampling internally.</p>
 </div>
 <div class="section" id="use-of-balancedrandomforestclassifier-and-balancedbaggingclassifier">
-<h2>Use of <cite>BalancedRandomForestClassifier</cite> and <cite>BalancedBaggingClassifier</cite><a class="headerlink" href="#use-of-balancedrandomforestclassifier-and-balancedbaggingclassifier" title="Permalink to this headline">¶</a></h2>
+<h3>Use of <cite>BalancedRandomForestClassifier</cite> and <cite>BalancedBaggingClassifier</cite><a class="headerlink" href="#use-of-balancedrandomforestclassifier-and-balancedbaggingclassifier" title="Permalink to this headline">¶</a></h3>
 <p>We already showed that random under-sampling can be effective on decision
 tree. However, instead of under-sampling once the dataset, one could
 under-sample the original dataset before to take a bootstrap sample. This is
@@ -816,24 +820,24 @@ the base of the <cite>BalancedRandomForestClassifier</cite> and
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.970</td>
-      <td>0.971</td>
-      <td>0.790</td>
-      <td>0.964</td>
-      <td>0.783</td>
-      <td>0.794</td>
-      <td>0.776</td>
+      <td>0.973</td>
+      <td>0.974</td>
+      <td>0.811</td>
+      <td>0.966</td>
+      <td>0.806</td>
+      <td>0.798</td>
+      <td>0.796</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.557</td>
-      <td>0.626</td>
+      <td>0.599</td>
+      <td>0.657</td>
+      <td>0.809</td>
+      <td>0.642</td>
+      <td>0.806</td>
       <td>0.812</td>
-      <td>0.620</td>
-      <td>0.807</td>
-      <td>0.790</td>
-      <td>0.812</td>
+      <td>0.834</td>
     </tr>
   </tbody>
 </table>
@@ -893,26 +897,26 @@ classifier within a <cite>BalancedBaggingClassifier</cite>.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.970</td>
-      <td>0.971</td>
-      <td>0.790</td>
-      <td>0.964</td>
-      <td>0.783</td>
-      <td>0.794</td>
-      <td>0.776</td>
-      <td>0.831</td>
+      <td>0.973</td>
+      <td>0.974</td>
+      <td>0.811</td>
+      <td>0.966</td>
+      <td>0.806</td>
+      <td>0.798</td>
+      <td>0.796</td>
+      <td>0.843</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.557</td>
-      <td>0.626</td>
+      <td>0.599</td>
+      <td>0.657</td>
+      <td>0.809</td>
+      <td>0.642</td>
+      <td>0.806</td>
       <td>0.812</td>
-      <td>0.620</td>
-      <td>0.807</td>
-      <td>0.790</td>
-      <td>0.812</td>
-      <td>0.815</td>
+      <td>0.834</td>
+      <td>0.829</td>
     </tr>
   </tbody>
 </table>
@@ -926,7 +930,7 @@ similar analysis.</p>
 </div>
 </div>
 <div class="section" id="increase-imbalanced-ratio">
-<h1>Increase imbalanced ratio<a class="headerlink" href="#increase-imbalanced-ratio" title="Permalink to this headline">¶</a></h1>
+<h2>Increase imbalanced ratio<a class="headerlink" href="#increase-imbalanced-ratio" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">ratio</span></a> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">df_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <a href="../../generated/imblearn.datasets.make_imbalance.html#imblearn.datasets.make_imbalance" title="View documentation for imblearn.datasets.make_imbalance"><span class="n">make_imbalance</span></a><span class="p">(</span>
     <span class="n">df</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sampling_strategy</span><span class="o">=</span><span class="p">{</span>
@@ -1015,26 +1019,26 @@ similar analysis.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.99</td>
-      <td>0.991</td>
       <td>0.990</td>
-      <td>0.819</td>
+      <td>0.990</td>
+      <td>0.815</td>
       <td>0.988</td>
-      <td>0.766</td>
-      <td>0.761</td>
-      <td>0.791</td>
-      <td>0.847</td>
+      <td>0.763</td>
+      <td>0.776</td>
+      <td>0.800</td>
+      <td>0.842</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.50</td>
-      <td>0.532</td>
-      <td>0.564</td>
-      <td>0.775</td>
-      <td>0.557</td>
-      <td>0.786</td>
-      <td>0.773</td>
-      <td>0.751</td>
-      <td>0.774</td>
+      <td>0.516</td>
+      <td>0.569</td>
+      <td>0.821</td>
+      <td>0.552</td>
+      <td>0.806</td>
+      <td>0.791</td>
+      <td>0.835</td>
+      <td>0.809</td>
     </tr>
   </tbody>
 </table>
@@ -1046,8 +1050,8 @@ previous discussion. However, we can observe that the strategy
 <cite>RandomForestClassifier</cite>. A resampling is indeed required. The most effective
 method remains the <cite>BalancedBaggingClassifier</cite> using a GBDT as a base
 learner.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  45.239 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  59 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  22.856 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  58 MB</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-applications-plot-impact-imbalanced-classes-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/5062100d8bac1656efa83b45d062ada3/plot_impact_imbalanced_classes.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_impact_imbalanced_classes.py</span></code></a></p>
@@ -1057,6 +1061,7 @@ learner.</p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
 </div>
 
 
