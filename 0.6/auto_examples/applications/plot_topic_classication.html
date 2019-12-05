@@ -1,0 +1,362 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Example of topic classification in text documents &mdash; imbalanced-learn 0.6.0.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/imbalanced-learn.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Benchmark over-sampling methods in a face recognition task" href="plot_over_sampling_benchmark_lfw.html" />
+    <link rel="prev" title="Multiclass classification with under-sampling" href="plot_multi_class_under_sampling.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> imbalanced-learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.0.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Install and contribution</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">imbalanced-learn API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial - Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">General examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html#examples-based-on-real-world-datasets">Examples based on real world datasets</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_multi_class_under_sampling.html">Multiclass classification with under-sampling</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Example of topic classification in text documents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setting-the-data-set">Setting the data set</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-usual-scikit-learn-pipeline">The usual scikit-learn pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#balancing-the-class-before-classification">Balancing the class before classification</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plot_over_sampling_benchmark_lfw.html">Benchmark over-sampling methods in a face recognition task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="porto_seguro_keras_under_sampling.html">Porto Seguro: balancing samples in mini-batches with Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_impact_imbalanced_classes.html">Fitting model on imbalanced datasets and how to fight bias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#examples-using-combine-class-methods">Examples using combine class methods</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#dataset-examples">Dataset examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#evaluation-examples">Evaluation examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#model-selection">Model Selection</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Addtional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../whats_new.html">Release history</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">imbalanced-learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">General examples</a> &raquo;</li>
+        
+      <li>Example of topic classification in text documents</li>
+    
+    
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-applications-plot-topic-classication-py"><span class="std std-ref">here</span></a>     to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="example-of-topic-classification-in-text-documents">
+<span id="sphx-glr-auto-examples-applications-plot-topic-classication-py"></span><h1>Example of topic classification in text documents<a class="headerlink" href="#example-of-topic-classification-in-text-documents" title="Permalink to this headline">¶</a></h1>
+<p>This example shows how to balance the text data before to train a classifier.</p>
+<p>Note that for this example, the data are slightly imbalanced but it can happen
+that for some data sets, the imbalanced ratio is more significant.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: Guillaume Lemaitre &lt;g.lemaitre58@gmail.com&gt;</span>
+<span class="c1"># License: MIT</span>
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <a href="https://docs.python.org/3/library/collections.html#collections.Counter" title="View documentation for collections.Counter"><span class="n">Counter</span></a>
+
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_20newsgroups.html#sklearn.datasets.fetch_20newsgroups" title="View documentation for sklearn.datasets.fetch_20newsgroups"><span class="n">fetch_20newsgroups</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html#sklearn.feature_extraction.text.TfidfVectorizer" title="View documentation for sklearn.feature_extraction.text.TfidfVectorizer"><span class="n">TfidfVectorizer</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html#sklearn.naive_bayes.MultinomialNB" title="View documentation for sklearn.naive_bayes.MultinomialNB"><span class="n">MultinomialNB</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a>
+
+<span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <a href="../../generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="View documentation for imblearn.under_sampling.RandomUnderSampler"><span class="n">RandomUnderSampler</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a> <span class="k">as</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="View documentation for imblearn.pipeline.make_pipeline"><span class="n">make_pipeline_imb</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.metrics</span> <span class="kn">import</span> <a href="../../generated/imblearn.metrics.classification_report_imbalanced.html#imblearn.metrics.classification_report_imbalanced" title="View documentation for imblearn.metrics.classification_report_imbalanced"><span class="n">classification_report_imbalanced</span></a>
+
+<span class="nb">print</span><span class="p">(</span><span class="vm">__doc__</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="setting-the-data-set">
+<h2>Setting the data set<a class="headerlink" href="#setting-the-data-set" title="Permalink to this headline">¶</a></h2>
+<p>We use a part of the 20 newsgroups data set by loading 4 topics. Using the
+scikit-learn loader, the data are split into a training and a testing set.</p>
+<p>Note the class #3 is the minority class and has almost twice less samples
+than the majority class.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">categories</span></a> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;alt.atheism&#39;</span><span class="p">,</span> <span class="s1">&#39;talk.religion.misc&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;comp.graphics&#39;</span><span class="p">,</span> <span class="s1">&#39;sci.space&#39;</span><span class="p">]</span>
+<span class="n">newsgroups_train</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_20newsgroups.html#sklearn.datasets.fetch_20newsgroups" title="View documentation for sklearn.datasets.fetch_20newsgroups"><span class="n">fetch_20newsgroups</span></a><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span>
+                                      <a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">categories</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">categories</span></a><span class="p">)</span>
+<span class="n">newsgroups_test</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_20newsgroups.html#sklearn.datasets.fetch_20newsgroups" title="View documentation for sklearn.datasets.fetch_20newsgroups"><span class="n">fetch_20newsgroups</span></a><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+                                     <a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">categories</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">categories</span></a><span class="p">)</span>
+
+<a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">X_train</span></a> <span class="o">=</span> <span class="n">newsgroups_train</span><span class="o">.</span><span class="n">data</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">X_test</span></a> <span class="o">=</span> <span class="n">newsgroups_test</span><span class="o">.</span><span class="n">data</span>
+
+<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_train</span></a> <span class="o">=</span> <span class="n">newsgroups_train</span><span class="o">.</span><span class="n">target</span>
+<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_test</span></a> <span class="o">=</span> <span class="n">newsgroups_test</span><span class="o">.</span><span class="n">target</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Training class distributions summary: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><a href="https://docs.python.org/3/library/collections.html#collections.Counter" title="View documentation for collections.Counter"><span class="n">Counter</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_train</span></a><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test class distributions summary: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><a href="https://docs.python.org/3/library/collections.html#collections.Counter" title="View documentation for collections.Counter"><span class="n">Counter</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_test</span></a><span class="p">)))</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Training class distributions summary: Counter({2: 593, 1: 584, 0: 480, 3: 377})
+Test class distributions summary: Counter({2: 394, 1: 389, 0: 319, 3: 251})
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-usual-scikit-learn-pipeline">
+<h2>The usual scikit-learn pipeline<a class="headerlink" href="#the-usual-scikit-learn-pipeline" title="Permalink to this headline">¶</a></h2>
+<p>You might usually use scikit-learn pipeline by combining the TF-IDF
+vectorizer to feed a multinomial naive bayes classifier. A classification
+report summarized the results on the testing set.</p>
+<p>As expected, the recall of the class #3 is low mainly due to the class
+imbalanced.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="View documentation for imblearn.pipeline.Pipeline"><span class="n">pipe</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html#sklearn.feature_extraction.text.TfidfVectorizer" title="View documentation for sklearn.feature_extraction.text.TfidfVectorizer"><span class="n">TfidfVectorizer</span></a><span class="p">(),</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html#sklearn.naive_bayes.MultinomialNB" title="View documentation for sklearn.naive_bayes.MultinomialNB"><span class="n">MultinomialNB</span></a><span class="p">())</span>
+<a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="View documentation for imblearn.pipeline.Pipeline"><span class="n">pipe</span></a><span class="o">.</span><span class="n">fit</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">X_train</span></a><span class="p">,</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_train</span></a><span class="p">)</span>
+<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_pred</span></a> <span class="o">=</span> <a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="View documentation for imblearn.pipeline.Pipeline"><span class="n">pipe</span></a><span class="o">.</span><span class="n">predict</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">X_test</span></a><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><a href="../../generated/imblearn.metrics.classification_report_imbalanced.html#imblearn.metrics.classification_report_imbalanced" title="View documentation for imblearn.metrics.classification_report_imbalanced"><span class="n">classification_report_imbalanced</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_test</span></a><span class="p">,</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_pred</span></a><span class="p">))</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>                   pre       rec       spe        f1       geo       iba       sup
+
+          0       0.67      0.94      0.86      0.79      0.90      0.82       319
+          1       0.96      0.92      0.99      0.94      0.95      0.90       389
+          2       0.87      0.98      0.94      0.92      0.96      0.92       394
+          3       0.97      0.36      1.00      0.52      0.60      0.33       251
+
+avg / total       0.87      0.84      0.94      0.82      0.88      0.78      1353
+</pre></div>
+</div>
+</div>
+<div class="section" id="balancing-the-class-before-classification">
+<h2>Balancing the class before classification<a class="headerlink" href="#balancing-the-class-before-classification" title="Permalink to this headline">¶</a></h2>
+<p>To improve the prediction of the class #3, it could be interesting to apply
+a balancing before to train the naive bayes classifier. Therefore, we will
+use a <code class="docutils literal notranslate"><span class="pre">RandomUnderSampler</span></code> to equalize the number of samples in all the
+classes before the training.</p>
+<p>It is also important to note that we are using the <code class="docutils literal notranslate"><span class="pre">make_pipeline</span></code> function
+implemented in imbalanced-learn to properly handle the samplers.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="View documentation for imblearn.pipeline.Pipeline"><span class="n">pipe</span></a> <span class="o">=</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="View documentation for imblearn.pipeline.make_pipeline"><span class="n">make_pipeline_imb</span></a><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html#sklearn.feature_extraction.text.TfidfVectorizer" title="View documentation for sklearn.feature_extraction.text.TfidfVectorizer"><span class="n">TfidfVectorizer</span></a><span class="p">(),</span>
+                         <a href="../../generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="View documentation for imblearn.under_sampling.RandomUnderSampler"><span class="n">RandomUnderSampler</span></a><span class="p">(),</span>
+                         <a href="https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html#sklearn.naive_bayes.MultinomialNB" title="View documentation for sklearn.naive_bayes.MultinomialNB"><span class="n">MultinomialNB</span></a><span class="p">())</span>
+
+<a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="View documentation for imblearn.pipeline.Pipeline"><span class="n">pipe</span></a><span class="o">.</span><span class="n">fit</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">X_train</span></a><span class="p">,</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_train</span></a><span class="p">)</span>
+<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_pred</span></a> <span class="o">=</span> <a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="View documentation for imblearn.pipeline.Pipeline"><span class="n">pipe</span></a><span class="o">.</span><span class="n">predict</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">X_test</span></a><span class="p">)</span>
+</pre></div>
+</div>
+<p>Although the results are almost identical, it can be seen that the resampling
+allowed to correct the poor recall of the class #3 at the cost of reducing
+the other metrics for the other classes. However, the overall results are
+slightly better.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><a href="../../generated/imblearn.metrics.classification_report_imbalanced.html#imblearn.metrics.classification_report_imbalanced" title="View documentation for imblearn.metrics.classification_report_imbalanced"><span class="n">classification_report_imbalanced</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_test</span></a><span class="p">,</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_pred</span></a><span class="p">))</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>                   pre       rec       spe        f1       geo       iba       sup
+
+          0       0.71      0.91      0.88      0.80      0.90      0.81       319
+          1       0.97      0.85      0.99      0.90      0.92      0.83       389
+          2       0.94      0.90      0.98      0.92      0.94      0.87       394
+          3       0.80      0.73      0.96      0.76      0.83      0.68       251
+
+avg / total       0.87      0.85      0.96      0.86      0.90      0.81      1353
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  13.835 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  109 MB</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-applications-plot-topic-classication-py">
+<div class="sphx-glr-download docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/c0d0b4cd2c639116b7998044d3a67ea3/plot_topic_classication.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_topic_classication.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/53cf3da930dd2d6f08413f4a9bdb8a83/plot_topic_classication.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_topic_classication.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="plot_over_sampling_benchmark_lfw.html" class="btn btn-neutral float-right" title="Benchmark over-sampling methods in a face recognition task" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="plot_multi_class_under_sampling.html" class="btn btn-neutral float-left" title="Multiclass classification with under-sampling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016 - 2017, G. Lemaitre, F. Nogueira, D. Oliveira, C. Aridas
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
