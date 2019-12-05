@@ -190,7 +190,7 @@
             
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-applications-plot-impact-imbalanced-classes-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-applications-plot-impact-imbalanced-classes-py"><span class="std std-ref">here</span></a>     to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="fitting-model-on-imbalanced-datasets-and-how-to-fight-bias">
 <span id="sphx-glr-auto-examples-applications-plot-impact-imbalanced-classes-py"></span><h1>Fitting model on imbalanced datasets and how to fight bias<a class="headerlink" href="#fitting-model-on-imbalanced-datasets-and-how-to-fight-bias" title="Permalink to this headline">¶</a></h1>
@@ -205,7 +205,7 @@ these negative effects.</p>
 </div>
 <div class="section" id="problem-definition">
 <h2>Problem definition<a class="headerlink" href="#problem-definition" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_openml.html#sklearn.datasets.fetch_openml" title="View documentation for sklearn.datasets.fetch_openml"><span class="n">fetch_openml</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_openml.html#sklearn.datasets.fetch_openml" title="View documentation for sklearn.datasets.fetch_openml"><span class="n">fetch_openml</span></a>
 
 <span class="n">df</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_openml.html#sklearn.datasets.fetch_openml" title="View documentation for sklearn.datasets.fetch_openml"><span class="n">fetch_openml</span></a><span class="p">(</span><span class="s1">&#39;adult&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="c1"># we are dropping the following features:</span>
@@ -229,7 +229,7 @@ Name: class, dtype: int64
 </div>
 <p>This dataset is only slightly imbalanced. To better highlight the effect of
 learning from an imbalanced dataset, we will increase its ratio to 30:1</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imblearn.datasets</span> <span class="k">import</span> <a href="../../generated/imblearn.datasets.make_imbalance.html#imblearn.datasets.make_imbalance" title="View documentation for imblearn.datasets.make_imbalance"><span class="n">make_imbalance</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imblearn.datasets</span> <span class="kn">import</span> <a href="../../generated/imblearn.datasets.make_imbalance.html#imblearn.datasets.make_imbalance" title="View documentation for imblearn.datasets.make_imbalance"><span class="n">make_imbalance</span></a>
 
 <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">ratio</span></a> <span class="o">=</span> <span class="mi">30</span>
 <span class="n">df_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <a href="../../generated/imblearn.datasets.make_imbalance.html#imblearn.datasets.make_imbalance" title="View documentation for imblearn.datasets.make_imbalance"><span class="n">make_imbalance</span></a><span class="p">(</span>
@@ -249,7 +249,7 @@ Name: class, dtype: int64
 <p>For the rest of the notebook, we will make a single split to get training
 and testing data. Note that you should use cross-validation to have an
 estimate of the performance variation in practice.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="View documentation for sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="View documentation for sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
 
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="View documentation for sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a><span class="p">(</span>
     <span class="n">df_res</span><span class="p">,</span> <span class="n">y_res</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_res</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
@@ -258,11 +258,11 @@ estimate of the performance variation in practice.</p>
 </div>
 <p>As a baseline, we could use a classifier which will always predict the
 majority class independently of the features provided.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.dummy</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier" title="View documentation for sklearn.dummy.DummyClassifier"><span class="n">DummyClassifier</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.dummy</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier" title="View documentation for sklearn.dummy.DummyClassifier"><span class="n">DummyClassifier</span></a>
 
 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier" title="View documentation for sklearn.dummy.DummyClassifier"><span class="n">dummy_clf</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier" title="View documentation for sklearn.dummy.DummyClassifier"><span class="n">DummyClassifier</span></a><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;most_frequent&quot;</span><span class="p">)</span>
 <span class="n">score</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier.fit" title="View documentation for sklearn.dummy.DummyClassifier.fit"><span class="n">dummy_clf</span><span class="o">.</span><span class="n">fit</span></a><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Accuracy score of a dummy classifier: </span><span class="si">{score:.3f}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy score of a dummy classifier: </span><span class="si">{score:.3f}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
@@ -271,11 +271,11 @@ majority class independently of the features provided.</p>
 </div>
 <p>Instead of using the accuracy, we can use the balanced accuracy which will
 take into account the balancing issue.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html#sklearn.metrics.balanced_accuracy_score" title="View documentation for sklearn.metrics.balanced_accuracy_score"><span class="n">balanced_accuracy_score</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html#sklearn.metrics.balanced_accuracy_score" title="View documentation for sklearn.metrics.balanced_accuracy_score"><span class="n">balanced_accuracy_score</span></a>
 
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_pred</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier.predict" title="View documentation for sklearn.dummy.DummyClassifier.predict"><span class="n">dummy_clf</span><span class="o">.</span><span class="n">predict</span></a><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="n">score</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html#sklearn.metrics.balanced_accuracy_score" title="View documentation for sklearn.metrics.balanced_accuracy_score"><span class="n">balanced_accuracy_score</span></a><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_pred</span></a><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Balanced accuracy score of a dummy classifier: </span><span class="si">{score:.3f}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Balanced accuracy score of a dummy classifier: </span><span class="si">{score:.3f}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
@@ -292,7 +292,7 @@ in a dataframe</p>
 
 
 <span class="k">def</span> <span class="nf">evaluate_classifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="n">clf_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">Pipeline</span></a>
+    <span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">Pipeline</span></a>
     <span class="k">if</span> <span class="n">clf_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">Pipeline</span></a><span class="p">):</span>
             <span class="n">clf_name</span> <span class="o">=</span> <span class="n">clf</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
@@ -363,10 +363,10 @@ classifier. In this regard, we will need to one-hot encode the categorical
 columns and standardized the numerical columns before to inject the data into
 the <cite>LogisticRegression</cite> classifier.</p>
 <p>First, we define our numerical and categorical pipelines.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html#sklearn.impute.SimpleImputer" title="View documentation for sklearn.impute.SimpleImputer"><span class="n">SimpleImputer</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" title="View documentation for sklearn.preprocessing.StandardScaler"><span class="n">StandardScaler</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder" title="View documentation for sklearn.preprocessing.OneHotEncoder"><span class="n">OneHotEncoder</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html#sklearn.impute.SimpleImputer" title="View documentation for sklearn.impute.SimpleImputer"><span class="n">SimpleImputer</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" title="View documentation for sklearn.preprocessing.StandardScaler"><span class="n">StandardScaler</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder" title="View documentation for sklearn.preprocessing.OneHotEncoder"><span class="n">OneHotEncoder</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a>
 
 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">num_pipe</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a><span class="p">(</span>
     <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" title="View documentation for sklearn.preprocessing.StandardScaler"><span class="n">StandardScaler</span></a><span class="p">(),</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html#sklearn.impute.SimpleImputer" title="View documentation for sklearn.impute.SimpleImputer"><span class="n">SimpleImputer</span></a><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="n">add_indicator</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -381,19 +381,19 @@ the <cite>LogisticRegression</cite> classifier.</p>
 columns to the categorical pipeline and the numerical columns to the
 numerical pipeline</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">ColumnTransformer</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="k">import</span> <span class="n">make_column_selector</span> <span class="k">as</span> <span class="n">selector</span>
+<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">ColumnTransformer</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">make_column_selector</span> <span class="k">as</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html#sklearn.compose.make_column_selector" title="View documentation for sklearn.compose.make_column_selector"><span class="n">selector</span></a>
 
 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">preprocessor_linear</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">ColumnTransformer</span></a><span class="p">(</span>
-    <span class="p">[(</span><span class="s2">&quot;num-pipe&quot;</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">num_pipe</span></a><span class="p">,</span> <span class="n">selector</span><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">)),</span>
-     <span class="p">(</span><span class="s2">&quot;cat-pipe&quot;</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">cat_pipe</span></a><span class="p">,</span> <span class="n">selector</span><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">CategoricalDtype</span><span class="p">))],</span>
+    <span class="p">[(</span><span class="s2">&quot;num-pipe&quot;</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">num_pipe</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html#sklearn.compose.make_column_selector" title="View documentation for sklearn.compose.make_column_selector"><span class="n">selector</span></a><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">)),</span>
+     <span class="p">(</span><span class="s2">&quot;cat-pipe&quot;</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">cat_pipe</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html#sklearn.compose.make_column_selector" title="View documentation for sklearn.compose.make_column_selector"><span class="n">selector</span></a><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">CategoricalDtype</span><span class="p">))],</span>
     <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 <p>Finally, we connect our preprocessor with our <cite>LogisticRegression</cite>. We can
 then evaluate our model.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="View documentation for sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="View documentation for sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a>
 
 <a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="View documentation for imblearn.pipeline.Pipeline"><span class="n">lr_clf</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a><span class="p">(</span>
     <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">preprocessor_linear</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="View documentation for sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
@@ -428,12 +428,12 @@ then evaluate our model.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.971</td>
+      <td>0.970</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.578</td>
+      <td>0.561</td>
     </tr>
   </tbody>
 </table>
@@ -445,8 +445,8 @@ baseline. However, it is impacted by the class imbalance.</p>
 such as <cite>RandomForestClassifier</cite>. With this type of classifier, we will not
 need to scale the numerical data, and we will only need to ordinal encode the
 categorical data.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html#sklearn.preprocessing.OrdinalEncoder" title="View documentation for sklearn.preprocessing.OrdinalEncoder"><span class="n">OrdinalEncoder</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="View documentation for sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html#sklearn.preprocessing.OrdinalEncoder" title="View documentation for sklearn.preprocessing.OrdinalEncoder"><span class="n">OrdinalEncoder</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="View documentation for sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a>
 
 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">cat_pipe</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a><span class="p">(</span>
     <a href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html#sklearn.impute.SimpleImputer" title="View documentation for sklearn.impute.SimpleImputer"><span class="n">SimpleImputer</span></a><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;constant&quot;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="s2">&quot;missing&quot;</span><span class="p">),</span>
@@ -454,8 +454,8 @@ categorical data.</p>
 <span class="p">)</span>
 
 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">preprocessor_tree</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">ColumnTransformer</span></a><span class="p">(</span>
-    <span class="p">[(</span><span class="s2">&quot;num-pipe&quot;</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">num_pipe</span></a><span class="p">,</span> <span class="n">selector</span><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">)),</span>
-     <span class="p">(</span><span class="s2">&quot;cat-pipe&quot;</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">cat_pipe</span></a><span class="p">,</span> <span class="n">selector</span><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">CategoricalDtype</span><span class="p">))],</span>
+    <span class="p">[(</span><span class="s2">&quot;num-pipe&quot;</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">num_pipe</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html#sklearn.compose.make_column_selector" title="View documentation for sklearn.compose.make_column_selector"><span class="n">selector</span></a><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">)),</span>
+     <span class="p">(</span><span class="s2">&quot;cat-pipe&quot;</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">cat_pipe</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html#sklearn.compose.make_column_selector" title="View documentation for sklearn.compose.make_column_selector"><span class="n">selector</span></a><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">CategoricalDtype</span><span class="p">))],</span>
     <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span>
 <span class="p">)</span>
 
@@ -494,14 +494,14 @@ categorical data.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
+      <td>0.970</td>
       <td>0.971</td>
-      <td>0.973</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.578</td>
-      <td>0.646</td>
+      <td>0.561</td>
+      <td>0.612</td>
     </tr>
   </tbody>
 </table>
@@ -555,16 +555,16 @@ linear model and tree-based model.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
+      <td>0.970</td>
       <td>0.971</td>
-      <td>0.973</td>
-      <td>0.798</td>
+      <td>0.808</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.578</td>
-      <td>0.646</td>
-      <td>0.819</td>
+      <td>0.561</td>
+      <td>0.612</td>
+      <td>0.787</td>
     </tr>
   </tbody>
 </table>
@@ -606,18 +606,18 @@ linear model and tree-based model.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
+      <td>0.970</td>
       <td>0.971</td>
-      <td>0.973</td>
-      <td>0.798</td>
-      <td>0.965</td>
+      <td>0.808</td>
+      <td>0.967</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.578</td>
-      <td>0.646</td>
-      <td>0.819</td>
-      <td>0.637</td>
+      <td>0.561</td>
+      <td>0.612</td>
+      <td>0.787</td>
+      <td>0.615</td>
     </tr>
   </tbody>
 </table>
@@ -634,8 +634,8 @@ imbalance.</p>
 <p>Another way is to resample the training set by under-sampling or
 over-sampling some of the samples. <cite>imbalanced-learn</cite> provides some samplers
 to do such processing.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a> <span class="k">as</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="View documentation for imblearn.pipeline.make_pipeline"><span class="n">make_pipeline_with_sampler</span></a>
-<span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="k">import</span> <a href="../../generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="View documentation for imblearn.under_sampling.RandomUnderSampler"><span class="n">RandomUnderSampler</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a> <span class="k">as</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="View documentation for imblearn.pipeline.make_pipeline"><span class="n">make_pipeline_with_sampler</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <a href="../../generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="View documentation for imblearn.under_sampling.RandomUnderSampler"><span class="n">RandomUnderSampler</span></a>
 
 <a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="View documentation for imblearn.pipeline.Pipeline"><span class="n">lr_clf</span></a> <span class="o">=</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="View documentation for imblearn.pipeline.make_pipeline"><span class="n">make_pipeline_with_sampler</span></a><span class="p">(</span>
     <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">preprocessor_linear</span></a><span class="p">,</span>
@@ -678,20 +678,20 @@ to do such processing.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
+      <td>0.970</td>
       <td>0.971</td>
-      <td>0.973</td>
-      <td>0.798</td>
-      <td>0.965</td>
-      <td>0.788</td>
+      <td>0.808</td>
+      <td>0.967</td>
+      <td>0.806</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.578</td>
-      <td>0.646</td>
-      <td>0.819</td>
-      <td>0.637</td>
-      <td>0.811</td>
+      <td>0.561</td>
+      <td>0.612</td>
+      <td>0.787</td>
+      <td>0.615</td>
+      <td>0.798</td>
     </tr>
   </tbody>
 </table>
@@ -740,22 +740,22 @@ to do such processing.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
+      <td>0.970</td>
       <td>0.971</td>
-      <td>0.973</td>
-      <td>0.798</td>
-      <td>0.965</td>
-      <td>0.788</td>
-      <td>0.784</td>
+      <td>0.808</td>
+      <td>0.967</td>
+      <td>0.806</td>
+      <td>0.792</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.578</td>
-      <td>0.646</td>
-      <td>0.819</td>
-      <td>0.637</td>
-      <td>0.811</td>
-      <td>0.817</td>
+      <td>0.561</td>
+      <td>0.612</td>
+      <td>0.787</td>
+      <td>0.615</td>
+      <td>0.798</td>
+      <td>0.784</td>
     </tr>
   </tbody>
 </table>
@@ -777,7 +777,7 @@ tree. However, instead of under-sampling once the dataset, one could
 under-sample the original dataset before to take a bootstrap sample. This is
 the base of the <cite>BalancedRandomForestClassifier</cite> and
 <cite>BalancedBaggingClassifier</cite>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="k">import</span> <a href="../../generated/imblearn.ensemble.BalancedRandomForestClassifier.html#imblearn.ensemble.BalancedRandomForestClassifier" title="View documentation for imblearn.ensemble.BalancedRandomForestClassifier"><span class="n">BalancedRandomForestClassifier</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="kn">import</span> <a href="../../generated/imblearn.ensemble.BalancedRandomForestClassifier.html#imblearn.ensemble.BalancedRandomForestClassifier" title="View documentation for imblearn.ensemble.BalancedRandomForestClassifier"><span class="n">BalancedRandomForestClassifier</span></a>
 
 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">rf_clf</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a><span class="p">(</span>
     <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">preprocessor_tree</span></a><span class="p">,</span>
@@ -820,24 +820,24 @@ the base of the <cite>BalancedRandomForestClassifier</cite> and
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
+      <td>0.970</td>
       <td>0.971</td>
-      <td>0.973</td>
-      <td>0.798</td>
-      <td>0.965</td>
-      <td>0.788</td>
-      <td>0.784</td>
-      <td>0.773</td>
+      <td>0.808</td>
+      <td>0.967</td>
+      <td>0.806</td>
+      <td>0.792</td>
+      <td>0.785</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.578</td>
-      <td>0.646</td>
-      <td>0.819</td>
-      <td>0.637</td>
-      <td>0.811</td>
-      <td>0.817</td>
-      <td>0.841</td>
+      <td>0.561</td>
+      <td>0.612</td>
+      <td>0.787</td>
+      <td>0.615</td>
+      <td>0.798</td>
+      <td>0.784</td>
+      <td>0.799</td>
     </tr>
   </tbody>
 </table>
@@ -846,9 +846,9 @@ the base of the <cite>BalancedRandomForestClassifier</cite> and
 <br /><p>The performance with the <cite>BalancedRandomForestClassifier</cite> is better than
 applying a single random under-sampling. We will use a gradient-boosting
 classifier within a <cite>BalancedBaggingClassifier</cite>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.experimental</span> <span class="k">import</span> <span class="n">enable_hist_gradient_boosting</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html#sklearn.ensemble.HistGradientBoostingClassifier" title="View documentation for sklearn.ensemble.HistGradientBoostingClassifier"><span class="n">HistGradientBoostingClassifier</span></a>
-<span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="k">import</span> <a href="../../generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="View documentation for imblearn.ensemble.BalancedBaggingClassifier"><span class="n">BalancedBaggingClassifier</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.experimental</span> <span class="kn">import</span> <span class="n">enable_hist_gradient_boosting</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html#sklearn.ensemble.HistGradientBoostingClassifier" title="View documentation for sklearn.ensemble.HistGradientBoostingClassifier"><span class="n">HistGradientBoostingClassifier</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="kn">import</span> <a href="../../generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="View documentation for imblearn.ensemble.BalancedBaggingClassifier"><span class="n">BalancedBaggingClassifier</span></a>
 
 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">bag_clf</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a><span class="p">(</span>
     <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">preprocessor_tree</span></a><span class="p">,</span>
@@ -897,26 +897,26 @@ classifier within a <cite>BalancedBaggingClassifier</cite>.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
+      <td>0.970</td>
       <td>0.971</td>
-      <td>0.973</td>
-      <td>0.798</td>
-      <td>0.965</td>
-      <td>0.788</td>
-      <td>0.784</td>
-      <td>0.773</td>
-      <td>0.832</td>
+      <td>0.808</td>
+      <td>0.967</td>
+      <td>0.806</td>
+      <td>0.792</td>
+      <td>0.785</td>
+      <td>0.841</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.578</td>
-      <td>0.646</td>
+      <td>0.561</td>
+      <td>0.612</td>
+      <td>0.787</td>
+      <td>0.615</td>
+      <td>0.798</td>
+      <td>0.784</td>
+      <td>0.799</td>
       <td>0.819</td>
-      <td>0.637</td>
-      <td>0.811</td>
-      <td>0.817</td>
-      <td>0.841</td>
-      <td>0.840</td>
     </tr>
   </tbody>
 </table>
@@ -1020,25 +1020,25 @@ similar analysis.</p>
       <th>Accuracy</th>
       <td>0.99</td>
       <td>0.991</td>
-      <td>0.990</td>
-      <td>0.827</td>
+      <td>0.991</td>
+      <td>0.815</td>
       <td>0.987</td>
-      <td>0.77</td>
+      <td>0.765</td>
+      <td>0.765</td>
       <td>0.770</td>
-      <td>0.781</td>
-      <td>0.841</td>
+      <td>0.835</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.50</td>
-      <td>0.527</td>
-      <td>0.553</td>
-      <td>0.801</td>
-      <td>0.557</td>
-      <td>0.82</td>
-      <td>0.756</td>
-      <td>0.794</td>
-      <td>0.792</td>
+      <td>0.564</td>
+      <td>0.602</td>
+      <td>0.832</td>
+      <td>0.578</td>
+      <td>0.812</td>
+      <td>0.807</td>
+      <td>0.799</td>
+      <td>0.816</td>
     </tr>
   </tbody>
 </table>
@@ -1050,8 +1050,8 @@ previous discussion. However, we can observe that the strategy
 <cite>RandomForestClassifier</cite>. A resampling is indeed required. The most effective
 method remains the <cite>BalancedBaggingClassifier</cite> using a GBDT as a base
 learner.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  35.721 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  59 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  34.796 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  58 MB</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-applications-plot-impact-imbalanced-classes-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/5062100d8bac1656efa83b45d062ada3/plot_impact_imbalanced_classes.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_impact_imbalanced_classes.py</span></code></a></p>

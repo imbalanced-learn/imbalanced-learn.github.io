@@ -185,7 +185,7 @@
             
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-over-sampling-plot-comparison-over-sampling-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-over-sampling-plot-comparison-over-sampling-py"><span class="std std-ref">here</span></a>     to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="comparison-of-the-different-over-sampling-algorithms">
 <span id="sphx-glr-auto-examples-over-sampling-plot-comparison-over-sampling-py"></span><h1>Comparison of the different over-sampling algorithms<a class="headerlink" href="#comparison-of-the-different-over-sampling-algorithms" title="Permalink to this headline">¶</a></h1>
@@ -194,20 +194,20 @@ different over-sampling algorithms available in the imbalanced-learn package.</p
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: Guillaume Lemaitre &lt;g.lemaitre58@gmail.com&gt;</span>
 <span class="c1"># License: MIT</span>
 
-<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <a href="https://docs.python.org/3/library/collections.html#collections.Counter" title="View documentation for collections.Counter"><span class="n">Counter</span></a>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <a href="https://docs.python.org/3/library/collections.html#collections.Counter" title="View documentation for collections.Counter"><span class="n">Counter</span></a>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html#sklearn.datasets.make_classification" title="View documentation for sklearn.datasets.make_classification"><span class="n">make_classification</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="View documentation for sklearn.svm.LinearSVC"><span class="n">LinearSVC</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html#sklearn.datasets.make_classification" title="View documentation for sklearn.datasets.make_classification"><span class="n">make_classification</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="View documentation for sklearn.svm.LinearSVC"><span class="n">LinearSVC</span></a>
 
-<span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="k">import</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="View documentation for imblearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a>
-<span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="k">import</span> <a href="../../generated/imblearn.over_sampling.ADASYN.html#imblearn.over_sampling.ADASYN" title="View documentation for imblearn.over_sampling.ADASYN"><span class="n">ADASYN</span></a>
-<span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="k">import</span> <span class="p">(</span><a href="../../generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="View documentation for imblearn.over_sampling.SMOTE"><span class="n">SMOTE</span></a><span class="p">,</span> <a href="../../generated/imblearn.over_sampling.BorderlineSMOTE.html#imblearn.over_sampling.BorderlineSMOTE" title="View documentation for imblearn.over_sampling.BorderlineSMOTE"><span class="n">BorderlineSMOTE</span></a><span class="p">,</span> <a href="../../generated/imblearn.over_sampling.SVMSMOTE.html#imblearn.over_sampling.SVMSMOTE" title="View documentation for imblearn.over_sampling.SVMSMOTE"><span class="n">SVMSMOTE</span></a><span class="p">,</span> <a href="../../generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="View documentation for imblearn.over_sampling.SMOTENC"><span class="n">SMOTENC</span></a><span class="p">,</span>
+<span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="kn">import</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="View documentation for imblearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <a href="../../generated/imblearn.over_sampling.ADASYN.html#imblearn.over_sampling.ADASYN" title="View documentation for imblearn.over_sampling.ADASYN"><span class="n">ADASYN</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <span class="p">(</span><a href="../../generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="View documentation for imblearn.over_sampling.SMOTE"><span class="n">SMOTE</span></a><span class="p">,</span> <a href="../../generated/imblearn.over_sampling.BorderlineSMOTE.html#imblearn.over_sampling.BorderlineSMOTE" title="View documentation for imblearn.over_sampling.BorderlineSMOTE"><span class="n">BorderlineSMOTE</span></a><span class="p">,</span> <a href="../../generated/imblearn.over_sampling.SVMSMOTE.html#imblearn.over_sampling.SVMSMOTE" title="View documentation for imblearn.over_sampling.SVMSMOTE"><span class="n">SVMSMOTE</span></a><span class="p">,</span> <a href="../../generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="View documentation for imblearn.over_sampling.SMOTENC"><span class="n">SMOTENC</span></a><span class="p">,</span>
                                     <a href="../../generated/imblearn.over_sampling.KMeansSMOTE.html#imblearn.over_sampling.KMeansSMOTE" title="View documentation for imblearn.over_sampling.KMeansSMOTE"><span class="n">KMeansSMOTE</span></a><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="k">import</span> <a href="../../generated/imblearn.over_sampling.RandomOverSampler.html#imblearn.over_sampling.RandomOverSampler" title="View documentation for imblearn.over_sampling.RandomOverSampler"><span class="n">RandomOverSampler</span></a>
-<span class="kn">from</span> <span class="nn">imblearn.base</span> <span class="k">import</span> <span class="n">BaseSampler</span>
+<span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <a href="../../generated/imblearn.over_sampling.RandomOverSampler.html#imblearn.over_sampling.RandomOverSampler" title="View documentation for imblearn.over_sampling.RandomOverSampler"><span class="n">RandomOverSampler</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.base</span> <span class="kn">import</span> <span class="n">BaseSampler</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="vm">__doc__</span><span class="p">)</span>
 </pre></div>
@@ -447,7 +447,7 @@ SMOTE-NC will generate categories for the categorical features:
  [&#39;B&#39; 0.3327240726719727 2]]
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  32.399 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  32.384 seconds)</p>
 <p><strong>Estimated memory usage:</strong>  15 MB</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-over-sampling-plot-comparison-over-sampling-py">
 <div class="sphx-glr-download docutils container">

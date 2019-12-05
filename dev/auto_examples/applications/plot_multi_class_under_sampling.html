@@ -178,7 +178,7 @@
             
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-applications-plot-multi-class-under-sampling-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-applications-plot-multi-class-under-sampling-py"><span class="std std-ref">here</span></a>     to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="multiclass-classification-with-under-sampling">
 <span id="sphx-glr-auto-examples-applications-plot-multi-class-under-sampling-py"></span><h1>Multiclass classification with under-sampling<a class="headerlink" href="#multiclass-classification-with-under-sampling" title="Permalink to this headline">¶</a></h1>
@@ -205,16 +205,16 @@ avg / total       0.95      0.94      0.96      0.94      0.95      0.90        
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: Guillaume Lemaitre &lt;g.lemaitre58@gmail.com&gt;</span>
 <span class="c1"># License: MIT</span>
 
-<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <a href="https://docs.python.org/3/library/collections.html#collections.Counter" title="View documentation for collections.Counter"><span class="n">Counter</span></a>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <a href="https://docs.python.org/3/library/collections.html#collections.Counter" title="View documentation for collections.Counter"><span class="n">Counter</span></a>
 
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris" title="View documentation for sklearn.datasets.load_iris"><span class="n">load_iris</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="View documentation for sklearn.svm.LinearSVC"><span class="n">LinearSVC</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="View documentation for sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris" title="View documentation for sklearn.datasets.load_iris"><span class="n">load_iris</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="View documentation for sklearn.svm.LinearSVC"><span class="n">LinearSVC</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="View documentation for sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
 
-<span class="kn">from</span> <span class="nn">imblearn.datasets</span> <span class="k">import</span> <a href="../../generated/imblearn.datasets.make_imbalance.html#imblearn.datasets.make_imbalance" title="View documentation for imblearn.datasets.make_imbalance"><span class="n">make_imbalance</span></a>
-<span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="k">import</span> <a href="../../generated/imblearn.under_sampling.NearMiss.html#imblearn.under_sampling.NearMiss" title="View documentation for imblearn.under_sampling.NearMiss"><span class="n">NearMiss</span></a>
-<span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="k">import</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="View documentation for imblearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a>
-<span class="kn">from</span> <span class="nn">imblearn.metrics</span> <span class="k">import</span> <a href="../../generated/imblearn.metrics.classification_report_imbalanced.html#imblearn.metrics.classification_report_imbalanced" title="View documentation for imblearn.metrics.classification_report_imbalanced"><span class="n">classification_report_imbalanced</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.datasets</span> <span class="kn">import</span> <a href="../../generated/imblearn.datasets.make_imbalance.html#imblearn.datasets.make_imbalance" title="View documentation for imblearn.datasets.make_imbalance"><span class="n">make_imbalance</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <a href="../../generated/imblearn.under_sampling.NearMiss.html#imblearn.under_sampling.NearMiss" title="View documentation for imblearn.under_sampling.NearMiss"><span class="n">NearMiss</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="kn">import</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="View documentation for imblearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.metrics</span> <span class="kn">import</span> <a href="../../generated/imblearn.metrics.classification_report_imbalanced.html#imblearn.metrics.classification_report_imbalanced" title="View documentation for imblearn.metrics.classification_report_imbalanced"><span class="n">classification_report_imbalanced</span></a>
 
 <span class="nb">print</span><span class="p">(</span><span class="vm">__doc__</span><span class="p">)</span>
 
@@ -241,7 +241,7 @@ avg / total       0.95      0.94      0.96      0.94      0.95      0.90        
 <span class="nb">print</span><span class="p">(</span><a href="../../generated/imblearn.metrics.classification_report_imbalanced.html#imblearn.metrics.classification_report_imbalanced" title="View documentation for imblearn.metrics.classification_report_imbalanced"><span class="n">classification_report_imbalanced</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_test</span></a><span class="p">,</span> <a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="View documentation for imblearn.pipeline.Pipeline"><span class="n">pipeline</span></a><span class="o">.</span><span class="n">predict</span><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">X_test</span></a><span class="p">)))</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.257 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.181 seconds)</p>
 <p><strong>Estimated memory usage:</strong>  8 MB</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-applications-plot-multi-class-under-sampling-py">
 <div class="sphx-glr-download docutils container">

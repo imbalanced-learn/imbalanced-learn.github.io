@@ -184,7 +184,7 @@
             
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-ensemble-plot-comparison-ensemble-classifier-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-ensemble-plot-comparison-ensemble-classifier-py"><span class="std std-ref">here</span></a>     to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="comparison-of-ensembling-classifiers-internally-using-sampling">
 <span id="sphx-glr-auto-examples-ensemble-plot-comparison-ensemble-classifier-py"></span><h1>Comparison of ensembling classifiers internally using sampling<a class="headerlink" href="#comparison-of-ensembling-classifiers-internally-using-sampling" title="Permalink to this headline">¶</a></h1>
@@ -203,21 +203,21 @@ set.</p>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="View documentation for sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.BaggingClassifier.html#sklearn.ensemble.BaggingClassifier" title="View documentation for sklearn.ensemble.BaggingClassifier"><span class="n">BaggingClassifier</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="View documentation for sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier" title="View documentation for sklearn.ensemble.AdaBoostClassifier"><span class="n">AdaBoostClassifier</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier" title="View documentation for sklearn.tree.DecisionTreeClassifier"><span class="n">DecisionTreeClassifier</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html#sklearn.metrics.confusion_matrix" title="View documentation for sklearn.metrics.confusion_matrix"><span class="n">confusion_matrix</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html#sklearn.metrics.balanced_accuracy_score" title="View documentation for sklearn.metrics.balanced_accuracy_score"><span class="n">balanced_accuracy_score</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="View documentation for sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.BaggingClassifier.html#sklearn.ensemble.BaggingClassifier" title="View documentation for sklearn.ensemble.BaggingClassifier"><span class="n">BaggingClassifier</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="View documentation for sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier" title="View documentation for sklearn.ensemble.AdaBoostClassifier"><span class="n">AdaBoostClassifier</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier" title="View documentation for sklearn.tree.DecisionTreeClassifier"><span class="n">DecisionTreeClassifier</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html#sklearn.metrics.confusion_matrix" title="View documentation for sklearn.metrics.confusion_matrix"><span class="n">confusion_matrix</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html#sklearn.metrics.balanced_accuracy_score" title="View documentation for sklearn.metrics.balanced_accuracy_score"><span class="n">balanced_accuracy_score</span></a>
 
-<span class="kn">from</span> <span class="nn">imblearn.datasets</span> <span class="k">import</span> <a href="../../generated/imblearn.datasets.fetch_datasets.html#imblearn.datasets.fetch_datasets" title="View documentation for imblearn.datasets.fetch_datasets"><span class="n">fetch_datasets</span></a>
-<span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="k">import</span> <a href="../../generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="View documentation for imblearn.ensemble.BalancedBaggingClassifier"><span class="n">BalancedBaggingClassifier</span></a>
-<span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="k">import</span> <a href="../../generated/imblearn.ensemble.BalancedRandomForestClassifier.html#imblearn.ensemble.BalancedRandomForestClassifier" title="View documentation for imblearn.ensemble.BalancedRandomForestClassifier"><span class="n">BalancedRandomForestClassifier</span></a>
-<span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="k">import</span> <a href="../../generated/imblearn.ensemble.EasyEnsembleClassifier.html#imblearn.ensemble.EasyEnsembleClassifier" title="View documentation for imblearn.ensemble.EasyEnsembleClassifier"><span class="n">EasyEnsembleClassifier</span></a>
-<span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="k">import</span> <a href="../../generated/imblearn.ensemble.RUSBoostClassifier.html#imblearn.ensemble.RUSBoostClassifier" title="View documentation for imblearn.ensemble.RUSBoostClassifier"><span class="n">RUSBoostClassifier</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.datasets</span> <span class="kn">import</span> <a href="../../generated/imblearn.datasets.fetch_datasets.html#imblearn.datasets.fetch_datasets" title="View documentation for imblearn.datasets.fetch_datasets"><span class="n">fetch_datasets</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="kn">import</span> <a href="../../generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="View documentation for imblearn.ensemble.BalancedBaggingClassifier"><span class="n">BalancedBaggingClassifier</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="kn">import</span> <a href="../../generated/imblearn.ensemble.BalancedRandomForestClassifier.html#imblearn.ensemble.BalancedRandomForestClassifier" title="View documentation for imblearn.ensemble.BalancedRandomForestClassifier"><span class="n">BalancedRandomForestClassifier</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="kn">import</span> <a href="../../generated/imblearn.ensemble.EasyEnsembleClassifier.html#imblearn.ensemble.EasyEnsembleClassifier" title="View documentation for imblearn.ensemble.EasyEnsembleClassifier"><span class="n">EasyEnsembleClassifier</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="kn">import</span> <a href="../../generated/imblearn.ensemble.RUSBoostClassifier.html#imblearn.ensemble.RUSBoostClassifier" title="View documentation for imblearn.ensemble.RUSBoostClassifier"><span class="n">RUSBoostClassifier</span></a>
 
-<span class="kn">from</span> <span class="nn">imblearn.metrics</span> <span class="k">import</span> <a href="../../generated/imblearn.metrics.geometric_mean_score.html#imblearn.metrics.geometric_mean_score" title="View documentation for imblearn.metrics.geometric_mean_score"><span class="n">geometric_mean_score</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.metrics</span> <span class="kn">import</span> <a href="../../generated/imblearn.metrics.geometric_mean_score.html#imblearn.metrics.geometric_mean_score" title="View documentation for imblearn.metrics.geometric_mean_score"><span class="n">geometric_mean_score</span></a>
 
 
 <span class="k">def</span> <span class="nf">plot_confusion_matrix</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">ax</span></a><span class="p">,</span>
@@ -289,8 +289,8 @@ imbalanced set.</p>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Decision tree classifier performance:
 Balanced accuracy: 0.75 - Geometric mean 0.72
-[[1388   64]
- [  72   85]]
+[[1376   76]
+ [  70   87]]
 </pre></div>
 </div>
 </div>
@@ -437,18 +437,18 @@ achieve worse performance.</p>
 <img alt="../../_images/sphx_glr_plot_comparison_ensemble_classifier_004.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_comparison_ensemble_classifier_004.png" />
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Easy ensemble classifier performance:
-Balanced accuracy: 0.86 - Geometric mean 0.86
-[[1213  239]
- [  19  138]]
+Balanced accuracy: 0.84 - Geometric mean 0.84
+[[1210  242]
+ [  23  134]]
 
 RUSBoost classifier performance:
-Balanced accuracy: 0.86 - Geometric mean 0.86
-[[1219  233]
- [  20  137]]
+Balanced accuracy: 0.85 - Geometric mean 0.85
+[[1220  232]
+ [  21  136]]
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  10.695 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  208 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  10.598 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  242 MB</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-ensemble-plot-comparison-ensemble-classifier-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/e6a7a05ca7f23057d0cbfa6b70cc7982/plot_comparison_ensemble_classifier.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_comparison_ensemble_classifier.py</span></code></a></p>

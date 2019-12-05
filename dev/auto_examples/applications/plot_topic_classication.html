@@ -183,7 +183,7 @@
             
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-applications-plot-topic-classication-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-applications-plot-topic-classication-py"><span class="std std-ref">here</span></a>     to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="example-of-topic-classification-in-text-documents">
 <span id="sphx-glr-auto-examples-applications-plot-topic-classication-py"></span><h1>Example of topic classification in text documents<a class="headerlink" href="#example-of-topic-classification-in-text-documents" title="Permalink to this headline">¶</a></h1>
@@ -193,16 +193,16 @@ that for some data sets, the imbalanced ratio is more significant.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: Guillaume Lemaitre &lt;g.lemaitre58@gmail.com&gt;</span>
 <span class="c1"># License: MIT</span>
 
-<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <a href="https://docs.python.org/3/library/collections.html#collections.Counter" title="View documentation for collections.Counter"><span class="n">Counter</span></a>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <a href="https://docs.python.org/3/library/collections.html#collections.Counter" title="View documentation for collections.Counter"><span class="n">Counter</span></a>
 
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_20newsgroups.html#sklearn.datasets.fetch_20newsgroups" title="View documentation for sklearn.datasets.fetch_20newsgroups"><span class="n">fetch_20newsgroups</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html#sklearn.feature_extraction.text.TfidfVectorizer" title="View documentation for sklearn.feature_extraction.text.TfidfVectorizer"><span class="n">TfidfVectorizer</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html#sklearn.naive_bayes.MultinomialNB" title="View documentation for sklearn.naive_bayes.MultinomialNB"><span class="n">MultinomialNB</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_20newsgroups.html#sklearn.datasets.fetch_20newsgroups" title="View documentation for sklearn.datasets.fetch_20newsgroups"><span class="n">fetch_20newsgroups</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html#sklearn.feature_extraction.text.TfidfVectorizer" title="View documentation for sklearn.feature_extraction.text.TfidfVectorizer"><span class="n">TfidfVectorizer</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html#sklearn.naive_bayes.MultinomialNB" title="View documentation for sklearn.naive_bayes.MultinomialNB"><span class="n">MultinomialNB</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a>
 
-<span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="k">import</span> <a href="../../generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="View documentation for imblearn.under_sampling.RandomUnderSampler"><span class="n">RandomUnderSampler</span></a>
-<span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a> <span class="k">as</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="View documentation for imblearn.pipeline.make_pipeline"><span class="n">make_pipeline_imb</span></a>
-<span class="kn">from</span> <span class="nn">imblearn.metrics</span> <span class="k">import</span> <a href="../../generated/imblearn.metrics.classification_report_imbalanced.html#imblearn.metrics.classification_report_imbalanced" title="View documentation for imblearn.metrics.classification_report_imbalanced"><span class="n">classification_report_imbalanced</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <a href="../../generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="View documentation for imblearn.under_sampling.RandomUnderSampler"><span class="n">RandomUnderSampler</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a> <span class="k">as</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="View documentation for imblearn.pipeline.make_pipeline"><span class="n">make_pipeline_imb</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.metrics</span> <span class="kn">import</span> <a href="../../generated/imblearn.metrics.classification_report_imbalanced.html#imblearn.metrics.classification_report_imbalanced" title="View documentation for imblearn.metrics.classification_report_imbalanced"><span class="n">classification_report_imbalanced</span></a>
 
 <span class="nb">print</span><span class="p">(</span><span class="vm">__doc__</span><span class="p">)</span>
 </pre></div>
@@ -288,16 +288,16 @@ slightly better.</p>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>                   pre       rec       spe        f1       geo       iba       sup
 
-          0       0.71      0.90      0.88      0.79      0.89      0.80       319
-          1       0.98      0.83      0.99      0.90      0.91      0.81       389
-          2       0.93      0.91      0.97      0.92      0.94      0.88       394
-          3       0.79      0.74      0.95      0.76      0.84      0.69       251
+          0       0.70      0.90      0.88      0.79      0.89      0.80       319
+          1       0.97      0.87      0.99      0.92      0.93      0.85       389
+          2       0.96      0.90      0.98      0.93      0.94      0.87       394
+          3       0.80      0.73      0.96      0.77      0.84      0.69       251
 
-avg / total       0.87      0.85      0.95      0.85      0.90      0.80      1353
+avg / total       0.87      0.86      0.96      0.86      0.91      0.81      1353
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  14.941 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  105 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  10.772 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  109 MB</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-applications-plot-topic-classication-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/c0d0b4cd2c639116b7998044d3a67ea3/plot_topic_classication.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_topic_classication.py</span></code></a></p>

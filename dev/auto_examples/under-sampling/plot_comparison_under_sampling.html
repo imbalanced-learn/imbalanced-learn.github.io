@@ -185,7 +185,7 @@
             
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-under-sampling-plot-comparison-under-sampling-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-under-sampling-plot-comparison-under-sampling-py"><span class="std std-ref">here</span></a>     to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="comparison-of-the-different-under-sampling-algorithms">
 <span id="sphx-glr-auto-examples-under-sampling-plot-comparison-under-sampling-py"></span><h1>Comparison of the different under-sampling algorithms<a class="headerlink" href="#comparison-of-the-different-under-sampling-algorithms" title="Permalink to this headline">¶</a></h1>
@@ -194,17 +194,17 @@ different under-sampling algorithms available in the imbalanced-learn package.</
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: Guillaume Lemaitre &lt;g.lemaitre58@gmail.com&gt;</span>
 <span class="c1"># License: MIT</span>
 
-<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <a href="https://docs.python.org/3/library/collections.html#collections.Counter" title="View documentation for collections.Counter"><span class="n">Counter</span></a>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <a href="https://docs.python.org/3/library/collections.html#collections.Counter" title="View documentation for collections.Counter"><span class="n">Counter</span></a>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html#sklearn.datasets.make_classification" title="View documentation for sklearn.datasets.make_classification"><span class="n">make_classification</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="View documentation for sklearn.svm.LinearSVC"><span class="n">LinearSVC</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="View documentation for sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html#sklearn.datasets.make_classification" title="View documentation for sklearn.datasets.make_classification"><span class="n">make_classification</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="View documentation for sklearn.svm.LinearSVC"><span class="n">LinearSVC</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="View documentation for sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a>
 
-<span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="k">import</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="View documentation for imblearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a>
-<span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="k">import</span> <span class="p">(</span><a href="../../generated/imblearn.under_sampling.ClusterCentroids.html#imblearn.under_sampling.ClusterCentroids" title="View documentation for imblearn.under_sampling.ClusterCentroids"><span class="n">ClusterCentroids</span></a><span class="p">,</span> <a href="../../generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="View documentation for imblearn.under_sampling.RandomUnderSampler"><span class="n">RandomUnderSampler</span></a><span class="p">,</span>
+<span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="kn">import</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="View documentation for imblearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <span class="p">(</span><a href="../../generated/imblearn.under_sampling.ClusterCentroids.html#imblearn.under_sampling.ClusterCentroids" title="View documentation for imblearn.under_sampling.ClusterCentroids"><span class="n">ClusterCentroids</span></a><span class="p">,</span> <a href="../../generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="View documentation for imblearn.under_sampling.RandomUnderSampler"><span class="n">RandomUnderSampler</span></a><span class="p">,</span>
                                      <a href="../../generated/imblearn.under_sampling.NearMiss.html#imblearn.under_sampling.NearMiss" title="View documentation for imblearn.under_sampling.NearMiss"><span class="n">NearMiss</span></a><span class="p">,</span>
                                      <a href="../../generated/imblearn.under_sampling.InstanceHardnessThreshold.html#imblearn.under_sampling.InstanceHardnessThreshold" title="View documentation for imblearn.under_sampling.InstanceHardnessThreshold"><span class="n">InstanceHardnessThreshold</span></a><span class="p">,</span>
                                      <a href="../../generated/imblearn.under_sampling.CondensedNearestNeighbour.html#imblearn.under_sampling.CondensedNearestNeighbour" title="View documentation for imblearn.under_sampling.CondensedNearestNeighbour"><span class="n">CondensedNearestNeighbour</span></a><span class="p">,</span>
@@ -280,11 +280,6 @@ centroids of the cluster found.</p>
 </pre></div>
 </div>
 <img alt="../../_images/sphx_glr_plot_comparison_under_sampling_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_comparison_under_sampling_001.png" />
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/svm/_base.py:947: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
-  &quot;the number of iterations.&quot;, ConvergenceWarning)
-</pre></div>
-</div>
 </div>
 <div class="section" id="prototype-selection-under-sampling-by-selecting-existing-samples">
 <h2>Prototype selection: under-sampling by selecting existing samples<a class="headerlink" href="#prototype-selection-under-sampling-by-selecting-existing-samples" title="Permalink to this headline">¶</a></h2>
@@ -433,8 +428,8 @@ removed.</p>
 </pre></div>
 </div>
 <img alt="../../_images/sphx_glr_plot_comparison_under_sampling_006.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_comparison_under_sampling_006.png" />
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  11.062 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  24 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  10.741 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  46 MB</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-under-sampling-plot-comparison-under-sampling-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/80f61a39373735d0a361ada6fe956e22/plot_comparison_under_sampling.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_comparison_under_sampling.py</span></code></a></p>

@@ -179,7 +179,7 @@
             
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-plot-outlier-rejections-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-plot-outlier-rejections-py"><span class="std std-ref">here</span></a>     to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="customized-sampler-to-implement-an-outlier-rejections-estimator">
 <span id="sphx-glr-auto-examples-plot-outlier-rejections-py"></span><h1>Customized sampler to implement an outlier rejections estimator<a class="headerlink" href="#customized-sampler-to-implement-an-outlier-rejections-estimator" title="Permalink to this headline">¶</a></h1>
@@ -193,13 +193,13 @@ the current scikit-learn pipeline.</p>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_moons.html#sklearn.datasets.make_moons" title="View documentation for sklearn.datasets.make_moons"><span class="n">make_moons</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html#sklearn.datasets.make_blobs" title="View documentation for sklearn.datasets.make_blobs"><span class="n">make_blobs</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html#sklearn.ensemble.IsolationForest" title="View documentation for sklearn.ensemble.IsolationForest"><span class="n">IsolationForest</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="View documentation for sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html#sklearn.metrics.classification_report" title="View documentation for sklearn.metrics.classification_report"><span class="n">classification_report</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_moons.html#sklearn.datasets.make_moons" title="View documentation for sklearn.datasets.make_moons"><span class="n">make_moons</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html#sklearn.datasets.make_blobs" title="View documentation for sklearn.datasets.make_blobs"><span class="n">make_blobs</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html#sklearn.ensemble.IsolationForest" title="View documentation for sklearn.ensemble.IsolationForest"><span class="n">IsolationForest</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="View documentation for sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html#sklearn.metrics.classification_report" title="View documentation for sklearn.metrics.classification_report"><span class="n">classification_report</span></a>
 
-<span class="kn">from</span> <span class="nn">imblearn</span> <span class="k">import</span> <a href="../generated/imblearn.FunctionSampler.html#imblearn.FunctionSampler" title="View documentation for imblearn.FunctionSampler"><span class="n">FunctionSampler</span></a>
-<span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="k">import</span> <a href="../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="View documentation for imblearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a>
+<span class="kn">from</span> <span class="nn">imblearn</span> <span class="kn">import</span> <a href="../generated/imblearn.FunctionSampler.html#imblearn.FunctionSampler" title="View documentation for imblearn.FunctionSampler"><span class="n">FunctionSampler</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="kn">import</span> <a href="../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="View documentation for imblearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a>
 
 <span class="nb">print</span><span class="p">(</span><span class="vm">__doc__</span><span class="p">)</span>
 
@@ -251,7 +251,7 @@ noise.</p>
 <div class="section" id="how-to-use-the-imblearn-functionsampler">
 <h2>How to use the <a class="reference internal" href="../generated/imblearn.FunctionSampler.html#imblearn.FunctionSampler" title="imblearn.FunctionSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.FunctionSampler</span></code></a><a class="headerlink" href="#how-to-use-the-imblearn-functionsampler" title="Permalink to this headline">¶</a></h2>
 <p>We first define a function which will use
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html#sklearn.ensemble.IsolationForest" title="(in scikit-learn v0.21.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.ensemble.IsolationForest</span></code></a> to eliminate some outliers from
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html#sklearn.ensemble.IsolationForest" title="(in scikit-learn v0.22)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.ensemble.IsolationForest</span></code></a> to eliminate some outliers from
 our dataset during training. The function passed to the
 <a class="reference internal" href="../generated/imblearn.FunctionSampler.html#imblearn.FunctionSampler" title="imblearn.FunctionSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.FunctionSampler</span></code></a> will be called when using the method
 <code class="docutils literal notranslate"><span class="pre">fit_resample</span></code>.</p>
@@ -309,7 +309,7 @@ weighted avg       1.00      1.00      1.00       100
 weighted avg       0.92      0.90      0.90       100
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.999 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.450 seconds)</p>
 <p><strong>Estimated memory usage:</strong>  20 MB</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plot-outlier-rejections-py">
 <div class="sphx-glr-download docutils container">
