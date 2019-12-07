@@ -1,3 +1,24 @@
+.. _changes_0_6_1:
+
+Version 0.6.1
+==============
+
+**In Development**
+
+This is a bug-fix release to primarily resolve some packaging issues in version
+0.6.0. It also includes minor documentation improvements and some bug fixes.
+
+Changelog
+---------
+
+Bug fixes
+.........
+
+- Fix a bug in :class:`imblearn.ensemble.BalancedRandomForestClassifier`
+  leading to a wrong number of samples used during fitting due `max_samples`
+  and therefore a bad computation of the OOB score.
+  :pr:`656` by :user:`Guillaume Lemaitre <glemaitre>`.
+
 .. _changes_0_6:
 
 Version 0.6.0
@@ -18,6 +39,7 @@ scikit-learn:
 The following samplers will give different results due to change linked to
 the random state internal usage:
 
+- :class:`imblearn.over_sampling.ADASYN`
 - :class:`imblearn.over_sampling.SMOTENC`
 
 Bug fixes
@@ -79,13 +101,14 @@ Enhancement
   :pr:`644` by :user:`Guillaume Lemaitre <glemaitre>`.
 
 - The samples generation in
+  :class:`imblearn.over_sampling.ADASYN`,
   :class:`imblearn.over_sampling.SMOTE`,
   :class:`imblearn.over_sampling.BorderlineSMOTE`,
   :class:`imblearn.over_sampling.SVMSMOTE`,
   :class:`imblearn.over_sampling.KMeansSMOTE`,
   :class:`imblearn.over_sampling.SMOTENC` is now vectorize with giving
   an additional speed-up when `X` in sparse.
-  :pr:`596` by :user:`Matt Eding <MattEding>`.
+  :pr:`596` and :pr:`649` by :user:`Matt Eding <MattEding>`.
 
 Deprecation
 ...........
