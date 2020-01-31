@@ -34,8 +34,10 @@
   
   <link rel="stylesheet" href="../_static/css/imbalanced-learn.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
   <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-dataframe.css" type="text/css" />
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -196,7 +198,7 @@
 <h1><a class="reference internal" href="../api.html#module-imblearn.metrics" title="imblearn.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code></a>.make_index_balanced_accuracy<a class="headerlink" href="#imblearn-metrics-make-index-balanced-accuracy" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="imblearn.metrics.make_index_balanced_accuracy">
-<code class="sig-prename descclassname">imblearn.metrics.</code><code class="sig-name descname">make_index_balanced_accuracy</code><span class="sig-paren">(</span><em class="sig-param">alpha=0.1</em>, <em class="sig-param">squared=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2b86e72/imblearn/metrics/_classification.py#L680"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.metrics.make_index_balanced_accuracy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">imblearn.metrics.</code><code class="sig-name descname">make_index_balanced_accuracy</code><span class="sig-paren">(</span><em class="sig-param">alpha=0.1</em>, <em class="sig-param">squared=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b9a290a/imblearn/metrics/_classification.py#L680"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.metrics.make_index_balanced_accuracy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Balance any scoring function using the index balanced accuracy</p>
 <p>This factory function wraps scoring function to express it as the
 index balanced accuracy (IBA). You need to use this function to
@@ -235,7 +237,7 @@ with different levels of class imbalance.” Knowledge-Based Systems 25.1
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.metrics</span> <span class="kn">import</span> <span class="n">geometric_mean_score</span> <span class="k">as</span> <span class="n">gmean</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.metrics</span> <span class="kn">import</span> <span class="n">geometric_mean_score</span> <span class="k">as</span> <span class="n">gmean</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.metrics</span> <span class="kn">import</span> <span class="n">make_index_balanced_accuracy</span> <span class="k">as</span> <span class="n">iba</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gmean</span> <span class="o">=</span> <span class="n">iba</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">True</span><span class="p">)(</span><span class="n">gmean</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
