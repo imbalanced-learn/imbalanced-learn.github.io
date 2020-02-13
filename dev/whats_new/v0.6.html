@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Version 0.6.1 &mdash; imbalanced-learn 0.7.0.dev0 documentation</title>
+  <title>Version 0.6.2 &mdash; imbalanced-learn 0.7.0.dev0 documentation</title>
   
 
   
@@ -154,7 +154,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Version 0.6.1</li>
+      <li>Version 0.6.2</li>
     
     
 
@@ -166,13 +166,26 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="version-0-6-1">
-<span id="changes-0-6-1"></span><h1>Version 0.6.1<a class="headerlink" href="#version-0-6-1" title="Permalink to this headline">¶</a></h1>
-<p><strong>In Development</strong></p>
-<p>This is a bug-fix release to primarily resolve some packaging issues in version
-0.6.0. It also includes minor documentation improvements and some bug fixes.</p>
+  <div class="section" id="version-0-6-2">
+<span id="changes-0-6-2"></span><h1>Version 0.6.2<a class="headerlink" href="#version-0-6-2" title="Permalink to this headline">¶</a></h1>
+<p>This is a bug-fix release to resolve some issues regarding the handling the
+input and the output format of the arrays.</p>
 <div class="section" id="changelog">
 <h2>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Allow column vectors to be passed as targets.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/673">#673</a> by <a class="reference external" href="https://github.com/chkoar">Christos Aridas</a>.</p></li>
+<li><p>Better input/output handling for pandas, numpy and plain lists.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/681">#681</a> by <a class="reference external" href="https://github.com/chkoar">Christos Aridas</a>.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="version-0-6-1">
+<span id="changes-0-6-1"></span><h1>Version 0.6.1<a class="headerlink" href="#version-0-6-1" title="Permalink to this headline">¶</a></h1>
+<p>This is a bug-fix release to primarily resolve some packaging issues in version
+0.6.0. It also includes minor documentation improvements and some bug fixes.</p>
+<div class="section" id="id1">
+<h2>Changelog<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="bug-fixes">
 <h3>Bug fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -186,8 +199,8 @@ and therefore a bad computation of the OOB score.
 </div>
 <div class="section" id="version-0-6-0">
 <span id="changes-0-6"></span><h1>Version 0.6.0<a class="headerlink" href="#version-0-6-0" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id1">
-<h2>Changelog<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h2>Changelog<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="changed-models">
 <h3>Changed models<a class="headerlink" href="#changed-models" title="Permalink to this headline">¶</a></h3>
 <p>The following models might give some different sampling due to changes in
@@ -203,8 +216,8 @@ the random state internal usage:</p>
 <li><p><a class="reference internal" href="../generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.SMOTENC</span></code></a></p></li>
 </ul>
 </div>
-<div class="section" id="id2">
-<h3>Bug fixes<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>Bug fixes<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference internal" href="../generated/imblearn.under_sampling.InstanceHardnessThreshold.html#imblearn.under_sampling.InstanceHardnessThreshold" title="imblearn.under_sampling.InstanceHardnessThreshold"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.under_sampling.InstanceHardnessThreshold</span></code></a> now take into
 account the <code class="docutils literal notranslate"><span class="pre">random_state</span></code> and will give deterministic results. In addition,
