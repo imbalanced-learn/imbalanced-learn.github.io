@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>imblearn.combine.SMOTEENN &mdash; imbalanced-learn 0.6.1 documentation</title>
+  <title>imblearn.combine.SMOTEENN &mdash; imbalanced-learn 0.6.2 documentation</title>
   
 
   
@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script type="text/javascript" src="../_static/js/copybutton.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/js/copybutton.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -34,8 +34,10 @@
   
   <link rel="stylesheet" href="../_static/css/imbalanced-learn.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
   <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-dataframe.css" type="text/css" />
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -64,7 +66,7 @@
             
             
               <div class="version">
-                0.6.1
+                0.6.2
               </div>
             
           
@@ -192,7 +194,7 @@
 <h1><a class="reference internal" href="../api.html#module-imblearn.combine" title="imblearn.combine"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.combine</span></code></a>.SMOTEENN<a class="headerlink" href="#imblearn-combine-smoteenn" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="imblearn.combine.SMOTEENN">
-<em class="property">class </em><code class="sig-prename descclassname">imblearn.combine.</code><code class="sig-name descname">SMOTEENN</code><span class="sig-paren">(</span><em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">random_state=None</em>, <em class="sig-param">smote=None</em>, <em class="sig-param">enn=None</em>, <em class="sig-param">n_jobs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/e766a16/imblearn/combine/_smote_enn.py#L25"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.combine.SMOTEENN" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">imblearn.combine.</code><code class="sig-name descname">SMOTEENN</code><span class="sig-paren">(</span><em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">random_state=None</em>, <em class="sig-param">smote=None</em>, <em class="sig-param">enn=None</em>, <em class="sig-param">n_jobs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/6b3c5ae/imblearn/combine/_smote_enn.py#L25"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.combine.SMOTEENN" title="Permalink to this definition">¶</a></dt>
 <dd><p>Over-sampling using SMOTE and cleaning using ENN.</p>
 <p>Combine over- and under-sampling using SMOTE and Edited Nearest Neighbours.</p>
 <p>Read more in the <a class="reference internal" href="../combine.html#combine"><span class="std std-ref">User Guide</span></a>.</p>
@@ -282,7 +284,7 @@ Sigkdd Explorations Newsletter 6 (1), 20-29, 2004.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.combine</span> <span class="kn">import</span> <span class="n">SMOTEENN</span> 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">class_sep</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
@@ -298,13 +300,13 @@ Sigkdd Explorations Newsletter 6 (1), 20-29, 2004.</p>
 </div>
 <dl class="method">
 <dt id="imblearn.combine.SMOTEENN.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">random_state=None</em>, <em class="sig-param">smote=None</em>, <em class="sig-param">enn=None</em>, <em class="sig-param">n_jobs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/e766a16/imblearn/combine/_smote_enn.py#L88"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.combine.SMOTEENN.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">random_state=None</em>, <em class="sig-param">smote=None</em>, <em class="sig-param">enn=None</em>, <em class="sig-param">n_jobs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/6b3c5ae/imblearn/combine/_smote_enn.py#L88"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.combine.SMOTEENN.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="imblearn.combine.SMOTEENN.fit">
-<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/e766a16/imblearn/base.py#L28"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.combine.SMOTEENN.fit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/6b3c5ae/imblearn/base.py#L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.combine.SMOTEENN.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check inputs and statistics of the sampler.</p>
 <p>You should use <code class="docutils literal notranslate"><span class="pre">fit_resample</span></code> in all cases.</p>
 <dl class="field-list simple">
@@ -327,7 +329,7 @@ Sigkdd Explorations Newsletter 6 (1), 20-29, 2004.</p>
 
 <dl class="method">
 <dt id="imblearn.combine.SMOTEENN.fit_resample">
-<code class="sig-name descname">fit_resample</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/e766a16/imblearn/base.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.combine.SMOTEENN.fit_resample" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit_resample</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/6b3c5ae/imblearn/base.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.combine.SMOTEENN.fit_resample" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resample the dataset.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -342,7 +344,7 @@ Sigkdd Explorations Newsletter 6 (1), 20-29, 2004.</p>
 <dd class="field-even"><dl class="simple">
 <dt><strong>X_resampled</strong><span class="classifier">{array-like, dataframe, sparse matrix} of shape                 (n_samples_new, n_features)</span></dt><dd><p>The array containing the resampled data.</p>
 </dd>
-<dt><strong>y_resampled</strong><span class="classifier">array-like of shape (n_samples_new,)</span></dt><dd><p>The corresponding label of <cite>X_resampled</cite>.</p>
+<dt><strong>y_resampled</strong><span class="classifier">array-like of shape (n_samples_new,)</span></dt><dd><p>The corresponding label of <code class="docutils literal notranslate"><span class="pre">X_resampled</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -351,7 +353,7 @@ Sigkdd Explorations Newsletter 6 (1), 20-29, 2004.</p>
 
 <dl class="method">
 <dt id="imblearn.combine.SMOTEENN.fit_sample">
-<code class="sig-name descname">fit_sample</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/e766a16/imblearn/base.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.combine.SMOTEENN.fit_sample" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit_sample</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/6b3c5ae/imblearn/base.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.combine.SMOTEENN.fit_sample" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resample the dataset.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -366,7 +368,7 @@ Sigkdd Explorations Newsletter 6 (1), 20-29, 2004.</p>
 <dd class="field-even"><dl class="simple">
 <dt><strong>X_resampled</strong><span class="classifier">{array-like, dataframe, sparse matrix} of shape                 (n_samples_new, n_features)</span></dt><dd><p>The array containing the resampled data.</p>
 </dd>
-<dt><strong>y_resampled</strong><span class="classifier">array-like of shape (n_samples_new,)</span></dt><dd><p>The corresponding label of <cite>X_resampled</cite>.</p>
+<dt><strong>y_resampled</strong><span class="classifier">array-like of shape (n_samples_new,)</span></dt><dd><p>The corresponding label of <code class="docutils literal notranslate"><span class="pre">X_resampled</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -375,7 +377,7 @@ Sigkdd Explorations Newsletter 6 (1), 20-29, 2004.</p>
 
 <dl class="method">
 <dt id="imblearn.combine.SMOTEENN.get_params">
-<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">deep=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/e766a16/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L173"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.combine.SMOTEENN.get_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">deep=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/6b3c5ae/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L180"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.combine.SMOTEENN.get_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -396,7 +398,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="method">
 <dt id="imblearn.combine.SMOTEENN.set_params">
-<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/e766a16/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L205"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.combine.SMOTEENN.set_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/6b3c5ae/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L212"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.combine.SMOTEENN.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The latter have parameters of the form

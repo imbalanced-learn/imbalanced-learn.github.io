@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Fitting model on imbalanced datasets and how to fight bias &mdash; imbalanced-learn 0.6.1 documentation</title>
+  <title>Fitting model on imbalanced datasets and how to fight bias &mdash; imbalanced-learn 0.6.2 documentation</title>
   
 
   
@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-        <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/copybutton.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -34,8 +34,10 @@
   
   <link rel="stylesheet" href="../../_static/css/imbalanced-learn.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-dataframe.css" type="text/css" />
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -64,7 +66,7 @@
             
             
               <div class="version">
-                0.6.1
+                0.6.2
               </div>
             
           
@@ -110,9 +112,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#strategies-to-learn-from-an-imbalanced-dataset">Strategies to learn from an imbalanced dataset</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#dummy-baseline">Dummy baseline</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#linear-classifier-baseline">Linear classifier baseline</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#use-class-weight">Use <cite>class_weight</cite></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#use-class-weight">Use <code class="docutils literal notranslate"><span class="pre">class_weight</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#resample-the-training-set-during-learning">Resample the training set during learning</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#use-of-balancedrandomforestclassifier-and-balancedbaggingclassifier">Use of <cite>BalancedRandomForestClassifier</cite> and <cite>BalancedBaggingClassifier</cite></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#use-of-balancedrandomforestclassifier-and-balancedbaggingclassifier">Use of <code class="docutils literal notranslate"><span class="pre">BalancedRandomForestClassifier</span></code> and <code class="docutils literal notranslate"><span class="pre">BalancedBaggingClassifier</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#increase-imbalanced-ratio">Increase imbalanced ratio</a></li>
@@ -205,9 +207,9 @@ these negative effects.</p>
 </div>
 <div class="section" id="problem-definition">
 <h2>Problem definition<a class="headerlink" href="#problem-definition" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_openml.html#sklearn.datasets.fetch_openml" title="View documentation for sklearn.datasets.fetch_openml"><span class="n">fetch_openml</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_openml.html#sklearn.datasets.fetch_openml" title="sklearn.datasets.fetch_openml" class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function"><span class="n">fetch_openml</span></a>
 
-<span class="n">df</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_openml.html#sklearn.datasets.fetch_openml" title="View documentation for sklearn.datasets.fetch_openml"><span class="n">fetch_openml</span></a><span class="p">(</span><span class="s1">&#39;adult&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_openml.html#sklearn.datasets.fetch_openml" title="sklearn.datasets.fetch_openml" class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function"><span class="n">fetch_openml</span></a><span class="p">(</span><span class="s1">&#39;adult&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="c1"># we are dropping the following features:</span>
 <span class="c1"># - &quot;fnlwgt&quot;: this feature was created while studying the &quot;adult&quot; dataset.</span>
 <span class="c1">#   Thus, we will not use this feature which is not acquired during the survey.</span>
@@ -229,12 +231,12 @@ Name: class, dtype: int64
 </div>
 <p>This dataset is only slightly imbalanced. To better highlight the effect of
 learning from an imbalanced dataset, we will increase its ratio to 30:1</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imblearn.datasets</span> <span class="kn">import</span> <a href="../../generated/imblearn.datasets.make_imbalance.html#imblearn.datasets.make_imbalance" title="View documentation for imblearn.datasets.make_imbalance"><span class="n">make_imbalance</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imblearn.datasets</span> <span class="kn">import</span> <a href="../../generated/imblearn.datasets.make_imbalance.html#imblearn.datasets.make_imbalance" title="imblearn.datasets.make_imbalance" class="sphx-glr-backref-module-imblearn-datasets sphx-glr-backref-type-py-function"><span class="n">make_imbalance</span></a>
 
-<a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">ratio</span></a> <span class="o">=</span> <span class="mi">30</span>
-<span class="n">df_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <a href="../../generated/imblearn.datasets.make_imbalance.html#imblearn.datasets.make_imbalance" title="View documentation for imblearn.datasets.make_imbalance"><span class="n">make_imbalance</span></a><span class="p">(</span>
+<a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ratio</span></a> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">df_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <a href="../../generated/imblearn.datasets.make_imbalance.html#imblearn.datasets.make_imbalance" title="imblearn.datasets.make_imbalance" class="sphx-glr-backref-module-imblearn-datasets sphx-glr-backref-type-py-function"><span class="n">make_imbalance</span></a><span class="p">(</span>
     <span class="n">df</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sampling_strategy</span><span class="o">=</span><span class="p">{</span>
-        <span class="n">classes_count</span><span class="o">.</span><span class="n">idxmin</span><span class="p">():</span> <span class="n">classes_count</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">//</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">ratio</span></a>
+        <span class="n">classes_count</span><span class="o">.</span><span class="n">idxmin</span><span class="p">():</span> <span class="n">classes_count</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">//</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ratio</span></a>
     <span class="p">}</span>
 <span class="p">)</span>
 <span class="n">y_res</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -249,19 +251,19 @@ Name: class, dtype: int64
 <p>For the rest of the notebook, we will make a single split to get training
 and testing data. Note that you should use cross-validation to have an
 estimate of the performance variation in practice.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="View documentation for sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split" class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function"><span class="n">train_test_split</span></a>
 
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="View documentation for sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a><span class="p">(</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split" class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function"><span class="n">train_test_split</span></a><span class="p">(</span>
     <span class="n">df_res</span><span class="p">,</span> <span class="n">y_res</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_res</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 <p>As a baseline, we could use a classifier which will always predict the
 majority class independently of the features provided.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.dummy</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier" title="View documentation for sklearn.dummy.DummyClassifier"><span class="n">DummyClassifier</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.dummy</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier" title="sklearn.dummy.DummyClassifier" class="sphx-glr-backref-module-sklearn-dummy sphx-glr-backref-type-py-class"><span class="n">DummyClassifier</span></a>
 
-<a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier" title="View documentation for sklearn.dummy.DummyClassifier"><span class="n">dummy_clf</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier" title="View documentation for sklearn.dummy.DummyClassifier"><span class="n">DummyClassifier</span></a><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;most_frequent&quot;</span><span class="p">)</span>
-<span class="n">score</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier.fit" title="View documentation for sklearn.dummy.DummyClassifier.fit"><span class="n">dummy_clf</span><span class="o">.</span><span class="n">fit</span></a><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier" title="sklearn.dummy.DummyClassifier" class="sphx-glr-backref-module-sklearn-dummy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">dummy_clf</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier" title="sklearn.dummy.DummyClassifier" class="sphx-glr-backref-module-sklearn-dummy sphx-glr-backref-type-py-class"><span class="n">DummyClassifier</span></a><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;most_frequent&quot;</span><span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier.fit" title="sklearn.dummy.DummyClassifier.fit" class="sphx-glr-backref-module-sklearn-dummy sphx-glr-backref-type-py-method"><span class="n">dummy_clf</span><span class="o">.</span><span class="n">fit</span></a><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy score of a dummy classifier: </span><span class="si">{score:.3f}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -271,10 +273,10 @@ majority class independently of the features provided.</p>
 </div>
 <p>Instead of using the accuracy, we can use the balanced accuracy which will
 take into account the balancing issue.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html#sklearn.metrics.balanced_accuracy_score" title="View documentation for sklearn.metrics.balanced_accuracy_score"><span class="n">balanced_accuracy_score</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html#sklearn.metrics.balanced_accuracy_score" title="sklearn.metrics.balanced_accuracy_score" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">balanced_accuracy_score</span></a>
 
-<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_pred</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier.predict" title="View documentation for sklearn.dummy.DummyClassifier.predict"><span class="n">dummy_clf</span><span class="o">.</span><span class="n">predict</span></a><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">score</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html#sklearn.metrics.balanced_accuracy_score" title="View documentation for sklearn.metrics.balanced_accuracy_score"><span class="n">balanced_accuracy_score</span></a><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_pred</span></a><span class="p">)</span>
+<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier.predict" title="sklearn.dummy.DummyClassifier.predict" class="sphx-glr-backref-module-sklearn-dummy sphx-glr-backref-type-py-method"><span class="n">dummy_clf</span><span class="o">.</span><span class="n">predict</span></a><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html#sklearn.metrics.balanced_accuracy_score" title="sklearn.metrics.balanced_accuracy_score" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">balanced_accuracy_score</span></a><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred</span></a><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Balanced accuracy score of a dummy classifier: </span><span class="si">{score:.3f}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -292,15 +294,15 @@ in a dataframe</p>
 
 
 <span class="k">def</span> <span class="nf">evaluate_classifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="n">clf_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">Pipeline</span></a>
+    <span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Pipeline</span></a>
     <span class="k">if</span> <span class="n">clf_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">Pipeline</span></a><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Pipeline</span></a><span class="p">):</span>
             <span class="n">clf_name</span> <span class="o">=</span> <span class="n">clf</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">clf_name</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
     <span class="n">acc</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-    <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_pred</span></a> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-    <span class="n">bal_acc</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html#sklearn.metrics.balanced_accuracy_score" title="View documentation for sklearn.metrics.balanced_accuracy_score"><span class="n">balanced_accuracy_score</span></a><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">y_pred</span></a><span class="p">)</span>
+    <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred</span></a> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">bal_acc</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html#sklearn.metrics.balanced_accuracy_score" title="sklearn.metrics.balanced_accuracy_score" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">balanced_accuracy_score</span></a><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred</span></a><span class="p">)</span>
     <span class="n">clf_score</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
         <span class="p">{</span><span class="n">clf_name</span><span class="p">:</span> <span class="p">[</span><span class="n">acc</span><span class="p">,</span> <span class="n">bal_acc</span><span class="p">]},</span>
         <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Accuracy&#39;</span><span class="p">,</span> <span class="s1">&#39;Balanced accuracy&#39;</span><span class="p">]</span>
@@ -316,8 +318,8 @@ in a dataframe</p>
 <div class="section" id="dummy-baseline">
 <h3>Dummy baseline<a class="headerlink" href="#dummy-baseline" title="Permalink to this headline">¶</a></h3>
 <p>Before to train a real machine learning model, we can store the results
-obtained with our <cite>DummyClassifier</cite>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_scores</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">evaluate_classifier</span></a><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier" title="View documentation for sklearn.dummy.DummyClassifier"><span class="n">dummy_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;Dummy&quot;</span><span class="p">)</span>
+obtained with our <code class="docutils literal notranslate"><span class="pre">DummyClassifier</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_scores</span> <span class="o">=</span> <span class="n">evaluate_classifier</span><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier" title="sklearn.dummy.DummyClassifier" class="sphx-glr-backref-module-sklearn-dummy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">dummy_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;Dummy&quot;</span><span class="p">)</span>
 <span class="n">df_scores</span>
 </pre></div>
 </div>
@@ -358,22 +360,22 @@ obtained with our <cite>DummyClassifier</cite>.</p>
 <br /></div>
 <div class="section" id="linear-classifier-baseline">
 <h3>Linear classifier baseline<a class="headerlink" href="#linear-classifier-baseline" title="Permalink to this headline">¶</a></h3>
-<p>We will create a machine learning pipeline using a <cite>LogisticRegression</cite>
+<p>We will create a machine learning pipeline using a <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code>
 classifier. In this regard, we will need to one-hot encode the categorical
 columns and standardized the numerical columns before to inject the data into
-the <cite>LogisticRegression</cite> classifier.</p>
+the <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code> classifier.</p>
 <p>First, we define our numerical and categorical pipelines.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html#sklearn.impute.SimpleImputer" title="View documentation for sklearn.impute.SimpleImputer"><span class="n">SimpleImputer</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" title="View documentation for sklearn.preprocessing.StandardScaler"><span class="n">StandardScaler</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder" title="View documentation for sklearn.preprocessing.OneHotEncoder"><span class="n">OneHotEncoder</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html#sklearn.impute.SimpleImputer" title="sklearn.impute.SimpleImputer" class="sphx-glr-backref-module-sklearn-impute sphx-glr-backref-type-py-class"><span class="n">SimpleImputer</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" title="sklearn.preprocessing.StandardScaler" class="sphx-glr-backref-module-sklearn-preprocessing sphx-glr-backref-type-py-class"><span class="n">StandardScaler</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder" title="sklearn.preprocessing.OneHotEncoder" class="sphx-glr-backref-module-sklearn-preprocessing sphx-glr-backref-type-py-class"><span class="n">OneHotEncoder</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="sklearn.pipeline.make_pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline</span></a>
 
-<a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">num_pipe</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a><span class="p">(</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" title="View documentation for sklearn.preprocessing.StandardScaler"><span class="n">StandardScaler</span></a><span class="p">(),</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html#sklearn.impute.SimpleImputer" title="View documentation for sklearn.impute.SimpleImputer"><span class="n">SimpleImputer</span></a><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="n">add_indicator</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">num_pipe</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="sklearn.pipeline.make_pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline</span></a><span class="p">(</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" title="sklearn.preprocessing.StandardScaler" class="sphx-glr-backref-module-sklearn-preprocessing sphx-glr-backref-type-py-class"><span class="n">StandardScaler</span></a><span class="p">(),</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html#sklearn.impute.SimpleImputer" title="sklearn.impute.SimpleImputer" class="sphx-glr-backref-module-sklearn-impute sphx-glr-backref-type-py-class"><span class="n">SimpleImputer</span></a><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="n">add_indicator</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="p">)</span>
-<a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">cat_pipe</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a><span class="p">(</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html#sklearn.impute.SimpleImputer" title="View documentation for sklearn.impute.SimpleImputer"><span class="n">SimpleImputer</span></a><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;constant&quot;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="s2">&quot;missing&quot;</span><span class="p">),</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder" title="View documentation for sklearn.preprocessing.OneHotEncoder"><span class="n">OneHotEncoder</span></a><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cat_pipe</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="sklearn.pipeline.make_pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline</span></a><span class="p">(</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html#sklearn.impute.SimpleImputer" title="sklearn.impute.SimpleImputer" class="sphx-glr-backref-module-sklearn-impute sphx-glr-backref-type-py-class"><span class="n">SimpleImputer</span></a><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;constant&quot;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="s2">&quot;missing&quot;</span><span class="p">),</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder" title="sklearn.preprocessing.OneHotEncoder" class="sphx-glr-backref-module-sklearn-preprocessing sphx-glr-backref-type-py-class"><span class="n">OneHotEncoder</span></a><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -381,24 +383,24 @@ the <cite>LogisticRegression</cite> classifier.</p>
 columns to the categorical pipeline and the numerical columns to the
 numerical pipeline</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">ColumnTransformer</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">make_column_selector</span> <span class="k">as</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html#sklearn.compose.make_column_selector" title="View documentation for sklearn.compose.make_column_selector"><span class="n">selector</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="sklearn.compose.ColumnTransformer" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-class"><span class="n">ColumnTransformer</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">make_column_selector</span> <span class="k">as</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html#sklearn.compose.make_column_selector" title="sklearn.compose.make_column_selector" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-function"><span class="n">selector</span></a>
 
-<a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">preprocessor_linear</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">ColumnTransformer</span></a><span class="p">(</span>
-    <span class="p">[(</span><span class="s2">&quot;num-pipe&quot;</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">num_pipe</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html#sklearn.compose.make_column_selector" title="View documentation for sklearn.compose.make_column_selector"><span class="n">selector</span></a><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">)),</span>
-     <span class="p">(</span><span class="s2">&quot;cat-pipe&quot;</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">cat_pipe</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html#sklearn.compose.make_column_selector" title="View documentation for sklearn.compose.make_column_selector"><span class="n">selector</span></a><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">CategoricalDtype</span><span class="p">))],</span>
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="sklearn.compose.ColumnTransformer" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">preprocessor_linear</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="sklearn.compose.ColumnTransformer" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-class"><span class="n">ColumnTransformer</span></a><span class="p">(</span>
+    <span class="p">[(</span><span class="s2">&quot;num-pipe&quot;</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">num_pipe</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html#sklearn.compose.make_column_selector" title="sklearn.compose.make_column_selector" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-function"><span class="n">selector</span></a><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.generic.html#numpy.generic" title="numpy.generic" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class"><span class="n">np</span><span class="o">.</span><span class="n">number</span></a><span class="p">)),</span>
+     <span class="p">(</span><span class="s2">&quot;cat-pipe&quot;</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cat_pipe</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html#sklearn.compose.make_column_selector" title="sklearn.compose.make_column_selector" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-function"><span class="n">selector</span></a><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">CategoricalDtype</span><span class="p">))],</span>
     <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>Finally, we connect our preprocessor with our <cite>LogisticRegression</cite>. We can
+<p>Finally, we connect our preprocessor with our <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code>. We can
 then evaluate our model.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="View documentation for sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression" class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class"><span class="n">LogisticRegression</span></a>
 
-<a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="View documentation for imblearn.pipeline.Pipeline"><span class="n">lr_clf</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a><span class="p">(</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">preprocessor_linear</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="View documentation for sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="imblearn.pipeline.Pipeline" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">lr_clf</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="sklearn.pipeline.make_pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline</span></a><span class="p">(</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="sklearn.compose.ColumnTransformer" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">preprocessor_linear</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression" class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class"><span class="n">LogisticRegression</span></a><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="p">)</span>
-<span class="n">df_scores</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">evaluate_classifier</span></a><span class="p">(</span><a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="View documentation for imblearn.pipeline.Pipeline"><span class="n">lr_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;LR&quot;</span><span class="p">)</span>
+<span class="n">df_scores</span> <span class="o">=</span> <span class="n">evaluate_classifier</span><span class="p">(</span><a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="imblearn.pipeline.Pipeline" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">lr_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;LR&quot;</span><span class="p">)</span>
 <span class="n">df_scores</span>
 </pre></div>
 </div>
@@ -433,7 +435,7 @@ then evaluate our model.</p>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.572</td>
+      <td>0.570</td>
     </tr>
   </tbody>
 </table>
@@ -442,28 +444,28 @@ then evaluate our model.</p>
 <br /><p>We can see that our linear model is learning slightly better than our dummy
 baseline. However, it is impacted by the class imbalance.</p>
 <p>We can verify that something similar is happening with a tree-based model
-such as <cite>RandomForestClassifier</cite>. With this type of classifier, we will not
+such as <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code>. With this type of classifier, we will not
 need to scale the numerical data, and we will only need to ordinal encode the
 categorical data.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html#sklearn.preprocessing.OrdinalEncoder" title="View documentation for sklearn.preprocessing.OrdinalEncoder"><span class="n">OrdinalEncoder</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="View documentation for sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html#sklearn.preprocessing.OrdinalEncoder" title="sklearn.preprocessing.OrdinalEncoder" class="sphx-glr-backref-module-sklearn-preprocessing sphx-glr-backref-type-py-class"><span class="n">OrdinalEncoder</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier" class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class"><span class="n">RandomForestClassifier</span></a>
 
-<a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">cat_pipe</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a><span class="p">(</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html#sklearn.impute.SimpleImputer" title="View documentation for sklearn.impute.SimpleImputer"><span class="n">SimpleImputer</span></a><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;constant&quot;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="s2">&quot;missing&quot;</span><span class="p">),</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html#sklearn.preprocessing.OrdinalEncoder" title="View documentation for sklearn.preprocessing.OrdinalEncoder"><span class="n">OrdinalEncoder</span></a><span class="p">()</span>
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cat_pipe</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="sklearn.pipeline.make_pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline</span></a><span class="p">(</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html#sklearn.impute.SimpleImputer" title="sklearn.impute.SimpleImputer" class="sphx-glr-backref-module-sklearn-impute sphx-glr-backref-type-py-class"><span class="n">SimpleImputer</span></a><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;constant&quot;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="s2">&quot;missing&quot;</span><span class="p">),</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html#sklearn.preprocessing.OrdinalEncoder" title="sklearn.preprocessing.OrdinalEncoder" class="sphx-glr-backref-module-sklearn-preprocessing sphx-glr-backref-type-py-class"><span class="n">OrdinalEncoder</span></a><span class="p">()</span>
 <span class="p">)</span>
 
-<a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">preprocessor_tree</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">ColumnTransformer</span></a><span class="p">(</span>
-    <span class="p">[(</span><span class="s2">&quot;num-pipe&quot;</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">num_pipe</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html#sklearn.compose.make_column_selector" title="View documentation for sklearn.compose.make_column_selector"><span class="n">selector</span></a><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">)),</span>
-     <span class="p">(</span><span class="s2">&quot;cat-pipe&quot;</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">cat_pipe</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html#sklearn.compose.make_column_selector" title="View documentation for sklearn.compose.make_column_selector"><span class="n">selector</span></a><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">CategoricalDtype</span><span class="p">))],</span>
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="sklearn.compose.ColumnTransformer" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">preprocessor_tree</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="sklearn.compose.ColumnTransformer" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-class"><span class="n">ColumnTransformer</span></a><span class="p">(</span>
+    <span class="p">[(</span><span class="s2">&quot;num-pipe&quot;</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">num_pipe</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html#sklearn.compose.make_column_selector" title="sklearn.compose.make_column_selector" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-function"><span class="n">selector</span></a><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.generic.html#numpy.generic" title="numpy.generic" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class"><span class="n">np</span><span class="o">.</span><span class="n">number</span></a><span class="p">)),</span>
+     <span class="p">(</span><span class="s2">&quot;cat-pipe&quot;</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cat_pipe</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html#sklearn.compose.make_column_selector" title="sklearn.compose.make_column_selector" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-function"><span class="n">selector</span></a><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">CategoricalDtype</span><span class="p">))],</span>
     <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span>
 <span class="p">)</span>
 
-<a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">rf_clf</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a><span class="p">(</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">preprocessor_tree</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="View documentation for sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rf_clf</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="sklearn.pipeline.make_pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline</span></a><span class="p">(</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="sklearn.compose.ColumnTransformer" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">preprocessor_tree</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier" class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class"><span class="n">RandomForestClassifier</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="p">)</span>
 
-<span class="n">df_scores</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">evaluate_classifier</span></a><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">rf_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;RF&quot;</span><span class="p">)</span>
+<span class="n">df_scores</span> <span class="o">=</span> <span class="n">evaluate_classifier</span><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rf_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;RF&quot;</span><span class="p">)</span>
 <span class="n">df_scores</span>
 </pre></div>
 </div>
@@ -500,29 +502,29 @@ categorical data.</p>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.572</td>
-      <td>0.622</td>
+      <td>0.570</td>
+      <td>0.646</td>
     </tr>
   </tbody>
 </table>
 </div>
 <br />
-<br /><p>The <cite>RandomForestClassifier</cite> is as well affected by the class imbalanced,
+<br /><p>The <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code> is as well affected by the class imbalanced,
 slightly less than the linear model. Now, we will present different approach
 to improve the performance of these 2 models.</p>
 </div>
 <div class="section" id="use-class-weight">
-<h3>Use <cite>class_weight</cite><a class="headerlink" href="#use-class-weight" title="Permalink to this headline">¶</a></h3>
-<p>Most of the models in <cite>scikit-learn</cite> have a parameter <cite>class_weight</cite>. This
+<h3>Use <code class="docutils literal notranslate"><span class="pre">class_weight</span></code><a class="headerlink" href="#use-class-weight" title="Permalink to this headline">¶</a></h3>
+<p>Most of the models in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> have a parameter <code class="docutils literal notranslate"><span class="pre">class_weight</span></code>. This
 parameter will affect the computation of the loss in linear model or the
 criterion in the tree-based model to penalize differently a false
 classification from the minority and majority class. We can set
-<cite>class_weight=”balanced”</cite> such that the weight applied is inversely
+<code class="docutils literal notranslate"><span class="pre">class_weight=&quot;balanced&quot;</span></code> such that the weight applied is inversely
 proportional to the class frequency. We test this parametrization in both
 linear model and tree-based model.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="View documentation for imblearn.pipeline.Pipeline"><span class="n">lr_clf</span></a><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">logisticregression__class_weight</span><span class="o">=</span><span class="s2">&quot;balanced&quot;</span><span class="p">)</span>
-<span class="n">df_scores</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">evaluate_classifier</span></a><span class="p">(</span>
-    <a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="View documentation for imblearn.pipeline.Pipeline"><span class="n">lr_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;LR with class weight&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline.set_params" title="imblearn.pipeline.Pipeline.set_params" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-method"><span class="n">lr_clf</span><span class="o">.</span><span class="n">set_params</span></a><span class="p">(</span><span class="n">logisticregression__class_weight</span><span class="o">=</span><span class="s2">&quot;balanced&quot;</span><span class="p">)</span>
+<span class="n">df_scores</span> <span class="o">=</span> <span class="n">evaluate_classifier</span><span class="p">(</span>
+    <a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="imblearn.pipeline.Pipeline" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">lr_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;LR with class weight&quot;</span>
 <span class="p">)</span>
 <span class="n">df_scores</span>
 </pre></div>
@@ -557,22 +559,22 @@ linear model and tree-based model.</p>
       <td>0.968</td>
       <td>0.971</td>
       <td>0.972</td>
-      <td>0.800</td>
+      <td>0.799</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.572</td>
-      <td>0.622</td>
-      <td>0.816</td>
+      <td>0.570</td>
+      <td>0.646</td>
+      <td>0.789</td>
     </tr>
   </tbody>
 </table>
 </div>
 <br />
-<br /><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline.set_params" title="View documentation for sklearn.pipeline.Pipeline.set_params"><span class="n">rf_clf</span><span class="o">.</span><span class="n">set_params</span></a><span class="p">(</span><span class="n">randomforestclassifier__class_weight</span><span class="o">=</span><span class="s2">&quot;balanced&quot;</span><span class="p">)</span>
-<span class="n">df_scores</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">evaluate_classifier</span></a><span class="p">(</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">rf_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;RF with class weight&quot;</span>
+<br /><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline.set_params" title="sklearn.pipeline.Pipeline.set_params" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-method"><span class="n">rf_clf</span><span class="o">.</span><span class="n">set_params</span></a><span class="p">(</span><span class="n">randomforestclassifier__class_weight</span><span class="o">=</span><span class="s2">&quot;balanced&quot;</span><span class="p">)</span>
+<span class="n">df_scores</span> <span class="o">=</span> <span class="n">evaluate_classifier</span><span class="p">(</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rf_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;RF with class weight&quot;</span>
 <span class="p">)</span>
 <span class="n">df_scores</span>
 </pre></div>
@@ -608,42 +610,42 @@ linear model and tree-based model.</p>
       <td>0.968</td>
       <td>0.971</td>
       <td>0.972</td>
-      <td>0.800</td>
+      <td>0.799</td>
       <td>0.965</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.572</td>
-      <td>0.622</td>
-      <td>0.816</td>
-      <td>0.623</td>
+      <td>0.570</td>
+      <td>0.646</td>
+      <td>0.789</td>
+      <td>0.633</td>
     </tr>
   </tbody>
 </table>
 </div>
 <br />
-<br /><p>We can see that using <cite>class_weight</cite> was really effective for the linear
+<br /><p>We can see that using <code class="docutils literal notranslate"><span class="pre">class_weight</span></code> was really effective for the linear
 model, alleviating the issue of learning from imbalanced classes. However,
-the <cite>RandomForestClassifier</cite> is still biased toward the majority class,
+the <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code> is still biased toward the majority class,
 mainly due to the criterion which is not suited enough to fight the class
 imbalance.</p>
 </div>
 <div class="section" id="resample-the-training-set-during-learning">
 <h3>Resample the training set during learning<a class="headerlink" href="#resample-the-training-set-during-learning" title="Permalink to this headline">¶</a></h3>
 <p>Another way is to resample the training set by under-sampling or
-over-sampling some of the samples. <cite>imbalanced-learn</cite> provides some samplers
+over-sampling some of the samples. <code class="docutils literal notranslate"><span class="pre">imbalanced-learn</span></code> provides some samplers
 to do such processing.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a> <span class="k">as</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="View documentation for imblearn.pipeline.make_pipeline"><span class="n">make_pipeline_with_sampler</span></a>
-<span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <a href="../../generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="View documentation for imblearn.under_sampling.RandomUnderSampler"><span class="n">RandomUnderSampler</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="sklearn.pipeline.make_pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline</span></a> <span class="k">as</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="imblearn.pipeline.make_pipeline" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline_with_sampler</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <a href="../../generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="imblearn.under_sampling.RandomUnderSampler" class="sphx-glr-backref-module-imblearn-under_sampling sphx-glr-backref-type-py-class"><span class="n">RandomUnderSampler</span></a>
 
-<a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="View documentation for imblearn.pipeline.Pipeline"><span class="n">lr_clf</span></a> <span class="o">=</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="View documentation for imblearn.pipeline.make_pipeline"><span class="n">make_pipeline_with_sampler</span></a><span class="p">(</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">preprocessor_linear</span></a><span class="p">,</span>
-    <a href="../../generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="View documentation for imblearn.under_sampling.RandomUnderSampler"><span class="n">RandomUnderSampler</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="View documentation for sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="imblearn.pipeline.Pipeline" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">lr_clf</span></a> <span class="o">=</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="imblearn.pipeline.make_pipeline" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline_with_sampler</span></a><span class="p">(</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="sklearn.compose.ColumnTransformer" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">preprocessor_linear</span></a><span class="p">,</span>
+    <a href="../../generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="imblearn.under_sampling.RandomUnderSampler" class="sphx-glr-backref-module-imblearn-under_sampling sphx-glr-backref-type-py-class"><span class="n">RandomUnderSampler</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression" class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class"><span class="n">LogisticRegression</span></a><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="p">)</span>
-<span class="n">df_scores</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">evaluate_classifier</span></a><span class="p">(</span>
-    <a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="View documentation for imblearn.pipeline.Pipeline"><span class="n">lr_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;LR with under-sampling&quot;</span>
+<span class="n">df_scores</span> <span class="o">=</span> <span class="n">evaluate_classifier</span><span class="p">(</span>
+    <a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="imblearn.pipeline.Pipeline" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">lr_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;LR with under-sampling&quot;</span>
 <span class="p">)</span>
 <span class="n">df_scores</span>
 </pre></div>
@@ -680,31 +682,31 @@ to do such processing.</p>
       <td>0.968</td>
       <td>0.971</td>
       <td>0.972</td>
-      <td>0.800</td>
+      <td>0.799</td>
       <td>0.965</td>
       <td>0.797</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.572</td>
-      <td>0.622</td>
-      <td>0.816</td>
-      <td>0.623</td>
-      <td>0.823</td>
+      <td>0.570</td>
+      <td>0.646</td>
+      <td>0.789</td>
+      <td>0.633</td>
+      <td>0.792</td>
     </tr>
   </tbody>
 </table>
 </div>
 <br />
-<br /><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">rf_clf</span></a> <span class="o">=</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="View documentation for imblearn.pipeline.make_pipeline"><span class="n">make_pipeline_with_sampler</span></a><span class="p">(</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">preprocessor_tree</span></a><span class="p">,</span>
-    <a href="../../generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="View documentation for imblearn.under_sampling.RandomUnderSampler"><span class="n">RandomUnderSampler</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="View documentation for sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<br /><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rf_clf</span></a> <span class="o">=</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="imblearn.pipeline.make_pipeline" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline_with_sampler</span></a><span class="p">(</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="sklearn.compose.ColumnTransformer" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">preprocessor_tree</span></a><span class="p">,</span>
+    <a href="../../generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="imblearn.under_sampling.RandomUnderSampler" class="sphx-glr-backref-module-imblearn-under_sampling sphx-glr-backref-type-py-class"><span class="n">RandomUnderSampler</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier" class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class"><span class="n">RandomForestClassifier</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="p">)</span>
 
-<span class="n">df_scores</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">evaluate_classifier</span></a><span class="p">(</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">rf_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;RF with under-sampling&quot;</span>
+<span class="n">df_scores</span> <span class="o">=</span> <span class="n">evaluate_classifier</span><span class="p">(</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rf_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;RF with under-sampling&quot;</span>
 <span class="p">)</span>
 <span class="n">df_scores</span>
 </pre></div>
@@ -742,20 +744,20 @@ to do such processing.</p>
       <td>0.968</td>
       <td>0.971</td>
       <td>0.972</td>
-      <td>0.800</td>
+      <td>0.799</td>
       <td>0.965</td>
       <td>0.797</td>
-      <td>0.803</td>
+      <td>0.781</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.572</td>
-      <td>0.622</td>
-      <td>0.816</td>
-      <td>0.623</td>
-      <td>0.823</td>
-      <td>0.828</td>
+      <td>0.570</td>
+      <td>0.646</td>
+      <td>0.789</td>
+      <td>0.633</td>
+      <td>0.792</td>
+      <td>0.797</td>
     </tr>
   </tbody>
 </table>
@@ -771,20 +773,20 @@ on the current dataset.</p>
 sampling internally.</p>
 </div>
 <div class="section" id="use-of-balancedrandomforestclassifier-and-balancedbaggingclassifier">
-<h3>Use of <cite>BalancedRandomForestClassifier</cite> and <cite>BalancedBaggingClassifier</cite><a class="headerlink" href="#use-of-balancedrandomforestclassifier-and-balancedbaggingclassifier" title="Permalink to this headline">¶</a></h3>
+<h3>Use of <code class="docutils literal notranslate"><span class="pre">BalancedRandomForestClassifier</span></code> and <code class="docutils literal notranslate"><span class="pre">BalancedBaggingClassifier</span></code><a class="headerlink" href="#use-of-balancedrandomforestclassifier-and-balancedbaggingclassifier" title="Permalink to this headline">¶</a></h3>
 <p>We already showed that random under-sampling can be effective on decision
 tree. However, instead of under-sampling once the dataset, one could
 under-sample the original dataset before to take a bootstrap sample. This is
-the base of the <cite>BalancedRandomForestClassifier</cite> and
-<cite>BalancedBaggingClassifier</cite>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="kn">import</span> <a href="../../generated/imblearn.ensemble.BalancedRandomForestClassifier.html#imblearn.ensemble.BalancedRandomForestClassifier" title="View documentation for imblearn.ensemble.BalancedRandomForestClassifier"><span class="n">BalancedRandomForestClassifier</span></a>
+the base of the <code class="docutils literal notranslate"><span class="pre">BalancedRandomForestClassifier</span></code> and
+<code class="docutils literal notranslate"><span class="pre">BalancedBaggingClassifier</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="kn">import</span> <a href="../../generated/imblearn.ensemble.BalancedRandomForestClassifier.html#imblearn.ensemble.BalancedRandomForestClassifier" title="imblearn.ensemble.BalancedRandomForestClassifier" class="sphx-glr-backref-module-imblearn-ensemble sphx-glr-backref-type-py-class"><span class="n">BalancedRandomForestClassifier</span></a>
 
-<a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">rf_clf</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a><span class="p">(</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">preprocessor_tree</span></a><span class="p">,</span>
-    <a href="../../generated/imblearn.ensemble.BalancedRandomForestClassifier.html#imblearn.ensemble.BalancedRandomForestClassifier" title="View documentation for imblearn.ensemble.BalancedRandomForestClassifier"><span class="n">BalancedRandomForestClassifier</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rf_clf</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="sklearn.pipeline.make_pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline</span></a><span class="p">(</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="sklearn.compose.ColumnTransformer" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">preprocessor_tree</span></a><span class="p">,</span>
+    <a href="../../generated/imblearn.ensemble.BalancedRandomForestClassifier.html#imblearn.ensemble.BalancedRandomForestClassifier" title="imblearn.ensemble.BalancedRandomForestClassifier" class="sphx-glr-backref-module-imblearn-ensemble sphx-glr-backref-type-py-class"><span class="n">BalancedRandomForestClassifier</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="p">)</span>
 
-<span class="n">df_scores</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">evaluate_classifier</span></a><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">rf_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;Balanced RF&quot;</span><span class="p">)</span>
+<span class="n">df_scores</span> <span class="o">=</span> <span class="n">evaluate_classifier</span><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rf_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;Balanced RF&quot;</span><span class="p">)</span>
 <span class="n">df_scores</span>
 </pre></div>
 </div>
@@ -822,46 +824,53 @@ the base of the <cite>BalancedRandomForestClassifier</cite> and
       <td>0.968</td>
       <td>0.971</td>
       <td>0.972</td>
-      <td>0.800</td>
+      <td>0.799</td>
       <td>0.965</td>
       <td>0.797</td>
-      <td>0.803</td>
-      <td>0.784</td>
+      <td>0.781</td>
+      <td>0.769</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.572</td>
-      <td>0.622</td>
-      <td>0.816</td>
-      <td>0.623</td>
-      <td>0.823</td>
-      <td>0.828</td>
-      <td>0.831</td>
+      <td>0.570</td>
+      <td>0.646</td>
+      <td>0.789</td>
+      <td>0.633</td>
+      <td>0.792</td>
+      <td>0.797</td>
+      <td>0.811</td>
     </tr>
   </tbody>
 </table>
 </div>
 <br />
-<br /><p>The performance with the <cite>BalancedRandomForestClassifier</cite> is better than
+<br /><p>The performance with the <code class="docutils literal notranslate"><span class="pre">BalancedRandomForestClassifier</span></code> is better than
 applying a single random under-sampling. We will use a gradient-boosting
-classifier within a <cite>BalancedBaggingClassifier</cite>.</p>
+classifier within a <code class="docutils literal notranslate"><span class="pre">BalancedBaggingClassifier</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.experimental</span> <span class="kn">import</span> <span class="n">enable_hist_gradient_boosting</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html#sklearn.ensemble.HistGradientBoostingClassifier" title="View documentation for sklearn.ensemble.HistGradientBoostingClassifier"><span class="n">HistGradientBoostingClassifier</span></a>
-<span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="kn">import</span> <a href="../../generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="View documentation for imblearn.ensemble.BalancedBaggingClassifier"><span class="n">BalancedBaggingClassifier</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html#sklearn.ensemble.HistGradientBoostingClassifier" title="sklearn.ensemble.HistGradientBoostingClassifier" class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class"><span class="n">HistGradientBoostingClassifier</span></a>
+<span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="kn">import</span> <a href="../../generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="imblearn.ensemble.BalancedBaggingClassifier" class="sphx-glr-backref-module-imblearn-ensemble sphx-glr-backref-type-py-class"><span class="n">BalancedBaggingClassifier</span></a>
 
-<a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">bag_clf</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a><span class="p">(</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">preprocessor_tree</span></a><span class="p">,</span>
-    <a href="../../generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="View documentation for imblearn.ensemble.BalancedBaggingClassifier"><span class="n">BalancedBaggingClassifier</span></a><span class="p">(</span>
-        <span class="n">base_estimator</span><span class="o">=</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html#sklearn.ensemble.HistGradientBoostingClassifier" title="View documentation for sklearn.ensemble.HistGradientBoostingClassifier"><span class="n">HistGradientBoostingClassifier</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">bag_clf</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="sklearn.pipeline.make_pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline</span></a><span class="p">(</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="sklearn.compose.ColumnTransformer" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">preprocessor_tree</span></a><span class="p">,</span>
+    <a href="../../generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="imblearn.ensemble.BalancedBaggingClassifier" class="sphx-glr-backref-module-imblearn-ensemble sphx-glr-backref-type-py-class"><span class="n">BalancedBaggingClassifier</span></a><span class="p">(</span>
+        <span class="n">base_estimator</span><span class="o">=</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html#sklearn.ensemble.HistGradientBoostingClassifier" title="sklearn.ensemble.HistGradientBoostingClassifier" class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class"><span class="n">HistGradientBoostingClassifier</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
         <span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span>
     <span class="p">)</span>
 <span class="p">)</span>
 
-<span class="n">df_scores</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">evaluate_classifier</span></a><span class="p">(</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">bag_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;Balanced bagging&quot;</span>
+<span class="n">df_scores</span> <span class="o">=</span> <span class="n">evaluate_classifier</span><span class="p">(</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">bag_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;Balanced bagging&quot;</span>
 <span class="p">)</span>
 <span class="n">df_scores</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/miniconda/envs/testenv/lib/python3.7/site-packages/joblib/externals/loky/process_executor.py:706: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
+  &quot;timeout or by a memory leak.&quot;, UserWarning
+/home/circleci/miniconda/envs/testenv/lib/python3.7/site-packages/joblib/externals/loky/process_executor.py:706: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
+  &quot;timeout or by a memory leak.&quot;, UserWarning
 </pre></div>
 </div>
 <div>
@@ -899,24 +908,24 @@ classifier within a <cite>BalancedBaggingClassifier</cite>.</p>
       <td>0.968</td>
       <td>0.971</td>
       <td>0.972</td>
-      <td>0.800</td>
+      <td>0.799</td>
       <td>0.965</td>
       <td>0.797</td>
-      <td>0.803</td>
-      <td>0.784</td>
-      <td>0.839</td>
+      <td>0.781</td>
+      <td>0.769</td>
+      <td>0.831</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.572</td>
-      <td>0.622</td>
-      <td>0.816</td>
-      <td>0.623</td>
-      <td>0.823</td>
-      <td>0.828</td>
-      <td>0.831</td>
-      <td>0.831</td>
+      <td>0.570</td>
+      <td>0.646</td>
+      <td>0.789</td>
+      <td>0.633</td>
+      <td>0.792</td>
+      <td>0.797</td>
+      <td>0.811</td>
+      <td>0.813</td>
     </tr>
   </tbody>
 </table>
@@ -931,59 +940,66 @@ similar analysis.</p>
 </div>
 <div class="section" id="increase-imbalanced-ratio">
 <h2>Increase imbalanced ratio<a class="headerlink" href="#increase-imbalanced-ratio" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">ratio</span></a> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">df_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <a href="../../generated/imblearn.datasets.make_imbalance.html#imblearn.datasets.make_imbalance" title="View documentation for imblearn.datasets.make_imbalance"><span class="n">make_imbalance</span></a><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ratio</span></a> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">df_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <a href="../../generated/imblearn.datasets.make_imbalance.html#imblearn.datasets.make_imbalance" title="imblearn.datasets.make_imbalance" class="sphx-glr-backref-module-imblearn-datasets sphx-glr-backref-type-py-function"><span class="n">make_imbalance</span></a><span class="p">(</span>
     <span class="n">df</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sampling_strategy</span><span class="o">=</span><span class="p">{</span>
-        <span class="n">classes_count</span><span class="o">.</span><span class="n">idxmin</span><span class="p">():</span> <span class="n">classes_count</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">//</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">ratio</span></a>
+        <span class="n">classes_count</span><span class="o">.</span><span class="n">idxmin</span><span class="p">():</span> <span class="n">classes_count</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">//</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ratio</span></a>
     <span class="p">}</span>
 <span class="p">)</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="View documentation for sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a><span class="p">(</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split" class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function"><span class="n">train_test_split</span></a><span class="p">(</span>
     <span class="n">df_res</span><span class="p">,</span> <span class="n">y_res</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_res</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
 <span class="p">)</span>
 
 <span class="n">df_scores</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="n">df_scores</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">evaluate_classifier</span></a><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier" title="View documentation for sklearn.dummy.DummyClassifier"><span class="n">dummy_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;Dummy&quot;</span><span class="p">)</span>
-<a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="View documentation for imblearn.pipeline.Pipeline"><span class="n">lr_clf</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a><span class="p">(</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">preprocessor_linear</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="View documentation for sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">df_scores</span> <span class="o">=</span> <span class="n">evaluate_classifier</span><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier" title="sklearn.dummy.DummyClassifier" class="sphx-glr-backref-module-sklearn-dummy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">dummy_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;Dummy&quot;</span><span class="p">)</span>
+<a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="imblearn.pipeline.Pipeline" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">lr_clf</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="sklearn.pipeline.make_pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline</span></a><span class="p">(</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="sklearn.compose.ColumnTransformer" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">preprocessor_linear</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression" class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class"><span class="n">LogisticRegression</span></a><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="p">)</span>
-<span class="n">df_scores</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">evaluate_classifier</span></a><span class="p">(</span><a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="View documentation for imblearn.pipeline.Pipeline"><span class="n">lr_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;LR&quot;</span><span class="p">)</span>
-<a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">rf_clf</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a><span class="p">(</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">preprocessor_tree</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="View documentation for sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">df_scores</span> <span class="o">=</span> <span class="n">evaluate_classifier</span><span class="p">(</span><a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="imblearn.pipeline.Pipeline" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">lr_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;LR&quot;</span><span class="p">)</span>
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rf_clf</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="sklearn.pipeline.make_pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline</span></a><span class="p">(</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="sklearn.compose.ColumnTransformer" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">preprocessor_tree</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier" class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class"><span class="n">RandomForestClassifier</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="p">)</span>
-<span class="n">df_scores</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">evaluate_classifier</span></a><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">rf_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;RF&quot;</span><span class="p">)</span>
-<a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="View documentation for imblearn.pipeline.Pipeline"><span class="n">lr_clf</span></a><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">logisticregression__class_weight</span><span class="o">=</span><span class="s2">&quot;balanced&quot;</span><span class="p">)</span>
-<span class="n">df_scores</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">evaluate_classifier</span></a><span class="p">(</span>
-    <a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="View documentation for imblearn.pipeline.Pipeline"><span class="n">lr_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;LR with class weight&quot;</span>
+<span class="n">df_scores</span> <span class="o">=</span> <span class="n">evaluate_classifier</span><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rf_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;RF&quot;</span><span class="p">)</span>
+<a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline.set_params" title="imblearn.pipeline.Pipeline.set_params" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-method"><span class="n">lr_clf</span><span class="o">.</span><span class="n">set_params</span></a><span class="p">(</span><span class="n">logisticregression__class_weight</span><span class="o">=</span><span class="s2">&quot;balanced&quot;</span><span class="p">)</span>
+<span class="n">df_scores</span> <span class="o">=</span> <span class="n">evaluate_classifier</span><span class="p">(</span>
+    <a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="imblearn.pipeline.Pipeline" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">lr_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;LR with class weight&quot;</span>
 <span class="p">)</span>
-<a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline.set_params" title="View documentation for sklearn.pipeline.Pipeline.set_params"><span class="n">rf_clf</span><span class="o">.</span><span class="n">set_params</span></a><span class="p">(</span><span class="n">randomforestclassifier__class_weight</span><span class="o">=</span><span class="s2">&quot;balanced&quot;</span><span class="p">)</span>
-<span class="n">df_scores</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">evaluate_classifier</span></a><span class="p">(</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">rf_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;RF with class weight&quot;</span>
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline.set_params" title="sklearn.pipeline.Pipeline.set_params" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-method"><span class="n">rf_clf</span><span class="o">.</span><span class="n">set_params</span></a><span class="p">(</span><span class="n">randomforestclassifier__class_weight</span><span class="o">=</span><span class="s2">&quot;balanced&quot;</span><span class="p">)</span>
+<span class="n">df_scores</span> <span class="o">=</span> <span class="n">evaluate_classifier</span><span class="p">(</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rf_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;RF with class weight&quot;</span>
 <span class="p">)</span>
-<a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="View documentation for imblearn.pipeline.Pipeline"><span class="n">lr_clf</span></a> <span class="o">=</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="View documentation for imblearn.pipeline.make_pipeline"><span class="n">make_pipeline_with_sampler</span></a><span class="p">(</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">preprocessor_linear</span></a><span class="p">,</span>
-    <a href="../../generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="View documentation for imblearn.under_sampling.RandomUnderSampler"><span class="n">RandomUnderSampler</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="View documentation for sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="imblearn.pipeline.Pipeline" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">lr_clf</span></a> <span class="o">=</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="imblearn.pipeline.make_pipeline" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline_with_sampler</span></a><span class="p">(</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="sklearn.compose.ColumnTransformer" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">preprocessor_linear</span></a><span class="p">,</span>
+    <a href="../../generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="imblearn.under_sampling.RandomUnderSampler" class="sphx-glr-backref-module-imblearn-under_sampling sphx-glr-backref-type-py-class"><span class="n">RandomUnderSampler</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression" class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class"><span class="n">LogisticRegression</span></a><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="p">)</span>
-<span class="n">df_scores</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">evaluate_classifier</span></a><span class="p">(</span>
-    <a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="View documentation for imblearn.pipeline.Pipeline"><span class="n">lr_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;LR with under-sampling&quot;</span>
+<span class="n">df_scores</span> <span class="o">=</span> <span class="n">evaluate_classifier</span><span class="p">(</span>
+    <a href="../../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="imblearn.pipeline.Pipeline" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">lr_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;LR with under-sampling&quot;</span>
 <span class="p">)</span>
-<a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">rf_clf</span></a> <span class="o">=</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="View documentation for imblearn.pipeline.make_pipeline"><span class="n">make_pipeline_with_sampler</span></a><span class="p">(</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">preprocessor_tree</span></a><span class="p">,</span>
-    <a href="../../generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="View documentation for imblearn.under_sampling.RandomUnderSampler"><span class="n">RandomUnderSampler</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="View documentation for sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rf_clf</span></a> <span class="o">=</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="imblearn.pipeline.make_pipeline" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline_with_sampler</span></a><span class="p">(</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="sklearn.compose.ColumnTransformer" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">preprocessor_tree</span></a><span class="p">,</span>
+    <a href="../../generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="imblearn.under_sampling.RandomUnderSampler" class="sphx-glr-backref-module-imblearn-under_sampling sphx-glr-backref-type-py-class"><span class="n">RandomUnderSampler</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier" class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class"><span class="n">RandomForestClassifier</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="p">)</span>
-<span class="n">df_scores</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">evaluate_classifier</span></a><span class="p">(</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">rf_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;RF with under-sampling&quot;</span>
+<span class="n">df_scores</span> <span class="o">=</span> <span class="n">evaluate_classifier</span><span class="p">(</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rf_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;RF with under-sampling&quot;</span>
 <span class="p">)</span>
-<a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">rf_clf</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="View documentation for sklearn.pipeline.make_pipeline"><span class="n">make_pipeline</span></a><span class="p">(</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="View documentation for sklearn.compose.ColumnTransformer"><span class="n">preprocessor_tree</span></a><span class="p">,</span>
-    <a href="../../generated/imblearn.ensemble.BalancedRandomForestClassifier.html#imblearn.ensemble.BalancedRandomForestClassifier" title="View documentation for imblearn.ensemble.BalancedRandomForestClassifier"><span class="n">BalancedRandomForestClassifier</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rf_clf</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="sklearn.pipeline.make_pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline</span></a><span class="p">(</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="sklearn.compose.ColumnTransformer" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">preprocessor_tree</span></a><span class="p">,</span>
+    <a href="../../generated/imblearn.ensemble.BalancedRandomForestClassifier.html#imblearn.ensemble.BalancedRandomForestClassifier" title="imblearn.ensemble.BalancedRandomForestClassifier" class="sphx-glr-backref-module-imblearn-ensemble sphx-glr-backref-type-py-class"><span class="n">BalancedRandomForestClassifier</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="p">)</span>
-<span class="n">df_scores</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">evaluate_classifier</span></a><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">rf_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">)</span>
-<span class="n">df_scores</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">evaluate_classifier</span></a><span class="p">(</span>
-    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="View documentation for sklearn.pipeline.Pipeline"><span class="n">bag_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;Balanced bagging&quot;</span>
+<span class="n">df_scores</span> <span class="o">=</span> <span class="n">evaluate_classifier</span><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rf_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">)</span>
+<span class="n">df_scores</span> <span class="o">=</span> <span class="n">evaluate_classifier</span><span class="p">(</span>
+    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">bag_clf</span></a><span class="p">,</span> <span class="n">df_scores</span><span class="p">,</span> <span class="s2">&quot;Balanced bagging&quot;</span>
 <span class="p">)</span>
 <span class="n">df_scores</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/miniconda/envs/testenv/lib/python3.7/site-packages/joblib/externals/loky/process_executor.py:706: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
+  &quot;timeout or by a memory leak.&quot;, UserWarning
+/home/circleci/miniconda/envs/testenv/lib/python3.7/site-packages/joblib/externals/loky/process_executor.py:706: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
+  &quot;timeout or by a memory leak.&quot;, UserWarning
 </pre></div>
 </div>
 <div>
@@ -1019,26 +1035,26 @@ similar analysis.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.99</td>
-      <td>0.990</td>
       <td>0.991</td>
-      <td>0.810</td>
+      <td>0.991</td>
+      <td>0.809</td>
       <td>0.987</td>
-      <td>0.735</td>
-      <td>0.755</td>
-      <td>0.775</td>
-      <td>0.834</td>
+      <td>0.748</td>
+      <td>0.762</td>
+      <td>0.757</td>
+      <td>0.821</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.50</td>
-      <td>0.511</td>
+      <td>0.554</td>
       <td>0.596</td>
-      <td>0.808</td>
-      <td>0.568</td>
-      <td>0.802</td>
-      <td>0.796</td>
-      <td>0.822</td>
-      <td>0.815</td>
+      <td>0.765</td>
+      <td>0.584</td>
+      <td>0.761</td>
+      <td>0.725</td>
+      <td>0.771</td>
+      <td>0.766</td>
     </tr>
   </tbody>
 </table>
@@ -1046,12 +1062,12 @@ similar analysis.</p>
 <br />
 <br /><p>When we analyse the results, we can draw similar conclusions than in the
 previous discussion. However, we can observe that the strategy
-<cite>class_weight=”balanced”</cite> does not improve the performance when using a
-<cite>RandomForestClassifier</cite>. A resampling is indeed required. The most effective
-method remains the <cite>BalancedBaggingClassifier</cite> using a GBDT as a base
+<code class="docutils literal notranslate"><span class="pre">class_weight=&quot;balanced&quot;</span></code> does not improve the performance when using a
+<code class="docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code>. A resampling is indeed required. The most effective
+method remains the <code class="docutils literal notranslate"><span class="pre">BalancedBaggingClassifier</span></code> using a GBDT as a base
 learner.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  55.837 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  56 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 1 minutes  0.976 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  63 MB</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-applications-plot-impact-imbalanced-classes-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/5062100d8bac1656efa83b45d062ada3/plot_impact_imbalanced_classes.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_impact_imbalanced_classes.py</span></code></a></p>

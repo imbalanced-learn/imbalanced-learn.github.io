@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>3. Under-sampling &mdash; imbalanced-learn 0.6.1 documentation</title>
+  <title>3. Under-sampling &mdash; imbalanced-learn 0.6.2 documentation</title>
   
 
   
@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script type="text/javascript" src="_static/js/copybutton.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/js/copybutton.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -34,8 +34,10 @@
   
   <link rel="stylesheet" href="_static/css/imbalanced-learn.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
   <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-dataframe.css" type="text/css" />
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -64,7 +66,7 @@
             
             
               <div class="version">
-                0.6.1
+                0.6.2
               </div>
             
           
@@ -176,7 +178,7 @@
         
           <li><a href="user_guide.html">User Guide</a> &raquo;</li>
         
-      <li>3. Under-sampling</li>
+      <li><span class="section-number">3. </span>Under-sampling</li>
     
     
 
@@ -189,11 +191,11 @@
            <div itemprop="articleBody">
             
   <div class="section" id="under-sampling">
-<span id="id1"></span><h1>3. Under-sampling<a class="headerlink" href="#under-sampling" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1><span class="section-number">3. </span>Under-sampling<a class="headerlink" href="#under-sampling" title="Permalink to this headline">¶</a></h1>
 <p>You can refer to
 <a class="reference internal" href="auto_examples/under-sampling/plot_comparison_under_sampling.html#sphx-glr-auto-examples-under-sampling-plot-comparison-under-sampling-py"><span class="std std-ref">Comparison of the different under-sampling algorithms</span></a>.</p>
 <div class="section" id="prototype-generation">
-<span id="cluster-centroids"></span><h2>3.1. Prototype generation<a class="headerlink" href="#prototype-generation" title="Permalink to this headline">¶</a></h2>
+<span id="cluster-centroids"></span><h2><span class="section-number">3.1. </span>Prototype generation<a class="headerlink" href="#prototype-generation" title="Permalink to this headline">¶</a></h2>
 <p>Given an original data set <img class="math" src="_images/math/b988975be41fd13b4d091c10202ba19374643586.svg" alt="S"/>, prototype generation algorithms will
 generate a new set <img class="math" src="_images/math/b55c0e084868f0d4f575ea81ac45a2b427b392ab.svg" alt="S'"/> where <img class="math" src="_images/math/35997994430461222e267c10e8e49daa46d6fad0.svg" alt="|S'| &lt; |S|"/> and <img class="math" src="_images/math/0a36b551df8e126ab40c4efe31a934cf7947a4fb.svg" alt="S' \not\subset
 S"/>. In other words, prototype generation technique will reduce the number of
@@ -233,7 +235,7 @@ matrix will be sparse, the algorithm will be inefficient in this regard.</p>
 </div>
 </div>
 <div class="section" id="prototype-selection">
-<h2>3.2. Prototype selection<a class="headerlink" href="#prototype-selection" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2. </span>Prototype selection<a class="headerlink" href="#prototype-selection" title="Permalink to this headline">¶</a></h2>
 <p>On the contrary to prototype generation algorithms, prototype selection
 algorithms will select samples from the original set <img class="math" src="_images/math/b988975be41fd13b4d091c10202ba19374643586.svg" alt="S"/>. Therefore,
 <img class="math" src="_images/math/b55c0e084868f0d4f575ea81ac45a2b427b392ab.svg" alt="S'"/> is defined such as <img class="math" src="_images/math/35997994430461222e267c10e8e49daa46d6fad0.svg" alt="|S'| &lt; |S|"/> and <img class="math" src="_images/math/790be14e8795fcbca41d57efd9c415c50cc23cd9.svg" alt="S' \in S"/>.</p>
@@ -244,7 +246,7 @@ which the number of samples in <img class="math" src="_images/math/b55c0e084868f
 contrast, cleaning under-sampling techniques do not allow this specification
 and are meant for cleaning the feature space.</p>
 <div class="section" id="controlled-under-sampling-techniques">
-<span id="controlled-under-sampling"></span><h3>3.2.1. Controlled under-sampling techniques<a class="headerlink" href="#controlled-under-sampling-techniques" title="Permalink to this headline">¶</a></h3>
+<span id="controlled-under-sampling"></span><h3><span class="section-number">3.2.1. </span>Controlled under-sampling techniques<a class="headerlink" href="#controlled-under-sampling-techniques" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="imblearn.under_sampling.RandomUnderSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomUnderSampler</span></code></a> is a fast and easy way to balance the data by
 randomly selecting a subset of data for the targeted classes:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <span class="n">RandomUnderSampler</span>
@@ -306,7 +308,7 @@ from scikit-learn. The former parameter is used to compute the average distance
 to the neighbors while the latter is used for the pre-selection of the samples
 of interest.</p>
 <div class="section" id="mathematical-formulation">
-<h4>3.2.1.1. Mathematical formulation<a class="headerlink" href="#mathematical-formulation" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">3.2.1.1. </span>Mathematical formulation<a class="headerlink" href="#mathematical-formulation" title="Permalink to this headline">¶</a></h4>
 <p>Let <em>positive samples</em> be the samples belonging to the targeted class to be
 under-sampled. <em>Negative sample</em> refers to the samples from the minority class
 (i.e., the most under-represented class).</p>
@@ -337,12 +339,12 @@ affected by noise due to the first step sample selection.</p>
 </div>
 </div>
 <div class="section" id="cleaning-under-sampling-techniques">
-<h3>3.2.2. Cleaning under-sampling techniques<a class="headerlink" href="#cleaning-under-sampling-techniques" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.2. </span>Cleaning under-sampling techniques<a class="headerlink" href="#cleaning-under-sampling-techniques" title="Permalink to this headline">¶</a></h3>
 <p>Cleaning under-sampling techniques do not allow to specify the number of
 samples to have in each class. In fact, each algorithm implement an heuristic
 which will clean the dataset.</p>
 <div class="section" id="tomek-s-links">
-<span id="tomek-links"></span><h4>3.2.2.1. Tomek’s links<a class="headerlink" href="#tomek-s-links" title="Permalink to this headline">¶</a></h4>
+<span id="tomek-links"></span><h4><span class="section-number">3.2.2.1. </span>Tomek’s links<a class="headerlink" href="#tomek-s-links" title="Permalink to this headline">¶</a></h4>
 <p><a class="reference internal" href="generated/imblearn.under_sampling.TomekLinks.html#imblearn.under_sampling.TomekLinks" title="imblearn.under_sampling.TomekLinks"><code class="xref py py-class docutils literal notranslate"><span class="pre">TomekLinks</span></code></a> detects the so-called Tomek’s links <span class="bibtex" id="id3">[tomek1976two]</span>. A
 Tomek’s link between two samples of different class <img class="math" src="_images/math/888f7c323ac0341871e867220ae2d76467d74d6e.svg" alt="x"/> and <img class="math" src="_images/math/1b5e577d6216dca3af7d87aa122a0b9b360d6cb3.svg" alt="y"/> is
 defined such that for any sample <img class="math" src="_images/math/8d051150f8669295ecdbe92367941012175a824d.svg" alt="z"/>:</p>
@@ -361,7 +363,7 @@ figure illustrates this behaviour.</p>
 <a class="reference external image-reference" href="./auto_examples/under-sampling/plot_illustration_tomek_links.html"><img alt="_images/sphx_glr_plot_illustration_tomek_links_0021.png" class="align-center" src="_images/sphx_glr_plot_illustration_tomek_links_0021.png" style="width: 720.0px; height: 360.0px;" /></a>
 </div>
 <div class="section" id="edited-data-set-using-nearest-neighbours">
-<span id="edited-nearest-neighbors"></span><h4>3.2.2.2. Edited data set using nearest neighbours<a class="headerlink" href="#edited-data-set-using-nearest-neighbours" title="Permalink to this headline">¶</a></h4>
+<span id="edited-nearest-neighbors"></span><h4><span class="section-number">3.2.2.2. </span>Edited data set using nearest neighbours<a class="headerlink" href="#edited-data-set-using-nearest-neighbours" title="Permalink to this headline">¶</a></h4>
 <p><a class="reference internal" href="generated/imblearn.under_sampling.EditedNearestNeighbours.html#imblearn.under_sampling.EditedNearestNeighbours" title="imblearn.under_sampling.EditedNearestNeighbours"><code class="xref py py-class docutils literal notranslate"><span class="pre">EditedNearestNeighbours</span></code></a> applies a nearest-neighbors algorithm and
 “edit” the dataset by removing samples which do not agree “enough” with their
 neighboorhood <span class="bibtex" id="id4">[wilson1972asymptotic]</span>. For each sample in the class to be
@@ -409,7 +411,7 @@ impact by cleaning noisy samples next to the boundaries of the classes.</p>
 <a class="reference external image-reference" href="./auto_examples/under-sampling/plot_comparison_under_sampling.html"><img alt="_images/sphx_glr_plot_comparison_under_sampling_0041.png" class="align-center" src="_images/sphx_glr_plot_comparison_under_sampling_0041.png" style="width: 900.0px; height: 1500.0px;" /></a>
 </div>
 <div class="section" id="condensed-nearest-neighbors-and-derived-algorithms">
-<span id="condensed-nearest-neighbors"></span><h4>3.2.2.3. Condensed nearest neighbors and derived algorithms<a class="headerlink" href="#condensed-nearest-neighbors-and-derived-algorithms" title="Permalink to this headline">¶</a></h4>
+<span id="condensed-nearest-neighbors"></span><h4><span class="section-number">3.2.2.3. </span>Condensed nearest neighbors and derived algorithms<a class="headerlink" href="#condensed-nearest-neighbors-and-derived-algorithms" title="Permalink to this headline">¶</a></h4>
 <p><a class="reference internal" href="generated/imblearn.under_sampling.CondensedNearestNeighbour.html#imblearn.under_sampling.CondensedNearestNeighbour" title="imblearn.under_sampling.CondensedNearestNeighbour"><code class="xref py py-class docutils literal notranslate"><span class="pre">CondensedNearestNeighbour</span></code></a> uses a 1 nearest neighbor rule to
 iteratively decide if a sample should be removed or not
 <span class="bibtex" id="id7">[hart1968condensed]</span>. The algorithm is running as followed:</p>
@@ -460,7 +462,7 @@ and the output a 3 nearest neighbors classifier. The class can be used as:</p>
 <a class="reference external image-reference" href="./auto_examples/under-sampling/plot_comparison_under_sampling.html"><img alt="_images/sphx_glr_plot_comparison_under_sampling_0051.png" class="align-center" src="_images/sphx_glr_plot_comparison_under_sampling_0051.png" style="width: 900.0px; height: 1500.0px;" /></a>
 </div>
 <div class="section" id="instance-hardness-threshold">
-<span id="id10"></span><h4>3.2.2.4. Instance hardness threshold<a class="headerlink" href="#instance-hardness-threshold" title="Permalink to this headline">¶</a></h4>
+<span id="id10"></span><h4><span class="section-number">3.2.2.4. </span>Instance hardness threshold<a class="headerlink" href="#instance-hardness-threshold" title="Permalink to this headline">¶</a></h4>
 <p><a class="reference internal" href="generated/imblearn.under_sampling.InstanceHardnessThreshold.html#imblearn.under_sampling.InstanceHardnessThreshold" title="imblearn.under_sampling.InstanceHardnessThreshold"><code class="xref py py-class docutils literal notranslate"><span class="pre">InstanceHardnessThreshold</span></code></a> is a specific algorithm in which a
 classifier is trained on the data and the samples with lower probabilities are
 removed <span class="bibtex" id="id11">[smith2014instance]</span>. The class can be used as:</p>

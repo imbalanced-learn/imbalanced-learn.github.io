@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6. Miscellaneous samplers &mdash; imbalanced-learn 0.6.1 documentation</title>
+  <title>6. Miscellaneous samplers &mdash; imbalanced-learn 0.6.2 documentation</title>
   
 
   
@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script type="text/javascript" src="_static/js/copybutton.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/js/copybutton.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -34,8 +34,10 @@
   
   <link rel="stylesheet" href="_static/css/imbalanced-learn.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
   <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-dataframe.css" type="text/css" />
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -64,7 +66,7 @@
             
             
               <div class="version">
-                0.6.1
+                0.6.2
               </div>
             
           
@@ -176,7 +178,7 @@
         
           <li><a href="user_guide.html">User Guide</a> &raquo;</li>
         
-      <li>6. Miscellaneous samplers</li>
+      <li><span class="section-number">6. </span>Miscellaneous samplers</li>
     
     
 
@@ -189,9 +191,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="miscellaneous-samplers">
-<span id="miscellaneous"></span><h1>6. Miscellaneous samplers<a class="headerlink" href="#miscellaneous-samplers" title="Permalink to this headline">¶</a></h1>
+<span id="miscellaneous"></span><h1><span class="section-number">6. </span>Miscellaneous samplers<a class="headerlink" href="#miscellaneous-samplers" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="custom-samplers">
-<span id="function-sampler"></span><h2>6.1. Custom samplers<a class="headerlink" href="#custom-samplers" title="Permalink to this headline">¶</a></h2>
+<span id="function-sampler"></span><h2><span class="section-number">6.1. </span>Custom samplers<a class="headerlink" href="#custom-samplers" title="Permalink to this headline">¶</a></h2>
 <p>A fully customized sampler, <a class="reference internal" href="generated/imblearn.FunctionSampler.html#imblearn.FunctionSampler" title="imblearn.FunctionSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionSampler</span></code></a>, is available in
 imbalanced-learn such that you can fast prototype your own sampler by defining
 a single function. Additional parameters can be added using the attribute
@@ -218,7 +220,7 @@ to retain the 10 first elements of the array <code class="docutils literal notra
 <p>In addition, the parameter <code class="docutils literal notranslate"><span class="pre">validate</span></code> control input checking. For instance,
 turning <code class="docutils literal notranslate"><span class="pre">validate=False</span></code> allows to pass any type of target <code class="docutils literal notranslate"><span class="pre">y</span></code> and do some
 sampling for regression targets.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_regression</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_regression</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_reg</span><span class="p">,</span> <span class="n">y_reg</span> <span class="o">=</span> <span class="n">make_regression</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">dummy_sampler</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -238,11 +240,11 @@ estimator which can be easily used within a
 <a class="reference internal" href="auto_examples/plot_outlier_rejections.html#sphx-glr-auto-examples-plot-outlier-rejections-py"><span class="std std-ref">Customized sampler to implement an outlier rejections estimator</span></a></p>
 </div>
 <div class="section" id="custom-generators">
-<span id="generators"></span><h2>6.2. Custom generators<a class="headerlink" href="#custom-generators" title="Permalink to this headline">¶</a></h2>
+<span id="generators"></span><h2><span class="section-number">6.2. </span>Custom generators<a class="headerlink" href="#custom-generators" title="Permalink to this headline">¶</a></h2>
 <p>Imbalanced-learn provides specific generators for TensorFlow and Keras which
 will generate balanced mini-batches.</p>
 <div class="section" id="tensorflow-generator">
-<span id="id1"></span><h3>6.2.1. TensorFlow generator<a class="headerlink" href="#tensorflow-generator" title="Permalink to this headline">¶</a></h3>
+<span id="id1"></span><h3><span class="section-number">6.2.1. </span>TensorFlow generator<a class="headerlink" href="#tensorflow-generator" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="generated/imblearn.tensorflow.balanced_batch_generator.html#imblearn.tensorflow.balanced_batch_generator" title="imblearn.tensorflow.balanced_batch_generator"><code class="xref py py-func docutils literal notranslate"><span class="pre">imblearn.tensorflow.balanced_batch_generator</span></code></a> allow to generate
 balanced mini-batches using an imbalanced-learn sampler which returns indices:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
@@ -303,7 +305,7 @@ data and minimizing the loss previously defined:</p>
 </div>
 </div>
 <div class="section" id="keras-generator">
-<span id="id2"></span><h3>6.2.2. Keras generator<a class="headerlink" href="#keras-generator" title="Permalink to this headline">¶</a></h3>
+<span id="id2"></span><h3><span class="section-number">6.2.2. </span>Keras generator<a class="headerlink" href="#keras-generator" title="Permalink to this headline">¶</a></h3>
 <p>Keras provides an higher level API in which a model can be defined and train by
 calling <code class="docutils literal notranslate"><span class="pre">fit_generator</span></code> method to train the model. To illustrate, we will
 define a logistic regression model:</p>
@@ -340,7 +342,7 @@ will be passed to <code class="docutils literal notranslate"><span class="pre">f
 </pre></div>
 </div>
 <div class="topic">
-<p class="topic-title first">References</p>
+<p class="topic-title">References</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="auto_examples/applications/porto_seguro_keras_under_sampling.html#sphx-glr-auto-examples-applications-porto-seguro-keras-under-sampling-py"><span class="std std-ref">Porto Seguro: balancing samples in mini-batches with Keras</span></a></p></li>
 </ul>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>5. Ensemble of samplers &mdash; imbalanced-learn 0.6.1 documentation</title>
+  <title>5. Ensemble of samplers &mdash; imbalanced-learn 0.6.2 documentation</title>
   
 
   
@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script type="text/javascript" src="_static/js/copybutton.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/js/copybutton.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -34,8 +34,10 @@
   
   <link rel="stylesheet" href="_static/css/imbalanced-learn.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
   <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-dataframe.css" type="text/css" />
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -64,7 +66,7 @@
             
             
               <div class="version">
-                0.6.1
+                0.6.2
               </div>
             
           
@@ -176,7 +178,7 @@
         
           <li><a href="user_guide.html">User Guide</a> &raquo;</li>
         
-      <li>5. Ensemble of samplers</li>
+      <li><span class="section-number">5. </span>Ensemble of samplers</li>
     
     
 
@@ -189,11 +191,11 @@
            <div itemprop="articleBody">
             
   <div class="section" id="ensemble-of-samplers">
-<span id="ensemble"></span><h1>5. Ensemble of samplers<a class="headerlink" href="#ensemble-of-samplers" title="Permalink to this headline">¶</a></h1>
+<span id="ensemble"></span><h1><span class="section-number">5. </span>Ensemble of samplers<a class="headerlink" href="#ensemble-of-samplers" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="classifier-including-inner-balancing-samplers">
-<span id="ensemble-meta-estimators"></span><h2>5.1. Classifier including inner balancing samplers<a class="headerlink" href="#classifier-including-inner-balancing-samplers" title="Permalink to this headline">¶</a></h2>
+<span id="ensemble-meta-estimators"></span><h2><span class="section-number">5.1. </span>Classifier including inner balancing samplers<a class="headerlink" href="#classifier-including-inner-balancing-samplers" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="bagging-classifier">
-<span id="bagging"></span><h3>5.1.1. Bagging classifier<a class="headerlink" href="#bagging-classifier" title="Permalink to this headline">¶</a></h3>
+<span id="bagging"></span><h3><span class="section-number">5.1.1. </span>Bagging classifier<a class="headerlink" href="#bagging-classifier" title="Permalink to this headline">¶</a></h3>
 <p>In ensemble classifiers, bagging methods build several estimators on different
 randomly selected subset of data. In scikit-learn, this classifier is named
 <code class="docutils literal notranslate"><span class="pre">BaggingClassifier</span></code>. However, this classifier does not allow to balance each
@@ -241,12 +243,12 @@ random under-sampler:</p>
 </div>
 </div>
 <div class="section" id="forest-of-randomized-trees">
-<span id="forest"></span><h3>5.1.2. Forest of randomized trees<a class="headerlink" href="#forest-of-randomized-trees" title="Permalink to this headline">¶</a></h3>
+<span id="forest"></span><h3><span class="section-number">5.1.2. </span>Forest of randomized trees<a class="headerlink" href="#forest-of-randomized-trees" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="generated/imblearn.ensemble.BalancedRandomForestClassifier.html#imblearn.ensemble.BalancedRandomForestClassifier" title="imblearn.ensemble.BalancedRandomForestClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">BalancedRandomForestClassifier</span></code></a> is another ensemble method in which
 each tree of the forest will be provided a balanced bootstrap sample
 <a class="bibtex reference internal" href="references.html#chen2004using" id="id1">[CLB+04]</a>. This class provides all functionality of the
 <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v0.22)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.ensemble.RandomForestClassifier</span></code></a> and notably the
-<cite>feature_importances_</cite> attributes:</p>
+<code class="docutils literal notranslate"><span class="pre">feature_importances_</span></code> attributes:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="kn">import</span> <span class="n">BalancedRandomForestClassifier</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">brf</span> <span class="o">=</span> <span class="n">BalancedRandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">brf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span> 
@@ -258,7 +260,7 @@ each tree of the forest will be provided a balanced bootstrap sample
 </div>
 </div>
 <div class="section" id="boosting">
-<span id="id2"></span><h3>5.1.3. Boosting<a class="headerlink" href="#boosting" title="Permalink to this headline">¶</a></h3>
+<span id="id2"></span><h3><span class="section-number">5.1.3. </span>Boosting<a class="headerlink" href="#boosting" title="Permalink to this headline">¶</a></h3>
 <p>Several methods taking advantage of boosting have been designed.</p>
 <p><a class="reference internal" href="generated/imblearn.ensemble.RUSBoostClassifier.html#imblearn.ensemble.RUSBoostClassifier" title="imblearn.ensemble.RUSBoostClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">RUSBoostClassifier</span></code></a> randomly under-sample the dataset before to perform
 a boosting iteration <a class="bibtex reference internal" href="references.html#seiffert2009rusboost" id="id3">[SKVHN09]</a>:</p>
@@ -287,7 +289,7 @@ API, one can construct the ensemble as:</p>
 </pre></div>
 </div>
 <div class="topic">
-<p class="topic-title first">Examples</p>
+<p class="topic-title">Examples</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="auto_examples/ensemble/plot_comparison_ensemble_classifier.html#sphx-glr-auto-examples-ensemble-plot-comparison-ensemble-classifier-py"><span class="std std-ref">Comparison of ensembling classifiers internally using sampling</span></a></p></li>
 </ul>

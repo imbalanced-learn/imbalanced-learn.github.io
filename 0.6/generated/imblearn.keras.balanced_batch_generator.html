@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>imblearn.keras.balanced_batch_generator &mdash; imbalanced-learn 0.6.1 documentation</title>
+  <title>imblearn.keras.balanced_batch_generator &mdash; imbalanced-learn 0.6.2 documentation</title>
   
 
   
@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script type="text/javascript" src="../_static/js/copybutton.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/js/copybutton.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -34,8 +34,10 @@
   
   <link rel="stylesheet" href="../_static/css/imbalanced-learn.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
   <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-dataframe.css" type="text/css" />
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -64,7 +66,7 @@
             
             
               <div class="version">
-                0.6.1
+                0.6.2
               </div>
             
           
@@ -189,7 +191,7 @@
 <h1><a class="reference internal" href="../api.html#module-imblearn.keras" title="imblearn.keras"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.keras</span></code></a>.balanced_batch_generator<a class="headerlink" href="#imblearn-keras-balanced-batch-generator" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="imblearn.keras.balanced_batch_generator">
-<code class="sig-prename descclassname">imblearn.keras.</code><code class="sig-name descname">balanced_batch_generator</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">sample_weight=None</em>, <em class="sig-param">sampler=None</em>, <em class="sig-param">batch_size=32</em>, <em class="sig-param">keep_sparse=False</em>, <em class="sig-param">random_state=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/e766a16/imblearn/keras/_generator.py#L201"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.keras.balanced_batch_generator" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">imblearn.keras.</code><code class="sig-name descname">balanced_batch_generator</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">sample_weight=None</em>, <em class="sig-param">sampler=None</em>, <em class="sig-param">batch_size=32</em>, <em class="sig-param">keep_sparse=False</em>, <em class="sig-param">random_state=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/6b3c5ae/imblearn/keras/_generator.py#L201"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.keras.balanced_batch_generator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a balanced batch generator to train keras model.</p>
 <p>Returns a generator — as well as the number of step per epoch — which
 is given to <code class="docutils literal notranslate"><span class="pre">fit_generator</span></code>. The sampler defines the sampling strategy
@@ -238,7 +240,7 @@ keras.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.datasets</span> <span class="kn">import</span> <span class="n">make_imbalance</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">class_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>

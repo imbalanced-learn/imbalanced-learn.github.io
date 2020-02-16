@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>imblearn.FunctionSampler &mdash; imbalanced-learn 0.6.1 documentation</title>
+  <title>imblearn.FunctionSampler &mdash; imbalanced-learn 0.6.2 documentation</title>
   
 
   
@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script type="text/javascript" src="../_static/js/copybutton.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/js/copybutton.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -34,8 +34,10 @@
   
   <link rel="stylesheet" href="../_static/css/imbalanced-learn.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
   <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-dataframe.css" type="text/css" />
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -64,7 +66,7 @@
             
             
               <div class="version">
-                0.6.1
+                0.6.2
               </div>
             
           
@@ -191,7 +193,7 @@
 <h1><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn</span></code>.FunctionSampler<a class="headerlink" href="#imblearn-functionsampler" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="imblearn.FunctionSampler">
-<em class="property">class </em><code class="sig-prename descclassname">imblearn.</code><code class="sig-name descname">FunctionSampler</code><span class="sig-paren">(</span><em class="sig-param">func=None</em>, <em class="sig-param">accept_sparse=True</em>, <em class="sig-param">kw_args=None</em>, <em class="sig-param">validate=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/e766a16/imblearn/base.py#L167"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.FunctionSampler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">imblearn.</code><code class="sig-name descname">FunctionSampler</code><span class="sig-paren">(</span><em class="sig-param">func=None</em>, <em class="sig-param">accept_sparse=True</em>, <em class="sig-param">kw_args=None</em>, <em class="sig-param">validate=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/6b3c5ae/imblearn/base.py#L142"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.FunctionSampler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct a sampler from calling an arbitrary callable.</p>
 <p>Read more in the <a class="reference internal" href="../miscellaneous.html#function-sampler"><span class="std std-ref">User Guide</span></a>.</p>
 <dl class="field-list simple">
@@ -224,7 +226,7 @@ data.</p>
 <p>See
 <a class="reference internal" href="../auto_examples/plot_outlier_rejections.html#sphx-glr-auto-examples-plot-outlier-rejections-py"><span class="std std-ref">Customized sampler to implement an outlier rejections estimator</span></a></p>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn</span> <span class="kn">import</span> <span class="n">FunctionSampler</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">class_sep</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
@@ -233,7 +235,7 @@ data.</p>
 </pre></div>
 </div>
 <p>We can create to select only the first ten samples for instance.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="gp">... </span>  <span class="k">return</span> <span class="n">X</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="n">y</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sampler</span> <span class="o">=</span> <span class="n">FunctionSampler</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">func</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -244,7 +246,7 @@ data.</p>
 </pre></div>
 </div>
 <p>We can also create a specific function which take some arguments.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <span class="n">RandomUnderSampler</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sampling_strategy</span><span class="p">,</span> <span class="n">random_state</span><span class="p">):</span>
 <span class="gp">... </span>  <span class="k">return</span> <span class="n">RandomUnderSampler</span><span class="p">(</span>
@@ -261,13 +263,13 @@ data.</p>
 </div>
 <dl class="method">
 <dt id="imblearn.FunctionSampler.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">func=None</em>, <em class="sig-param">accept_sparse=True</em>, <em class="sig-param">kw_args=None</em>, <em class="sig-param">validate=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/e766a16/imblearn/base.py#L240"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.FunctionSampler.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">func=None</em>, <em class="sig-param">accept_sparse=True</em>, <em class="sig-param">kw_args=None</em>, <em class="sig-param">validate=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/6b3c5ae/imblearn/base.py#L215"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.FunctionSampler.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="imblearn.FunctionSampler.fit">
-<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/e766a16/imblearn/base.py#L28"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.FunctionSampler.fit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/6b3c5ae/imblearn/base.py#L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.FunctionSampler.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check inputs and statistics of the sampler.</p>
 <p>You should use <code class="docutils literal notranslate"><span class="pre">fit_resample</span></code> in all cases.</p>
 <dl class="field-list simple">
@@ -290,7 +292,7 @@ data.</p>
 
 <dl class="method">
 <dt id="imblearn.FunctionSampler.fit_resample">
-<code class="sig-name descname">fit_resample</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/e766a16/imblearn/base.py#L248"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.FunctionSampler.fit_resample" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit_resample</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/6b3c5ae/imblearn/base.py#L223"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.FunctionSampler.fit_resample" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resample the dataset.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -305,7 +307,7 @@ data.</p>
 <dd class="field-even"><dl class="simple">
 <dt><strong>X_resampled</strong><span class="classifier">{array-like, sparse matrix} of shape                 (n_samples_new, n_features)</span></dt><dd><p>The array containing the resampled data.</p>
 </dd>
-<dt><strong>y_resampled</strong><span class="classifier">array-like of shape (n_samples_new,)</span></dt><dd><p>The corresponding label of <cite>X_resampled</cite>.</p>
+<dt><strong>y_resampled</strong><span class="classifier">array-like of shape (n_samples_new,)</span></dt><dd><p>The corresponding label of <code class="docutils literal notranslate"><span class="pre">X_resampled</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -314,7 +316,7 @@ data.</p>
 
 <dl class="method">
 <dt id="imblearn.FunctionSampler.fit_sample">
-<code class="sig-name descname">fit_sample</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/e766a16/imblearn/base.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.FunctionSampler.fit_sample" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit_sample</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/6b3c5ae/imblearn/base.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.FunctionSampler.fit_sample" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resample the dataset.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -329,7 +331,7 @@ data.</p>
 <dd class="field-even"><dl class="simple">
 <dt><strong>X_resampled</strong><span class="classifier">{array-like, dataframe, sparse matrix} of shape                 (n_samples_new, n_features)</span></dt><dd><p>The array containing the resampled data.</p>
 </dd>
-<dt><strong>y_resampled</strong><span class="classifier">array-like of shape (n_samples_new,)</span></dt><dd><p>The corresponding label of <cite>X_resampled</cite>.</p>
+<dt><strong>y_resampled</strong><span class="classifier">array-like of shape (n_samples_new,)</span></dt><dd><p>The corresponding label of <code class="docutils literal notranslate"><span class="pre">X_resampled</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -338,7 +340,7 @@ data.</p>
 
 <dl class="method">
 <dt id="imblearn.FunctionSampler.get_params">
-<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">deep=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/e766a16/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L173"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.FunctionSampler.get_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">deep=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/6b3c5ae/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L180"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.FunctionSampler.get_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -359,7 +361,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="method">
 <dt id="imblearn.FunctionSampler.set_params">
-<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/e766a16/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L205"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.FunctionSampler.set_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/6b3c5ae/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L212"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.FunctionSampler.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The latter have parameters of the form
