@@ -194,7 +194,7 @@
 <h1><a class="reference internal" href="../api.html#module-imblearn.pipeline" title="imblearn.pipeline"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.pipeline</span></code></a>.Pipeline<a class="headerlink" href="#imblearn-pipeline-pipeline" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="imblearn.pipeline.Pipeline">
-<em class="property">class </em><code class="sig-prename descclassname">imblearn.pipeline.</code><code class="sig-name descname">Pipeline</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">steps</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">memory</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b037591/imblearn/pipeline.py#L24"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.pipeline.Pipeline" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">imblearn.pipeline.</code><code class="sig-name descname">Pipeline</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">steps</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">memory</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/37f27ee/imblearn/pipeline.py#L24"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.pipeline.Pipeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pipeline of transforms and resamples with a final estimator.</p>
 <p>Sequentially apply a list of transforms, sampling, and a final estimator.
 Intermediate steps of the pipeline must be transformers or resamplers,
@@ -217,7 +217,7 @@ it to ‘passthrough’ or <code class="docutils literal notranslate"><span clas
 fit/transform/fit_resample) that are chained, in the order in which
 they are chained, with the last object an estimator.</p>
 </dd>
-<dt><strong>memory</strong><span class="classifier">Instance of joblib.Memory or string, optional (default=None)</span></dt><dd><p>Used to cache the fitted transformers of the pipeline. By default,
+<dt><strong>memory</strong><span class="classifier">Instance of joblib.Memory or str, default=None</span></dt><dd><p>Used to cache the fitted transformers of the pipeline. By default,
 no caching is performed. If a string is given, it is the path to
 the caching directory. Enabling caching triggers a clone of
 the transformers before fitting. Therefore, the transformer
@@ -226,7 +226,7 @@ directly. Use the attribute <code class="docutils literal notranslate"><span cla
 inspect estimators within the pipeline. Caching the
 transformers is advantageous when fitting is time consuming.</p>
 </dd>
-<dt><strong>verbose</strong><span class="classifier">boolean, optional (default=False)</span></dt><dd><p>If True, the time elapsed while fitting each step will be printed as it
+<dt><strong>verbose</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, the time elapsed while fitting each step will be printed as it
 is completed.</p>
 </dd>
 </dl>
@@ -235,7 +235,7 @@ is completed.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="imblearn.pipeline.make_pipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_pipeline</span></code></a></dt><dd><p>helper function to make pipeline.</p>
+<dt><a class="reference internal" href="imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="imblearn.pipeline.make_pipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_pipeline</span></code></a></dt><dd><p>Helper function to make pipeline.</p>
 </dd>
 </dl>
 </div>
@@ -285,7 +285,7 @@ Keys are step names and values are steps parameters.</p>
 </dl>
 <dl class="py method">
 <dt id="imblearn.pipeline.Pipeline.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">steps</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">memory</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b037591/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/utils/validation.py#L109"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.pipeline.Pipeline.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">steps</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">memory</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/37f27ee/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/utils/validation.py#L109"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.pipeline.Pipeline.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
