@@ -254,45 +254,43 @@ obtained with our `DummyClassifier`.
 
 
 
-.. only:: builder_html
+.. raw:: html
 
-    .. raw:: html
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
 
-        <div>
-        <style scoped>
-            .dataframe tbody tr th:only-of-type {
-                vertical-align: middle;
-            }
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
 
-            .dataframe tbody tr th {
-                vertical-align: top;
-            }
-
-            .dataframe thead th {
-                text-align: right;
-            }
-        </style>
-        <table border="1" class="dataframe">
-          <thead>
-            <tr style="text-align: right;">
-              <th></th>
-              <th>Dummy</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Accuracy</th>
-              <td>0.968</td>
-            </tr>
-            <tr>
-              <th>Balanced accuracy</th>
-              <td>0.500</td>
-            </tr>
-          </tbody>
-        </table>
-        </div>
-        <br />
-        <br />
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>Dummy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Accuracy</th>
+          <td>0.968</td>
+        </tr>
+        <tr>
+          <th>Balanced accuracy</th>
+          <td>0.500</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <br />
+    <br />
 
 Linear classifier baseline
 ..........................
@@ -373,48 +371,46 @@ then evaluate our model.
 
 
 
-.. only:: builder_html
+.. raw:: html
 
-    .. raw:: html
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
 
-        <div>
-        <style scoped>
-            .dataframe tbody tr th:only-of-type {
-                vertical-align: middle;
-            }
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
 
-            .dataframe tbody tr th {
-                vertical-align: top;
-            }
-
-            .dataframe thead th {
-                text-align: right;
-            }
-        </style>
-        <table border="1" class="dataframe">
-          <thead>
-            <tr style="text-align: right;">
-              <th></th>
-              <th>Dummy</th>
-              <th>LR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Accuracy</th>
-              <td>0.968</td>
-              <td>0.971</td>
-            </tr>
-            <tr>
-              <th>Balanced accuracy</th>
-              <td>0.500</td>
-              <td>0.580</td>
-            </tr>
-          </tbody>
-        </table>
-        </div>
-        <br />
-        <br />
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>Dummy</th>
+          <th>LR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Accuracy</th>
+          <td>0.968</td>
+          <td>0.970</td>
+        </tr>
+        <tr>
+          <th>Balanced accuracy</th>
+          <td>0.500</td>
+          <td>0.567</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <br />
+    <br />
 
 We can see that our linear model is learning slightly better than our dummy
 baseline. However, it is impacted by the class imbalance.
@@ -454,51 +450,49 @@ categorical data.
 
 
 
-.. only:: builder_html
+.. raw:: html
 
-    .. raw:: html
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
 
-        <div>
-        <style scoped>
-            .dataframe tbody tr th:only-of-type {
-                vertical-align: middle;
-            }
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
 
-            .dataframe tbody tr th {
-                vertical-align: top;
-            }
-
-            .dataframe thead th {
-                text-align: right;
-            }
-        </style>
-        <table border="1" class="dataframe">
-          <thead>
-            <tr style="text-align: right;">
-              <th></th>
-              <th>Dummy</th>
-              <th>LR</th>
-              <th>RF</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Accuracy</th>
-              <td>0.968</td>
-              <td>0.971</td>
-              <td>0.972</td>
-            </tr>
-            <tr>
-              <th>Balanced accuracy</th>
-              <td>0.500</td>
-              <td>0.580</td>
-              <td>0.641</td>
-            </tr>
-          </tbody>
-        </table>
-        </div>
-        <br />
-        <br />
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>Dummy</th>
+          <th>LR</th>
+          <th>RF</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Accuracy</th>
+          <td>0.968</td>
+          <td>0.970</td>
+          <td>0.971</td>
+        </tr>
+        <tr>
+          <th>Balanced accuracy</th>
+          <td>0.500</td>
+          <td>0.567</td>
+          <td>0.618</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <br />
+    <br />
 
 The `RandomForestClassifier` is as well affected by the class imbalanced,
 slightly less than the linear model. Now, we will present different approach
@@ -530,54 +524,52 @@ linear model and tree-based model.
 
 
 
-.. only:: builder_html
+.. raw:: html
 
-    .. raw:: html
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
 
-        <div>
-        <style scoped>
-            .dataframe tbody tr th:only-of-type {
-                vertical-align: middle;
-            }
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
 
-            .dataframe tbody tr th {
-                vertical-align: top;
-            }
-
-            .dataframe thead th {
-                text-align: right;
-            }
-        </style>
-        <table border="1" class="dataframe">
-          <thead>
-            <tr style="text-align: right;">
-              <th></th>
-              <th>Dummy</th>
-              <th>LR</th>
-              <th>RF</th>
-              <th>LR with class weight</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Accuracy</th>
-              <td>0.968</td>
-              <td>0.971</td>
-              <td>0.972</td>
-              <td>0.809</td>
-            </tr>
-            <tr>
-              <th>Balanced accuracy</th>
-              <td>0.500</td>
-              <td>0.580</td>
-              <td>0.641</td>
-              <td>0.812</td>
-            </tr>
-          </tbody>
-        </table>
-        </div>
-        <br />
-        <br />
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>Dummy</th>
+          <th>LR</th>
+          <th>RF</th>
+          <th>LR with class weight</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Accuracy</th>
+          <td>0.968</td>
+          <td>0.970</td>
+          <td>0.971</td>
+          <td>0.816</td>
+        </tr>
+        <tr>
+          <th>Balanced accuracy</th>
+          <td>0.500</td>
+          <td>0.567</td>
+          <td>0.618</td>
+          <td>0.816</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <br />
+    <br />
 
 
 .. code-block:: default
@@ -594,57 +586,55 @@ linear model and tree-based model.
 
 
 
-.. only:: builder_html
+.. raw:: html
 
-    .. raw:: html
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
 
-        <div>
-        <style scoped>
-            .dataframe tbody tr th:only-of-type {
-                vertical-align: middle;
-            }
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
 
-            .dataframe tbody tr th {
-                vertical-align: top;
-            }
-
-            .dataframe thead th {
-                text-align: right;
-            }
-        </style>
-        <table border="1" class="dataframe">
-          <thead>
-            <tr style="text-align: right;">
-              <th></th>
-              <th>Dummy</th>
-              <th>LR</th>
-              <th>RF</th>
-              <th>LR with class weight</th>
-              <th>RF with class weight</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Accuracy</th>
-              <td>0.968</td>
-              <td>0.971</td>
-              <td>0.972</td>
-              <td>0.809</td>
-              <td>0.966</td>
-            </tr>
-            <tr>
-              <th>Balanced accuracy</th>
-              <td>0.500</td>
-              <td>0.580</td>
-              <td>0.641</td>
-              <td>0.812</td>
-              <td>0.641</td>
-            </tr>
-          </tbody>
-        </table>
-        </div>
-        <br />
-        <br />
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>Dummy</th>
+          <th>LR</th>
+          <th>RF</th>
+          <th>LR with class weight</th>
+          <th>RF with class weight</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Accuracy</th>
+          <td>0.968</td>
+          <td>0.970</td>
+          <td>0.971</td>
+          <td>0.816</td>
+          <td>0.968</td>
+        </tr>
+        <tr>
+          <th>Balanced accuracy</th>
+          <td>0.500</td>
+          <td>0.567</td>
+          <td>0.618</td>
+          <td>0.816</td>
+          <td>0.636</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <br />
+    <br />
 
 We can see that using `class_weight` was really effective for the linear
 model, alleviating the issue of learning from imbalanced classes. However,
@@ -681,60 +671,58 @@ to do such processing.
 
 
 
-.. only:: builder_html
+.. raw:: html
 
-    .. raw:: html
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
 
-        <div>
-        <style scoped>
-            .dataframe tbody tr th:only-of-type {
-                vertical-align: middle;
-            }
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
 
-            .dataframe tbody tr th {
-                vertical-align: top;
-            }
-
-            .dataframe thead th {
-                text-align: right;
-            }
-        </style>
-        <table border="1" class="dataframe">
-          <thead>
-            <tr style="text-align: right;">
-              <th></th>
-              <th>Dummy</th>
-              <th>LR</th>
-              <th>RF</th>
-              <th>LR with class weight</th>
-              <th>RF with class weight</th>
-              <th>LR with under-sampling</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Accuracy</th>
-              <td>0.968</td>
-              <td>0.971</td>
-              <td>0.972</td>
-              <td>0.809</td>
-              <td>0.966</td>
-              <td>0.801</td>
-            </tr>
-            <tr>
-              <th>Balanced accuracy</th>
-              <td>0.500</td>
-              <td>0.580</td>
-              <td>0.641</td>
-              <td>0.812</td>
-              <td>0.641</td>
-              <td>0.812</td>
-            </tr>
-          </tbody>
-        </table>
-        </div>
-        <br />
-        <br />
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>Dummy</th>
+          <th>LR</th>
+          <th>RF</th>
+          <th>LR with class weight</th>
+          <th>RF with class weight</th>
+          <th>LR with under-sampling</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Accuracy</th>
+          <td>0.968</td>
+          <td>0.970</td>
+          <td>0.971</td>
+          <td>0.816</td>
+          <td>0.968</td>
+          <td>0.808</td>
+        </tr>
+        <tr>
+          <th>Balanced accuracy</th>
+          <td>0.500</td>
+          <td>0.567</td>
+          <td>0.618</td>
+          <td>0.816</td>
+          <td>0.636</td>
+          <td>0.812</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <br />
+    <br />
 
 
 .. code-block:: default
@@ -756,63 +744,61 @@ to do such processing.
 
 
 
-.. only:: builder_html
+.. raw:: html
 
-    .. raw:: html
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
 
-        <div>
-        <style scoped>
-            .dataframe tbody tr th:only-of-type {
-                vertical-align: middle;
-            }
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
 
-            .dataframe tbody tr th {
-                vertical-align: top;
-            }
-
-            .dataframe thead th {
-                text-align: right;
-            }
-        </style>
-        <table border="1" class="dataframe">
-          <thead>
-            <tr style="text-align: right;">
-              <th></th>
-              <th>Dummy</th>
-              <th>LR</th>
-              <th>RF</th>
-              <th>LR with class weight</th>
-              <th>RF with class weight</th>
-              <th>LR with under-sampling</th>
-              <th>RF with under-sampling</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Accuracy</th>
-              <td>0.968</td>
-              <td>0.971</td>
-              <td>0.972</td>
-              <td>0.809</td>
-              <td>0.966</td>
-              <td>0.801</td>
-              <td>0.806</td>
-            </tr>
-            <tr>
-              <th>Balanced accuracy</th>
-              <td>0.500</td>
-              <td>0.580</td>
-              <td>0.641</td>
-              <td>0.812</td>
-              <td>0.641</td>
-              <td>0.812</td>
-              <td>0.806</td>
-            </tr>
-          </tbody>
-        </table>
-        </div>
-        <br />
-        <br />
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>Dummy</th>
+          <th>LR</th>
+          <th>RF</th>
+          <th>LR with class weight</th>
+          <th>RF with class weight</th>
+          <th>LR with under-sampling</th>
+          <th>RF with under-sampling</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Accuracy</th>
+          <td>0.968</td>
+          <td>0.970</td>
+          <td>0.971</td>
+          <td>0.816</td>
+          <td>0.968</td>
+          <td>0.808</td>
+          <td>0.793</td>
+        </tr>
+        <tr>
+          <th>Balanced accuracy</th>
+          <td>0.500</td>
+          <td>0.567</td>
+          <td>0.618</td>
+          <td>0.816</td>
+          <td>0.636</td>
+          <td>0.812</td>
+          <td>0.793</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <br />
+    <br />
 
 Applying a random under-sampler before the training of the linear model or
 random forest, allows to not focus on the majority class at the cost of
@@ -853,66 +839,64 @@ the base of the `BalancedRandomForestClassifier` and
 
 
 
-.. only:: builder_html
+.. raw:: html
 
-    .. raw:: html
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
 
-        <div>
-        <style scoped>
-            .dataframe tbody tr th:only-of-type {
-                vertical-align: middle;
-            }
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
 
-            .dataframe tbody tr th {
-                vertical-align: top;
-            }
-
-            .dataframe thead th {
-                text-align: right;
-            }
-        </style>
-        <table border="1" class="dataframe">
-          <thead>
-            <tr style="text-align: right;">
-              <th></th>
-              <th>Dummy</th>
-              <th>LR</th>
-              <th>RF</th>
-              <th>LR with class weight</th>
-              <th>RF with class weight</th>
-              <th>LR with under-sampling</th>
-              <th>RF with under-sampling</th>
-              <th>Balanced RF</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Accuracy</th>
-              <td>0.968</td>
-              <td>0.971</td>
-              <td>0.972</td>
-              <td>0.809</td>
-              <td>0.966</td>
-              <td>0.801</td>
-              <td>0.806</td>
-              <td>0.787</td>
-            </tr>
-            <tr>
-              <th>Balanced accuracy</th>
-              <td>0.500</td>
-              <td>0.580</td>
-              <td>0.641</td>
-              <td>0.812</td>
-              <td>0.641</td>
-              <td>0.812</td>
-              <td>0.806</td>
-              <td>0.830</td>
-            </tr>
-          </tbody>
-        </table>
-        </div>
-        <br />
-        <br />
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>Dummy</th>
+          <th>LR</th>
+          <th>RF</th>
+          <th>LR with class weight</th>
+          <th>RF with class weight</th>
+          <th>LR with under-sampling</th>
+          <th>RF with under-sampling</th>
+          <th>Balanced RF</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Accuracy</th>
+          <td>0.968</td>
+          <td>0.970</td>
+          <td>0.971</td>
+          <td>0.816</td>
+          <td>0.968</td>
+          <td>0.808</td>
+          <td>0.793</td>
+          <td>0.777</td>
+        </tr>
+        <tr>
+          <th>Balanced accuracy</th>
+          <td>0.500</td>
+          <td>0.567</td>
+          <td>0.618</td>
+          <td>0.816</td>
+          <td>0.636</td>
+          <td>0.812</td>
+          <td>0.793</td>
+          <td>0.810</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <br />
+    <br />
 
 The performance with the `BalancedRandomForestClassifier` is better than
 applying a single random under-sampling. We will use a gradient-boosting
@@ -943,81 +927,68 @@ classifier within a `BalancedBaggingClassifier`.
 
 
 
-.. rst-class:: sphx-glr-script-out
 
- Out:
+.. raw:: html
 
- .. code-block:: none
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
 
-    /home/circleci/miniconda/envs/testenv/lib/python3.7/site-packages/joblib/externals/loky/process_executor.py:706: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
-      "timeout or by a memory leak.", UserWarning
-    /home/circleci/miniconda/envs/testenv/lib/python3.7/site-packages/joblib/externals/loky/process_executor.py:706: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
-      "timeout or by a memory leak.", UserWarning
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
 
-
-.. only:: builder_html
-
-    .. raw:: html
-
-        <div>
-        <style scoped>
-            .dataframe tbody tr th:only-of-type {
-                vertical-align: middle;
-            }
-
-            .dataframe tbody tr th {
-                vertical-align: top;
-            }
-
-            .dataframe thead th {
-                text-align: right;
-            }
-        </style>
-        <table border="1" class="dataframe">
-          <thead>
-            <tr style="text-align: right;">
-              <th></th>
-              <th>Dummy</th>
-              <th>LR</th>
-              <th>RF</th>
-              <th>LR with class weight</th>
-              <th>RF with class weight</th>
-              <th>LR with under-sampling</th>
-              <th>RF with under-sampling</th>
-              <th>Balanced RF</th>
-              <th>Balanced bagging</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Accuracy</th>
-              <td>0.968</td>
-              <td>0.971</td>
-              <td>0.972</td>
-              <td>0.809</td>
-              <td>0.966</td>
-              <td>0.801</td>
-              <td>0.806</td>
-              <td>0.787</td>
-              <td>0.836</td>
-            </tr>
-            <tr>
-              <th>Balanced accuracy</th>
-              <td>0.500</td>
-              <td>0.580</td>
-              <td>0.641</td>
-              <td>0.812</td>
-              <td>0.641</td>
-              <td>0.812</td>
-              <td>0.806</td>
-              <td>0.830</td>
-              <td>0.828</td>
-            </tr>
-          </tbody>
-        </table>
-        </div>
-        <br />
-        <br />
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>Dummy</th>
+          <th>LR</th>
+          <th>RF</th>
+          <th>LR with class weight</th>
+          <th>RF with class weight</th>
+          <th>LR with under-sampling</th>
+          <th>RF with under-sampling</th>
+          <th>Balanced RF</th>
+          <th>Balanced bagging</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Accuracy</th>
+          <td>0.968</td>
+          <td>0.970</td>
+          <td>0.971</td>
+          <td>0.816</td>
+          <td>0.968</td>
+          <td>0.808</td>
+          <td>0.793</td>
+          <td>0.777</td>
+          <td>0.838</td>
+        </tr>
+        <tr>
+          <th>Balanced accuracy</th>
+          <td>0.500</td>
+          <td>0.567</td>
+          <td>0.618</td>
+          <td>0.816</td>
+          <td>0.636</td>
+          <td>0.812</td>
+          <td>0.793</td>
+          <td>0.810</td>
+          <td>0.826</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <br />
+    <br />
 
 This last approach is the most effective. The different under-sampling allows
 to bring some diversity for the different GBDT to learn and not focus on a
@@ -1091,81 +1062,68 @@ Increase imbalanced ratio
 
 
 
-.. rst-class:: sphx-glr-script-out
 
- Out:
+.. raw:: html
 
- .. code-block:: none
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
 
-    /home/circleci/miniconda/envs/testenv/lib/python3.7/site-packages/joblib/externals/loky/process_executor.py:706: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
-      "timeout or by a memory leak.", UserWarning
-    /home/circleci/miniconda/envs/testenv/lib/python3.7/site-packages/joblib/externals/loky/process_executor.py:706: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
-      "timeout or by a memory leak.", UserWarning
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
 
-
-.. only:: builder_html
-
-    .. raw:: html
-
-        <div>
-        <style scoped>
-            .dataframe tbody tr th:only-of-type {
-                vertical-align: middle;
-            }
-
-            .dataframe tbody tr th {
-                vertical-align: top;
-            }
-
-            .dataframe thead th {
-                text-align: right;
-            }
-        </style>
-        <table border="1" class="dataframe">
-          <thead>
-            <tr style="text-align: right;">
-              <th></th>
-              <th>Dummy</th>
-              <th>LR</th>
-              <th>RF</th>
-              <th>LR with class weight</th>
-              <th>RF with class weight</th>
-              <th>LR with under-sampling</th>
-              <th>RF with under-sampling</th>
-              <th>BalancedRandomForestClassifier</th>
-              <th>Balanced bagging</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Accuracy</th>
-              <td>0.99</td>
-              <td>0.991</td>
-              <td>0.991</td>
-              <td>0.812</td>
-              <td>0.988</td>
-              <td>0.734</td>
-              <td>0.766</td>
-              <td>0.770</td>
-              <td>0.834</td>
-            </tr>
-            <tr>
-              <th>Balanced accuracy</th>
-              <td>0.50</td>
-              <td>0.543</td>
-              <td>0.580</td>
-              <td>0.767</td>
-              <td>0.568</td>
-              <td>0.791</td>
-              <td>0.759</td>
-              <td>0.777</td>
-              <td>0.762</td>
-            </tr>
-          </tbody>
-        </table>
-        </div>
-        <br />
-        <br />
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>Dummy</th>
+          <th>LR</th>
+          <th>RF</th>
+          <th>LR with class weight</th>
+          <th>RF with class weight</th>
+          <th>LR with under-sampling</th>
+          <th>RF with under-sampling</th>
+          <th>BalancedRandomForestClassifier</th>
+          <th>Balanced bagging</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Accuracy</th>
+          <td>0.99</td>
+          <td>0.991</td>
+          <td>0.991</td>
+          <td>0.825</td>
+          <td>0.988</td>
+          <td>0.778</td>
+          <td>0.750</td>
+          <td>0.760</td>
+          <td>0.846</td>
+        </tr>
+        <tr>
+          <th>Balanced accuracy</th>
+          <td>0.50</td>
+          <td>0.522</td>
+          <td>0.597</td>
+          <td>0.816</td>
+          <td>0.574</td>
+          <td>0.803</td>
+          <td>0.778</td>
+          <td>0.804</td>
+          <td>0.789</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <br />
+    <br />
 
 When we analyse the results, we can draw similar conclusions than in the
 previous discussion. However, we can observe that the strategy
@@ -1177,9 +1135,9 @@ learner.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  58.650 seconds)
+   **Total running time of the script:** ( 0 minutes  43.794 seconds)
 
-**Estimated memory usage:**  66 MB
+**Estimated memory usage:**  61 MB
 
 
 .. _sphx_glr_download_auto_examples_applications_plot_impact_imbalanced_classes.py:
@@ -1192,13 +1150,13 @@ learner.
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-python
 
      :download:`Download Python source code: plot_impact_imbalanced_classes.py <plot_impact_imbalanced_classes.py>`
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
 
      :download:`Download Jupyter notebook: plot_impact_imbalanced_classes.ipynb <plot_impact_imbalanced_classes.ipynb>`
 

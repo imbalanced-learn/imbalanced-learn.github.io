@@ -197,12 +197,12 @@
             
   <div class="section" id="imblearn-over-sampling-borderlinesmote">
 <h1><a class="reference internal" href="../api.html#module-imblearn.over_sampling" title="imblearn.over_sampling"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.over_sampling</span></code></a>.BorderlineSMOTE<a class="headerlink" href="#imblearn-over-sampling-borderlinesmote" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
+<dl class="py class">
 <dt id="imblearn.over_sampling.BorderlineSMOTE">
-<em class="property">class </em><code class="sig-prename descclassname">imblearn.over_sampling.</code><code class="sig-name descname">BorderlineSMOTE</code><span class="sig-paren">(</span><em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">random_state=None</em>, <em class="sig-param">k_neighbors=5</em>, <em class="sig-param">n_jobs=None</em>, <em class="sig-param">m_neighbors=10</em>, <em class="sig-param">kind='borderline-1'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b861b3a/imblearn/over_sampling/_smote.py#L220"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.BorderlineSMOTE" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">imblearn.over_sampling.</code><code class="sig-name descname">BorderlineSMOTE</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sampling_strategy</span><span class="o">=</span><span class="default_value">'auto'</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">k_neighbors</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">m_neighbors</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">kind</span><span class="o">=</span><span class="default_value">'borderline-1'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b037591/imblearn/over_sampling/_smote.py#L220"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.BorderlineSMOTE" title="Permalink to this definition">¶</a></dt>
 <dd><p>Over-sampling using Borderline SMOTE.</p>
 <p>This algorithm is a variant of the original SMOTE algorithm proposed in
-<a class="reference internal" href="#r63962efaf197-2" id="id1"><span>[R63962efaf197-2]</span></a>. Borderline samples will be detected and used to generate new
+<a class="reference internal" href="#r63962efaf197-2" id="id1">[2]</a>. Borderline samples will be detected and used to generate new
 synthetic samples.</p>
 <p>Read more in the <a class="reference internal" href="../over_sampling.html#smote-adasyn"><span class="std std-ref">User Guide</span></a>.</p>
 <dl class="field-list">
@@ -291,17 +291,17 @@ to find the m_neighbors.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>See the original papers: <a class="reference internal" href="#r63962efaf197-2" id="id2"><span>[R63962efaf197-2]</span></a> for more details.</p>
+<p>See the original papers: <a class="reference internal" href="#r63962efaf197-2" id="id2">[2]</a> for more details.</p>
 <p>Supports multi-class resampling. A one-vs.-rest scheme is used as
-originally proposed in <a class="reference internal" href="#r63962efaf197-1" id="id3"><span>[R63962efaf197-1]</span></a>.</p>
+originally proposed in <a class="reference internal" href="#r63962efaf197-1" id="id3">[1]</a>.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r63962efaf197-1"><span class="brackets"><a class="fn-backref" href="#id3">R63962efaf197-1</a></span></dt>
+<dt class="label" id="r63962efaf197-1"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
 <dd><p>N. V. Chawla, K. W. Bowyer, L. O.Hall, W. P. Kegelmeyer, “SMOTE:
 synthetic minority over-sampling technique,” Journal of artificial
 intelligence research, 321-357, 2002.</p>
 </dd>
-<dt class="label" id="r63962efaf197-2"><span class="brackets">R63962efaf197-2</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
+<dt class="label" id="r63962efaf197-2"><span class="brackets">2</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
 <dd><p>H. Han, W. Wen-Yuan, M. Bing-Huan, “Borderline-SMOTE: a new
 over-sampling method in imbalanced data sets learning,” Advances in
 intelligent computing, 878-887, 2005.</p>
@@ -322,126 +322,10 @@ intelligent computing, 878-887, 2005.</p>
 <span class="go">Resampled dataset shape Counter({0: 900, 1: 900})</span>
 </pre></div>
 </div>
-<dl class="method">
+<dl class="py method">
 <dt id="imblearn.over_sampling.BorderlineSMOTE.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">random_state=None</em>, <em class="sig-param">k_neighbors=5</em>, <em class="sig-param">n_jobs=None</em>, <em class="sig-param">m_neighbors=10</em>, <em class="sig-param">kind='borderline-1'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b861b3a/imblearn/over_sampling/_smote.py#L301"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.BorderlineSMOTE.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">sampling_strategy</span><span class="o">=</span><span class="default_value">'auto'</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">k_neighbors</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">m_neighbors</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">kind</span><span class="o">=</span><span class="default_value">'borderline-1'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b037591/imblearn/over_sampling/_smote.py#L301"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.BorderlineSMOTE.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="imblearn.over_sampling.BorderlineSMOTE.fit">
-<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b861b3a/imblearn/base.py#L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.BorderlineSMOTE.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check inputs and statistics of the sampler.</p>
-<p>You should use <code class="docutils literal notranslate"><span class="pre">fit_resample</span></code> in all cases.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">{array-like, dataframe, sparse matrix} of shape                 (n_samples, n_features)</span></dt><dd><p>Data array.</p>
-</dd>
-<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>Target array.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>self</strong><span class="classifier">object</span></dt><dd><p>Return the instance itself.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="imblearn.over_sampling.BorderlineSMOTE.fit_resample">
-<code class="sig-name descname">fit_resample</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b861b3a/imblearn/base.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.BorderlineSMOTE.fit_resample" title="Permalink to this definition">¶</a></dt>
-<dd><p>Resample the dataset.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">{array-like, dataframe, sparse matrix} of shape                 (n_samples, n_features)</span></dt><dd><p>Matrix containing the data which have to be sampled.</p>
-</dd>
-<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>Corresponding label for each sample in X.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>X_resampled</strong><span class="classifier">{array-like, dataframe, sparse matrix} of shape                 (n_samples_new, n_features)</span></dt><dd><p>The array containing the resampled data.</p>
-</dd>
-<dt><strong>y_resampled</strong><span class="classifier">array-like of shape (n_samples_new,)</span></dt><dd><p>The corresponding label of <code class="docutils literal notranslate"><span class="pre">X_resampled</span></code>.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="imblearn.over_sampling.BorderlineSMOTE.fit_sample">
-<code class="sig-name descname">fit_sample</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b861b3a/imblearn/base.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.BorderlineSMOTE.fit_sample" title="Permalink to this definition">¶</a></dt>
-<dd><p>Resample the dataset.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">{array-like, dataframe, sparse matrix} of shape                 (n_samples, n_features)</span></dt><dd><p>Matrix containing the data which have to be sampled.</p>
-</dd>
-<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>Corresponding label for each sample in X.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>X_resampled</strong><span class="classifier">{array-like, dataframe, sparse matrix} of shape                 (n_samples_new, n_features)</span></dt><dd><p>The array containing the resampled data.</p>
-</dd>
-<dt><strong>y_resampled</strong><span class="classifier">array-like of shape (n_samples_new,)</span></dt><dd><p>The corresponding label of <code class="docutils literal notranslate"><span class="pre">X_resampled</span></code>.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="imblearn.over_sampling.BorderlineSMOTE.get_params">
-<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">deep=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b861b3a/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L180"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.BorderlineSMOTE.get_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get parameters for this estimator.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>deep</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, will return the parameters for this estimator and
-contained subobjects that are estimators.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>params</strong><span class="classifier">mapping of string to any</span></dt><dd><p>Parameter names mapped to their values.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="imblearn.over_sampling.BorderlineSMOTE.set_params">
-<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b861b3a/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L212"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.BorderlineSMOTE.set_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the parameters of this estimator.</p>
-<p>The method works on simple estimators as well as on nested objects
-(such as pipelines). The latter have parameters of the form
-<code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s possible to update each
-component of a nested object.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>**params</strong><span class="classifier">dict</span></dt><dd><p>Estimator parameters.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>self</strong><span class="classifier">object</span></dt><dd><p>Estimator instance.</p>
-</dd>
-</dl>
-</dd>
-</dl>
 </dd></dl>
 
 </dd></dl>
@@ -449,7 +333,7 @@ component of a nested object.</p>
 <div class="section" id="examples-using-imblearn-over-sampling-borderlinesmote">
 <h2>Examples using <code class="docutils literal notranslate"><span class="pre">imblearn.over_sampling.BorderlineSMOTE</span></code><a class="headerlink" href="#examples-using-imblearn-over-sampling-borderlinesmote" title="Permalink to this headline">¶</a></h2>
 <div class="sphx-glr-thumbcontainer" tooltip="The following example attends to make a qualitative comparison between the different over-sampl..."><div class="figure align-default" id="id6">
-<img alt="../_images/sphx_glr_plot_comparison_over_sampling_thumb.png" src="../_images/sphx_glr_plot_comparison_over_sampling_thumb.png" />
+<img alt="Comparison of the different over-sampling algorithms" src="../_images/sphx_glr_plot_comparison_over_sampling_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/over-sampling/plot_comparison_over_sampling.html#sphx-glr-auto-examples-over-sampling-plot-comparison-over-sampling-py"><span class="std std-ref">Comparison of the different over-sampling algorithms</span></a></span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
 </div><div style='clear:both'></div></div>

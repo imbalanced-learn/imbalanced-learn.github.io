@@ -201,20 +201,20 @@
             
   <div class="section" id="imblearn-under-sampling-instancehardnessthreshold">
 <h1><a class="reference internal" href="../api.html#module-imblearn.under_sampling" title="imblearn.under_sampling"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.under_sampling</span></code></a>.InstanceHardnessThreshold<a class="headerlink" href="#imblearn-under-sampling-instancehardnessthreshold" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
+<dl class="py class">
 <dt id="imblearn.under_sampling.InstanceHardnessThreshold">
-<em class="property">class </em><code class="sig-prename descclassname">imblearn.under_sampling.</code><code class="sig-name descname">InstanceHardnessThreshold</code><span class="sig-paren">(</span><em class="sig-param">estimator=None</em>, <em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">random_state=None</em>, <em class="sig-param">cv=5</em>, <em class="sig-param">n_jobs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b861b3a/imblearn/under_sampling/_prototype_selection/_instance_hardness_threshold.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.under_sampling.InstanceHardnessThreshold" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">imblearn.under_sampling.</code><code class="sig-name descname">InstanceHardnessThreshold</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">estimator</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sampling_strategy</span><span class="o">=</span><span class="default_value">'auto'</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">cv</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b037591/imblearn/under_sampling/_prototype_selection/_instance_hardness_threshold.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.under_sampling.InstanceHardnessThreshold" title="Permalink to this definition">¶</a></dt>
 <dd><p>Undersample based on the instance hardness threshold.</p>
 <p>Read more in the <a class="reference internal" href="../under_sampling.html#instance-hardness-threshold"><span class="std std-ref">User Guide</span></a>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
 <dt><strong>estimator</strong><span class="classifier">object, default=None</span></dt><dd><p>Classifier to be used to estimate instance hardness of the samples.  By
-default a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v0.22)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.ensemble.RandomForestClassifier</span></code></a> will be used.
+default a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v0.23)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.ensemble.RandomForestClassifier</span></code></a> will be used.
 If <code class="docutils literal notranslate"><span class="pre">str</span></code>, the choices using a string are the following: <code class="docutils literal notranslate"><span class="pre">'knn'</span></code>,
 <code class="docutils literal notranslate"><span class="pre">'decision-tree'</span></code>, <code class="docutils literal notranslate"><span class="pre">'random-forest'</span></code>, <code class="docutils literal notranslate"><span class="pre">'adaboost'</span></code>,
 <code class="docutils literal notranslate"><span class="pre">'gradient-boosting'</span></code> and <code class="docutils literal notranslate"><span class="pre">'linear-svm'</span></code>.  If object, an estimator
-inherited from <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.ClassifierMixin.html#sklearn.base.ClassifierMixin" title="(in scikit-learn v0.22)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.ClassifierMixin</span></code></a> and having an
+inherited from <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.ClassifierMixin.html#sklearn.base.ClassifierMixin" title="(in scikit-learn v0.23)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.ClassifierMixin</span></code></a> and having an
 attribute <code class="xref py py-func docutils literal notranslate"><span class="pre">predict_proba</span></code>.</p>
 </dd>
 <dt><strong>sampling_strategy</strong><span class="classifier">float, str, dict, callable, default=’auto’</span></dt><dd><p>Sampling information to sample the data set.</p>
@@ -282,12 +282,12 @@ for more details.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>The method is based on <a class="reference internal" href="#r2bfe4eaac981-1" id="id1"><span>[R2bfe4eaac981-1]</span></a>.</p>
+<p>The method is based on <a class="reference internal" href="#r2bfe4eaac981-1" id="id1">[1]</a>.</p>
 <p>Supports multi-class resampling. A one-vs.-rest scheme is used when
-sampling a class as proposed in <a class="reference internal" href="#r2bfe4eaac981-1" id="id2"><span>[R2bfe4eaac981-1]</span></a>.</p>
+sampling a class as proposed in <a class="reference internal" href="#r2bfe4eaac981-1" id="id2">[1]</a>.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r2bfe4eaac981-1"><span class="brackets">R2bfe4eaac981-1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
+<dt class="label" id="r2bfe4eaac981-1"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
 <dd><p>D. Smith, Michael R., Tony Martinez, and Christophe Giraud-Carrier.
 “An instance level analysis of data complexity.” Machine learning
 95.2 (2014): 225-256.</p>
@@ -319,126 +319,10 @@ sampling a class as proposed in <a class="reference internal" href="#r2bfe4eaac9
 </dl>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="imblearn.under_sampling.InstanceHardnessThreshold.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">estimator=None</em>, <em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">random_state=None</em>, <em class="sig-param">cv=5</em>, <em class="sig-param">n_jobs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b861b3a/imblearn/under_sampling/_prototype_selection/_instance_hardness_threshold.py#L100"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.under_sampling.InstanceHardnessThreshold.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">estimator</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sampling_strategy</span><span class="o">=</span><span class="default_value">'auto'</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">cv</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b037591/imblearn/under_sampling/_prototype_selection/_instance_hardness_threshold.py#L100"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.under_sampling.InstanceHardnessThreshold.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="imblearn.under_sampling.InstanceHardnessThreshold.fit">
-<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b861b3a/imblearn/base.py#L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.under_sampling.InstanceHardnessThreshold.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check inputs and statistics of the sampler.</p>
-<p>You should use <code class="docutils literal notranslate"><span class="pre">fit_resample</span></code> in all cases.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">{array-like, dataframe, sparse matrix} of shape                 (n_samples, n_features)</span></dt><dd><p>Data array.</p>
-</dd>
-<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>Target array.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>self</strong><span class="classifier">object</span></dt><dd><p>Return the instance itself.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="imblearn.under_sampling.InstanceHardnessThreshold.fit_resample">
-<code class="sig-name descname">fit_resample</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b861b3a/imblearn/base.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.under_sampling.InstanceHardnessThreshold.fit_resample" title="Permalink to this definition">¶</a></dt>
-<dd><p>Resample the dataset.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">{array-like, dataframe, sparse matrix} of shape                 (n_samples, n_features)</span></dt><dd><p>Matrix containing the data which have to be sampled.</p>
-</dd>
-<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>Corresponding label for each sample in X.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>X_resampled</strong><span class="classifier">{array-like, dataframe, sparse matrix} of shape                 (n_samples_new, n_features)</span></dt><dd><p>The array containing the resampled data.</p>
-</dd>
-<dt><strong>y_resampled</strong><span class="classifier">array-like of shape (n_samples_new,)</span></dt><dd><p>The corresponding label of <code class="docutils literal notranslate"><span class="pre">X_resampled</span></code>.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="imblearn.under_sampling.InstanceHardnessThreshold.fit_sample">
-<code class="sig-name descname">fit_sample</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b861b3a/imblearn/base.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.under_sampling.InstanceHardnessThreshold.fit_sample" title="Permalink to this definition">¶</a></dt>
-<dd><p>Resample the dataset.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">{array-like, dataframe, sparse matrix} of shape                 (n_samples, n_features)</span></dt><dd><p>Matrix containing the data which have to be sampled.</p>
-</dd>
-<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>Corresponding label for each sample in X.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>X_resampled</strong><span class="classifier">{array-like, dataframe, sparse matrix} of shape                 (n_samples_new, n_features)</span></dt><dd><p>The array containing the resampled data.</p>
-</dd>
-<dt><strong>y_resampled</strong><span class="classifier">array-like of shape (n_samples_new,)</span></dt><dd><p>The corresponding label of <code class="docutils literal notranslate"><span class="pre">X_resampled</span></code>.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="imblearn.under_sampling.InstanceHardnessThreshold.get_params">
-<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">deep=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b861b3a/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L180"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.under_sampling.InstanceHardnessThreshold.get_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get parameters for this estimator.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>deep</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, will return the parameters for this estimator and
-contained subobjects that are estimators.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>params</strong><span class="classifier">mapping of string to any</span></dt><dd><p>Parameter names mapped to their values.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="imblearn.under_sampling.InstanceHardnessThreshold.set_params">
-<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b861b3a/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L212"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.under_sampling.InstanceHardnessThreshold.set_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the parameters of this estimator.</p>
-<p>The method works on simple estimators as well as on nested objects
-(such as pipelines). The latter have parameters of the form
-<code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s possible to update each
-component of a nested object.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>**params</strong><span class="classifier">dict</span></dt><dd><p>Estimator parameters.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>self</strong><span class="classifier">object</span></dt><dd><p>Estimator instance.</p>
-</dd>
-</dl>
-</dd>
-</dl>
 </dd></dl>
 
 </dd></dl>
@@ -446,7 +330,7 @@ component of a nested object.</p>
 <div class="section" id="examples-using-imblearn-under-sampling-instancehardnessthreshold">
 <h2>Examples using <code class="docutils literal notranslate"><span class="pre">imblearn.under_sampling.InstanceHardnessThreshold</span></code><a class="headerlink" href="#examples-using-imblearn-under-sampling-instancehardnessthreshold" title="Permalink to this headline">¶</a></h2>
 <div class="sphx-glr-thumbcontainer" tooltip="The following example attends to make a qualitative comparison between the different under-samp..."><div class="figure align-default" id="id4">
-<img alt="../_images/sphx_glr_plot_comparison_under_sampling_thumb.png" src="../_images/sphx_glr_plot_comparison_under_sampling_thumb.png" />
+<img alt="Comparison of the different under-sampling algorithms" src="../_images/sphx_glr_plot_comparison_under_sampling_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/under-sampling/plot_comparison_under_sampling.html#sphx-glr-auto-examples-under-sampling-plot-comparison-under-sampling-py"><span class="std std-ref">Comparison of the different under-sampling algorithms</span></a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 </div><div style='clear:both'></div></div>

@@ -201,9 +201,9 @@
             
   <div class="section" id="imblearn-under-sampling-tomeklinks">
 <h1><a class="reference internal" href="../api.html#module-imblearn.under_sampling" title="imblearn.under_sampling"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.under_sampling</span></code></a>.TomekLinks<a class="headerlink" href="#imblearn-under-sampling-tomeklinks" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
+<dl class="py class">
 <dt id="imblearn.under_sampling.TomekLinks">
-<em class="property">class </em><code class="sig-prename descclassname">imblearn.under_sampling.</code><code class="sig-name descname">TomekLinks</code><span class="sig-paren">(</span><em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">n_jobs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b861b3a/imblearn/under_sampling/_prototype_selection/_tomek_links.py#L21"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.under_sampling.TomekLinks" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">imblearn.under_sampling.</code><code class="sig-name descname">TomekLinks</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sampling_strategy</span><span class="o">=</span><span class="default_value">'auto'</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b037591/imblearn/under_sampling/_prototype_selection/_tomek_links.py#L21"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.under_sampling.TomekLinks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Under-sampling by removing Tomek’s links.</p>
 <p>Read more in the <a class="reference internal" href="../under_sampling.html#tomek-links"><span class="std std-ref">User Guide</span></a>.</p>
 <dl class="field-list">
@@ -250,12 +250,12 @@ for more details.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>This method is based on <a class="reference internal" href="#r9de8154bb394-1" id="id1"><span>[R9de8154bb394-1]</span></a>.</p>
+<p>This method is based on <a class="reference internal" href="#r9de8154bb394-1" id="id1">[1]</a>.</p>
 <p>Supports multi-class resampling. A one-vs.-rest scheme is used as
-originally proposed in <a class="reference internal" href="#r9de8154bb394-1" id="id2"><span>[R9de8154bb394-1]</span></a>.</p>
+originally proposed in <a class="reference internal" href="#r9de8154bb394-1" id="id2">[1]</a>.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r9de8154bb394-1"><span class="brackets">R9de8154bb394-1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
+<dt class="label" id="r9de8154bb394-1"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
 <dd><p>I. Tomek, “Two modifications of CNN,” In Systems, Man, and
 Cybernetics, IEEE Transactions on, vol. 6, pp 769-772, 1976.</p>
 </dd>
@@ -286,155 +286,10 @@ Cybernetics, IEEE Transactions on, vol. 6, pp 769-772, 1976.</p>
 </dl>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="imblearn.under_sampling.TomekLinks.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">sampling_strategy='auto'</em>, <em class="sig-param">n_jobs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b861b3a/imblearn/under_sampling/_prototype_selection/_tomek_links.py#L77"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.under_sampling.TomekLinks.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">sampling_strategy</span><span class="o">=</span><span class="default_value">'auto'</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b037591/imblearn/under_sampling/_prototype_selection/_tomek_links.py#L77"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.under_sampling.TomekLinks.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="imblearn.under_sampling.TomekLinks.fit">
-<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b861b3a/imblearn/base.py#L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.under_sampling.TomekLinks.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check inputs and statistics of the sampler.</p>
-<p>You should use <code class="docutils literal notranslate"><span class="pre">fit_resample</span></code> in all cases.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">{array-like, dataframe, sparse matrix} of shape                 (n_samples, n_features)</span></dt><dd><p>Data array.</p>
-</dd>
-<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>Target array.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>self</strong><span class="classifier">object</span></dt><dd><p>Return the instance itself.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="imblearn.under_sampling.TomekLinks.fit_resample">
-<code class="sig-name descname">fit_resample</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b861b3a/imblearn/base.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.under_sampling.TomekLinks.fit_resample" title="Permalink to this definition">¶</a></dt>
-<dd><p>Resample the dataset.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">{array-like, dataframe, sparse matrix} of shape                 (n_samples, n_features)</span></dt><dd><p>Matrix containing the data which have to be sampled.</p>
-</dd>
-<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>Corresponding label for each sample in X.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>X_resampled</strong><span class="classifier">{array-like, dataframe, sparse matrix} of shape                 (n_samples_new, n_features)</span></dt><dd><p>The array containing the resampled data.</p>
-</dd>
-<dt><strong>y_resampled</strong><span class="classifier">array-like of shape (n_samples_new,)</span></dt><dd><p>The corresponding label of <code class="docutils literal notranslate"><span class="pre">X_resampled</span></code>.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="imblearn.under_sampling.TomekLinks.fit_sample">
-<code class="sig-name descname">fit_sample</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b861b3a/imblearn/base.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.under_sampling.TomekLinks.fit_sample" title="Permalink to this definition">¶</a></dt>
-<dd><p>Resample the dataset.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">{array-like, dataframe, sparse matrix} of shape                 (n_samples, n_features)</span></dt><dd><p>Matrix containing the data which have to be sampled.</p>
-</dd>
-<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>Corresponding label for each sample in X.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>X_resampled</strong><span class="classifier">{array-like, dataframe, sparse matrix} of shape                 (n_samples_new, n_features)</span></dt><dd><p>The array containing the resampled data.</p>
-</dd>
-<dt><strong>y_resampled</strong><span class="classifier">array-like of shape (n_samples_new,)</span></dt><dd><p>The corresponding label of <code class="docutils literal notranslate"><span class="pre">X_resampled</span></code>.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="imblearn.under_sampling.TomekLinks.get_params">
-<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">deep=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b861b3a/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L180"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.under_sampling.TomekLinks.get_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get parameters for this estimator.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>deep</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, will return the parameters for this estimator and
-contained subobjects that are estimators.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>params</strong><span class="classifier">mapping of string to any</span></dt><dd><p>Parameter names mapped to their values.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="imblearn.under_sampling.TomekLinks.is_tomek">
-<em class="property">static </em><code class="sig-name descname">is_tomek</code><span class="sig-paren">(</span><em class="sig-param">y</em>, <em class="sig-param">nn_index</em>, <em class="sig-param">class_type</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b861b3a/imblearn/under_sampling/_prototype_selection/_tomek_links.py#L81"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.under_sampling.TomekLinks.is_tomek" title="Permalink to this definition">¶</a></dt>
-<dd><p>Detect if samples are Tomek’s link.</p>
-<p>More precisely, it uses the target vector and the first neighbour of
-every sample point and looks for Tomek pairs. Returning a boolean
-vector with True for majority Tomek links.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>y</strong><span class="classifier">ndarray of shape (n_samples,)</span></dt><dd><p>Target vector of the data set, necessary to keep track of whether a
-sample belongs to minority or not.</p>
-</dd>
-<dt><strong>nn_index</strong><span class="classifier">ndarray of shape (len(y),)</span></dt><dd><p>The index of the closes nearest neighbour to a sample point.</p>
-</dd>
-<dt><strong>class_type</strong><span class="classifier">int or str</span></dt><dd><p>The label of the minority class.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>is_tomek</strong><span class="classifier">ndarray of shape (len(y), )</span></dt><dd><p>Boolean vector on len( # samples ), with True for majority samples
-that are Tomek links.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="imblearn.under_sampling.TomekLinks.set_params">
-<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b861b3a/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L212"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.under_sampling.TomekLinks.set_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the parameters of this estimator.</p>
-<p>The method works on simple estimators as well as on nested objects
-(such as pipelines). The latter have parameters of the form
-<code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s possible to update each
-component of a nested object.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>**params</strong><span class="classifier">dict</span></dt><dd><p>Estimator parameters.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>self</strong><span class="classifier">object</span></dt><dd><p>Estimator instance.</p>
-</dd>
-</dl>
-</dd>
-</dl>
 </dd></dl>
 
 </dd></dl>
@@ -442,11 +297,11 @@ component of a nested object.</p>
 <div class="section" id="examples-using-imblearn-under-sampling-tomeklinks">
 <h2>Examples using <code class="docutils literal notranslate"><span class="pre">imblearn.under_sampling.TomekLinks</span></code><a class="headerlink" href="#examples-using-imblearn-under-sampling-tomeklinks" title="Permalink to this headline">¶</a></h2>
 <div class="sphx-glr-thumbcontainer" tooltip="This example shows the different usage of the parameter sampling_strategy for the different fam..."><div class="figure align-default" id="id4">
-<img alt="../_images/sphx_glr_plot_sampling_strategy_usage_thumb.png" src="../_images/sphx_glr_plot_sampling_strategy_usage_thumb.png" />
+<img alt="Usage of the ``sampling_strategy`` parameter for the different algorithms" src="../_images/sphx_glr_plot_sampling_strategy_usage_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/plot_sampling_strategy_usage.html#sphx-glr-auto-examples-plot-sampling-strategy-usage-py"><span class="std std-ref">Usage of the sampling_strategy parameter for the different algorithms</span></a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates what is a Tomek link."><div class="figure align-default" id="id5">
-<img alt="../_images/sphx_glr_plot_illustration_tomek_links_thumb.png" src="../_images/sphx_glr_plot_illustration_tomek_links_thumb.png" />
+<img alt="Illustration of the definition of a Tomek link" src="../_images/sphx_glr_plot_illustration_tomek_links_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/under-sampling/plot_illustration_tomek_links.html#sphx-glr-auto-examples-under-sampling-plot-illustration-tomek-links-py"><span class="std std-ref">Illustration of the definition of a Tomek link</span></a></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 </div><div style='clear:both'></div></div>
