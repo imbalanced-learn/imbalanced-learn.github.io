@@ -176,6 +176,10 @@
 <li><p>Ensure that <a class="reference internal" href="../generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="imblearn.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.pipeline.Pipeline</span></code></a> is working when <code class="docutils literal notranslate"><span class="pre">memory</span></code>
 is activated and <code class="docutils literal notranslate"><span class="pre">joblib==0.11</span></code>.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/687">#687</a> by <a class="reference external" href="https://github.com/chkoar">Christos Aridas</a>.</p></li>
+<li><p>Refactor common test to use the dev tools from <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> 0.23.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/710">#710</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">FutureWarning</span></code> issued by <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> 0.23.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/710">#710</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </div>
 <div class="section" id="changed-models">
@@ -191,6 +195,10 @@ is activated and <code class="docutils literal notranslate"><span class="pre">jo
 <li><p>Change the default value <code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code> to be consistent with
 scikit-learn.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/711">#711</a> by <a class="reference external" href="https://github.com/zerolfx">zerolfx</a>.</p></li>
+<li><p>Fix a bug due to change in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> 0.23 in
+<a class="reference internal" href="../generated/imblearn.metrics.make_index_balanced_accuracy.html#imblearn.metrics.make_index_balanced_accuracy" title="imblearn.metrics.make_index_balanced_accuracy"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.metrics.make_index_balanced_accuracy</span></code></a>. The function was
+unusable.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/710">#710</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </div>
 <div class="section" id="enhancements">
@@ -203,8 +211,17 @@ scikit-learn.
 <a class="reference internal" href="../generated/imblearn.ensemble.RUSBoostClassifier.html#imblearn.ensemble.RUSBoostClassifier" title="imblearn.ensemble.RUSBoostClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.ensemble.RUSBoostClassifier</span></code></a>, accept <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code>
 with the same key than in <code class="docutils literal notranslate"><span class="pre">y</span></code> without the need of encoding <code class="docutils literal notranslate"><span class="pre">y</span></code> in advance.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/718">#718</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
-<li><p>Lazy import <code class="docutils literal notranslate"><span class="pre">keras</span></code> module when importing <code class="docutils literal notranslate"><span class="pre">imblearn.</span>
-<span class="pre">:pr:`719</span></code> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+<li><p>Lazy import <code class="docutils literal notranslate"><span class="pre">keras</span></code> module when importing <code class="docutils literal notranslate"><span class="pre">imblearn.keras</span></code>
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/719">#719</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+</ul>
+</div>
+<div class="section" id="deprecation">
+<h3>Deprecation<a class="headerlink" href="#deprecation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Deprecation of the parameters <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> in
+<a class="reference internal" href="../generated/imblearn.under_sampling.ClusterCentroids.html#imblearn.under_sampling.ClusterCentroids" title="imblearn.under_sampling.ClusterCentroids"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.under_sampling.ClusterCentroids</span></code></a> since it was used by
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="(in scikit-learn v0.23)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.cluster.KMeans</span></code></a> which deprecated it.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/710">#710</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </div>
 </div>
