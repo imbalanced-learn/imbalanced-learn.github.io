@@ -379,6 +379,10 @@ interpolation will create a sample on the line between <img class="math" src="_i
 something specific for the categorical features. In fact, the categories of a
 new generated sample are decided by picking the most frequent category of the
 nearest neighbors present during the generation.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Be aware that SMOTE-NC is not designed to work with only categorical data.</p>
+</div>
 <p>The other SMOTE variants and ADASYN differ from each other by selecting the
 samples <img class="math" src="_images/math/c67734af70861b2bd4dedf5c41c9aad231466f84.svg" alt="x_i"/> ahead of generating the new samples.</p>
 <p>The <strong>regular</strong> SMOTE algorithm — cf. to the <a class="reference internal" href="generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTE</span></code></a> object — does not
