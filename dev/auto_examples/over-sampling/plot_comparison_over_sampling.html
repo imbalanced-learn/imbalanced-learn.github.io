@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Comparison of the different over-sampling algorithms &mdash; imbalanced-learn 0.7.0.dev0 documentation</title>
+  <title>Comparison of the different over-sampling algorithms &mdash; imbalanced-learn 0.7.0 documentation</title>
   
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.7.0.dev0
+                0.7.0
               </div>
             
           
@@ -352,11 +352,6 @@ Therefore, the decision function depending of the algorithm.</p>
 </pre></div>
 </div>
 <img alt="Linear SVC with y=Counter({2: 9345, 1: 523, 0: 132}), Decision function for SMOTE, Decision function for ADASYN" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_comparison_over_sampling_004.png" />
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/svm/_base.py:977: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
-  &quot;the number of iterations.&quot;, ConvergenceWarning)
-</pre></div>
-</div>
 <p>Due to those sampling particularities, it can give rise to some specific
 issues as illustrated below.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fig</span></a><span class="p">,</span> <span class="p">((</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">),</span> <span class="p">(</span><span class="n">ax3</span><span class="p">,</span> <span class="n">ax4</span><span class="p">))</span> <span class="o">=</span> <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
@@ -378,6 +373,11 @@ issues as illustrated below.</p>
 </pre></div>
 </div>
 <img alt="Decision function for SMOTE, Resampling using SMOTE, Decision function for ADASYN, Resampling using ADASYN" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_comparison_over_sampling_005.png" />
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/svm/_base.py:977: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  &quot;the number of iterations.&quot;, ConvergenceWarning)
+</pre></div>
+</div>
 <p>SMOTE proposes several variants by identifying specific samples to consider
 during the resampling. The borderline version will detect which point to
 select which are in the border between two classes. The SVM version will use
@@ -409,6 +409,11 @@ cluster independently depending each cluster density.</p>
 </pre></div>
 </div>
 <img alt="Decision function for SMOTE, Resampling using SMOTE, Decision function for BorderlineSMOTE, Resampling using BorderlineSMOTE, Decision function for BorderlineSMOTE, Resampling using BorderlineSMOTE, Decision function for KMeansSMOTE, Resampling using KMeansSMOTE, Decision function for SVMSMOTE, Resampling using SVMSMOTE" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_comparison_over_sampling_006.png" />
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/svm/_base.py:977: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  &quot;the number of iterations.&quot;, ConvergenceWarning)
+</pre></div>
+</div>
 <p>When dealing with a mixed of continuous and categorical features, SMOTE-NC
 is the only method which can handle this case.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a synthetic data set with continuous and categorical features</span>
@@ -454,8 +459,8 @@ SMOTE-NC will generate categories for the categorical features:
  [&#39;B&#39; 0.3327240726719727 2]]
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  28.325 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  16 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  27.719 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  35 MB</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-over-sampling-plot-comparison-over-sampling-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/b49f40a015e9f4563e97ac8e98bbe342/plot_comparison_over_sampling.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_comparison_over_sampling.py</span></code></a></p>
