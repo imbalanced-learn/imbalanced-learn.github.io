@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5. Ensemble of samplers &mdash; imbalanced-learn 0.7.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/js/copybutton.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/imbalanced-learn.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-dataframe.css" type="text/css" />
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="6. Miscellaneous samplers" href="miscellaneous.html" />
+    <link rel="prev" title="4. Combination of over- and under-sampling" href="combine.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> imbalanced-learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install and contribution</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="user_guide.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="over_sampling.html">2. Over-sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="under_sampling.html">3. Under-sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="combine.html">4. Combination of over- and under-sampling</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5. Ensemble of samplers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#classifier-including-inner-balancing-samplers">5.1. Classifier including inner balancing samplers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bagging-classifier">5.1.1. Bagging classifier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#forest-of-randomized-trees">5.1.2. Forest of randomized trees</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#boosting">5.1.3. Boosting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="miscellaneous.html">6. Miscellaneous samplers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">7. Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datasets/index.html">8. Dataset loading utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developers_utils.html">9. Utilities for Developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="references.html">10. References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">imbalanced-learn API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial - Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">General examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html#examples-based-on-real-world-datasets">Examples based on real world datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html#dataset-examples">Dataset examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html#evaluation-examples">Evaluation examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html#model-selection">Model Selection</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Addtional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="whats_new.html">Release history</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">imbalanced-learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="user_guide.html">User Guide</a> &raquo;</li>
+        
+      <li><span class="section-number">5. </span>Ensemble of samplers</li>
+    
+    
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ensemble-of-samplers">
+<span id="ensemble"></span><h1><span class="section-number">5. </span>Ensemble of samplers<a class="headerlink" href="#ensemble-of-samplers" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="classifier-including-inner-balancing-samplers">
+<span id="ensemble-meta-estimators"></span><h2><span class="section-number">5.1. </span>Classifier including inner balancing samplers<a class="headerlink" href="#classifier-including-inner-balancing-samplers" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="bagging-classifier">
+<span id="bagging"></span><h3><span class="section-number">5.1.1. </span>Bagging classifier<a class="headerlink" href="#bagging-classifier" title="Permalink to this headline">¶</a></h3>
+<p>In ensemble classifiers, bagging methods build several estimators on different
+randomly selected subset of data. In scikit-learn, this classifier is named
+<code class="docutils literal notranslate"><span class="pre">BaggingClassifier</span></code>. However, this classifier does not allow to balance each
+subset of data. Therefore, when training on imbalanced data set, this
+classifier will favor the majority classes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>                           <span class="n">n_redundant</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_repeated</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>                           <span class="n">n_clusters_per_class</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>                           <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.94</span><span class="p">],</span> <span class="n">class_sep</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+<span class="gp">... </span>                           <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">balanced_accuracy_score</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">BaggingClassifier</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bc</span> <span class="o">=</span> <span class="n">BaggingClassifier</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">DecisionTreeClassifier</span><span class="p">(),</span>
+<span class="gp">... </span>                       <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span> 
+<span class="go">BaggingClassifier(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">bc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">balanced_accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>  
+<span class="go">0.77...</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="imblearn.ensemble.BalancedBaggingClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">BalancedBaggingClassifier</span></code></a> allows to resample each subset of data
+before to train each estimator of the ensemble. In short, it combines the
+output of an <code class="xref py py-class docutils literal notranslate"><span class="pre">EasyEnsemble</span></code> sampler with an ensemble of classifiers
+(i.e. <code class="docutils literal notranslate"><span class="pre">BaggingClassifier</span></code>). Therefore, <a class="reference internal" href="generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="imblearn.ensemble.BalancedBaggingClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">BalancedBaggingClassifier</span></code></a>
+takes the same parameters than the scikit-learn
+<code class="docutils literal notranslate"><span class="pre">BaggingClassifier</span></code>. Additionally, there is two additional parameters,
+<code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> and <code class="docutils literal notranslate"><span class="pre">replacement</span></code> to control the behaviour of the
+random under-sampler:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="kn">import</span> <span class="n">BalancedBaggingClassifier</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bbc</span> <span class="o">=</span> <span class="n">BalancedBaggingClassifier</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">DecisionTreeClassifier</span><span class="p">(),</span>
+<span class="gp">... </span>                                <span class="n">sampling_strategy</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                                <span class="n">replacement</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="gp">... </span>                                <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bbc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span> 
+<span class="go">BalancedBaggingClassifier(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">bbc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">balanced_accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>  
+<span class="go">0.8...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="forest-of-randomized-trees">
+<span id="forest"></span><h3><span class="section-number">5.1.2. </span>Forest of randomized trees<a class="headerlink" href="#forest-of-randomized-trees" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="generated/imblearn.ensemble.BalancedRandomForestClassifier.html#imblearn.ensemble.BalancedRandomForestClassifier" title="imblearn.ensemble.BalancedRandomForestClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">BalancedRandomForestClassifier</span></code></a> is another ensemble method in which
+each tree of the forest will be provided a balanced bootstrap sample
+<a class="bibtex reference internal" href="references.html#chen2004using" id="id1">[CLB+04]</a>. This class provides all functionality of the
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v0.23)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.ensemble.RandomForestClassifier</span></code></a> and notably the
+<code class="docutils literal notranslate"><span class="pre">feature_importances_</span></code> attributes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="kn">import</span> <span class="n">BalancedRandomForestClassifier</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">brf</span> <span class="o">=</span> <span class="n">BalancedRandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">brf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span> 
+<span class="go">BalancedRandomForestClassifier(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">brf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">balanced_accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>  
+<span class="go">0.8...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="boosting">
+<span id="id2"></span><h3><span class="section-number">5.1.3. </span>Boosting<a class="headerlink" href="#boosting" title="Permalink to this headline">¶</a></h3>
+<p>Several methods taking advantage of boosting have been designed.</p>
+<p><a class="reference internal" href="generated/imblearn.ensemble.RUSBoostClassifier.html#imblearn.ensemble.RUSBoostClassifier" title="imblearn.ensemble.RUSBoostClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">RUSBoostClassifier</span></code></a> randomly under-sample the dataset before to perform
+a boosting iteration <a class="bibtex reference internal" href="references.html#seiffert2009rusboost" id="id3">[SKVHN09]</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="kn">import</span> <span class="n">RUSBoostClassifier</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rusboost</span> <span class="o">=</span> <span class="n">RUSBoostClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;SAMME.R&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                              <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rusboost</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>  
+<span class="go">RUSBoostClassifier(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">rusboost</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">balanced_accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>  
+<span class="go">0...</span>
+</pre></div>
+</div>
+<p>A specific method which uses <code class="docutils literal notranslate"><span class="pre">AdaBoost</span></code> as learners in the bagging classifier
+is called EasyEnsemble. The <a class="reference internal" href="generated/imblearn.ensemble.EasyEnsembleClassifier.html#imblearn.ensemble.EasyEnsembleClassifier" title="imblearn.ensemble.EasyEnsembleClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">EasyEnsembleClassifier</span></code></a> allows to bag
+AdaBoost learners which are trained on balanced bootstrap samples
+<a class="bibtex reference internal" href="references.html#liu2008exploratory" id="id4">[LWZ08]</a>. Similarly to the <a class="reference internal" href="generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="imblearn.ensemble.BalancedBaggingClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">BalancedBaggingClassifier</span></code></a>
+API, one can construct the ensemble as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="kn">import</span> <span class="n">EasyEnsembleClassifier</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eec</span> <span class="o">=</span> <span class="n">EasyEnsembleClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eec</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span> 
+<span class="go">EasyEnsembleClassifier(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">eec</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">balanced_accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>  
+<span class="go">0.6...</span>
+</pre></div>
+</div>
+<div class="topic">
+<p class="topic-title">Examples</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/ensemble/plot_comparison_ensemble_classifier.html#sphx-glr-auto-examples-ensemble-plot-comparison-ensemble-classifier-py"><span class="std std-ref">Comparison of ensembling classifiers internally using sampling</span></a></p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="miscellaneous.html" class="btn btn-neutral float-right" title="6. Miscellaneous samplers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="combine.html" class="btn btn-neutral float-left" title="4. Combination of over- and under-sampling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016 - 2017, G. Lemaitre, F. Nogueira, D. Oliveira, C. Aridas
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

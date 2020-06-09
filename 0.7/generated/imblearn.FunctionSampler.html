@@ -1,0 +1,330 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>imblearn.FunctionSampler &mdash; imbalanced-learn 0.7.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/js/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/imbalanced-learn.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-dataframe.css" type="text/css" />
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="imblearn.pipeline.Pipeline" href="imblearn.pipeline.Pipeline.html" />
+    <link rel="prev" title="imblearn.tensorflow.balanced_batch_generator" href="imblearn.tensorflow.balanced_batch_generator.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> imbalanced-learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install and contribution</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">imbalanced-learn API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.under_sampling"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.under_sampling</span></code>: Under-sampling methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.over_sampling"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.over_sampling</span></code>: Over-sampling methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.combine"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.combine</span></code>: Combination of over- and under-sampling methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.ensemble"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.ensemble</span></code>: Ensemble methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.keras"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.keras</span></code>: Batch generator for Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.tensorflow"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.tensorflow</span></code>: Batch generator for TensorFlow</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#miscellaneous">Miscellaneous</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn</span></code>.FunctionSampler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#examples-using-imblearn-functionsampler">Examples using <code class="docutils literal notranslate"><span class="pre">imblearn.FunctionSampler</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.pipeline"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.pipeline</span></code>: Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>: Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.datasets"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.datasets</span></code>: Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.utils</span></code>: Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial - Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">General examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html#examples-based-on-real-world-datasets">Examples based on real world datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html#dataset-examples">Dataset examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html#evaluation-examples">Evaluation examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html#model-selection">Model Selection</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Addtional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Release history</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">imbalanced-learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">imbalanced-learn API</a> &raquo;</li>
+        
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn</span></code>.FunctionSampler</li>
+    
+    
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="imblearn-functionsampler">
+<h1><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn</span></code>.FunctionSampler<a class="headerlink" href="#imblearn-functionsampler" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="imblearn.FunctionSampler">
+<em class="property">class </em><code class="sig-prename descclassname">imblearn.</code><code class="sig-name descname">FunctionSampler</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">func</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">accept_sparse</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">kw_args</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">validate</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/ffabce0/imblearn/base.py#L144"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.FunctionSampler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct a sampler from calling an arbitrary callable.</p>
+<p>Read more in the <a class="reference internal" href="../miscellaneous.html#function-sampler"><span class="std std-ref">User Guide</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>func</strong><span class="classifier">callable, default=None</span></dt><dd><p>The callable to use for the transformation. This will be passed the
+same arguments as transform, with args and kwargs forwarded. If func is
+None, then func will be the identity function.</p>
+</dd>
+<dt><strong>accept_sparse</strong><span class="classifier">bool, default=True</span></dt><dd><p>Whether sparse input are supported. By default, sparse inputs are
+supported.</p>
+</dd>
+<dt><strong>kw_args</strong><span class="classifier">dict, default=None</span></dt><dd><p>The keyword argument expected by <code class="docutils literal notranslate"><span class="pre">func</span></code>.</p>
+</dd>
+<dt><strong>validate</strong><span class="classifier">bool, default=True</span></dt><dd><p>Whether or not to bypass the validation of <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>. Turning-off
+validation allows to use the <code class="docutils literal notranslate"><span class="pre">FunctionSampler</span></code> with any type of
+data.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">sklearn.preprocessing.FunctionTransfomer</span></code></dt><dd><p>Stateless transformer.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>See
+<a class="reference internal" href="../auto_examples/plot_outlier_rejections.html#sphx-glr-auto-examples-plot-outlier-rejections-py"><span class="std std-ref">Customized sampler to implement an outlier rejections estimator</span></a></p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn</span> <span class="kn">import</span> <span class="n">FunctionSampler</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">class_sep</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_redundant</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">flip_y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">n_features</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">n_clusters_per_class</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can create to select only the first ten samples for instance.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="gp">... </span>  <span class="k">return</span> <span class="n">X</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="n">y</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sampler</span> <span class="o">=</span> <span class="n">FunctionSampler</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">func</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">X_res</span> <span class="o">==</span> <span class="n">X</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">y_res</span> <span class="o">==</span> <span class="n">y</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>We can also create a specific function which take some arguments.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <span class="n">RandomUnderSampler</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sampling_strategy</span><span class="p">,</span> <span class="n">random_state</span><span class="p">):</span>
+<span class="gp">... </span>  <span class="k">return</span> <span class="n">RandomUnderSampler</span><span class="p">(</span>
+<span class="gp">... </span>      <span class="n">sampling_strategy</span><span class="o">=</span><span class="n">sampling_strategy</span><span class="p">,</span>
+<span class="gp">... </span>      <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">)</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sampler</span> <span class="o">=</span> <span class="n">FunctionSampler</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">func</span><span class="p">,</span>
+<span class="gp">... </span>                          <span class="n">kw_args</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;sampling_strategy&#39;</span><span class="p">:</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                                   <span class="s1">&#39;random_state&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Resampled dataset shape </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="nb">sorted</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y_res</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">())))</span>
+<span class="go">Resampled dataset shape [(0, 100), (1, 100)]</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="imblearn.FunctionSampler.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">func</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">accept_sparse</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">kw_args</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">validate</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/ffabce0/imblearn/utils/_validation.py#L217"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.FunctionSampler.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="examples-using-imblearn-functionsampler">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">imblearn.FunctionSampler</span></code><a class="headerlink" href="#examples-using-imblearn-functionsampler" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of a custom sampler to implement an outlier rejections estimat..."><div class="figure align-default" id="id1">
+<img alt="Customized sampler to implement an outlier rejections estimator" src="../_images/sphx_glr_plot_outlier_rejections_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/plot_outlier_rejections.html#sphx-glr-auto-examples-plot-outlier-rejections-py"><span class="std std-ref">Customized sampler to implement an outlier rejections estimator</span></a></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</div><div style='clear:both'></div></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="imblearn.pipeline.Pipeline.html" class="btn btn-neutral float-right" title="imblearn.pipeline.Pipeline" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="imblearn.tensorflow.balanced_batch_generator.html" class="btn btn-neutral float-left" title="imblearn.tensorflow.balanced_batch_generator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016 - 2017, G. Lemaitre, F. Nogueira, D. Oliveira, C. Aridas
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

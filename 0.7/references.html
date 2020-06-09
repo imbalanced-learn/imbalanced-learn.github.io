@@ -1,0 +1,280 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>10. References &mdash; imbalanced-learn 0.7.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/js/copybutton.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/imbalanced-learn.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-dataframe.css" type="text/css" />
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="imbalanced-learn API" href="api.html" />
+    <link rel="prev" title="9. Utilities for Developers" href="developers_utils.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> imbalanced-learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install and contribution</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="user_guide.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="over_sampling.html">2. Over-sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="under_sampling.html">3. Under-sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="combine.html">4. Combination of over- and under-sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ensemble.html">5. Ensemble of samplers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="miscellaneous.html">6. Miscellaneous samplers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">7. Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datasets/index.html">8. Dataset loading utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developers_utils.html">9. Utilities for Developers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">10. References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">imbalanced-learn API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial - Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">General examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html#examples-based-on-real-world-datasets">Examples based on real world datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html#dataset-examples">Dataset examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html#evaluation-examples">Evaluation examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html#model-selection">Model Selection</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Addtional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="whats_new.html">Release history</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About us</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">imbalanced-learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="user_guide.html">User Guide</a> &raquo;</li>
+        
+      <li><span class="section-number">10. </span>References</li>
+    
+    
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="references">
+<h1><span class="section-number">10. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<p id="bibtex-bibliography-references-0"><dl class="citation">
+<dt class="bibtex label" id="barandela2003strategies"><span class="brackets">BSanchezGR03</span></dt>
+<dd><p>Ricardo Barandela, José Salvador Sánchez, V Garca, and Edgar Rangel. Strategies for learning in class imbalance problems. <em>Pattern Recognition</em>, 36(3):849–851, 2003.</p>
+</dd>
+<dt class="bibtex label" id="batista2003balancing"><span class="brackets">BBM03</span></dt>
+<dd><p>Gustavo EAPA Batista, Ana LC Bazzan, and Maria Carolina Monard. Balancing training data for automated annotation of keywords: a case study. In <em>WOB</em>, 10–18. 2003.</p>
+</dd>
+<dt class="bibtex label" id="batista2004study"><span class="brackets">BPM04</span></dt>
+<dd><p>Gustavo EAPA Batista, Ronaldo C Prati, and Maria Carolina Monard. A study of the behavior of several methods for balancing machine learning training data. <em>ACM SIGKDD explorations newsletter</em>, 6(1):20–29, 2004.</p>
+</dd>
+<dt class="bibtex label" id="chawla2002smote"><span class="brackets">CBHK02</span></dt>
+<dd><p>Nitesh V Chawla, Kevin W Bowyer, Lawrence O Hall, and W Philip Kegelmeyer. Smote: synthetic minority over-sampling technique. <em>Journal of artificial intelligence research</em>, 16:321–357, 2002.</p>
+</dd>
+<dt class="bibtex label" id="chen2004using"><span class="brackets">CLB+04</span></dt>
+<dd><p>Chao Chen, Andy Liaw, Leo Breiman, and others. Using random forest to learn imbalanced data. <em>University of California, Berkeley</em>, 110(1-12):24, 2004.</p>
+</dd>
+<dt class="bibtex label" id="garcia2012effectiveness"><span class="brackets">GarciaSanchezM12</span></dt>
+<dd><p>Vicente García, José Salvador Sánchez, and Ramón Alberto Mollineda. On the effectiveness of preprocessing methods when dealing with different levels of class imbalance. <em>Knowledge-Based Systems</em>, 25(1):13–21, 2012.</p>
+</dd>
+<dt class="bibtex label" id="han2005borderline"><span class="brackets">HWM05</span></dt>
+<dd><p>Hui Han, Wen-Yuan Wang, and Bing-Huan Mao. Borderline-smote: a new over-sampling method in imbalanced data sets learning. In <em>International conference on intelligent computing</em>, 878–887. Springer, 2005.</p>
+</dd>
+<dt class="bibtex label" id="he2008adasyn"><span class="brackets">HBGL08</span></dt>
+<dd><p>Haibo He, Yang Bai, Edwardo A Garcia, and Shutao Li. Adasyn: adaptive synthetic sampling approach for imbalanced learning. In <em>2008 IEEE International Joint Conference on Neural Networks (IEEE World Congress on Computational Intelligence)</em>, 1322–1328. IEEE, 2008.</p>
+</dd>
+<dt class="bibtex label" id="kubat1997addressing"><span class="brackets">KM+97</span></dt>
+<dd><p>Miroslav Kubat, Stan Matwin, and others. Addressing the curse of imbalanced training sets: one-sided selection. In <em>Icml</em>, volume 97, 179–186. Nashville, USA, 1997.</p>
+</dd>
+<dt class="bibtex label" id="last2017oversampling"><span class="brackets">LDB17</span></dt>
+<dd><p>Felix Last, Georgios Douzas, and Fernando Bacao. Oversampling for imbalanced learning based on k-means and smote. <em>arXiv preprint arXiv:1711.00837</em>, 2017.</p>
+</dd>
+<dt class="bibtex label" id="liu2008exploratory"><span class="brackets">LWZ08</span></dt>
+<dd><p>Xu-Ying Liu, Jianxin Wu, and Zhi-Hua Zhou. Exploratory undersampling for class-imbalance learning. <em>IEEE Transactions on Systems, Man, and Cybernetics, Part B (Cybernetics)</em>, 39(2):539–550, 2008.</p>
+</dd>
+<dt class="bibtex label" id="nguyen2009borderline"><span class="brackets">NCK09</span></dt>
+<dd><p>Hien M Nguyen, Eric W Cooper, and Katsuari Kamei. Borderline over-sampling for imbalanced data classification. In <em>Proceedings: Fifth International Workshop on Computational Intelligence &amp; Applications</em>, volume 2009, 24–29. IEEE SMC Hiroshima Chapter, 2009.</p>
+</dd>
+<dt class="bibtex label" id="seiffert2009rusboost"><span class="brackets">SKVHN09</span></dt>
+<dd><p>Chris Seiffert, Taghi M Khoshgoftaar, Jason Van Hulse, and Amri Napolitano. Rusboost: a hybrid approach to alleviating class imbalance. <em>IEEE Transactions on Systems, Man, and Cybernetics-Part A: Systems and Humans</em>, 40(1):185–197, 2009.</p>
+</dd>
+</dl>
+</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api.html" class="btn btn-neutral float-right" title="imbalanced-learn API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="developers_utils.html" class="btn btn-neutral float-left" title="9. Utilities for Developers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016 - 2017, G. Lemaitre, F. Nogueira, D. Oliveira, C. Aridas
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
