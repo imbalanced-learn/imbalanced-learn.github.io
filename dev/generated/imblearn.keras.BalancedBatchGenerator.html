@@ -195,7 +195,7 @@
 <h1><a class="reference internal" href="../api.html#module-imblearn.keras" title="imblearn.keras"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.keras</span></code></a>.BalancedBatchGenerator<a class="headerlink" href="#imblearn-keras-balancedbatchgenerator" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="imblearn.keras.BalancedBatchGenerator">
-<em class="property">class </em><code class="sig-prename descclassname">imblearn.keras.</code><code class="sig-name descname">BalancedBatchGenerator</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/82f7ffd/imblearn/keras/_generator.py#L57"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.keras.BalancedBatchGenerator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">imblearn.keras.</code><code class="sig-name descname">BalancedBatchGenerator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">sample_weight</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sampler</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">batch_size</span><span class="o">=</span><span class="default_value">32</span></em>, <em class="sig-param"><span class="n">keep_sparse</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b1d8d4f/imblearn/keras/_generator.py#L57"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.keras.BalancedBatchGenerator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create balanced batches when training a keras model.</p>
 <p>Create a keras <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> which is given to <code class="docutils literal notranslate"><span class="pre">fit_generator</span></code>. The
 sampler defines the sampling strategy used to balance the dataset ahead of
@@ -232,6 +232,14 @@ instance used by <code class="docutils literal notranslate"><span class="pre">np
 </dd>
 </dl>
 </dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>sampler_</strong><span class="classifier">object</span></dt><dd><p>The sampler used to balance the dataset.</p>
+</dd>
+<dt><strong>indices_</strong><span class="classifier">ndarray, shape (n_samples, n_features)</span></dt><dd><p>The indices of the samples selected during sampling.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
@@ -255,20 +263,10 @@ instance used by <code class="docutils literal notranslate"><span class="pre">np
 <span class="gp">... </span>                                       <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Attributes</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>sampler_</strong><span class="classifier">object</span></dt><dd><p>The sampler used to balance the dataset.</p>
-</dd>
-<dt><strong>indices_</strong><span class="classifier">ndarray, shape (n_samples, n_features)</span></dt><dd><p>The indices of the samples selected during sampling.</p>
-</dd>
-</dl>
-</dd>
-</dl>
 <dl class="py method">
-<dt id="imblearn.keras.BalancedBatchGenerator.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">sample_weight</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sampler</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">batch_size</span><span class="o">=</span><span class="default_value">32</span></em>, <em class="sig-param"><span class="n">keep_sparse</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/82f7ffd/imblearn/utils/_validation.py#L134"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.keras.BalancedBatchGenerator.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+<dt id="imblearn.keras.BalancedBatchGenerator.on_epoch_end">
+<code class="sig-name descname">on_epoch_end</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/b1d8d4f/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/keras/utils/data_utils.py#L370"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.keras.BalancedBatchGenerator.on_epoch_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method called at the end of every epoch.</p>
 </dd></dl>
 
 </dd></dl>
