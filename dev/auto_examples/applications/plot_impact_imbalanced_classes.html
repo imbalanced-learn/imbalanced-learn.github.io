@@ -38,6 +38,7 @@
   <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/gallery-binder.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-rendered-html.css" type="text/css" />
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -192,7 +193,8 @@
             
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-applications-plot-impact-imbalanced-classes-py"><span class="std std-ref">here</span></a>     to download the full example code</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-applications-plot-impact-imbalanced-classes-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="fitting-model-on-imbalanced-datasets-and-how-to-fight-bias">
 <span id="sphx-glr-auto-examples-applications-plot-impact-imbalanced-classes-py"></span><h1>Fitting model on imbalanced datasets and how to fight bias<a class="headerlink" href="#fitting-model-on-imbalanced-datasets-and-how-to-fight-bias" title="Permalink to this headline">¶</a></h1>
@@ -323,6 +325,7 @@ obtained with our <code class="docutils literal notranslate"><span class="pre">D
 <span class="n">df_scores</span>
 </pre></div>
 </div>
+<div class="output_subarea output_html rendered_html output_result">
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -355,6 +358,7 @@ obtained with our <code class="docutils literal notranslate"><span class="pre">D
     </tr>
   </tbody>
 </table>
+</div>
 </div>
 <br />
 <br /></div>
@@ -404,6 +408,7 @@ then evaluate our model.</p>
 <span class="n">df_scores</span>
 </pre></div>
 </div>
+<div class="output_subarea output_html rendered_html output_result">
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -430,15 +435,16 @@ then evaluate our model.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.97</td>
+      <td>0.971</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.56</td>
+      <td>0.577</td>
     </tr>
   </tbody>
 </table>
+</div>
 </div>
 <br />
 <br /><p>We can see that our linear model is learning slightly better than our dummy
@@ -469,6 +475,7 @@ categorical data.</p>
 <span class="n">df_scores</span>
 </pre></div>
 </div>
+<div class="output_subarea output_html rendered_html output_result">
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -496,17 +503,18 @@ categorical data.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.97</td>
+      <td>0.971</td>
       <td>0.973</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.56</td>
-      <td>0.624</td>
+      <td>0.577</td>
+      <td>0.634</td>
     </tr>
   </tbody>
 </table>
+</div>
 </div>
 <br />
 <br /><p>The <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code> is as well affected by the class imbalanced,
@@ -529,6 +537,7 @@ linear model and tree-based model.</p>
 <span class="n">df_scores</span>
 </pre></div>
 </div>
+<div class="output_subarea output_html rendered_html output_result">
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -557,19 +566,20 @@ linear model and tree-based model.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.97</td>
+      <td>0.971</td>
       <td>0.973</td>
       <td>0.806</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.56</td>
-      <td>0.624</td>
-      <td>0.806</td>
+      <td>0.577</td>
+      <td>0.634</td>
+      <td>0.828</td>
     </tr>
   </tbody>
 </table>
+</div>
 </div>
 <br />
 <br /><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline.set_params" title="sklearn.pipeline.Pipeline.set_params" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-method"><span class="n">rf_clf</span><span class="o">.</span><span class="n">set_params</span></a><span class="p">(</span><span class="n">randomforestclassifier__class_weight</span><span class="o">=</span><span class="s2">&quot;balanced&quot;</span><span class="p">)</span>
@@ -579,6 +589,7 @@ linear model and tree-based model.</p>
 <span class="n">df_scores</span>
 </pre></div>
 </div>
+<div class="output_subarea output_html rendered_html output_result">
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -608,21 +619,22 @@ linear model and tree-based model.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.97</td>
+      <td>0.971</td>
       <td>0.973</td>
       <td>0.806</td>
-      <td>0.965</td>
+      <td>0.969</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.56</td>
-      <td>0.624</td>
-      <td>0.806</td>
-      <td>0.628</td>
+      <td>0.577</td>
+      <td>0.634</td>
+      <td>0.828</td>
+      <td>0.636</td>
     </tr>
   </tbody>
 </table>
+</div>
 </div>
 <br />
 <br /><p>We can see that using <code class="docutils literal notranslate"><span class="pre">class_weight</span></code> was really effective for the linear
@@ -650,6 +662,7 @@ to do such processing.</p>
 <span class="n">df_scores</span>
 </pre></div>
 </div>
+<div class="output_subarea output_html rendered_html output_result">
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -680,23 +693,24 @@ to do such processing.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.97</td>
+      <td>0.971</td>
       <td>0.973</td>
       <td>0.806</td>
-      <td>0.965</td>
-      <td>0.800</td>
+      <td>0.969</td>
+      <td>0.801</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.56</td>
-      <td>0.624</td>
-      <td>0.806</td>
-      <td>0.628</td>
-      <td>0.814</td>
+      <td>0.577</td>
+      <td>0.634</td>
+      <td>0.828</td>
+      <td>0.636</td>
+      <td>0.824</td>
     </tr>
   </tbody>
 </table>
+</div>
 </div>
 <br />
 <br /><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rf_clf</span></a> <span class="o">=</span> <a href="../../generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="imblearn.pipeline.make_pipeline" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline_with_sampler</span></a><span class="p">(</span>
@@ -711,6 +725,7 @@ to do such processing.</p>
 <span class="n">df_scores</span>
 </pre></div>
 </div>
+<div class="output_subarea output_html rendered_html output_result">
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -742,25 +757,26 @@ to do such processing.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.97</td>
+      <td>0.971</td>
       <td>0.973</td>
       <td>0.806</td>
-      <td>0.965</td>
-      <td>0.800</td>
-      <td>0.791</td>
+      <td>0.969</td>
+      <td>0.801</td>
+      <td>0.787</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.56</td>
-      <td>0.624</td>
-      <td>0.806</td>
-      <td>0.628</td>
-      <td>0.814</td>
-      <td>0.795</td>
+      <td>0.577</td>
+      <td>0.634</td>
+      <td>0.828</td>
+      <td>0.636</td>
+      <td>0.824</td>
+      <td>0.796</td>
     </tr>
   </tbody>
 </table>
+</div>
 </div>
 <br />
 <br /><p>Applying a random under-sampler before the training of the linear model or
@@ -790,6 +806,7 @@ the base of the <code class="docutils literal notranslate"><span class="pre">Bal
 <span class="n">df_scores</span>
 </pre></div>
 </div>
+<div class="output_subarea output_html rendered_html output_result">
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -822,27 +839,28 @@ the base of the <code class="docutils literal notranslate"><span class="pre">Bal
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.97</td>
+      <td>0.971</td>
       <td>0.973</td>
       <td>0.806</td>
-      <td>0.965</td>
-      <td>0.800</td>
-      <td>0.791</td>
-      <td>0.786</td>
+      <td>0.969</td>
+      <td>0.801</td>
+      <td>0.787</td>
+      <td>0.785</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.56</td>
-      <td>0.624</td>
-      <td>0.806</td>
-      <td>0.628</td>
-      <td>0.814</td>
-      <td>0.795</td>
-      <td>0.805</td>
+      <td>0.577</td>
+      <td>0.634</td>
+      <td>0.828</td>
+      <td>0.636</td>
+      <td>0.824</td>
+      <td>0.796</td>
+      <td>0.825</td>
     </tr>
   </tbody>
 </table>
+</div>
 </div>
 <br />
 <br /><p>The performance with the <code class="docutils literal notranslate"><span class="pre">BalancedRandomForestClassifier</span></code> is better than
@@ -866,6 +884,7 @@ classifier within a <code class="docutils literal notranslate"><span class="pre"
 <span class="n">df_scores</span>
 </pre></div>
 </div>
+<div class="output_subarea output_html rendered_html output_result">
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -899,29 +918,30 @@ classifier within a <code class="docutils literal notranslate"><span class="pre"
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.97</td>
+      <td>0.971</td>
       <td>0.973</td>
       <td>0.806</td>
-      <td>0.965</td>
-      <td>0.800</td>
-      <td>0.791</td>
-      <td>0.786</td>
-      <td>0.838</td>
+      <td>0.969</td>
+      <td>0.801</td>
+      <td>0.787</td>
+      <td>0.785</td>
+      <td>0.840</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.56</td>
-      <td>0.624</td>
-      <td>0.806</td>
-      <td>0.628</td>
-      <td>0.814</td>
-      <td>0.795</td>
-      <td>0.805</td>
-      <td>0.798</td>
+      <td>0.577</td>
+      <td>0.634</td>
+      <td>0.828</td>
+      <td>0.636</td>
+      <td>0.824</td>
+      <td>0.796</td>
+      <td>0.825</td>
+      <td>0.825</td>
     </tr>
   </tbody>
 </table>
+</div>
 </div>
 <br />
 <br /><p>This last approach is the most effective. The different under-sampling allows
@@ -988,6 +1008,7 @@ similar analysis.</p>
 <span class="n">df_scores</span>
 </pre></div>
 </div>
+<div class="output_subarea output_html rendered_html output_result">
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1023,27 +1044,28 @@ similar analysis.</p>
       <td>0.99</td>
       <td>0.991</td>
       <td>0.991</td>
-      <td>0.826</td>
+      <td>0.796</td>
       <td>0.988</td>
-      <td>0.773</td>
-      <td>0.769</td>
-      <td>0.788</td>
-      <td>0.854</td>
+      <td>0.749</td>
+      <td>0.749</td>
+      <td>0.759</td>
+      <td>0.813</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.50</td>
-      <td>0.543</td>
-      <td>0.591</td>
-      <td>0.811</td>
-      <td>0.579</td>
-      <td>0.779</td>
-      <td>0.755</td>
-      <td>0.797</td>
-      <td>0.788</td>
+      <td>0.554</td>
+      <td>0.596</td>
+      <td>0.838</td>
+      <td>0.568</td>
+      <td>0.825</td>
+      <td>0.794</td>
+      <td>0.825</td>
+      <td>0.836</td>
     </tr>
   </tbody>
 </table>
+</div>
 </div>
 <br />
 <br /><p>When we analyse the results, we can draw similar conclusions than in the
@@ -1052,8 +1074,8 @@ previous discussion. However, we can observe that the strategy
 <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code>. A resampling is indeed required. The most effective
 method remains the <code class="docutils literal notranslate"><span class="pre">BalancedBaggingClassifier</span></code> using a GBDT as a base
 learner.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  35.663 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  57 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  38.809 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  55 MB</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-applications-plot-impact-imbalanced-classes-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/5062100d8bac1656efa83b45d062ada3/plot_impact_imbalanced_classes.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_impact_imbalanced_classes.py</span></code></a></p>
