@@ -199,7 +199,7 @@
 <h1><a class="reference internal" href="../api.html#module-imblearn.metrics" title="imblearn.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code></a>.classification_report_imbalanced<a class="headerlink" href="#imblearn-metrics-classification-report-imbalanced" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt id="imblearn.metrics.classification_report_imbalanced">
-<code class="sig-prename descclassname">imblearn.metrics.</code><code class="sig-name descname">classification_report_imbalanced</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y_true</span></em>, <em class="sig-param"><span class="n">y_pred</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">labels</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">target_names</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sample_weight</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">digits</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">alpha</span><span class="o">=</span><span class="default_value">0.1</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/599e24f/imblearn/utils/_validation.py#L799"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.metrics.classification_report_imbalanced" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">imblearn.metrics.</code><code class="sig-name descname">classification_report_imbalanced</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y_true</span></em>, <em class="sig-param"><span class="n">y_pred</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">labels</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">target_names</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sample_weight</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">digits</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">alpha</span><span class="o">=</span><span class="default_value">0.1</span></em>, <em class="sig-param"><span class="n">output_dict</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">zero_division</span><span class="o">=</span><span class="default_value">'warn'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/8fc6dbb/imblearn/utils/_validation.py#L799"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.metrics.classification_report_imbalanced" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build a classification report based on metrics used with imbalanced
 dataset</p>
 <p>Specific metrics have been proposed to evaluate the classification
@@ -207,33 +207,54 @@ performed on imbalanced dataset. This report compiles the
 state-of-the-art metrics: precision/recall/specificity, geometric
 mean, and index balanced accuracy of the
 geometric mean.</p>
-<dl class="field-list simple">
+<p>Read more in the <a class="reference internal" href="../metrics.html#classification-report"><span class="std std-ref">User Guide</span></a>.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>y_true</strong><span class="classifier">ndarray, shape (n_samples, )</span></dt><dd><p>Ground truth (correct) target values.</p>
+<dd class="field-odd"><dl>
+<dt><strong>y_true</strong><span class="classifier">1d array-like, or label indicator array / sparse matrix</span></dt><dd><p>Ground truth (correct) target values.</p>
 </dd>
-<dt><strong>y_pred</strong><span class="classifier">ndarray, shape (n_samples, )</span></dt><dd><p>Estimated targets as returned by a classifier.</p>
+<dt><strong>y_pred</strong><span class="classifier">1d array-like, or label indicator array / sparse matrix</span></dt><dd><p>Estimated targets as returned by a classifier.</p>
 </dd>
-<dt><strong>labels</strong><span class="classifier">list, optional</span></dt><dd><p>The set of labels to include when <code class="docutils literal notranslate"><span class="pre">average</span> <span class="pre">!=</span> <span class="pre">'binary'</span></code>, and their
-order if <code class="docutils literal notranslate"><span class="pre">average</span> <span class="pre">is</span> <span class="pre">None</span></code>. Labels present in the data can be
-excluded, for example to calculate a multiclass average ignoring a
-majority negative class, while labels not present in the data will
-result in 0 components in a macro average.</p>
+<dt><strong>labels</strong><span class="classifier">array-like of shape (n_labels,), default=None</span></dt><dd><p>Optional list of label indices to include in the report.</p>
 </dd>
-<dt><strong>target_names</strong><span class="classifier">list of strings, optional</span></dt><dd><p>Optional display names matching the labels (same order).</p>
+<dt><strong>target_names</strong><span class="classifier">list of str of shape (n_labels,), default=None</span></dt><dd><p>Optional display names matching the labels (same order).</p>
 </dd>
-<dt><strong>sample_weight</strong><span class="classifier">ndarray, shape (n_samples, )</span></dt><dd><p>Sample weights.</p>
+<dt><strong>sample_weight</strong><span class="classifier">array-like of shape (n_samples,), default=None</span></dt><dd><p>Sample weights.</p>
 </dd>
-<dt><strong>digits</strong><span class="classifier">int, optional (default=2)</span></dt><dd><p>Number of digits for formatting output floating point values</p>
+<dt><strong>digits</strong><span class="classifier">int, default=2</span></dt><dd><p>Number of digits for formatting output floating point values.
+When <code class="docutils literal notranslate"><span class="pre">output_dict</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, this will be ignored and the
+returned values will not be rounded.</p>
 </dd>
-<dt><strong>alpha</strong><span class="classifier">float, optional (default=0.1)</span></dt><dd><p>Weighting factor.</p>
+<dt><strong>alpha</strong><span class="classifier">float, default=0.1</span></dt><dd><p>Weighting factor.</p>
+</dd>
+<dt><strong>output_dict</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, return output as dict.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.7.</span></p>
+</div>
+</dd>
+<dt><strong>zero_division</strong><span class="classifier">“warn” or {0, 1}, default=”warn”</span></dt><dd><p>Sets the value to return when there is a zero division. If set to
+“warn”, this acts as 0, but warnings are also raised.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.7.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>report</strong><span class="classifier">string</span></dt><dd><p>Text summary of the precision, recall, specificity, geometric mean,
-and index balanced accuracy.</p>
+<dd class="field-even"><dl>
+<dt><strong>report</strong><span class="classifier">string / dict</span></dt><dd><p>Text summary of the precision, recall, specificity, geometric mean,
+and index balanced accuracy.
+Dictionary returned if output_dict is True. Dictionary has the
+following structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;label 1&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;pre&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span>
+             <span class="s1">&#39;rec&#39;</span><span class="p">:</span><span class="mf">1.0</span><span class="p">,</span>
+             <span class="o">...</span>
+            <span class="p">},</span>
+ <span class="s1">&#39;label 2&#39;</span><span class="p">:</span> <span class="p">{</span> <span class="o">...</span> <span class="p">},</span>
+  <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </dd>
