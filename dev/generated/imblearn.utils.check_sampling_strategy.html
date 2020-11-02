@@ -192,11 +192,11 @@
 <h1><a class="reference internal" href="../api.html#module-imblearn.utils" title="imblearn.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.utils</span></code></a>.check_sampling_strategy<a class="headerlink" href="#imblearn-utils-check-sampling-strategy" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt id="imblearn.utils.check_sampling_strategy">
-<code class="sig-prename descclassname">imblearn.utils.</code><code class="sig-name descname">check_sampling_strategy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sampling_strategy</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">sampling_type</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/792e69d/imblearn/utils/_validation.py#L435"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.utils.check_sampling_strategy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">imblearn.utils.</code><code class="sig-name descname">check_sampling_strategy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sampling_strategy</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">sampling_type</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/6212fd2/imblearn/utils/_validation.py#L434"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.utils.check_sampling_strategy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sampling target validation for samplers.</p>
 <p>Checks that <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> is of consistent type and return a
 dictionary containing each targeted class with its corresponding
-number of sample. It is used in <code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.base.BaseSampler</span></code>.</p>
+number of sample. It is used in <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSampler</span></code>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
@@ -260,19 +260,19 @@ correspond to the targeted classes. The values correspond to the
 desired number of samples for each class.</p></li>
 </ul>
 </dd>
-<dt><strong>y</strong><span class="classifier">ndarray, shape (n_samples,)</span></dt><dd><p>The target array.</p>
+<dt><strong>y</strong><span class="classifier">ndarray of shape (n_samples,)</span></dt><dd><p>The target array.</p>
 </dd>
-<dt><strong>sampling_type</strong><span class="classifier">str,</span></dt><dd><p>The type of sampling. Can be either <code class="docutils literal notranslate"><span class="pre">'over-sampling'</span></code>,
+<dt><strong>sampling_type</strong><span class="classifier">{{‘over-sampling’, ‘under-sampling’, ‘clean-sampling’}}</span></dt><dd><p>The type of sampling. Can be either <code class="docutils literal notranslate"><span class="pre">'over-sampling'</span></code>,
 <code class="docutils literal notranslate"><span class="pre">'under-sampling'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'clean-sampling'</span></code>.</p>
 </dd>
-<dt><strong>kwargs</strong><span class="classifier">dict, optional</span></dt><dd><p>Dictionary of additional keyword arguments to pass to
+<dt><strong>kwargs</strong><span class="classifier">dict</span></dt><dd><p>Dictionary of additional keyword arguments to pass to
 <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> when this is a callable.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>sampling_strategy_converted</strong><span class="classifier">dict,</span></dt><dd><p>The converted and validated sampling target. Returns a dictionary with
+<dt><strong>sampling_strategy_converted</strong><span class="classifier">dict</span></dt><dd><p>The converted and validated sampling target. Returns a dictionary with
 the key being the class target and the value being the desired
 number of samples.</p>
 </dd>

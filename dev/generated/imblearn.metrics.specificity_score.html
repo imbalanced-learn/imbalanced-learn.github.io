@@ -196,7 +196,7 @@
 <h1><a class="reference internal" href="../api.html#module-imblearn.metrics" title="imblearn.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code></a>.specificity_score<a class="headerlink" href="#imblearn-metrics-specificity-score" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt id="imblearn.metrics.specificity_score">
-<code class="sig-prename descclassname">imblearn.metrics.</code><code class="sig-name descname">specificity_score</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y_true</span></em>, <em class="sig-param"><span class="n">y_pred</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">labels</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">pos_label</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">average</span><span class="o">=</span><span class="default_value">'binary'</span></em>, <em class="sig-param"><span class="n">sample_weight</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/792e69d/imblearn/utils/_validation.py#L391"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.metrics.specificity_score" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">imblearn.metrics.</code><code class="sig-name descname">specificity_score</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y_true</span></em>, <em class="sig-param"><span class="n">y_pred</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">labels</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">pos_label</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">average</span><span class="o">=</span><span class="default_value">'binary'</span></em>, <em class="sig-param"><span class="n">sample_weight</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/6212fd2/imblearn/utils/_validation.py#L389"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.metrics.specificity_score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the specificity</p>
 <p>The specificity is the ratio <code class="docutils literal notranslate"><span class="pre">tn</span> <span class="pre">/</span> <span class="pre">(tn</span> <span class="pre">+</span> <span class="pre">fp)</span></code> where <code class="docutils literal notranslate"><span class="pre">tn</span></code> is the number
 of true negatives and <code class="docutils literal notranslate"><span class="pre">fp</span></code> the number of false positives. The specificity
@@ -206,22 +206,22 @@ quantifies the ability to avoid false positives.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
-<dt><strong>y_true</strong><span class="classifier">ndarray, shape (n_samples, )</span></dt><dd><p>Ground truth (correct) target values.</p>
+<dt><strong>y_true</strong><span class="classifier">ndarray of shape (n_samples,)</span></dt><dd><p>Ground truth (correct) target values.</p>
 </dd>
-<dt><strong>y_pred</strong><span class="classifier">ndarray, shape (n_samples, )</span></dt><dd><p>Estimated targets as returned by a classifier.</p>
+<dt><strong>y_pred</strong><span class="classifier">ndarray of shape (n_samples,)</span></dt><dd><p>Estimated targets as returned by a classifier.</p>
 </dd>
-<dt><strong>labels</strong><span class="classifier">list, optional</span></dt><dd><p>The set of labels to include when <code class="docutils literal notranslate"><span class="pre">average</span> <span class="pre">!=</span> <span class="pre">'binary'</span></code>, and their
+<dt><strong>labels</strong><span class="classifier">list, default=None</span></dt><dd><p>The set of labels to include when <code class="docutils literal notranslate"><span class="pre">average</span> <span class="pre">!=</span> <span class="pre">'binary'</span></code>, and their
 order if <code class="docutils literal notranslate"><span class="pre">average</span> <span class="pre">is</span> <span class="pre">None</span></code>. Labels present in the data can be
 excluded, for example to calculate a multiclass average ignoring a
 majority negative class, while labels not present in the data will
 result in 0 components in a macro average.</p>
 </dd>
-<dt><strong>pos_label</strong><span class="classifier">str or int, optional (default=1)</span></dt><dd><p>The class to report if <code class="docutils literal notranslate"><span class="pre">average='binary'</span></code> and the data is binary.
+<dt><strong>pos_label</strong><span class="classifier">str or int, default=1</span></dt><dd><p>The class to report if <code class="docutils literal notranslate"><span class="pre">average='binary'</span></code> and the data is binary.
 If the data are multiclass, this will be ignored;
 setting <code class="docutils literal notranslate"><span class="pre">labels=[pos_label]</span></code> and <code class="docutils literal notranslate"><span class="pre">average</span> <span class="pre">!=</span> <span class="pre">'binary'</span></code> will report
 scores for that label only.</p>
 </dd>
-<dt><strong>average</strong><span class="classifier">str or None, optional (default=None)</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">None</span></code>, the scores for each class are returned. Otherwise, this
+<dt><strong>average</strong><span class="classifier">str, default=None</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">None</span></code>, the scores for each class are returned. Otherwise, this
 determines the type of averaging performed on the data:</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">'binary'</span></code>:</dt><dd><p>Only report results for the class specified by <code class="docutils literal notranslate"><span class="pre">pos_label</span></code>.
@@ -244,16 +244,14 @@ meaningful for multilabel classification where this differs from
 </dd>
 </dl>
 </dd>
-<dt><strong>warn_for</strong><span class="classifier">tuple or set, for internal use</span></dt><dd><p>This determines which warnings will be made in the case that this
-function is being used to return only one of its metrics.</p>
-</dd>
-<dt><strong>sample_weight</strong><span class="classifier">ndarray, shape (n_samples, )</span></dt><dd><p>Sample weights.</p>
+<dt><strong>sample_weight</strong><span class="classifier">ndarray of shape (n_samples,), default=None</span></dt><dd><p>Sample weights.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl>
-<dt><strong>specificity</strong><span class="classifier">float (if <code class="docutils literal notranslate"><span class="pre">average</span></code> = None) or ndarray,         shape (n_unique_labels, )</span></dt><dd></dd>
+<dt><strong>specificity</strong><span class="classifier">float (if <code class="docutils literal notranslate"><span class="pre">average</span> <span class="pre">is</span> <span class="pre">None</span></code>) or ndarray of             shape (n_unique_labels,)</span></dt><dd><p>The specificity metric.</p>
+</dd>
 </dl>
 </dd>
 </dl>

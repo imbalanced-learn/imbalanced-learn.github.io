@@ -195,40 +195,40 @@
 <h1><a class="reference internal" href="../api.html#module-imblearn.datasets" title="imblearn.datasets"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.datasets</span></code></a>.fetch_datasets<a class="headerlink" href="#imblearn-datasets-fetch-datasets" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt id="imblearn.datasets.fetch_datasets">
-<code class="sig-prename descclassname">imblearn.datasets.</code><code class="sig-name descname">fetch_datasets</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">data_home</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">filter_data</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">download_if_missing</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">shuffle</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/792e69d/imblearn/utils/_validation.py#L106"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.datasets.fetch_datasets" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">imblearn.datasets.</code><code class="sig-name descname">fetch_datasets</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">data_home</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">filter_data</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">download_if_missing</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">shuffle</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/6212fd2/imblearn/utils/_validation.py#L106"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.datasets.fetch_datasets" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load the benchmark datasets from Zenodo, downloading it if necessary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>data_home</strong><span class="classifier">string, optional (default=None)</span></dt><dd><p>Specify another download and cache folder for the datasets. By default
+<dt><strong>data_home</strong><span class="classifier">str, default=None</span></dt><dd><p>Specify another download and cache folder for the datasets. By default
 all scikit-learn data is stored in ‘~/scikit_learn_data’ subfolders.</p>
 </dd>
-<dt><strong>filter_data</strong><span class="classifier">tuple of str/int or None, optional (default=None)</span></dt><dd><p>A tuple containing the ID or the name of the datasets to be returned.
+<dt><strong>filter_data</strong><span class="classifier">tuple of str/int, default=None</span></dt><dd><p>A tuple containing the ID or the name of the datasets to be returned.
 Refer to the above table to get the ID and name of the datasets.</p>
 </dd>
-<dt><strong>download_if_missing</strong><span class="classifier">boolean, optional (default=True)</span></dt><dd><p>If False, raise a IOError if the data is not locally available
+<dt><strong>download_if_missing</strong><span class="classifier">bool, default=True</span></dt><dd><p>If False, raise a IOError if the data is not locally available
 instead of trying to download the data from the source site.</p>
 </dd>
-<dt><strong>random_state</strong><span class="classifier">int, RandomState instance or None, optional (default=None)</span></dt><dd><p>Random state for shuffling the dataset.
+<dt><strong>random_state</strong><span class="classifier">int, RandomState instance or None, default=None</span></dt><dd><p>Random state for shuffling the dataset.
 If int, random_state is the seed used by the random number generator;
 If RandomState instance, random_state is the random number generator;
 If None, the random number generator is the RandomState instance used
 by <code class="docutils literal notranslate"><span class="pre">np.random</span></code>.</p>
 </dd>
-<dt><strong>shuffle</strong><span class="classifier">bool, optional (default=False)</span></dt><dd><p>Whether to shuffle dataset.</p>
+<dt><strong>shuffle</strong><span class="classifier">bool, default=False</span></dt><dd><p>Whether to shuffle dataset.</p>
 </dd>
-<dt><strong>verbose</strong><span class="classifier">bool, optional (default=False)</span></dt><dd><p>Show information regarding the fetching.</p>
+<dt><strong>verbose</strong><span class="classifier">bool, default=False</span></dt><dd><p>Show information regarding the fetching.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>datasets</strong><span class="classifier">OrderedDict of Bunch object,</span></dt><dd><p>The ordered is defined by <code class="docutils literal notranslate"><span class="pre">filter_data</span></code>. Each Bunch object —
-refered as dataset — have the following attributes:</p>
+referred as dataset — have the following attributes:</p>
 </dd>
-<dt><strong>dataset.data</strong><span class="classifier">ndarray, shape (n_samples, n_features)</span></dt><dd></dd>
-<dt><strong>dataset.target</strong><span class="classifier">ndarray, shape (n_samples, )</span></dt><dd></dd>
-<dt><strong>dataset.DESCR</strong><span class="classifier">string</span></dt><dd><p>Description of the each dataset.</p>
+<dt><strong>dataset.data</strong><span class="classifier">ndarray of shape (n_samples, n_features)</span></dt><dd></dd>
+<dt><strong>dataset.target</strong><span class="classifier">ndarray of shape (n_samples,)</span></dt><dd></dd>
+<dt><strong>dataset.DESCR</strong><span class="classifier">str</span></dt><dd><p>Description of the each dataset.</p>
 </dd>
 </dl>
 </dd>

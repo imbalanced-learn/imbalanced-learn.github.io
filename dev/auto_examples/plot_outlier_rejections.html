@@ -105,7 +105,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">General examples</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Customized sampler to implement an outlier rejections estimator</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#toy-data-generation">Toy data generation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#how-to-use-the-imblearn-functionsampler">How to use the <code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.FunctionSampler</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-use-the-functionsampler">How to use the <code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionSampler</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#integrate-it-within-a-pipeline">Integrate it within a pipeline</a></li>
 </ul>
 </li>
@@ -252,12 +252,12 @@ noise.</p>
 </div>
 <img alt="Testing dataset" class="sphx-glr-single-img" src="../_images/sphx_glr_plot_outlier_rejections_002.png" />
 </div>
-<div class="section" id="how-to-use-the-imblearn-functionsampler">
-<h2>How to use the <a class="reference internal" href="../generated/imblearn.FunctionSampler.html#imblearn.FunctionSampler" title="imblearn.FunctionSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.FunctionSampler</span></code></a><a class="headerlink" href="#how-to-use-the-imblearn-functionsampler" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-to-use-the-functionsampler">
+<h2>How to use the <a class="reference internal" href="../generated/imblearn.FunctionSampler.html#imblearn.FunctionSampler" title="imblearn.FunctionSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionSampler</span></code></a><a class="headerlink" href="#how-to-use-the-functionsampler" title="Permalink to this headline">¶</a></h2>
 <p>We first define a function which will use
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html#sklearn.ensemble.IsolationForest" title="(in scikit-learn v0.23)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.ensemble.IsolationForest</span></code></a> to eliminate some outliers from
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html#sklearn.ensemble.IsolationForest" title="(in scikit-learn v0.23)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IsolationForest</span></code></a> to eliminate some outliers from
 our dataset during training. The function passed to the
-<a class="reference internal" href="../generated/imblearn.FunctionSampler.html#imblearn.FunctionSampler" title="imblearn.FunctionSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.FunctionSampler</span></code></a> will be called when using the method
+<a class="reference internal" href="../generated/imblearn.FunctionSampler.html#imblearn.FunctionSampler" title="imblearn.FunctionSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionSampler</span></code></a> will be called when using the method
 <code class="docutils literal notranslate"><span class="pre">fit_resample</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">outlier_rejection</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This will be our function used to resample our dataset.&quot;&quot;&quot;</span>
@@ -305,15 +305,15 @@ weighted avg       1.00      1.00      1.00       100
 
               precision    recall  f1-score   support
 
-           0       0.85      1.00      0.92        50
-           1       1.00      0.82      0.90        50
+           0       0.86      1.00      0.93        50
+           1       1.00      0.84      0.91        50
 
-    accuracy                           0.91       100
-   macro avg       0.92      0.91      0.91       100
-weighted avg       0.92      0.91      0.91       100
+    accuracy                           0.92       100
+   macro avg       0.93      0.92      0.92       100
+weighted avg       0.93      0.92      0.92       100
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.672 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.777 seconds)</p>
 <p><strong>Estimated memory usage:</strong>  22 MB</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plot-outlier-rejections-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">

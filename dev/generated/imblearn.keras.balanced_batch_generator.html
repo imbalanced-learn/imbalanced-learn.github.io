@@ -192,7 +192,7 @@
 <h1><a class="reference internal" href="../api.html#module-imblearn.keras" title="imblearn.keras"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.keras</span></code></a>.balanced_batch_generator<a class="headerlink" href="#imblearn-keras-balanced-batch-generator" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt id="imblearn.keras.balanced_batch_generator">
-<code class="sig-prename descclassname">imblearn.keras.</code><code class="sig-name descname">balanced_batch_generator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">sample_weight</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sampler</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">batch_size</span><span class="o">=</span><span class="default_value">32</span></em>, <em class="sig-param"><span class="n">keep_sparse</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/792e69d/imblearn/utils/_validation.py#L204"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.keras.balanced_batch_generator" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">imblearn.keras.</code><code class="sig-name descname">balanced_batch_generator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">sample_weight</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sampler</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">batch_size</span><span class="o">=</span><span class="default_value">32</span></em>, <em class="sig-param"><span class="n">keep_sparse</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/6212fd2/imblearn/utils/_validation.py#L203"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.keras.balanced_batch_generator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a balanced batch generator to train keras model.</p>
 <p>Returns a generator — as well as the number of step per epoch — which
 is given to <code class="docutils literal notranslate"><span class="pre">fit_generator</span></code>. The sampler defines the sampling strategy
@@ -201,19 +201,19 @@ have an attribute <code class="docutils literal notranslate"><span class="pre">s
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">ndarray, shape (n_samples, n_features)</span></dt><dd><p>Original imbalanced dataset.</p>
+<dt><strong>X</strong><span class="classifier">ndarray of shape (n_samples, n_features)</span></dt><dd><p>Original imbalanced dataset.</p>
 </dd>
-<dt><strong>y</strong><span class="classifier">ndarray, shape (n_samples,) or (n_samples, n_classes)</span></dt><dd><p>Associated targets.</p>
+<dt><strong>y</strong><span class="classifier">ndarray of shape (n_samples,) or (n_samples, n_classes)</span></dt><dd><p>Associated targets.</p>
 </dd>
-<dt><strong>sample_weight</strong><span class="classifier">ndarray, shape (n_samples,)</span></dt><dd><p>Sample weight.</p>
+<dt><strong>sample_weight</strong><span class="classifier">ndarray of shape (n_samples,), default=None</span></dt><dd><p>Sample weight.</p>
 </dd>
-<dt><strong>sampler</strong><span class="classifier">object or None, optional (default=RandomUnderSampler)</span></dt><dd><p>A sampler instance which has an attribute <code class="docutils literal notranslate"><span class="pre">sample_indices_</span></code>.
+<dt><strong>sampler</strong><span class="classifier">sampler object, default=None</span></dt><dd><p>A sampler instance which has an attribute <code class="docutils literal notranslate"><span class="pre">sample_indices_</span></code>.
 By default, the sampler used is a
-<a class="reference internal" href="imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="imblearn.under_sampling.RandomUnderSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.under_sampling.RandomUnderSampler</span></code></a>.</p>
+<a class="reference internal" href="imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="imblearn.under_sampling.RandomUnderSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomUnderSampler</span></code></a>.</p>
 </dd>
-<dt><strong>batch_size</strong><span class="classifier">int, optional (default=32)</span></dt><dd><p>Number of samples per gradient update.</p>
+<dt><strong>batch_size</strong><span class="classifier">int, default=32</span></dt><dd><p>Number of samples per gradient update.</p>
 </dd>
-<dt><strong>keep_sparse</strong><span class="classifier">bool, optional (default=False)</span></dt><dd><p>Either or not to conserve or not the sparsity of the input (i.e. <code class="docutils literal notranslate"><span class="pre">X</span></code>,
+<dt><strong>keep_sparse</strong><span class="classifier">bool, default=False</span></dt><dd><p>Either or not to conserve or not the sparsity of the input (i.e. <code class="docutils literal notranslate"><span class="pre">X</span></code>,
 <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">sample_weight</span></code>). By default, the returned batches will be
 dense.</p>
 </dd>
