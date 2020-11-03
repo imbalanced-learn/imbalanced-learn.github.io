@@ -149,13 +149,17 @@ encode the categorical features. In this regard, we make use of the
 Create a neural-network
 ##############################################################################
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-125
+.. GENERATED FROM PYTHON SOURCE LINES 92-129
 
 .. code-block:: default
 
-
-    from keras.models import Sequential
-    from keras.layers import Activation, Dense, Dropout, BatchNormalization
+    from tensorflow.keras.models import Sequential
+    from tensorflow.keras.layers import (
+        Activation,
+        Dense,
+        Dropout,
+        BatchNormalization,
+    )
 
 
     def make_model(n_features):
@@ -187,11 +191,11 @@ Create a neural-network
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-127
+.. GENERATED FROM PYTHON SOURCE LINES 130-131
 
 We create a decorator to report the computation time
 
-.. GENERATED FROM PYTHON SOURCE LINES 127-144
+.. GENERATED FROM PYTHON SOURCE LINES 131-148
 
 .. code-block:: default
 
@@ -213,12 +217,12 @@ We create a decorator to report the computation time
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 145-147
+.. GENERATED FROM PYTHON SOURCE LINES 149-151
 
 The first model will be trained using the ``fit`` method and with imbalanced
 mini-batches.
 
-.. GENERATED FROM PYTHON SOURCE LINES 147-159
+.. GENERATED FROM PYTHON SOURCE LINES 151-163
 
 .. code-block:: default
 
@@ -235,12 +239,12 @@ mini-batches.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 160-162
+.. GENERATED FROM PYTHON SOURCE LINES 164-166
 
 In the contrary, we will use imbalanced-learn to create a generator of
 mini-batches which will yield balanced mini-batches.
 
-.. GENERATED FROM PYTHON SOURCE LINES 162-177
+.. GENERATED FROM PYTHON SOURCE LINES 166-181
 
 .. code-block:: default
 
@@ -254,23 +258,23 @@ mini-batches which will yield balanced mini-batches.
         training_generator = BalancedBatchGenerator(X_train, y_train,
                                                     batch_size=1000,
                                                     random_state=42)
-        model.fit_generator(generator=training_generator, epochs=5, verbose=1)
-        y_pred = model.predict_proba(X_test, batch_size=1000)
+        model.fit(training_generator, epochs=5, verbose=1)
+        y_pred = model.predict(X_test, batch_size=1000)
         return roc_auc_score(y_test, y_pred)
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 178-180
+.. GENERATED FROM PYTHON SOURCE LINES 182-184
 
 Classification loop
 ##############################################################################
 
-.. GENERATED FROM PYTHON SOURCE LINES 182-184
+.. GENERATED FROM PYTHON SOURCE LINES 186-188
 
 We will perform a 10-fold cross-validation and train the neural-network with
 the two different strategies previously presented.
 
-.. GENERATED FROM PYTHON SOURCE LINES 184-209
+.. GENERATED FROM PYTHON SOURCE LINES 188-213
 
 .. code-block:: default
 
@@ -300,12 +304,12 @@ the two different strategies previously presented.
         cv_results_balanced.append(roc_auc)
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 210-212
+.. GENERATED FROM PYTHON SOURCE LINES 214-216
 
 Plot of the results and computation time
 ##############################################################################
 
-.. GENERATED FROM PYTHON SOURCE LINES 212-239
+.. GENERATED FROM PYTHON SOURCE LINES 216-243
 
 .. code-block:: default
 
