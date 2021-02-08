@@ -24,7 +24,6 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
         <script src="../../_static/js/copybutton.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -265,8 +264,8 @@ majority class independently of the features provided.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.dummy</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier" title="sklearn.dummy.DummyClassifier" class="sphx-glr-backref-module-sklearn-dummy sphx-glr-backref-type-py-class"><span class="n">DummyClassifier</span></a>
 
 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier" title="sklearn.dummy.DummyClassifier" class="sphx-glr-backref-module-sklearn-dummy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">dummy_clf</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier" title="sklearn.dummy.DummyClassifier" class="sphx-glr-backref-module-sklearn-dummy sphx-glr-backref-type-py-class"><span class="n">DummyClassifier</span></a><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;most_frequent&quot;</span><span class="p">)</span>
-<span class="n">score</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier.fit" title="sklearn.dummy.DummyClassifier.fit" class="sphx-glr-backref-module-sklearn-dummy sphx-glr-backref-type-py-method"><span class="n">dummy_clf</span><span class="o">.</span><span class="n">fit</span></a><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy score of a dummy classifier: </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">score</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier.fit" title="sklearn.dummy.DummyClassifier.fit" class="sphx-glr-backref-module-sklearn-dummy sphx-glr-backref-type-py-method"><span class="n">dummy_clf</span><span class="o">.</span><span class="n">fit</span></a><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">score</span></a><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy score of a dummy classifier: </span><span class="si">{</span><a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">score</span></a><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
@@ -278,8 +277,8 @@ take into account the balancing issue.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html#sklearn.metrics.balanced_accuracy_score" title="sklearn.metrics.balanced_accuracy_score" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">balanced_accuracy_score</span></a>
 
 <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html#sklearn.dummy.DummyClassifier.predict" title="sklearn.dummy.DummyClassifier.predict" class="sphx-glr-backref-module-sklearn-dummy sphx-glr-backref-type-py-method"><span class="n">dummy_clf</span><span class="o">.</span><span class="n">predict</span></a><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">score</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html#sklearn.metrics.balanced_accuracy_score" title="sklearn.metrics.balanced_accuracy_score" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">balanced_accuracy_score</span></a><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred</span></a><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Balanced accuracy score of a dummy classifier: </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">score</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html#sklearn.metrics.balanced_accuracy_score" title="sklearn.metrics.balanced_accuracy_score" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">balanced_accuracy_score</span></a><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred</span></a><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Balanced accuracy score of a dummy classifier: </span><span class="si">{</span><a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">score</span></a><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
@@ -302,7 +301,7 @@ in a dataframe</p>
             <span class="n">clf_name</span> <span class="o">=</span> <span class="n">clf</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">clf_name</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
-    <span class="n">acc</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64" title="numpy.float64" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">score</span></a><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
     <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred</span></a> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
     <span class="n">bal_acc</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html#sklearn.metrics.balanced_accuracy_score" title="sklearn.metrics.balanced_accuracy_score" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">balanced_accuracy_score</span></a><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred</span></a><span class="p">)</span>
     <span class="n">clf_score</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
@@ -391,7 +390,7 @@ numerical pipeline</p>
 <span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">make_column_selector</span> <span class="k">as</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html#sklearn.compose.make_column_selector" title="sklearn.compose.make_column_selector" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-function"><span class="n">selector</span></a>
 
 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="sklearn.compose.ColumnTransformer" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">preprocessor_linear</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="sklearn.compose.ColumnTransformer" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-class"><span class="n">ColumnTransformer</span></a><span class="p">(</span>
-    <span class="p">[(</span><span class="s2">&quot;num-pipe&quot;</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">num_pipe</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html#sklearn.compose.make_column_selector" title="sklearn.compose.make_column_selector" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-function"><span class="n">selector</span></a><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.generic.html#numpy.generic" title="numpy.generic" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class"><span class="n">np</span><span class="o">.</span><span class="n">number</span></a><span class="p">)),</span>
+    <span class="p">[(</span><span class="s2">&quot;num-pipe&quot;</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">num_pipe</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html#sklearn.compose.make_column_selector" title="sklearn.compose.make_column_selector" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-function"><span class="n">selector</span></a><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.number" title="numpy.number" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class"><span class="n">np</span><span class="o">.</span><span class="n">number</span></a><span class="p">)),</span>
      <span class="p">(</span><span class="s2">&quot;cat-pipe&quot;</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cat_pipe</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html#sklearn.compose.make_column_selector" title="sklearn.compose.make_column_selector" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-function"><span class="n">selector</span></a><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">CategoricalDtype</span><span class="p">))],</span>
     <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span>
 <span class="p">)</span>
@@ -435,12 +434,12 @@ then evaluate our model.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.972</td>
+      <td>0.971</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.586</td>
+      <td>0.585</td>
     </tr>
   </tbody>
 </table>
@@ -462,7 +461,7 @@ categorical data.</p>
 <span class="p">)</span>
 
 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="sklearn.compose.ColumnTransformer" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">preprocessor_tree</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="sklearn.compose.ColumnTransformer" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-class"><span class="n">ColumnTransformer</span></a><span class="p">(</span>
-    <span class="p">[(</span><span class="s2">&quot;num-pipe&quot;</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">num_pipe</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html#sklearn.compose.make_column_selector" title="sklearn.compose.make_column_selector" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-function"><span class="n">selector</span></a><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.generic.html#numpy.generic" title="numpy.generic" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class"><span class="n">np</span><span class="o">.</span><span class="n">number</span></a><span class="p">)),</span>
+    <span class="p">[(</span><span class="s2">&quot;num-pipe&quot;</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">num_pipe</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html#sklearn.compose.make_column_selector" title="sklearn.compose.make_column_selector" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-function"><span class="n">selector</span></a><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.number" title="numpy.number" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class"><span class="n">np</span><span class="o">.</span><span class="n">number</span></a><span class="p">)),</span>
      <span class="p">(</span><span class="s2">&quot;cat-pipe&quot;</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cat_pipe</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html#sklearn.compose.make_column_selector" title="sklearn.compose.make_column_selector" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-function"><span class="n">selector</span></a><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">CategoricalDtype</span><span class="p">))],</span>
     <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span>
 <span class="p">)</span>
@@ -503,14 +502,14 @@ categorical data.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.972</td>
       <td>0.971</td>
+      <td>0.975</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.586</td>
-      <td>0.636</td>
+      <td>0.585</td>
+      <td>0.674</td>
     </tr>
   </tbody>
 </table>
@@ -566,16 +565,16 @@ linear model and tree-based model.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.972</td>
       <td>0.971</td>
-      <td>0.806</td>
+      <td>0.975</td>
+      <td>0.812</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.586</td>
-      <td>0.636</td>
-      <td>0.801</td>
+      <td>0.585</td>
+      <td>0.674</td>
+      <td>0.833</td>
     </tr>
   </tbody>
 </table>
@@ -619,18 +618,18 @@ linear model and tree-based model.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.972</td>
       <td>0.971</td>
-      <td>0.806</td>
-      <td>0.966</td>
+      <td>0.975</td>
+      <td>0.812</td>
+      <td>0.971</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.586</td>
-      <td>0.636</td>
-      <td>0.801</td>
-      <td>0.635</td>
+      <td>0.585</td>
+      <td>0.674</td>
+      <td>0.833</td>
+      <td>0.668</td>
     </tr>
   </tbody>
 </table>
@@ -693,20 +692,20 @@ to do such processing.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.972</td>
       <td>0.971</td>
-      <td>0.806</td>
-      <td>0.966</td>
-      <td>0.801</td>
+      <td>0.975</td>
+      <td>0.812</td>
+      <td>0.971</td>
+      <td>0.808</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.586</td>
-      <td>0.636</td>
-      <td>0.801</td>
-      <td>0.635</td>
-      <td>0.810</td>
+      <td>0.585</td>
+      <td>0.674</td>
+      <td>0.833</td>
+      <td>0.668</td>
+      <td>0.824</td>
     </tr>
   </tbody>
 </table>
@@ -757,22 +756,22 @@ to do such processing.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.972</td>
       <td>0.971</td>
-      <td>0.806</td>
-      <td>0.966</td>
-      <td>0.801</td>
+      <td>0.975</td>
+      <td>0.812</td>
+      <td>0.971</td>
+      <td>0.808</td>
       <td>0.806</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.586</td>
-      <td>0.636</td>
-      <td>0.801</td>
-      <td>0.635</td>
-      <td>0.810</td>
-      <td>0.803</td>
+      <td>0.585</td>
+      <td>0.674</td>
+      <td>0.833</td>
+      <td>0.668</td>
+      <td>0.824</td>
+      <td>0.825</td>
     </tr>
   </tbody>
 </table>
@@ -839,24 +838,24 @@ the base of the <code class="docutils literal notranslate"><span class="pre">Bal
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.972</td>
       <td>0.971</td>
+      <td>0.975</td>
+      <td>0.812</td>
+      <td>0.971</td>
+      <td>0.808</td>
       <td>0.806</td>
-      <td>0.966</td>
-      <td>0.801</td>
-      <td>0.806</td>
-      <td>0.804</td>
+      <td>0.797</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.586</td>
-      <td>0.636</td>
-      <td>0.801</td>
-      <td>0.635</td>
-      <td>0.810</td>
-      <td>0.803</td>
-      <td>0.813</td>
+      <td>0.585</td>
+      <td>0.674</td>
+      <td>0.833</td>
+      <td>0.668</td>
+      <td>0.824</td>
+      <td>0.825</td>
+      <td>0.834</td>
     </tr>
   </tbody>
 </table>
@@ -918,26 +917,26 @@ classifier within a <code class="docutils literal notranslate"><span class="pre"
     <tr>
       <th>Accuracy</th>
       <td>0.968</td>
-      <td>0.972</td>
       <td>0.971</td>
+      <td>0.975</td>
+      <td>0.812</td>
+      <td>0.971</td>
+      <td>0.808</td>
       <td>0.806</td>
-      <td>0.966</td>
-      <td>0.801</td>
-      <td>0.806</td>
-      <td>0.804</td>
-      <td>0.847</td>
+      <td>0.797</td>
+      <td>0.848</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.500</td>
-      <td>0.586</td>
-      <td>0.636</td>
-      <td>0.801</td>
-      <td>0.635</td>
-      <td>0.810</td>
-      <td>0.803</td>
-      <td>0.813</td>
-      <td>0.815</td>
+      <td>0.585</td>
+      <td>0.674</td>
+      <td>0.833</td>
+      <td>0.668</td>
+      <td>0.824</td>
+      <td>0.825</td>
+      <td>0.834</td>
+      <td>0.843</td>
     </tr>
   </tbody>
 </table>
@@ -1042,26 +1041,26 @@ similar analysis.</p>
     <tr>
       <th>Accuracy</th>
       <td>0.99</td>
-      <td>0.990</td>
       <td>0.991</td>
-      <td>0.807</td>
-      <td>0.988</td>
-      <td>0.744</td>
-      <td>0.762</td>
-      <td>0.779</td>
-      <td>0.834</td>
+      <td>0.991</td>
+      <td>0.792</td>
+      <td>0.987</td>
+      <td>0.738</td>
+      <td>0.746</td>
+      <td>0.767</td>
+      <td>0.827</td>
     </tr>
     <tr>
       <th>Balanced accuracy</th>
       <td>0.50</td>
-      <td>0.521</td>
-      <td>0.575</td>
-      <td>0.796</td>
-      <td>0.557</td>
-      <td>0.759</td>
-      <td>0.768</td>
-      <td>0.782</td>
-      <td>0.789</td>
+      <td>0.538</td>
+      <td>0.596</td>
+      <td>0.810</td>
+      <td>0.568</td>
+      <td>0.825</td>
+      <td>0.792</td>
+      <td>0.813</td>
+      <td>0.812</td>
     </tr>
   </tbody>
 </table>
@@ -1074,8 +1073,8 @@ previous discussion. However, we can observe that the strategy
 <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code>. A resampling is indeed required. The most effective
 method remains the <code class="docutils literal notranslate"><span class="pre">BalancedBaggingClassifier</span></code> using a GBDT as a base
 learner.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  38.435 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  64 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 1 minutes  10.125 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  61 MB</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-applications-plot-impact-imbalanced-classes-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/5062100d8bac1656efa83b45d062ada3/plot_impact_imbalanced_classes.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_impact_imbalanced_classes.py</span></code></a></p>
