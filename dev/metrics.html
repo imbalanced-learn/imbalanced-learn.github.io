@@ -106,7 +106,8 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">7. Metrics</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#sensitivity-and-specificity-metrics">7.1. Sensitivity and specificity metrics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#additional-metrics-specific-to-imbalanced-datasets">7.2. Additional metrics specific to imbalanced datasets</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#summary-of-important-metrics">7.3. Summary of important metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#macro-averaged-mean-absolute-error-ma-mae">7.3. Macro-Averaged Mean Absolute Error (MA-MAE)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summary-of-important-metrics">7.4. Summary of important metrics</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="datasets/index.html">8. Dataset loading utilities</a></li>
@@ -218,8 +219,16 @@ of the classes while keeping these accuracies balanced.</p>
 wrap any metric and give more importance to a specific class using the
 parameter <code class="docutils literal notranslate"><span class="pre">alpha</span></code>.</p>
 </div>
+<div class="section" id="macro-averaged-mean-absolute-error-ma-mae">
+<span id="macro-averaged-mean-absolute-error"></span><h2><span class="section-number">7.3. </span>Macro-Averaged Mean Absolute Error (MA-MAE)<a class="headerlink" href="#macro-averaged-mean-absolute-error-ma-mae" title="Permalink to this headline">¶</a></h2>
+<p>Ordinal classification is used when there is a rank among classes, for example
+levels of functionality or movie ratings.</p>
+<p>The <a class="reference internal" href="generated/imblearn.metrics.macro_averaged_mean_absolute_error.html#imblearn.metrics.macro_averaged_mean_absolute_error" title="imblearn.metrics.macro_averaged_mean_absolute_error"><code class="xref py py-func docutils literal notranslate"><span class="pre">macro_averaged_mean_absolute_error</span></code></a> <span id="id4">[<a class="reference internal" href="zzz_references.html#id23">EBS09</a>]</span> is used
+for imbalanced ordinal classification. The mean absolute error is computed for
+each class and averaged over classes, giving an equal weight to each class.</p>
+</div>
 <div class="section" id="summary-of-important-metrics">
-<span id="classification-report"></span><h2><span class="section-number">7.3. </span>Summary of important metrics<a class="headerlink" href="#summary-of-important-metrics" title="Permalink to this headline">¶</a></h2>
+<span id="classification-report"></span><h2><span class="section-number">7.4. </span>Summary of important metrics<a class="headerlink" href="#summary-of-important-metrics" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="generated/imblearn.metrics.classification_report_imbalanced.html#imblearn.metrics.classification_report_imbalanced" title="imblearn.metrics.classification_report_imbalanced"><code class="xref py py-func docutils literal notranslate"><span class="pre">classification_report_imbalanced</span></code></a> will compute a set of metrics
 per class and summarize it in a table. The parameter <code class="docutils literal notranslate"><span class="pre">output_dict</span></code> allows
 to get a string or a Python dictionary. This dictionary can be reused to create

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>imblearn.metrics.sensitivity_score &mdash; imbalanced-learn 0.7.0 documentation</title>
+  <title>imblearn.metrics.macro_averaged_mean_absolute_error &mdash; imbalanced-learn 0.7.0 documentation</title>
   
 
   
@@ -41,8 +41,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="imblearn.metrics.specificity_score" href="imblearn.metrics.specificity_score.html" />
-    <link rel="prev" title="imblearn.metrics.sensitivity_specificity_support" href="imblearn.metrics.sensitivity_specificity_support.html" /> 
+    <link rel="next" title="imblearn.metrics.make_index_balanced_accuracy" href="imblearn.metrics.make_index_balanced_accuracy.html" />
+    <link rel="prev" title="imblearn.metrics.geometric_mean_score" href="imblearn.metrics.geometric_mean_score.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -109,10 +109,10 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html#module-imblearn.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>: Metrics</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="imblearn.metrics.classification_report_imbalanced.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.classification_report_imbalanced</a></li>
 <li class="toctree-l3"><a class="reference internal" href="imblearn.metrics.sensitivity_specificity_support.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.sensitivity_specificity_support</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.sensitivity_score</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imblearn.metrics.sensitivity_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.sensitivity_score</a></li>
 <li class="toctree-l3"><a class="reference internal" href="imblearn.metrics.specificity_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.specificity_score</a></li>
 <li class="toctree-l3"><a class="reference internal" href="imblearn.metrics.geometric_mean_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.geometric_mean_score</a></li>
-<li class="toctree-l3"><a class="reference internal" href="imblearn.metrics.macro_averaged_mean_absolute_error.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.macro_averaged_mean_absolute_error</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.macro_averaged_mean_absolute_error</a></li>
 <li class="toctree-l3"><a class="reference internal" href="imblearn.metrics.make_index_balanced_accuracy.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.make_index_balanced_accuracy</a></li>
 </ul>
 </li>
@@ -180,7 +180,7 @@
         
           <li><a href="../api.html">imbalanced-learn API</a> &raquo;</li>
         
-      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.sensitivity_score</li>
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.macro_averaged_mean_absolute_error</li>
     
     
 
@@ -192,82 +192,50 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="imblearn-metrics-sensitivity-score">
-<h1><a class="reference internal" href="../api.html#module-imblearn.metrics" title="imblearn.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code></a>.sensitivity_score<a class="headerlink" href="#imblearn-metrics-sensitivity-score" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="imblearn-metrics-macro-averaged-mean-absolute-error">
+<h1><a class="reference internal" href="../api.html#module-imblearn.metrics" title="imblearn.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code></a>.macro_averaged_mean_absolute_error<a class="headerlink" href="#imblearn-metrics-macro-averaged-mean-absolute-error" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
-<dt id="imblearn.metrics.sensitivity_score">
-<code class="sig-prename descclassname">imblearn.metrics.</code><code class="sig-name descname">sensitivity_score</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/0b48def/imblearn/utils/_validation.py#L292"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.metrics.sensitivity_score" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute the sensitivity</p>
-<p>The sensitivity is the ratio <code class="docutils literal notranslate"><span class="pre">tp</span> <span class="pre">/</span> <span class="pre">(tp</span> <span class="pre">+</span> <span class="pre">fn)</span></code> where <code class="docutils literal notranslate"><span class="pre">tp</span></code> is the number
-of true positives and <code class="docutils literal notranslate"><span class="pre">fn</span></code> the number of false negatives. The sensitivity
-quantifies the ability to avoid false negatives.</p>
-<p>The best value is 1 and the worst value is 0.</p>
-<p>Read more in the <a class="reference internal" href="../metrics.html#sensitivity-specificity"><span class="std std-ref">User Guide</span></a>.</p>
-<dl class="field-list">
+<dt id="imblearn.metrics.macro_averaged_mean_absolute_error">
+<code class="sig-prename descclassname">imblearn.metrics.</code><code class="sig-name descname">macro_averaged_mean_absolute_error</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/0b48def/imblearn/metrics/_classification.py#L1006"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.metrics.macro_averaged_mean_absolute_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute Macro-Averaged Mean Absolute Error (MA-MAE)
+for imbalanced ordinal classification.</p>
+<p>This function computes each MAE for each class and average them,
+giving an equal weight to each class.</p>
+<p>Read more in the <a class="reference internal" href="../metrics.html#macro-averaged-mean-absolute-error"><span class="std std-ref">User Guide</span></a>.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl>
-<dt><strong>y_true</strong><span class="classifier">ndarray of shape (n_samples,)</span></dt><dd><p>Ground truth (correct) target values.</p>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>y_true</strong><span class="classifier">array-like of shape (n_samples,) or (n_samples, n_outputs)</span></dt><dd><p>Ground truth (correct) target values.</p>
 </dd>
-<dt><strong>y_pred</strong><span class="classifier">ndarray of shape (n_samples,)</span></dt><dd><p>Estimated targets as returned by a classifier.</p>
+<dt><strong>y_pred</strong><span class="classifier">array-like of shape (n_samples,) or (n_samples, n_outputs)</span></dt><dd><p>Estimated targets as returned by a classifier.</p>
 </dd>
-<dt><strong>labels</strong><span class="classifier">list, default=None</span></dt><dd><p>The set of labels to include when <code class="docutils literal notranslate"><span class="pre">average</span> <span class="pre">!=</span> <span class="pre">'binary'</span></code>, and their
-order if <code class="docutils literal notranslate"><span class="pre">average</span> <span class="pre">is</span> <span class="pre">None</span></code>. Labels present in the data can be
-excluded, for example to calculate a multiclass average ignoring a
-majority negative class, while labels not present in the data will
-result in 0 components in a macro average.</p>
-</dd>
-<dt><strong>pos_label</strong><span class="classifier">str or int, default=1</span></dt><dd><p>The class to report if <code class="docutils literal notranslate"><span class="pre">average='binary'</span></code> and the data is binary.
-If the data are multiclass, this will be ignored;
-setting <code class="docutils literal notranslate"><span class="pre">labels=[pos_label]</span></code> and <code class="docutils literal notranslate"><span class="pre">average</span> <span class="pre">!=</span> <span class="pre">'binary'</span></code> will report
-scores for that label only.</p>
-</dd>
-<dt><strong>average</strong><span class="classifier">str, default=None</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">None</span></code>, the scores for each class are returned. Otherwise, this
-determines the type of averaging performed on the data:</p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">'binary'</span></code>:</dt><dd><p>Only report results for the class specified by <code class="docutils literal notranslate"><span class="pre">pos_label</span></code>.
-This is applicable only if targets (<code class="docutils literal notranslate"><span class="pre">y_{true,pred}</span></code>) are binary.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">'micro'</span></code>:</dt><dd><p>Calculate metrics globally by counting the total true positives,
-false negatives and false positives.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">'macro'</span></code>:</dt><dd><p>Calculate metrics for each label, and find their unweighted
-mean.  This does not take label imbalance into account.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">'weighted'</span></code>:</dt><dd><p>Calculate metrics for each label, and find their average, weighted
-by support (the number of true instances for each label). This
-alters ‘macro’ to account for label imbalance; it can result in an
-F-score that is not between precision and recall.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">'samples'</span></code>:</dt><dd><p>Calculate metrics for each instance, and find their average (only
-meaningful for multilabel classification where this differs from
-<code class="xref py py-func docutils literal notranslate"><span class="pre">accuracy_score</span></code>).</p>
-</dd>
-</dl>
-</dd>
-<dt><strong>sample_weight</strong><span class="classifier">ndarray of shape (n_samples,), default=None</span></dt><dd><p>Sample weights.</p>
+<dt><strong>sample_weight</strong><span class="classifier">array-like of shape (n_samples,), default=None</span></dt><dd><p>Sample weights.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl>
-<dt><strong>specificity</strong><span class="classifier">float (if <code class="docutils literal notranslate"><span class="pre">average</span> <span class="pre">is</span> <span class="pre">None</span></code>) or ndarray of             shape (n_unique_labels,)</span></dt><dd><p>The specifcity metric.</p>
+<dd class="field-even"><dl class="simple">
+<dt><strong>loss</strong><span class="classifier">float or ndarray of floats</span></dt><dd><p>Macro-Averaged MAE output is non-negative floating point.
+The best value is 0.0.</p>
 </dd>
 </dl>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.metrics</span> <span class="kn">import</span> <span class="n">sensitivity_score</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sensitivity_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;macro&#39;</span><span class="p">)</span>
-<span class="go">0.33333333333333331</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sensitivity_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;micro&#39;</span><span class="p">)</span>
-<span class="go">0.33333333333333331</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sensitivity_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;weighted&#39;</span><span class="p">)</span>
-<span class="go">0.33333333333333331</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sensitivity_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="go">array([ 1.,  0.,  0.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.metrics</span> <span class="kn">import</span> <span class="n">macro_averaged_mean_absolute_error</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_true_balanced</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_true_imbalanced</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_true_balanced</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="go">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_true_imbalanced</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="go">0.25</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">macro_averaged_mean_absolute_error</span><span class="p">(</span><span class="n">y_true_balanced</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="go">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">macro_averaged_mean_absolute_error</span><span class="p">(</span><span class="n">y_true_imbalanced</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="go">0.16666666666666666</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -282,10 +250,10 @@ meaningful for multilabel classification where this differs from
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="imblearn.metrics.specificity_score.html" class="btn btn-neutral float-right" title="imblearn.metrics.specificity_score" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="imblearn.metrics.make_index_balanced_accuracy.html" class="btn btn-neutral float-right" title="imblearn.metrics.make_index_balanced_accuracy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="imblearn.metrics.sensitivity_specificity_support.html" class="btn btn-neutral float-left" title="imblearn.metrics.sensitivity_specificity_support" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="imblearn.metrics.geometric_mean_score.html" class="btn btn-neutral float-left" title="imblearn.metrics.geometric_mean_score" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
