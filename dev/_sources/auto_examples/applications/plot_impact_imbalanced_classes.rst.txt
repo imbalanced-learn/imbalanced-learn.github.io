@@ -55,13 +55,13 @@ Problem definition
 
     from sklearn.datasets import fetch_openml
 
-    df, y = fetch_openml('adult', version=2, as_frame=True, return_X_y=True)
+    df, y = fetch_openml("adult", version=2, as_frame=True, return_X_y=True)
     # we are dropping the following features:
     # - "fnlwgt": this feature was created while studying the "adult" dataset.
     #   Thus, we will not use this feature which is not acquired during the survey.
     # - "education-num": it is encoding the same information than "education".
     #   Thus, we are removing one of these 2 features.
-    df = df.drop(columns=['fnlwgt', 'education-num'])
+    df = df.drop(columns=["fnlwgt", "education-num"])
 
 
 
@@ -104,7 +104,7 @@ The "adult" dataset as a class ratio of about 3:1
 This dataset is only slightly imbalanced. To better highlight the effect of
 learning from an imbalanced dataset, we will increase its ratio to 30:1
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-51
+.. GENERATED FROM PYTHON SOURCE LINES 40-49
 
 .. code-block:: default
 
@@ -113,9 +113,7 @@ learning from an imbalanced dataset, we will increase its ratio to 30:1
 
     ratio = 30
     df_res, y_res = make_imbalance(
-        df, y, sampling_strategy={
-            classes_count.idxmin(): classes_count.max() // ratio
-        }
+        df, y, sampling_strategy={classes_count.idxmin(): classes_count.max() // ratio},
     )
     y_res.value_counts()
 
@@ -136,13 +134,13 @@ learning from an imbalanced dataset, we will increase its ratio to 30:1
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 52-55
+.. GENERATED FROM PYTHON SOURCE LINES 50-53
 
 For the rest of the notebook, we will make a single split to get training
 and testing data. Note that you should use cross-validation to have an
 estimate of the performance variation in practice.
 
-.. GENERATED FROM PYTHON SOURCE LINES 55-62
+.. GENERATED FROM PYTHON SOURCE LINES 53-60
 
 .. code-block:: default
 
@@ -160,12 +158,12 @@ estimate of the performance variation in practice.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 63-65
+.. GENERATED FROM PYTHON SOURCE LINES 61-63
 
 As a baseline, we could use a classifier which will always predict the
 majority class independently of the features provided.
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-72
+.. GENERATED FROM PYTHON SOURCE LINES 63-70
 
 .. code-block:: default
 
@@ -191,12 +189,12 @@ majority class independently of the features provided.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 73-75
+.. GENERATED FROM PYTHON SOURCE LINES 71-73
 
 Instead of using the accuracy, we can use the balanced accuracy which will
 take into account the balancing issue.
 
-.. GENERATED FROM PYTHON SOURCE LINES 75-82
+.. GENERATED FROM PYTHON SOURCE LINES 73-80
 
 .. code-block:: default
 
@@ -222,18 +220,18 @@ take into account the balancing issue.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 83-85
+.. GENERATED FROM PYTHON SOURCE LINES 81-83
 
 Strategies to learn from an imbalanced dataset
 ##############################################################################
 
-.. GENERATED FROM PYTHON SOURCE LINES 87-90
+.. GENERATED FROM PYTHON SOURCE LINES 85-88
 
 We will first define a helper function which will train a given model
 and compute both accuracy and balanced accuracy. The results will be stored
 in a dataframe
 
-.. GENERATED FROM PYTHON SOURCE LINES 90-115
+.. GENERATED FROM PYTHON SOURCE LINES 88-113
 
 .. code-block:: default
 
@@ -243,6 +241,7 @@ in a dataframe
 
     def evaluate_classifier(clf, df_scores, clf_name=None):
         from sklearn.pipeline import Pipeline
+
         if clf_name is None:
             if isinstance(clf, Pipeline):
                 clf_name = clf[-1].__class__.__name__
@@ -252,8 +251,7 @@ in a dataframe
         y_pred = clf.predict(X_test)
         bal_acc = balanced_accuracy_score(y_test, y_pred)
         clf_score = pd.DataFrame(
-            {clf_name: [acc, bal_acc]},
-            index=['Accuracy', 'Balanced accuracy']
+            {clf_name: [acc, bal_acc]}, index=["Accuracy", "Balanced accuracy"]
         )
         df_scores = pd.concat([df_scores, clf_score], axis=1).round(decimals=3)
         return df_scores
@@ -269,7 +267,7 @@ in a dataframe
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 116-121
+.. GENERATED FROM PYTHON SOURCE LINES 114-119
 
 Dummy baseline
 ..............
@@ -277,7 +275,7 @@ Dummy baseline
 Before to train a real machine learning model, we can store the results
 obtained with our `DummyClassifier`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 121-125
+.. GENERATED FROM PYTHON SOURCE LINES 119-123
 
 .. code-block:: default
 
@@ -330,7 +328,7 @@ obtained with our `DummyClassifier`.
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-135
+.. GENERATED FROM PYTHON SOURCE LINES 124-133
 
 Linear classifier baseline
 ..........................
@@ -342,7 +340,7 @@ the `LogisticRegression` classifier.
 
 First, we define our numerical and categorical pipelines.
 
-.. GENERATED FROM PYTHON SOURCE LINES 135-149
+.. GENERATED FROM PYTHON SOURCE LINES 133-147
 
 .. code-block:: default
 
@@ -357,7 +355,7 @@ First, we define our numerical and categorical pipelines.
     )
     cat_pipe = make_pipeline(
         SimpleImputer(strategy="constant", fill_value="missing"),
-        OneHotEncoder(handle_unknown="ignore")
+        OneHotEncoder(handle_unknown="ignore"),
     )
 
 
@@ -367,13 +365,13 @@ First, we define our numerical and categorical pipelines.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 150-153
+.. GENERATED FROM PYTHON SOURCE LINES 148-151
 
 Then, we can create a preprocessor which will dispatch the categorical
 columns to the categorical pipeline and the numerical columns to the
 numerical pipeline
 
-.. GENERATED FROM PYTHON SOURCE LINES 153-164
+.. GENERATED FROM PYTHON SOURCE LINES 151-164
 
 .. code-block:: default
 
@@ -383,9 +381,11 @@ numerical pipeline
     from sklearn.compose import make_column_selector as selector
 
     preprocessor_linear = ColumnTransformer(
-        [("num-pipe", num_pipe, selector(dtype_include=np.number)),
-         ("cat-pipe", cat_pipe, selector(dtype_include=pd.CategoricalDtype))],
-        n_jobs=2
+        [
+            ("num-pipe", num_pipe, selector(dtype_include=np.number)),
+            ("cat-pipe", cat_pipe, selector(dtype_include=pd.CategoricalDtype)),
+        ],
+        n_jobs=2,
     )
 
 
@@ -400,16 +400,14 @@ numerical pipeline
 Finally, we connect our preprocessor with our `LogisticRegression`. We can
 then evaluate our model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 167-176
+.. GENERATED FROM PYTHON SOURCE LINES 167-174
 
 .. code-block:: default
 
 
     from sklearn.linear_model import LogisticRegression
 
-    lr_clf = make_pipeline(
-        preprocessor_linear, LogisticRegression(max_iter=1000)
-    )
+    lr_clf = make_pipeline(preprocessor_linear, LogisticRegression(max_iter=1000))
     df_scores = evaluate_classifier(lr_clf, df_scores, "LR")
     df_scores
 
@@ -452,7 +450,7 @@ then evaluate our model.
         <tr>
           <th>Balanced accuracy</th>
           <td>0.500</td>
-          <td>0.580</td>
+          <td>0.570</td>
         </tr>
       </tbody>
     </table>
@@ -461,7 +459,7 @@ then evaluate our model.
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 177-184
+.. GENERATED FROM PYTHON SOURCE LINES 175-182
 
 We can see that our linear model is learning slightly better than our dummy
 baseline. However, it is impacted by the class imbalance.
@@ -471,7 +469,7 @@ such as `RandomForestClassifier`. With this type of classifier, we will not
 need to scale the numerical data, and we will only need to ordinal encode the
 categorical data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 184-206
+.. GENERATED FROM PYTHON SOURCE LINES 182-205
 
 .. code-block:: default
 
@@ -480,14 +478,15 @@ categorical data.
     from sklearn.ensemble import RandomForestClassifier
 
     cat_pipe = make_pipeline(
-        SimpleImputer(strategy="constant", fill_value="missing"),
-        OrdinalEncoder()
+        SimpleImputer(strategy="constant", fill_value="missing"), OrdinalEncoder()
     )
 
     preprocessor_tree = ColumnTransformer(
-        [("num-pipe", num_pipe, selector(dtype_include=np.number)),
-         ("cat-pipe", cat_pipe, selector(dtype_include=pd.CategoricalDtype))],
-        n_jobs=2
+        [
+            ("num-pipe", num_pipe, selector(dtype_include=np.number)),
+            ("cat-pipe", cat_pipe, selector(dtype_include=pd.CategoricalDtype)),
+        ],
+        n_jobs=2,
     )
 
     rf_clf = make_pipeline(
@@ -533,13 +532,13 @@ categorical data.
           <th>Accuracy</th>
           <td>0.968</td>
           <td>0.971</td>
-          <td>0.972</td>
+          <td>0.973</td>
         </tr>
         <tr>
           <th>Balanced accuracy</th>
           <td>0.500</td>
-          <td>0.580</td>
-          <td>0.620</td>
+          <td>0.570</td>
+          <td>0.648</td>
         </tr>
       </tbody>
     </table>
@@ -548,7 +547,7 @@ categorical data.
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 207-221
+.. GENERATED FROM PYTHON SOURCE LINES 206-220
 
 The `RandomForestClassifier` is as well affected by the class imbalanced,
 slightly less than the linear model. Now, we will present different approach
@@ -565,15 +564,13 @@ classification from the minority and majority class. We can set
 proportional to the class frequency. We test this parametrization in both
 linear model and tree-based model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 221-228
+.. GENERATED FROM PYTHON SOURCE LINES 220-225
 
 .. code-block:: default
 
 
     lr_clf.set_params(logisticregression__class_weight="balanced")
-    df_scores = evaluate_classifier(
-        lr_clf, df_scores, "LR with class weight"
-    )
+    df_scores = evaluate_classifier(lr_clf, df_scores, "LR with class weight")
     df_scores
 
 
@@ -613,15 +610,15 @@ linear model and tree-based model.
           <th>Accuracy</th>
           <td>0.968</td>
           <td>0.971</td>
-          <td>0.972</td>
-          <td>0.803</td>
+          <td>0.973</td>
+          <td>0.799</td>
         </tr>
         <tr>
           <th>Balanced accuracy</th>
           <td>0.500</td>
-          <td>0.580</td>
-          <td>0.620</td>
-          <td>0.806</td>
+          <td>0.570</td>
+          <td>0.648</td>
+          <td>0.818</td>
         </tr>
       </tbody>
     </table>
@@ -630,15 +627,13 @@ linear model and tree-based model.
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 230-237
+.. GENERATED FROM PYTHON SOURCE LINES 227-232
 
 .. code-block:: default
 
 
     rf_clf.set_params(randomforestclassifier__class_weight="balanced")
-    df_scores = evaluate_classifier(
-        rf_clf, df_scores, "RF with class weight"
-    )
+    df_scores = evaluate_classifier(rf_clf, df_scores, "RF with class weight")
     df_scores
 
 
@@ -679,17 +674,17 @@ linear model and tree-based model.
           <th>Accuracy</th>
           <td>0.968</td>
           <td>0.971</td>
-          <td>0.972</td>
-          <td>0.803</td>
+          <td>0.973</td>
+          <td>0.799</td>
           <td>0.966</td>
         </tr>
         <tr>
           <th>Balanced accuracy</th>
           <td>0.500</td>
-          <td>0.580</td>
-          <td>0.620</td>
-          <td>0.806</td>
-          <td>0.622</td>
+          <td>0.570</td>
+          <td>0.648</td>
+          <td>0.818</td>
+          <td>0.639</td>
         </tr>
       </tbody>
     </table>
@@ -698,7 +693,7 @@ linear model and tree-based model.
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 238-250
+.. GENERATED FROM PYTHON SOURCE LINES 233-245
 
 We can see that using `class_weight` was really effective for the linear
 model, alleviating the issue of learning from imbalanced classes. However,
@@ -713,7 +708,7 @@ Another way is to resample the training set by under-sampling or
 over-sampling some of the samples. `imbalanced-learn` provides some samplers
 to do such processing.
 
-.. GENERATED FROM PYTHON SOURCE LINES 250-264
+.. GENERATED FROM PYTHON SOURCE LINES 245-257
 
 .. code-block:: default
 
@@ -724,11 +719,9 @@ to do such processing.
     lr_clf = make_pipeline_with_sampler(
         preprocessor_linear,
         RandomUnderSampler(random_state=42),
-        LogisticRegression(max_iter=1000)
+        LogisticRegression(max_iter=1000),
     )
-    df_scores = evaluate_classifier(
-        lr_clf, df_scores, "LR with under-sampling"
-    )
+    df_scores = evaluate_classifier(lr_clf, df_scores, "LR with under-sampling")
     df_scores
 
 
@@ -770,19 +763,19 @@ to do such processing.
           <th>Accuracy</th>
           <td>0.968</td>
           <td>0.971</td>
-          <td>0.972</td>
-          <td>0.803</td>
+          <td>0.973</td>
+          <td>0.799</td>
           <td>0.966</td>
-          <td>0.800</td>
+          <td>0.794</td>
         </tr>
         <tr>
           <th>Balanced accuracy</th>
           <td>0.500</td>
-          <td>0.580</td>
-          <td>0.620</td>
-          <td>0.806</td>
-          <td>0.622</td>
-          <td>0.809</td>
+          <td>0.570</td>
+          <td>0.648</td>
+          <td>0.818</td>
+          <td>0.639</td>
+          <td>0.816</td>
         </tr>
       </tbody>
     </table>
@@ -791,7 +784,7 @@ to do such processing.
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 266-278
+.. GENERATED FROM PYTHON SOURCE LINES 259-269
 
 .. code-block:: default
 
@@ -799,12 +792,10 @@ to do such processing.
     rf_clf = make_pipeline_with_sampler(
         preprocessor_tree,
         RandomUnderSampler(random_state=42),
-        RandomForestClassifier(random_state=42, n_jobs=2)
+        RandomForestClassifier(random_state=42, n_jobs=2),
     )
 
-    df_scores = evaluate_classifier(
-        rf_clf, df_scores, "RF with under-sampling"
-    )
+    df_scores = evaluate_classifier(rf_clf, df_scores, "RF with under-sampling")
     df_scores
 
 
@@ -847,21 +838,21 @@ to do such processing.
           <th>Accuracy</th>
           <td>0.968</td>
           <td>0.971</td>
-          <td>0.972</td>
-          <td>0.803</td>
+          <td>0.973</td>
+          <td>0.799</td>
           <td>0.966</td>
-          <td>0.800</td>
-          <td>0.789</td>
+          <td>0.794</td>
+          <td>0.798</td>
         </tr>
         <tr>
           <th>Balanced accuracy</th>
           <td>0.500</td>
-          <td>0.580</td>
-          <td>0.620</td>
-          <td>0.806</td>
-          <td>0.622</td>
-          <td>0.809</td>
-          <td>0.793</td>
+          <td>0.570</td>
+          <td>0.648</td>
+          <td>0.818</td>
+          <td>0.639</td>
+          <td>0.816</td>
+          <td>0.814</td>
         </tr>
       </tbody>
     </table>
@@ -870,7 +861,7 @@ to do such processing.
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 279-298
+.. GENERATED FROM PYTHON SOURCE LINES 270-289
 
 Applying a random under-sampler before the training of the linear model or
 random forest, allows to not focus on the majority class at the cost of
@@ -892,7 +883,7 @@ under-sample the original dataset before to take a bootstrap sample. This is
 the base of the `BalancedRandomForestClassifier` and
 `BalancedBaggingClassifier`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 298-309
+.. GENERATED FROM PYTHON SOURCE LINES 289-299
 
 .. code-block:: default
 
@@ -900,8 +891,7 @@ the base of the `BalancedRandomForestClassifier` and
     from imblearn.ensemble import BalancedRandomForestClassifier
 
     rf_clf = make_pipeline(
-        preprocessor_tree,
-        BalancedRandomForestClassifier(random_state=42, n_jobs=2)
+        preprocessor_tree, BalancedRandomForestClassifier(random_state=42, n_jobs=2),
     )
 
     df_scores = evaluate_classifier(rf_clf, df_scores, "Balanced RF")
@@ -948,23 +938,23 @@ the base of the `BalancedRandomForestClassifier` and
           <th>Accuracy</th>
           <td>0.968</td>
           <td>0.971</td>
-          <td>0.972</td>
-          <td>0.803</td>
+          <td>0.973</td>
+          <td>0.799</td>
           <td>0.966</td>
-          <td>0.800</td>
-          <td>0.789</td>
-          <td>0.782</td>
+          <td>0.794</td>
+          <td>0.798</td>
+          <td>0.791</td>
         </tr>
         <tr>
           <th>Balanced accuracy</th>
           <td>0.500</td>
-          <td>0.580</td>
-          <td>0.620</td>
-          <td>0.806</td>
-          <td>0.622</td>
-          <td>0.809</td>
-          <td>0.793</td>
-          <td>0.802</td>
+          <td>0.570</td>
+          <td>0.648</td>
+          <td>0.818</td>
+          <td>0.639</td>
+          <td>0.816</td>
+          <td>0.814</td>
+          <td>0.825</td>
         </tr>
       </tbody>
     </table>
@@ -973,13 +963,13 @@ the base of the `BalancedRandomForestClassifier` and
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 310-313
+.. GENERATED FROM PYTHON SOURCE LINES 300-303
 
 The performance with the `BalancedRandomForestClassifier` is better than
 applying a single random under-sampling. We will use a gradient-boosting
 classifier within a `BalancedBaggingClassifier`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 313-331
+.. GENERATED FROM PYTHON SOURCE LINES 303-321
 
 .. code-block:: default
 
@@ -992,13 +982,13 @@ classifier within a `BalancedBaggingClassifier`.
         preprocessor_tree,
         BalancedBaggingClassifier(
             base_estimator=HistGradientBoostingClassifier(random_state=42),
-            n_estimators=10, random_state=42, n_jobs=2
-        )
+            n_estimators=10,
+            random_state=42,
+            n_jobs=2,
+        ),
     )
 
-    df_scores = evaluate_classifier(
-        bag_clf, df_scores, "Balanced bagging"
-    )
+    df_scores = evaluate_classifier(bag_clf, df_scores, "Balanced bagging")
     df_scores
 
 
@@ -1043,25 +1033,25 @@ classifier within a `BalancedBaggingClassifier`.
           <th>Accuracy</th>
           <td>0.968</td>
           <td>0.971</td>
-          <td>0.972</td>
-          <td>0.803</td>
+          <td>0.973</td>
+          <td>0.799</td>
           <td>0.966</td>
-          <td>0.800</td>
-          <td>0.789</td>
-          <td>0.782</td>
-          <td>0.836</td>
+          <td>0.794</td>
+          <td>0.798</td>
+          <td>0.791</td>
+          <td>0.84</td>
         </tr>
         <tr>
           <th>Balanced accuracy</th>
           <td>0.500</td>
-          <td>0.580</td>
-          <td>0.620</td>
-          <td>0.806</td>
-          <td>0.622</td>
-          <td>0.809</td>
-          <td>0.793</td>
-          <td>0.802</td>
-          <td>0.812</td>
+          <td>0.570</td>
+          <td>0.648</td>
+          <td>0.818</td>
+          <td>0.639</td>
+          <td>0.816</td>
+          <td>0.814</td>
+          <td>0.825</td>
+          <td>0.82</td>
         </tr>
       </tbody>
     </table>
@@ -1070,7 +1060,7 @@ classifier within a `BalancedBaggingClassifier`.
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 332-338
+.. GENERATED FROM PYTHON SOURCE LINES 322-328
 
 This last approach is the most effective. The different under-sampling allows
 to bring some diversity for the different GBDT to learn and not focus on a
@@ -1079,21 +1069,19 @@ portion of the majority class.
 We will repeat the same experiment but with a ratio of 100:1 and make a
 similar analysis.
 
-.. GENERATED FROM PYTHON SOURCE LINES 340-342
+.. GENERATED FROM PYTHON SOURCE LINES 330-332
 
 Increase imbalanced ratio
 ##############################################################################
 
-.. GENERATED FROM PYTHON SOURCE LINES 342-397
+.. GENERATED FROM PYTHON SOURCE LINES 332-372
 
 .. code-block:: default
 
 
     ratio = 100
     df_res, y_res = make_imbalance(
-        df, y, sampling_strategy={
-            classes_count.idxmin(): classes_count.max() // ratio
-        }
+        df, y, sampling_strategy={classes_count.idxmin(): classes_count.max() // ratio},
     )
     X_train, X_test, y_train, y_test = train_test_split(
         df_res, y_res, stratify=y_res, random_state=42
@@ -1101,46 +1089,33 @@ Increase imbalanced ratio
 
     df_scores = pd.DataFrame()
     df_scores = evaluate_classifier(dummy_clf, df_scores, "Dummy")
-    lr_clf = make_pipeline(
-        preprocessor_linear, LogisticRegression(max_iter=1000)
-    )
+    lr_clf = make_pipeline(preprocessor_linear, LogisticRegression(max_iter=1000))
     df_scores = evaluate_classifier(lr_clf, df_scores, "LR")
     rf_clf = make_pipeline(
         preprocessor_tree, RandomForestClassifier(random_state=42, n_jobs=2)
     )
     df_scores = evaluate_classifier(rf_clf, df_scores, "RF")
     lr_clf.set_params(logisticregression__class_weight="balanced")
-    df_scores = evaluate_classifier(
-        lr_clf, df_scores, "LR with class weight"
-    )
+    df_scores = evaluate_classifier(lr_clf, df_scores, "LR with class weight")
     rf_clf.set_params(randomforestclassifier__class_weight="balanced")
-    df_scores = evaluate_classifier(
-        rf_clf, df_scores, "RF with class weight"
-    )
+    df_scores = evaluate_classifier(rf_clf, df_scores, "RF with class weight")
     lr_clf = make_pipeline_with_sampler(
         preprocessor_linear,
         RandomUnderSampler(random_state=42),
-        LogisticRegression(max_iter=1000)
+        LogisticRegression(max_iter=1000),
     )
-    df_scores = evaluate_classifier(
-        lr_clf, df_scores, "LR with under-sampling"
-    )
+    df_scores = evaluate_classifier(lr_clf, df_scores, "LR with under-sampling")
     rf_clf = make_pipeline_with_sampler(
         preprocessor_tree,
         RandomUnderSampler(random_state=42),
-        RandomForestClassifier(random_state=42, n_jobs=2)
+        RandomForestClassifier(random_state=42, n_jobs=2),
     )
-    df_scores = evaluate_classifier(
-        rf_clf, df_scores, "RF with under-sampling"
-    )
+    df_scores = evaluate_classifier(rf_clf, df_scores, "RF with under-sampling")
     rf_clf = make_pipeline(
-        preprocessor_tree,
-        BalancedRandomForestClassifier(random_state=42, n_jobs=2)
+        preprocessor_tree, BalancedRandomForestClassifier(random_state=42, n_jobs=2),
     )
     df_scores = evaluate_classifier(rf_clf, df_scores)
-    df_scores = evaluate_classifier(
-        bag_clf, df_scores, "Balanced bagging"
-    )
+    df_scores = evaluate_classifier(bag_clf, df_scores, "Balanced bagging")
     df_scores
 
 
@@ -1186,24 +1161,24 @@ Increase imbalanced ratio
           <td>0.99</td>
           <td>0.991</td>
           <td>0.991</td>
-          <td>0.825</td>
+          <td>0.821</td>
           <td>0.989</td>
-          <td>0.780</td>
-          <td>0.755</td>
-          <td>0.758</td>
-          <td>0.831</td>
+          <td>0.786</td>
+          <td>0.776</td>
+          <td>0.779</td>
+          <td>0.850</td>
         </tr>
         <tr>
           <th>Balanced accuracy</th>
           <td>0.50</td>
-          <td>0.538</td>
-          <td>0.575</td>
-          <td>0.800</td>
-          <td>0.563</td>
-          <td>0.799</td>
-          <td>0.764</td>
-          <td>0.787</td>
-          <td>0.792</td>
+          <td>0.554</td>
+          <td>0.596</td>
+          <td>0.809</td>
+          <td>0.585</td>
+          <td>0.807</td>
+          <td>0.796</td>
+          <td>0.819</td>
+          <td>0.812</td>
         </tr>
       </tbody>
     </table>
@@ -1212,7 +1187,7 @@ Increase imbalanced ratio
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 398-404
+.. GENERATED FROM PYTHON SOURCE LINES 373-379
 
 When we analyse the results, we can draw similar conclusions than in the
 previous discussion. However, we can observe that the strategy
@@ -1224,9 +1199,9 @@ learner.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  40.755 seconds)
+   **Total running time of the script:** ( 0 minutes  42.670 seconds)
 
-**Estimated memory usage:**  60 MB
+**Estimated memory usage:**  62 MB
 
 
 .. _sphx_glr_download_auto_examples_applications_plot_impact_imbalanced_classes.py:

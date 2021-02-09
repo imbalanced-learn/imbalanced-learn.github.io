@@ -28,7 +28,7 @@ methods are used in conjunction with a 3NN classifier in order
 to examine the improvement of the classifier's output quality
 by using an over-sampler.
 
-.. GENERATED FROM PYTHON SOURCE LINES 13-114
+.. GENERATED FROM PYTHON SOURCE LINES 13-119
 
 
 
@@ -44,29 +44,29 @@ by using an over-sampler.
  .. code-block:: none
 
 
-    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:85: DeprecationWarning: scipy.interp is deprecated and will be removed in SciPy 2.0.0, use numpy.interp instead
+    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:86: DeprecationWarning: scipy.interp is deprecated and will be removed in SciPy 2.0.0, use numpy.interp instead
       mean_tpr += interp(mean_fpr, fpr, tpr)
-    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:85: DeprecationWarning: scipy.interp is deprecated and will be removed in SciPy 2.0.0, use numpy.interp instead
+    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:86: DeprecationWarning: scipy.interp is deprecated and will be removed in SciPy 2.0.0, use numpy.interp instead
       mean_tpr += interp(mean_fpr, fpr, tpr)
-    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:85: DeprecationWarning: scipy.interp is deprecated and will be removed in SciPy 2.0.0, use numpy.interp instead
+    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:86: DeprecationWarning: scipy.interp is deprecated and will be removed in SciPy 2.0.0, use numpy.interp instead
       mean_tpr += interp(mean_fpr, fpr, tpr)
-    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:85: DeprecationWarning: scipy.interp is deprecated and will be removed in SciPy 2.0.0, use numpy.interp instead
+    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:86: DeprecationWarning: scipy.interp is deprecated and will be removed in SciPy 2.0.0, use numpy.interp instead
       mean_tpr += interp(mean_fpr, fpr, tpr)
-    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:85: DeprecationWarning: scipy.interp is deprecated and will be removed in SciPy 2.0.0, use numpy.interp instead
+    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:86: DeprecationWarning: scipy.interp is deprecated and will be removed in SciPy 2.0.0, use numpy.interp instead
       mean_tpr += interp(mean_fpr, fpr, tpr)
-    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:85: DeprecationWarning: scipy.interp is deprecated and will be removed in SciPy 2.0.0, use numpy.interp instead
+    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:86: DeprecationWarning: scipy.interp is deprecated and will be removed in SciPy 2.0.0, use numpy.interp instead
       mean_tpr += interp(mean_fpr, fpr, tpr)
-    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:85: DeprecationWarning: scipy.interp is deprecated and will be removed in SciPy 2.0.0, use numpy.interp instead
+    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:86: DeprecationWarning: scipy.interp is deprecated and will be removed in SciPy 2.0.0, use numpy.interp instead
       mean_tpr += interp(mean_fpr, fpr, tpr)
-    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:85: DeprecationWarning: scipy.interp is deprecated and will be removed in SciPy 2.0.0, use numpy.interp instead
+    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:86: DeprecationWarning: scipy.interp is deprecated and will be removed in SciPy 2.0.0, use numpy.interp instead
       mean_tpr += interp(mean_fpr, fpr, tpr)
-    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:85: DeprecationWarning: scipy.interp is deprecated and will be removed in SciPy 2.0.0, use numpy.interp instead
+    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:86: DeprecationWarning: scipy.interp is deprecated and will be removed in SciPy 2.0.0, use numpy.interp instead
       mean_tpr += interp(mean_fpr, fpr, tpr)
-    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:85: DeprecationWarning: scipy.interp is deprecated and will be removed in SciPy 2.0.0, use numpy.interp instead
+    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:86: DeprecationWarning: scipy.interp is deprecated and will be removed in SciPy 2.0.0, use numpy.interp instead
       mean_tpr += interp(mean_fpr, fpr, tpr)
-    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:85: DeprecationWarning: scipy.interp is deprecated and will be removed in SciPy 2.0.0, use numpy.interp instead
+    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:86: DeprecationWarning: scipy.interp is deprecated and will be removed in SciPy 2.0.0, use numpy.interp instead
       mean_tpr += interp(mean_fpr, fpr, tpr)
-    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:85: DeprecationWarning: scipy.interp is deprecated and will be removed in SciPy 2.0.0, use numpy.interp instead
+    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:86: DeprecationWarning: scipy.interp is deprecated and will be removed in SciPy 2.0.0, use numpy.interp instead
       mean_tpr += interp(mean_fpr, fpr, tpr)
 
 
@@ -100,7 +100,6 @@ by using an over-sampler.
 
 
     class DummySampler:
-
         def sample(self, X, y):
             return X, y
 
@@ -126,18 +125,20 @@ by using an over-sampler.
     y[y == majority_person] = 0
     y[y == minority_person] = 1
 
-    classifier = ['3NN', neighbors.KNeighborsClassifier(3)]
+    classifier = ["3NN", neighbors.KNeighborsClassifier(3)]
 
     samplers = [
-        ['Standard', DummySampler()],
-        ['ADASYN', ADASYN(random_state=RANDOM_STATE)],
-        ['ROS', RandomOverSampler(random_state=RANDOM_STATE)],
-        ['SMOTE', SMOTE(random_state=RANDOM_STATE)],
+        ["Standard", DummySampler()],
+        ["ADASYN", ADASYN(random_state=RANDOM_STATE)],
+        ["ROS", RandomOverSampler(random_state=RANDOM_STATE)],
+        ["SMOTE", SMOTE(random_state=RANDOM_STATE)],
     ]
 
     pipelines = [
-        ['{}-{}'.format(sampler[0], classifier[0]),
-         make_pipeline(sampler[1], classifier[1])]
+        [
+            f"{sampler[0]}-{classifier[0]}",
+            make_pipeline(sampler[1], classifier[1]),
+        ]
         for sampler in samplers
     ]
 
@@ -157,24 +158,28 @@ by using an over-sampler.
         mean_tpr /= cv.get_n_splits(X, y)
         mean_tpr[-1] = 1.0
         mean_auc = auc(mean_fpr, mean_tpr)
-        plt.plot(mean_fpr, mean_tpr, linestyle='--',
-                 label='{} (area = %0.2f)'.format(name) % mean_auc, lw=LW)
+        plt.plot(
+            mean_fpr,
+            mean_tpr,
+            linestyle="--",
+            label=f"{name} (area = {mean_auc:.2f})",
+            lw=LW,
+        )
 
-    plt.plot([0, 1], [0, 1], linestyle='--', lw=LW, color='k',
-             label='Luck')
+    plt.plot([0, 1], [0, 1], linestyle="--", lw=LW, color="k", label="Luck")
 
     # make nice plotting
-    ax.spines['top'].set_visible(False)
-    ax.spines['right'].set_visible(False)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
     ax.get_xaxis().tick_bottom()
     ax.get_yaxis().tick_left()
-    ax.spines['left'].set_position(('outward', 10))
-    ax.spines['bottom'].set_position(('outward', 10))
+    ax.spines["left"].set_position(("outward", 10))
+    ax.spines["bottom"].set_position(("outward", 10))
     plt.xlim([0, 1])
     plt.ylim([0, 1])
-    plt.xlabel('False Positive Rate')
-    plt.ylabel('True Positive Rate')
-    plt.title('Receiver operating characteristic example')
+    plt.xlabel("False Positive Rate")
+    plt.ylabel("True Positive Rate")
+    plt.title("Receiver operating characteristic example")
 
     plt.legend(loc="lower right")
 
@@ -183,9 +188,9 @@ by using an over-sampler.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  55.818 seconds)
+   **Total running time of the script:** ( 0 minutes  55.395 seconds)
 
-**Estimated memory usage:**  242 MB
+**Estimated memory usage:**  204 MB
 
 
 .. _sphx_glr_download_auto_examples_applications_plot_over_sampling_benchmark_lfw.py:

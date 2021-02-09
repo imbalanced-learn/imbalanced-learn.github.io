@@ -31,7 +31,7 @@ We make a comparison using the balanced accuracy and geometric mean which are
 metrics widely used in the literature to evaluate models learned on imbalanced
 set.
 
-.. GENERATED FROM PYTHON SOURCE LINES 16-71
+.. GENERATED FROM PYTHON SOURCE LINES 16-79
 
 .. code-block:: default
 
@@ -61,43 +61,51 @@ set.
     from imblearn.metrics import geometric_mean_score
 
 
-    def plot_confusion_matrix(cm, classes, ax,
-                              normalize=False,
-                              title='Confusion matrix',
-                              cmap=plt.cm.Blues):
+    def plot_confusion_matrix(
+        cm,
+        classes,
+        ax,
+        normalize=False,
+        title="Confusion matrix",
+        cmap=plt.cm.Blues,
+    ):
         """
         This function prints and plots the confusion matrix.
         Normalization can be applied by setting `normalize=True`.
         """
         print(cm)
-        print('')
+        print("")
 
-        ax.imshow(cm, interpolation='nearest', cmap=cmap)
+        ax.imshow(cm, interpolation="nearest", cmap=cmap)
         ax.set_title(title)
         tick_marks = np.arange(len(classes))
         plt.xticks(tick_marks, classes, rotation=45)
         plt.sca(ax)
         plt.yticks(tick_marks, classes)
 
-        fmt = '.2f' if normalize else 'd'
-        thresh = cm.max() / 2.
+        fmt = ".2f" if normalize else "d"
+        thresh = cm.max() / 2.0
         for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
-            ax.text(j, i, format(cm[i, j], fmt),
-                    horizontalalignment="center",
-                    color="white" if cm[i, j] > thresh else "black")
+            ax.text(
+                j,
+                i,
+                format(cm[i, j], fmt),
+                horizontalalignment="center",
+                color="white" if cm[i, j] > thresh else "black",
+            )
 
-        ax.set_ylabel('True label')
-        ax.set_xlabel('Predicted label')
-
-
-
-
-
-
+        ax.set_ylabel("True label")
+        ax.set_xlabel("Predicted label")
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-77
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 80-85
 
 Load an imbalanced dataset
 ##############################################################################
@@ -105,15 +113,14 @@ Load an imbalanced dataset
  (number of majority sample for a minority sample). The data are then split
  into training and testing.
 
-.. GENERATED FROM PYTHON SOURCE LINES 77-83
+.. GENERATED FROM PYTHON SOURCE LINES 85-90
 
 .. code-block:: default
 
 
-    satimage = fetch_datasets()['satimage']
+    satimage = fetch_datasets()["satimage"]
     X, y = satimage.data, satimage.target
-    X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y,
-                                                        random_state=0)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, random_state=0)
 
 
 
@@ -122,20 +129,20 @@ Load an imbalanced dataset
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 84-88
+.. GENERATED FROM PYTHON SOURCE LINES 91-95
 
 Classification using a single decision tree
 ##############################################################################
  We train a decision tree classifier which will be used as a baseline for the
  rest of this example.
 
-.. GENERATED FROM PYTHON SOURCE LINES 90-93
+.. GENERATED FROM PYTHON SOURCE LINES 97-100
 
 The results are reported in terms of balanced accuracy and geometric mean
 which are metrics widely used in the literature to validate model trained on
 imbalanced set.
 
-.. GENERATED FROM PYTHON SOURCE LINES 93-106
+.. GENERATED FROM PYTHON SOURCE LINES 100-115
 
 .. code-block:: default
 
@@ -143,14 +150,16 @@ imbalanced set.
     tree = DecisionTreeClassifier()
     tree.fit(X_train, y_train)
     y_pred_tree = tree.predict(X_test)
-    print('Decision tree classifier performance:')
-    print('Balanced accuracy: {:.2f} - Geometric mean {:.2f}'
-          .format(balanced_accuracy_score(y_test, y_pred_tree),
-                  geometric_mean_score(y_test, y_pred_tree)))
+    print("Decision tree classifier performance:")
+    print(
+        f"Balanced accuracy: {balanced_accuracy_score(y_test, y_pred_tree):.2f} - "
+        f"Geometric mean {geometric_mean_score(y_test, y_pred_tree):.2f}"
+    )
     cm_tree = confusion_matrix(y_test, y_pred_tree)
     fig, ax = plt.subplots()
-    plot_confusion_matrix(cm_tree, classes=np.unique(satimage.target), ax=ax,
-                          title='Decision tree')
+    plot_confusion_matrix(
+        cm_tree, classes=np.unique(satimage.target), ax=ax, title="Decision tree"
+    )
 
 
 
@@ -168,14 +177,14 @@ imbalanced set.
 
     Decision tree classifier performance:
     Balanced accuracy: 0.74 - Geometric mean 0.71
-    [[1381   71]
-     [  73   84]]
+    [[1376   76]
+     [  74   83]]
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 107-113
+.. GENERATED FROM PYTHON SOURCE LINES 116-122
 
 Classification using bagging classifier with and without sampling
 ##############################################################################
@@ -184,7 +193,7 @@ Classification using bagging classifier with and without sampling
  will use a bagging classifier and its counter part which internally uses a
  random under-sampling to balanced each boostrap sample.
 
-.. GENERATED FROM PYTHON SOURCE LINES 113-123
+.. GENERATED FROM PYTHON SOURCE LINES 122-132
 
 .. code-block:: default
 
@@ -205,32 +214,39 @@ Classification using bagging classifier with and without sampling
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 124-126
+.. GENERATED FROM PYTHON SOURCE LINES 133-135
 
 Balancing each bootstrap sample allows to increase significantly the balanced
 accuracy and the geometric mean.
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-144
+.. GENERATED FROM PYTHON SOURCE LINES 135-160
 
 .. code-block:: default
 
 
-    print('Bagging classifier performance:')
-    print('Balanced accuracy: {:.2f} - Geometric mean {:.2f}'
-          .format(balanced_accuracy_score(y_test, y_pred_bc),
-                  geometric_mean_score(y_test, y_pred_bc)))
+    print("Bagging classifier performance:")
+    print(
+        f"Balanced accuracy: {balanced_accuracy_score(y_test, y_pred_bc):.2f} - "
+        f"Geometric mean {geometric_mean_score(y_test, y_pred_bc):.2f}"
+    )
     cm_bagging = confusion_matrix(y_test, y_pred_bc)
     fig, ax = plt.subplots(ncols=2)
-    plot_confusion_matrix(cm_bagging, classes=np.unique(satimage.target), ax=ax[0],
-                          title='Bagging')
+    plot_confusion_matrix(
+        cm_bagging, classes=np.unique(satimage.target), ax=ax[0], title="Bagging"
+    )
 
-    print('Balanced Bagging classifier performance:')
-    print('Balanced accuracy: {:.2f} - Geometric mean {:.2f}'
-          .format(balanced_accuracy_score(y_test, y_pred_bbc),
-                  geometric_mean_score(y_test, y_pred_bbc)))
+    print("Balanced Bagging classifier performance:")
+    print(
+        f"Balanced accuracy: {balanced_accuracy_score(y_test, y_pred_bbc):.2f} - "
+        f"Geometric mean {geometric_mean_score(y_test, y_pred_bbc):.2f}"
+    )
     cm_balanced_bagging = confusion_matrix(y_test, y_pred_bbc)
-    plot_confusion_matrix(cm_balanced_bagging, classes=np.unique(satimage.target),
-                          ax=ax[1], title='Balanced bagging')
+    plot_confusion_matrix(
+        cm_balanced_bagging,
+        classes=np.unique(satimage.target),
+        ax=ax[1],
+        title="Balanced bagging",
+    )
 
 
 
@@ -260,7 +276,7 @@ accuracy and the geometric mean.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 145-150
+.. GENERATED FROM PYTHON SOURCE LINES 161-166
 
 Classification using random forest classifier with and without sampling
 ##############################################################################
@@ -268,7 +284,7 @@ Classification using random forest classifier with and without sampling
  outperforming bagging. Here, we used a vanilla random forest and its balanced
  counterpart in which each bootstrap sample is balanced.
 
-.. GENERATED FROM PYTHON SOURCE LINES 150-181
+.. GENERATED FROM PYTHON SOURCE LINES 166-204
 
 .. code-block:: default
 
@@ -286,22 +302,29 @@ Classification using random forest classifier with and without sampling
     # classifier which learn from imbalanced bootstrap samples. In addition, random
     # forest outsperforms the bagging classifier.
 
-    print('Random Forest classifier performance:')
-    print('Balanced accuracy: {:.2f} - Geometric mean {:.2f}'
-          .format(balanced_accuracy_score(y_test, y_pred_rf),
-                  geometric_mean_score(y_test, y_pred_rf)))
+    print("Random Forest classifier performance:")
+    print(
+        f"Balanced accuracy: {balanced_accuracy_score(y_test, y_pred_rf):.2f} - "
+        f"Geometric mean {geometric_mean_score(y_test, y_pred_rf):.2f}"
+    )
     cm_rf = confusion_matrix(y_test, y_pred_rf)
     fig, ax = plt.subplots(ncols=2)
-    plot_confusion_matrix(cm_rf, classes=np.unique(satimage.target), ax=ax[0],
-                          title='Random forest')
+    plot_confusion_matrix(
+        cm_rf, classes=np.unique(satimage.target), ax=ax[0], title="Random forest"
+    )
 
-    print('Balanced Random Forest classifier performance:')
-    print('Balanced accuracy: {:.2f} - Geometric mean {:.2f}'
-          .format(balanced_accuracy_score(y_test, y_pred_brf),
-                  geometric_mean_score(y_test, y_pred_brf)))
+    print("Balanced Random Forest classifier performance:")
+    print(
+        f"Balanced accuracy: {balanced_accuracy_score(y_test, y_pred_brf):.2f} - "
+        f"Geometric mean {geometric_mean_score(y_test, y_pred_brf):.2f}"
+    )
     cm_brf = confusion_matrix(y_test, y_pred_brf)
-    plot_confusion_matrix(cm_brf, classes=np.unique(satimage.target), ax=ax[1],
-                          title='Balanced random forest')
+    plot_confusion_matrix(
+        cm_brf,
+        classes=np.unique(satimage.target),
+        ax=ax[1],
+        title="Balanced random forest",
+    )
 
 
 
@@ -331,7 +354,7 @@ Classification using random forest classifier with and without sampling
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 182-187
+.. GENERATED FROM PYTHON SOURCE LINES 205-210
 
 Boosting classifier
 ##############################################################################
@@ -339,36 +362,44 @@ Boosting classifier
  classifier. However, it will be slower to train than random forest and will
  achieve worse performance.
 
-.. GENERATED FROM PYTHON SOURCE LINES 187-215
+.. GENERATED FROM PYTHON SOURCE LINES 210-246
 
 .. code-block:: default
 
 
     base_estimator = AdaBoostClassifier(n_estimators=10)
-    eec = EasyEnsembleClassifier(n_estimators=10,
-                                 base_estimator=base_estimator)
+    eec = EasyEnsembleClassifier(n_estimators=10, base_estimator=base_estimator)
     eec.fit(X_train, y_train)
     y_pred_eec = eec.predict(X_test)
-    print('Easy ensemble classifier performance:')
-    print('Balanced accuracy: {:.2f} - Geometric mean {:.2f}'
-          .format(balanced_accuracy_score(y_test, y_pred_eec),
-                  geometric_mean_score(y_test, y_pred_eec)))
+    print("Easy ensemble classifier performance:")
+    print(
+        f"Balanced accuracy: {balanced_accuracy_score(y_test, y_pred_eec):.2f} - "
+        f"Geometric mean {geometric_mean_score(y_test, y_pred_eec):.2f}"
+    )
     cm_eec = confusion_matrix(y_test, y_pred_eec)
     fig, ax = plt.subplots(ncols=2)
-    plot_confusion_matrix(cm_eec, classes=np.unique(satimage.target), ax=ax[0],
-                          title='Easy ensemble classifier')
+    plot_confusion_matrix(
+        cm_eec,
+        classes=np.unique(satimage.target),
+        ax=ax[0],
+        title="Easy ensemble classifier",
+    )
 
-    rusboost = RUSBoostClassifier(n_estimators=10,
-                                  base_estimator=base_estimator)
+    rusboost = RUSBoostClassifier(n_estimators=10, base_estimator=base_estimator)
     rusboost.fit(X_train, y_train)
     y_pred_rusboost = rusboost.predict(X_test)
-    print('RUSBoost classifier performance:')
-    print('Balanced accuracy: {:.2f} - Geometric mean {:.2f}'
-          .format(balanced_accuracy_score(y_test, y_pred_rusboost),
-                  geometric_mean_score(y_test, y_pred_rusboost)))
+    print("RUSBoost classifier performance:")
+    print(
+        f"Balanced accuracy: {balanced_accuracy_score(y_test, y_pred_rusboost):.2f} - "
+        f"Geometric mean {geometric_mean_score(y_test, y_pred_rusboost):.2f}"
+    )
     cm_rusboost = confusion_matrix(y_test, y_pred_rusboost)
-    plot_confusion_matrix(cm_rusboost, classes=np.unique(satimage.target),
-                          ax=ax[1], title='RUSBoost classifier')
+    plot_confusion_matrix(
+        cm_rusboost,
+        classes=np.unique(satimage.target),
+        ax=ax[1],
+        title="RUSBoost classifier",
+    )
 
     plt.show()
 
@@ -387,8 +418,8 @@ Boosting classifier
 
     Easy ensemble classifier performance:
     Balanced accuracy: 0.85 - Geometric mean 0.85
-    [[1223  229]
-     [  23  134]]
+    [[1211  241]
+     [  22  135]]
 
     RUSBoost classifier performance:
     Balanced accuracy: 0.85 - Geometric mean 0.85
@@ -402,9 +433,9 @@ Boosting classifier
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  10.464 seconds)
+   **Total running time of the script:** ( 0 minutes  10.518 seconds)
 
-**Estimated memory usage:**  200 MB
+**Estimated memory usage:**  206 MB
 
 
 .. _sphx_glr_download_auto_examples_ensemble_plot_comparison_ensemble_classifier.py:
