@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9. Utilities for Developers &mdash; imbalanced-learn 0.7.0 documentation</title>
+  <title>10. Utilities for Developers &mdash; imbalanced-learn 0.7.0 documentation</title>
   
 
   
@@ -41,8 +41,8 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="10. References" href="zzz_references.html" />
-    <link rel="prev" title="8. Dataset loading utilities" href="datasets/index.html" /> 
+    <link rel="next" title="11. References" href="zzz_references.html" />
+    <link rel="prev" title="9. Dataset loading utilities" href="datasets/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -104,14 +104,15 @@
 <li class="toctree-l2"><a class="reference internal" href="ensemble.html">5. Ensemble of samplers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="miscellaneous.html">6. Miscellaneous samplers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metrics.html">7. Metrics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datasets/index.html">8. Dataset loading utilities</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">9. Utilities for Developers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#validation-tools">9.1. Validation Tools</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#deprecation">9.2. Deprecation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#testing-utilities">9.3. Testing utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common_pitfalls.html">8. Common pitfalls and recommended practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datasets/index.html">9. Dataset loading utilities</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">10. Utilities for Developers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#validation-tools">10.1. Validation Tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deprecation">10.2. Deprecation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-utilities">10.3. Testing utilities</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="zzz_references.html">10. References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zzz_references.html">11. References</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">imbalanced-learn API</a></li>
@@ -175,7 +176,7 @@
         
           <li><a href="user_guide.html">User Guide</a> &raquo;</li>
         
-      <li><span class="section-number">9. </span>Utilities for Developers</li>
+      <li><span class="section-number">10. </span>Utilities for Developers</li>
     
     
 
@@ -188,7 +189,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="utilities-for-developers">
-<span id="developers-utils"></span><h1><span class="section-number">9. </span>Utilities for Developers<a class="headerlink" href="#utilities-for-developers" title="Permalink to this headline">¶</a></h1>
+<span id="developers-utils"></span><h1><span class="section-number">10. </span>Utilities for Developers<a class="headerlink" href="#utilities-for-developers" title="Permalink to this headline">¶</a></h1>
 <p>Imbalanced-learn contains a number of utilities to help with development. These are
 located in <a class="reference internal" href="api.html#module-imblearn.utils" title="imblearn.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.utils</span></code></a>, and include tools in a number of categories.
 All the following functions and classes are in the module <a class="reference internal" href="api.html#module-imblearn.utils" title="imblearn.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.utils</span></code></a>.</p>
@@ -200,7 +201,7 @@ imbalanced-learn. Backports, in particular, will be removed as the
 imbalanced-learn dependencies evolve.</p>
 </div>
 <div class="section" id="validation-tools">
-<h2><span class="section-number">9.1. </span>Validation Tools<a class="headerlink" href="#validation-tools" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.1. </span>Validation Tools<a class="headerlink" href="#validation-tools" title="Permalink to this headline">¶</a></h2>
 <p>These are tools used to check and validate input. When you write a function
 which accepts arrays, matrices, or sparse matrices as arguments, the following
 should be used when applicable.</p>
@@ -213,7 +214,7 @@ corresponding number of pixel.</p></li>
 </ul>
 </div>
 <div class="section" id="deprecation">
-<h2><span class="section-number">9.2. </span>Deprecation<a class="headerlink" href="#deprecation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.2. </span>Deprecation<a class="headerlink" href="#deprecation" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Apart from <code class="xref py py-func docutils literal notranslate"><span class="pre">deprecate_parameter</span></code> the rest of this section is taken from
@@ -280,7 +281,7 @@ provides <code class="xref py py-func docutils literal notranslate"><span class=
 parameter (attribute) by another one.</p>
 </div>
 <div class="section" id="testing-utilities">
-<h2><span class="section-number">9.3. </span>Testing utilities<a class="headerlink" href="#testing-utilities" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.3. </span>Testing utilities<a class="headerlink" href="#testing-utilities" title="Permalink to this headline">¶</a></h2>
 <p>Currently, imbalanced-learn provide a warning management utility. This feature
 is going to be merge in pytest and will be removed when the pytest release will
 have it.</p>
@@ -332,10 +333,10 @@ that the exception matches a text or regex:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="zzz_references.html" class="btn btn-neutral float-right" title="10. References" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="zzz_references.html" class="btn btn-neutral float-right" title="11. References" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="datasets/index.html" class="btn btn-neutral float-left" title="8. Dataset loading utilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="datasets/index.html" class="btn btn-neutral float-left" title="9. Dataset loading utilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>8. Dataset loading utilities &mdash; imbalanced-learn 0.7.0 documentation</title>
+  <title>9. Dataset loading utilities &mdash; imbalanced-learn 0.7.0 documentation</title>
   
 
   
@@ -41,8 +41,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9. Utilities for Developers" href="../developers_utils.html" />
-    <link rel="prev" title="7. Metrics" href="../metrics.html" /> 
+    <link rel="next" title="10. Utilities for Developers" href="../developers_utils.html" />
+    <link rel="prev" title="8. Common pitfalls and recommended practices" href="../common_pitfalls.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -104,13 +104,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../ensemble.html">5. Ensemble of samplers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous.html">6. Miscellaneous samplers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../metrics.html">7. Metrics</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">8. Dataset loading utilities</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#imbalanced-datasets-for-benchmark">8.1. Imbalanced datasets for benchmark</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#imbalanced-generator">8.2. Imbalanced generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../common_pitfalls.html">8. Common pitfalls and recommended practices</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9. Dataset loading utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#imbalanced-datasets-for-benchmark">9.1. Imbalanced datasets for benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#imbalanced-generator">9.2. Imbalanced generator</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../developers_utils.html">9. Utilities for Developers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../zzz_references.html">10. References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developers_utils.html">10. Utilities for Developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../zzz_references.html">11. References</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">imbalanced-learn API</a></li>
@@ -174,7 +175,7 @@
         
           <li><a href="../user_guide.html">User Guide</a> &raquo;</li>
         
-      <li><span class="section-number">8. </span>Dataset loading utilities</li>
+      <li><span class="section-number">9. </span>Dataset loading utilities</li>
     
     
 
@@ -187,13 +188,13 @@
            <div itemprop="articleBody">
             
   <div class="section" id="dataset-loading-utilities">
-<span id="datasets"></span><h1><span class="section-number">8. </span>Dataset loading utilities<a class="headerlink" href="#dataset-loading-utilities" title="Permalink to this headline">¶</a></h1>
+<span id="datasets"></span><h1><span class="section-number">9. </span>Dataset loading utilities<a class="headerlink" href="#dataset-loading-utilities" title="Permalink to this headline">¶</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">imblearn.datasets</span></code> package is complementing the <code class="docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>
 package. The package provides both: (i) a set of imbalanced datasets to perform
 systematic benchmark and (ii) a utility to create an imbalanced dataset from an
 original balanced dataset.</p>
 <div class="section" id="imbalanced-datasets-for-benchmark">
-<span id="zenodo"></span><h2><span class="section-number">8.1. </span>Imbalanced datasets for benchmark<a class="headerlink" href="#imbalanced-datasets-for-benchmark" title="Permalink to this headline">¶</a></h2>
+<span id="zenodo"></span><h2><span class="section-number">9.1. </span>Imbalanced datasets for benchmark<a class="headerlink" href="#imbalanced-datasets-for-benchmark" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="../generated/imblearn.datasets.fetch_datasets.html#imblearn.datasets.fetch_datasets" title="imblearn.datasets.fetch_datasets"><code class="xref py py-func docutils literal notranslate"><span class="pre">fetch_datasets</span></code></a> allows to fetch 27 datasets which are imbalanced and
 binarized. The following data sets are available:</p>
 <blockquote>
@@ -420,7 +421,7 @@ binarized. The following data sets are available:</p>
 </div>
 </div>
 <div class="section" id="imbalanced-generator">
-<span id="make-imbalanced"></span><h2><span class="section-number">8.2. </span>Imbalanced generator<a class="headerlink" href="#imbalanced-generator" title="Permalink to this headline">¶</a></h2>
+<span id="make-imbalanced"></span><h2><span class="section-number">9.2. </span>Imbalanced generator<a class="headerlink" href="#imbalanced-generator" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="../generated/imblearn.datasets.make_imbalance.html#imblearn.datasets.make_imbalance" title="imblearn.datasets.make_imbalance"><code class="xref py py-func docutils literal notranslate"><span class="pre">make_imbalance</span></code></a> turns an original dataset into an imbalanced
 dataset. This behaviour is driven by the parameter <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> which
 behave similarly to other resampling algorithm. <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> can be
@@ -490,10 +491,10 @@ in the dictionary:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../developers_utils.html" class="btn btn-neutral float-right" title="9. Utilities for Developers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../developers_utils.html" class="btn btn-neutral float-right" title="10. Utilities for Developers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../metrics.html" class="btn btn-neutral float-left" title="7. Metrics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../common_pitfalls.html" class="btn btn-neutral float-left" title="8. Common pitfalls and recommended practices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
