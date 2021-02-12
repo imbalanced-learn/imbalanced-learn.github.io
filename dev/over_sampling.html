@@ -104,7 +104,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#from-random-over-sampling-to-smote-and-adasyn">2.1.2. From random over-sampling to SMOTE and ADASYN</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ill-posed-examples">2.1.3. Ill-posed examples</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#smote-variants">2.1.4. SMOTE variants</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rose-random-over-sampling-examples">2.1.5. ROSE (Random Over-Sampling Examples)</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#mathematical-formulation">2.2. Mathematical formulation</a><ul>
@@ -263,13 +262,21 @@ function.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df_resampled</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>  
 </pre></div>
 </div>
+<p>If repeating samples is an issue, the parameter <code class="docutils literal notranslate"><span class="pre">smoothed_bootstrap</span></code> can be
+turned to <code class="docutils literal notranslate"><span class="pre">True</span></code> to create a smoothed bootstrap. However, the original data
+needs to be numerical. The <code class="docutils literal notranslate"><span class="pre">shrinkage</span></code> parameter controls the dispersion of the
+new generated samples. We show an example illustrate that the new samples are
+not overlapping anymore once using a smoothed bootstrap. This ways of
+generating smoothed bootstrap is also known a Random Over-Sampler Examples
+(ROSE) <span id="id2">[<a class="reference internal" href="zzz_references.html#id22">MT14</a>]</span>.</p>
+<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_0031.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_0031.png" style="width: 900.0px; height: 420.0px;" /></a>
 </div>
 <div class="section" id="from-random-over-sampling-to-smote-and-adasyn">
 <span id="smote-adasyn"></span><h3><span class="section-number">2.1.2. </span>From random over-sampling to SMOTE and ADASYN<a class="headerlink" href="#from-random-over-sampling-to-smote-and-adasyn" title="Permalink to this headline">¶</a></h3>
 <p>Apart from the random sampling with replacement, there are two popular methods
 to over-sample minority classes: (i) the Synthetic Minority Oversampling
-Technique (SMOTE) <span id="id2">[<a class="reference internal" href="zzz_references.html#id12">CBHK02</a>]</span> and (ii) the Adaptive Synthetic
-(ADASYN) <span id="id3">[<a class="reference internal" href="zzz_references.html#id11">HBGL08</a>]</span> sampling method. These algorithms can be used in
+Technique (SMOTE) <span id="id3">[<a class="reference internal" href="zzz_references.html#id12">CBHK02</a>]</span> and (ii) the Adaptive Synthetic
+(ADASYN) <span id="id4">[<a class="reference internal" href="zzz_references.html#id11">HBGL08</a>]</span> sampling method. These algorithms can be used in
 the same manner:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <span class="n">SMOTE</span><span class="p">,</span> <span class="n">ADASYN</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">SMOTE</span><span class="p">()</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -284,7 +291,7 @@ the same manner:</p>
 </div>
 <p>The figure below illustrates the major difference of the different
 over-sampling methods.</p>
-<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_0031.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_0031.png" style="width: 900.0px; height: 900.0px;" /></a>
+<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_0041.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_0041.png" style="width: 900.0px; height: 900.0px;" /></a>
 </div>
 <div class="section" id="ill-posed-examples">
 <h3><span class="section-number">2.1.3. </span>Ill-posed examples<a class="headerlink" href="#ill-posed-examples" title="Permalink to this headline">¶</a></h3>
@@ -297,10 +304,10 @@ classified using a k-Nearest Neighbors classifier while the basic
 implementation of <a class="reference internal" href="generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTE</span></code></a> will not make any distinction between easy and
 hard samples to be classified using the nearest neighbors rule. Therefore, the
 decision function found during training will be different among the algorithms.</p>
-<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_0041.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_0041.png" /></a>
+<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_0051.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_0051.png" /></a>
 <p>The sampling particularities of these two algorithms can lead to some peculiar
 behavior as shown below.</p>
-<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_0051.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_0051.png" style="width: 900.0px; height: 900.0px;" /></a>
+<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_0061.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_0061.png" style="width: 900.0px; height: 900.0px;" /></a>
 </div>
 <div class="section" id="smote-variants">
 <h3><span class="section-number">2.1.4. </span>SMOTE variants<a class="headerlink" href="#smote-variants" title="Permalink to this headline">¶</a></h3>
@@ -310,10 +317,10 @@ function. In this regard, SMOTE offers three additional options to generate
 samples. Those methods focus on samples near of the border of the optimal
 decision function and will generate samples in the opposite direction of the
 nearest neighbors class. Those variants are presented in the figure below.</p>
-<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_0061.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_0061.png" style="width: 900.0px; height: 1800.0px;" /></a>
-<p>The <a class="reference internal" href="generated/imblearn.over_sampling.BorderlineSMOTE.html#imblearn.over_sampling.BorderlineSMOTE" title="imblearn.over_sampling.BorderlineSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">BorderlineSMOTE</span></code></a> <span id="id4">[<a class="reference internal" href="zzz_references.html#id13">HWM05</a>]</span>,
-<a class="reference internal" href="generated/imblearn.over_sampling.SVMSMOTE.html#imblearn.over_sampling.SVMSMOTE" title="imblearn.over_sampling.SVMSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SVMSMOTE</span></code></a> <span id="id5">[<a class="reference internal" href="zzz_references.html#id14">NCK09</a>]</span>, and
-<a class="reference internal" href="generated/imblearn.over_sampling.KMeansSMOTE.html#imblearn.over_sampling.KMeansSMOTE" title="imblearn.over_sampling.KMeansSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">KMeansSMOTE</span></code></a> <span id="id6">[<a class="reference internal" href="zzz_references.html#id15">LDB17</a>]</span> offer some variant of the
+<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_0071.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_0071.png" style="width: 900.0px; height: 1800.0px;" /></a>
+<p>The <a class="reference internal" href="generated/imblearn.over_sampling.BorderlineSMOTE.html#imblearn.over_sampling.BorderlineSMOTE" title="imblearn.over_sampling.BorderlineSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">BorderlineSMOTE</span></code></a> <span id="id5">[<a class="reference internal" href="zzz_references.html#id13">HWM05</a>]</span>,
+<a class="reference internal" href="generated/imblearn.over_sampling.SVMSMOTE.html#imblearn.over_sampling.SVMSMOTE" title="imblearn.over_sampling.SVMSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SVMSMOTE</span></code></a> <span id="id6">[<a class="reference internal" href="zzz_references.html#id14">NCK09</a>]</span>, and
+<a class="reference internal" href="generated/imblearn.over_sampling.KMeansSMOTE.html#imblearn.over_sampling.KMeansSMOTE" title="imblearn.over_sampling.KMeansSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">KMeansSMOTE</span></code></a> <span id="id7">[<a class="reference internal" href="zzz_references.html#id15">LDB17</a>]</span> offer some variant of the
 SMOTE algorithm:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <span class="n">BorderlineSMOTE</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">BorderlineSMOTE</span><span class="p">()</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -324,7 +331,7 @@ SMOTE algorithm:</p>
 <p>When dealing with mixed data type such as continuous and categorical features,
 none of the presented methods (apart of the class <a class="reference internal" href="generated/imblearn.over_sampling.RandomOverSampler.html#imblearn.over_sampling.RandomOverSampler" title="imblearn.over_sampling.RandomOverSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomOverSampler</span></code></a>)
 can deal with the categorical features. The <a class="reference internal" href="generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTENC</span></code></a>
-<span id="id7">[<a class="reference internal" href="zzz_references.html#id12">CBHK02</a>]</span> is an extension of the <a class="reference internal" href="generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTE</span></code></a> algorithm for
+<span id="id8">[<a class="reference internal" href="zzz_references.html#id12">CBHK02</a>]</span> is an extension of the <a class="reference internal" href="generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTE</span></code></a> algorithm for
 which categorical data are treated differently:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create a synthetic data set with continuous and categorical features</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
@@ -359,24 +366,13 @@ features or a boolean mask marking these features:</p>
 columns are belonging to the same categories originally presented without any
 other extra interpolation.</p>
 </div>
-<div class="section" id="rose-random-over-sampling-examples">
-<span id="rose"></span><h3><span class="section-number">2.1.5. </span>ROSE (Random Over-Sampling Examples)<a class="headerlink" href="#rose-random-over-sampling-examples" title="Permalink to this headline">¶</a></h3>
-<p>ROSE uses smoothed bootstrapping to draw artificial samples from the
-feature space neighborhood around selected classes, using a multivariate
-Gaussian kernel around randomly selected samples. First, random samples are
-selected from original classes. Then the smoothing kernel distribution
-is computed around the samples: <img class="math" src="_images/math/8de3c450ea339559955e41353ada688de3aa639b.svg" alt="\hat f(x|y=Y_i) = \sum_i^{n_j}
-p_i Pr(x|x_i)=\sum_i^{n_j} \frac{1}{n_j} Pr(x|x_i)=\sum_i^{n_j}
-\frac{1}{n_j} K_{H_j}(x|x_i)"/>.</p>
-<p>Then new samples are drawn from the computed distribution.</p>
-</div>
 </div>
 <div class="section" id="mathematical-formulation">
 <h2><span class="section-number">2.2. </span>Mathematical formulation<a class="headerlink" href="#mathematical-formulation" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="sample-generation">
 <h3><span class="section-number">2.2.1. </span>Sample generation<a class="headerlink" href="#sample-generation" title="Permalink to this headline">¶</a></h3>
-<p>Both SMOTE and ADASYN use the same algorithm to generate new samples.
-Considering a sample <img class="math" src="_images/math/c67734af70861b2bd4dedf5c41c9aad231466f84.svg" alt="x_i"/>, a new sample <img class="math" src="_images/math/ba736d202b8294bf211f08cb544cf3ed13864dcb.svg" alt="x_{new}"/> will be
+<p>Both <a class="reference internal" href="generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTE</span></code></a> and <a class="reference internal" href="generated/imblearn.over_sampling.ADASYN.html#imblearn.over_sampling.ADASYN" title="imblearn.over_sampling.ADASYN"><code class="xref py py-class docutils literal notranslate"><span class="pre">ADASYN</span></code></a> use the same algorithm to generate new
+samples. Considering a sample <img class="math" src="_images/math/c67734af70861b2bd4dedf5c41c9aad231466f84.svg" alt="x_i"/>, a new sample <img class="math" src="_images/math/ba736d202b8294bf211f08cb544cf3ed13864dcb.svg" alt="x_{new}"/> will be
 generated considering its k neareast-neighbors (corresponding to
 <code class="docutils literal notranslate"><span class="pre">k_neighbors</span></code>). For instance, the 3 nearest-neighbors are included in the
 blue circle as illustrated in the figure below. Then, one of these

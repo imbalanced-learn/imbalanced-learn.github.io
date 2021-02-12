@@ -176,21 +176,20 @@ We will first illustrate the influence of the balancing ratio on some toy
 data using a linear SVM classifier. Greater is the difference between the
 number of samples in each class, poorer are the classfication results.
 
-.. GENERATED FROM PYTHON SOURCE LINES 108-125
+.. GENERATED FROM PYTHON SOURCE LINES 108-124
 
 .. code-block:: default
 
 
-    fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(15, 12))
+    fig, axs = plt.subplots(2, 2, figsize=(15, 12))
 
-    ax_arr = (ax1, ax2, ax3, ax4)
     weights_arr = (
         (0.01, 0.01, 0.98),
         (0.01, 0.05, 0.94),
         (0.2, 0.1, 0.7),
         (0.33, 0.33, 0.33),
     )
-    for ax, weights in zip(ax_arr, weights_arr):
+    for ax, weights in zip(axs.ravel(), weights_arr):
         X, y = create_dataset(n_samples=1000, weights=weights)
         clf = LinearSVC().fit(X, y)
         plot_decision_function(X, y, clf, ax)
@@ -208,32 +207,32 @@ number of samples in each class, poorer are the classfication results.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-128
+.. GENERATED FROM PYTHON SOURCE LINES 125-127
 
 Random over-sampling to balance the data set
 ##############################################################################
 
-.. GENERATED FROM PYTHON SOURCE LINES 130-134
+.. GENERATED FROM PYTHON SOURCE LINES 129-133
 
 Random over-sampling can be used to repeat some samples and balance the
 number of samples between the dataset. It can be seen that with this trivial
-approach the boundary decision is already less biaised toward the majority
+approach the boundary decision is already less biased toward the majority
 class.
 
-.. GENERATED FROM PYTHON SOURCE LINES 134-146
+.. GENERATED FROM PYTHON SOURCE LINES 133-145
 
 .. code-block:: default
 
 
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 7))
+    fig, axs = plt.subplots(1, 2, figsize=(15, 7))
     X, y = create_dataset(n_samples=10000, weights=(0.01, 0.05, 0.94))
     clf = LinearSVC().fit(X, y)
-    plot_decision_function(X, y, clf, ax1)
-    ax1.set_title(f"Linear SVC with y={Counter(y)}")
+    plot_decision_function(X, y, clf, axs[0])
+    axs[0].set_title(f"Linear SVC with y={Counter(y)}")
     pipe = make_pipeline(RandomOverSampler(random_state=0), LinearSVC())
     pipe.fit(X, y)
-    plot_decision_function(X, y, pipe, ax2)
-    ax2.set_title("Decision function for RandomOverSampler")
+    plot_decision_function(X, y, pipe, axs[1])
+    axs[1].set_title("Decision function for RandomOverSampler")
     fig.tight_layout()
 
 
@@ -247,17 +246,54 @@ class.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 147-149
+.. GENERATED FROM PYTHON SOURCE LINES 146-150
 
-More advanced over-sampling using ADASYN and SMOTE
+By default, random over-sampling generates a bootstrap. The parameter
+`smoothed_bootstrap` allows adding a small perturbation to the generated data
+to generate a smoothed bootstrap instead. The plot below shows the difference
+between the two data generation strategies.
+
+.. GENERATED FROM PYTHON SOURCE LINES 150-160
+
+.. code-block:: default
+
+
+    fig, axs = plt.subplots(1, 2, figsize=(15, 7))
+    sampler = RandomOverSampler(random_state=0)
+    plot_resampling(X, y, sampler, ax=axs[0])
+    axs[0].set_title("RandomOverSampler with normal bootstrap")
+    sampler = RandomOverSampler(smoothed_bootstrap=True, shrinkage=0.2, random_state=0)
+    plot_resampling(X, y, sampler, ax=axs[1])
+    axs[1].set_title("RandomOverSampler with smoothed bootstrap")
+    fig.tight_layout()
+
+
+
+
+.. image:: /auto_examples/over-sampling/images/sphx_glr_plot_comparison_over_sampling_003.png
+    :alt: RandomOverSampler with normal bootstrap, RandomOverSampler with smoothed bootstrap
+    :class: sphx-glr-single-img
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 161-168
+
+It looks like more samples are generated with smoothed bootstrap. This is due
+ to the fact that the samples generated are not superimposing with the
+ original samples.
+
+##############################################################################
+ More advanced over-sampling using ADASYN and SMOTE
 ##############################################################################
 
-.. GENERATED FROM PYTHON SOURCE LINES 151-153
+.. GENERATED FROM PYTHON SOURCE LINES 170-172
 
 Instead of repeating the same samples when over-sampling, we can use some
 specific heuristic instead. ADASYN and SMOTE can be used in this case.
 
-.. GENERATED FROM PYTHON SOURCE LINES 153-186
+.. GENERATED FROM PYTHON SOURCE LINES 172-204
 
 .. code-block:: default
 
@@ -272,16 +308,15 @@ specific heuristic instead. ADASYN and SMOTE can be used in this case.
             return X, y
 
 
-    fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(15, 15))
+    fig, axs = plt.subplots(2, 2, figsize=(15, 15))
     X, y = create_dataset(n_samples=10000, weights=(0.01, 0.05, 0.94))
     sampler = FakeSampler()
     clf = make_pipeline(sampler, LinearSVC())
-    plot_resampling(X, y, sampler, ax1)
-    ax1.set_title(f"Original data - y={Counter(y)}")
+    plot_resampling(X, y, sampler, axs[0, 0])
+    axs[0, 0].set_title(f"Original data - y={Counter(y)}")
 
-    ax_arr = (ax2, ax3, ax4)
     for ax, sampler in zip(
-        ax_arr,
+        axs.ravel()[1:],
         (
             RandomOverSampler(random_state=0),
             SMOTE(random_state=0),
@@ -297,7 +332,7 @@ specific heuristic instead. ADASYN and SMOTE can be used in this case.
 
 
 
-.. image:: /auto_examples/over-sampling/images/sphx_glr_plot_comparison_over_sampling_003.png
+.. image:: /auto_examples/over-sampling/images/sphx_glr_plot_comparison_over_sampling_004.png
     :alt: Original data - y=Counter({2: 9345, 1: 523, 0: 132}), Resampling using RandomOverSampler, Resampling using SMOTE, Resampling using ADASYN
     :class: sphx-glr-single-img
 
@@ -305,40 +340,40 @@ specific heuristic instead. ADASYN and SMOTE can be used in this case.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 187-191
+.. GENERATED FROM PYTHON SOURCE LINES 205-209
 
 The following plot illustrate the difference between ADASYN and SMOTE. ADASYN
 will focus on the samples which are difficult to classify with a
 nearest-neighbors rule while regular SMOTE will not make any distinction.
 Therefore, the decision function depending of the algorithm.
 
-.. GENERATED FROM PYTHON SOURCE LINES 191-210
+.. GENERATED FROM PYTHON SOURCE LINES 209-228
 
 .. code-block:: default
 
 
-    fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(20, 6))
+    fig, axs = plt.subplots(1, 3, figsize=(20, 6))
     X, y = create_dataset(n_samples=10000, weights=(0.01, 0.05, 0.94))
 
     clf = LinearSVC().fit(X, y)
-    plot_decision_function(X, y, clf, ax1)
-    ax1.set_title(f"Linear SVC with y={Counter(y)}")
+    plot_decision_function(X, y, clf, axs[0])
+    axs[0].set_title(f"Linear SVC with y={Counter(y)}")
     sampler = SMOTE()
     clf = make_pipeline(sampler, LinearSVC())
     clf.fit(X, y)
-    plot_decision_function(X, y, clf, ax2)
-    ax2.set_title(f"Decision function for {sampler.__class__.__name__}")
+    plot_decision_function(X, y, clf, axs[1])
+    axs[1].set_title(f"Decision function for {sampler.__class__.__name__}")
     sampler = ADASYN()
     clf = make_pipeline(sampler, LinearSVC())
     clf.fit(X, y)
-    plot_decision_function(X, y, clf, ax3)
-    ax3.set_title(f"Decision function for {sampler.__class__.__name__}")
+    plot_decision_function(X, y, clf, axs[2])
+    axs[2].set_title(f"Decision function for {sampler.__class__.__name__}")
     fig.tight_layout()
 
 
 
 
-.. image:: /auto_examples/over-sampling/images/sphx_glr_plot_comparison_over_sampling_004.png
+.. image:: /auto_examples/over-sampling/images/sphx_glr_plot_comparison_over_sampling_005.png
     :alt: Linear SVC with y=Counter({2: 9345, 1: 523, 0: 132}), Decision function for SMOTE, Decision function for ADASYN
     :class: sphx-glr-single-img
 
@@ -346,21 +381,20 @@ Therefore, the decision function depending of the algorithm.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 211-213
+.. GENERATED FROM PYTHON SOURCE LINES 229-231
 
 Due to those sampling particularities, it can give rise to some specific
 issues as illustrated below.
 
-.. GENERATED FROM PYTHON SOURCE LINES 213-227
+.. GENERATED FROM PYTHON SOURCE LINES 231-244
 
 .. code-block:: default
 
 
-    fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(15, 15))
+    fig, axs = plt.subplots(2, 2, figsize=(15, 15))
     X, y = create_dataset(n_samples=5000, weights=(0.01, 0.05, 0.94), class_sep=0.8)
 
-    ax_arr = ((ax1, ax2), (ax3, ax4))
-    for ax, sampler in zip(ax_arr, (SMOTE(random_state=0), ADASYN(random_state=0))):
+    for ax, sampler in zip(axs, (SMOTE(random_state=0), ADASYN(random_state=0))):
         clf = make_pipeline(sampler, LinearSVC())
         clf.fit(X, y)
         plot_decision_function(X, y, clf, ax[0])
@@ -372,7 +406,7 @@ issues as illustrated below.
 
 
 
-.. image:: /auto_examples/over-sampling/images/sphx_glr_plot_comparison_over_sampling_005.png
+.. image:: /auto_examples/over-sampling/images/sphx_glr_plot_comparison_over_sampling_006.png
     :alt: Decision function for SMOTE, Resampling using SMOTE, Decision function for ADASYN, Resampling using ADASYN
     :class: sphx-glr-single-img
 
@@ -380,7 +414,7 @@ issues as illustrated below.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 228-234
+.. GENERATED FROM PYTHON SOURCE LINES 245-251
 
 SMOTE proposes several variants by identifying specific samples to consider
 during the resampling. The borderline version will detect which point to
@@ -389,21 +423,16 @@ the support vectors found using an SVM algorithm to create new sample while
 the KMeans version will make a clustering before to generate samples in each
 cluster independently depending each cluster density.
 
-.. GENERATED FROM PYTHON SOURCE LINES 234-261
+.. GENERATED FROM PYTHON SOURCE LINES 251-273
 
 .. code-block:: default
 
 
-    (
-        fig,
-        ((ax1, ax2), (ax3, ax4), (ax5, ax6), (ax7, ax8), (ax9, ax10)),
-    ) = plt.subplots(5, 2, figsize=(15, 30))
+    fig, axs = plt.subplots(5, 2, figsize=(15, 30))
     X, y = create_dataset(n_samples=5000, weights=(0.01, 0.05, 0.94), class_sep=0.8)
 
-
-    ax_arr = ((ax1, ax2), (ax3, ax4), (ax5, ax6), (ax7, ax8), (ax9, ax10))
     for ax, sampler in zip(
-        ax_arr,
+        axs,
         (
             SMOTE(random_state=0),
             BorderlineSMOTE(random_state=0, kind="borderline-1"),
@@ -423,7 +452,7 @@ cluster independently depending each cluster density.
 
 
 
-.. image:: /auto_examples/over-sampling/images/sphx_glr_plot_comparison_over_sampling_006.png
+.. image:: /auto_examples/over-sampling/images/sphx_glr_plot_comparison_over_sampling_007.png
     :alt: Decision function for SMOTE, Resampling using SMOTE, Decision function for BorderlineSMOTE, Resampling using BorderlineSMOTE, Decision function for BorderlineSMOTE, Resampling using BorderlineSMOTE, Decision function for KMeansSMOTE, Resampling using KMeansSMOTE, Decision function for SVMSMOTE, Resampling using SVMSMOTE
     :class: sphx-glr-single-img
 
@@ -431,12 +460,12 @@ cluster independently depending each cluster density.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 262-264
+.. GENERATED FROM PYTHON SOURCE LINES 274-276
 
 When dealing with a mixed of continuous and categorical features, SMOTE-NC
 is the only method which can handle this case.
 
-.. GENERATED FROM PYTHON SOURCE LINES 264-287
+.. GENERATED FROM PYTHON SOURCE LINES 276-297
 
 .. code-block:: default
 
@@ -461,8 +490,6 @@ is the only method which can handle this case.
     print(sorted(Counter(y_resampled).items()))
     print("SMOTE-NC will generate categories for the categorical features:")
     print(X_resampled[-5:])
-
-    plt.show()
 
 
 
@@ -496,9 +523,9 @@ is the only method which can handle this case.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  26.946 seconds)
+   **Total running time of the script:** ( 0 minutes  28.654 seconds)
 
-**Estimated memory usage:**  16 MB
+**Estimated memory usage:**  37 MB
 
 
 .. _sphx_glr_download_auto_examples_over-sampling_plot_comparison_over_sampling.py:

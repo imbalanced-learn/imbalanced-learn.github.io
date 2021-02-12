@@ -110,7 +110,6 @@
 <li class="toctree-l3"><a class="reference internal" href="imblearn.over_sampling.SMOTE.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.over_sampling</span></code>.SMOTE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="imblearn.over_sampling.SMOTENC.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.over_sampling</span></code>.SMOTENC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="imblearn.over_sampling.SVMSMOTE.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.over_sampling</span></code>.SVMSMOTE</a></li>
-<li class="toctree-l3"><a class="reference internal" href="imblearn.over_sampling.ROSE.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.over_sampling</span></code>.ROSE</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.combine"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.combine</span></code>: Combination of over- and under-sampling methods</a></li>
@@ -200,10 +199,10 @@
 <h1><a class="reference internal" href="../api.html#module-imblearn.over_sampling" title="imblearn.over_sampling"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.over_sampling</span></code></a>.RandomOverSampler<a class="headerlink" href="#imblearn-over-sampling-randomoversampler" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="imblearn.over_sampling.RandomOverSampler">
-<em class="property">class </em><code class="sig-prename descclassname">imblearn.over_sampling.</code><code class="sig-name descname">RandomOverSampler</code><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9b666a0/imblearn/over_sampling/_random_over_sampler.py#L24"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">imblearn.over_sampling.</code><code class="sig-name descname">RandomOverSampler</code><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/3444430/imblearn/over_sampling/_random_over_sampler.py#L26"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class to perform random over-sampling.</p>
 <p>Object to over-sample the minority class(es) by picking samples at random
-with replacement.</p>
+with replacement. The bootstrap can be generated in a smoothed manner.</p>
 <p>Read more in the <a class="reference internal" href="../over_sampling.html#random-over-sampler"><span class="std std-ref">User Guide</span></a>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -253,6 +252,23 @@ generator;</p></li>
 instance used by <code class="docutils literal notranslate"><span class="pre">np.random</span></code>.</p></li>
 </ul>
 </dd>
+<dt><strong>smoothed_bootstrap</strong><span class="classifier">bool, default=False</span></dt><dd><p>Whether or not to generate smoothed bootstrap samples. When this option
+is triggered, be aware that the data to be resampled needs to be
+numerical data since a Gaussian perturbation will be generated and
+added to the bootstrap.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.7.</span></p>
+</div>
+</dd>
+<dt><strong>shrinkage</strong><span class="classifier">float or dict, default=1.0</span></dt><dd><p>Factor to shrink the covariance matrix used to generate the
+smoothed bootstrap. A factor could be shared by all classes by
+providing a floating number or different for each class over-sampled
+by providing a dictionary where the key are the class targeted and the
+value is the shrinkage factor.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.7.</span></p>
+</div>
+</dd>
 </dl>
 </dd>
 <dt class="field-even">Attributes</dt>
@@ -262,15 +278,19 @@ instance used by <code class="docutils literal notranslate"><span class="pre">np
 <p><span class="versionmodified added">New in version 0.4.</span></p>
 </div>
 </dd>
+<dt><strong>shrinkage_</strong><span class="classifier">dict or None</span></dt><dd><p>The per-class shrinkage factor used to generate the smoothed bootstrap
+sample. <code class="docutils literal notranslate"><span class="pre">None</span></code> when <code class="docutils literal notranslate"><span class="pre">smoothed_bootstrap=False</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.7.</span></p>
+</div>
+</dd>
 </dl>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="imblearn.over_sampling.ROSE.html#imblearn.over_sampling.ROSE" title="imblearn.over_sampling.ROSE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ROSE</span></code></a></dt><dd><p>Random Over-Sampling Examples.</p>
-</dd>
-<dt><a class="reference internal" href="imblearn.over_sampling.BorderlineSMOTE.html#imblearn.over_sampling.BorderlineSMOTE" title="imblearn.over_sampling.BorderlineSMOTE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BorderlineSMOTE</span></code></a></dt><dd><p>Over-sample using the bordeline-SMOTE variant.</p>
+<dt><a class="reference internal" href="imblearn.over_sampling.BorderlineSMOTE.html#imblearn.over_sampling.BorderlineSMOTE" title="imblearn.over_sampling.BorderlineSMOTE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BorderlineSMOTE</span></code></a></dt><dd><p>Over-sample using the borderline-SMOTE variant.</p>
 </dd>
 <dt><a class="reference internal" href="imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SMOTE</span></code></a></dt><dd><p>Over-sample using SMOTE.</p>
 </dd>
@@ -288,6 +308,22 @@ instance used by <code class="docutils literal notranslate"><span class="pre">np
 <p>Supports multi-class resampling by sampling each class independently.
 Supports heterogeneous data as object array containing string and numeric
 data.</p>
+<p>When generating a smoothed bootstrap, this method is also known as Random
+Over-Sampling Examples (ROSE) <a class="reference internal" href="#r49bc2639d4d4-1" id="id1">[1]</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Since smoothed bootstrap are generated by adding a small perturbation
+to the drawn samples, this method is not adequate when working with
+sparse matrices.</p>
+</div>
+<p class="rubric">References</p>
+<dl class="citation">
+<dt class="label" id="r49bc2639d4d4-1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>G Menardi, N. Torelli, “Training and assessing classification
+rules with imbalanced data,” Data Mining and Knowledge
+Discovery, 28(1), pp.92-122, 2014.</p>
+</dd>
+</dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
@@ -305,7 +341,7 @@ data.</p>
 </div>
 <dl class="py method">
 <dt id="imblearn.over_sampling.RandomOverSampler.fit">
-<code class="sig-name descname">fit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9b666a0/imblearn/base.py#L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.fit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/3444430/imblearn/base.py#L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check inputs and statistics of the sampler.</p>
 <p>You should use <code class="docutils literal notranslate"><span class="pre">fit_resample</span></code> in all cases.</p>
 <dl class="field-list simple">
@@ -328,7 +364,7 @@ data.</p>
 
 <dl class="py method">
 <dt id="imblearn.over_sampling.RandomOverSampler.fit_resample">
-<code class="sig-name descname">fit_resample</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9b666a0/imblearn/base.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.fit_resample" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit_resample</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/3444430/imblearn/base.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.fit_resample" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resample the dataset.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -352,7 +388,7 @@ data.</p>
 
 <dl class="py method">
 <dt id="imblearn.over_sampling.RandomOverSampler.get_params">
-<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9b666a0/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L178"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.get_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/3444430/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L178"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.get_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -373,7 +409,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt id="imblearn.over_sampling.RandomOverSampler.set_params">
-<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9b666a0/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L202"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.set_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/3444430/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L202"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v0.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>). The latter have
@@ -399,17 +435,21 @@ possible to update each component of a nested object.</p>
 
 <div class="section" id="examples-using-imblearn-over-sampling-randomoversampler">
 <h2>Examples using <code class="docutils literal notranslate"><span class="pre">imblearn.over_sampling.RandomOverSampler</span></code><a class="headerlink" href="#examples-using-imblearn-over-sampling-randomoversampler" title="Permalink to this headline">¶</a></h2>
-<div class="sphx-glr-thumbcontainer" tooltip="This example shows the different usage of the parameter sampling_strategy for the different fam..."><div class="figure align-default" id="id1">
+<div class="sphx-glr-thumbcontainer" tooltip="This example shows the different usage of the parameter sampling_strategy for the different fam..."><div class="figure align-default" id="id3">
 <img alt="Usage of the ``sampling_strategy`` parameter for the different algorithms" src="../_images/sphx_glr_plot_sampling_strategy_usage_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/plot_sampling_strategy_usage.html#sphx-glr-auto-examples-plot-sampling-strategy-usage-py"><span class="std std-ref">Usage of the sampling_strategy parameter for the different algorithms</span></a></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/plot_sampling_strategy_usage.html#sphx-glr-auto-examples-plot-sampling-strategy-usage-py"><span class="std std-ref">Usage of the sampling_strategy parameter for the different algorithms</span></a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="In this face recognition example two faces are used from the LFW (Faces in the Wild) dataset. S..."><div class="figure align-default" id="id2">
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this face recognition example two faces are used from the LFW (Faces in the Wild) dataset. S..."><div class="figure align-default" id="id4">
 <img alt="Benchmark over-sampling methods in a face recognition task" src="../_images/sphx_glr_plot_over_sampling_benchmark_lfw_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/applications/plot_over_sampling_benchmark_lfw.html#sphx-glr-auto-examples-applications-plot-over-sampling-benchmark-lfw-py"><span class="std std-ref">Benchmark over-sampling methods in a face recognition task</span></a></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/applications/plot_over_sampling_benchmark_lfw.html#sphx-glr-auto-examples-applications-plot-over-sampling-benchmark-lfw-py"><span class="std std-ref">Benchmark over-sampling methods in a face recognition task</span></a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="The following example attends to make a qualitative comparison between the different over-sampl..."><div class="figure align-default" id="id3">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows the effect of the shrinkage factor used to generate the smoothed bootstrap u..."><div class="figure align-default" id="id5">
+<img alt="Effect of the shrinkage factor in random over-sampling" src="../_images/sphx_glr_plot_shrinkage_effect_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/over-sampling/plot_shrinkage_effect.html#sphx-glr-auto-examples-over-sampling-plot-shrinkage-effect-py"><span class="std std-ref">Effect of the shrinkage factor in random over-sampling</span></a></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The following example attends to make a qualitative comparison between the different over-sampl..."><div class="figure align-default" id="id6">
 <img alt="Comparison of the different over-sampling algorithms" src="../_images/sphx_glr_plot_comparison_over_sampling_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/over-sampling/plot_comparison_over_sampling.html#sphx-glr-auto-examples-over-sampling-plot-comparison-over-sampling-py"><span class="std std-ref">Comparison of the different over-sampling algorithms</span></a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/over-sampling/plot_comparison_over_sampling.html#sphx-glr-auto-examples-over-sampling-plot-comparison-over-sampling-py"><span class="std std-ref">Comparison of the different over-sampling algorithms</span></a></span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
 </div><div style='clear:both'></div></div>
 </div>

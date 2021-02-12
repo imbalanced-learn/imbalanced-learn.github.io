@@ -41,7 +41,7 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="imblearn.over_sampling.ROSE" href="imblearn.over_sampling.ROSE.html" />
+    <link rel="next" title="imblearn.combine.SMOTEENN" href="imblearn.combine.SMOTEENN.html" />
     <link rel="prev" title="imblearn.over_sampling.SMOTENC" href="imblearn.over_sampling.SMOTENC.html" /> 
 </head>
 
@@ -110,7 +110,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#examples-using-imblearn-over-sampling-svmsmote">Examples using <code class="docutils literal notranslate"><span class="pre">imblearn.over_sampling.SVMSMOTE</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="imblearn.over_sampling.ROSE.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.over_sampling</span></code>.ROSE</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.combine"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.combine</span></code>: Combination of over- and under-sampling methods</a></li>
@@ -200,7 +199,7 @@
 <h1><a class="reference internal" href="../api.html#module-imblearn.over_sampling" title="imblearn.over_sampling"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.over_sampling</span></code></a>.SVMSMOTE<a class="headerlink" href="#imblearn-over-sampling-svmsmote" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="imblearn.over_sampling.SVMSMOTE">
-<em class="property">class </em><code class="sig-prename descclassname">imblearn.over_sampling.</code><code class="sig-name descname">SVMSMOTE</code><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9b666a0/imblearn/over_sampling/_smote.py#L413"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.SVMSMOTE" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">imblearn.over_sampling.</code><code class="sig-name descname">SVMSMOTE</code><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/3444430/imblearn/over_sampling/_smote.py#L411"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.SVMSMOTE" title="Permalink to this definition">¶</a></dt>
 <dd><p>Over-sampling using SVM-SMOTE.</p>
 <p>Variant of SMOTE algorithm which use an SVM algorithm to detect sample to
 use for generating new synthetic samples as proposed in <a class="reference internal" href="#r88acb9955f91-2" id="id1">[2]</a>.</p>
@@ -279,8 +278,6 @@ find the m_neighbors.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="imblearn.over_sampling.ROSE.html#imblearn.over_sampling.ROSE" title="imblearn.over_sampling.ROSE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ROSE</span></code></a></dt><dd><p>Random Over-Sampling Examples.</p>
-</dd>
 <dt><a class="reference internal" href="imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SMOTE</span></code></a></dt><dd><p>Over-sample using SMOTE.</p>
 </dd>
 <dt><a class="reference internal" href="imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SMOTENC</span></code></a></dt><dd><p>Over-sample using SMOTE for continuous and categorical features.</p>
@@ -327,7 +324,7 @@ Engineering and Soft Data Paradigms, 3(1), pp.4-21, 2009.</p>
 </div>
 <dl class="py method">
 <dt id="imblearn.over_sampling.SVMSMOTE.fit">
-<code class="sig-name descname">fit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9b666a0/imblearn/base.py#L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.SVMSMOTE.fit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/3444430/imblearn/base.py#L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.SVMSMOTE.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check inputs and statistics of the sampler.</p>
 <p>You should use <code class="docutils literal notranslate"><span class="pre">fit_resample</span></code> in all cases.</p>
 <dl class="field-list simple">
@@ -350,7 +347,7 @@ Engineering and Soft Data Paradigms, 3(1), pp.4-21, 2009.</p>
 
 <dl class="py method">
 <dt id="imblearn.over_sampling.SVMSMOTE.fit_resample">
-<code class="sig-name descname">fit_resample</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9b666a0/imblearn/base.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.SVMSMOTE.fit_resample" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit_resample</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/3444430/imblearn/base.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.SVMSMOTE.fit_resample" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resample the dataset.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -374,7 +371,7 @@ Engineering and Soft Data Paradigms, 3(1), pp.4-21, 2009.</p>
 
 <dl class="py method">
 <dt id="imblearn.over_sampling.SVMSMOTE.get_params">
-<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9b666a0/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L178"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.SVMSMOTE.get_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/3444430/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L178"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.SVMSMOTE.get_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -395,7 +392,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt id="imblearn.over_sampling.SVMSMOTE.set_params">
-<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9b666a0/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L202"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.SVMSMOTE.set_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/3444430/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L202"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.SVMSMOTE.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v0.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>). The latter have
@@ -436,7 +433,7 @@ possible to update each component of a nested object.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="imblearn.over_sampling.ROSE.html" class="btn btn-neutral float-right" title="imblearn.over_sampling.ROSE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="imblearn.combine.SMOTEENN.html" class="btn btn-neutral float-right" title="imblearn.combine.SMOTEENN" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="imblearn.over_sampling.SMOTENC.html" class="btn btn-neutral float-left" title="imblearn.over_sampling.SMOTENC" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
