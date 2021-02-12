@@ -162,14 +162,14 @@ We observe that the minority samples are less transparent than the samples
 from the majority class. Indeed, it is due to the fact that these samples
 of the minority class are repeated during the bootstrap generation.
 
-We can set `smoothed_bootstrap=True` to add a small perturbation to the
+We can set `shrinkage` to a floating value to add a small perturbation to the
 samples created and therefore create a smoothed bootstrap.
 
 .. GENERATED FROM PYTHON SOURCE LINES 66-70
 
 .. code-block:: default
 
-    sampler = RandomOverSampler(smoothed_bootstrap=True, random_state=0)
+    sampler = RandomOverSampler(shrinkage=1, random_state=0)
     X_res, y_res = sampler.fit_resample(X, y)
     Counter(y_res)
 
@@ -222,7 +222,7 @@ add more perturbation when generating the smoothed bootstrap.
 
 .. code-block:: default
 
-    sampler = RandomOverSampler(smoothed_bootstrap=True, shrinkage=3, random_state=0)
+    sampler = RandomOverSampler(shrinkage=3, random_state=0)
     X_res, y_res = sampler.fit_resample(X, y)
     Counter(y_res)
 
@@ -272,7 +272,7 @@ the shrinkage to 0 will be equivalent to generating a normal bootstrap.
 
 .. code-block:: default
 
-    sampler = RandomOverSampler(smoothed_bootstrap=True, shrinkage=0, random_state=0)
+    sampler = RandomOverSampler(shrinkage=0, random_state=0)
     X_res, y_res = sampler.fit_resample(X, y)
     Counter(y_res)
 
@@ -321,7 +321,7 @@ new samples.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  3.647 seconds)
+   **Total running time of the script:** ( 0 minutes  4.022 seconds)
 
 **Estimated memory usage:**  8 MB
 

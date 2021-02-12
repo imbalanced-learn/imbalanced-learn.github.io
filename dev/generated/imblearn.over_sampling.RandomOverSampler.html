@@ -199,7 +199,7 @@
 <h1><a class="reference internal" href="../api.html#module-imblearn.over_sampling" title="imblearn.over_sampling"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.over_sampling</span></code></a>.RandomOverSampler<a class="headerlink" href="#imblearn-over-sampling-randomoversampler" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="imblearn.over_sampling.RandomOverSampler">
-<em class="property">class </em><code class="sig-prename descclassname">imblearn.over_sampling.</code><code class="sig-name descname">RandomOverSampler</code><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/3444430/imblearn/over_sampling/_random_over_sampler.py#L26"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">imblearn.over_sampling.</code><code class="sig-name descname">RandomOverSampler</code><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/72d939a/imblearn/over_sampling/_random_over_sampler.py#L27"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class to perform random over-sampling.</p>
 <p>Object to over-sample the minority class(es) by picking samples at random
 with replacement. The bootstrap can be generated in a smoothed manner.</p>
@@ -252,19 +252,19 @@ generator;</p></li>
 instance used by <code class="docutils literal notranslate"><span class="pre">np.random</span></code>.</p></li>
 </ul>
 </dd>
-<dt><strong>smoothed_bootstrap</strong><span class="classifier">bool, default=False</span></dt><dd><p>Whether or not to generate smoothed bootstrap samples. When this option
-is triggered, be aware that the data to be resampled needs to be
-numerical data since a Gaussian perturbation will be generated and
-added to the bootstrap.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">New in version 0.7.</span></p>
-</div>
-</dd>
-<dt><strong>shrinkage</strong><span class="classifier">float or dict, default=1.0</span></dt><dd><p>Factor to shrink the covariance matrix used to generate the
-smoothed bootstrap. A factor could be shared by all classes by
-providing a floating number or different for each class over-sampled
-by providing a dictionary where the key are the class targeted and the
-value is the shrinkage factor.</p>
+<dt><strong>shrinkage</strong><span class="classifier">float or dict, default=None</span></dt><dd><p>Parameter controlling the shrinkage applied to the covariance matrix.
+when a smoothed bootstrap is generated. The options are:</p>
+<ul class="simple">
+<li><p>if <code class="docutils literal notranslate"><span class="pre">None</span></code>, a normal bootstrap will be generated without perturbation.
+It is equivalent to <code class="docutils literal notranslate"><span class="pre">shrinkage=0</span></code> as well;</p></li>
+<li><p>if a <code class="docutils literal notranslate"><span class="pre">float</span></code> is given, the shrinkage factor will be used for all
+classes to generate the smoothed bootstrap;</p></li>
+<li><p>if a <code class="docutils literal notranslate"><span class="pre">dict</span></code> is given, the shrinkage factor will specific for each
+class. The key correspond to the targeted class and the value is
+the shrinkage factor.</p></li>
+</ul>
+<p>The value needs of the shrinkage parameter needs to be higher or equal
+to 0.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.7.</span></p>
 </div>
@@ -279,7 +279,7 @@ value is the shrinkage factor.</p>
 </div>
 </dd>
 <dt><strong>shrinkage_</strong><span class="classifier">dict or None</span></dt><dd><p>The per-class shrinkage factor used to generate the smoothed bootstrap
-sample. <code class="docutils literal notranslate"><span class="pre">None</span></code> when <code class="docutils literal notranslate"><span class="pre">smoothed_bootstrap=False</span></code>.</p>
+sample. When <code class="docutils literal notranslate"><span class="pre">shrinkage=None</span></code> a normal bootstrap will be generated.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.7.</span></p>
 </div>
@@ -341,7 +341,7 @@ Discovery, 28(1), pp.92-122, 2014.</p>
 </div>
 <dl class="py method">
 <dt id="imblearn.over_sampling.RandomOverSampler.fit">
-<code class="sig-name descname">fit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/3444430/imblearn/base.py#L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.fit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/72d939a/imblearn/base.py#L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check inputs and statistics of the sampler.</p>
 <p>You should use <code class="docutils literal notranslate"><span class="pre">fit_resample</span></code> in all cases.</p>
 <dl class="field-list simple">
@@ -364,7 +364,7 @@ Discovery, 28(1), pp.92-122, 2014.</p>
 
 <dl class="py method">
 <dt id="imblearn.over_sampling.RandomOverSampler.fit_resample">
-<code class="sig-name descname">fit_resample</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/3444430/imblearn/base.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.fit_resample" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit_resample</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/72d939a/imblearn/base.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.fit_resample" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resample the dataset.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -388,7 +388,7 @@ Discovery, 28(1), pp.92-122, 2014.</p>
 
 <dl class="py method">
 <dt id="imblearn.over_sampling.RandomOverSampler.get_params">
-<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/3444430/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L178"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.get_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/72d939a/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L178"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.get_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -409,7 +409,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt id="imblearn.over_sampling.RandomOverSampler.set_params">
-<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/3444430/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L202"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.set_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/72d939a/imblearn/../../miniconda/envs/testenv/lib/python3.7/site-packages/sklearn/base.py#L202"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.over_sampling.RandomOverSampler.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v0.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>). The latter have
