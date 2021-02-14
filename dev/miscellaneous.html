@@ -246,7 +246,7 @@ estimator which can be easily used within a
 will generate balanced mini-batches.</p>
 <div class="section" id="tensorflow-generator">
 <span id="id1"></span><h3><span class="section-number">6.2.1. </span>TensorFlow generator<a class="headerlink" href="#tensorflow-generator" title="Permalink to this headline">¶</a></h3>
-<p>The <a class="reference internal" href="generated/imblearn.tensorflow.balanced_batch_generator.html#imblearn.tensorflow.balanced_batch_generator" title="imblearn.tensorflow.balanced_batch_generator"><code class="xref py py-func docutils literal notranslate"><span class="pre">imblearn.tensorflow.balanced_batch_generator</span></code></a> allow to generate
+<p>The <a class="reference internal" href="generated/imblearn.tensorflow.balanced_batch_generator.html#imblearn.tensorflow.balanced_batch_generator" title="imblearn.tensorflow.balanced_batch_generator"><code class="xref py py-func docutils literal notranslate"><span class="pre">balanced_batch_generator</span></code></a> allow to generate
 balanced mini-batches using an imbalanced-learn sampler which returns indices:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <span class="n">RandomUnderSampler</span>
@@ -318,8 +318,9 @@ define a logistic regression model:</p>
 <span class="gp">... </span>              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="generated/imblearn.keras.balanced_batch_generator.html#imblearn.keras.balanced_batch_generator" title="imblearn.keras.balanced_batch_generator"><code class="xref py py-func docutils literal notranslate"><span class="pre">imblearn.keras.balanced_batch_generator</span></code></a> creates a balanced mini-batches
-generator with the associated number of mini-batches which will be generated:</p>
+<p><a class="reference internal" href="generated/imblearn.keras.balanced_batch_generator.html#imblearn.keras.balanced_batch_generator" title="imblearn.keras.balanced_batch_generator"><code class="xref py py-func docutils literal notranslate"><span class="pre">balanced_batch_generator</span></code></a> creates a balanced
+mini-batches generator with the associated number of mini-batches which will be
+generated:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.keras</span> <span class="kn">import</span> <span class="n">balanced_batch_generator</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">training_generator</span><span class="p">,</span> <span class="n">steps_per_epoch</span> <span class="o">=</span> <span class="n">balanced_batch_generator</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sampler</span><span class="o">=</span><span class="n">RandomUnderSampler</span><span class="p">(),</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
