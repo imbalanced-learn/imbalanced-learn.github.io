@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Version 0.7.0 &mdash; imbalanced-learn 0.7.0 documentation</title>
+  <title>Version 0.7.0 &mdash; imbalanced-learn 0.8.0.dev0 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.7.0
+                0.8.0.dev0
               </div>
             
           
@@ -207,13 +207,6 @@ are given in <a class="reference internal" href="../generated/imblearn.over_samp
 <li><p>Fix a bug when the median of the standard deviation is null in
 <a class="reference internal" href="../generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.SMOTENC</span></code></a>.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/675">#675</a> by <a class="reference external" href="https://github.com/bganglia">bganglia</a>.</p></li>
-<li><p>Fix a bug in <a class="reference internal" href="../generated/imblearn.under_sampling.ClusterCentroids.html#imblearn.under_sampling.ClusterCentroids" title="imblearn.under_sampling.ClusterCentroids"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.under_sampling.ClusterCentroids</span></code></a> where
-<code class="docutils literal notranslate"><span class="pre">voting=&quot;hard&quot;</span></code> could have lead to select a sample from any class instead of
-the targeted class.
-<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/769">#769</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
-<li><p>Fix a bug in <a class="reference internal" href="../generated/imblearn.FunctionSampler.html#imblearn.FunctionSampler" title="imblearn.FunctionSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.FunctionSampler</span></code></a> where validation was performed
-even with <code class="docutils literal notranslate"><span class="pre">validate=False</span></code> when calling <code class="docutils literal notranslate"><span class="pre">fit</span></code>.
-<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/790">#790</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </div>
 <div class="section" id="enhancements">
@@ -228,21 +221,6 @@ with the same key than in <code class="docutils literal notranslate"><span class
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/718">#718</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 <li><p>Lazy import <code class="docutils literal notranslate"><span class="pre">keras</span></code> module when importing <code class="docutils literal notranslate"><span class="pre">imblearn.keras</span></code>
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/719">#719</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
-<li><p>Added an option to generate smoothed bootstrap in
-<a class="reference internal" href="../generated/imblearn.over_sampling.RandomOverSampler.html#imblearn.over_sampling.RandomOverSampler" title="imblearn.over_sampling.RandomOverSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.RandomOverSampler</span></code></a>. It is controls by the
-parameter <code class="docutils literal notranslate"><span class="pre">shrinkage</span></code>. This method is also known as Random Over-Sampling
-Examples (ROSE).
-<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/754">#754</a> by <a class="reference external" href="https://github.com/andrealorenzon">Andrea Lorenzon</a> and
-<a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
-<li><p>Add option <code class="docutils literal notranslate"><span class="pre">output_dict</span></code> in
-<a class="reference internal" href="../generated/imblearn.metrics.classification_report_imbalanced.html#imblearn.metrics.classification_report_imbalanced" title="imblearn.metrics.classification_report_imbalanced"><code class="xref py py-func docutils literal notranslate"><span class="pre">imblearn.metrics.classification_report_imbalanced</span></code></a> to return a
-dictionary instead of a string.
-<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/770">#770</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
-<li><p>Add the the function
-<a class="reference internal" href="../generated/imblearn.metrics.macro_averaged_mean_absolute_error.html#imblearn.metrics.macro_averaged_mean_absolute_error" title="imblearn.metrics.macro_averaged_mean_absolute_error"><code class="xref py py-func docutils literal notranslate"><span class="pre">imblearn.metrics.macro_averaged_mean_absolute_error</span></code></a> returning the
-average across class of the MAE. This metric is used in ordinal
-classification.
-<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/780">#780</a> by <a class="reference external" href="https://github.com/AurelienMassiot">Aurélien Massiot</a>.</p></li>
 </ul>
 </div>
 <div class="section" id="deprecation">

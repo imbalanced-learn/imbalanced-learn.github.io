@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Version 0.1 &mdash; imbalanced-learn 0.8.0.dev0 documentation</title>
+  <title>Version 0.8.0 (Under development) &mdash; imbalanced-learn 0.8.0.dev0 documentation</title>
   
 
   
@@ -154,7 +154,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Version 0.1</li>
+      <li>Version 0.8.0 (Under development)</li>
     
     
 
@@ -166,64 +166,45 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="version-0-1">
-<span id="changes-0-1"></span><h1>Version 0.1<a class="headerlink" href="#version-0-1" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="version-0-8-0-under-development">
+<span id="changes-0-8"></span><h1>Version 0.8.0 (Under development)<a class="headerlink" href="#version-0-8-0-under-development" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="changelog">
 <h2>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="api">
-<h3>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="new-features">
+<h3>New features<a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>First release of the stable API. By :user;`Fernando Nogueira &lt;fmfn&gt;`,
-<a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>, <a class="reference external" href="https://github.com/chkoar">Christos Aridas</a>,
-and <a class="reference external" href="https://github.com/dvro">Dayvid Oliveira</a>.</p></li>
+<li><p>Add the the function
+<a class="reference internal" href="../generated/imblearn.metrics.macro_averaged_mean_absolute_error.html#imblearn.metrics.macro_averaged_mean_absolute_error" title="imblearn.metrics.macro_averaged_mean_absolute_error"><code class="xref py py-func docutils literal notranslate"><span class="pre">imblearn.metrics.macro_averaged_mean_absolute_error</span></code></a> returning the
+average across class of the MAE. This metric is used in ordinal
+classification.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/780">#780</a> by <a class="reference external" href="https://github.com/AurelienMassiot">Aurélien Massiot</a>.</p></li>
 </ul>
 </div>
-<div class="section" id="new-methods">
-<h3>New methods<a class="headerlink" href="#new-methods" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="enhancements">
+<h3>Enhancements<a class="headerlink" href="#enhancements" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><dl class="simple">
-<dt>Under-sampling</dt><dd><ol class="arabic simple">
-<li><p>Random majority under-sampling with replacement</p></li>
-<li><p>Extraction of majority-minority Tomek links</p></li>
-<li><p>Under-sampling with Cluster Centroids</p></li>
-<li><p>NearMiss-(1 &amp; 2 &amp; 3)</p></li>
-<li><p>Condensend Nearest Neighbour</p></li>
-<li><p>One-Sided Selection</p></li>
-<li><p>Neighboorhood Cleaning Rule</p></li>
-<li><p>Edited Nearest Neighbours</p></li>
-<li><p>Instance Hardness Threshold</p></li>
-<li><p>Repeated Edited Nearest Neighbours</p></li>
-</ol>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Over-sampling</dt><dd><ol class="arabic simple">
-<li><p>Random minority over-sampling with replacement</p></li>
-<li><p>SMOTE - Synthetic Minority Over-sampling Technique</p></li>
-<li><p>bSMOTE(1 &amp; 2) - Borderline SMOTE of types 1 and 2</p></li>
-<li><p>SVM SMOTE - Support Vectors SMOTE</p></li>
-<li><p>ADASYN - Adaptive synthetic sampling approach for imbalanced learning</p></li>
-</ol>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Over-sampling followed by under-sampling</dt><dd><ol class="arabic simple">
-<li><p>SMOTE + Tomek links</p></li>
-<li><p>SMOTE + ENN</p></li>
-</ol>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Ensemble sampling</dt><dd><ol class="arabic simple">
-<li><p>EasyEnsemble</p></li>
-<li><p>BalanceCascade</p></li>
-</ol>
-</dd>
-</dl>
-</li>
+<li><p>Add option <code class="docutils literal notranslate"><span class="pre">output_dict</span></code> in
+<a class="reference internal" href="../generated/imblearn.metrics.classification_report_imbalanced.html#imblearn.metrics.classification_report_imbalanced" title="imblearn.metrics.classification_report_imbalanced"><code class="xref py py-func docutils literal notranslate"><span class="pre">imblearn.metrics.classification_report_imbalanced</span></code></a> to return a
+dictionary instead of a string.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/770">#770</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+<li><p>Added an option to generate smoothed bootstrap in
+<a class="reference internal" href="../generated/imblearn.over_sampling.RandomOverSampler.html#imblearn.over_sampling.RandomOverSampler" title="imblearn.over_sampling.RandomOverSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.RandomOverSampler</span></code></a>. It is controls by the
+parameter <code class="docutils literal notranslate"><span class="pre">shrinkage</span></code>. This method is also known as Random Over-Sampling
+Examples (ROSE).
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/754">#754</a> by <a class="reference external" href="https://github.com/andrealorenzon">Andrea Lorenzon</a> and
+<a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+</ul>
+</div>
+<div class="section" id="bug-fixes">
+<h3>Bug fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Fix a bug in <a class="reference internal" href="../generated/imblearn.under_sampling.ClusterCentroids.html#imblearn.under_sampling.ClusterCentroids" title="imblearn.under_sampling.ClusterCentroids"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.under_sampling.ClusterCentroids</span></code></a> where
+<code class="docutils literal notranslate"><span class="pre">voting=&quot;hard&quot;</span></code> could have lead to select a sample from any class instead of
+the targeted class.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/769">#769</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+<li><p>Fix a bug in <a class="reference internal" href="../generated/imblearn.FunctionSampler.html#imblearn.FunctionSampler" title="imblearn.FunctionSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.FunctionSampler</span></code></a> where validation was performed
+even with <code class="docutils literal notranslate"><span class="pre">validate=False</span></code> when calling <code class="docutils literal notranslate"><span class="pre">fit</span></code>.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/790">#790</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </div>
 </div>
