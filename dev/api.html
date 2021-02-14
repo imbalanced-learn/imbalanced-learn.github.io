@@ -159,13 +159,20 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-imblearn.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>: Metrics</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/imblearn.metrics.classification_report_imbalanced.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.classification_report_imbalanced</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/imblearn.metrics.sensitivity_specificity_support.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.sensitivity_specificity_support</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/imblearn.metrics.sensitivity_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.sensitivity_score</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/imblearn.metrics.specificity_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.specificity_score</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/imblearn.metrics.geometric_mean_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.geometric_mean_score</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/imblearn.metrics.macro_averaged_mean_absolute_error.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.macro_averaged_mean_absolute_error</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/imblearn.metrics.make_index_balanced_accuracy.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.make_index_balanced_accuracy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#classification-metrics">Classification metrics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/imblearn.metrics.classification_report_imbalanced.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.classification_report_imbalanced</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/imblearn.metrics.sensitivity_specificity_support.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.sensitivity_specificity_support</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/imblearn.metrics.sensitivity_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.sensitivity_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/imblearn.metrics.specificity_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.specificity_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/imblearn.metrics.geometric_mean_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.geometric_mean_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/imblearn.metrics.macro_averaged_mean_absolute_error.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.macro_averaged_mean_absolute_error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/imblearn.metrics.make_index_balanced_accuracy.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.make_index_balanced_accuracy</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pairwise-metrics">Pairwise metrics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/imblearn.metrics.pairwise.ValueDifferenceMetric.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics.pairwise</span></code>.ValueDifferenceMetric</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-imblearn.datasets"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.datasets</span></code>: Datasets</a><ul>
@@ -484,6 +491,9 @@ composite estimator, as a chain of transforms, samples and estimators.</p>
 <span id="imblearn-metrics-metrics"></span><span id="metrics-ref"></span><h2><a class="reference internal" href="#module-imblearn.metrics" title="imblearn.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code></a>: Metrics<a class="headerlink" href="#module-imblearn.metrics" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="#module-imblearn.metrics" title="imblearn.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code></a> module includes score functions, performance
 metrics and pairwise metrics and distance computations.</p>
+<div class="section" id="classification-metrics">
+<h3>Classification metrics<a class="headerlink" href="#classification-metrics" title="Permalink to this headline">¶</a></h3>
+<p>See the <a class="reference internal" href="metrics.html#metrics"><span class="std std-ref">Metrics</span></a> section of the user guide for further details.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -513,6 +523,23 @@ metrics and pairwise metrics and distance computations.</p>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="pairwise-metrics">
+<h3>Pairwise metrics<a class="headerlink" href="#pairwise-metrics" title="Permalink to this headline">¶</a></h3>
+<p>See the <a class="reference internal" href="metrics.html#pairwise-metrics"><span class="std std-ref">Pairwise metrics</span></a> section of the user guide for further details.</p>
+<span class="target" id="module-imblearn.metrics.pairwise"></span><p>Metrics to perform pairwise computation.</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/imblearn.metrics.pairwise.ValueDifferenceMetric.html#imblearn.metrics.pairwise.ValueDifferenceMetric" title="imblearn.metrics.pairwise.ValueDifferenceMetric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metrics.pairwise.ValueDifferenceMetric</span></code></a></p></td>
+<td><p>Class implementing the Value Difference Metric.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="section" id="module-imblearn.datasets">
 <span id="imblearn-datasets-datasets"></span><span id="datasets-ref"></span><h2><a class="reference internal" href="#module-imblearn.datasets" title="imblearn.datasets"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.datasets</span></code></a>: Datasets<a class="headerlink" href="#module-imblearn.datasets" title="Permalink to this headline">¶</a></h2>

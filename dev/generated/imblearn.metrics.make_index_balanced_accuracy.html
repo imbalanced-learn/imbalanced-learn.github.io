@@ -41,7 +41,7 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="imblearn.datasets.make_imbalance" href="imblearn.datasets.make_imbalance.html" />
+    <link rel="next" title="imblearn.metrics.pairwise.ValueDifferenceMetric" href="imblearn.metrics.pairwise.ValueDifferenceMetric.html" />
     <link rel="prev" title="imblearn.metrics.macro_averaged_mean_absolute_error" href="imblearn.metrics.macro_averaged_mean_absolute_error.html" /> 
 </head>
 
@@ -107,16 +107,17 @@
 <li class="toctree-l2"><a class="reference internal" href="../api.html#miscellaneous">Miscellaneous</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.pipeline"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.pipeline</span></code>: Pipeline</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html#module-imblearn.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>: Metrics</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="imblearn.metrics.classification_report_imbalanced.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.classification_report_imbalanced</a></li>
-<li class="toctree-l3"><a class="reference internal" href="imblearn.metrics.sensitivity_specificity_support.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.sensitivity_specificity_support</a></li>
-<li class="toctree-l3"><a class="reference internal" href="imblearn.metrics.sensitivity_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.sensitivity_score</a></li>
-<li class="toctree-l3"><a class="reference internal" href="imblearn.metrics.specificity_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.specificity_score</a></li>
-<li class="toctree-l3"><a class="reference internal" href="imblearn.metrics.geometric_mean_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.geometric_mean_score</a></li>
-<li class="toctree-l3"><a class="reference internal" href="imblearn.metrics.macro_averaged_mean_absolute_error.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.macro_averaged_mean_absolute_error</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.make_index_balanced_accuracy</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#examples-using-imblearn-metrics-make-index-balanced-accuracy">Examples using <code class="docutils literal notranslate"><span class="pre">imblearn.metrics.make_index_balanced_accuracy</span></code></a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../api.html#classification-metrics">Classification metrics</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="imblearn.metrics.classification_report_imbalanced.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.classification_report_imbalanced</a></li>
+<li class="toctree-l4"><a class="reference internal" href="imblearn.metrics.sensitivity_specificity_support.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.sensitivity_specificity_support</a></li>
+<li class="toctree-l4"><a class="reference internal" href="imblearn.metrics.sensitivity_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.sensitivity_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="imblearn.metrics.specificity_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.specificity_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="imblearn.metrics.geometric_mean_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.geometric_mean_score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="imblearn.metrics.macro_averaged_mean_absolute_error.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.macro_averaged_mean_absolute_error</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code>.make_index_balanced_accuracy</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#pairwise-metrics">Pairwise metrics</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../api.html#module-imblearn.datasets"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.datasets</span></code>: Datasets</a></li>
@@ -199,7 +200,7 @@
 <h1><a class="reference internal" href="../api.html#module-imblearn.metrics" title="imblearn.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code></a>.make_index_balanced_accuracy<a class="headerlink" href="#imblearn-metrics-make-index-balanced-accuracy" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt id="imblearn.metrics.make_index_balanced_accuracy">
-<code class="sig-prename descclassname">imblearn.metrics.</code><code class="sig-name descname">make_index_balanced_accuracy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/1d77037/imblearn/utils/_validation.py#L674"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.metrics.make_index_balanced_accuracy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">imblearn.metrics.</code><code class="sig-name descname">make_index_balanced_accuracy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/ce4e1f7/imblearn/utils/_validation.py#L676"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.metrics.make_index_balanced_accuracy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Balance any scoring function using the index balanced accuracy</p>
 <p>This factory function wraps scoring function to express it as the
 index balanced accuracy (IBA). You need to use this function to
@@ -266,7 +267,7 @@ with different levels of class imbalance.” Knowledge-Based Systems 25.1
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="imblearn.datasets.make_imbalance.html" class="btn btn-neutral float-right" title="imblearn.datasets.make_imbalance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="imblearn.metrics.pairwise.ValueDifferenceMetric.html" class="btn btn-neutral float-right" title="imblearn.metrics.pairwise.ValueDifferenceMetric" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="imblearn.metrics.macro_averaged_mean_absolute_error.html" class="btn btn-neutral float-left" title="imblearn.metrics.macro_averaged_mean_absolute_error" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
