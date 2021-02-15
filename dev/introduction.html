@@ -1,192 +1,272 @@
 
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>1. Introduction &mdash; imbalanced-learn 0.8.0.dev0 documentation</title>
-  
 
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
-  
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1. Introduction &#8212; Version 0.8.0.dev0</title>
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/js/copybutton.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.951c8c8e3af89de180a2f03968e0e7cb.css" rel="stylesheet" />
 
     
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-  
-  <link rel="stylesheet" href="_static/css/imbalanced-learn.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
-  <link rel="stylesheet" href="_static/gallery-binder.css" type="text/css" />
-  <link rel="stylesheet" href="_static/gallery-dataframe.css" type="text/css" />
-  <link rel="stylesheet" href="_static/gallery-rendered-html.css" type="text/css" />
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/imbalanced-learn.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css" />
+    <link rel="stylesheet" type="text/css" href="_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/gallery-rendered-html.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.014cad6f3a039303089e.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/js/copybutton.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="2. Over-sampling" href="over_sampling.html" />
-    <link rel="prev" title="User Guide" href="user_guide.html" /> 
-</head>
-
-<body class="wy-body-for-nav">
-
-   
-  <div class="wy-grid-for-nav">
+    <link rel="prev" title="User Guide" href="user_guide.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
 
-          
-            <a href="index.html" class="icon icon-home"> imbalanced-learn
-          
 
-          
-          </a>
+    
+      
+      <a class="navbar-brand" href="index.html">
+        <img src="_static/logo.png" class="logo" alt="logo">
+      </a>
+      
+    
 
-          
-            
-            
-              <div class="version">
-                0.8.0.dev0
-              </div>
-            
-          
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Getting Started</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Install and contribution</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Documentation</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="user_guide.html">User Guide</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Introduction</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#api-s-of-imbalanced-learn-samplers">1.1. API’s of imbalanced-learn samplers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#problem-statement-regarding-imbalanced-data-sets">1.2. Problem statement regarding imbalanced data sets</a></li>
-</ul>
+    
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="install.html">
+  Getting Started
+ </a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="over_sampling.html">2. Over-sampling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="under_sampling.html">3. Under-sampling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="combine.html">4. Combination of over- and under-sampling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ensemble.html">5. Ensemble of samplers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="miscellaneous.html">6. Miscellaneous samplers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="metrics.html">7. Metrics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="common_pitfalls.html">8. Common pitfalls and recommended practices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datasets/index.html">9. Dataset loading utilities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="developers_utils.html">10. Utilities for Developers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="zzz_references.html">11. References</a></li>
-</ul>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="user_guide.html">
+  User Guide
+ </a>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">imbalanced-learn API</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Tutorial - Examples</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">General examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html#examples-based-on-real-world-datasets">Examples based on real world datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html#dataset-examples">Dataset examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html#evaluation-examples">Evaluation examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html#model-selection">Model Selection</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Addtional Information</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="whats_new.html">Release history</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about.html">About us</a></li>
-</ul>
 
-            
-          
-        </div>
-      </div>
-    </nav>
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="references/index.html">
+  API reference
+ </a>
+</li>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="auto_examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="whats_new.html">
+  Release history
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="about.html">
+  About us
+ </a>
+</li>
+
+        
+      </ul>
+
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">imbalanced-learn</a>
-        
-      </nav>
 
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/scikit-learn-contrib/imbalanced-learn" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
 
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><div class="navbar-brand-box">
+  <a class="navbar-brand text-wrap" href="index.html">
+    
+    <img
+      src="_static/logo.png"
+      class="logo"
+      style="width: 60%"
+      alt="logo"
+    />
+     
+    <h4 class="site-logo" id="site-title">Version 0.8.0.dev0</h4>
+    
+  </a>
+</div><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="nav bd-sidenav">
+      <li class="toctree-l2 current active">
+ <a class="current reference internal" href="#">
+  1. Introduction
+ </a>
+</li>
+
+<li class="toctree-l2">
+ <a class="reference internal" href="over_sampling.html">
+  2. Over-sampling
+ </a>
+</li>
+
+<li class="toctree-l2">
+ <a class="reference internal" href="under_sampling.html">
+  3. Under-sampling
+ </a>
+</li>
+
+<li class="toctree-l2">
+ <a class="reference internal" href="combine.html">
+  4. Combination of over- and under-sampling
+ </a>
+</li>
+
+<li class="toctree-l2">
+ <a class="reference internal" href="ensemble.html">
+  5. Ensemble of samplers
+ </a>
+</li>
+
+<li class="toctree-l2">
+ <a class="reference internal" href="miscellaneous.html">
+  6. Miscellaneous samplers
+ </a>
+</li>
+
+<li class="toctree-l2">
+ <a class="reference internal" href="metrics.html">
+  7. Metrics
+ </a>
+</li>
+
+<li class="toctree-l2">
+ <a class="reference internal" href="common_pitfalls.html">
+  8. Common pitfalls and recommended practices
+ </a>
+</li>
+
+<li class="toctree-l2">
+ <a class="reference internal" href="datasets/index.html">
+  9. Dataset loading utilities
+ </a>
+</li>
+
+<li class="toctree-l2">
+ <a class="reference internal" href="developers_utils.html">
+  10. Utilities for Developers
+ </a>
+</li>
+
+<li class="toctree-l2">
+ <a class="reference internal" href="zzz_references.html">
+  11. References
+ </a>
+</li>
+
+    </ul>
+  </div>
+</nav>
+            </div>
+            
           
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
-          <li><a href="user_guide.html">User Guide</a> &raquo;</li>
-        
-      <li><span class="section-number">1. </span>Introduction</li>
-    
-    
-
-  </ul>
-
-  
-  <hr/>
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#api-s-of-imbalanced-learn-samplers">
+   1.1. API’s of imbalanced-learn samplers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-statement-regarding-imbalanced-data-sets">
+   1.2. Problem statement regarding imbalanced data sets
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/scikit-learn-contrib/imbalanced-learn/edit/master/doc/introduction.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          
             
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
   <div class="section" id="introduction">
 <span id="id1"></span><h1><span class="section-number">1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="api-s-of-imbalanced-learn-samplers">
@@ -209,19 +289,50 @@ and adding a sampling functionality through the <code class="docutils literal no
 </dl>
 <p>Imbalanced-learn samplers accept the same inputs that in scikit-learn:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: array-like (2-D list, pandas.Dataframe, numpy.array) or sparse
-matrices;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">targets</span></code>: array-like (1-D list, pandas.Series, numpy.array).</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">data</span></code>:</dt><dd><ul>
+<li><p>2-D <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>,</p></li>
+<li><p>2-D <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.20)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>,</p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v1.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>,</p></li>
+<li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.html#scipy.sparse.csr_matrix" title="(in SciPy v1.6.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">scipy.sparse.csr_matrix</span></code></a> or <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csc_matrix.html#scipy.sparse.csc_matrix" title="(in SciPy v1.6.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">scipy.sparse.csc_matrix</span></code></a>;</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">targets</span></code>:</dt><dd><ul>
+<li><p>1-D <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.20)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>,</p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v1.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
 </ul>
 <p>The output will be of the following type:</p>
 <ul class="simple">
 <li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">data_resampled</span></code>: array-like (2-D list, pandas.Dataframe, numpy.array) or</dt><dd><p>sparse matrices;</p>
+<dt><code class="docutils literal notranslate"><span class="pre">data_resampled</span></code>:</dt><dd><ul>
+<li><p>2-D <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.20)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>,</p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v1.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>,</p></li>
+<li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.html#scipy.sparse.csr_matrix" title="(in SciPy v1.6.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">scipy.sparse.csr_matrix</span></code></a> or <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csc_matrix.html#scipy.sparse.csc_matrix" title="(in SciPy v1.6.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">scipy.sparse.csc_matrix</span></code></a>;</p></li>
+</ul>
 </dd>
 </dl>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">targets_resampled</span></code>: 1-D numpy.array or pd.Series.</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">targets_resampled</span></code>:</dt><dd><ul>
+<li><p>1-D <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.20)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>,</p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v1.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a>.</p></li>
 </ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="topic">
+<p class="topic-title">Pandas in/out</p>
+<p>Unlike scikit-learn, imbalanced-learn provides support for pandas in/out.
+Therefore providing a dataframe, will output as well a dataframe.</p>
+</div>
 <div class="topic">
 <p class="topic-title">Sparse input</p>
 <p>For sparse input the data is <strong>converted to the Compressed Sparse Rows
@@ -245,52 +356,33 @@ number of samples, usually referred as the majority class.</p>
 </div>
 
 
-           </div>
-           
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="over_sampling.html" class="btn btn-neutral float-right" title="2. Over-sampling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="user_guide.html" class="btn btn-neutral float-left" title="User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="user_guide.html" title="previous page">User Guide</a>
+    <a class='right-next' id="next-link" href="over_sampling.html" title="next page"><span class="section-number">2. </span>Over-sampling</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
     </div>
-  
 
-  <hr/>
+    
+  <script src="_static/js/index.014cad6f3a039303089e.js"></script>
 
-  <div role="contentinfo">
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
     <p>
-        &copy; Copyright 2014-2020, The imbalanced-learn developers
-
+          &copy; Copyright 2014-2021, The imbalanced-learn developers.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
 </footer>
-
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-  
-
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
-    
-   
-
-</body>
+  </body>
 </html>

@@ -1,235 +1,242 @@
 
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Computation times &mdash; imbalanced-learn 0.8.0.dev0 documentation</title>
-  
 
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Computation times &#8212; Version 0.8.0.dev0</title>
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/js/copybutton.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.951c8c8e3af89de180a2f03968e0e7cb.css" rel="stylesheet" />
 
     
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-  
-  <link rel="stylesheet" href="../../_static/css/imbalanced-learn.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/gallery-binder.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/gallery-dataframe.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/gallery-rendered-html.css" type="text/css" />
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/imbalanced-learn.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.014cad6f3a039303089e.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
-</head>
-
-<body class="wy-body-for-nav">
-
-   
-  <div class="wy-grid-for-nav">
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
 
-          
-            <a href="../../index.html" class="icon icon-home"> imbalanced-learn
-          
 
-          
-          </a>
+    
+      
+      <a class="navbar-brand" href="../../index.html">
+        <img src="../../_static/logo.png" class="logo" alt="logo">
+      </a>
+      
+    
 
-          
-            
-            
-              <div class="version">
-                0.8.0.dev0
-              </div>
-            
-          
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
+    
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../install.html">
+  Getting Started
+ </a>
+</li>
 
-          
-        </div>
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../user_guide.html">
+  User Guide
+ </a>
+</li>
 
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Getting Started</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../install.html">Install and contribution</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Documentation</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../user_guide.html">User Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../api.html">imbalanced-learn API</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Tutorial - Examples</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">General examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html#examples-based-on-real-world-datasets">Examples based on real world datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html#dataset-examples">Dataset examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html#evaluation-examples">Evaluation examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html#model-selection">Model Selection</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Addtional Information</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../whats_new.html">Release history</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../about.html">About us</a></li>
-</ul>
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../references/index.html">
+  API reference
+ </a>
+</li>
 
-            
-          
-        </div>
-      </div>
-    </nav>
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  Examples
+ </a>
+</li>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../whats_new.html">
+  Release history
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../about.html">
+  About us
+ </a>
+</li>
+
+        
+      </ul>
+
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">imbalanced-learn</a>
-        
-      </nav>
 
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/scikit-learn-contrib/imbalanced-learn" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
 
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><div class="navbar-brand-box">
+  <a class="navbar-brand text-wrap" href="../../index.html">
+    
+    <img
+      src="../../_static/logo.png"
+      class="logo"
+      style="width: 60%"
+      alt="logo"
+    />
+     
+    <h4 class="site-logo" id="site-title">Version 0.8.0.dev0</h4>
+    
+  </a>
+</div><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="nav bd-sidenav">
+      
+    </ul>
+  </div>
+</nav>
+            </div>
+            
           
 
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
+<nav id="bd-toc-nav">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
-        
-      <li>Computation times</li>
-    
-    
+</nav>
 
-  </ul>
 
-  
-  <hr/>
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/scikit-learn-contrib/imbalanced-learn/edit/master/doc/auto_examples/under-sampling/sg_execution_times.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+
+              
+          </div>
+          
+
+          
+          
             
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
   <div class="section" id="computation-times">
 <span id="sphx-glr-auto-examples-under-sampling-sg-execution-times"></span><h1>Computation times<a class="headerlink" href="#computation-times" title="Permalink to this headline">¶</a></h1>
-<p><strong>00:18.256</strong> total execution time for <strong>auto_examples_under-sampling</strong> files:</p>
-<table class="docutils align-default">
+<p><strong>00:18.905</strong> total execution time for <strong>auto_examples_under-sampling</strong> files:</p>
+<table class="table">
 <colgroup>
 <col style="width: 86%" />
 <col style="width: 8%" />
 <col style="width: 6%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="plot_comparison_under_sampling.html#sphx-glr-auto-examples-under-sampling-plot-comparison-under-sampling-py"><span class="std std-ref">Comparison of the different under-sampling algorithms</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_comparison_under_sampling.py</span></code>)</p></td>
-<td><p>00:13.587</p></td>
-<td><p>52.9 MB</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot_comparison_under_sampling.html#sphx-glr-auto-examples-under-sampling-plot-comparison-under-sampling-py"><span class="std std-ref">Compare under-sampling samplers</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_comparison_under_sampling.py</span></code>)</p></td>
+<td><p>00:15.767</p></td>
+<td><p>51.8 MB</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="plot_illustration_nearmiss.html#sphx-glr-auto-examples-under-sampling-plot-illustration-nearmiss-py"><span class="std std-ref">Illustration of the sample selection for the different NearMiss algorithms</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_illustration_nearmiss.py</span></code>)</p></td>
-<td><p>00:02.592</p></td>
-<td><p>8.4 MB</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_illustration_nearmiss.html#sphx-glr-auto-examples-under-sampling-plot-illustration-nearmiss-py"><span class="std std-ref">Sample selection in NearMiss</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_illustration_nearmiss.py</span></code>)</p></td>
+<td><p>00:01.736</p></td>
+<td><p>8.3 MB</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="plot_illustration_tomek_links.html#sphx-glr-auto-examples-under-sampling-plot-illustration-tomek-links-py"><span class="std std-ref">Illustration of the definition of a Tomek link</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_illustration_tomek_links.py</span></code>)</p></td>
-<td><p>00:02.077</p></td>
-<td><p>8.2 MB</p></td>
+<td><p>00:01.402</p></td>
+<td><p>8.1 MB</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 
 
-           </div>
-           
-          </div>
-          <footer>
-  
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
 
-  <hr/>
+              </div>
+              
+          </main>
+          
 
-  <div role="contentinfo">
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.014cad6f3a039303089e.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
     <p>
-        &copy; Copyright 2014-2020, The imbalanced-learn developers
-
+          &copy; Copyright 2014-2021, The imbalanced-learn developers.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
 </footer>
-
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-  
-
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
-    
-   
-
-</body>
+  </body>
 </html>

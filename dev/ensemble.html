@@ -1,196 +1,284 @@
 
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>5. Ensemble of samplers &mdash; imbalanced-learn 0.8.0.dev0 documentation</title>
-  
 
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
-  
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5. Ensemble of samplers &#8212; Version 0.8.0.dev0</title>
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/js/copybutton.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.951c8c8e3af89de180a2f03968e0e7cb.css" rel="stylesheet" />
 
     
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-  
-  <link rel="stylesheet" href="_static/css/imbalanced-learn.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
-  <link rel="stylesheet" href="_static/gallery-binder.css" type="text/css" />
-  <link rel="stylesheet" href="_static/gallery-dataframe.css" type="text/css" />
-  <link rel="stylesheet" href="_static/gallery-rendered-html.css" type="text/css" />
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/imbalanced-learn.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css" />
+    <link rel="stylesheet" type="text/css" href="_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/gallery-rendered-html.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.014cad6f3a039303089e.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/js/copybutton.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="6. Miscellaneous samplers" href="miscellaneous.html" />
-    <link rel="prev" title="4. Combination of over- and under-sampling" href="combine.html" /> 
-</head>
-
-<body class="wy-body-for-nav">
-
-   
-  <div class="wy-grid-for-nav">
+    <link rel="prev" title="4. Combination of over- and under-sampling" href="combine.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
 
-          
-            <a href="index.html" class="icon icon-home"> imbalanced-learn
-          
 
-          
-          </a>
+    
+      
+      <a class="navbar-brand" href="index.html">
+        <img src="_static/logo.png" class="logo" alt="logo">
+      </a>
+      
+    
 
-          
-            
-            
-              <div class="version">
-                0.8.0.dev0
-              </div>
-            
-          
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Getting Started</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Install and contribution</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Documentation</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="user_guide.html">User Guide</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="over_sampling.html">2. Over-sampling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="under_sampling.html">3. Under-sampling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="combine.html">4. Combination of over- and under-sampling</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">5. Ensemble of samplers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#classifier-including-inner-balancing-samplers">5.1. Classifier including inner balancing samplers</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#bagging-classifier">5.1.1. Bagging classifier</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#forest-of-randomized-trees">5.1.2. Forest of randomized trees</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#boosting">5.1.3. Boosting</a></li>
-</ul>
+    
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="install.html">
+  Getting Started
+ </a>
 </li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="miscellaneous.html">6. Miscellaneous samplers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="metrics.html">7. Metrics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="common_pitfalls.html">8. Common pitfalls and recommended practices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datasets/index.html">9. Dataset loading utilities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="developers_utils.html">10. Utilities for Developers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="zzz_references.html">11. References</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">imbalanced-learn API</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Tutorial - Examples</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">General examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html#examples-based-on-real-world-datasets">Examples based on real world datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html#dataset-examples">Dataset examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html#evaluation-examples">Evaluation examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html#model-selection">Model Selection</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Addtional Information</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="whats_new.html">Release history</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about.html">About us</a></li>
-</ul>
 
-            
-          
-        </div>
-      </div>
-    </nav>
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="user_guide.html">
+  User Guide
+ </a>
+</li>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="references/index.html">
+  API reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="auto_examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="whats_new.html">
+  Release history
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="about.html">
+  About us
+ </a>
+</li>
+
+        
+      </ul>
+
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">imbalanced-learn</a>
-        
-      </nav>
 
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/scikit-learn-contrib/imbalanced-learn" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
 
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><div class="navbar-brand-box">
+  <a class="navbar-brand text-wrap" href="index.html">
+    
+    <img
+      src="_static/logo.png"
+      class="logo"
+      style="width: 60%"
+      alt="logo"
+    />
+     
+    <h4 class="site-logo" id="site-title">Version 0.8.0.dev0</h4>
+    
+  </a>
+</div><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="nav bd-sidenav">
+      <li class="toctree-l2">
+ <a class="reference internal" href="introduction.html">
+  1. Introduction
+ </a>
+</li>
+
+<li class="toctree-l2">
+ <a class="reference internal" href="over_sampling.html">
+  2. Over-sampling
+ </a>
+</li>
+
+<li class="toctree-l2">
+ <a class="reference internal" href="under_sampling.html">
+  3. Under-sampling
+ </a>
+</li>
+
+<li class="toctree-l2">
+ <a class="reference internal" href="combine.html">
+  4. Combination of over- and under-sampling
+ </a>
+</li>
+
+<li class="toctree-l2 current active">
+ <a class="current reference internal" href="#">
+  5. Ensemble of samplers
+ </a>
+</li>
+
+<li class="toctree-l2">
+ <a class="reference internal" href="miscellaneous.html">
+  6. Miscellaneous samplers
+ </a>
+</li>
+
+<li class="toctree-l2">
+ <a class="reference internal" href="metrics.html">
+  7. Metrics
+ </a>
+</li>
+
+<li class="toctree-l2">
+ <a class="reference internal" href="common_pitfalls.html">
+  8. Common pitfalls and recommended practices
+ </a>
+</li>
+
+<li class="toctree-l2">
+ <a class="reference internal" href="datasets/index.html">
+  9. Dataset loading utilities
+ </a>
+</li>
+
+<li class="toctree-l2">
+ <a class="reference internal" href="developers_utils.html">
+  10. Utilities for Developers
+ </a>
+</li>
+
+<li class="toctree-l2">
+ <a class="reference internal" href="zzz_references.html">
+  11. References
+ </a>
+</li>
+
+    </ul>
+  </div>
+</nav>
+            </div>
+            
           
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
-          <li><a href="user_guide.html">User Guide</a> &raquo;</li>
-        
-      <li><span class="section-number">5. </span>Ensemble of samplers</li>
-    
-    
-
-  </ul>
-
-  
-  <hr/>
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classifier-including-inner-balancing-samplers">
+   5.1. Classifier including inner balancing samplers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bagging-classifier">
+     5.1.1. Bagging classifier
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forest-of-randomized-trees">
+     5.1.2. Forest of randomized trees
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#boosting">
+     5.1.3. Boosting
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/scikit-learn-contrib/imbalanced-learn/edit/master/doc/ensemble.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          
             
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
   <div class="section" id="ensemble-of-samplers">
 <span id="ensemble"></span><h1><span class="section-number">5. </span>Ensemble of samplers<a class="headerlink" href="#ensemble-of-samplers" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="classifier-including-inner-balancing-samplers">
@@ -222,10 +310,10 @@ classifier will favor the majority classes:</p>
 <span class="go">0.77...</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="imblearn.ensemble.BalancedBaggingClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">BalancedBaggingClassifier</span></code></a> allows to resample each subset of data
+<p><a class="reference internal" href="references/generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="imblearn.ensemble.BalancedBaggingClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">BalancedBaggingClassifier</span></code></a> allows to resample each subset of data
 before to train each estimator of the ensemble. In short, it combines the
 output of an <code class="xref py py-class docutils literal notranslate"><span class="pre">EasyEnsemble</span></code> sampler with an ensemble of classifiers
-(i.e. <code class="docutils literal notranslate"><span class="pre">BaggingClassifier</span></code>). Therefore, <a class="reference internal" href="generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="imblearn.ensemble.BalancedBaggingClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">BalancedBaggingClassifier</span></code></a>
+(i.e. <code class="docutils literal notranslate"><span class="pre">BaggingClassifier</span></code>). Therefore, <a class="reference internal" href="references/generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="imblearn.ensemble.BalancedBaggingClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">BalancedBaggingClassifier</span></code></a>
 takes the same parameters than the scikit-learn
 <code class="docutils literal notranslate"><span class="pre">BaggingClassifier</span></code>. Additionally, there is two additional parameters,
 <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> and <code class="docutils literal notranslate"><span class="pre">replacement</span></code> to control the behaviour of the
@@ -245,7 +333,7 @@ random under-sampler:</p>
 </div>
 <div class="section" id="forest-of-randomized-trees">
 <span id="forest"></span><h3><span class="section-number">5.1.2. </span>Forest of randomized trees<a class="headerlink" href="#forest-of-randomized-trees" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference internal" href="generated/imblearn.ensemble.BalancedRandomForestClassifier.html#imblearn.ensemble.BalancedRandomForestClassifier" title="imblearn.ensemble.BalancedRandomForestClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">BalancedRandomForestClassifier</span></code></a> is another ensemble method in which
+<p><a class="reference internal" href="references/generated/imblearn.ensemble.BalancedRandomForestClassifier.html#imblearn.ensemble.BalancedRandomForestClassifier" title="imblearn.ensemble.BalancedRandomForestClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">BalancedRandomForestClassifier</span></code></a> is another ensemble method in which
 each tree of the forest will be provided a balanced bootstrap sample
 <span id="id1">[<a class="reference internal" href="zzz_references.html#id5">CLB+04</a>]</span>. This class provides all functionality of the
 <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v0.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a> and notably the
@@ -263,7 +351,7 @@ each tree of the forest will be provided a balanced bootstrap sample
 <div class="section" id="boosting">
 <span id="id2"></span><h3><span class="section-number">5.1.3. </span>Boosting<a class="headerlink" href="#boosting" title="Permalink to this headline">¶</a></h3>
 <p>Several methods taking advantage of boosting have been designed.</p>
-<p><a class="reference internal" href="generated/imblearn.ensemble.RUSBoostClassifier.html#imblearn.ensemble.RUSBoostClassifier" title="imblearn.ensemble.RUSBoostClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">RUSBoostClassifier</span></code></a> randomly under-sample the dataset before to perform
+<p><a class="reference internal" href="references/generated/imblearn.ensemble.RUSBoostClassifier.html#imblearn.ensemble.RUSBoostClassifier" title="imblearn.ensemble.RUSBoostClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">RUSBoostClassifier</span></code></a> randomly under-sample the dataset before to perform
 a boosting iteration <span id="id3">[<a class="reference internal" href="zzz_references.html#id7">SKVHN09</a>]</span>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="kn">import</span> <span class="n">RUSBoostClassifier</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rusboost</span> <span class="o">=</span> <span class="n">RUSBoostClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;SAMME.R&#39;</span><span class="p">,</span>
@@ -276,9 +364,9 @@ a boosting iteration <span id="id3">[<a class="reference internal" href="zzz_ref
 </pre></div>
 </div>
 <p>A specific method which uses <code class="docutils literal notranslate"><span class="pre">AdaBoost</span></code> as learners in the bagging classifier
-is called EasyEnsemble. The <a class="reference internal" href="generated/imblearn.ensemble.EasyEnsembleClassifier.html#imblearn.ensemble.EasyEnsembleClassifier" title="imblearn.ensemble.EasyEnsembleClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">EasyEnsembleClassifier</span></code></a> allows to bag
+is called EasyEnsemble. The <a class="reference internal" href="references/generated/imblearn.ensemble.EasyEnsembleClassifier.html#imblearn.ensemble.EasyEnsembleClassifier" title="imblearn.ensemble.EasyEnsembleClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">EasyEnsembleClassifier</span></code></a> allows to bag
 AdaBoost learners which are trained on balanced bootstrap samples
-<span id="id4">[<a class="reference internal" href="zzz_references.html#id6">LWZ08</a>]</span>. Similarly to the <a class="reference internal" href="generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="imblearn.ensemble.BalancedBaggingClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">BalancedBaggingClassifier</span></code></a>
+<span id="id4">[<a class="reference internal" href="zzz_references.html#id6">LWZ08</a>]</span>. Similarly to the <a class="reference internal" href="references/generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="imblearn.ensemble.BalancedBaggingClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">BalancedBaggingClassifier</span></code></a>
 API, one can construct the ensemble as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="kn">import</span> <span class="n">EasyEnsembleClassifier</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">eec</span> <span class="o">=</span> <span class="n">EasyEnsembleClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -292,7 +380,7 @@ API, one can construct the ensemble as:</p>
 <div class="topic">
 <p class="topic-title">Examples</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="auto_examples/ensemble/plot_comparison_ensemble_classifier.html#sphx-glr-auto-examples-ensemble-plot-comparison-ensemble-classifier-py"><span class="std std-ref">Comparison of ensembling classifiers internally using sampling</span></a></p></li>
+<li><p><a class="reference internal" href="auto_examples/ensemble/plot_comparison_ensemble_classifier.html#sphx-glr-auto-examples-ensemble-plot-comparison-ensemble-classifier-py"><span class="std std-ref">Compare ensemble classifiers using resampling</span></a></p></li>
 </ul>
 </div>
 </div>
@@ -300,52 +388,33 @@ API, one can construct the ensemble as:</p>
 </div>
 
 
-           </div>
-           
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="miscellaneous.html" class="btn btn-neutral float-right" title="6. Miscellaneous samplers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="combine.html" class="btn btn-neutral float-left" title="4. Combination of over- and under-sampling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="combine.html" title="previous page"><span class="section-number">4. </span>Combination of over- and under-sampling</a>
+    <a class='right-next' id="next-link" href="miscellaneous.html" title="next page"><span class="section-number">6. </span>Miscellaneous samplers</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
     </div>
-  
 
-  <hr/>
+    
+  <script src="_static/js/index.014cad6f3a039303089e.js"></script>
 
-  <div role="contentinfo">
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
     <p>
-        &copy; Copyright 2014-2020, The imbalanced-learn developers
-
+          &copy; Copyright 2014-2021, The imbalanced-learn developers.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
 </footer>
-
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-  
-
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
-    
-   
-
-</body>
+  </body>
 </html>
