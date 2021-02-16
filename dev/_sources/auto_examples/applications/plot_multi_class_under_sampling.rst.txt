@@ -26,7 +26,7 @@ Some balancing methods allow for balancing dataset with multiples classes.
 We provide an example to illustrate the use of those methods which do
 not differ from the binary case.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-50
+.. GENERATED FROM PYTHON SOURCE LINES 11-53
 
 
 
@@ -40,15 +40,13 @@ not differ from the binary case.
 
     Training target statistics: Counter({1: 38, 2: 38, 0: 17})
     Testing target statistics: Counter({1: 12, 2: 12, 0: 8})
-    /home/circleci/miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/svm/_base.py:985: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
-      warnings.warn("Liblinear failed to converge, increase "
                        pre       rec       spe        f1       geo       iba       sup
 
               0       1.00      1.00      1.00      1.00      1.00      1.00         8
-              1       1.00      0.83      1.00      0.91      0.91      0.82        12
-              2       0.86      1.00      0.90      0.92      0.95      0.91        12
+              1       0.88      0.58      0.95      0.70      0.74      0.53        12
+              2       0.69      0.92      0.75      0.79      0.83      0.70        12
 
-    avg / total       0.95      0.94      0.96      0.94      0.95      0.90        32
+    avg / total       0.84      0.81      0.89      0.81      0.84      0.71        32
 
 
 
@@ -67,8 +65,9 @@ not differ from the binary case.
     from collections import Counter
 
     from sklearn.datasets import load_iris
-    from sklearn.svm import LinearSVC
+    from sklearn.linear_model import LogisticRegression
     from sklearn.model_selection import train_test_split
+    from sklearn.preprocessing import StandardScaler
 
     from imblearn.datasets import make_imbalance
     from imblearn.under_sampling import NearMiss
@@ -94,7 +93,9 @@ not differ from the binary case.
     print(f"Testing target statistics: {Counter(y_test)}")
 
     # Create a pipeline
-    pipeline = make_pipeline(NearMiss(version=2), LinearSVC(random_state=RANDOM_STATE))
+    pipeline = make_pipeline(
+        NearMiss(version=2), StandardScaler(), LogisticRegression(random_state=RANDOM_STATE)
+    )
     pipeline.fit(X_train, y_train)
 
     # Classify and report the results
@@ -103,9 +104,9 @@ not differ from the binary case.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.206 seconds)
+   **Total running time of the script:** ( 0 minutes  0.157 seconds)
 
-**Estimated memory usage:**  8 MB
+**Estimated memory usage:**  9 MB
 
 
 .. _sphx_glr_download_auto_examples_applications_plot_multi_class_under_sampling.py:
