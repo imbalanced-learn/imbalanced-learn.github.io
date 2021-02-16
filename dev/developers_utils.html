@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>10. Utilities for Developers &#8212; Version 0.8.0.dev0</title>
+    <title>10. Developer guideline &#8212; Version 0.8.0.dev0</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.951c8c8e3af89de180a2f03968e0e7cb.css" rel="stylesheet" />
@@ -207,7 +207,7 @@
 
 <li class="toctree-l2 current active">
  <a class="current reference internal" href="#">
-  10. Utilities for Developers
+  10. Developer guideline
  </a>
 </li>
 
@@ -234,19 +234,43 @@
 <nav id="bd-toc-nav">
     <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#validation-tools">
-   10.1. Validation Tools
+  <a class="reference internal nav-link" href="#developer-utilities">
+   10.1. Developer utilities
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#validation-tools">
+     10.1.1. Validation Tools
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deprecation">
+     10.1.2. Deprecation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#testing-utilities">
+     10.1.3. Testing utilities
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#deprecation">
-   10.2. Deprecation
+  <a class="reference internal nav-link" href="#making-a-release">
+   10.2. Making a release
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#testing-utilities">
-   10.3. Testing utilities
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#major-release">
+     10.2.1. Major release
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bug-fix-release">
+     10.2.2. Bug fix release
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -272,8 +296,10 @@
               
               <div>
                 
-  <div class="section" id="utilities-for-developers">
-<span id="developers-utils"></span><h1><span class="section-number">10. </span>Utilities for Developers<a class="headerlink" href="#utilities-for-developers" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="developer-guideline">
+<span id="developers-utils"></span><h1><span class="section-number">10. </span>Developer guideline<a class="headerlink" href="#developer-guideline" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="developer-utilities">
+<h2><span class="section-number">10.1. </span>Developer utilities<a class="headerlink" href="#developer-utilities" title="Permalink to this headline">¶</a></h2>
 <p>Imbalanced-learn contains a number of utilities to help with development. These are
 located in <a class="reference internal" href="references/utils.html#module-imblearn.utils" title="imblearn.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.utils</span></code></a>, and include tools in a number of categories.
 All the following functions and classes are in the module <a class="reference internal" href="references/utils.html#module-imblearn.utils" title="imblearn.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.utils</span></code></a>.</p>
@@ -285,7 +311,7 @@ imbalanced-learn. Backports, in particular, will be removed as the
 imbalanced-learn dependencies evolve.</p>
 </div>
 <div class="section" id="validation-tools">
-<h2><span class="section-number">10.1. </span>Validation Tools<a class="headerlink" href="#validation-tools" title="Permalink to this headline">¶</a></h2>
+<h3><span class="section-number">10.1.1. </span>Validation Tools<a class="headerlink" href="#validation-tools" title="Permalink to this headline">¶</a></h3>
 <p>These are tools used to check and validate input. When you write a function
 which accepts arrays, matrices, or sparse matrices as arguments, the following
 should be used when applicable.</p>
@@ -298,7 +324,7 @@ corresponding number of pixel.</p></li>
 </ul>
 </div>
 <div class="section" id="deprecation">
-<h2><span class="section-number">10.2. </span>Deprecation<a class="headerlink" href="#deprecation" title="Permalink to this headline">¶</a></h2>
+<h3><span class="section-number">10.1.2. </span>Deprecation<a class="headerlink" href="#deprecation" title="Permalink to this headline">¶</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Apart from <code class="xref py py-func docutils literal notranslate"><span class="pre">deprecate_parameter</span></code> the rest of this section is taken from
@@ -365,7 +391,7 @@ provides <code class="xref py py-func docutils literal notranslate"><span class=
 parameter (attribute) by another one.</p>
 </div>
 <div class="section" id="testing-utilities">
-<h2><span class="section-number">10.3. </span>Testing utilities<a class="headerlink" href="#testing-utilities" title="Permalink to this headline">¶</a></h2>
+<h3><span class="section-number">10.1.3. </span>Testing utilities<a class="headerlink" href="#testing-utilities" title="Permalink to this headline">¶</a></h3>
 <p>Currently, imbalanced-learn provide a warning management utility. This feature
 is going to be merge in pytest and will be removed when the pytest release will
 have it.</p>
@@ -405,6 +431,71 @@ that the exception matches a text or regex:</p>
   <span class="c">...</span>
 <span class="gr">AssertionError</span>: <span class="n">&#39;must be \d+$&#39; pattern not found in [&#39;this is not here&#39;]</span>
 </pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="making-a-release">
+<h2><span class="section-number">10.2. </span>Making a release<a class="headerlink" href="#making-a-release" title="Permalink to this headline">¶</a></h2>
+<p>This section document the different steps that are necessary to make a new
+imbalanced-learn release.</p>
+<div class="section" id="major-release">
+<h3><span class="section-number">10.2.1. </span>Major release<a class="headerlink" href="#major-release" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Update the release note <code class="docutils literal notranslate"><span class="pre">whats_new/v0.&lt;version</span> <span class="pre">number&gt;.rst</span></code> by giving a date
+and removing the status “Under development” from the title.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">bumpversion</span> <span class="pre">release</span></code>. It will remove the <code class="docutils literal notranslate"><span class="pre">dev0</span></code> tag.</p></li>
+<li><p>Commit the change <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-am</span> <span class="pre">&quot;bumpversion</span> <span class="pre">0.&lt;version</span> <span class="pre">number&gt;.0&quot;</span></code>
+(e.g., <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-am</span> <span class="pre">&quot;bumpversion</span> <span class="pre">0.5.0&quot;</span></code>).</p></li>
+<li><p>Create a branch for this version
+(e.g., <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">0.&lt;version</span> <span class="pre">number&gt;.X</span></code>).</p></li>
+<li><p>Push the new branch into the upstream remote imbalanced-learn repository.</p></li>
+<li><p>Change the <code class="docutils literal notranslate"><span class="pre">symlink</span></code> in the
+<a class="reference external" href="https://github.com/imbalanced-learn/imbalanced-learn.github.io">imbalanced-learn website repository</a>
+such that stable points to the latest release version,
+i.e, <code class="docutils literal notranslate"><span class="pre">0.&lt;version</span> <span class="pre">number&gt;</span></code>. To do this, clone the repository,
+<code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">unlink</span> <span class="pre">stable</span></code>, followed by <code class="docutils literal notranslate"><span class="pre">ln</span> <span class="pre">-s</span> <span class="pre">0.&lt;version</span> <span class="pre">number&gt;</span> <span class="pre">stable</span></code>. To check
+that this was performed correctly, ensure that stable has the new version
+number using <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span></code>.</p></li>
+<li><p>Return to your imbalanced-learn repository, in the branch
+<code class="docutils literal notranslate"><span class="pre">0.&lt;version</span> <span class="pre">number&gt;.X</span></code>.</p></li>
+<li><p>Create the source distribution and wheel: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">sdist</span></code> and
+<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">bdist_wheel</span></code>.</p></li>
+<li><p>Upload these file to PyPI using <code class="docutils literal notranslate"><span class="pre">twine</span> <span class="pre">upload</span> <span class="pre">dist/*</span></code></p></li>
+<li><p>Switch to the <code class="docutils literal notranslate"><span class="pre">master</span></code> branch and run <code class="docutils literal notranslate"><span class="pre">bumpversion</span> <span class="pre">minor</span></code>, commit and push on
+upstream. We are officially at <code class="docutils literal notranslate"><span class="pre">0.&lt;version</span> <span class="pre">number</span> <span class="pre">+</span> <span class="pre">1&gt;.0.dev0</span></code>.</p></li>
+<li><p>Create a GitHub release by clicking on “Draft a new release” here.
+“Tag version” should be the latest version number (e.g., <code class="docutils literal notranslate"><span class="pre">0.&lt;version&gt;.0</span></code>),
+“Target” should be the branch for that the release
+(e.g., <code class="docutils literal notranslate"><span class="pre">0.&lt;version</span> <span class="pre">number&gt;.X</span></code>) and “Release title” should be
+“Version &lt;version number&gt;”. Add the notes from the release notes there.</p></li>
+<li><p>Add a new <code class="docutils literal notranslate"><span class="pre">v0.&lt;version</span> <span class="pre">number</span> <span class="pre">+</span> <span class="pre">1&gt;.rst</span></code> file in <code class="docutils literal notranslate"><span class="pre">doc/whats_new/</span></code> and
+<code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">include::</span></code> this new file in <code class="docutils literal notranslate"><span class="pre">doc/whats_new.rst</span></code>. Mark the version as the
+version under development.</p></li>
+<li><p>Finally, go to the <a class="reference external" href="https://github.com/conda-forge/imbalanced-learn-feedstock">conda-forge feedstock</a>
+and a new PR will be created when the feedstock will synchronizing with the
+PyPI repository. Merge this PR such that we have the binary for <code class="docutils literal notranslate"><span class="pre">conda</span></code>
+available.</p></li>
+</ul>
+</div>
+<div class="section" id="bug-fix-release">
+<h3><span class="section-number">10.2.2. </span>Bug fix release<a class="headerlink" href="#bug-fix-release" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Find the commit(s) hash of the bug fix commit you wish to back port using
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code>.</p></li>
+<li><p>Checkout the branch for the lastest release, e.g.,
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">0.&lt;version</span> <span class="pre">number&gt;.X</span></code>.</p></li>
+<li><p>Append the bug fix commit(s) to the branch using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">cherry-pick</span> <span class="pre">&lt;hash&gt;</span></code>.
+Alternatively, you can use interactive rebasing from the <code class="docutils literal notranslate"><span class="pre">master</span></code> branch.</p></li>
+<li><p>Bump the version number with bumpversion patch. This will bump the patch
+version, for example from <code class="docutils literal notranslate"><span class="pre">0.X.0</span></code> to <code class="docutils literal notranslate"><span class="pre">0.X.*</span> <span class="pre">dev0</span></code>.</p></li>
+<li><p>Mark the current version as a release version (as opposed to <code class="docutils literal notranslate"><span class="pre">dev</span></code> version)
+with <code class="docutils literal notranslate"><span class="pre">bumpversion</span> <span class="pre">release</span> <span class="pre">--allow-dirty</span></code>. It will bump the version, for
+example from <code class="docutils literal notranslate"><span class="pre">0.X.*</span> <span class="pre">dev0</span></code> to <code class="docutils literal notranslate"><span class="pre">0.X.1</span></code>.</p></li>
+<li><p>Commit the changes with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-am</span> <span class="pre">'bumpversion</span> <span class="pre">&lt;new</span> <span class="pre">version&gt;'</span></code>.</p></li>
+<li><p>Push the changes to the release branch in upstream, e.g.
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">&lt;upstream</span> <span class="pre">remote&gt;</span> <span class="pre">&lt;release</span> <span class="pre">branch&gt;</span></code>.</p></li>
+<li><p>Use the same process as in a major release to upload on PyPI and conda-forge.</p></li>
+</ul>
 </div>
 </div>
 </div>
