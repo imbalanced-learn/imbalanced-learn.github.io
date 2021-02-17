@@ -25,7 +25,7 @@ Compare over-sampling samplers
 The following example attends to make a qualitative comparison between the
 different over-sampling algorithms available in the imbalanced-learn package.
 
-.. GENERATED FROM PYTHON SOURCE LINES 10-37
+.. GENERATED FROM PYTHON SOURCE LINES 9-13
 
 .. code-block:: default
 
@@ -33,27 +33,6 @@ different over-sampling algorithms available in the imbalanced-learn package.
     # Authors: Guillaume Lemaitre <g.lemaitre58@gmail.com>
     # License: MIT
 
-    from collections import Counter
-
-    import matplotlib.pyplot as plt
-    import numpy as np
-
-    from sklearn.datasets import make_classification
-    from sklearn.svm import LinearSVC
-
-    from imblearn.pipeline import make_pipeline
-    from imblearn.over_sampling import ADASYN
-    from imblearn.over_sampling import (
-        SMOTE,
-        BorderlineSMOTE,
-        SVMSMOTE,
-        SMOTENC,
-        KMeansSMOTE,
-    )
-    from imblearn.over_sampling import RandomOverSampler
-    from imblearn.base import BaseSampler
-
-    print(__doc__)
 
 
 
@@ -61,17 +40,35 @@ different over-sampling algorithms available in the imbalanced-learn package.
 
 
 
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 38-40
-
-The following function will be used to create toy dataset. It using the
-``make_classification`` from scikit-learn but fixing some parameters.
-
-.. GENERATED FROM PYTHON SOURCE LINES 40-63
+.. GENERATED FROM PYTHON SOURCE LINES 14-21
 
 .. code-block:: default
 
+    print(__doc__)
+
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+
+    sns.set_context("poster")
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 22-25
+
+The following function will be used to create toy dataset. It uses the
+:func:`~sklearn.datasets.make_classification` from scikit-learn but fixing
+some parameters.
+
+.. GENERATED FROM PYTHON SOURCE LINES 28-52
+
+.. code-block:: default
+
+    from sklearn.datasets import make_classification
 
 
     def create_dataset(
@@ -102,28 +99,22 @@ The following function will be used to create toy dataset. It using the
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-66
+.. GENERATED FROM PYTHON SOURCE LINES 53-55
 
 The following function will be used to plot the sample space after resampling
-to illustrate the characterisitic of an algorithm.
+to illustrate the specificities of an algorithm.
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-81
+.. GENERATED FROM PYTHON SOURCE LINES 58-67
 
 .. code-block:: default
 
-
-
-    def plot_resampling(X, y, sampling, ax):
-        X_res, y_res = sampling.fit_resample(X, y)
+    def plot_resampling(X, y, sampler, ax, title=None):
+        X_res, y_res = sampler.fit_resample(X, y)
         ax.scatter(X_res[:, 0], X_res[:, 1], c=y_res, alpha=0.8, edgecolor="k")
-        # make nice plotting
-        ax.spines["top"].set_visible(False)
-        ax.spines["right"].set_visible(False)
-        ax.get_xaxis().tick_bottom()
-        ax.get_yaxis().tick_left()
-        ax.spines["left"].set_position(("outward", 10))
-        ax.spines["bottom"].set_position(("outward", 10))
-        return Counter(y_res)
+        if title is None:
+            title = f"Resampling with {sampler.__class__.__name__}"
+        ax.set_title(title)
+        sns.despine(ax=ax, offset=10)
 
 
 
@@ -133,18 +124,19 @@ to illustrate the characterisitic of an algorithm.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 82-84
+.. GENERATED FROM PYTHON SOURCE LINES 68-70
 
 The following function will be used to plot the decision function of a
 classifier given some data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 84-100
+.. GENERATED FROM PYTHON SOURCE LINES 73-92
 
 .. code-block:: default
 
+    import numpy as np
 
 
-    def plot_decision_function(X, y, clf, ax):
+    def plot_decision_function(X, y, clf, ax, title=None):
         plot_step = 0.02
         x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
         y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
@@ -156,6 +148,8 @@ classifier given some data.
         Z = Z.reshape(xx.shape)
         ax.contourf(xx, yy, Z, alpha=0.4)
         ax.scatter(X[:, 0], X[:, 1], alpha=0.8, c=y, edgecolor="k")
+        if title is not None:
+            ax.set_title(title)
 
 
 
@@ -165,23 +159,39 @@ classifier given some data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 101-103
+.. GENERATED FROM PYTHON SOURCE LINES 93-98
 
 Illustration of the influence of the balancing ratio
-##############################################################################
-
-.. GENERATED FROM PYTHON SOURCE LINES 105-108
+----------------------------------------------------
 
 We will first illustrate the influence of the balancing ratio on some toy
-data using a linear SVM classifier. Greater is the difference between the
-number of samples in each class, poorer are the classfication results.
+data using a logistic regression classifier which is a linear model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 108-124
+.. GENERATED FROM PYTHON SOURCE LINES 100-104
 
 .. code-block:: default
 
+    from sklearn.linear_model import LogisticRegression
 
-    fig, axs = plt.subplots(2, 2, figsize=(15, 12))
+    clf = LogisticRegression()
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 105-107
+
+We will fit and show the decision boundary model to illustrate the impact of
+dealing with imbalanced classes.
+
+.. GENERATED FROM PYTHON SOURCE LINES 109-124
+
+.. code-block:: default
+
+    fig, axs = plt.subplots(nrows=2, ncols=2, figsize=(15, 12))
 
     weights_arr = (
         (0.01, 0.01, 0.98),
@@ -190,289 +200,295 @@ number of samples in each class, poorer are the classfication results.
         (0.33, 0.33, 0.33),
     )
     for ax, weights in zip(axs.ravel(), weights_arr):
-        X, y = create_dataset(n_samples=1000, weights=weights)
-        clf = LinearSVC().fit(X, y)
-        plot_decision_function(X, y, clf, ax)
-        ax.set_title(f"Linear SVC with y={Counter(y)}")
+        X, y = create_dataset(n_samples=300, weights=weights)
+        clf.fit(X, y)
+        plot_decision_function(X, y, clf, ax, title=f"weight={weights}")
+        fig.suptitle(f"Decision function of {clf.__class__.__name__}")
     fig.tight_layout()
 
 
 
 
 .. image:: /auto_examples/over-sampling/images/sphx_glr_plot_comparison_over_sampling_001.png
-    :alt: Linear SVC with y=Counter({2: 972, 1: 15, 0: 13}), Linear SVC with y=Counter({2: 932, 1: 55, 0: 13}), Linear SVC with y=Counter({2: 694, 0: 202, 1: 104}), Linear SVC with y=Counter({1: 336, 0: 334, 2: 330})
+    :alt: Decision function of LogisticRegression, weight=(0.01, 0.01, 0.98), weight=(0.01, 0.05, 0.94), weight=(0.2, 0.1, 0.7), weight=(0.33, 0.33, 0.33)
     :class: sphx-glr-single-img
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 125-127
+.. GENERATED FROM PYTHON SOURCE LINES 125-136
+
+Greater is the difference between the number of samples in each class, poorer
+are the classification results.
 
 Random over-sampling to balance the data set
-##############################################################################
-
-.. GENERATED FROM PYTHON SOURCE LINES 129-133
+--------------------------------------------
 
 Random over-sampling can be used to repeat some samples and balance the
 number of samples between the dataset. It can be seen that with this trivial
 approach the boundary decision is already less biased toward the majority
-class.
+class. The class :class:`~imblearn.over_sampling.RandomOverSampler`
+implements such of a strategy.
 
-.. GENERATED FROM PYTHON SOURCE LINES 133-145
+.. GENERATED FROM PYTHON SOURCE LINES 138-155
 
 .. code-block:: default
 
+    from imblearn.pipeline import make_pipeline
+    from imblearn.over_sampling import RandomOverSampler
 
-    fig, axs = plt.subplots(1, 2, figsize=(15, 7))
-    X, y = create_dataset(n_samples=10000, weights=(0.01, 0.05, 0.94))
-    clf = LinearSVC().fit(X, y)
-    plot_decision_function(X, y, clf, axs[0])
-    axs[0].set_title(f"Linear SVC with y={Counter(y)}")
-    pipe = make_pipeline(RandomOverSampler(random_state=0), LinearSVC())
-    pipe.fit(X, y)
-    plot_decision_function(X, y, pipe, axs[1])
-    axs[1].set_title("Decision function for RandomOverSampler")
+    X, y = create_dataset(n_samples=100, weights=(0.05, 0.25, 0.7))
+
+    fig, axs = plt.subplots(nrows=1, ncols=2, figsize=(15, 7))
+
+    clf.fit(X, y)
+    plot_decision_function(X, y, clf, axs[0], title="Without resampling")
+
+    sampler = RandomOverSampler(random_state=0)
+    model = make_pipeline(sampler, clf).fit(X, y)
+    plot_decision_function(X, y, model, axs[1], f"Using {model[0].__class__.__name__}")
+
+    fig.suptitle(f"Decision function of {clf.__class__.__name__}")
     fig.tight_layout()
 
 
 
 
 .. image:: /auto_examples/over-sampling/images/sphx_glr_plot_comparison_over_sampling_002.png
-    :alt: Linear SVC with y=Counter({2: 9345, 1: 523, 0: 132}), Decision function for RandomOverSampler
+    :alt: Decision function of LogisticRegression, Without resampling, Using RandomOverSampler
     :class: sphx-glr-single-img
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 146-150
+.. GENERATED FROM PYTHON SOURCE LINES 156-160
 
 By default, random over-sampling generates a bootstrap. The parameter
 `shrinkage` allows adding a small perturbation to the generated data
 to generate a smoothed bootstrap instead. The plot below shows the difference
 between the two data generation strategies.
 
-.. GENERATED FROM PYTHON SOURCE LINES 150-160
+.. GENERATED FROM PYTHON SOURCE LINES 162-173
 
 .. code-block:: default
 
+    fig, axs = plt.subplots(nrows=1, ncols=2, figsize=(15, 7))
 
-    fig, axs = plt.subplots(1, 2, figsize=(15, 7))
-    sampler = RandomOverSampler(random_state=0)
-    plot_resampling(X, y, sampler, ax=axs[0])
-    axs[0].set_title("RandomOverSampler with normal bootstrap")
-    sampler = RandomOverSampler(shrinkage=0.2, random_state=0)
-    plot_resampling(X, y, sampler, ax=axs[1])
-    axs[1].set_title("RandomOverSampler with smoothed bootstrap")
+    sampler.set_params(shrinkage=None)
+    plot_resampling(X, y, sampler, ax=axs[0], title="Normal bootstrap")
+
+    sampler.set_params(shrinkage=0.3)
+    plot_resampling(X, y, sampler, ax=axs[1], title="Smoothed bootstrap")
+
+    fig.suptitle(f"Resampling with {sampler.__class__.__name__}")
     fig.tight_layout()
 
 
 
 
 .. image:: /auto_examples/over-sampling/images/sphx_glr_plot_comparison_over_sampling_003.png
-    :alt: RandomOverSampler with normal bootstrap, RandomOverSampler with smoothed bootstrap
+    :alt: Resampling with RandomOverSampler, Normal bootstrap, Smoothed bootstrap
     :class: sphx-glr-single-img
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 161-168
+.. GENERATED FROM PYTHON SOURCE LINES 174-185
 
 It looks like more samples are generated with smoothed bootstrap. This is due
- to the fact that the samples generated are not superimposing with the
- original samples.
+to the fact that the samples generated are not superimposing with the
+original samples.
 
-##############################################################################
- More advanced over-sampling using ADASYN and SMOTE
-##############################################################################
+More advanced over-sampling using ADASYN and SMOTE
+--------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 170-172
+Instead of repeating the same samples when over-sampling or perturbating the
+generated bootstrap samples, one can use some specific heuristic instead.
+:class:`~imblearn.over_sampling.ADASYN` and
+:class:`~imblearn.over_sampling.SMOTE` can be used in this case.
 
-Instead of repeating the same samples when over-sampling, we can use some
-specific heuristic instead. ADASYN and SMOTE can be used in this case.
-
-.. GENERATED FROM PYTHON SOURCE LINES 172-204
+.. GENERATED FROM PYTHON SOURCE LINES 187-206
 
 .. code-block:: default
 
+    from imblearn import FunctionSampler  # to use a idendity sampler
+    from imblearn.over_sampling import SMOTE, ADASYN
 
+    X, y = create_dataset(n_samples=150, weights=(0.1, 0.2, 0.7))
 
-    # Make an identity sampler
-    class FakeSampler(BaseSampler):
+    fig, axs = plt.subplots(nrows=2, ncols=2, figsize=(15, 15))
 
-        _sampling_type = "bypass"
+    samplers = [
+        FunctionSampler(),
+        RandomOverSampler(random_state=0),
+        SMOTE(random_state=0),
+        ADASYN(random_state=0),
+    ]
 
-        def _fit_resample(self, X, y):
-            return X, y
-
-
-    fig, axs = plt.subplots(2, 2, figsize=(15, 15))
-    X, y = create_dataset(n_samples=10000, weights=(0.01, 0.05, 0.94))
-    sampler = FakeSampler()
-    clf = make_pipeline(sampler, LinearSVC())
-    plot_resampling(X, y, sampler, axs[0, 0])
-    axs[0, 0].set_title(f"Original data - y={Counter(y)}")
-
-    for ax, sampler in zip(
-        axs.ravel()[1:],
-        (
-            RandomOverSampler(random_state=0),
-            SMOTE(random_state=0),
-            ADASYN(random_state=0),
-        ),
-    ):
-        clf = make_pipeline(sampler, LinearSVC())
-        clf.fit(X, y)
-        plot_resampling(X, y, sampler, ax)
-        ax.set_title(f"Resampling using {sampler.__class__.__name__}")
+    for ax, sampler in zip(axs.ravel(), samplers):
+        title = "Original dataset" if isinstance(sampler, FunctionSampler) else None
+        plot_resampling(X, y, sampler, ax, title=title)
     fig.tight_layout()
 
 
 
 
 .. image:: /auto_examples/over-sampling/images/sphx_glr_plot_comparison_over_sampling_004.png
-    :alt: Original data - y=Counter({2: 9345, 1: 523, 0: 132}), Resampling using RandomOverSampler, Resampling using SMOTE, Resampling using ADASYN
+    :alt: Original dataset, Resampling with RandomOverSampler, Resampling with SMOTE, Resampling with ADASYN
     :class: sphx-glr-single-img
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 205-209
+.. GENERATED FROM PYTHON SOURCE LINES 207-214
 
-The following plot illustrate the difference between ADASYN and SMOTE. ADASYN
-will focus on the samples which are difficult to classify with a
-nearest-neighbors rule while regular SMOTE will not make any distinction.
+The following plot illustrates the difference between
+:class:`~imblearn.over_sampling.ADASYN` and
+:class:`~imblearn.over_sampling.SMOTE`.
+:class:`~imblearn.over_sampling.ADASYN` will focus on the samples which are
+difficult to classify with a nearest-neighbors rule while regular
+:class:`~imblearn.over_sampling.SMOTE` will not make any distinction.
 Therefore, the decision function depending of the algorithm.
 
-.. GENERATED FROM PYTHON SOURCE LINES 209-228
+.. GENERATED FROM PYTHON SOURCE LINES 214-232
 
 .. code-block:: default
 
 
-    fig, axs = plt.subplots(1, 3, figsize=(20, 6))
-    X, y = create_dataset(n_samples=10000, weights=(0.01, 0.05, 0.94))
+    X, y = create_dataset(n_samples=150, weights=(0.05, 0.25, 0.7))
 
-    clf = LinearSVC().fit(X, y)
-    plot_decision_function(X, y, clf, axs[0])
-    axs[0].set_title(f"Linear SVC with y={Counter(y)}")
-    sampler = SMOTE()
-    clf = make_pipeline(sampler, LinearSVC())
-    clf.fit(X, y)
-    plot_decision_function(X, y, clf, axs[1])
-    axs[1].set_title(f"Decision function for {sampler.__class__.__name__}")
-    sampler = ADASYN()
-    clf = make_pipeline(sampler, LinearSVC())
-    clf.fit(X, y)
-    plot_decision_function(X, y, clf, axs[2])
-    axs[2].set_title(f"Decision function for {sampler.__class__.__name__}")
+    fig, axs = plt.subplots(nrows=1, ncols=3, figsize=(20, 6))
+
+    models = {
+        "Without sampler": clf,
+        "ADASYN sampler": make_pipeline(ADASYN(random_state=0), clf),
+        "SMOTE sampler": make_pipeline(SMOTE(random_state=0), clf),
+    }
+
+    for ax, (title, model) in zip(axs, models.items()):
+        model.fit(X, y)
+        plot_decision_function(X, y, model, ax=ax, title=title)
+
+    fig.suptitle(f"Decision function using a {clf.__class__.__name__}")
     fig.tight_layout()
 
 
 
 
 .. image:: /auto_examples/over-sampling/images/sphx_glr_plot_comparison_over_sampling_005.png
-    :alt: Linear SVC with y=Counter({2: 9345, 1: 523, 0: 132}), Decision function for SMOTE, Decision function for ADASYN
+    :alt: Decision function using a LogisticRegression, Without sampler, ADASYN sampler, SMOTE sampler
     :class: sphx-glr-single-img
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 229-231
+.. GENERATED FROM PYTHON SOURCE LINES 233-235
 
 Due to those sampling particularities, it can give rise to some specific
 issues as illustrated below.
 
-.. GENERATED FROM PYTHON SOURCE LINES 231-244
+.. GENERATED FROM PYTHON SOURCE LINES 237-252
 
 .. code-block:: default
 
-
-    fig, axs = plt.subplots(2, 2, figsize=(15, 15))
     X, y = create_dataset(n_samples=5000, weights=(0.01, 0.05, 0.94), class_sep=0.8)
 
-    for ax, sampler in zip(axs, (SMOTE(random_state=0), ADASYN(random_state=0))):
-        clf = make_pipeline(sampler, LinearSVC())
-        clf.fit(X, y)
-        plot_decision_function(X, y, clf, ax[0])
-        ax[0].set_title(f"Decision function for {sampler.__class__.__name__}")
+    samplers = [SMOTE(random_state=0), ADASYN(random_state=0)]
+
+    fig, axs = plt.subplots(nrows=2, ncols=2, figsize=(15, 15))
+    for ax, sampler in zip(axs, samplers):
+        model = make_pipeline(sampler, clf).fit(X, y)
+        plot_decision_function(
+            X, y, clf, ax[0], title=f"Decision function with {sampler.__class__.__name__}"
+        )
         plot_resampling(X, y, sampler, ax[1])
-        ax[1].set_title(f"Resampling using {sampler.__class__.__name__}")
+
+    fig.suptitle("Particularities of over-sampling with SMOTE and ADASYN")
     fig.tight_layout()
 
 
 
 
 .. image:: /auto_examples/over-sampling/images/sphx_glr_plot_comparison_over_sampling_006.png
-    :alt: Decision function for SMOTE, Resampling using SMOTE, Decision function for ADASYN, Resampling using ADASYN
+    :alt: Particularities of over-sampling with SMOTE and ADASYN, Decision function with SMOTE, Resampling with SMOTE, Decision function with ADASYN, Resampling with ADASYN
     :class: sphx-glr-single-img
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 245-251
+.. GENERATED FROM PYTHON SOURCE LINES 253-262
 
 SMOTE proposes several variants by identifying specific samples to consider
-during the resampling. The borderline version will detect which point to
-select which are in the border between two classes. The SVM version will use
-the support vectors found using an SVM algorithm to create new sample while
-the KMeans version will make a clustering before to generate samples in each
-cluster independently depending each cluster density.
+during the resampling. The borderline version
+(:class:`~imblearn.over_sampling.BorderlineSMOTE`) will detect which point to
+select which are in the border between two classes. The SVM version
+(:class:`~imblearn.over_sampling.SVMSMOTE`) will use the support vectors
+found using an SVM algorithm to create new sample while the KMeans version
+(:class:`~imblearn.over_sampling.KMeansSMOTE`) will make a clustering before
+to generate samples in each cluster independently depending each cluster
+density.
 
-.. GENERATED FROM PYTHON SOURCE LINES 251-273
+.. GENERATED FROM PYTHON SOURCE LINES 264-288
 
 .. code-block:: default
 
+    from imblearn.over_sampling import BorderlineSMOTE, KMeansSMOTE, SVMSMOTE
 
-    fig, axs = plt.subplots(5, 2, figsize=(15, 30))
     X, y = create_dataset(n_samples=5000, weights=(0.01, 0.05, 0.94), class_sep=0.8)
 
-    for ax, sampler in zip(
-        axs,
-        (
-            SMOTE(random_state=0),
-            BorderlineSMOTE(random_state=0, kind="borderline-1"),
-            BorderlineSMOTE(random_state=0, kind="borderline-2"),
-            KMeansSMOTE(random_state=0),
-            SVMSMOTE(random_state=0),
-        ),
-    ):
-        clf = make_pipeline(sampler, LinearSVC())
-        clf.fit(X, y)
-        plot_decision_function(X, y, clf, ax[0])
-        ax[0].set_title(f"Decision function for {sampler.__class__.__name__}")
+    fig, axs = plt.subplots(5, 2, figsize=(15, 30))
+
+    samplers = [
+        SMOTE(random_state=0),
+        BorderlineSMOTE(random_state=0, kind="borderline-1"),
+        BorderlineSMOTE(random_state=0, kind="borderline-2"),
+        KMeansSMOTE(random_state=0),
+        SVMSMOTE(random_state=0),
+    ]
+
+    for ax, sampler in zip(axs, samplers):
+        model = make_pipeline(sampler, clf).fit(X, y)
+        plot_decision_function(
+            X, y, clf, ax[0], title=f"Decision function for {sampler.__class__.__name__}"
+        )
         plot_resampling(X, y, sampler, ax[1])
-        ax[1].set_title(f"Resampling using {sampler.__class__.__name__}")
+
+    fig.suptitle("Decision function and resampling using SMOTE variants")
     fig.tight_layout()
 
 
 
 
 .. image:: /auto_examples/over-sampling/images/sphx_glr_plot_comparison_over_sampling_007.png
-    :alt: Decision function for SMOTE, Resampling using SMOTE, Decision function for BorderlineSMOTE, Resampling using BorderlineSMOTE, Decision function for BorderlineSMOTE, Resampling using BorderlineSMOTE, Decision function for KMeansSMOTE, Resampling using KMeansSMOTE, Decision function for SVMSMOTE, Resampling using SVMSMOTE
+    :alt: Decision function and resampling using SMOTE variants, Decision function for SMOTE, Resampling with SMOTE, Decision function for BorderlineSMOTE, Resampling with BorderlineSMOTE, Decision function for BorderlineSMOTE, Resampling with BorderlineSMOTE, Decision function for KMeansSMOTE, Resampling with KMeansSMOTE, Decision function for SVMSMOTE, Resampling with SVMSMOTE
     :class: sphx-glr-single-img
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 274-276
+.. GENERATED FROM PYTHON SOURCE LINES 289-292
 
-When dealing with a mixed of continuous and categorical features, SMOTE-NC
-is the only method which can handle this case.
+When dealing with a mixed of continuous and categorical features,
+:class:`~imblearn.over_sampling.SMOTENC` is the only method which can handle
+this case.
 
-.. GENERATED FROM PYTHON SOURCE LINES 276-297
+.. GENERATED FROM PYTHON SOURCE LINES 294-322
 
 .. code-block:: default
 
+    from collections import Counter
+    from imblearn.over_sampling import SMOTENC
 
-    # create a synthetic data set with continuous and categorical features
     rng = np.random.RandomState(42)
     n_samples = 50
+    # Create a dataset of a mix of numerical and categorical data
     X = np.empty((n_samples, 3), dtype=object)
     X[:, 0] = rng.choice(["A", "B", "C"], size=n_samples).astype(object)
     X[:, 1] = rng.randn(n_samples)
@@ -481,15 +497,20 @@ is the only method which can handle this case.
 
     print("The original imbalanced dataset")
     print(sorted(Counter(y).items()))
+    print()
     print("The first and last columns are containing categorical features:")
     print(X[:5])
+    print()
 
     smote_nc = SMOTENC(categorical_features=[0, 2], random_state=0)
     X_resampled, y_resampled = smote_nc.fit_resample(X, y)
     print("Dataset after resampling:")
     print(sorted(Counter(y_resampled).items()))
+    print()
     print("SMOTE-NC will generate categories for the categorical features:")
     print(X_resampled[-5:])
+    print()
+
 
 
 
@@ -502,14 +523,17 @@ is the only method which can handle this case.
 
     The original imbalanced dataset
     [(0, 20), (1, 30)]
+
     The first and last columns are containing categorical features:
     [['C' -0.14021849735700803 2]
      ['A' -0.033193400066544886 2]
      ['C' -0.7490765234433554 1]
      ['C' -0.7783820070908942 2]
      ['A' 0.948842857719016 2]]
+
     Dataset after resampling:
     [(0, 30), (1, 30)]
+
     SMOTE-NC will generate categories for the categorical features:
     [['A' 0.5246469549655818 2]
      ['B' -0.3657680728116921 2]
@@ -521,11 +545,68 @@ is the only method which can handle this case.
 
 
 
+.. GENERATED FROM PYTHON SOURCE LINES 323-325
+
+However, if the dataset is composed of only categorical features then one
+should use :class:`~imblearn.over_sampling.SMOTEN`.
+
+.. GENERATED FROM PYTHON SOURCE LINES 327-344
+
+.. code-block:: default
+
+    from imblearn.over_sampling import SMOTEN
+
+    # Generate only categorical data
+    X = np.array(["A"] * 10 + ["B"] * 20 + ["C"] * 30, dtype=object).reshape(-1, 1)
+    y = np.array([0] * 20 + [1] * 40, dtype=np.int32)
+
+    print(f"Original class counts: {Counter(y)}")
+    print()
+    print(X[:5])
+    print()
+
+    sampler = SMOTEN(random_state=0)
+    X_res, y_res = sampler.fit_resample(X, y)
+    print(f"Class counts after resampling {Counter(y_res)}")
+    print()
+    print(X_res[-5:])
+    print()
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    Original class counts: Counter({1: 40, 0: 20})
+
+    [['A']
+     ['A']
+     ['A']
+     ['A']
+     ['A']]
+
+    Class counts after resampling Counter({0: 40, 1: 40})
+
+    [['B']
+     ['B']
+     ['A']
+     ['B']
+     ['A']]
+
+
+
+
+
+
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  30.423 seconds)
+   **Total running time of the script:** ( 0 minutes  13.659 seconds)
 
-**Estimated memory usage:**  53 MB
+**Estimated memory usage:**  23 MB
 
 
 .. _sphx_glr_download_auto_examples_over-sampling_plot_comparison_over_sampling.py:

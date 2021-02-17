@@ -25,7 +25,7 @@ Compare under-sampling samplers
 The following example attends to make a qualitative comparison between the
 different under-sampling algorithms available in the imbalanced-learn package.
 
-.. GENERATED FROM PYTHON SOURCE LINES 10-40
+.. GENERATED FROM PYTHON SOURCE LINES 9-13
 
 .. code-block:: default
 
@@ -33,30 +33,6 @@ different under-sampling algorithms available in the imbalanced-learn package.
     # Authors: Guillaume Lemaitre <g.lemaitre58@gmail.com>
     # License: MIT
 
-    from collections import Counter
-
-    import matplotlib.pyplot as plt
-    import numpy as np
-
-    from sklearn.datasets import make_classification
-    from sklearn.svm import LinearSVC
-    from sklearn.linear_model import LogisticRegression
-
-    from imblearn.pipeline import make_pipeline
-    from imblearn.under_sampling import (
-        ClusterCentroids,
-        RandomUnderSampler,
-        NearMiss,
-        InstanceHardnessThreshold,
-        CondensedNearestNeighbour,
-        EditedNearestNeighbours,
-        RepeatedEditedNearestNeighbours,
-        AllKNN,
-        NeighbourhoodCleaningRule,
-        OneSidedSelection,
-    )
-
-    print(__doc__)
 
 
 
@@ -64,17 +40,34 @@ different under-sampling algorithms available in the imbalanced-learn package.
 
 
 
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 41-43
-
-The following function will be used to create toy dataset. It using the
-``make_classification`` from scikit-learn but fixing some parameters.
-
-.. GENERATED FROM PYTHON SOURCE LINES 43-66
+.. GENERATED FROM PYTHON SOURCE LINES 14-20
 
 .. code-block:: default
 
+    print(__doc__)
+
+    import seaborn as sns
+
+    sns.set_context("poster")
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 21-24
+
+The following function will be used to create toy dataset. It uses the
+:func:`~sklearn.datasets.make_classification` from scikit-learn but fixing
+some parameters.
+
+.. GENERATED FROM PYTHON SOURCE LINES 27-51
+
+.. code-block:: default
+
+    from sklearn.datasets import make_classification
 
 
     def create_dataset(
@@ -105,28 +98,22 @@ The following function will be used to create toy dataset. It using the
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-69
+.. GENERATED FROM PYTHON SOURCE LINES 52-54
 
 The following function will be used to plot the sample space after resampling
-to illustrate the characteristic of an algorithm.
+to illustrate the specificities of an algorithm.
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-84
+.. GENERATED FROM PYTHON SOURCE LINES 57-66
 
 .. code-block:: default
 
-
-
-    def plot_resampling(X, y, sampling, ax):
-        X_res, y_res = sampling.fit_resample(X, y)
+    def plot_resampling(X, y, sampler, ax, title=None):
+        X_res, y_res = sampler.fit_resample(X, y)
         ax.scatter(X_res[:, 0], X_res[:, 1], c=y_res, alpha=0.8, edgecolor="k")
-        # make nice plotting
-        ax.spines["top"].set_visible(False)
-        ax.spines["right"].set_visible(False)
-        ax.get_xaxis().tick_bottom()
-        ax.get_yaxis().tick_left()
-        ax.spines["left"].set_position(("outward", 10))
-        ax.spines["bottom"].set_position(("outward", 10))
-        return Counter(y_res)
+        if title is None:
+            title = f"Resampling with {sampler.__class__.__name__}"
+        ax.set_title(title)
+        sns.despine(ax=ax, offset=10)
 
 
 
@@ -136,18 +123,19 @@ to illustrate the characteristic of an algorithm.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 85-87
+.. GENERATED FROM PYTHON SOURCE LINES 67-69
 
 The following function will be used to plot the decision function of a
 classifier given some data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 87-103
+.. GENERATED FROM PYTHON SOURCE LINES 72-91
 
 .. code-block:: default
 
+    import numpy as np
 
 
-    def plot_decision_function(X, y, clf, ax):
+    def plot_decision_function(X, y, clf, ax, title=None):
         plot_step = 0.02
         x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
         y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
@@ -159,6 +147,8 @@ classifier given some data.
         Z = Z.reshape(xx.shape)
         ax.contourf(xx, yy, Z, alpha=0.4)
         ax.scatter(X[:, 0], X[:, 1], alpha=0.8, c=y, edgecolor="k")
+        if title is not None:
+            ax.set_title(title)
 
 
 
@@ -168,128 +158,156 @@ classifier given some data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 104-106
-
-Prototype generation: under-sampling by generating new samples
-##############################################################################
-
-.. GENERATED FROM PYTHON SOURCE LINES 108-110
-
-``ClusterCentroids`` under-samples by replacing the original samples by the
-centroids of the cluster found.
-
-.. GENERATED FROM PYTHON SOURCE LINES 110-126
+.. GENERATED FROM PYTHON SOURCE LINES 92-97
 
 .. code-block:: default
 
+    from sklearn.linear_model import LogisticRegression
 
-    fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(20, 6))
-    X, y = create_dataset(n_samples=5000, weights=(0.01, 0.05, 0.94), class_sep=0.8)
+    clf = LogisticRegression()
 
-    clf = LinearSVC().fit(X, y)
-    plot_decision_function(X, y, clf, ax1)
-    ax1.set_title(f"Linear SVC with y={Counter(y)}")
-    sampler = ClusterCentroids(random_state=0)
-    clf = make_pipeline(sampler, LinearSVC())
-    clf.fit(X, y)
-    plot_decision_function(X, y, clf, ax2)
-    ax2.set_title(f"Decision function for {sampler.__class__.__name__}")
-    plot_resampling(X, y, sampler, ax3)
-    ax3.set_title(f"Resampling using {sampler.__class__.__name__}")
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 98-103
+
+Prototype generation: under-sampling by generating new samples
+--------------------------------------------------------------
+
+:class:`~imblearn.under_sampling.ClusterCentroids` under-samples by replacing
+the original samples by the centroids of the cluster found.
+
+.. GENERATED FROM PYTHON SOURCE LINES 105-127
+
+.. code-block:: default
+
+    import matplotlib.pyplot as plt
+    from imblearn import FunctionSampler
+    from imblearn.pipeline import make_pipeline
+    from imblearn.under_sampling import ClusterCentroids
+
+    X, y = create_dataset(n_samples=400, weights=(0.05, 0.15, 0.8), class_sep=0.8)
+
+    samplers = {
+        FunctionSampler(),  # identity resampler
+        ClusterCentroids(random_state=0),
+    }
+
+    fig, axs = plt.subplots(nrows=2, ncols=2, figsize=(15, 15))
+    for ax, sampler in zip(axs, samplers):
+        model = make_pipeline(sampler, clf).fit(X, y)
+        plot_decision_function(
+            X, y, model, ax[0], title=f"Decision function with {sampler.__class__.__name__}"
+        )
+        plot_resampling(X, y, sampler, ax[1])
+
     fig.tight_layout()
 
 
 
 
 .. image:: /auto_examples/under-sampling/images/sphx_glr_plot_comparison_under_sampling_001.png
-    :alt: Linear SVC with y=Counter({2: 4674, 1: 262, 0: 64}), Decision function for ClusterCentroids, Resampling using ClusterCentroids
+    :alt: Decision function with FunctionSampler, Resampling with FunctionSampler, Decision function with ClusterCentroids, Resampling with ClusterCentroids
     :class: sphx-glr-single-img
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 127-129
+.. GENERATED FROM PYTHON SOURCE LINES 128-140
 
 Prototype selection: under-sampling by selecting existing samples
-##############################################################################
-
-.. GENERATED FROM PYTHON SOURCE LINES 131-134
+-----------------------------------------------------------------
 
 The algorithm performing prototype selection can be subdivided into two
 groups: (i) the controlled under-sampling methods and (ii) the cleaning
 under-sampling methods.
 
-.. GENERATED FROM PYTHON SOURCE LINES 137-141
-
 With the controlled under-sampling methods, the number of samples to be
-selected can be specified. ``RandomUnderSampler`` is the most naive way of
+selected can be specified.
+:class:`~imblearn.under_sampling.RandomUnderSampler` is the most naive way of
 performing such selection by randomly selecting a given number of samples by
 the targetted class.
 
-.. GENERATED FROM PYTHON SOURCE LINES 141-157
+.. GENERATED FROM PYTHON SOURCE LINES 142-161
 
 .. code-block:: default
 
+    from imblearn.under_sampling import RandomUnderSampler
 
-    fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(20, 6))
-    X, y = create_dataset(n_samples=5000, weights=(0.01, 0.05, 0.94), class_sep=0.8)
+    X, y = create_dataset(n_samples=400, weights=(0.05, 0.15, 0.8), class_sep=0.8)
 
-    clf = LinearSVC().fit(X, y)
-    plot_decision_function(X, y, clf, ax1)
-    ax1.set_title(f"Linear SVC with y={Counter(y)}")
-    sampler = RandomUnderSampler(random_state=0)
-    clf = make_pipeline(sampler, LinearSVC())
-    clf.fit(X, y)
-    plot_decision_function(X, y, clf, ax2)
-    ax2.set_title(f"Decision function for {sampler.__class__.__name__}")
-    plot_resampling(X, y, sampler, ax3)
-    ax3.set_title(f"Resampling using {sampler.__class__.__name__}")
+    samplers = {
+        FunctionSampler(),  # identity resampler
+        RandomUnderSampler(random_state=0),
+    }
+
+    fig, axs = plt.subplots(nrows=2, ncols=2, figsize=(15, 15))
+    for ax, sampler in zip(axs, samplers):
+        model = make_pipeline(sampler, clf).fit(X, y)
+        plot_decision_function(
+            X, y, model, ax[0], title=f"Decision function with {sampler.__class__.__name__}"
+        )
+        plot_resampling(X, y, sampler, ax[1])
+
     fig.tight_layout()
 
 
 
 
 .. image:: /auto_examples/under-sampling/images/sphx_glr_plot_comparison_under_sampling_002.png
-    :alt: Linear SVC with y=Counter({2: 4674, 1: 262, 0: 64}), Decision function for RandomUnderSampler, Resampling using RandomUnderSampler
+    :alt: Decision function with FunctionSampler, Resampling with FunctionSampler, Decision function with RandomUnderSampler, Resampling with RandomUnderSampler
     :class: sphx-glr-single-img
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 158-167
+.. GENERATED FROM PYTHON SOURCE LINES 162-172
 
-``NearMiss`` algorithms implement some heuristic rules in order to select
-samples. NearMiss-1 selects samples from the majority class for which the
-average distance of the :math:`k`` nearest samples of the minority class is
-the smallest. NearMiss-2 selects the samples from the majority class for
-which the average distance to the farthest samples of the negative class is
-the smallest. NearMiss-3 is a 2-step algorithm: first, for each minority
-sample, their ::math:`m` nearest-neighbors will be kept; then, the majority
-samples selected are the on for which the average distance to the :math:`k`
-nearest neighbors is the largest.
+:class:`~imblearn.under_sampling.NearMiss` algorithms implement some
+heuristic rules in order to select samples. NearMiss-1 selects samples from
+the majority class for which the average distance of the :math:`k`` nearest
+samples of the minority class is the smallest. NearMiss-2 selects the samples
+from the majority class for which the average distance to the farthest
+samples of the negative class is the smallest. NearMiss-3 is a 2-step
+algorithm: first, for each minority sample, their :math:`m`
+nearest-neighbors will be kept; then, the majority samples selected are the
+on for which the average distance to the :math:`k` nearest neighbors is the
+largest.
 
-.. GENERATED FROM PYTHON SOURCE LINES 167-185
+.. GENERATED FROM PYTHON SOURCE LINES 174-199
 
 .. code-block:: default
 
+    from imblearn.under_sampling import NearMiss
 
-    fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6)) = plt.subplots(3, 2, figsize=(15, 25))
-    X, y = create_dataset(n_samples=5000, weights=(0.1, 0.2, 0.7), class_sep=0.8)
+    X, y = create_dataset(n_samples=1000, weights=(0.05, 0.15, 0.8), class_sep=1.5)
 
-    ax_arr = ((ax1, ax2), (ax3, ax4), (ax5, ax6))
-    for ax, sampler in zip(
-        ax_arr, (NearMiss(version=1), NearMiss(version=2), NearMiss(version=3))
-    ):
-        clf = make_pipeline(sampler, LinearSVC())
-        clf.fit(X, y)
-        plot_decision_function(X, y, clf, ax[0])
-        ax[0].set_title(
-            f"Decision function for {sampler.__class__.__name__}-{sampler.version}"
+    samplers = [NearMiss(version=1), NearMiss(version=2), NearMiss(version=3)]
+
+    fig, axs = plt.subplots(nrows=3, ncols=2, figsize=(15, 25))
+    for ax, sampler in zip(axs, samplers):
+        model = make_pipeline(sampler, clf).fit(X, y)
+        plot_decision_function(
+            X,
+            y,
+            model,
+            ax[0],
+            title=f"Decision function for {sampler.__class__.__name__}-{sampler.version}",
         )
-        plot_resampling(X, y, sampler, ax[1])
-        ax[1].set_title(f"Resampling using {sampler.__class__.__name__}-{sampler.version}")
+        plot_resampling(
+            X,
+            y,
+            sampler,
+            ax[1],
+            title=f"Resampling using {sampler.__class__.__name__}-{sampler.version}",
+        )
     fig.tight_layout()
 
 
@@ -318,84 +336,100 @@ nearest neighbors is the largest.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 186-192
+.. GENERATED FROM PYTHON SOURCE LINES 200-208
 
-``EditedNearestNeighbours`` removes samples of the majority class for which
-their class differ from the one of their nearest-neighbors. This sieve can be
-repeated which is the principle of the
-``RepeatedEditedNearestNeighbours``. ``AllKNN`` is slightly different from
-the ``RepeatedEditedNearestNeighbours`` by changing the :math:`k` parameter
-of the internal nearest neighors algorithm, increasing it at each iteration.
+:class:`~imblearn.under_sampling.EditedNearestNeighbours` removes samples of
+the majority class for which their class differ from the one of their
+nearest-neighbors. This sieve can be repeated which is the principle of the
+:class:`~imblearn.under_sampling.RepeatedEditedNearestNeighbours`.
+:class:`~imblearn.under_sampling.AllKNN` is slightly different from the
+:class:`~imblearn.under_sampling.RepeatedEditedNearestNeighbours` by changing
+the :math:`k` parameter of the internal nearest neighors algorithm,
+increasing it at each iteration.
 
-.. GENERATED FROM PYTHON SOURCE LINES 192-213
+.. GENERATED FROM PYTHON SOURCE LINES 210-236
 
 .. code-block:: default
 
+    from imblearn.under_sampling import (
+        EditedNearestNeighbours,
+        RepeatedEditedNearestNeighbours,
+        AllKNN,
+    )
 
-    fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6)) = plt.subplots(3, 2, figsize=(15, 25))
     X, y = create_dataset(n_samples=500, weights=(0.2, 0.3, 0.5), class_sep=0.8)
 
-    ax_arr = ((ax1, ax2), (ax3, ax4), (ax5, ax6))
-    for ax, sampler in zip(
-        ax_arr,
-        (
-            EditedNearestNeighbours(),
-            RepeatedEditedNearestNeighbours(),
-            AllKNN(allow_minority=True),
-        ),
-    ):
-        clf = make_pipeline(sampler, LinearSVC())
-        clf.fit(X, y)
-        plot_decision_function(X, y, clf, ax[0])
-        ax[0].set_title(f"Decision function for {sampler.__class__.__name__}")
-        plot_resampling(X, y, sampler, ax[1])
-        ax[1].set_title(f"Resampling using {sampler.__class__.__name__}")
+    samplers = [
+        EditedNearestNeighbours(),
+        RepeatedEditedNearestNeighbours(),
+        AllKNN(allow_minority=True),
+    ]
+
+    fig, axs = plt.subplots(3, 2, figsize=(15, 25))
+    for ax, sampler in zip(axs, samplers):
+        model = make_pipeline(sampler, clf).fit(X, y)
+        plot_decision_function(
+            X, y, clf, ax[0], title=f"Decision function for \n{sampler.__class__.__name__}"
+        )
+        plot_resampling(
+            X, y, sampler, ax[1], title=f"Resampling using \n{sampler.__class__.__name__}"
+        )
+
     fig.tight_layout()
 
 
 
 
 .. image:: /auto_examples/under-sampling/images/sphx_glr_plot_comparison_under_sampling_004.png
-    :alt: Decision function for EditedNearestNeighbours, Resampling using EditedNearestNeighbours, Decision function for RepeatedEditedNearestNeighbours, Resampling using RepeatedEditedNearestNeighbours, Decision function for AllKNN, Resampling using AllKNN
+    :alt: Decision function for  EditedNearestNeighbours, Resampling using  EditedNearestNeighbours, Decision function for  RepeatedEditedNearestNeighbours, Resampling using  RepeatedEditedNearestNeighbours, Decision function for  AllKNN, Resampling using  AllKNN
     :class: sphx-glr-single-img
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 214-221
+.. GENERATED FROM PYTHON SOURCE LINES 237-248
 
-``CondensedNearestNeighbour`` makes use of a 1-NN to iteratively decide if a
-sample should be kept in a dataset or not. The issue is that
-``CondensedNearestNeighbour`` is sensitive to noise by preserving the noisy
-samples. ``OneSidedSelection`` also used the 1-NN and use ``TomekLinks`` to
-remove the samples considered noisy. The ``NeighbourhoodCleaningRule`` use a
-``EditedNearestNeighbours`` to remove some sample. Additionally, they use a 3
-nearest-neighbors to remove samples which do not agree with this rule.
+:class:`~imblearn.under_sampling.CondensedNearestNeighbour` makes use of a
+1-NN to iteratively decide if a sample should be kept in a dataset or not.
+The issue is that :class:`~imblearn.under_sampling.CondensedNearestNeighbour`
+is sensitive to noise by preserving the noisy samples.
+:class:`~imblearn.under_sampling.OneSidedSelection` also used the 1-NN and
+use :class:`~imblearn.under_sampling.TomekLinks` to remove the samples
+considered noisy. The
+:class:`~imblearn.under_sampling.NeighbourhoodCleaningRule` use a
+:class:`~imblearn.under_sampling.EditedNearestNeighbours` to remove some
+sample. Additionally, they use a 3 nearest-neighbors to remove samples which
+do not agree with this rule.
 
-.. GENERATED FROM PYTHON SOURCE LINES 221-242
+.. GENERATED FROM PYTHON SOURCE LINES 250-276
 
 .. code-block:: default
 
+    from imblearn.under_sampling import (
+        CondensedNearestNeighbour,
+        OneSidedSelection,
+        NeighbourhoodCleaningRule,
+    )
 
-    fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6)) = plt.subplots(3, 2, figsize=(15, 25))
     X, y = create_dataset(n_samples=500, weights=(0.2, 0.3, 0.5), class_sep=0.8)
 
-    ax_arr = ((ax1, ax2), (ax3, ax4), (ax5, ax6))
-    for ax, sampler in zip(
-        ax_arr,
-        (
-            CondensedNearestNeighbour(random_state=0),
-            OneSidedSelection(random_state=0),
-            NeighbourhoodCleaningRule(),
-        ),
-    ):
-        clf = make_pipeline(sampler, LinearSVC())
-        clf.fit(X, y)
-        plot_decision_function(X, y, clf, ax[0])
-        ax[0].set_title(f"Decision function for {sampler.__class__.__name__}")
-        plot_resampling(X, y, sampler, ax[1])
-        ax[1].set_title(f"Resampling using {sampler.__class__.__name__}")
+    fig, axs = plt.subplots(nrows=3, ncols=2, figsize=(15, 25))
+
+    samplers = [
+        CondensedNearestNeighbour(random_state=0),
+        OneSidedSelection(random_state=0),
+        NeighbourhoodCleaningRule(),
+    ]
+
+    for ax, sampler in zip(axs, samplers):
+        model = make_pipeline(sampler, clf).fit(X, y)
+        plot_decision_function(
+            X, y, clf, ax[0], title=f"Decision function for {sampler.__class__.__name__}"
+        )
+        plot_resampling(
+            X, y, sampler, ax[1], title=f"Resampling using {sampler.__class__.__name__}"
+        )
     fig.tight_layout()
 
 
@@ -409,41 +443,47 @@ nearest-neighbors to remove samples which do not agree with this rule.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 243-246
+.. GENERATED FROM PYTHON SOURCE LINES 277-280
 
-``InstanceHardnessThreshold`` uses the prediction of classifier to exclude
-samples. All samples which are classified with a low probability will be
-removed.
+:class:`~imblearn.under_sampling.InstanceHardnessThreshold` uses the
+prediction of classifier to exclude samples. All samples which are classified
+with a low probability will be removed.
 
-.. GENERATED FROM PYTHON SOURCE LINES 246-266
+.. GENERATED FROM PYTHON SOURCE LINES 282-308
 
 .. code-block:: default
 
+    from imblearn.under_sampling import InstanceHardnessThreshold
 
-    fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(20, 6))
-    X, y = create_dataset(n_samples=5000, weights=(0.01, 0.05, 0.94), class_sep=0.8)
+    samplers = {
+        FunctionSampler(),  # identity resampler
+        InstanceHardnessThreshold(
+            estimator=LogisticRegression(),
+            random_state=0,
+        ),
+    }
 
-    clf = LinearSVC().fit(X, y)
-    plot_decision_function(X, y, clf, ax1)
-    ax1.set_title(f"Linear SVC with y={Counter(y)}")
-    sampler = InstanceHardnessThreshold(
-        random_state=0,
-        estimator=LogisticRegression(solver="lbfgs", multi_class="auto"),
-    )
-    clf = make_pipeline(sampler, LinearSVC())
-    clf.fit(X, y)
-    plot_decision_function(X, y, clf, ax2)
-    ax2.set_title(f"Decision function for {sampler.__class__.__name__}")
-    plot_resampling(X, y, sampler, ax3)
-    ax3.set_title(f"Resampling using {sampler.__class__.__name__}")
+    fig, axs = plt.subplots(nrows=2, ncols=2, figsize=(15, 15))
+    for ax, sampler in zip(axs, samplers):
+        model = make_pipeline(sampler, clf).fit(X, y)
+        plot_decision_function(
+            X,
+            y,
+            model,
+            ax[0],
+            title=f"Decision function with \n{sampler.__class__.__name__}",
+        )
+        plot_resampling(
+            X, y, sampler, ax[1], title=f"Resampling using \n{sampler.__class__.__name__}"
+        )
+
     fig.tight_layout()
-
     plt.show()
 
 
 
 .. image:: /auto_examples/under-sampling/images/sphx_glr_plot_comparison_under_sampling_006.png
-    :alt: Linear SVC with y=Counter({2: 4674, 1: 262, 0: 64}), Decision function for InstanceHardnessThreshold, Resampling using InstanceHardnessThreshold
+    :alt: Decision function with  InstanceHardnessThreshold, Resampling using  InstanceHardnessThreshold, Decision function with  FunctionSampler, Resampling using  FunctionSampler
     :class: sphx-glr-single-img
 
 
@@ -453,9 +493,9 @@ removed.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  13.448 seconds)
+   **Total running time of the script:** ( 0 minutes  10.413 seconds)
 
-**Estimated memory usage:**  65 MB
+**Estimated memory usage:**  52 MB
 
 
 .. _sphx_glr_download_auto_examples_under-sampling_plot_comparison_under_sampling.py:

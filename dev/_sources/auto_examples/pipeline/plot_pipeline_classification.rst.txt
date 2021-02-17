@@ -18,40 +18,15 @@
 .. _sphx_glr_auto_examples_pipeline_plot_pipeline_classification.py:
 
 
-=========================
-Pipeline Object
-=========================
+====================================
+Usage of pipeline embedding samplers
+====================================
 
-An example of the Pipeline object working with transformers and resamplers.
+An example of the :class:~imblearn.pipeline.Pipeline` object (or
+:func:`~imblearn.pipeline.make_pipeline` helper function) working with
+transformers and resamplers.
 
-.. GENERATED FROM PYTHON SOURCE LINES 10-63
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out:
-
- .. code-block:: none
-
-
-                  precision    recall  f1-score   support
-
-               0       0.99      1.00      0.99       387
-               1       1.00      1.00      1.00       863
-
-        accuracy                           1.00      1250
-       macro avg       1.00      1.00      1.00      1250
-    weighted avg       1.00      1.00      1.00      1250
-
-
-
-
-
-
-
-|
+.. GENERATED FROM PYTHON SOURCE LINES 10-15
 
 .. code-block:: default
 
@@ -60,21 +35,37 @@ An example of the Pipeline object working with transformers and resamplers.
     #          Guillaume Lemaitre <g.lemaitre58@gmail.com>
     # License: MIT
 
-    from sklearn.model_selection import train_test_split as tts
-    from sklearn.datasets import make_classification
-    from sklearn.decomposition import PCA
-    from sklearn.metrics import classification_report
-    from sklearn.neighbors import KNeighborsClassifier as KNN
 
-    from imblearn.pipeline import make_pipeline
-    from imblearn.under_sampling import (
-        EditedNearestNeighbours,
-        RepeatedEditedNearestNeighbours,
-    )
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 16-18
+
+.. code-block:: default
 
     print(__doc__)
 
-    # Generate the dataset
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 19-20
+
+Let's first create an imbalanced dataset and split in to two sets.
+
+.. GENERATED FROM PYTHON SOURCE LINES 22-40
+
+.. code-block:: default
+
+    from sklearn.datasets import make_classification
+    from sklearn.model_selection import train_test_split
+
     X, y = make_classification(
         n_classes=2,
         class_sep=1.25,
@@ -88,31 +79,103 @@ An example of the Pipeline object working with transformers and resamplers.
         random_state=10,
     )
 
-    # Instanciate a PCA object for the sake of easy visualisation
+    X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, random_state=42)
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 41-42
+
+Now, we will create each individual steps that we would like later to combine
+
+.. GENERATED FROM PYTHON SOURCE LINES 44-54
+
+.. code-block:: default
+
+    from sklearn.decomposition import PCA
+    from sklearn.neighbors import KNeighborsClassifier
+    from imblearn.under_sampling import EditedNearestNeighbours
+    from imblearn.over_sampling import SMOTE
+
     pca = PCA(n_components=2)
-
-    # Create the samplers
     enn = EditedNearestNeighbours()
-    renn = RepeatedEditedNearestNeighbours()
+    smote = SMOTE(random_state=0)
+    knn = KNeighborsClassifier(n_neighbors=1)
 
-    # Create the classifier
-    knn = KNN(1)
 
-    # Make the splits
-    X_train, X_test, y_train, y_test = tts(X, y, random_state=42)
 
-    # Add one transformers and two samplers in the pipeline object
-    pipeline = make_pipeline(pca, enn, renn, knn)
 
-    pipeline.fit(X_train, y_train)
-    y_hat = pipeline.predict(X_test)
 
-    print(classification_report(y_test, y_hat))
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 55-58
+
+Now, we can finally create a pipeline to specify in which order the different
+transformers and samplers should be executed before to provide the data to
+the final classifier.
+
+.. GENERATED FROM PYTHON SOURCE LINES 60-64
+
+.. code-block:: default
+
+    from imblearn.pipeline import make_pipeline
+
+    model = make_pipeline(pca, enn, smote, knn)
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 65-68
+
+We can now use the pipeline created as a normal classifier where resampling
+will happen when calling `fit` and disabled when calling `decision_function`,
+`predict_proba`, or `predict`.
+
+.. GENERATED FROM PYTHON SOURCE LINES 70-75
+
+.. code-block:: default
+
+    from sklearn.metrics import classification_report
+
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_test)
+    print(classification_report(y_test, y_pred))
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+                  precision    recall  f1-score   support
+
+               0       0.99      0.99      0.99       375
+               1       1.00      1.00      1.00       875
+
+        accuracy                           0.99      1250
+       macro avg       0.99      0.99      0.99      1250
+    weighted avg       0.99      0.99      0.99      1250
+
+
+
+
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.421 seconds)
+   **Total running time of the script:** ( 0 minutes  1.408 seconds)
 
 **Estimated memory usage:**  10 MB
 

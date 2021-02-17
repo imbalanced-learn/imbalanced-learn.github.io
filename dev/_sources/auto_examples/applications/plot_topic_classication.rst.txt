@@ -27,7 +27,7 @@ This example shows how to balance the text data before to train a classifier.
 Note that for this example, the data are slightly imbalanced but it can happen
 that for some data sets, the imbalanced ratio is more significant.
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-29
+.. GENERATED FROM PYTHON SOURCE LINES 11-15
 
 .. code-block:: default
 
@@ -35,16 +35,16 @@ that for some data sets, the imbalanced ratio is more significant.
     # Authors: Guillaume Lemaitre <g.lemaitre58@gmail.com>
     # License: MIT
 
-    from collections import Counter
 
-    from sklearn.datasets import fetch_20newsgroups
-    from sklearn.feature_extraction.text import TfidfVectorizer
-    from sklearn.naive_bayes import MultinomialNB
-    from sklearn.pipeline import make_pipeline
 
-    from imblearn.under_sampling import RandomUnderSampler
-    from imblearn.pipeline import make_pipeline as make_pipeline_imb
-    from imblearn.metrics import classification_report_imbalanced
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 16-18
+
+.. code-block:: default
 
     print(__doc__)
 
@@ -55,12 +55,10 @@ that for some data sets, the imbalanced ratio is more significant.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 30-32
+.. GENERATED FROM PYTHON SOURCE LINES 19-27
 
 Setting the data set
-##############################################################################
-
-.. GENERATED FROM PYTHON SOURCE LINES 34-39
+--------------------
 
 We use a part of the 20 newsgroups data set by loading 4 topics. Using the
 scikit-learn loader, the data are split into a training and a testing set.
@@ -68,10 +66,11 @@ scikit-learn loader, the data are split into a training and a testing set.
 Note the class \#3 is the minority class and has almost twice less samples
 than the majority class.
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-58
+.. GENERATED FROM PYTHON SOURCE LINES 29-46
 
 .. code-block:: default
 
+    from sklearn.datasets import fetch_20newsgroups
 
     categories = [
         "alt.atheism",
@@ -88,8 +87,32 @@ than the majority class.
     y_train = newsgroups_train.target
     y_test = newsgroups_test.target
 
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 47-63
+
+.. code-block:: default
+
+    from collections import Counter
+
     print(f"Training class distributions summary: {Counter(y_train)}")
     print(f"Test class distributions summary: {Counter(y_test)}")
+
+    # % [markdown]
+    # The usual scikit-learn pipeline
+    # -------------------------------
+    #
+    # You might usually use scikit-learn pipeline by combining the TF-IDF
+    # vectorizer to feed a multinomial naive bayes classifier. A classification
+    # report summarized the results on the testing set.
+    #
+    # As expected, the recall of the class \#3 is low mainly due to the class
+    # imbalanced.
 
 
 
@@ -107,28 +130,30 @@ than the majority class.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-61
-
-The usual scikit-learn pipeline
-##############################################################################
-
-.. GENERATED FROM PYTHON SOURCE LINES 63-69
-
-You might usually use scikit-learn pipeline by combining the TF-IDF
-vectorizer to feed a multinomial naive bayes classifier. A classification
-report summarized the results on the testing set.
-
-As expected, the recall of the class \#3 is low mainly due to the class
-imbalanced.
-
-.. GENERATED FROM PYTHON SOURCE LINES 69-76
+.. GENERATED FROM PYTHON SOURCE LINES 64-72
 
 .. code-block:: default
 
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.naive_bayes import MultinomialNB
+    from sklearn.pipeline import make_pipeline
 
-    pipe = make_pipeline(TfidfVectorizer(), MultinomialNB())
-    pipe.fit(X_train, y_train)
-    y_pred = pipe.predict(X_test)
+    model = make_pipeline(TfidfVectorizer(), MultinomialNB())
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_test)
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 73-77
+
+.. code-block:: default
+
+    from imblearn.metrics import classification_report_imbalanced
 
     print(classification_report_imbalanced(y_test, y_pred))
 
@@ -155,49 +180,49 @@ imbalanced.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 77-79
+.. GENERATED FROM PYTHON SOURCE LINES 78-89
 
 Balancing the class before classification
-##############################################################################
-
-.. GENERATED FROM PYTHON SOURCE LINES 81-88
+-----------------------------------------
 
 To improve the prediction of the class \#3, it could be interesting to apply
 a balancing before to train the naive bayes classifier. Therefore, we will
-use a ``RandomUnderSampler`` to equalize the number of samples in all the
-classes before the training.
+use a :class:`~imblearn.under_sampling.RandomUnderSampler` to equalize the
+number of samples in all the classes before the training.
 
-It is also important to note that we are using the ``make_pipeline`` function
-implemented in imbalanced-learn to properly handle the samplers.
+It is also important to note that we are using the
+:class:`~imblearn.pipeline.make_pipeline` function implemented in
+imbalanced-learn to properly handle the samplers.
 
-.. GENERATED FROM PYTHON SOURCE LINES 88-94
+.. GENERATED FROM PYTHON SOURCE LINES 91-99
 
 .. code-block:: default
 
+    from imblearn.under_sampling import RandomUnderSampler
+    from imblearn.pipeline import make_pipeline as make_pipeline_imb
 
-    pipe = make_pipeline_imb(TfidfVectorizer(), RandomUnderSampler(), MultinomialNB())
+    model = make_pipeline_imb(TfidfVectorizer(), RandomUnderSampler(), MultinomialNB())
 
-    pipe.fit(X_train, y_train)
-    y_pred = pipe.predict(X_test)
-
-
-
-
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_test)
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 95-99
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 100-104
 
 Although the results are almost identical, it can be seen that the resampling
 allowed to correct the poor recall of the class \#3 at the cost of reducing
 the other metrics for the other classes. However, the overall results are
 slightly better.
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-101
+.. GENERATED FROM PYTHON SOURCE LINES 106-107
 
 .. code-block:: default
-
 
     print(classification_report_imbalanced(y_test, y_pred))
 
@@ -212,12 +237,12 @@ slightly better.
 
                        pre       rec       spe        f1       geo       iba       sup
 
-              0       0.71      0.89      0.89      0.79      0.89      0.79       319
-              1       0.98      0.85      0.99      0.91      0.92      0.83       389
-              2       0.94      0.90      0.97      0.92      0.94      0.87       394
-              3       0.78      0.73      0.95      0.75      0.83      0.68       251
+              0       0.70      0.89      0.88      0.78      0.88      0.78       319
+              1       0.98      0.83      0.99      0.89      0.90      0.80       389
+              2       0.93      0.90      0.97      0.92      0.94      0.87       394
+              3       0.78      0.74      0.95      0.76      0.84      0.69       251
 
-    avg / total       0.87      0.85      0.96      0.86      0.90      0.81      1353
+    avg / total       0.86      0.85      0.95      0.85      0.90      0.80      1353
 
 
 
@@ -226,9 +251,9 @@ slightly better.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  9.531 seconds)
+   **Total running time of the script:** ( 0 minutes  11.048 seconds)
 
-**Estimated memory usage:**  107 MB
+**Estimated memory usage:**  112 MB
 
 
 .. _sphx_glr_download_auto_examples_applications_plot_topic_classication.py:

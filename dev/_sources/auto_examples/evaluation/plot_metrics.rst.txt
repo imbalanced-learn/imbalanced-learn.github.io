@@ -23,11 +23,11 @@ Metrics specific to imbalanced learning
 =======================================
 
 Specific metrics have been developed to evaluate classifier which
-has been trained using imbalanced data. `imblearn` provides mainly
-two additional metrics which are not implemented in `sklearn`: (i)
+has been trained using imbalanced data. :mod:`imblearn` provides mainly
+two additional metrics which are not implemented in :mod:`sklearn`: (i)
 geometric mean and (ii) index balanced accuracy.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-54
+.. GENERATED FROM PYTHON SOURCE LINES 11-15
 
 .. code-block:: default
 
@@ -35,20 +35,39 @@ geometric mean and (ii) index balanced accuracy.
     # Authors: Guillaume Lemaitre <g.lemaitre58@gmail.com>
     # License: MIT
 
-    from sklearn import datasets
-    from sklearn.svm import LinearSVC
-    from sklearn.model_selection import train_test_split
 
-    from imblearn import over_sampling as os
-    from imblearn import pipeline as pl
-    from imblearn.metrics import geometric_mean_score, make_index_balanced_accuracy
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 16-20
+
+.. code-block:: default
 
     print(__doc__)
 
     RANDOM_STATE = 42
 
-    # Generate a dataset
-    X, y = datasets.make_classification(
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 21-22
+
+First, we will generate some imbalanced dataset.
+
+.. GENERATED FROM PYTHON SOURCE LINES 24-39
+
+.. code-block:: default
+
+    from sklearn.datasets import make_classification
+
+    X, y = make_classification(
         n_classes=3,
         class_sep=2,
         weights=[0.1, 0.9],
@@ -61,18 +80,71 @@ geometric mean and (ii) index balanced accuracy.
         random_state=RANDOM_STATE,
     )
 
-    pipeline = pl.make_pipeline(
-        os.SMOTE(random_state=RANDOM_STATE), LinearSVC(random_state=RANDOM_STATE)
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 40-41
+
+We will split the data into a training and testing set.
+
+.. GENERATED FROM PYTHON SOURCE LINES 43-49
+
+.. code-block:: default
+
+    from sklearn.model_selection import train_test_split
+
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, stratify=y, random_state=RANDOM_STATE
     )
 
-    # Split the data
-    X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=RANDOM_STATE)
 
-    # Train the classifier with balancing
-    pipeline.fit(X_train, y_train)
 
-    # Test the classifier and get the prediction
-    y_pred_bal = pipeline.predict(X_test)
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 50-52
+
+We will create a pipeline made of a :class:`~imblearn.over_sampling.SMOTE`
+over-sampler followed by a :class:`~sklearn.svm.LinearSVC` classifier.
+
+.. GENERATED FROM PYTHON SOURCE LINES 54-62
+
+.. code-block:: default
+
+    from imblearn.pipeline import make_pipeline
+    from imblearn.over_sampling import SMOTE
+    from sklearn.svm import LinearSVC
+
+    model = make_pipeline(
+        SMOTE(random_state=RANDOM_STATE), LinearSVC(random_state=RANDOM_STATE)
+    )
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 63-67
+
+Now, we will train the model on the training set and get the prediction
+associated with the testing set. Be aware that the resampling will happen
+only when calling `fit`: the number of samples in `y_pred` is the same than
+in `y_test`.
+
+.. GENERATED FROM PYTHON SOURCE LINES 69-72
+
+.. code-block:: default
+
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_test)
 
 
 
@@ -83,7 +155,6 @@ geometric mean and (ii) index balanced accuracy.
  Out:
 
  .. code-block:: none
-
 
     /home/circleci/miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/svm/_base.py:985: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
       warnings.warn("Liblinear failed to converge, increase "
@@ -91,18 +162,19 @@ geometric mean and (ii) index balanced accuracy.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 55-58
+.. GENERATED FROM PYTHON SOURCE LINES 73-76
 
 The geometric mean corresponds to the square root of the product of the
 sensitivity and specificity. Combining the two metrics should account for
 the balancing of the dataset.
 
-.. GENERATED FROM PYTHON SOURCE LINES 58-61
+.. GENERATED FROM PYTHON SOURCE LINES 78-82
 
 .. code-block:: default
 
+    from imblearn.metrics import geometric_mean_score
 
-    print(f"The geometric mean is {geometric_mean_score(y_test, y_pred_bal)}")
+    print(f"The geometric mean is {geometric_mean_score(y_test, y_pred):.3f}")
 
 
 
@@ -114,35 +186,55 @@ the balancing of the dataset.
 
  .. code-block:: none
 
-    The geometric mean is 0.9262633940760341
+    The geometric mean is 0.938
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 62-64
+.. GENERATED FROM PYTHON SOURCE LINES 83-85
 
 The index balanced accuracy can transform any metric to be used in
 imbalanced learning problems.
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-80
+.. GENERATED FROM PYTHON SOURCE LINES 87-97
 
 .. code-block:: default
 
+    from imblearn.metrics import make_index_balanced_accuracy
 
     alpha = 0.1
     geo_mean = make_index_balanced_accuracy(alpha=alpha, squared=True)(geometric_mean_score)
 
     print(
-        f"The IBA using alpha = {alpha} and the geometric mean: "
-        f"{geo_mean(y_test, y_pred_bal)}"
+        f"The IBA using alpha={alpha} and the geometric mean: "
+        f"{geo_mean(y_test, y_pred):.3f}"
     )
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    The IBA using alpha=0.1 and the geometric mean: 0.880
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 98-105
+
+.. code-block:: default
 
     alpha = 0.5
     geo_mean = make_index_balanced_accuracy(alpha=alpha, squared=True)(geometric_mean_score)
 
     print(
-        f"The IBA using alpha = {alpha} and the geometric mean: "
-        f"{geo_mean(y_test, y_pred_bal)}"
+        f"The IBA using alpha={alpha} and the geometric mean: "
+        f"{geo_mean(y_test, y_pred):.3f}"
     )
 
 
@@ -154,8 +246,7 @@ imbalanced learning problems.
 
  .. code-block:: none
 
-    The IBA using alpha = 0.1 and the geometric mean: 0.8579638752052544
-    The IBA using alpha = 0.5 and the geometric mean: 0.8579638752052544
+    The IBA using alpha=0.5 and the geometric mean: 0.880
 
 
 
@@ -163,7 +254,7 @@ imbalanced learning problems.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.974 seconds)
+   **Total running time of the script:** ( 0 minutes  1.939 seconds)
 
 **Estimated memory usage:**  8 MB
 
