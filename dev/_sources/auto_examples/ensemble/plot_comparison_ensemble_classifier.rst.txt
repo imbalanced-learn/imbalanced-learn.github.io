@@ -22,7 +22,7 @@
 Compare ensemble classifiers using resampling
 =============================================
 
-Ensembling classifiers have shown to improve classification performance compare
+Ensemble classifiers have shown to improve classification performance compare
 to single learner. However, they will be affected by class imbalance. This
 example shows the benefit of balancing the training set before to learn
 learners. We are making the comparison with non-balanced ensemble methods.
@@ -31,7 +31,7 @@ We make a comparison using the balanced accuracy and geometric mean which are
 metrics widely used in the literature to evaluate models learned on imbalanced
 set.
 
-.. GENERATED FROM PYTHON SOURCE LINES 16-20
+.. GENERATED FROM PYTHON SOURCE LINES 15-19
 
 .. code-block:: default
 
@@ -46,7 +46,7 @@ set.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 21-23
+.. GENERATED FROM PYTHON SOURCE LINES 20-22
 
 .. code-block:: default
 
@@ -59,7 +59,7 @@ set.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 24-30
+.. GENERATED FROM PYTHON SOURCE LINES 23-29
 
 Load an imbalanced dataset
 --------------------------
@@ -68,7 +68,7 @@ We will load the UCI SatImage dataset which has an imbalanced ratio of 9.3:1
 (number of majority sample for a minority sample). The data are then split
 into training and testing.
 
-.. GENERATED FROM PYTHON SOURCE LINES 32-39
+.. GENERATED FROM PYTHON SOURCE LINES 31-38
 
 .. code-block:: default
 
@@ -86,7 +86,7 @@ into training and testing.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-49
+.. GENERATED FROM PYTHON SOURCE LINES 39-48
 
 Classification using a single decision tree
 -------------------------------------------
@@ -98,7 +98,7 @@ The results are reported in terms of balanced accuracy and geometric mean
 which are metrics widely used in the literature to validate model trained on
 imbalanced set.
 
-.. GENERATED FROM PYTHON SOURCE LINES 51-57
+.. GENERATED FROM PYTHON SOURCE LINES 50-56
 
 .. code-block:: default
 
@@ -115,7 +115,7 @@ imbalanced set.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 58-67
+.. GENERATED FROM PYTHON SOURCE LINES 57-66
 
 .. code-block:: default
 
@@ -139,12 +139,12 @@ imbalanced set.
  .. code-block:: none
 
     Decision tree classifier performance:
-    Balanced accuracy: 0.76 - Geometric mean 0.73
+    Balanced accuracy: 0.74 - Geometric mean 0.71
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 68-76
+.. GENERATED FROM PYTHON SOURCE LINES 67-75
 
 .. code-block:: default
 
@@ -167,7 +167,7 @@ imbalanced set.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 77-84
+.. GENERATED FROM PYTHON SOURCE LINES 76-83
 
 Classification using bagging classifier with and without sampling
 -----------------------------------------------------------------
@@ -177,7 +177,7 @@ can actually alleviate the issue induced by the class imbalancing. First, we
 will use a bagging classifier and its counter part which internally uses a
 random under-sampling to balanced each boostrap sample.
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-98
+.. GENERATED FROM PYTHON SOURCE LINES 85-97
 
 .. code-block:: default
 
@@ -200,12 +200,12 @@ random under-sampling to balanced each boostrap sample.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-101
+.. GENERATED FROM PYTHON SOURCE LINES 98-100
 
 Balancing each bootstrap sample allows to increase significantly the balanced
 accuracy and the geometric mean.
 
-.. GENERATED FROM PYTHON SOURCE LINES 103-114
+.. GENERATED FROM PYTHON SOURCE LINES 102-113
 
 .. code-block:: default
 
@@ -238,7 +238,7 @@ accuracy and the geometric mean.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 115-126
+.. GENERATED FROM PYTHON SOURCE LINES 114-125
 
 .. code-block:: default
 
@@ -264,7 +264,7 @@ accuracy and the geometric mean.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 127-133
+.. GENERATED FROM PYTHON SOURCE LINES 126-132
 
 Classification using random forest classifier with and without sampling
 -----------------------------------------------------------------------
@@ -273,7 +273,7 @@ Random forest is another popular ensemble method and it is usually
 outperforming bagging. Here, we used a vanilla random forest and its balanced
 counterpart in which each bootstrap sample is balanced.
 
-.. GENERATED FROM PYTHON SOURCE LINES 135-147
+.. GENERATED FROM PYTHON SOURCE LINES 134-146
 
 .. code-block:: default
 
@@ -296,13 +296,13 @@ counterpart in which each bootstrap sample is balanced.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 148-151
+.. GENERATED FROM PYTHON SOURCE LINES 147-150
 
 Similarly to the previous experiment, the balanced classifier outperform the
 classifier which learn from imbalanced bootstrap samples. In addition, random
 forest outsperforms the bagging classifier.
 
-.. GENERATED FROM PYTHON SOURCE LINES 153-164
+.. GENERATED FROM PYTHON SOURCE LINES 152-163
 
 .. code-block:: default
 
@@ -335,7 +335,7 @@ forest outsperforms the bagging classifier.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 165-174
+.. GENERATED FROM PYTHON SOURCE LINES 164-173
 
 .. code-block:: default
 
@@ -359,7 +359,7 @@ forest outsperforms the bagging classifier.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 175-181
+.. GENERATED FROM PYTHON SOURCE LINES 174-180
 
 Boosting classifier
 -------------------
@@ -368,7 +368,7 @@ In the same manner, easy ensemble classifier is a bag of balanced AdaBoost
 classifier. However, it will be slower to train than random forest and will
 achieve worse performance.
 
-.. GENERATED FROM PYTHON SOURCE LINES 183-195
+.. GENERATED FROM PYTHON SOURCE LINES 182-194
 
 .. code-block:: default
 
@@ -391,7 +391,7 @@ achieve worse performance.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 196-207
+.. GENERATED FROM PYTHON SOURCE LINES 195-206
 
 .. code-block:: default
 
@@ -417,14 +417,14 @@ achieve worse performance.
  .. code-block:: none
 
     Easy ensemble classifier performance:
-    Balanced accuracy: 0.84 - Geometric mean 0.84
+    Balanced accuracy: 0.85 - Geometric mean 0.85
     RUSBoost classifier performance:
-    Balanced accuracy: 0.84 - Geometric mean 0.84
+    Balanced accuracy: 0.85 - Geometric mean 0.85
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 208-217
+.. GENERATED FROM PYTHON SOURCE LINES 207-216
 
 .. code-block:: default
 
@@ -451,9 +451,9 @@ achieve worse performance.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  11.367 seconds)
+   **Total running time of the script:** ( 0 minutes  12.652 seconds)
 
-**Estimated memory usage:**  212 MB
+**Estimated memory usage:**  215 MB
 
 
 .. _sphx_glr_download_auto_examples_ensemble_plot_comparison_ensemble_classifier.py:

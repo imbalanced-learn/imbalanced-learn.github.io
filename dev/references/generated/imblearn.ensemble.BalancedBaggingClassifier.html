@@ -293,11 +293,14 @@
 <h1>BalancedBaggingClassifier<a class="headerlink" href="#balancedbaggingclassifier" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="imblearn.ensemble.BalancedBaggingClassifier">
-<em class="property">class </em><code class="sig-prename descclassname">imblearn.ensemble.</code><code class="sig-name descname">BalancedBaggingClassifier</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_estimator</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">n_estimators</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">max_samples</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">max_features</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">bootstrap</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">bootstrap_features</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">oob_score</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">warm_start</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">sampling_strategy</span><span class="o">=</span><span class="default_value">'auto'</span></em>, <em class="sig-param"><span class="n">replacement</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/76abfa4/imblearn/ensemble/_bagging.py#L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedBaggingClassifier" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">imblearn.ensemble.</code><code class="sig-name descname">BalancedBaggingClassifier</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_estimator</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">n_estimators</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">max_samples</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">max_features</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">bootstrap</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">bootstrap_features</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">oob_score</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">warm_start</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">sampling_strategy</span><span class="o">=</span><span class="default_value">'auto'</span></em>, <em class="sig-param"><span class="n">replacement</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">sampler</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/aa1add3/imblearn/ensemble/_bagging.py#L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedBaggingClassifier" title="Permalink to this definition">¶</a></dt>
 <dd><p>A Bagging classifier with additional balancing.</p>
 <p>This implementation of Bagging is similar to the scikit-learn
 implementation. It includes an additional step to balance the training set
-at fit time using a <code class="docutils literal notranslate"><span class="pre">RandomUnderSampler</span></code>.</p>
+at fit time using a given sampler.</p>
+<p>This classifier can serves as a basis to implement various methods such as
+Exactly Balanced Bagging <a class="reference internal" href="#r5842b76a7f01-6" id="id1">[6]</a>, Roughly Balanced Bagging <a class="reference internal" href="#r5842b76a7f01-7" id="id2">[7]</a>,
+Over-Bagging <a class="reference internal" href="#r5842b76a7f01-6" id="id3">[6]</a>, or SMOTE-Bagging <a class="reference internal" href="#r5842b76a7f01-8" id="id4">[8]</a>.</p>
 <p>Read more in the <a class="reference internal" href="../../ensemble.html#bagging"><span class="std std-ref">User Guide</span></a>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -320,6 +323,11 @@ If None, then the base estimator is a decision tree.</p>
 </ul>
 </dd>
 <dt><strong>bootstrap</strong><span class="classifier">bool, default=True</span></dt><dd><p>Whether samples are drawn with replacement.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that this bootstrap will be generated from the resampled
+dataset.</p>
+</div>
 </dd>
 <dt><strong>bootstrap_features</strong><span class="classifier">bool, default=False</span></dt><dd><p>Whether features are drawn with replacement.</p>
 </dd>
@@ -364,7 +372,9 @@ correspond to the targeted classes. The values correspond to the
 desired number of samples for each class.</p></li>
 </ul>
 </dd>
-<dt><strong>replacement</strong><span class="classifier">bool, default=False</span></dt><dd><p>Whether or not to sample randomly with replacement or not.</p>
+<dt><strong>replacement</strong><span class="classifier">bool, default=False</span></dt><dd><p>Whether or not to randomly sample with replacement or not when
+<code class="docutils literal notranslate"><span class="pre">sampler</span> <span class="pre">is</span> <span class="pre">None</span></code>, corresponding to a
+<a class="reference internal" href="imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="imblearn.under_sampling.RandomUnderSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomUnderSampler</span></code></a>.</p>
 </dd>
 <dt><strong>n_jobs</strong><span class="classifier">int, default=None</span></dt><dd><p>Number of CPU cores used during the cross-validation loop.
 <code class="docutils literal notranslate"><span class="pre">None</span></code> means 1 unless in a <code class="xref py py-obj docutils literal notranslate"><span class="pre">joblib.parallel_backend</span></code> context.
@@ -383,6 +393,13 @@ instance used by <code class="docutils literal notranslate"><span class="pre">np
 </ul>
 </dd>
 <dt><strong>verbose</strong><span class="classifier">int, default=0</span></dt><dd><p>Controls the verbosity of the building process.</p>
+</dd>
+<dt><strong>sampler</strong><span class="classifier">sampler object, default=None</span></dt><dd><p>The sampler used to balanced the dataset before to bootstrap
+(if <code class="docutils literal notranslate"><span class="pre">bootstrap=True</span></code>) and <code class="docutils literal notranslate"><span class="pre">fit</span></code> a base estimator. By default, a
+<a class="reference internal" href="imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="imblearn.under_sampling.RandomUnderSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomUnderSampler</span></code></a> is used.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.8.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -424,7 +441,7 @@ was never left out during the bootstrap. In this case,
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>This is possible to turn this classifier into a balanced random forest <a class="reference internal" href="#r5842b76a7f01-5" id="id1">[5]</a>
+<p>This is possible to turn this classifier into a balanced random forest <a class="reference internal" href="#r5842b76a7f01-5" id="id5">[5]</a>
 by passing a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier" title="(in scikit-learn v0.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code></a> with
 <code class="docutils literal notranslate"><span class="pre">max_features='auto'</span></code> as a base estimator.</p>
 <p>See
@@ -448,10 +465,24 @@ forests”, Pattern Analysis and Machine Intelligence, 20(8), 832-844,
 <dd><p>G. Louppe and P. Geurts, “Ensembles on Random Patches”, Machine
 Learning and Knowledge Discovery in Databases, 346-361, 2012.</p>
 </dd>
-<dt class="label" id="r5842b76a7f01-5"><span class="brackets"><a class="fn-backref" href="#id1">5</a></span></dt>
-<dd><p>Chen, Chao, Andy Liaw, and Leo Breiman. “Using random forest to
+<dt class="label" id="r5842b76a7f01-5"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
+<dd><p>C. Chen Chao, A. Liaw, and L. Breiman. “Using random forest to
 learn imbalanced data.” University of California, Berkeley 110,
 2004.</p>
+</dd>
+<dt class="label" id="r5842b76a7f01-6"><span class="brackets">6</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id3">2</a>)</span></dt>
+<dd><p>R. Maclin, and D. Opitz. “An empirical evaluation of bagging and
+boosting.” AAAI/IAAI 1997 (1997): 546-551.</p>
+</dd>
+<dt class="label" id="r5842b76a7f01-7"><span class="brackets"><a class="fn-backref" href="#id2">7</a></span></dt>
+<dd><p>S. Hido, H. Kashima, and Y. Takahashi. “Roughly balanced bagging
+for imbalanced data.” Statistical Analysis and Data Mining: The ASA
+Data Science Journal 2.5‐6 (2009): 412-426.</p>
+</dd>
+<dt class="label" id="r5842b76a7f01-8"><span class="brackets"><a class="fn-backref" href="#id4">8</a></span></dt>
+<dd><p>S. Wang, and X. Yao. “Diversity analysis on imbalanced data sets by
+using ensemble models.” 2009 IEEE symposium on computational
+intelligence and data mining. IEEE, 2009.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -511,7 +542,7 @@ learn imbalanced data.” University of California, Berkeley 110,
 </table>
 <dl class="py method">
 <dt id="imblearn.ensemble.BalancedBaggingClassifier.decision_function">
-<code class="sig-name descname">decision_function</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/76abfa4/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/utils/metaestimators.py#L792"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedBaggingClassifier.decision_function" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">decision_function</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/aa1add3/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/utils/metaestimators.py#L792"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedBaggingClassifier.decision_function" title="Permalink to this definition">¶</a></dt>
 <dd><p>Average of the decision functions of the base classifiers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -547,7 +578,7 @@ data. Thus fetching the property may be slower than expected.</p>
 
 <dl class="py method">
 <dt id="imblearn.ensemble.BalancedBaggingClassifier.fit">
-<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/76abfa4/imblearn/ensemble/_bagging.py#L263"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedBaggingClassifier.fit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/aa1add3/imblearn/ensemble/_bagging.py#L293"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedBaggingClassifier.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build a Bagging ensemble of estimators from the training set (X, y).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -569,7 +600,7 @@ data. Thus fetching the property may be slower than expected.</p>
 
 <dl class="py method">
 <dt id="imblearn.ensemble.BalancedBaggingClassifier.get_params">
-<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">deep</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/76abfa4/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/base.py#L178"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedBaggingClassifier.get_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">deep</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/aa1add3/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/base.py#L178"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedBaggingClassifier.get_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -590,7 +621,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt id="imblearn.ensemble.BalancedBaggingClassifier.predict">
-<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/76abfa4/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/ensemble/_bagging.py#L659"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedBaggingClassifier.predict" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/aa1add3/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/ensemble/_bagging.py#L659"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedBaggingClassifier.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict class for X.</p>
 <p>The predicted class of an input sample is computed as the class with
 the highest mean predicted probability. If base estimators do not
@@ -614,7 +645,7 @@ they are supported by the base estimator.</p>
 
 <dl class="py method">
 <dt id="imblearn.ensemble.BalancedBaggingClassifier.predict_log_proba">
-<code class="sig-name descname">predict_log_proba</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/76abfa4/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/ensemble/_bagging.py#L734"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedBaggingClassifier.predict_log_proba" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">predict_log_proba</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/aa1add3/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/ensemble/_bagging.py#L734"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedBaggingClassifier.predict_log_proba" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict class log-probabilities for X.</p>
 <p>The predicted class log-probabilities of an input sample is computed as
 the log of the mean predicted class probabilities of the base
@@ -639,7 +670,7 @@ classes corresponds to that in the attribute <a class="reference external" href=
 
 <dl class="py method">
 <dt id="imblearn.ensemble.BalancedBaggingClassifier.predict_proba">
-<code class="sig-name descname">predict_proba</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/76abfa4/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/ensemble/_bagging.py#L681"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedBaggingClassifier.predict_proba" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">predict_proba</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/aa1add3/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/ensemble/_bagging.py#L681"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedBaggingClassifier.predict_proba" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict class probabilities for X.</p>
 <p>The predicted class probabilities of an input sample is computed as
 the mean predicted class probabilities of the base estimators in the
@@ -667,7 +698,7 @@ classes corresponds to that in the attribute <a class="reference external" href=
 
 <dl class="py method">
 <dt id="imblearn.ensemble.BalancedBaggingClassifier.score">
-<code class="sig-name descname">score</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">sample_weight</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/76abfa4/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/base.py#L475"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedBaggingClassifier.score" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">score</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">sample_weight</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/aa1add3/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/base.py#L475"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedBaggingClassifier.score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the mean accuracy on the given test data and labels.</p>
 <p>In multi-label classification, this is the subset accuracy
 which is a harsh metric since you require for each sample that
@@ -694,7 +725,7 @@ each label set be correctly predicted.</p>
 
 <dl class="py method">
 <dt id="imblearn.ensemble.BalancedBaggingClassifier.set_params">
-<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">params</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/76abfa4/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/base.py#L202"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedBaggingClassifier.set_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">params</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/aa1add3/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/base.py#L202"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#imblearn.ensemble.BalancedBaggingClassifier.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v0.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>). The latter have
@@ -720,13 +751,17 @@ possible to update each component of a nested object.</p>
 
 <div class="section" id="examples-using-imblearn-ensemble-balancedbaggingclassifier">
 <h2>Examples using <code class="docutils literal notranslate"><span class="pre">imblearn.ensemble.BalancedBaggingClassifier</span></code><a class="headerlink" href="#examples-using-imblearn-ensemble-balancedbaggingclassifier" title="Permalink to this headline">¶</a></h2>
-<div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the problem induced by learning on datasets having imbalanced classes...."><div class="figure align-default" id="id7">
+<div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the problem induced by learning on datasets having imbalanced classes...."><div class="figure align-default" id="id14">
 <img alt="Fitting model on imbalanced datasets and how to fight bias" src="../../_images/sphx_glr_plot_impact_imbalanced_classes_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/applications/plot_impact_imbalanced_classes.html#sphx-glr-auto-examples-applications-plot-impact-imbalanced-classes-py"><span class="std std-ref">Fitting model on imbalanced datasets and how to fight bias</span></a></span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/applications/plot_impact_imbalanced_classes.html#sphx-glr-auto-examples-applications-plot-impact-imbalanced-classes-py"><span class="std std-ref">Fitting model on imbalanced datasets and how to fight bias</span></a></span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Ensembling classifiers have shown to improve classification performance compare to single learn..."><div class="figure align-default" id="id8">
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how BalancedBaggingClassifier can be used to create a large variety of..."><div class="figure align-default" id="id15">
+<img alt="Bagging classifiers using sampler" src="../../_images/sphx_glr_plot_bagging_classifier_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/ensemble/plot_bagging_classifier.html#sphx-glr-auto-examples-ensemble-plot-bagging-classifier-py"><span class="std std-ref">Bagging classifiers using sampler</span></a></span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Ensemble classifiers have shown to improve classification performance compare to single learner..."><div class="figure align-default" id="id16">
 <img alt="Compare ensemble classifiers using resampling" src="../../_images/sphx_glr_plot_comparison_ensemble_classifier_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/ensemble/plot_comparison_ensemble_classifier.html#sphx-glr-auto-examples-ensemble-plot-comparison-ensemble-classifier-py"><span class="std std-ref">Compare ensemble classifiers using resampling</span></a></span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/ensemble/plot_comparison_ensemble_classifier.html#sphx-glr-auto-examples-ensemble-plot-comparison-ensemble-classifier-py"><span class="std std-ref">Compare ensemble classifiers using resampling</span></a></span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
 </div>
 </div><div style='clear:both'></div></div>
 </div>
