@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Combination of over- and under-sampling methods &#8212; Version 0.9.0.dev0</title>
+    <title>Version 0.9.0 (under development) &#8212; Version 0.9.0.dev0</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.951c8c8e3af89de180a2f03968e0e7cb.css" rel="stylesheet" />
@@ -46,8 +46,6 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="SMOTEENN" href="generated/imblearn.combine.SMOTEENN.html" />
-    <link rel="prev" title="SVMSMOTE" href="generated/imblearn.over_sampling.SVMSMOTE.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
   </head>
@@ -84,8 +82,8 @@
  </a>
 </li>
 
-<li class="toctree-l1 current active nav-item">
- <a class="reference internal nav-link" href="index.html">
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../references/index.html">
   API reference
  </a>
 </li>
@@ -151,84 +149,7 @@
 </div><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <div class="bd-toc-item active">
     <ul class="nav bd-sidenav">
-      <li class="toctree-l2">
- <a class="reference internal" href="under_sampling.html">
-  Under-sampling methods
- </a>
-</li>
-
-<li class="toctree-l2">
- <a class="reference internal" href="over_sampling.html">
-  Over-sampling methods
- </a>
-</li>
-
-<li class="toctree-l2 current active">
- <a class="current reference internal" href="#">
-  Combination of over- and under-sampling methods
- </a>
- <ul>
-  <li class="toctree-l3">
-   <a class="reference internal" href="generated/imblearn.combine.SMOTEENN.html">
-    SMOTEENN
-   </a>
-  </li>
-  <li class="toctree-l3">
-   <a class="reference internal" href="generated/imblearn.combine.SMOTETomek.html">
-    SMOTETomek
-   </a>
-  </li>
- </ul>
-</li>
-
-<li class="toctree-l2">
- <a class="reference internal" href="ensemble.html">
-  Ensemble methods
- </a>
-</li>
-
-<li class="toctree-l2">
- <a class="reference internal" href="keras.html">
-  Batch generator for Keras
- </a>
-</li>
-
-<li class="toctree-l2">
- <a class="reference internal" href="tensorflow.html">
-  Batch generator for TensorFlow
- </a>
-</li>
-
-<li class="toctree-l2">
- <a class="reference internal" href="miscellaneous.html">
-  Miscellaneous
- </a>
-</li>
-
-<li class="toctree-l2">
- <a class="reference internal" href="pipeline.html">
-  Pipeline
- </a>
-</li>
-
-<li class="toctree-l2">
- <a class="reference internal" href="metrics.html">
-  Metrics
- </a>
-</li>
-
-<li class="toctree-l2">
- <a class="reference internal" href="datasets.html">
-  Datasets
- </a>
-</li>
-
-<li class="toctree-l2">
- <a class="reference internal" href="utils.html">
-  Utilities
- </a>
-</li>
-
+      
     </ul>
   </div>
 </nav>
@@ -239,15 +160,52 @@
           
           <div class="d-none d-xl-block col-xl-2 bd-toc">
               
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#changelog">
+   Changelog
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#new-features">
+     New features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#enhancements">
+     Enhancements
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bug-fixes">
+     Bug fixes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#maintenance">
+     Maintenance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deprecation">
+     Deprecation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
 </nav>
 
 
 
 <div class="tocsection editthispage">
-    <a href="https://github.com/scikit-learn-contrib/imbalanced-learn/edit/master/doc/references/combine.rst">
+    <a href="https://github.com/scikit-learn-contrib/imbalanced-learn/edit/master/doc/whats_new/v0.9.rst">
         <i class="fas fa-pencil-alt"></i> Edit this page
     </a>
 </div>
@@ -264,24 +222,26 @@
               
               <div>
                 
-  <div class="section" id="module-imblearn.combine">
-<span id="combination-of-over-and-under-sampling-methods"></span><span id="combine-ref"></span><h1>Combination of over- and under-sampling methods<a class="headerlink" href="#module-imblearn.combine" title="Permalink to this headline">¶</a></h1>
-<p>The <a class="reference internal" href="#module-imblearn.combine" title="imblearn.combine"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.combine</span></code></a> provides methods which combine
-over-sampling and under-sampling.</p>
-<table class="longtable table autosummary">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/imblearn.combine.SMOTEENN.html#imblearn.combine.SMOTEENN" title="imblearn.combine.SMOTEENN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SMOTEENN</span></code></a>(*[, sampling_strategy, …])</p></td>
-<td><p>Over-sampling using SMOTE and cleaning using ENN.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/imblearn.combine.SMOTETomek.html#imblearn.combine.SMOTETomek" title="imblearn.combine.SMOTETomek"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SMOTETomek</span></code></a>(*[, sampling_strategy, …])</p></td>
-<td><p>Over-sampling using SMOTE and cleaning using Tomek links.</p></td>
-</tr>
-</tbody>
-</table>
+  <div class="section" id="version-0-9-0-under-development">
+<span id="changes-0-9"></span><h1>Version 0.9.0 (under development)<a class="headerlink" href="#version-0-9-0-under-development" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="changelog">
+<h2>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="new-features">
+<h3>New features<a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="enhancements">
+<h3>Enhancements<a class="headerlink" href="#enhancements" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="bug-fixes">
+<h3>Bug fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="maintenance">
+<h3>Maintenance<a class="headerlink" href="#maintenance" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="deprecation">
+<h3>Deprecation<a class="headerlink" href="#deprecation" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
 </div>
 
 
@@ -290,8 +250,6 @@ over-sampling and under-sampling.</p>
               
               <div class='prev-next-bottom'>
                 
-    <a class='left-prev' id="prev-link" href="generated/imblearn.over_sampling.SVMSMOTE.html" title="previous page">SVMSMOTE</a>
-    <a class='right-next' id="next-link" href="generated/imblearn.combine.SMOTEENN.html" title="next page">SMOTEENN</a>
 
               </div>
               
