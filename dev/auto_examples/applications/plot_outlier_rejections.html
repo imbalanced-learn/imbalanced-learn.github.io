@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/css/imbalanced-learn.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
@@ -33,7 +33,7 @@
     
   <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -428,8 +428,7 @@ noise.</p>
 <span class="n">plot_scatter</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_train</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_train</span></a><span class="p">,</span> <span class="s2">&quot;Training dataset&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Training dataset" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_outlier_rejections_001.png" />
-<p>We will generate some cleaned test data without outliers.</p>
+<img src="../../_images/sphx_glr_plot_outlier_rejections_001.png" srcset="../../_images/sphx_glr_plot_outlier_rejections_001.png" alt="Training dataset" class = "sphx-glr-single-img"/><p>We will generate some cleaned test data without outliers.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">moons</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">_</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_moons.html#sklearn.datasets.make_moons" title="sklearn.datasets.make_moons" class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function"><span class="n">make_moons</span></a><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
 <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">blobs</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">_</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html#sklearn.datasets.make_blobs" title="sklearn.datasets.make_blobs" class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function"><span class="n">make_blobs</span></a><span class="p">(</span>
     <span class="n">n_samples</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="p">[(</span><span class="o">-</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">2.25</span><span class="p">),</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)],</span> <span class="n">cluster_std</span><span class="o">=</span><span class="mf">0.25</span>
@@ -442,8 +441,7 @@ noise.</p>
 <span class="n">plot_scatter</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_test</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_test</span></a><span class="p">,</span> <span class="s2">&quot;Testing dataset&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Testing dataset" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_outlier_rejections_002.png" />
-</div>
+<img src="../../_images/sphx_glr_plot_outlier_rejections_002.png" srcset="../../_images/sphx_glr_plot_outlier_rejections_002.png" alt="Testing dataset" class = "sphx-glr-single-img"/></div>
 <div class="section" id="how-to-use-the-functionsampler">
 <h2>How to use the <a class="reference internal" href="../../references/generated/imblearn.FunctionSampler.html#imblearn.FunctionSampler" title="imblearn.FunctionSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionSampler</span></code></a><a class="headerlink" href="#how-to-use-the-functionsampler" title="Permalink to this headline">¶</a></h2>
 <p>We first define a function which will use
@@ -464,8 +462,7 @@ our dataset during training. The function passed to the
 <span class="n">plot_scatter</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_inliers</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_inliers</span></a><span class="p">,</span> <span class="s2">&quot;Training data without outliers&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Training data without outliers" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_outlier_rejections_003.png" />
-</div>
+<img src="../../_images/sphx_glr_plot_outlier_rejections_003.png" srcset="../../_images/sphx_glr_plot_outlier_rejections_003.png" alt="Training data without outliers" class = "sphx-glr-single-img"/></div>
 <div class="section" id="integrate-it-within-a-pipeline">
 <h2>Integrate it within a pipeline<a class="headerlink" href="#integrate-it-within-a-pipeline" title="Permalink to this headline">¶</a></h2>
 <p>By elimnating outliers before the training, the classifier will be less
@@ -504,7 +501,7 @@ weighted avg       1.00      1.00      1.00       100
 weighted avg       0.92      0.91      0.91       100
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  3.169 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.836 seconds)</p>
 <p><strong>Estimated memory usage:</strong>  9 MB</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-applications-plot-outlier-rejections-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
@@ -534,11 +531,10 @@ weighted avg       0.92      0.91      0.91       100
 
       </div>
     </div>
-    
+  
   <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-
-    <footer class="footer mt-5 mt-md-0">
+  <footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
@@ -549,7 +545,7 @@ weighted avg       0.92      0.91      0.91       100
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1.<br/>
 </p>
     </div>
     
