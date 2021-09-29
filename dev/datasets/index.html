@@ -4,11 +4,12 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>9. Dataset loading utilities &#8212; Version 0.9.0.dev0</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet">
+  <link href="../_static/css/index.adfc57296990d4b2f3a187d629e201b3.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -25,13 +26,13 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/imbalanced-learn.css" />
     <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/gallery-dataframe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/imbalanced-learn.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.bf9e07489fed6cf49b0d.js">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -44,8 +45,11 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="10. Developer guideline" href="../developers_utils.html" />
     <link rel="prev" title="8. Common pitfalls and recommended practices" href="../common_pitfalls.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="docsearch:language" content="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -262,13 +266,13 @@
               
               <div>
                 
-  <div class="section" id="dataset-loading-utilities">
+  <section id="dataset-loading-utilities">
 <span id="datasets"></span><h1><span class="section-number">9. </span>Dataset loading utilities<a class="headerlink" href="#dataset-loading-utilities" title="Permalink to this headline">¶</a></h1>
 <p>The <a class="reference internal" href="../references/datasets.html#module-imblearn.datasets" title="imblearn.datasets"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.datasets</span></code></a> package is complementing the
-<a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.datasets" title="(in scikit-learn v0.24)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code></a> package. The package provides both: (i) a set of
+<a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.datasets" title="(in scikit-learn v1.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code></a> package. The package provides both: (i) a set of
 imbalanced datasets to perform systematic benchmark and (ii) a utility to
 create an imbalanced dataset from an original balanced dataset.</p>
-<div class="section" id="imbalanced-datasets-for-benchmark">
+<section id="imbalanced-datasets-for-benchmark">
 <span id="zenodo"></span><h2><span class="section-number">9.1. </span>Imbalanced datasets for benchmark<a class="headerlink" href="#imbalanced-datasets-for-benchmark" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="../references/generated/imblearn.datasets.fetch_datasets.html#imblearn.datasets.fetch_datasets" title="imblearn.datasets.fetch_datasets"><code class="xref py py-func docutils literal notranslate"><span class="pre">fetch_datasets</span></code></a> allows to fetch 27 datasets which are imbalanced and
 binarized. The following data sets are available:</p>
@@ -494,8 +498,8 @@ binarized. The following data sets are available:</p>
 <span class="go">[(-1, 301), (1, 35)]</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="imbalanced-generator">
+</section>
+<section id="imbalanced-generator">
 <span id="make-imbalanced"></span><h2><span class="section-number">9.2. </span>Imbalanced generator<a class="headerlink" href="#imbalanced-generator" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="../references/generated/imblearn.datasets.make_imbalance.html#imblearn.datasets.make_imbalance" title="imblearn.datasets.make_imbalance"><code class="xref py py-func docutils literal notranslate"><span class="pre">make_imbalance</span></code></a> turns an original dataset into an imbalanced
 dataset. This behaviour is driven by the parameter <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> which
@@ -555,19 +559,30 @@ in the dictionary:</p>
 </div>
 <p>See <a class="reference internal" href="../auto_examples/datasets/plot_make_imbalance.html#sphx-glr-auto-examples-datasets-plot-make-imbalance-py"><span class="std std-ref">Create an imbalanced dataset</span></a> and
 <a class="reference internal" href="../auto_examples/api/plot_sampling_strategy_usage.html#sphx-glr-auto-examples-api-plot-sampling-strategy-usage-py"><span class="std std-ref">How to use sampling_strategy in imbalanced-learn</span></a>.</p>
-</div>
-</div>
+</section>
+</section>
 
 
               </div>
               
               
-              <div class='prev-next-bottom'>
-                
-    <a class='left-prev' id="prev-link" href="../common_pitfalls.html" title="previous page"><span class="section-number">8. </span>Common pitfalls and recommended practices</a>
-    <a class='right-next' id="next-link" href="../developers_utils.html" title="next page"><span class="section-number">10. </span>Developer guideline</a>
-
-              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../common_pitfalls.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">Previous</p>
+            <p class="prev-next-title"><span class="section-number">8. </span>Common pitfalls and recommended practices</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../developers_utils.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">Next</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Developer guideline</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
               
           </main>
           
@@ -575,9 +590,8 @@ in the dictionary:</p>
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  <footer class="footer mt-5 mt-md-0">
+  <script src="../_static/js/index.bf9e07489fed6cf49b0d.js"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
@@ -588,7 +602,7 @@ in the dictionary:</p>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
 </p>
     </div>
     

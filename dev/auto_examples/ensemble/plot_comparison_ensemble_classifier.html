@@ -4,11 +4,12 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Compare ensemble classifiers using resampling &#8212; Version 0.9.0.dev0</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet">
+  <link href="../../_static/css/index.adfc57296990d4b2f3a187d629e201b3.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -25,13 +26,13 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../../_static/js/index.bf9e07489fed6cf49b0d.js">
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -44,8 +45,11 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Evaluate classification by compiling a report" href="../evaluation/plot_classification_report.html" />
     <link rel="prev" title="Bagging classifiers using sampler" href="plot_bagging_classifier.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="docsearch:language" content="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -378,7 +382,7 @@
 <p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-ensemble-plot-comparison-ensemble-classifier-py"><span class="std std-ref">here</span></a>
 to download the full example code</p>
 </div>
-<div class="sphx-glr-example-title section" id="compare-ensemble-classifiers-using-resampling">
+<section class="sphx-glr-example-title" id="compare-ensemble-classifiers-using-resampling">
 <span id="sphx-glr-auto-examples-ensemble-plot-comparison-ensemble-classifier-py"></span><h1>Compare ensemble classifiers using resampling<a class="headerlink" href="#compare-ensemble-classifiers-using-resampling" title="Permalink to this headline">¶</a></h1>
 <p>Ensemble classifiers have shown to improve classification performance compare
 to single learner. However, they will be affected by class imbalance. This
@@ -394,7 +398,7 @@ set.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="vm">__doc__</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="section" id="load-an-imbalanced-dataset">
+<section id="load-an-imbalanced-dataset">
 <h2>Load an imbalanced dataset<a class="headerlink" href="#load-an-imbalanced-dataset" title="Permalink to this headline">¶</a></h2>
 <p>We will load the UCI SatImage dataset which has an imbalanced ratio of 9.3:1
 (number of majority sample for a minority sample). The data are then split
@@ -407,8 +411,8 @@ into training and testing.</p>
 <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_train</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_test</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_train</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_test</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split" class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function"><span class="n">train_test_split</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="classification-using-a-single-decision-tree">
+</section>
+<section id="classification-using-a-single-decision-tree">
 <h2>Classification using a single decision tree<a class="headerlink" href="#classification-using-a-single-decision-tree" title="Permalink to this headline">¶</a></h2>
 <p>We train a decision tree classifier which will be used as a baseline for the
 rest of this example.</p>
@@ -442,12 +446,41 @@ Balanced accuracy: 0.74 - Geometric mean 0.71
 
 <a href="https://seaborn.pydata.org/generated/seaborn.set_context.html#seaborn.set_context" title="seaborn.set_context" class="sphx-glr-backref-module-seaborn sphx-glr-backref-type-py-function"><span class="n">sns</span><span class="o">.</span><span class="n">set_context</span></a><span class="p">(</span><span class="s2">&quot;poster&quot;</span><span class="p">)</span>
 
-<a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.ConfusionMatrixDisplay.html#sklearn.metrics.ConfusionMatrixDisplay" title="sklearn.metrics.ConfusionMatrixDisplay" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">disp</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.plot_confusion_matrix.html#sklearn.metrics.plot_confusion_matrix" title="sklearn.metrics.plot_confusion_matrix" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">plot_confusion_matrix</span></a><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier" title="sklearn.tree.DecisionTreeClassifier" class="sphx-glr-backref-module-sklearn-tree sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tree</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_test</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_test</span></a><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.ConfusionMatrixDisplay.html#sklearn.metrics.ConfusionMatrixDisplay" title="sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay" class="sphx-glr-backref-module-sklearn-metrics-_plot-confusion_matrix sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">disp</span></a> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.plot_confusion_matrix.html#sklearn.metrics.plot_confusion_matrix" title="sklearn.metrics.plot_confusion_matrix" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">plot_confusion_matrix</span></a><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier" title="sklearn.tree.DecisionTreeClassifier" class="sphx-glr-backref-module-sklearn-tree sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tree</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_test</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_test</span></a><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <a href="https://matplotlib.org/api/text_api.html#matplotlib.text.Text" title="matplotlib.text.Text" class="sphx-glr-backref-module-matplotlib-text sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">_</span></a> <span class="o">=</span> <a href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.set_title.html#matplotlib.axes.Axes.set_title" title="matplotlib.axes.Axes.set_title" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">disp</span><span class="o">.</span><span class="n">ax_</span><span class="o">.</span><span class="n">set_title</span></a><span class="p">(</span><span class="s2">&quot;Decision tree&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_comparison_ensemble_classifier_001.png" srcset="../../_images/sphx_glr_plot_comparison_ensemble_classifier_001.png" alt="Decision tree" class = "sphx-glr-single-img"/></div>
-<div class="section" id="classification-using-bagging-classifier-with-and-without-sampling">
+<img src="../../_images/sphx_glr_plot_comparison_ensemble_classifier_001.png" srcset="../../_images/sphx_glr_plot_comparison_ensemble_classifier_001.png" alt="Decision tree" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/miniconda/envs/testenv/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;rocket&#39; which already exists.
+  mpl_cm.register_cmap(_name, _cmap)
+/home/circleci/miniconda/envs/testenv/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;rocket_r&#39; which already exists.
+  mpl_cm.register_cmap(_name + &quot;_r&quot;, _cmap_r)
+/home/circleci/miniconda/envs/testenv/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;mako&#39; which already exists.
+  mpl_cm.register_cmap(_name, _cmap)
+/home/circleci/miniconda/envs/testenv/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;mako_r&#39; which already exists.
+  mpl_cm.register_cmap(_name + &quot;_r&quot;, _cmap_r)
+/home/circleci/miniconda/envs/testenv/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;icefire&#39; which already exists.
+  mpl_cm.register_cmap(_name, _cmap)
+/home/circleci/miniconda/envs/testenv/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;icefire_r&#39; which already exists.
+  mpl_cm.register_cmap(_name + &quot;_r&quot;, _cmap_r)
+/home/circleci/miniconda/envs/testenv/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;vlag&#39; which already exists.
+  mpl_cm.register_cmap(_name, _cmap)
+/home/circleci/miniconda/envs/testenv/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;vlag_r&#39; which already exists.
+  mpl_cm.register_cmap(_name + &quot;_r&quot;, _cmap_r)
+/home/circleci/miniconda/envs/testenv/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;flare&#39; which already exists.
+  mpl_cm.register_cmap(_name, _cmap)
+/home/circleci/miniconda/envs/testenv/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;flare_r&#39; which already exists.
+  mpl_cm.register_cmap(_name + &quot;_r&quot;, _cmap_r)
+/home/circleci/miniconda/envs/testenv/lib/python3.8/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;crest&#39; which already exists.
+  mpl_cm.register_cmap(_name, _cmap)
+/home/circleci/miniconda/envs/testenv/lib/python3.8/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;crest_r&#39; which already exists.
+  mpl_cm.register_cmap(_name + &quot;_r&quot;, _cmap_r)
+/home/circleci/miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function plot_confusion_matrix is deprecated; Function `plot_confusion_matrix` is deprecated in 1.0 and will be removed in 1.2. Use one of the class methods: ConfusionMatrixDisplay.from_predictions or ConfusionMatrixDisplay.from_estimator.
+  warnings.warn(msg, category=FutureWarning)
+</pre></div>
+</div>
+</section>
+<section id="classification-using-bagging-classifier-with-and-without-sampling">
 <h2>Classification using bagging classifier with and without sampling<a class="headerlink" href="#classification-using-bagging-classifier-with-and-without-sampling" title="Permalink to this headline">¶</a></h2>
 <p>Instead of using a single tree, we will check if an ensemble of decsion tree
 can actually alleviate the issue induced by the class imbalancing. First, we
@@ -499,8 +532,15 @@ Balanced accuracy: 0.86 - Geometric mean 0.86
 <a href="https://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure.tight_layout" title="matplotlib.figure.Figure.tight_layout" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-method"><span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_comparison_ensemble_classifier_002.png" srcset="../../_images/sphx_glr_plot_comparison_ensemble_classifier_002.png" alt="Bagging, Balanced Bagging" class = "sphx-glr-single-img"/></div>
-<div class="section" id="classification-using-random-forest-classifier-with-and-without-sampling">
+<img src="../../_images/sphx_glr_plot_comparison_ensemble_classifier_002.png" srcset="../../_images/sphx_glr_plot_comparison_ensemble_classifier_002.png" alt="Bagging, Balanced Bagging" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function plot_confusion_matrix is deprecated; Function `plot_confusion_matrix` is deprecated in 1.0 and will be removed in 1.2. Use one of the class methods: ConfusionMatrixDisplay.from_predictions or ConfusionMatrixDisplay.from_estimator.
+  warnings.warn(msg, category=FutureWarning)
+/home/circleci/miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function plot_confusion_matrix is deprecated; Function `plot_confusion_matrix` is deprecated in 1.0 and will be removed in 1.2. Use one of the class methods: ConfusionMatrixDisplay.from_predictions or ConfusionMatrixDisplay.from_estimator.
+  warnings.warn(msg, category=FutureWarning)
+</pre></div>
+</div>
+</section>
+<section id="classification-using-random-forest-classifier-with-and-without-sampling">
 <h2>Classification using random forest classifier with and without sampling<a class="headerlink" href="#classification-using-random-forest-classifier-with-and-without-sampling" title="Permalink to this headline">¶</a></h2>
 <p>Random forest is another popular ensemble method and it is usually
 outperforming bagging. Here, we used a vanilla random forest and its balanced
@@ -550,8 +590,15 @@ Balanced accuracy: 0.88 - Geometric mean 0.88
 <a href="https://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure.tight_layout" title="matplotlib.figure.Figure.tight_layout" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-method"><span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_comparison_ensemble_classifier_003.png" srcset="../../_images/sphx_glr_plot_comparison_ensemble_classifier_003.png" alt="Random forest, Balanced random forest" class = "sphx-glr-single-img"/></div>
-<div class="section" id="boosting-classifier">
+<img src="../../_images/sphx_glr_plot_comparison_ensemble_classifier_003.png" srcset="../../_images/sphx_glr_plot_comparison_ensemble_classifier_003.png" alt="Random forest, Balanced random forest" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function plot_confusion_matrix is deprecated; Function `plot_confusion_matrix` is deprecated in 1.0 and will be removed in 1.2. Use one of the class methods: ConfusionMatrixDisplay.from_predictions or ConfusionMatrixDisplay.from_estimator.
+  warnings.warn(msg, category=FutureWarning)
+/home/circleci/miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function plot_confusion_matrix is deprecated; Function `plot_confusion_matrix` is deprecated in 1.0 and will be removed in 1.2. Use one of the class methods: ConfusionMatrixDisplay.from_predictions or ConfusionMatrixDisplay.from_estimator.
+  warnings.warn(msg, category=FutureWarning)
+</pre></div>
+</div>
+</section>
+<section id="boosting-classifier">
 <h2>Boosting classifier<a class="headerlink" href="#boosting-classifier" title="Permalink to this headline">¶</a></h2>
 <p>In the same manner, easy ensemble classifier is a bag of balanced AdaBoost
 classifier. However, it will be slower to train than random forest and will
@@ -583,7 +630,7 @@ achieve worse performance.</p>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Easy ensemble classifier performance:
-Balanced accuracy: 0.85 - Geometric mean 0.85
+Balanced accuracy: 0.84 - Geometric mean 0.84
 RUSBoost classifier performance:
 Balanced accuracy: 0.85 - Geometric mean 0.85
 </pre></div>
@@ -599,8 +646,15 @@ Balanced accuracy: 0.85 - Geometric mean 0.85
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_comparison_ensemble_classifier_004.png" srcset="../../_images/sphx_glr_plot_comparison_ensemble_classifier_004.png" alt="Easy Ensemble, RUSBoost classifier" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  13.761 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  246 MB</p>
+<img src="../../_images/sphx_glr_plot_comparison_ensemble_classifier_004.png" srcset="../../_images/sphx_glr_plot_comparison_ensemble_classifier_004.png" alt="Easy Ensemble, RUSBoost classifier" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function plot_confusion_matrix is deprecated; Function `plot_confusion_matrix` is deprecated in 1.0 and will be removed in 1.2. Use one of the class methods: ConfusionMatrixDisplay.from_predictions or ConfusionMatrixDisplay.from_estimator.
+  warnings.warn(msg, category=FutureWarning)
+/home/circleci/miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function plot_confusion_matrix is deprecated; Function `plot_confusion_matrix` is deprecated in 1.0 and will be removed in 1.2. Use one of the class methods: ConfusionMatrixDisplay.from_predictions or ConfusionMatrixDisplay.from_estimator.
+  warnings.warn(msg, category=FutureWarning)
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  35.761 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  229 MB</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-ensemble-plot-comparison-ensemble-classifier-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/e6a7a05ca7f23057d0cbfa6b70cc7982/plot_comparison_ensemble_classifier.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_comparison_ensemble_classifier.py</span></code></a></p>
@@ -610,19 +664,30 @@ Balanced accuracy: 0.85 - Geometric mean 0.85
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
-</div>
-</div>
+</section>
+</section>
 
 
               </div>
               
               
-              <div class='prev-next-bottom'>
-                
-    <a class='left-prev' id="prev-link" href="plot_bagging_classifier.html" title="previous page">Bagging classifiers using sampler</a>
-    <a class='right-next' id="next-link" href="../evaluation/plot_classification_report.html" title="next page">Evaluate classification by compiling a report</a>
-
-              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="plot_bagging_classifier.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">Previous</p>
+            <p class="prev-next-title">Bagging classifiers using sampler</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../evaluation/plot_classification_report.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">Next</p>
+        <p class="prev-next-title">Evaluate classification by compiling a report</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
               
           </main>
           
@@ -630,9 +695,8 @@ Balanced accuracy: 0.85 - Geometric mean 0.85
       </div>
     </div>
   
-  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  <footer class="footer mt-5 mt-md-0">
+  <script src="../../_static/js/index.bf9e07489fed6cf49b0d.js"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
@@ -643,7 +707,7 @@ Balanced accuracy: 0.85 - Geometric mean 0.85
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
 </p>
     </div>
     

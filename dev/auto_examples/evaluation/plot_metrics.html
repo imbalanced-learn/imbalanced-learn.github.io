@@ -4,11 +4,12 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Metrics specific to imbalanced learning &#8212; Version 0.9.0.dev0</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet">
+  <link href="../../_static/css/index.adfc57296990d4b2f3a187d629e201b3.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -25,13 +26,13 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../../_static/js/index.bf9e07489fed6cf49b0d.js">
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -44,8 +45,11 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Plotting Validation Curves" href="../model_selection/plot_validation_curve.html" />
     <link rel="prev" title="Evaluate classification by compiling a report" href="plot_classification_report.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="docsearch:language" content="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -348,7 +352,7 @@
 <p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-evaluation-plot-metrics-py"><span class="std std-ref">here</span></a>
 to download the full example code</p>
 </div>
-<div class="sphx-glr-example-title section" id="metrics-specific-to-imbalanced-learning">
+<section class="sphx-glr-example-title" id="metrics-specific-to-imbalanced-learning">
 <span id="sphx-glr-auto-examples-evaluation-plot-metrics-py"></span><h1>Metrics specific to imbalanced learning<a class="headerlink" href="#metrics-specific-to-imbalanced-learning" title="Permalink to this headline">¶</a></h1>
 <p>Specific metrics have been developed to evaluate classifier which
 has been trained using imbalanced data. <code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn</span></code> provides mainly
@@ -389,7 +393,7 @@ geometric mean and (ii) index balanced accuracy.</p>
 </pre></div>
 </div>
 <p>We will create a pipeline made of a <a class="reference internal" href="../../references/generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTE</span></code></a>
-over-sampler followed by a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="(in scikit-learn v0.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearSVC</span></code></a> classifier.</p>
+over-sampler followed by a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="(in scikit-learn v1.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearSVC</span></code></a> classifier.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="kn">import</span> <a href="../../references/generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="imblearn.pipeline.make_pipeline" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline</span></a>
 <span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <a href="../../references/generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE" class="sphx-glr-backref-module-imblearn-over_sampling sphx-glr-backref-type-py-class"><span class="n">SMOTE</span></a>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="sklearn.svm.LinearSVC" class="sphx-glr-backref-module-sklearn-svm sphx-glr-backref-type-py-class"><span class="n">LinearSVC</span></a>
@@ -408,8 +412,8 @@ in <code class="docutils literal notranslate"><span class="pre">y_test</span></c
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/svm/_base.py:985: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
-  warnings.warn(&quot;Liblinear failed to converge, increase &quot;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/svm/_base.py:1199: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
 </pre></div>
 </div>
 <p>The geometric mean corresponds to the square root of the product of the
@@ -454,7 +458,7 @@ imbalanced learning problems.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>The IBA using alpha=0.5 and the geometric mean: 0.880
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  2.230 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  4.609 seconds)</p>
 <p><strong>Estimated memory usage:</strong>  8 MB</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-evaluation-plot-metrics-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
@@ -465,18 +469,29 @@ imbalanced learning problems.</p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="plot_classification_report.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">Previous</p>
+            <p class="prev-next-title">Evaluate classification by compiling a report</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../model_selection/plot_validation_curve.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">Next</p>
+        <p class="prev-next-title">Plotting Validation Curves</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
-
-
-              </div>
-              
-              
-              <div class='prev-next-bottom'>
-                
-    <a class='left-prev' id="prev-link" href="plot_classification_report.html" title="previous page">Evaluate classification by compiling a report</a>
-    <a class='right-next' id="next-link" href="../model_selection/plot_validation_curve.html" title="next page">Plotting Validation Curves</a>
-
-              </div>
               
           </main>
           
@@ -484,9 +499,8 @@ imbalanced learning problems.</p>
       </div>
     </div>
   
-  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  <footer class="footer mt-5 mt-md-0">
+  <script src="../../_static/js/index.bf9e07489fed6cf49b0d.js"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
@@ -497,7 +511,7 @@ imbalanced learning problems.</p>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
 </p>
     </div>
     

@@ -4,11 +4,12 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Example of topic classification in text documents &#8212; Version 0.9.0.dev0</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet">
+  <link href="../../_static/css/index.adfc57296990d4b2f3a187d629e201b3.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -25,13 +26,13 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../../_static/js/index.bf9e07489fed6cf49b0d.js">
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -44,8 +45,11 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Customized sampler to implement an outlier rejections estimator" href="plot_outlier_rejections.html" />
     <link rel="prev" title="Multiclass classification with under-sampling" href="plot_multi_class_under_sampling.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="docsearch:language" content="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -363,7 +367,7 @@
 <p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-applications-plot-topic-classication-py"><span class="std std-ref">here</span></a>
 to download the full example code</p>
 </div>
-<div class="sphx-glr-example-title section" id="example-of-topic-classification-in-text-documents">
+<section class="sphx-glr-example-title" id="example-of-topic-classification-in-text-documents">
 <span id="sphx-glr-auto-examples-applications-plot-topic-classication-py"></span><h1>Example of topic classification in text documents<a class="headerlink" href="#example-of-topic-classification-in-text-documents" title="Permalink to this headline">¶</a></h1>
 <p>This example shows how to balance the text data before to train a classifier.</p>
 <p>Note that for this example, the data are slightly imbalanced but it can happen
@@ -375,7 +379,7 @@ that for some data sets, the imbalanced ratio is more significant.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="vm">__doc__</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="section" id="setting-the-data-set">
+<section id="setting-the-data-set">
 <h2>Setting the data set<a class="headerlink" href="#setting-the-data-set" title="Permalink to this headline">¶</a></h2>
 <p>We use a part of the 20 newsgroups data set by loading 4 topics. Using the
 scikit-learn loader, the data are split into a training and a testing set.</p>
@@ -446,8 +450,8 @@ Test class distributions summary: Counter({2: 394, 1: 389, 0: 319, 3: 251})
 avg / total       0.87      0.84      0.94      0.82      0.88      0.78      1353
 </pre></div>
 </div>
-</div>
-<div class="section" id="balancing-the-class-before-classification">
+</section>
+<section id="balancing-the-class-before-classification">
 <h2>Balancing the class before classification<a class="headerlink" href="#balancing-the-class-before-classification" title="Permalink to this headline">¶</a></h2>
 <p>To improve the prediction of the class #3, it could be interesting to apply
 a balancing before to train the naive bayes classifier. Therefore, we will
@@ -475,16 +479,16 @@ slightly better.</p>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>                   pre       rec       spe        f1       geo       iba       sup
 
-          0       0.70      0.88      0.88      0.78      0.88      0.78       319
-          1       0.97      0.84      0.99      0.90      0.91      0.81       389
+          0       0.71      0.89      0.89      0.79      0.89      0.79       319
+          1       0.97      0.84      0.99      0.90      0.91      0.82       389
           2       0.94      0.90      0.98      0.92      0.94      0.88       394
-          3       0.77      0.73      0.95      0.75      0.83      0.68       251
+          3       0.78      0.74      0.95      0.76      0.84      0.69       251
 
-avg / total       0.86      0.85      0.95      0.85      0.90      0.80      1353
+avg / total       0.87      0.85      0.96      0.86      0.90      0.81      1353
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  12.066 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  107 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  18.712 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  112 MB</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-applications-plot-topic-classication-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/c0d0b4cd2c639116b7998044d3a67ea3/plot_topic_classication.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_topic_classication.py</span></code></a></p>
@@ -494,19 +498,30 @@ avg / total       0.86      0.85      0.95      0.85      0.90      0.80      13
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
-</div>
-</div>
+</section>
+</section>
 
 
               </div>
               
               
-              <div class='prev-next-bottom'>
-                
-    <a class='left-prev' id="prev-link" href="plot_multi_class_under_sampling.html" title="previous page">Multiclass classification with under-sampling</a>
-    <a class='right-next' id="next-link" href="plot_outlier_rejections.html" title="next page">Customized sampler to implement an outlier rejections estimator</a>
-
-              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="plot_multi_class_under_sampling.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">Previous</p>
+            <p class="prev-next-title">Multiclass classification with under-sampling</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="plot_outlier_rejections.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">Next</p>
+        <p class="prev-next-title">Customized sampler to implement an outlier rejections estimator</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
               
           </main>
           
@@ -514,9 +529,8 @@ avg / total       0.86      0.85      0.95      0.85      0.90      0.80      13
       </div>
     </div>
   
-  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  <footer class="footer mt-5 mt-md-0">
+  <script src="../../_static/js/index.bf9e07489fed6cf49b0d.js"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
@@ -527,7 +541,7 @@ avg / total       0.86      0.85      0.95      0.85      0.90      0.80      13
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
 </p>
     </div>
     

@@ -4,11 +4,12 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Porto Seguro: balancing samples in mini-batches with Keras &#8212; Version 0.9.0.dev0</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet">
+  <link href="../../_static/css/index.adfc57296990d4b2f3a187d629e201b3.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -25,13 +26,13 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../../_static/js/index.bf9e07489fed6cf49b0d.js">
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -44,8 +45,11 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Fitting model on imbalanced datasets and how to fight bias" href="plot_impact_imbalanced_classes.html" />
     <link rel="prev" title="Benchmark over-sampling methods in a face recognition task" href="plot_over_sampling_benchmark_lfw.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="docsearch:language" content="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -385,13 +389,13 @@
 <p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-applications-porto-seguro-keras-under-sampling-py"><span class="std std-ref">here</span></a>
 to download the full example code</p>
 </div>
-<div class="sphx-glr-example-title section" id="porto-seguro-balancing-samples-in-mini-batches-with-keras">
+<section class="sphx-glr-example-title" id="porto-seguro-balancing-samples-in-mini-batches-with-keras">
 <span id="sphx-glr-auto-examples-applications-porto-seguro-keras-under-sampling-py"></span><h1>Porto Seguro: balancing samples in mini-batches with Keras<a class="headerlink" href="#porto-seguro-balancing-samples-in-mini-batches-with-keras" title="Permalink to this headline">¶</a></h1>
 <p>This example compares two strategies to train a neural-network on the Porto
 Seguro Kaggle data set <a class="footnote-reference brackets" href="#id2" id="id1">1</a>. The data set is imbalanced and we show that
 balancing each mini-batch allows to improve performance and reduce the training
 time.</p>
-<div class="section" id="references">
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <dl class="footnote brackets">
 <dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
@@ -404,7 +408,7 @@ time.</p>
 <span class="nb">print</span><span class="p">(</span><span class="vm">__doc__</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="section" id="data-loading">
+<section id="data-loading">
 <h3>Data loading<a class="headerlink" href="#data-loading" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <a href="https://docs.python.org/3/library/collections.html#collections.Counter" title="collections.Counter" class="sphx-glr-backref-module-collections sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Counter</span></a>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -425,8 +429,8 @@ link in the introduction.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The data set is imbalanced: </span><span class="si">{</span><a href="https://docs.python.org/3/library/collections.html#collections.Counter" title="collections.Counter" class="sphx-glr-backref-module-collections sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Counter</span></a><span class="p">(</span><span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="define-the-pre-processing-pipeline">
+</section>
+<section id="define-the-pre-processing-pipeline">
 <h3>Define the pre-processing pipeline<a class="headerlink" href="#define-the-pre-processing-pipeline" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="sklearn.compose.ColumnTransformer" class="sphx-glr-backref-module-sklearn-compose sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ColumnTransformer</span></a>
 <span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="sklearn.pipeline.make_pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline</span></a>
@@ -442,7 +446,7 @@ link in the introduction.</p>
 </div>
 <p>We want to standard scale the numerical features while we want to one-hot
 encode the categorical features. In this regard, we make use of the
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="(in scikit-learn v0.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColumnTransformer</span></code></a>.</p>
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer" title="(in scikit-learn v1.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColumnTransformer</span></code></a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">numerical_columns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">X_train</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s2">&quot;_calc_&quot;</span> <span class="ow">in</span> <span class="n">name</span> <span class="ow">and</span> <span class="s2">&quot;_bin&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">name</span>
 <span class="p">]</span>
@@ -474,8 +478,8 @@ encode the categorical features. In this regard, we make use of the
 <a href="https://docs.python.org/3/library/os.html#os.environ" title="os.environ" class="sphx-glr-backref-module-os sphx-glr-backref-type-py-data"><span class="n">os</span><span class="o">.</span><span class="n">environ</span></a><span class="p">[</span><span class="s2">&quot;CUDA_VISIBLE_DEVICES&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;-1&quot;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="create-a-neural-network">
+</section>
+<section id="create-a-neural-network">
 <h3>Create a neural-network<a class="headerlink" href="#create-a-neural-network" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="p">(</span>
@@ -557,8 +561,8 @@ mini-batches which will yield balanced mini-batches.</p>
     <span class="k">return</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html#sklearn.metrics.roc_auc_score" title="sklearn.metrics.roc_auc_score" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">roc_auc_score</span></a><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="classification-loop">
+</section>
+<section id="classification-loop">
 <h3>Classification loop<a class="headerlink" href="#classification-loop" title="Permalink to this headline">¶</a></h3>
 <p>We will perform a 10-fold cross-validation and train the neural-network with
 the two different strategies previously presented.</p>
@@ -589,8 +593,8 @@ the two different strategies previously presented.</p>
     <span class="n">cv_results_balanced</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">roc_auc</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="plot-of-the-results-and-computation-time">
+</section>
+<section id="plot-of-the-results-and-computation-time">
 <h3>Plot of the results and computation time<a class="headerlink" href="#plot-of-the-results-and-computation-time" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_results</span> <span class="o">=</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span></a><span class="p">(</span>
     <span class="p">{</span>
@@ -636,20 +640,31 @@ the two different strategies previously presented.</p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
               </div>
               
               
-              <div class='prev-next-bottom'>
-                
-    <a class='left-prev' id="prev-link" href="plot_over_sampling_benchmark_lfw.html" title="previous page">Benchmark over-sampling methods in a face recognition task</a>
-    <a class='right-next' id="next-link" href="plot_impact_imbalanced_classes.html" title="next page">Fitting model on imbalanced datasets and how to fight bias</a>
-
-              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="plot_over_sampling_benchmark_lfw.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">Previous</p>
+            <p class="prev-next-title">Benchmark over-sampling methods in a face recognition task</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="plot_impact_imbalanced_classes.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">Next</p>
+        <p class="prev-next-title">Fitting model on imbalanced datasets and how to fight bias</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
               
           </main>
           
@@ -657,9 +672,8 @@ the two different strategies previously presented.</p>
       </div>
     </div>
   
-  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  <footer class="footer mt-5 mt-md-0">
+  <script src="../../_static/js/index.bf9e07489fed6cf49b0d.js"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
@@ -670,7 +684,7 @@ the two different strategies previously presented.</p>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
 </p>
     </div>
     
