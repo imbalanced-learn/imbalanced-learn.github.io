@@ -9,7 +9,7 @@
     <title>ClusterCentroids &#8212; Version 0.9.0.dev0</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.adfc57296990d4b2f3a187d629e201b3.css" rel="stylesheet">
+  <link href="../../_static/css/index.eb2e94f0e4565f3ea722e9d0f85e3c08.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.bf9e07489fed6cf49b0d.js">
+  <link rel="preload" as="script" href="../../_static/js/index.b2655c098e94b587ffd3.js">
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -567,7 +567,7 @@
 <h1>ClusterCentroids<a class="headerlink" href="#clustercentroids" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="imblearn.under_sampling.ClusterCentroids">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">imblearn.under_sampling.</span></span><span class="sig-name descname"><span class="pre">ClusterCentroids</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_strategy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voting</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'deprecated'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/56eefdf/imblearn/under_sampling/_prototype_generation/_cluster_centroids.py#L33"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.ClusterCentroids" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">imblearn.under_sampling.</span></span><span class="sig-name descname"><span class="pre">ClusterCentroids</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_strategy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voting</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'deprecated'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/58f4a11/imblearn/under_sampling/_prototype_generation/_cluster_centroids.py#L33"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.ClusterCentroids" title="Permalink to this definition">¶</a></dt>
 <dd><p>Undersample by generating centroids based on clustering methods.</p>
 <p>Method that under samples the majority class by replacing a
 cluster of majority samples by the cluster centroid of a KMeans
@@ -652,6 +652,23 @@ for more details.</p>
 </dd>
 </dl>
 </dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><dl>
+<dt><strong>sampling_strategy_</strong><span class="classifier">dict</span></dt><dd><p>Dictionary containing the information to sample the dataset. The keys
+corresponds to the class labels from which to sample and the values
+are the number of samples to sample.</p>
+</dd>
+<dt><strong>estimator_</strong><span class="classifier">estimator object</span></dt><dd><p>The validated estimator created from the <code class="docutils literal notranslate"><span class="pre">estimator</span></code> parameter.</p>
+</dd>
+<dt><strong>voting_</strong><span class="classifier">str</span></dt><dd><p>The validated voting strategy.</p>
+</dd>
+<dt><strong>n_features_in_</strong><span class="classifier">int</span></dt><dd><p>Number of features in the input dataset.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.9.</span></p>
+</div>
+</dd>
+</dl>
+</dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -703,7 +720,7 @@ for more details.</p>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.under_sampling.ClusterCentroids.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/56eefdf/imblearn/base.py#L29"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.ClusterCentroids.fit" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/58f4a11/imblearn/base.py#L29"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.ClusterCentroids.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check inputs and statistics of the sampler.</p>
 <p>You should use <code class="docutils literal notranslate"><span class="pre">fit_resample</span></code> in all cases.</p>
 <dl class="field-list simple">
@@ -726,7 +743,7 @@ for more details.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.under_sampling.ClusterCentroids.fit_resample">
-<span class="sig-name descname"><span class="pre">fit_resample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/56eefdf/imblearn/base.py#L54"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.ClusterCentroids.fit_resample" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">fit_resample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/58f4a11/imblearn/base.py#L54"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.ClusterCentroids.fit_resample" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resample the dataset.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -750,7 +767,7 @@ for more details.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.under_sampling.ClusterCentroids.get_params">
-<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/56eefdf/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/base.py#L188"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.ClusterCentroids.get_params" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/58f4a11/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/base.py#L188"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.ClusterCentroids.get_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -771,7 +788,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.under_sampling.ClusterCentroids.set_params">
-<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/56eefdf/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/base.py#L212"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.ClusterCentroids.set_params" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/58f4a11/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/base.py#L212"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.ClusterCentroids.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>). The latter have
@@ -815,13 +832,13 @@ possible to update each component of a nested object.</p>
     <a class='left-prev' id="prev-link" href="../under_sampling.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
-            <p class="prev-next-subtitle">Previous</p>
+            <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Under-sampling methods</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="imblearn.under_sampling.CondensedNearestNeighbour.html" title="next page">
     <div class="prev-next-info">
-        <p class="prev-next-subtitle">Next</p>
+        <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">CondensedNearestNeighbour</p>
     </div>
     <i class="fas fa-angle-right"></i>
@@ -834,7 +851,7 @@ possible to update each component of a nested object.</p>
       </div>
     </div>
   
-  <script src="../../_static/js/index.bf9e07489fed6cf49b0d.js"></script>
+  <script src="../../_static/js/index.b2655c098e94b587ffd3.js"></script>
 <footer class="footer mt-5 mt-md-0">
   <div class="container">
     
