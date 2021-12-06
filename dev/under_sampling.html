@@ -9,7 +9,7 @@
     <title>3. Under-sampling &#8212; Version 0.9.0.dev0</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.eb2e94f0e4565f3ea722e9d0f85e3c08.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.b2655c098e94b587ffd3.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -313,9 +313,9 @@
 <a class="reference internal" href="auto_examples/under-sampling/plot_comparison_under_sampling.html#sphx-glr-auto-examples-under-sampling-plot-comparison-under-sampling-py"><span class="std std-ref">Compare under-sampling samplers</span></a>.</p>
 <section id="prototype-generation">
 <span id="cluster-centroids"></span><h2><span class="section-number">3.1. </span>Prototype generation<a class="headerlink" href="#prototype-generation" title="Permalink to this headline">¶</a></h2>
-<p>Given an original data set <img class="math" src="_images/math/b988975be41fd13b4d091c10202ba19374643586.svg" alt="S"/>, prototype generation algorithms will
-generate a new set <img class="math" src="_images/math/b55c0e084868f0d4f575ea81ac45a2b427b392ab.svg" alt="S'"/> where <img class="math" src="_images/math/35997994430461222e267c10e8e49daa46d6fad0.svg" alt="|S'| &lt; |S|"/> and <img class="math" src="_images/math/0a36b551df8e126ab40c4efe31a934cf7947a4fb.svg" alt="S' \not\subset
-S"/>. In other words, prototype generation technique will reduce the number of
+<p>Given an original data set <span class="math">S</span>, prototype generation algorithms will
+generate a new set <span class="math">S'</span> where <span class="math">|S'| &lt; |S|</span> and <span class="math">S' \not\subset
+S</span>. In other words, prototype generation technique will reduce the number of
 samples in the targeted classes but the remaining samples are generated — and
 not selected — from the original set.</p>
 <p><a class="reference internal" href="references/generated/imblearn.under_sampling.ClusterCentroids.html#imblearn.under_sampling.ClusterCentroids" title="imblearn.under_sampling.ClusterCentroids"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClusterCentroids</span></code></a> makes use of K-means to reduce the number of
@@ -354,12 +354,12 @@ matrix will be sparse, the algorithm will be inefficient in this regard.</p>
 <section id="prototype-selection">
 <h2><span class="section-number">3.2. </span>Prototype selection<a class="headerlink" href="#prototype-selection" title="Permalink to this headline">¶</a></h2>
 <p>On the contrary to prototype generation algorithms, prototype selection
-algorithms will select samples from the original set <img class="math" src="_images/math/b988975be41fd13b4d091c10202ba19374643586.svg" alt="S"/>. Therefore,
-<img class="math" src="_images/math/b55c0e084868f0d4f575ea81ac45a2b427b392ab.svg" alt="S'"/> is defined such as <img class="math" src="_images/math/35997994430461222e267c10e8e49daa46d6fad0.svg" alt="|S'| &lt; |S|"/> and <img class="math" src="_images/math/790be14e8795fcbca41d57efd9c415c50cc23cd9.svg" alt="S' \in S"/>.</p>
+algorithms will select samples from the original set <span class="math">S</span>. Therefore,
+<span class="math">S'</span> is defined such as <span class="math">|S'| &lt; |S|</span> and <span class="math">S' \in S</span>.</p>
 <p>In addition, these algorithms can be divided into two groups: (i) the
 controlled under-sampling techniques and (ii) the cleaning under-sampling
 techniques. The first group of methods allows for an under-sampling strategy in
-which the number of samples in <img class="math" src="_images/math/b55c0e084868f0d4f575ea81ac45a2b427b392ab.svg" alt="S'"/> is specified by the user. By
+which the number of samples in <span class="math">S'</span> is specified by the user. By
 contrast, cleaning under-sampling techniques do not allow this specification
 and are meant for cleaning the feature space.</p>
 <section id="controlled-under-sampling-techniques">
@@ -430,14 +430,14 @@ of interest.</p>
 under-sampled. <em>Negative sample</em> refers to the samples from the minority class
 (i.e., the most under-represented class).</p>
 <p>NearMiss-1 selects the positive samples for which the average distance
-to the <img class="math" src="_images/math/3bfb3a64189a14b2704f4610827762d5e3145114.svg" alt="N"/> closest samples of the negative class is the smallest.</p>
+to the <span class="math">N</span> closest samples of the negative class is the smallest.</p>
 <a class="reference external image-reference" href="./auto_examples/under-sampling/plot_illustration_nearmiss.html"><img alt="_images/sphx_glr_plot_illustration_nearmiss_001.png" class="align-center" src="_images/sphx_glr_plot_illustration_nearmiss_001.png" style="width: 480.0px; height: 480.0px;" /></a>
 <p>NearMiss-2 selects the positive samples for which the average distance to the
-<img class="math" src="_images/math/3bfb3a64189a14b2704f4610827762d5e3145114.svg" alt="N"/> farthest samples of the negative class is the smallest.</p>
+<span class="math">N</span> farthest samples of the negative class is the smallest.</p>
 <a class="reference external image-reference" href="./auto_examples/under-sampling/plot_illustration_nearmiss.html"><img alt="_images/sphx_glr_plot_illustration_nearmiss_002.png" class="align-center" src="_images/sphx_glr_plot_illustration_nearmiss_002.png" style="width: 480.0px; height: 480.0px;" /></a>
 <p>NearMiss-3 is a 2-steps algorithm. First, for each negative sample, their
-<img class="math" src="_images/math/4abba779877abb276b98ccb2b4ba9bf2e41947ab.svg" alt="M"/> nearest-neighbors will be kept. Then, the positive samples selected
-are the one for which the average distance to the <img class="math" src="_images/math/3bfb3a64189a14b2704f4610827762d5e3145114.svg" alt="N"/> nearest-neighbors
+<span class="math">M</span> nearest-neighbors will be kept. Then, the positive samples selected
+are the one for which the average distance to the <span class="math">N</span> nearest-neighbors
 is the largest.</p>
 <a class="reference external image-reference" href="./auto_examples/under-sampling/plot_illustration_nearmiss.html"><img alt="_images/sphx_glr_plot_illustration_nearmiss_003.png" class="align-center" src="_images/sphx_glr_plot_illustration_nearmiss_003.png" style="width: 510.0px; height: 510.0px;" /></a>
 <p>In the next example, the different <a class="reference internal" href="references/generated/imblearn.under_sampling.NearMiss.html#imblearn.under_sampling.NearMiss" title="imblearn.under_sampling.NearMiss"><code class="xref py py-class docutils literal notranslate"><span class="pre">NearMiss</span></code></a> variant are applied on the
@@ -463,11 +463,11 @@ which will clean the dataset.</p>
 <section id="tomek-s-links">
 <span id="tomek-links"></span><h4><span class="section-number">3.2.2.1. </span>Tomek’s links<a class="headerlink" href="#tomek-s-links" title="Permalink to this headline">¶</a></h4>
 <p><a class="reference internal" href="references/generated/imblearn.under_sampling.TomekLinks.html#imblearn.under_sampling.TomekLinks" title="imblearn.under_sampling.TomekLinks"><code class="xref py py-class docutils literal notranslate"><span class="pre">TomekLinks</span></code></a> detects the so-called Tomek’s links <span id="id3">[<a class="reference internal" href="zzz_references.html#id16" title="Ivan Tomek. Two modifications of cnn. IEEE Trans. Systems, Man and Cybernetics, 6:769–772, 1976.">Tom76b</a>]</span>. A
-Tomek’s link between two samples of different class <img class="math" src="_images/math/888f7c323ac0341871e867220ae2d76467d74d6e.svg" alt="x"/> and <img class="math" src="_images/math/1b5e577d6216dca3af7d87aa122a0b9b360d6cb3.svg" alt="y"/> is
-defined such that for any sample <img class="math" src="_images/math/8d051150f8669295ecdbe92367941012175a824d.svg" alt="z"/>:</p>
+Tomek’s link between two samples of different class <span class="math">x</span> and <span class="math">y</span> is
+defined such that for any sample <span class="math">z</span>:</p>
 <div class="math">
-<p><img src="_images/math/f0bdfd2907e6c82b6d597672489e0ca6d9d49882.svg" alt="d(x, y) &lt; d(x, z) \text{ and } d(x, y) &lt; d(y, z)"/></p>
-</div><p>where <img class="math" src="_images/math/42dc0b82a24bfb8685340959db72b2afceea6d3d.svg" alt="d(.)"/> is the distance between the two samples. In some other
+<p><span class="math">d(x, y) &lt; d(x, z) \text{ and } d(x, y) &lt; d(y, z)</span></p>
+</div><p>where <span class="math">d(.)</span> is the distance between the two samples. In some other
 words, a Tomek’s link exist if the two samples are the nearest neighbors of
 each other. In the figure below, a Tomek’s link is illustrated by highlighting
 the samples of interest in green.</p>
@@ -546,13 +546,13 @@ impact by cleaning noisy samples next to the boundaries of the classes.</p>
 iteratively decide if a sample should be removed or not
 <span id="id7">[<a class="reference internal" href="zzz_references.html#id19" title="Peter Hart. The condensed nearest neighbor rule (corresp.). IEEE transactions on information theory, 14(3):515–516, 1968.">Har68</a>]</span>. The algorithm is running as followed:</p>
 <ol class="arabic simple">
-<li><p>Get all minority samples in a set <img class="math" src="_images/math/4db5b6e16e06f929ce3f675c5e535d06ffb02ff7.svg" alt="C"/>.</p></li>
+<li><p>Get all minority samples in a set <span class="math">C</span>.</p></li>
 <li><p>Add a sample from the targeted class (class to be under-sampled) in
-<img class="math" src="_images/math/4db5b6e16e06f929ce3f675c5e535d06ffb02ff7.svg" alt="C"/> and all other samples of this class in a set <img class="math" src="_images/math/b988975be41fd13b4d091c10202ba19374643586.svg" alt="S"/>.</p></li>
-<li><p>Go through the set <img class="math" src="_images/math/b988975be41fd13b4d091c10202ba19374643586.svg" alt="S"/>, sample by sample, and classify each sample
+<span class="math">C</span> and all other samples of this class in a set <span class="math">S</span>.</p></li>
+<li><p>Go through the set <span class="math">S</span>, sample by sample, and classify each sample
 using a 1 nearest neighbor rule.</p></li>
-<li><p>If the sample is misclassified, add it to <img class="math" src="_images/math/4db5b6e16e06f929ce3f675c5e535d06ffb02ff7.svg" alt="C"/>, otherwise do nothing.</p></li>
-<li><p>Reiterate on <img class="math" src="_images/math/b988975be41fd13b4d091c10202ba19374643586.svg" alt="S"/> until there is no samples to be added.</p></li>
+<li><p>If the sample is misclassified, add it to <span class="math">C</span>, otherwise do nothing.</p></li>
+<li><p>Reiterate on <span class="math">S</span> until there is no samples to be added.</p></li>
 </ol>
 <p>The <a class="reference internal" href="references/generated/imblearn.under_sampling.CondensedNearestNeighbour.html#imblearn.under_sampling.CondensedNearestNeighbour" title="imblearn.under_sampling.CondensedNearestNeighbour"><code class="xref py py-class docutils literal notranslate"><span class="pre">CondensedNearestNeighbour</span></code></a> can be used in the following manner:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <span class="n">CondensedNearestNeighbour</span>
@@ -567,7 +567,7 @@ is sensitive to noise and will add noisy samples.</p>
 <p>In the contrary, <a class="reference internal" href="references/generated/imblearn.under_sampling.OneSidedSelection.html#imblearn.under_sampling.OneSidedSelection" title="imblearn.under_sampling.OneSidedSelection"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneSidedSelection</span></code></a> will use <a class="reference internal" href="references/generated/imblearn.under_sampling.TomekLinks.html#imblearn.under_sampling.TomekLinks" title="imblearn.under_sampling.TomekLinks"><code class="xref py py-class docutils literal notranslate"><span class="pre">TomekLinks</span></code></a> to
 remove noisy samples <span id="id8">[<a class="reference internal" href="zzz_references.html#id19" title="Peter Hart. The condensed nearest neighbor rule (corresp.). IEEE transactions on information theory, 14(3):515–516, 1968.">Har68</a>]</span>. In addition, the 1 nearest
 neighbor rule is applied to all samples and the one which are misclassified
-will be added to the set <img class="math" src="_images/math/4db5b6e16e06f929ce3f675c5e535d06ffb02ff7.svg" alt="C"/>. No iteration on the set <img class="math" src="_images/math/b988975be41fd13b4d091c10202ba19374643586.svg" alt="S"/> will take
+will be added to the set <span class="math">C</span>. No iteration on the set <span class="math">S</span> will take
 place. The class can be used as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <span class="n">OneSidedSelection</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">oss</span> <span class="o">=</span> <span class="n">OneSidedSelection</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -576,7 +576,7 @@ place. The class can be used as:</p>
 <span class="go">[(0, 64), (1, 174), (2, 4404)]</span>
 </pre></div>
 </div>
-<p>Our implementation offer to set the number of seeds to put in the set <img class="math" src="_images/math/4db5b6e16e06f929ce3f675c5e535d06ffb02ff7.svg" alt="C"/>
+<p>Our implementation offer to set the number of seeds to put in the set <span class="math">C</span>
 originally by setting the parameter <code class="docutils literal notranslate"><span class="pre">n_seeds_S</span></code>.</p>
 <p><a class="reference internal" href="references/generated/imblearn.under_sampling.NeighbourhoodCleaningRule.html#imblearn.under_sampling.NeighbourhoodCleaningRule" title="imblearn.under_sampling.NeighbourhoodCleaningRule"><code class="xref py py-class docutils literal notranslate"><span class="pre">NeighbourhoodCleaningRule</span></code></a> will focus on cleaning the data than
 condensing them <span id="id9">[<a class="reference internal" href="zzz_references.html#id20" title="Jorma Laurikkala. Improving identification of difficult small classes by balancing class distribution. In Conference on Artificial Intelligence in Medicine in Europe, 63–66. Springer, 2001.">Lau01</a>]</span>. Therefore, it will used the
@@ -651,7 +651,7 @@ is not always possible to get a specific number of samples.</p>
       </div>
     </div>
   
-  <script src="_static/js/index.b2655c098e94b587ffd3.js"></script>
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 <footer class="footer mt-5 mt-md-0">
   <div class="container">
     

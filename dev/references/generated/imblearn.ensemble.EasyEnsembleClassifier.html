@@ -9,7 +9,7 @@
     <title>EasyEnsembleClassifier &#8212; Version 0.9.0.dev0</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.eb2e94f0e4565f3ea722e9d0f85e3c08.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.b2655c098e94b587ffd3.js">
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -489,6 +489,11 @@
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="imblearn.utils.estimator_checks.parametrize_with_checks.html">
+     parametrize_with_checks
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="imblearn.utils.check_neighbors_object.html">
      check_neighbors_object
     </a>
@@ -501,6 +506,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="imblearn.utils.check_target_type.html">
      check_target_type
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="imblearn.utils.estimator_checks.parametrize_with_checks.html">
+     parametrize_with_checks
     </a>
    </li>
   </ul>
@@ -567,7 +577,7 @@
 <h1>EasyEnsembleClassifier<a class="headerlink" href="#easyensembleclassifier" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="imblearn.ensemble.EasyEnsembleClassifier">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">imblearn.ensemble.</span></span><span class="sig-name descname"><span class="pre">EasyEnsembleClassifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_estimators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_estimator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warm_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_strategy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replacement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/7e94390/imblearn/ensemble/_easy_ensemble.py#L31"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.ensemble.EasyEnsembleClassifier" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">imblearn.ensemble.</span></span><span class="sig-name descname"><span class="pre">EasyEnsembleClassifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_estimators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_estimator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warm_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_strategy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replacement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/5621d1d/imblearn/ensemble/_easy_ensemble.py#L26"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.ensemble.EasyEnsembleClassifier" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bag of balanced boosted learners also known as EasyEnsemble.</p>
 <p>This algorithm is known as EasyEnsemble <a class="reference internal" href="#ra96f85e96852-1" id="id1">[1]</a>. The classifier is an
 ensemble of AdaBoost learners trained on different balanced boostrap
@@ -593,9 +603,9 @@ a whole new ensemble.</p>
 <li><p>When <code class="docutils literal notranslate"><span class="pre">float</span></code>, it corresponds to the desired ratio of the number of
 samples in the minority class over the number of samples in the
 majority class after resampling. Therefore, the ratio is expressed as
-<img class="math" src="../../_images/math/ea8eab3bf82e083fecc77e4110fb03322aabdfbb.svg" alt="\alpha_{us} = N_{m} / N_{rM}"/> where <img class="math" src="../../_images/math/c291c39375eec8dbd9df5c7a77dfc3f720e67450.svg" alt="N_{m}"/> is the
+<span class="math">\alpha_{us} = N_{m} / N_{rM}</span> where <span class="math">N_{m}</span> is the
 number of samples in the minority class and
-<img class="math" src="../../_images/math/af8cae27cbce4d779c6fd83f408d0115b6312d73.svg" alt="N_{rM}"/> is the number of samples in the majority class
+<span class="math">N_{rM}</span> is the number of samples in the majority class
 after resampling.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -625,7 +635,7 @@ desired number of samples for each class.</p></li>
 <dt><strong>replacement</strong><span class="classifier">bool, default=False</span></dt><dd><p>Whether or not to sample randomly with replacement or not.</p>
 </dd>
 <dt><strong>n_jobs</strong><span class="classifier">int, default=None</span></dt><dd><p>Number of CPU cores used during the cross-validation loop.
-<code class="docutils literal notranslate"><span class="pre">None</span></code> means 1 unless in a <code class="xref py py-obj docutils literal notranslate"><span class="pre">joblib.parallel_backend</span></code> context.
+<code class="docutils literal notranslate"><span class="pre">None</span></code> means 1 unless in a <a class="reference external" href="https://joblib.readthedocs.io/en/latest/parallel.html#joblib.parallel_backend" title="(in joblib v1.2.0.dev0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">joblib.parallel_backend</span></code></a> context.
 <code class="docutils literal notranslate"><span class="pre">-1</span></code> means using all processors. See
 <a class="reference external" href="https://scikit-learn.org/stable/glossary.html#term-n-jobs">Glossary</a>
 for more details.</p>
@@ -658,7 +668,15 @@ instance used by <code class="docutils literal notranslate"><span class="pre">np
 </dd>
 <dt><strong>n_classes_</strong><span class="classifier">int or list</span></dt><dd><p>The number of classes.</p>
 </dd>
+<dt><a class="reference internal" href="#imblearn.ensemble.EasyEnsembleClassifier.n_features_" title="imblearn.ensemble.EasyEnsembleClassifier.n_features_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">n_features_</span></code></a><span class="classifier">int</span></dt><dd><p>DEPRECATED: Attribute <code class="docutils literal notranslate"><span class="pre">n_features_</span></code> was deprecated in version 1.0 and will be removed in 1.2.</p>
+</dd>
 <dt><strong>n_features_in_</strong><span class="classifier">int</span></dt><dd><p>Number of features in the input dataset.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.9.</span></p>
+</div>
+</dd>
+<dt><strong>feature_names_in_</strong><span class="classifier">ndarray of shape (<a href="#id5"><span class="problematic" id="id6">n_features_in_</span></a>,)</span></dt><dd><p>Names of features seen during <code class="docutils literal notranslate"><span class="pre">fit</span></code>. Defined only when <code class="docutils literal notranslate"><span class="pre">X</span></code> has feature
+names that are all strings.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.9.</span></p>
 </div>
@@ -722,7 +740,7 @@ April 2009.</p>
 <td><p>Average of the decision functions of the base classifiers.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#imblearn.ensemble.EasyEnsembleClassifier.fit" title="imblearn.ensemble.EasyEnsembleClassifier.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(X, y)</p></td>
-<td><p>Train the ensemble on the training set.</p></td>
+<td><p>Build a Bagging ensemble of estimators from the training set (X, y).</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#imblearn.ensemble.EasyEnsembleClassifier.get_params" title="imblearn.ensemble.EasyEnsembleClassifier.get_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_params</span></code></a>([deep])</p></td>
 <td><p>Get parameters for this estimator.</p></td>
@@ -746,7 +764,7 @@ April 2009.</p>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.ensemble.EasyEnsembleClassifier.decision_function">
-<span class="sig-name descname"><span class="pre">decision_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/7e94390/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/utils/metaestimators.py#L859"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.ensemble.EasyEnsembleClassifier.decision_function" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">decision_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/5621d1d/imblearn/../../miniconda/envs/testenv/lib/python3.9/site-packages/sklearn/utils/metaestimators.py#L859"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.ensemble.EasyEnsembleClassifier.decision_function" title="Permalink to this definition">¶</a></dt>
 <dd><p>Average of the decision functions of the base classifiers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -782,20 +800,22 @@ data. Thus fetching the property may be slower than expected.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.ensemble.EasyEnsembleClassifier.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/7e94390/imblearn/ensemble/_easy_ensemble.py#L216"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.ensemble.EasyEnsembleClassifier.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Train the ensemble on the training set.</p>
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/5621d1d/imblearn/ensemble/_easy_ensemble.py#L230"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.ensemble.EasyEnsembleClassifier.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a Bagging ensemble of estimators from the training set (X, y).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">{array-like, sparse matrix} of shape (n_samples, n_features)</span></dt><dd><p>The training input samples.</p>
+<dt><strong>X</strong><span class="classifier">{array-like, sparse matrix} of shape (n_samples, n_features)</span></dt><dd><p>The training input samples. Sparse matrices are accepted only if
+they are supported by the base estimator.</p>
 </dd>
-<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>The target values.</p>
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>The target values (class labels in classification, real numbers in
+regression).</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>self</strong><span class="classifier">object</span></dt><dd><p>Returns self.</p>
+<dt><strong>self</strong><span class="classifier">object</span></dt><dd><p>Fitted estimator.</p>
 </dd>
 </dl>
 </dd>
@@ -804,7 +824,7 @@ data. Thus fetching the property may be slower than expected.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.ensemble.EasyEnsembleClassifier.get_params">
-<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/7e94390/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/base.py#L188"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.ensemble.EasyEnsembleClassifier.get_params" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/5621d1d/imblearn/../../miniconda/envs/testenv/lib/python3.9/site-packages/sklearn/base.py#L188"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.ensemble.EasyEnsembleClassifier.get_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -831,7 +851,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.ensemble.EasyEnsembleClassifier.predict">
-<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/7e94390/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/ensemble/_bagging.py#L726"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.ensemble.EasyEnsembleClassifier.predict" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/5621d1d/imblearn/../../miniconda/envs/testenv/lib/python3.9/site-packages/sklearn/ensemble/_bagging.py#L726"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.ensemble.EasyEnsembleClassifier.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict class for X.</p>
 <p>The predicted class of an input sample is computed as the class with
 the highest mean predicted probability. If base estimators do not
@@ -855,7 +875,7 @@ they are supported by the base estimator.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.ensemble.EasyEnsembleClassifier.predict_log_proba">
-<span class="sig-name descname"><span class="pre">predict_log_proba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/7e94390/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/ensemble/_bagging.py#L801"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.ensemble.EasyEnsembleClassifier.predict_log_proba" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">predict_log_proba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/5621d1d/imblearn/../../miniconda/envs/testenv/lib/python3.9/site-packages/sklearn/ensemble/_bagging.py#L801"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.ensemble.EasyEnsembleClassifier.predict_log_proba" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict class log-probabilities for X.</p>
 <p>The predicted class log-probabilities of an input sample is computed as
 the log of the mean predicted class probabilities of the base
@@ -871,7 +891,7 @@ they are supported by the base estimator.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>p</strong><span class="classifier">ndarray of shape (n_samples, n_classes)</span></dt><dd><p>The class log-probabilities of the input samples. The order of the
-classes corresponds to that in the attribute <a class="reference external" href="https://scikit-learn.org/stable/glossary.html#term-classes_" title="(in scikit-learn v1.0)"><span class="xref std std-term">classes_</span></a>.</p>
+classes corresponds to that in the attribute <span class="xref std std-term">classes_</span>.</p>
 </dd>
 </dl>
 </dd>
@@ -880,7 +900,7 @@ classes corresponds to that in the attribute <a class="reference external" href=
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.ensemble.EasyEnsembleClassifier.predict_proba">
-<span class="sig-name descname"><span class="pre">predict_proba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/7e94390/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/ensemble/_bagging.py#L747"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.ensemble.EasyEnsembleClassifier.predict_proba" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">predict_proba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/5621d1d/imblearn/../../miniconda/envs/testenv/lib/python3.9/site-packages/sklearn/ensemble/_bagging.py#L747"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.ensemble.EasyEnsembleClassifier.predict_proba" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict class probabilities for X.</p>
 <p>The predicted class probabilities of an input sample is computed as
 the mean predicted class probabilities of the base estimators in the
@@ -899,7 +919,7 @@ they are supported by the base estimator.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>p</strong><span class="classifier">ndarray of shape (n_samples, n_classes)</span></dt><dd><p>The class probabilities of the input samples. The order of the
-classes corresponds to that in the attribute <a class="reference external" href="https://scikit-learn.org/stable/glossary.html#term-classes_" title="(in scikit-learn v1.0)"><span class="xref std std-term">classes_</span></a>.</p>
+classes corresponds to that in the attribute <span class="xref std std-term">classes_</span>.</p>
 </dd>
 </dl>
 </dd>
@@ -908,7 +928,7 @@ classes corresponds to that in the attribute <a class="reference external" href=
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.ensemble.EasyEnsembleClassifier.score">
-<span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/7e94390/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/base.py#L616"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.ensemble.EasyEnsembleClassifier.score" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/5621d1d/imblearn/../../miniconda/envs/testenv/lib/python3.9/site-packages/sklearn/base.py#L620"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.ensemble.EasyEnsembleClassifier.score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the mean accuracy on the given test data and labels.</p>
 <p>In multi-label classification, this is the subset accuracy
 which is a harsh metric since you require for each sample that
@@ -935,10 +955,10 @@ each label set be correctly predicted.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.ensemble.EasyEnsembleClassifier.set_params">
-<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/7e94390/imblearn/../../miniconda/envs/testenv/lib/python3.8/site-packages/sklearn/base.py#L212"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.ensemble.EasyEnsembleClassifier.set_params" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/5621d1d/imblearn/../../miniconda/envs/testenv/lib/python3.9/site-packages/sklearn/base.py#L212"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.ensemble.EasyEnsembleClassifier.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
-(such as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>). The latter have
+(such as <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>). The latter have
 parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
 possible to update each component of a nested object.</p>
 <dl class="field-list simple">
@@ -998,7 +1018,7 @@ possible to update each component of a nested object.</p>
       </div>
     </div>
   
-  <script src="../../_static/js/index.b2655c098e94b587ffd3.js"></script>
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 <footer class="footer mt-5 mt-md-0">
   <div class="container">
     
