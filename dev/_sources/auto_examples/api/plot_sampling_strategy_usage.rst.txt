@@ -223,7 +223,7 @@ Note that we are using multiple classes from now on.
     ros = RandomOverSampler(sampling_strategy=sampling_strategy)
     X_res, y_res = ros.fit_resample(X, y)
     y_res.value_counts().plot.pie(autopct=autopct, ax=axs[1])
-    axs[1].set_title("Over-sampling")
+    _ = axs[1].set_title("Over-sampling")
 
 
 
@@ -234,14 +234,6 @@ Note that we are using multiple classes from now on.
    :class: sphx-glr-single-img
 
 
-.. rst-class:: sphx-glr-script-out
-
- Out:
-
- .. code-block:: none
-
-
-    Text(0.5, 1.0, 'Over-sampling')
 
 
 
@@ -257,7 +249,7 @@ equalized even if targeted.
     from imblearn.under_sampling import TomekLinks
 
     sampling_strategy = "not minority"
-    tl = TomekLinks(sampling_strategy)
+    tl = TomekLinks(sampling_strategy=sampling_strategy)
     X_res, y_res = tl.fit_resample(X, y)
     ax = y_res.value_counts().plot.pie(autopct=autopct)
     _ = ax.set_title("Cleaning")
@@ -270,15 +262,6 @@ equalized even if targeted.
    :srcset: /auto_examples/api/images/sphx_glr_plot_sampling_strategy_usage_005.png
    :class: sphx-glr-single-img
 
-
-.. rst-class:: sphx-glr-script-out
-
- Out:
-
- .. code-block:: none
-
-    /home/circleci/project/imblearn/utils/_validation.py:586: FutureWarning: Pass sampling_strategy=not minority as keyword args. From version 0.9 passing these as positional arguments will result in an error
-      warnings.warn(
 
 
 
@@ -309,7 +292,7 @@ algorithms but not for the **cleaning algorithms**. Use a `list` instead.
     ros = RandomOverSampler(sampling_strategy=sampling_strategy)
     X_res, y_res = ros.fit_resample(X, y)
     y_res.value_counts().plot.pie(autopct=autopct, ax=axs[1])
-    axs[1].set_title("Under-sampling")
+    _ = axs[1].set_title("Under-sampling")
 
 
 
@@ -320,14 +303,6 @@ algorithms but not for the **cleaning algorithms**. Use a `list` instead.
    :class: sphx-glr-single-img
 
 
-.. rst-class:: sphx-glr-script-out
-
- Out:
-
- .. code-block:: none
-
-
-    Text(0.5, 1.0, 'Under-sampling')
 
 
 
@@ -405,7 +380,7 @@ number of samples for each class.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.230 seconds)
+   **Total running time of the script:** ( 0 minutes  2.974 seconds)
 
 **Estimated memory usage:**  34 MB
 

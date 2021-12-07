@@ -94,7 +94,7 @@ than the majority class.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-63
+.. GENERATED FROM PYTHON SOURCE LINES 47-52
 
 .. code-block:: default
 
@@ -102,17 +102,6 @@ than the majority class.
 
     print(f"Training class distributions summary: {Counter(y_train)}")
     print(f"Test class distributions summary: {Counter(y_test)}")
-
-    # % [markdown]
-    # The usual scikit-learn pipeline
-    # -------------------------------
-    #
-    # You might usually use scikit-learn pipeline by combining the TF-IDF
-    # vectorizer to feed a multinomial naive bayes classifier. A classification
-    # report summarized the results on the testing set.
-    #
-    # As expected, the recall of the class \#3 is low mainly due to the class
-    # imbalanced.
 
 
 
@@ -129,6 +118,18 @@ than the majority class.
 
 
 
+
+.. GENERATED FROM PYTHON SOURCE LINES 53-62
+
+The usual scikit-learn pipeline
+-------------------------------
+
+You might usually use scikit-learn pipeline by combining the TF-IDF
+vectorizer to feed a multinomial naive bayes classifier. A classification
+report summarized the results on the testing set.
+
+As expected, the recall of the class \#3 is low mainly due to the class
+imbalanced.
 
 .. GENERATED FROM PYTHON SOURCE LINES 64-72
 
@@ -237,12 +238,12 @@ slightly better.
 
                        pre       rec       spe        f1       geo       iba       sup
 
-              0       0.72      0.90      0.89      0.80      0.90      0.80       319
-              1       0.97      0.84      0.99      0.90      0.91      0.82       389
-              2       0.93      0.91      0.97      0.92      0.94      0.88       394
-              3       0.80      0.75      0.96      0.77      0.84      0.70       251
+              0       0.73      0.89      0.90      0.80      0.89      0.80       319
+              1       0.97      0.85      0.99      0.91      0.92      0.83       389
+              2       0.94      0.91      0.98      0.93      0.94      0.88       394
+              3       0.77      0.75      0.95      0.76      0.84      0.69       251
 
-    avg / total       0.87      0.86      0.96      0.86      0.90      0.81      1353
+    avg / total       0.87      0.86      0.96      0.86      0.91      0.81      1353
 
 
 
@@ -251,7 +252,7 @@ slightly better.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  10.584 seconds)
+   **Total running time of the script:** ( 0 minutes  14.487 seconds)
 
 **Estimated memory usage:**  105 MB
 

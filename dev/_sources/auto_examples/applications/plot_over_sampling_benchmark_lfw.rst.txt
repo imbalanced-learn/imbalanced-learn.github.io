@@ -113,21 +113,11 @@ a binary problem by taking picture of only George W. Bush and Bill Clinton.
     george_bush_id = 1871  # Photos of George W. Bush
     bill_clinton_id = 531  # Photos of Bill Clinton
     classes = [george_bush_id, bill_clinton_id]
-    classes_name = np.array(["B. Clinton", "G.W. Bush"], dtype=np.object)
+    classes_name = np.array(["B. Clinton", "G.W. Bush"], dtype=object)
 
 
 
 
-
-.. rst-class:: sphx-glr-script-out
-
- Out:
-
- .. code-block:: none
-
-    /home/circleci/project/examples/applications/plot_over_sampling_benchmark_lfw.py:40: DeprecationWarning: `np.object` is a deprecated alias for the builtin `object`. To silence this warning, use `object` by itself. Doing this will not modify any behavior and is safe. 
-    Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
-      classes_name = np.array(["B. Clinton", "G.W. Bush"], dtype=np.object)
 
 
 
@@ -152,16 +142,18 @@ a binary problem by taking picture of only George W. Bush and Bill Clinton.
 
 We can check the ratio between the two classes.
 
-.. GENERATED FROM PYTHON SOURCE LINES 52-60
+.. GENERATED FROM PYTHON SOURCE LINES 52-62
 
 .. code-block:: default
 
+    import matplotlib.pyplot as plt
     import pandas as pd
 
     class_distribution = pd.Series(y).value_counts(normalize=True)
     ax = class_distribution.plot.barh()
     ax.set_title("Class distribution")
     pos_label = class_distribution.idxmin()
+    plt.tight_layout()
     print(f"The positive label considered as the minority class is {pos_label}")
 
 
@@ -184,7 +176,7 @@ We can check the ratio between the two classes.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-72
+.. GENERATED FROM PYTHON SOURCE LINES 63-74
 
 We see that we have an imbalanced classification problem with ~95% of the
 data belonging to the class G.W. Bush.
@@ -198,7 +190,7 @@ performed through cross-validation and we will plot the mean ROC curve.
 
 We will create different pipelines and evaluate them.
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-88
+.. GENERATED FROM PYTHON SOURCE LINES 76-90
 
 .. code-block:: default
 
@@ -223,7 +215,7 @@ We will create different pipelines and evaluate them.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 89-93
+.. GENERATED FROM PYTHON SOURCE LINES 91-95
 
 .. code-block:: default
 
@@ -238,17 +230,16 @@ We will create different pipelines and evaluate them.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 94-97
+.. GENERATED FROM PYTHON SOURCE LINES 96-99
 
 We will compute the mean ROC curve for each pipeline using a different splits
 provided by the :class:`~sklearn.model_selection.StratifiedKFold`
 cross-validation.
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-132
+.. GENERATED FROM PYTHON SOURCE LINES 101-133
 
 .. code-block:: default
 
-    import matplotlib.pyplot as plt
     from sklearn.metrics import RocCurveDisplay, roc_curve, auc
 
     disp = []
@@ -288,12 +279,12 @@ cross-validation.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 133-135
+.. GENERATED FROM PYTHON SOURCE LINES 134-136
 
 In the previous cell, we created the different mean ROC curve and we can plot
 them on the same plot.
 
-.. GENERATED FROM PYTHON SOURCE LINES 137-148
+.. GENERATED FROM PYTHON SOURCE LINES 138-150
 
 .. code-block:: default
 
@@ -302,17 +293,18 @@ them on the same plot.
         d.plot(ax=ax, linestyle="--")
     ax.plot([0, 1], [0, 1], linestyle="--", color="k")
     ax.axis("square")
-    fig.suptitle("Comparison of over-sampling methods with a 3NN classifier")
+    fig.suptitle("Comparison of over-sampling methods \nwith a 3NN classifier")
     ax.set_xlim([0, 1])
     ax.set_ylim([0, 1])
     sns.despine(offset=10, ax=ax)
+    plt.tight_layout()
     plt.show()
 
 
 
 
 .. image-sg:: /auto_examples/applications/images/sphx_glr_plot_over_sampling_benchmark_lfw_002.png
-   :alt: Comparison of over-sampling methods with a 3NN classifier
+   :alt: Comparison of over-sampling methods  with a 3NN classifier
    :srcset: /auto_examples/applications/images/sphx_glr_plot_over_sampling_benchmark_lfw_002.png
    :class: sphx-glr-single-img
 
@@ -320,7 +312,7 @@ them on the same plot.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 149-152
+.. GENERATED FROM PYTHON SOURCE LINES 151-154
 
 We see that for this task, methods that are generating new samples with some
 interpolation (i.e. ADASYN and SMOTE) perform better than random
@@ -329,9 +321,9 @@ over-sampling or no resampling.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  7.821 seconds)
+   **Total running time of the script:** ( 1 minutes  25.976 seconds)
 
-**Estimated memory usage:**  266 MB
+**Estimated memory usage:**  278 MB
 
 
 .. _sphx_glr_download_auto_examples_applications_plot_over_sampling_benchmark_lfw.py:

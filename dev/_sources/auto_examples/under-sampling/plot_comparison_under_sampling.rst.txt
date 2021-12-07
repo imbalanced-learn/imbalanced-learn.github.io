@@ -294,7 +294,7 @@ the targetted class.
 
 
 .. image-sg:: /auto_examples/under-sampling/images/sphx_glr_plot_comparison_under_sampling_002.png
-   :alt: Decision function with RandomUnderSampler, Resampling with RandomUnderSampler, Decision function with FunctionSampler, Resampling with FunctionSampler
+   :alt: Decision function with FunctionSampler, Resampling with FunctionSampler, Decision function with RandomUnderSampler, Resampling with RandomUnderSampler
    :srcset: /auto_examples/under-sampling/images/sphx_glr_plot_comparison_under_sampling_002.png
    :class: sphx-glr-single-img
 
@@ -461,10 +461,10 @@ do not agree with this rule.
     for ax, sampler in zip(axs, samplers):
         model = make_pipeline(sampler, clf).fit(X, y)
         plot_decision_function(
-            X, y, clf, ax[0], title=f"Decision function for {sampler.__class__.__name__}"
+            X, y, clf, ax[0], title=f"Decision function for \n{sampler.__class__.__name__}"
         )
         plot_resampling(
-            X, y, sampler, ax[1], title=f"Resampling using {sampler.__class__.__name__}"
+            X, y, sampler, ax[1], title=f"Resampling using \n{sampler.__class__.__name__}"
         )
     fig.tight_layout()
 
@@ -472,7 +472,7 @@ do not agree with this rule.
 
 
 .. image-sg:: /auto_examples/under-sampling/images/sphx_glr_plot_comparison_under_sampling_005.png
-   :alt: Decision function for CondensedNearestNeighbour, Resampling using CondensedNearestNeighbour, Decision function for OneSidedSelection, Resampling using OneSidedSelection, Decision function for NeighbourhoodCleaningRule, Resampling using NeighbourhoodCleaningRule
+   :alt: Decision function for  CondensedNearestNeighbour, Resampling using  CondensedNearestNeighbour, Decision function for  OneSidedSelection, Resampling using  OneSidedSelection, Decision function for  NeighbourhoodCleaningRule, Resampling using  NeighbourhoodCleaningRule
    :srcset: /auto_examples/under-sampling/images/sphx_glr_plot_comparison_under_sampling_005.png
    :class: sphx-glr-single-img
 
@@ -520,7 +520,7 @@ with a low probability will be removed.
 
 
 .. image-sg:: /auto_examples/under-sampling/images/sphx_glr_plot_comparison_under_sampling_006.png
-   :alt: Decision function with  InstanceHardnessThreshold, Resampling using  InstanceHardnessThreshold, Decision function with  FunctionSampler, Resampling using  FunctionSampler
+   :alt: Decision function with  FunctionSampler, Resampling using  FunctionSampler, Decision function with  InstanceHardnessThreshold, Resampling using  InstanceHardnessThreshold
    :srcset: /auto_examples/under-sampling/images/sphx_glr_plot_comparison_under_sampling_006.png
    :class: sphx-glr-single-img
 
@@ -531,7 +531,7 @@ with a low probability will be removed.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  7.752 seconds)
+   **Total running time of the script:** ( 0 minutes  8.358 seconds)
 
 **Estimated memory usage:**  38 MB
 

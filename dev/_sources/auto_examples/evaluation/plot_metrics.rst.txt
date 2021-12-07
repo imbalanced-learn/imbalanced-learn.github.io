@@ -113,16 +113,19 @@ We will split the data into a training and testing set.
 We will create a pipeline made of a :class:`~imblearn.over_sampling.SMOTE`
 over-sampler followed by a :class:`~sklearn.svm.LinearSVC` classifier.
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-62
+.. GENERATED FROM PYTHON SOURCE LINES 54-65
 
 .. code-block:: default
 
     from imblearn.pipeline import make_pipeline
+    from sklearn.preprocessing import StandardScaler
     from imblearn.over_sampling import SMOTE
     from sklearn.svm import LinearSVC
 
     model = make_pipeline(
-        SMOTE(random_state=RANDOM_STATE), LinearSVC(random_state=RANDOM_STATE)
+        StandardScaler(),
+        SMOTE(random_state=RANDOM_STATE),
+        LinearSVC(max_iter=10_000, random_state=RANDOM_STATE),
     )
 
 
@@ -132,14 +135,14 @@ over-sampler followed by a :class:`~sklearn.svm.LinearSVC` classifier.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 63-67
+.. GENERATED FROM PYTHON SOURCE LINES 66-70
 
 Now, we will train the model on the training set and get the prediction
 associated with the testing set. Be aware that the resampling will happen
 only when calling `fit`: the number of samples in `y_pred` is the same than
 in `y_test`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-72
+.. GENERATED FROM PYTHON SOURCE LINES 72-75
 
 .. code-block:: default
 
@@ -150,25 +153,16 @@ in `y_test`.
 
 
 
-.. rst-class:: sphx-glr-script-out
-
- Out:
-
- .. code-block:: none
-
-    /home/circleci/miniconda/envs/testenv/lib/python3.9/site-packages/sklearn/svm/_base.py:1206: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
-      warnings.warn(
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 73-76
+.. GENERATED FROM PYTHON SOURCE LINES 76-79
 
 The geometric mean corresponds to the square root of the product of the
 sensitivity and specificity. Combining the two metrics should account for
 the balancing of the dataset.
 
-.. GENERATED FROM PYTHON SOURCE LINES 78-82
+.. GENERATED FROM PYTHON SOURCE LINES 81-85
 
 .. code-block:: default
 
@@ -186,17 +180,17 @@ the balancing of the dataset.
 
  .. code-block:: none
 
-    The geometric mean is 0.938
+    The geometric mean is 0.939
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 83-85
+.. GENERATED FROM PYTHON SOURCE LINES 86-88
 
 The index balanced accuracy can transform any metric to be used in
 imbalanced learning problems.
 
-.. GENERATED FROM PYTHON SOURCE LINES 87-97
+.. GENERATED FROM PYTHON SOURCE LINES 90-100
 
 .. code-block:: default
 
@@ -220,12 +214,12 @@ imbalanced learning problems.
 
  .. code-block:: none
 
-    The IBA using alpha=0.1 and the geometric mean: 0.880
+    The IBA using alpha=0.1 and the geometric mean: 0.882
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 98-105
+.. GENERATED FROM PYTHON SOURCE LINES 101-108
 
 .. code-block:: default
 
@@ -246,7 +240,7 @@ imbalanced learning problems.
 
  .. code-block:: none
 
-    The IBA using alpha=0.5 and the geometric mean: 0.880
+    The IBA using alpha=0.5 and the geometric mean: 0.882
 
 
 
@@ -254,7 +248,7 @@ imbalanced learning problems.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  1.721 seconds)
+   **Total running time of the script:** ( 0 minutes  1.594 seconds)
 
 **Estimated memory usage:**  9 MB
 

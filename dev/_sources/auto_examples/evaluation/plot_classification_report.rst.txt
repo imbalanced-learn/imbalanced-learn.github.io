@@ -27,7 +27,7 @@ trained using imbalanced data. "mod:`imblearn` provides a classification report
 similar to :mod:`sklearn`, with additional metrics specific to imbalanced
 learning problem.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-57
+.. GENERATED FROM PYTHON SOURCE LINES 11-60
 
 
 
@@ -39,14 +39,12 @@ learning problem.
  .. code-block:: none
 
 
-    /home/circleci/miniconda/envs/testenv/lib/python3.9/site-packages/sklearn/svm/_base.py:1206: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
-      warnings.warn(
                        pre       rec       spe        f1       geo       iba       sup
 
-              0       0.41      0.84      0.87      0.55      0.85      0.73       123
-              1       0.98      0.87      0.84      0.92      0.85      0.73      1127
+              0       0.42      0.84      0.87      0.56      0.86      0.73       123
+              1       0.98      0.87      0.84      0.92      0.86      0.73      1127
 
-    avg / total       0.92      0.87      0.84      0.89      0.85      0.73      1250
+    avg / total       0.93      0.87      0.84      0.89      0.86      0.73      1250
 
 
 
@@ -64,6 +62,7 @@ learning problem.
 
 
     from sklearn import datasets
+    from sklearn.preprocessing import StandardScaler
     from sklearn.svm import LinearSVC
     from sklearn.model_selection import train_test_split
 
@@ -90,7 +89,9 @@ learning problem.
     )
 
     pipeline = pl.make_pipeline(
-        os.SMOTE(random_state=RANDOM_STATE), LinearSVC(random_state=RANDOM_STATE)
+        StandardScaler(),
+        os.SMOTE(random_state=RANDOM_STATE),
+        LinearSVC(max_iter=10_000, random_state=RANDOM_STATE),
     )
 
     # Split the data
@@ -108,7 +109,7 @@ learning problem.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.555 seconds)
+   **Total running time of the script:** ( 0 minutes  0.630 seconds)
 
 **Estimated memory usage:**  9 MB
 

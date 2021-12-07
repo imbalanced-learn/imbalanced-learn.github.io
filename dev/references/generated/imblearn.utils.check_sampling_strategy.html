@@ -562,7 +562,7 @@
 <h1>check_sampling_strategy<a class="headerlink" href="#check-sampling-strategy" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="imblearn.utils.check_sampling_strategy">
-<span class="sig-prename descclassname"><span class="pre">imblearn.utils.</span></span><span class="sig-name descname"><span class="pre">check_sampling_strategy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampling_strategy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/67d2122/imblearn/utils/_validation.py#L405"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.utils.check_sampling_strategy" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">imblearn.utils.</span></span><span class="sig-name descname"><span class="pre">check_sampling_strategy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampling_strategy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/04ccce5/imblearn/utils/_validation.py#L405"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.utils.check_sampling_strategy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sampling target validation for samplers.</p>
 <p>Checks that <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> is of consistent type and return a
 dictionary containing each targeted class with its corresponding
@@ -575,13 +575,13 @@ number of sample. It is used in <code class="xref py py-class docutils literal n
 <li><p>When <code class="docutils literal notranslate"><span class="pre">float</span></code>:</p>
 <blockquote>
 <div><p>For <strong>under-sampling methods</strong>, it corresponds to the ratio
-<span class="math">\alpha_{us}</span> defined by <span class="math">N_{rM} = \alpha_{us}
-\times N_{m}</span> where <span class="math">N_{rM}</span> and <span class="math">N_{m}</span> are the
+<img class="math" src="../../_images/math/c6e6143c5eef6f52b078a4db3517c3845db84183.svg" alt="\alpha_{us}"/> defined by <img class="math" src="../../_images/math/bc05e3c565ad80a4b8b5e782fa43c388f35f464a.svg" alt="N_{rM} = \alpha_{us}
+\times N_{m}"/> where <img class="math" src="../../_images/math/af8cae27cbce4d779c6fd83f408d0115b6312d73.svg" alt="N_{rM}"/> and <img class="math" src="../../_images/math/c291c39375eec8dbd9df5c7a77dfc3f720e67450.svg" alt="N_{m}"/> are the
 number of samples in the majority class after resampling and the
 number of samples in the minority class, respectively;</p>
 <p>For <strong>over-sampling methods</strong>, it correspond to the ratio
-<span class="math">\alpha_{os}</span> defined by <span class="math">N_{rm} = \alpha_{os}
-\times N_{m}</span> where <span class="math">N_{rm}</span> and <span class="math">N_{M}</span> are the
+<img class="math" src="../../_images/math/550fe719a6759d44ef8273ffc73fc62ce0a7f3fe.svg" alt="\alpha_{os}"/> defined by <img class="math" src="../../_images/math/b2a2d4a5d4bd0efa273e35bc5dc9cfaf517be9a2.svg" alt="N_{rm} = \alpha_{os}
+\times N_{m}"/> where <img class="math" src="../../_images/math/4985d2eacb2937e16c6bf7ae35392a2ab86f26b5.svg" alt="N_{rm}"/> and <img class="math" src="../../_images/math/2be1533ae94a10e0b0cdc0bb4456aa7afe6062ba.svg" alt="N_{M}"/> are the
 number of samples in the minority class after resampling and the
 number of samples in the majority class, respectively.</p>
 <div class="admonition warning">

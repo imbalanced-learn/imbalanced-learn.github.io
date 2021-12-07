@@ -158,7 +158,7 @@ example, we use a 3-NN to compute the average distance on 2 specific samples
 of the majority class. Therefore, in this case the point linked by the
 green-dashed line will be selected since the average distance is smaller.
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-105
+.. GENERATED FROM PYTHON SOURCE LINES 67-106
 
 .. code-block:: default
 
@@ -199,6 +199,7 @@ green-dashed line will be selected since the average distance is smaller.
             )
     ax.set_title("NearMiss-1")
     make_plot_despine(ax)
+    plt.tight_layout()
 
 
 
@@ -212,7 +213,7 @@ green-dashed line will be selected since the average distance is smaller.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 106-114
+.. GENERATED FROM PYTHON SOURCE LINES 107-115
 
 NearMiss-2
 ----------
@@ -223,7 +224,7 @@ configuration as previously presented, the sample linked to the green-dashed
 line will be selected since its distance the 3 farthest neighbors is the
 smallest.
 
-.. GENERATED FROM PYTHON SOURCE LINES 116-153
+.. GENERATED FROM PYTHON SOURCE LINES 117-155
 
 .. code-block:: default
 
@@ -263,6 +264,7 @@ smallest.
             )
     ax.set_title("NearMiss-2")
     make_plot_despine(ax)
+    plt.tight_layout()
 
 
 
@@ -276,7 +278,7 @@ smallest.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 154-161
+.. GENERATED FROM PYTHON SOURCE LINES 156-163
 
 NearMiss-3
 ----------
@@ -286,7 +288,7 @@ short-list samples from the majority class (i.e. correspond to the
 highlighted samples in the following plot). Then, the sample with the largest
 average distance to the *k* nearest-neighbors are selected.
 
-.. GENERATED FROM PYTHON SOURCE LINES 163-214
+.. GENERATED FROM PYTHON SOURCE LINES 165-215
 
 .. code-block:: default
 
@@ -338,8 +340,7 @@ average distance to the *k* nearest-neighbors are selected.
             )
     ax.set_title("NearMiss-3")
     make_plot_despine(ax)
-
-    fig.tight_layout()
+    plt.tight_layout()
     plt.show()
 
 
@@ -356,7 +357,7 @@ average distance to the *k* nearest-neighbors are selected.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.010 seconds)
+   **Total running time of the script:** ( 0 minutes  2.066 seconds)
 
 **Estimated memory usage:**  9 MB
 

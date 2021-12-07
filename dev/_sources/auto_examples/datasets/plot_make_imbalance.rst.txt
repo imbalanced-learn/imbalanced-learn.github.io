@@ -101,10 +101,11 @@ First, we will generate a dataset and convert it to a
 :class:`~pandas.DataFrame` with arbitrary column names. We will plot the
 original dataset.
 
-.. GENERATED FROM PYTHON SOURCE LINES 32-46
+.. GENERATED FROM PYTHON SOURCE LINES 32-48
 
 .. code-block:: default
 
+    import matplotlib.pyplot as plt
     import pandas as pd
     from sklearn.datasets import make_moons
 
@@ -118,6 +119,7 @@ original dataset.
         colorbar=False,
     )
     sns.despine(ax=ax, offset=10)
+    plt.tight_layout()
 
 
 
@@ -131,7 +133,7 @@ original dataset.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-53
+.. GENERATED FROM PYTHON SOURCE LINES 49-55
 
 Make a dataset imbalanced
 -------------------------
@@ -140,7 +142,7 @@ Now, we will show the helpers :func:`~imblearn.datasets.make_imbalance`
 that is useful to random select a subset of samples. It will impact the
 class distribution as specified by the parameters.
 
-.. GENERATED FROM PYTHON SOURCE LINES 55-63
+.. GENERATED FROM PYTHON SOURCE LINES 57-65
 
 .. code-block:: default
 
@@ -159,11 +161,10 @@ class distribution as specified by the parameters.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-101
+.. GENERATED FROM PYTHON SOURCE LINES 66-102
 
 .. code-block:: default
 
-    import matplotlib.pyplot as plt
     from imblearn.datasets import make_imbalance
 
     fig, axs = plt.subplots(nrows=2, ncols=3, figsize=(15, 10))
@@ -215,7 +216,7 @@ class distribution as specified by the parameters.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  1.443 seconds)
+   **Total running time of the script:** ( 0 minutes  1.224 seconds)
 
 **Estimated memory usage:**  9 MB
 

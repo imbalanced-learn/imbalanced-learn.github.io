@@ -330,6 +330,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-usual-scikit-learn-pipeline">
+   The usual scikit-learn pipeline
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#balancing-the-class-before-classification">
    Balancing the class before classification
   </a>
@@ -407,17 +412,6 @@ than the majority class.</p>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Training class distributions summary: </span><span class="si">{</span><a href="https://docs.python.org/3/library/collections.html#collections.Counter" title="collections.Counter" class="sphx-glr-backref-module-collections sphx-glr-backref-type-py-class"><span class="n">Counter</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_train</span></a><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test class distributions summary: </span><span class="si">{</span><a href="https://docs.python.org/3/library/collections.html#collections.Counter" title="collections.Counter" class="sphx-glr-backref-module-collections sphx-glr-backref-type-py-class"><span class="n">Counter</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_test</span></a><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># % [markdown]</span>
-<span class="c1"># The usual scikit-learn pipeline</span>
-<span class="c1"># -------------------------------</span>
-<span class="c1">#</span>
-<span class="c1"># You might usually use scikit-learn pipeline by combining the TF-IDF</span>
-<span class="c1"># vectorizer to feed a multinomial naive bayes classifier. A classification</span>
-<span class="c1"># report summarized the results on the testing set.</span>
-<span class="c1">#</span>
-<span class="c1"># As expected, the recall of the class \#3 is low mainly due to the class</span>
-<span class="c1"># imbalanced.</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
@@ -425,6 +419,14 @@ than the majority class.</p>
 Test class distributions summary: Counter({2: 394, 1: 389, 0: 319, 3: 251})
 </pre></div>
 </div>
+</section>
+<section id="the-usual-scikit-learn-pipeline">
+<h2>The usual scikit-learn pipeline<a class="headerlink" href="#the-usual-scikit-learn-pipeline" title="Permalink to this headline">¶</a></h2>
+<p>You might usually use scikit-learn pipeline by combining the TF-IDF
+vectorizer to feed a multinomial naive bayes classifier. A classification
+report summarized the results on the testing set.</p>
+<p>As expected, the recall of the class #3 is low mainly due to the class
+imbalanced.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
 <span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">MultinomialNB</span>
 <span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
@@ -479,15 +481,15 @@ slightly better.</p>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>                   pre       rec       spe        f1       geo       iba       sup
 
-          0       0.72      0.90      0.89      0.80      0.90      0.80       319
-          1       0.97      0.84      0.99      0.90      0.91      0.82       389
-          2       0.93      0.91      0.97      0.92      0.94      0.88       394
-          3       0.80      0.75      0.96      0.77      0.84      0.70       251
+          0       0.73      0.89      0.90      0.80      0.89      0.80       319
+          1       0.97      0.85      0.99      0.91      0.92      0.83       389
+          2       0.94      0.91      0.98      0.93      0.94      0.88       394
+          3       0.77      0.75      0.95      0.76      0.84      0.69       251
 
-avg / total       0.87      0.86      0.96      0.86      0.90      0.81      1353
+avg / total       0.87      0.86      0.96      0.86      0.91      0.81      1353
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  10.584 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  14.487 seconds)</p>
 <p><strong>Estimated memory usage:</strong>  105 MB</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-applications-plot-topic-classication-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
