@@ -338,10 +338,14 @@ each class and averaged over classes, giving an equal weight to each class.</p>
 </section>
 <section id="summary-of-important-metrics">
 <span id="classification-report"></span><h3><span class="section-number">7.1.4. </span>Summary of important metrics<a class="headerlink" href="#summary-of-important-metrics" title="Permalink to this headline">¶</a></h3>
-<p>The <a class="reference internal" href="references/generated/imblearn.metrics.classification_report_imbalanced.html#imblearn.metrics.classification_report_imbalanced" title="imblearn.metrics.classification_report_imbalanced"><code class="xref py py-func docutils literal notranslate"><span class="pre">classification_report_imbalanced</span></code></a> will compute a set of metrics
-per class and summarize it in a table. The parameter <code class="docutils literal notranslate"><span class="pre">output_dict</span></code> allows
-to get a string or a Python dictionary. This dictionary can be reused to create
-a Pandas dataframe for instance.</p>
+<p>The <a class="reference internal" href="references/generated/imblearn.metrics.classification_report_imbalanced.html#imblearn.metrics.classification_report_imbalanced" title="imblearn.metrics.classification_report_imbalanced"><code class="xref py py-func docutils literal notranslate"><span class="pre">classification_report_imbalanced</span></code></a> will compute a set of metrics per
+class and summarize it in a table. The parameter <code class="docutils literal notranslate"><span class="pre">output_dict</span></code> allows to get a
+string or a Python dictionary. This dictionary can be reused to create a Pandas
+dataframe for instance.</p>
+<p>The bottom row (i.e “avg/total”) contains the weighted average by the support
+(i.e column “sup”) of each column.</p>
+<p>Note that the weighted average of the class recalls is also known as the
+classification accuracy.</p>
 </section>
 </section>
 <section id="pairwise-metrics">
