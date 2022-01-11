@@ -1,0 +1,481 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>8. Common pitfalls and recommended practices &#8212; Version 0.9.0</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/js/copybutton.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="9. Dataset loading utilities" href="datasets/index.html" />
+    <link rel="prev" title="7. Metrics" href="metrics.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="index.html">
+  <img src="_static/logo_wide.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="install.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="user_guide.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="references/index.html">
+  API reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="auto_examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="whats_new.html">
+  Release history
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="about.html">
+  About us
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/scikit-learn-contrib/imbalanced-learn" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="over_sampling.html">
+   2. Over-sampling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="under_sampling.html">
+   3. Under-sampling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="combine.html">
+   4. Combination of over- and under-sampling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ensemble.html">
+   5. Ensemble of samplers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="miscellaneous.html">
+   6. Miscellaneous samplers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="metrics.html">
+   7. Metrics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   8. Common pitfalls and recommended practices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="datasets/index.html">
+   9. Dataset loading utilities
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="developers_utils.html">
+   10. Developer guideline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="zzz_references.html">
+   11. References
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-leakage">
+   8.1. Data leakage
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/scikit-learn-contrib/imbalanced-learn/edit/master/doc/common_pitfalls.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="common-pitfalls-and-recommended-practices">
+<span id="common-pitfalls"></span><h1><span class="section-number">8. </span>Common pitfalls and recommended practices<a class="headerlink" href="#common-pitfalls-and-recommended-practices" title="Permalink to this headline">¶</a></h1>
+<p>This section is a complement to the documentation given
+<a class="reference external" href="https://scikit-learn.org/dev/common_pitfalls.html">[here]</a> in scikit-learn.
+Indeed, we will highlight the issue of misusing resampling, leading to a
+<strong>data leakage</strong>. Due to this leakage, the performance of a model reported
+will be over-optimistic.</p>
+<section id="data-leakage">
+<h2><span class="section-number">8.1. </span>Data leakage<a class="headerlink" href="#data-leakage" title="Permalink to this headline">¶</a></h2>
+<p>As mentioned in the scikit-learn documentation, data leakage occurs when
+information that would not be available at prediction time is used when
+building the model.</p>
+<p>In the resampling setting, there is a common pitfall that corresponds to
+resample the <strong>entire</strong> dataset before splitting it into a train and a test
+partitions. Note that it would be equivalent to resample the train and test
+partitions as well.</p>
+<p>Such of a processing leads to two issues:</p>
+<ul class="simple">
+<li><p>the model will not be tested on a dataset with class distribution similar
+to the real use-case. Indeed, by resampling the entire dataset, both the
+training and testing set will be potentially balanced while the model should
+be tested on the natural imbalanced dataset to evaluate the potential bias
+of the model;</p></li>
+<li><p>the resampling procedure might use information about samples in the dataset
+to either generate or select some of the samples. Therefore, we might use
+information of samples which will be later used as testing samples which
+is the typical data leakage issue.</p></li>
+</ul>
+<p>We will demonstrate the wrong and right ways to do some sampling and emphasize
+the tools that one should use, avoiding to fall in the trap.</p>
+<p>We will use the adult census dataset. For the sake of simplicity, we will only
+use the numerical features. Also, we will make the dataset more imbalanced to
+increase the effect of the wrongdoings:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.datasets</span> <span class="kn">import</span> <span class="n">make_imbalance</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">data_id</span><span class="o">=</span><span class="mi">1119</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s2">&quot;number&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_imbalance</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sampling_strategy</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;&gt;50K&quot;</span><span class="p">:</span> <span class="mi">300</span><span class="p">},</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Let’s first check the balancing ratio on this dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">&lt;=50K    0.98801</span>
+<span class="go">&gt;50K     0.01199</span>
+<span class="go">Name: class, dtype: float64</span>
+</pre></div>
+</div>
+<p>To later highlight some of the issue, we will keep aside a left-out set that we
+will not use for the evaluation of the model:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">X_left_out</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y_left_out</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We will use a <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.ensemble.HistGradientBoostingClassifier</span></code> as a
+baseline classifier. First, we will train and check the performance of this
+classifier, without any preprocessing to alleviate the bias toward the majority
+class. We evaluate the generalization performance of the classifier via
+cross-validation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.experimental</span> <span class="kn">import</span> <span class="n">enable_hist_gradient_boosting</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">HistGradientBoostingClassifier</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_validate</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">HistGradientBoostingClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cv_results</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;balanced_accuracy&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_estimator</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="sa">f</span><span class="s2">&quot;Balanced accuracy mean +/- std. dev.: &quot;</span>
+<span class="gp">... </span>    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> +/- &quot;</span>
+<span class="gp">... </span>    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">Balanced accuracy mean +/- std. dev.: 0.609 +/- 0.024</span>
+</pre></div>
+</div>
+<p>We see that the classifier does not give good performance in terms of balanced
+accuracy mainly due to the class imbalance issue.</p>
+<p>In the cross-validation, we stored the different classifiers of all folds. We
+will show that evaluating these classifiers on the left-out data will give
+close statistical performance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">balanced_accuracy_score</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">fold_id</span><span class="p">,</span> <span class="n">cv_model</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cv_results</span><span class="p">[</span><span class="s2">&quot;estimator&quot;</span><span class="p">]):</span>
+<span class="gp">... </span>    <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">balanced_accuracy_score</span><span class="p">(</span>
+<span class="gp">... </span>            <span class="n">y_left_out</span><span class="p">,</span> <span class="n">cv_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_left_out</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="p">)</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="sa">f</span><span class="s2">&quot;Balanced accuracy mean +/- std. dev.: &quot;</span>
+<span class="gp">... </span>    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> +/- </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">Balanced accuracy mean +/- std. dev.: 0.628 +/- 0.009</span>
+</pre></div>
+</div>
+<p>Let’s now show the <strong>wrong</strong> pattern to apply when it comes to resampling to
+alleviate the class imbalance issue. We will use a sampler to balance the
+<strong>entire</strong> dataset and check the statistical performance of our classifier via
+cross-validation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <span class="n">RandomUnderSampler</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sampler</span> <span class="o">=</span> <span class="n">RandomUnderSampler</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">HistGradientBoostingClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cv_results</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">model</span><span class="p">,</span> <span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;balanced_accuracy&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_estimator</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="sa">f</span><span class="s2">&quot;Balanced accuracy mean +/- std. dev.: &quot;</span>
+<span class="gp">... </span>    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> +/- &quot;</span>
+<span class="gp">... </span>    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">Balanced accuracy mean +/- std. dev.: 0.724 +/- 0.042</span>
+</pre></div>
+</div>
+<p>We see that the statistical performance are worse than in the previous case.
+Indeed, the data leakage gave us too optimistic results due to the reason
+stated earlier in this section.</p>
+<p>We will now illustrate the correct pattern to use. Indeed, as in scikit-learn,
+using a <a class="reference internal" href="references/generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="imblearn.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a> avoids to make any data leakage
+because the resampling will be delegated to imbalanced-learn and does not
+require any manual steps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">RandomUnderSampler</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">HistGradientBoostingClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cv_results</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;balanced_accuracy&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_estimator</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="sa">f</span><span class="s2">&quot;Balanced accuracy mean +/- std. dev.: &quot;</span>
+<span class="gp">... </span>    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> +/- &quot;</span>
+<span class="gp">... </span>    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">Balanced accuracy mean +/- std. dev.: 0.732 +/- 0.019</span>
+</pre></div>
+</div>
+<p>We observe that we get good statistical performance as well. However, now we
+can check the performance of the model from each cross-validation fold to
+ensure that we have similar performance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">fold_id</span><span class="p">,</span> <span class="n">cv_model</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cv_results</span><span class="p">[</span><span class="s2">&quot;estimator&quot;</span><span class="p">]):</span>
+<span class="gp">... </span>    <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">balanced_accuracy_score</span><span class="p">(</span>
+<span class="gp">... </span>            <span class="n">y_left_out</span><span class="p">,</span> <span class="n">cv_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_left_out</span><span class="p">)</span>
+<span class="gp">... </span>       <span class="p">)</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="sa">f</span><span class="s2">&quot;Balanced accuracy mean +/- std. dev.: &quot;</span>
+<span class="gp">... </span>    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> +/- </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">Balanced accuracy mean +/- std. dev.: 0.727 +/- 0.008</span>
+</pre></div>
+</div>
+<p>We see that the statistical performance are very close to the cross-validation
+study that we perform, without any sign of over-optimistic results.</p>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="metrics.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">7. </span>Metrics</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="datasets/index.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Dataset loading utilities</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2014-2022, The imbalanced-learn developers.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

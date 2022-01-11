@@ -1,0 +1,527 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>6. Miscellaneous samplers &#8212; Version 0.9.0</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/js/copybutton.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="7. Metrics" href="metrics.html" />
+    <link rel="prev" title="5. Ensemble of samplers" href="ensemble.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="index.html">
+  <img src="_static/logo_wide.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="install.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="user_guide.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="references/index.html">
+  API reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="auto_examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="whats_new.html">
+  Release history
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="about.html">
+  About us
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/scikit-learn-contrib/imbalanced-learn" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="over_sampling.html">
+   2. Over-sampling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="under_sampling.html">
+   3. Under-sampling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="combine.html">
+   4. Combination of over- and under-sampling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ensemble.html">
+   5. Ensemble of samplers
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   6. Miscellaneous samplers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="metrics.html">
+   7. Metrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="common_pitfalls.html">
+   8. Common pitfalls and recommended practices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="datasets/index.html">
+   9. Dataset loading utilities
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="developers_utils.html">
+   10. Developer guideline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="zzz_references.html">
+   11. References
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#custom-samplers">
+   6.1. Custom samplers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#custom-generators">
+   6.2. Custom generators
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tensorflow-generator">
+     6.2.1. TensorFlow generator
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#keras-generator">
+     6.2.2. Keras generator
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/scikit-learn-contrib/imbalanced-learn/edit/master/doc/miscellaneous.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="miscellaneous-samplers">
+<span id="miscellaneous"></span><h1><span class="section-number">6. </span>Miscellaneous samplers<a class="headerlink" href="#miscellaneous-samplers" title="Permalink to this headline">¶</a></h1>
+<section id="custom-samplers">
+<span id="function-sampler"></span><h2><span class="section-number">6.1. </span>Custom samplers<a class="headerlink" href="#custom-samplers" title="Permalink to this headline">¶</a></h2>
+<p>A fully customized sampler, <a class="reference internal" href="references/generated/imblearn.FunctionSampler.html#imblearn.FunctionSampler" title="imblearn.FunctionSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionSampler</span></code></a>, is available in
+imbalanced-learn such that you can fast prototype your own sampler by defining
+a single function. Additional parameters can be added using the attribute
+<code class="docutils literal notranslate"><span class="pre">kw_args</span></code> which accepts a dictionary. The following example illustrates how
+to retain the 10 first elements of the array <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn</span> <span class="kn">import</span> <span class="n">FunctionSampler</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>                           <span class="n">n_redundant</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_repeated</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>                           <span class="n">n_clusters_per_class</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>                           <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.94</span><span class="p">],</span>
+<span class="gp">... </span>                           <span class="n">class_sep</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="gp">... </span>  <span class="k">return</span> <span class="n">X</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="n">y</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sampler</span> <span class="o">=</span> <span class="n">FunctionSampler</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">func</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">X_res</span> <span class="o">==</span> <span class="n">X</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">y_res</span> <span class="o">==</span> <span class="n">y</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>In addition, the parameter <code class="docutils literal notranslate"><span class="pre">validate</span></code> control input checking. For instance,
+turning <code class="docutils literal notranslate"><span class="pre">validate=False</span></code> allows to pass any type of target <code class="docutils literal notranslate"><span class="pre">y</span></code> and do some
+sampling for regression targets:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_regression</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_reg</span><span class="p">,</span> <span class="n">y_reg</span> <span class="o">=</span> <span class="n">make_regression</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">dummy_sampler</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">indices</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">X</span><span class="p">[</span><span class="n">indices</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sampler</span> <span class="o">=</span> <span class="n">FunctionSampler</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">dummy_sampler</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X_reg</span><span class="p">,</span> <span class="n">y_reg</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_res</span>
+<span class="go">array([  41.49112498, -142.78526195,   85.55095317,  141.43321419,</span>
+<span class="go">         75.46571114,  -67.49177372,  159.72700509, -169.80498923,</span>
+<span class="go">        211.95889757,  211.95889757])</span>
+</pre></div>
+</div>
+<p>We illustrate the use of such sampler to implement an outlier rejection
+estimator which can be easily used within a
+<a class="reference internal" href="references/generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="imblearn.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>:
+<a class="reference internal" href="auto_examples/applications/plot_outlier_rejections.html#sphx-glr-auto-examples-applications-plot-outlier-rejections-py"><span class="std std-ref">Customized sampler to implement an outlier rejections estimator</span></a></p>
+</section>
+<section id="custom-generators">
+<span id="generators"></span><h2><span class="section-number">6.2. </span>Custom generators<a class="headerlink" href="#custom-generators" title="Permalink to this headline">¶</a></h2>
+<p>Imbalanced-learn provides specific generators for TensorFlow and Keras which
+will generate balanced mini-batches.</p>
+<section id="tensorflow-generator">
+<span id="id1"></span><h3><span class="section-number">6.2.1. </span>TensorFlow generator<a class="headerlink" href="#tensorflow-generator" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="references/generated/imblearn.tensorflow.balanced_batch_generator.html#imblearn.tensorflow.balanced_batch_generator" title="imblearn.tensorflow.balanced_batch_generator"><code class="xref py py-func docutils literal notranslate"><span class="pre">balanced_batch_generator</span></code></a> allow to generate
+balanced mini-batches using an imbalanced-learn sampler which returns indices.</p>
+<dl>
+<dt>Let’s first generate some data::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n_features</span><span class="p">,</span> <span class="n">n_classes</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">n_samples</span><span class="o">=</span><span class="mi">10_000</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="n">n_features</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">n_redundant</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_repeated</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="n">n_classes</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">n_clusters_per_class</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">class_sep</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>Then, we can create the generator that will yield mini-batches that will be
+balanced:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <span class="n">RandomUnderSampler</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.tensorflow</span> <span class="kn">import</span> <span class="n">balanced_batch_generator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">training_generator</span><span class="p">,</span> <span class="n">steps_per_epoch</span> <span class="o">=</span> <span class="n">balanced_batch_generator</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">X</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">y</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">sample_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">sampler</span><span class="o">=</span><span class="n">RandomUnderSampler</span><span class="p">(),</span>
+<span class="gp">... </span>    <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">generator</span></code> and <code class="docutils literal notranslate"><span class="pre">steps_per_epoch</span></code> is used during the training of the
+Tensorflow model. We will illustrate how to use this generator. First, we can
+define a logistic regression model which will be optimized by a gradient
+descent:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># initialize the weights and intercept</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">normal_initializer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random_normal_initializer</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stddev</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">coef</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">normal_initializer</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="n">n_features</span><span class="p">,</span> <span class="n">n_classes</span><span class="p">]),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">intercept</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">normal_initializer</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="n">n_classes</span><span class="p">]),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># define the model</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">logistic_regression</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">coef</span><span class="p">)</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># define the loss function</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">cross_entropy</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">y_true</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">one_hot</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="n">n_classes</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">clip_by_value</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="mf">1e-9</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="o">-</span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">y_true</span> <span class="o">*</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># define our metric</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">balanced_accuracy</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">cm</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="gp">... </span>    <span class="n">per_class</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span> <span class="o">/</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">per_class</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># define the optimizer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># define the optimization step</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">run_optimization</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">g</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">logistic_regression</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="n">loss</span> <span class="o">=</span> <span class="n">cross_entropy</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">gradients</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="p">[</span><span class="n">coef</span><span class="p">,</span> <span class="n">intercept</span><span class="p">])</span>
+<span class="gp">... </span>    <span class="n">optimizer</span><span class="o">.</span><span class="n">apply_gradients</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">gradients</span><span class="p">,</span> <span class="p">[</span><span class="n">coef</span><span class="p">,</span> <span class="n">intercept</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>Once initialized, the model is trained by iterating on balanced mini-batches of
+data and minimizing the loss previously defined:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">epochs</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">logistic_regression</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">loss</span> <span class="o">=</span> <span class="n">cross_entropy</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">bal_acc</span> <span class="o">=</span> <span class="n">balanced_accuracy</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;epoch: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">, loss: </span><span class="si">{</span><span class="n">loss</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, accuracy: </span><span class="si">{</span><span class="n">bal_acc</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps_per_epoch</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="n">X_batch</span><span class="p">,</span> <span class="n">y_batch</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">training_generator</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="n">run_optimization</span><span class="p">(</span><span class="n">X_batch</span><span class="p">,</span> <span class="n">y_batch</span><span class="p">)</span>
+<span class="go">epoch: 0, ...</span>
+</pre></div>
+</div>
+</section>
+<section id="keras-generator">
+<span id="id2"></span><h3><span class="section-number">6.2.2. </span>Keras generator<a class="headerlink" href="#keras-generator" title="Permalink to this headline">¶</a></h3>
+<p>Keras provides an higher level API in which a model can be defined and train by
+calling <code class="docutils literal notranslate"><span class="pre">fit_generator</span></code> method to train the model. To illustrate, we will
+define a logistic regression model:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">to_categorical</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">input_dim</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;sgd&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="references/generated/imblearn.keras.balanced_batch_generator.html#imblearn.keras.balanced_batch_generator" title="imblearn.keras.balanced_batch_generator"><code class="xref py py-func docutils literal notranslate"><span class="pre">balanced_batch_generator</span></code></a> creates a balanced
+mini-batches generator with the associated number of mini-batches which will be
+generated:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.keras</span> <span class="kn">import</span> <span class="n">balanced_batch_generator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">training_generator</span><span class="p">,</span> <span class="n">steps_per_epoch</span> <span class="o">=</span> <span class="n">balanced_batch_generator</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sampler</span><span class="o">=</span><span class="n">RandomUnderSampler</span><span class="p">(),</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then, <code class="docutils literal notranslate"><span class="pre">fit</span></code> can be called passing the generator and the step:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">callback_history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">training_generator</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">steps_per_epoch</span><span class="o">=</span><span class="n">steps_per_epoch</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">Epoch 1/10 ...</span>
+</pre></div>
+</div>
+<p>The second possibility is to use
+<a class="reference internal" href="references/generated/imblearn.keras.BalancedBatchGenerator.html#imblearn.keras.BalancedBatchGenerator" title="imblearn.keras.BalancedBatchGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">BalancedBatchGenerator</span></code></a>. Only an instance of this class
+will be passed to <code class="docutils literal notranslate"><span class="pre">fit</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.keras</span> <span class="kn">import</span> <span class="n">BalancedBatchGenerator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">training_generator</span> <span class="o">=</span> <span class="n">BalancedBatchGenerator</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sampler</span><span class="o">=</span><span class="n">RandomUnderSampler</span><span class="p">(),</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">callback_history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">training_generator</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">steps_per_epoch</span><span class="o">=</span><span class="n">steps_per_epoch</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">Epoch 1/10 ...</span>
+</pre></div>
+</div>
+<div class="topic">
+<p class="topic-title">References</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/applications/porto_seguro_keras_under_sampling.html#sphx-glr-auto-examples-applications-porto-seguro-keras-under-sampling-py"><span class="std std-ref">Porto Seguro: balancing samples in mini-batches with Keras</span></a></p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="ensemble.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>Ensemble of samplers</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="metrics.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Metrics</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2014-2022, The imbalanced-learn developers.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

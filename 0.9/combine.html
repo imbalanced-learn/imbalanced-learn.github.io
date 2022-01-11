@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>4. Combination of over- and under-sampling &#8212; Version 0.9.0</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/js/copybutton.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Ensemble of samplers" href="ensemble.html" />
+    <link rel="prev" title="3. Under-sampling" href="under_sampling.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="index.html">
+  <img src="_static/logo_wide.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="install.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="user_guide.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="references/index.html">
+  API reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="auto_examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="whats_new.html">
+  Release history
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="about.html">
+  About us
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/scikit-learn-contrib/imbalanced-learn" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="over_sampling.html">
+   2. Over-sampling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="under_sampling.html">
+   3. Under-sampling
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   4. Combination of over- and under-sampling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ensemble.html">
+   5. Ensemble of samplers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="miscellaneous.html">
+   6. Miscellaneous samplers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="metrics.html">
+   7. Metrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="common_pitfalls.html">
+   8. Common pitfalls and recommended practices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="datasets/index.html">
+   9. Dataset loading utilities
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="developers_utils.html">
+   10. Developer guideline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="zzz_references.html">
+   11. References
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+
+<nav id="bd-toc-nav">
+    
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/scikit-learn-contrib/imbalanced-learn/edit/master/doc/combine.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="combination-of-over-and-under-sampling">
+<span id="combine"></span><h1><span class="section-number">4. </span>Combination of over- and under-sampling<a class="headerlink" href="#combination-of-over-and-under-sampling" title="Permalink to this headline">¶</a></h1>
+<p>We previously presented <a class="reference internal" href="references/generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTE</span></code></a> and showed that this method can generate
+noisy samples by interpolating new points between marginal outliers and
+inliers. This issue can be solved by cleaning the space resulting
+from over-sampling.</p>
+<p>In this regard, Tomek’s link and edited nearest-neighbours are the two cleaning
+methods that have been added to the pipeline after applying SMOTE over-sampling
+to obtain a cleaner space. The two ready-to use classes imbalanced-learn
+implements for combining over- and undersampling methods are: (i)
+<a class="reference internal" href="references/generated/imblearn.combine.SMOTETomek.html#imblearn.combine.SMOTETomek" title="imblearn.combine.SMOTETomek"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTETomek</span></code></a> <span id="id1">[<a class="reference internal" href="zzz_references.html#id3" title="Gustavo EAPA Batista, Ronaldo C Prati, and Maria Carolina Monard. A study of the behavior of several methods for balancing machine learning training data. ACM SIGKDD explorations newsletter, 6(1):20–29, 2004.">BPM04</a>]</span> and (ii) <a class="reference internal" href="references/generated/imblearn.combine.SMOTEENN.html#imblearn.combine.SMOTEENN" title="imblearn.combine.SMOTEENN"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTEENN</span></code></a>
+<span id="id2">[<a class="reference internal" href="zzz_references.html#id4" title="Gustavo EAPA Batista, Ana LC Bazzan, and Maria Carolina Monard. Balancing training data for automated annotation of keywords: a case study. In WOB, 10–18. 2003.">BBM03</a>]</span>.</p>
+<p>Those two classes can be used like any other sampler with parameters identical
+to their former samplers:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>                           <span class="n">n_redundant</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_repeated</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>                           <span class="n">n_clusters_per_class</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>                           <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.94</span><span class="p">],</span>
+<span class="gp">... </span>                           <span class="n">class_sep</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+<span class="go">[(0, 64), (1, 262), (2, 4674)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.combine</span> <span class="kn">import</span> <span class="n">SMOTEENN</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">smote_enn</span> <span class="o">=</span> <span class="n">SMOTEENN</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">smote_enn</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y_resampled</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+<span class="go">[(0, 4060), (1, 4381), (2, 3502)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.combine</span> <span class="kn">import</span> <span class="n">SMOTETomek</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">smote_tomek</span> <span class="o">=</span> <span class="n">SMOTETomek</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">smote_tomek</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y_resampled</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+<span class="go">[(0, 4499), (1, 4566), (2, 4413)]</span>
+</pre></div>
+</div>
+<p>We can also see in the example below that <a class="reference internal" href="references/generated/imblearn.combine.SMOTEENN.html#imblearn.combine.SMOTEENN" title="imblearn.combine.SMOTEENN"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTEENN</span></code></a> tends to clean more
+noisy samples than <a class="reference internal" href="references/generated/imblearn.combine.SMOTETomek.html#imblearn.combine.SMOTETomek" title="imblearn.combine.SMOTETomek"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTETomek</span></code></a>.</p>
+<a class="reference external image-reference" href="./auto_examples/combine/plot_comparison_combine.html"><img alt="_images/sphx_glr_plot_comparison_combine_001.png" class="align-center" src="_images/sphx_glr_plot_comparison_combine_001.png" style="width: 360.0px; height: 360.0px;" /></a>
+<div class="topic">
+<p class="topic-title">Examples</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/combine/plot_comparison_combine.html#sphx-glr-auto-examples-combine-plot-comparison-combine-py"><span class="std std-ref">Compare sampler combining over- and under-sampling</span></a></p></li>
+</ul>
+</div>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="under_sampling.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>Under-sampling</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="ensemble.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Ensemble of samplers</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2014-2022, The imbalanced-learn developers.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>
