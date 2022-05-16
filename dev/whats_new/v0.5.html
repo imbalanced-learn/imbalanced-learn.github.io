@@ -8,21 +8,18 @@
 
     <title>Version 0.5.0 &#8212; Version 0.10.0.dev0</title>
     
-    <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-  
+
     
-    <link rel="stylesheet"
-      href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-  
-    
-      
-  
-    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/imbalanced-learn.css" />
     <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
@@ -32,8 +29,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/imbalanced-learn.css" />
     
-    <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
-  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
@@ -50,7 +48,7 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -165,7 +163,7 @@
               
               <div class="toc-item">
                 
-<div class="tocsection onthispage pt-5 pb-3">
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
     <i class="fas fa-list"></i> On this page
 </div>
 
@@ -232,11 +230,11 @@
               <div>
                 
   <section id="version-0-5-0">
-<span id="changes-0-5"></span><h1>Version 0.5.0<a class="headerlink" href="#version-0-5-0" title="Permalink to this headline">¶</a></h1>
+<span id="changes-0-5"></span><h1>Version 0.5.0<a class="headerlink" href="#version-0-5-0" title="Permalink to this headline">#</a></h1>
 <section id="changelog">
-<h2>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h2>
+<h2>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">#</a></h2>
 <section id="changed-models">
-<h3>Changed models<a class="headerlink" href="#changed-models" title="Permalink to this headline">¶</a></h3>
+<h3>Changed models<a class="headerlink" href="#changed-models" title="Permalink to this headline">#</a></h3>
 <p>The following models or function might give different results even if the
 same data <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are the same.</p>
 <ul class="simple">
@@ -246,7 +244,7 @@ stump (i.e., tree with <code class="docutils literal notranslate"><span class="p
 </ul>
 </section>
 <section id="documentation">
-<h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h3>
+<h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Correct the definition of the ratio when using a <code class="docutils literal notranslate"><span class="pre">float</span></code> in sampling
 strategy for the over-sampling and under-sampling.
@@ -257,7 +255,7 @@ strategy for the over-sampling and under-sampling.
 </ul>
 </section>
 <section id="enhancement">
-<h3>Enhancement<a class="headerlink" href="#enhancement" title="Permalink to this headline">¶</a></h3>
+<h3>Enhancement<a class="headerlink" href="#enhancement" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Add Parallelisation for SMOTEENN and SMOTETomek.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/547">#547</a> by <a class="reference external" href="https://github.com/Microsheep">Michael Hsieh</a>.</p></li>
@@ -270,7 +268,7 @@ clustering points before to apply SMOTE.
 </ul>
 </section>
 <section id="maintenance">
-<h3>Maintenance<a class="headerlink" href="#maintenance" title="Permalink to this headline">¶</a></h3>
+<h3>Maintenance<a class="headerlink" href="#maintenance" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Make it possible to <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">imblearn</span></code> and access submodule.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/500">#500</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
@@ -280,7 +278,7 @@ scikit-learn 0.21.
 </ul>
 </section>
 <section id="bug">
-<h3>Bug<a class="headerlink" href="#bug" title="Permalink to this headline">¶</a></h3>
+<h3>Bug<a class="headerlink" href="#bug" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Fix wrong usage of <code class="xref py py-class docutils literal notranslate"><span class="pre">keras.layers.BatchNormalization</span></code> in
 <code class="docutils literal notranslate"><span class="pre">porto_seguro_keras_under_sampling.py</span></code> example. The batch normalization
@@ -323,8 +321,9 @@ weak learner as in the original paper.
       </div>
     </div>
   
-    <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-  <footer class="footer mt-5 mt-md-0">
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">

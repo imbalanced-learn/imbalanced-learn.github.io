@@ -8,21 +8,18 @@
 
     <title>8. Common pitfalls and recommended practices &#8212; Version 0.10.0.dev0</title>
     
-    <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 <link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-  
+
     
-    <link rel="stylesheet"
-      href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-  
-    
-      
-  
-    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css" />
     <link rel="stylesheet" type="text/css" href="_static/basic.css" />
@@ -32,8 +29,9 @@
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css" />
     
-    <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
-  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
@@ -52,7 +50,7 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -224,7 +222,7 @@
               
               <div class="toc-item">
                 
-<div class="tocsection onthispage pt-5 pb-3">
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
     <i class="fas fa-list"></i> On this page
 </div>
 
@@ -264,14 +262,14 @@
               <div>
                 
   <section id="common-pitfalls-and-recommended-practices">
-<span id="common-pitfalls"></span><h1><span class="section-number">8. </span>Common pitfalls and recommended practices<a class="headerlink" href="#common-pitfalls-and-recommended-practices" title="Permalink to this headline">¶</a></h1>
+<span id="common-pitfalls"></span><h1><span class="section-number">8. </span>Common pitfalls and recommended practices<a class="headerlink" href="#common-pitfalls-and-recommended-practices" title="Permalink to this headline">#</a></h1>
 <p>This section is a complement to the documentation given
 <a class="reference external" href="https://scikit-learn.org/dev/common_pitfalls.html">[here]</a> in scikit-learn.
 Indeed, we will highlight the issue of misusing resampling, leading to a
 <strong>data leakage</strong>. Due to this leakage, the performance of a model reported
 will be over-optimistic.</p>
 <section id="data-leakage">
-<h2><span class="section-number">8.1. </span>Data leakage<a class="headerlink" href="#data-leakage" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.1. </span>Data leakage<a class="headerlink" href="#data-leakage" title="Permalink to this headline">#</a></h2>
 <p>As mentioned in the scikit-learn documentation, data leakage occurs when
 information that would not be available at prediction time is used when
 building the model.</p>
@@ -461,8 +459,9 @@ study that we perform, without any sign of over-optimistic results.</p>
       </div>
     </div>
   
-    <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-  <footer class="footer mt-5 mt-md-0">
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">

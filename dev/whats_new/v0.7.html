@@ -8,21 +8,18 @@
 
     <title>Version 0.7.0 &#8212; Version 0.10.0.dev0</title>
     
-    <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-  
+
     
-    <link rel="stylesheet"
-      href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-  
-    
-      
-  
-    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/imbalanced-learn.css" />
     <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
@@ -32,8 +29,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/imbalanced-learn.css" />
     
-    <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
-  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
@@ -50,7 +48,7 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -165,7 +163,7 @@
               
               <div class="toc-item">
                 
-<div class="tocsection onthispage pt-5 pb-3">
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
     <i class="fas fa-list"></i> On this page
 </div>
 
@@ -232,11 +230,11 @@
               <div>
                 
   <section id="version-0-7-0">
-<span id="changes-0-7"></span><h1>Version 0.7.0<a class="headerlink" href="#version-0-7-0" title="Permalink to this headline">¶</a></h1>
+<span id="changes-0-7"></span><h1>Version 0.7.0<a class="headerlink" href="#version-0-7-0" title="Permalink to this headline">#</a></h1>
 <section id="changelog">
-<h2>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h2>
+<h2>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">#</a></h2>
 <section id="maintenance">
-<h3>Maintenance<a class="headerlink" href="#maintenance" title="Permalink to this headline">¶</a></h3>
+<h3>Maintenance<a class="headerlink" href="#maintenance" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Ensure that <a class="reference internal" href="../references/generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="imblearn.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.pipeline.Pipeline</span></code></a> is working when <code class="docutils literal notranslate"><span class="pre">memory</span></code>
 is activated and <code class="docutils literal notranslate"><span class="pre">joblib==0.11</span></code>.
@@ -250,14 +248,14 @@ is activated and <code class="docutils literal notranslate"><span class="pre">jo
 </ul>
 </section>
 <section id="changed-models">
-<h3>Changed models<a class="headerlink" href="#changed-models" title="Permalink to this headline">¶</a></h3>
+<h3>Changed models<a class="headerlink" href="#changed-models" title="Permalink to this headline">#</a></h3>
 <p>The following models might give some different results due to changes:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../references/generated/imblearn.ensemble.BalancedRandomForestClassifier.html#imblearn.ensemble.BalancedRandomForestClassifier" title="imblearn.ensemble.BalancedRandomForestClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.ensemble.BalancedRandomForestClassifier</span></code></a></p></li>
 </ul>
 </section>
 <section id="bug-fixes">
-<h3>Bug fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h3>
+<h3>Bug fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Change the default value <code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code> to be consistent with
 scikit-learn.
@@ -275,7 +273,7 @@ are given in <a class="reference internal" href="../references/generated/imblear
 </ul>
 </section>
 <section id="enhancements">
-<h3>Enhancements<a class="headerlink" href="#enhancements" title="Permalink to this headline">¶</a></h3>
+<h3>Enhancements<a class="headerlink" href="#enhancements" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>The classifier implemented in imbalanced-learn,
 <a class="reference internal" href="../references/generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="imblearn.ensemble.BalancedBaggingClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.ensemble.BalancedBaggingClassifier</span></code></a>,
@@ -289,7 +287,7 @@ with the same key than in <code class="docutils literal notranslate"><span class
 </ul>
 </section>
 <section id="deprecation">
-<h3>Deprecation<a class="headerlink" href="#deprecation" title="Permalink to this headline">¶</a></h3>
+<h3>Deprecation<a class="headerlink" href="#deprecation" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Deprecation of the parameters <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> in
 <a class="reference internal" href="../references/generated/imblearn.under_sampling.ClusterCentroids.html#imblearn.under_sampling.ClusterCentroids" title="imblearn.under_sampling.ClusterCentroids"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.under_sampling.ClusterCentroids</span></code></a> since it was used by
@@ -317,8 +315,9 @@ with the same key than in <code class="docutils literal notranslate"><span class
       </div>
     </div>
   
-    <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-  <footer class="footer mt-5 mt-md-0">
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">

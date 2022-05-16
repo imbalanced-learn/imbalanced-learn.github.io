@@ -8,21 +8,18 @@
 
     <title>Fitting model on imbalanced datasets and how to fight bias &#8212; Version 0.10.0.dev0</title>
     
-    <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-  
+
     
-    <link rel="stylesheet"
-      href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-  
-    
-      
-  
-    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
@@ -32,8 +29,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
     
-    <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
-  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
@@ -52,7 +50,7 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -320,7 +318,7 @@
               
               <div class="toc-item">
                 
-<div class="tocsection onthispage pt-5 pb-3">
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
     <i class="fas fa-list"></i> On this page
 </div>
 
@@ -402,7 +400,7 @@
 to download the full example code</p>
 </div>
 <section class="sphx-glr-example-title" id="fitting-model-on-imbalanced-datasets-and-how-to-fight-bias">
-<span id="sphx-glr-auto-examples-applications-plot-impact-imbalanced-classes-py"></span><h1>Fitting model on imbalanced datasets and how to fight bias<a class="headerlink" href="#fitting-model-on-imbalanced-datasets-and-how-to-fight-bias" title="Permalink to this headline">¶</a></h1>
+<span id="sphx-glr-auto-examples-applications-plot-impact-imbalanced-classes-py"></span><h1>Fitting model on imbalanced datasets and how to fight bias<a class="headerlink" href="#fitting-model-on-imbalanced-datasets-and-how-to-fight-bias" title="Permalink to this headline">#</a></h1>
 <p>This example illustrates the problem induced by learning on datasets having
 imbalanced classes. Subsequently, we compare different approaches alleviating
 these negative effects.</p>
@@ -414,7 +412,7 @@ these negative effects.</p>
 </pre></div>
 </div>
 <section id="problem-definition">
-<h2>Problem definition<a class="headerlink" href="#problem-definition" title="Permalink to this headline">¶</a></h2>
+<h2>Problem definition<a class="headerlink" href="#problem-definition" title="Permalink to this headline">#</a></h2>
 <p>We are dropping the following features:</p>
 <ul class="simple">
 <li><p>“fnlwgt”: this feature was created while studying the “adult” dataset.
@@ -489,7 +487,7 @@ take into account the balancing issue.</p>
 </div>
 </section>
 <section id="strategies-to-learn-from-an-imbalanced-dataset">
-<h2>Strategies to learn from an imbalanced dataset<a class="headerlink" href="#strategies-to-learn-from-an-imbalanced-dataset" title="Permalink to this headline">¶</a></h2>
+<h2>Strategies to learn from an imbalanced dataset<a class="headerlink" href="#strategies-to-learn-from-an-imbalanced-dataset" title="Permalink to this headline">#</a></h2>
 <p>We will use a dictionary and a list to continuously store the results of
 our experiments and show them as a pandas dataframe.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">index</span></a> <span class="o">=</span> <span class="p">[]</span>
@@ -497,7 +495,7 @@ our experiments and show them as a pandas dataframe.</p>
 </pre></div>
 </div>
 <section id="dummy-baseline">
-<h3>Dummy baseline<a class="headerlink" href="#dummy-baseline" title="Permalink to this headline">¶</a></h3>
+<h3>Dummy baseline<a class="headerlink" href="#dummy-baseline" title="Permalink to this headline">#</a></h3>
 <p>Before to train a real machine learning model, we can store the results
 obtained with our <code class="xref py py-class docutils literal notranslate"><span class="pre">DummyClassifier</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -547,7 +545,7 @@ obtained with our <code class="xref py py-class docutils literal notranslate"><s
 <br />
 <br /></section>
 <section id="linear-classifier-baseline">
-<h3>Linear classifier baseline<a class="headerlink" href="#linear-classifier-baseline" title="Permalink to this headline">¶</a></h3>
+<h3>Linear classifier baseline<a class="headerlink" href="#linear-classifier-baseline" title="Permalink to this headline">#</a></h3>
 <p>We will create a machine learning pipeline using a
 <code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegression</span></code> classifier. In this regard,
 we will need to one-hot encode the categorical columns and standardized the
@@ -625,12 +623,12 @@ model.</p>
     <tr>
       <th>Dummy classifier</th>
       <td>0.967755</td>
-      <td>0.50000</td>
+      <td>0.500000</td>
     </tr>
     <tr>
       <th>Logistic regression</th>
-      <td>0.970750</td>
-      <td>0.57494</td>
+      <td>0.970099</td>
+      <td>0.564067</td>
     </tr>
   </tbody>
 </table>
@@ -703,13 +701,13 @@ need to ordinal encode the categorical data.</p>
     </tr>
     <tr>
       <th>Logistic regression</th>
-      <td>0.970750</td>
-      <td>0.574940</td>
+      <td>0.970099</td>
+      <td>0.564067</td>
     </tr>
     <tr>
       <th>Random forest</th>
-      <td>0.971974</td>
-      <td>0.639219</td>
+      <td>0.970698</td>
+      <td>0.626459</td>
     </tr>
   </tbody>
 </table>
@@ -721,7 +719,7 @@ the class imbalanced, slightly less than the linear model. Now, we will
 present different approach to improve the performance of these 2 models.</p>
 </section>
 <section id="use-class-weight">
-<h3>Use <code class="docutils literal notranslate"><span class="pre">class_weight</span></code><a class="headerlink" href="#use-class-weight" title="Permalink to this headline">¶</a></h3>
+<h3>Use <code class="docutils literal notranslate"><span class="pre">class_weight</span></code><a class="headerlink" href="#use-class-weight" title="Permalink to this headline">#</a></h3>
 <p>Most of the models in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> have a parameter <code class="docutils literal notranslate"><span class="pre">class_weight</span></code>. This
 parameter will affect the computation of the loss in linear model or the
 criterion in the tree-based model to penalize differently a false
@@ -771,18 +769,18 @@ linear model and tree-based model.</p>
     </tr>
     <tr>
       <th>Logistic regression</th>
-      <td>0.970750</td>
-      <td>0.574940</td>
+      <td>0.970099</td>
+      <td>0.564067</td>
     </tr>
     <tr>
       <th>Random forest</th>
-      <td>0.971974</td>
-      <td>0.639219</td>
+      <td>0.970698</td>
+      <td>0.626459</td>
     </tr>
     <tr>
       <th>Logistic regression with balanced class weights</th>
-      <td>0.806527</td>
-      <td>0.819229</td>
+      <td>0.800927</td>
+      <td>0.816343</td>
     </tr>
   </tbody>
 </table>
@@ -831,23 +829,23 @@ linear model and tree-based model.</p>
     </tr>
     <tr>
       <th>Logistic regression</th>
-      <td>0.970750</td>
-      <td>0.574940</td>
+      <td>0.970099</td>
+      <td>0.564067</td>
     </tr>
     <tr>
       <th>Random forest</th>
-      <td>0.971974</td>
-      <td>0.639219</td>
+      <td>0.970698</td>
+      <td>0.626459</td>
     </tr>
     <tr>
       <th>Logistic regression with balanced class weights</th>
-      <td>0.806527</td>
-      <td>0.819229</td>
+      <td>0.800927</td>
+      <td>0.816343</td>
     </tr>
     <tr>
       <th>Random forest with balanced class weights</th>
-      <td>0.965671</td>
-      <td>0.634020</td>
+      <td>0.964785</td>
+      <td>0.630043</td>
     </tr>
   </tbody>
 </table>
@@ -861,7 +859,7 @@ the majority class, mainly due to the criterion which is not suited enough to
 fight the class imbalance.</p>
 </section>
 <section id="resample-the-training-set-during-learning">
-<h3>Resample the training set during learning<a class="headerlink" href="#resample-the-training-set-during-learning" title="Permalink to this headline">¶</a></h3>
+<h3>Resample the training set during learning<a class="headerlink" href="#resample-the-training-set-during-learning" title="Permalink to this headline">#</a></h3>
 <p>Another way is to resample the training set by under-sampling or
 over-sampling some of the samples. <code class="docutils literal notranslate"><span class="pre">imbalanced-learn</span></code> provides some samplers
 to do such processing.</p>
@@ -915,28 +913,28 @@ to do such processing.</p>
     </tr>
     <tr>
       <th>Logistic regression</th>
-      <td>0.970750</td>
-      <td>0.574940</td>
+      <td>0.970099</td>
+      <td>0.564067</td>
     </tr>
     <tr>
       <th>Random forest</th>
-      <td>0.971974</td>
-      <td>0.639219</td>
+      <td>0.970698</td>
+      <td>0.626459</td>
     </tr>
     <tr>
       <th>Logistic regression with balanced class weights</th>
-      <td>0.806527</td>
-      <td>0.819229</td>
+      <td>0.800927</td>
+      <td>0.816343</td>
     </tr>
     <tr>
       <th>Random forest with balanced class weights</th>
-      <td>0.965671</td>
-      <td>0.634020</td>
+      <td>0.964785</td>
+      <td>0.630043</td>
     </tr>
     <tr>
       <th>Under-sampling + Logistic regression</th>
-      <td>0.797177</td>
-      <td>0.817901</td>
+      <td>0.792697</td>
+      <td>0.819114</td>
     </tr>
   </tbody>
 </table>
@@ -990,33 +988,33 @@ to do such processing.</p>
     </tr>
     <tr>
       <th>Logistic regression</th>
-      <td>0.970750</td>
-      <td>0.574940</td>
+      <td>0.970099</td>
+      <td>0.564067</td>
     </tr>
     <tr>
       <th>Random forest</th>
-      <td>0.971974</td>
-      <td>0.639219</td>
+      <td>0.970698</td>
+      <td>0.626459</td>
     </tr>
     <tr>
       <th>Logistic regression with balanced class weights</th>
-      <td>0.806527</td>
-      <td>0.819229</td>
+      <td>0.800927</td>
+      <td>0.816343</td>
     </tr>
     <tr>
       <th>Random forest with balanced class weights</th>
-      <td>0.965671</td>
-      <td>0.634020</td>
+      <td>0.964785</td>
+      <td>0.630043</td>
     </tr>
     <tr>
       <th>Under-sampling + Logistic regression</th>
-      <td>0.797177</td>
-      <td>0.817901</td>
+      <td>0.792697</td>
+      <td>0.819114</td>
     </tr>
     <tr>
       <th>Under-sampling + Random forest</th>
-      <td>0.797568</td>
-      <td>0.814600</td>
+      <td>0.794911</td>
+      <td>0.799171</td>
     </tr>
   </tbody>
 </table>
@@ -1033,7 +1031,7 @@ on the current dataset.</p>
 sampling internally.</p>
 </section>
 <section id="use-of-specific-balanced-algorithms-from-imbalanced-learn">
-<h3>Use of specific balanced algorithms from imbalanced-learn<a class="headerlink" href="#use-of-specific-balanced-algorithms-from-imbalanced-learn" title="Permalink to this headline">¶</a></h3>
+<h3>Use of specific balanced algorithms from imbalanced-learn<a class="headerlink" href="#use-of-specific-balanced-algorithms-from-imbalanced-learn" title="Permalink to this headline">#</a></h3>
 <p>We already showed that random under-sampling can be effective on decision
 tree. However, instead of under-sampling once the dataset, one could
 under-sample the original dataset before to take a bootstrap sample. This is
@@ -1087,38 +1085,38 @@ the base of the <a class="reference internal" href="../../references/generated/i
     </tr>
     <tr>
       <th>Logistic regression</th>
-      <td>0.970750</td>
-      <td>0.574940</td>
+      <td>0.970099</td>
+      <td>0.564067</td>
     </tr>
     <tr>
       <th>Random forest</th>
-      <td>0.971974</td>
-      <td>0.639219</td>
+      <td>0.970698</td>
+      <td>0.626459</td>
     </tr>
     <tr>
       <th>Logistic regression with balanced class weights</th>
-      <td>0.806527</td>
-      <td>0.819229</td>
+      <td>0.800927</td>
+      <td>0.816343</td>
     </tr>
     <tr>
       <th>Random forest with balanced class weights</th>
-      <td>0.965671</td>
-      <td>0.634020</td>
+      <td>0.964785</td>
+      <td>0.630043</td>
     </tr>
     <tr>
       <th>Under-sampling + Logistic regression</th>
-      <td>0.797177</td>
-      <td>0.817901</td>
+      <td>0.792697</td>
+      <td>0.819114</td>
     </tr>
     <tr>
       <th>Under-sampling + Random forest</th>
-      <td>0.797568</td>
-      <td>0.814600</td>
+      <td>0.794911</td>
+      <td>0.799171</td>
     </tr>
     <tr>
       <th>Balanced random forest</th>
-      <td>0.792332</td>
-      <td>0.822036</td>
+      <td>0.787826</td>
+      <td>0.811126</td>
     </tr>
   </tbody>
 </table>
@@ -1188,43 +1186,43 @@ classifier within a <a class="reference internal" href="../../references/generat
     </tr>
     <tr>
       <th>Logistic regression</th>
-      <td>0.970750</td>
-      <td>0.574940</td>
+      <td>0.970099</td>
+      <td>0.564067</td>
     </tr>
     <tr>
       <th>Random forest</th>
-      <td>0.971974</td>
-      <td>0.639219</td>
+      <td>0.970698</td>
+      <td>0.626459</td>
     </tr>
     <tr>
       <th>Logistic regression with balanced class weights</th>
-      <td>0.806527</td>
-      <td>0.819229</td>
+      <td>0.800927</td>
+      <td>0.816343</td>
     </tr>
     <tr>
       <th>Random forest with balanced class weights</th>
-      <td>0.965671</td>
-      <td>0.634020</td>
+      <td>0.964785</td>
+      <td>0.630043</td>
     </tr>
     <tr>
       <th>Under-sampling + Logistic regression</th>
-      <td>0.797177</td>
-      <td>0.817901</td>
+      <td>0.792697</td>
+      <td>0.819114</td>
     </tr>
     <tr>
       <th>Under-sampling + Random forest</th>
-      <td>0.797568</td>
-      <td>0.814600</td>
+      <td>0.794911</td>
+      <td>0.799171</td>
     </tr>
     <tr>
       <th>Balanced random forest</th>
-      <td>0.792332</td>
-      <td>0.822036</td>
+      <td>0.787826</td>
+      <td>0.811126</td>
     </tr>
     <tr>
       <th>Balanced bag of histogram gradient boosting</th>
-      <td>0.829891</td>
-      <td>0.822706</td>
+      <td>0.830594</td>
+      <td>0.821510</td>
     </tr>
   </tbody>
 </table>
@@ -1234,8 +1232,8 @@ classifier within a <a class="reference internal" href="../../references/generat
 <br /><p>This last approach is the most effective. The different under-sampling allows
 to bring some diversity for the different GBDT to learn and not focus on a
 portion of the majority class.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  52.338 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  92 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 8 minutes  4.639 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  85 MB</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-applications-plot-impact-imbalanced-classes-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/5062100d8bac1656efa83b45d062ada3/plot_impact_imbalanced_classes.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_impact_imbalanced_classes.py</span></code></a></p>
@@ -1277,8 +1275,9 @@ portion of the majority class.</p>
       </div>
     </div>
   
-    <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-  <footer class="footer mt-5 mt-md-0">
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">

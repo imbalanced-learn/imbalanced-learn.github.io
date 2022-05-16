@@ -8,21 +8,18 @@
 
     <title>Bagging classifiers using sampler &#8212; Version 0.10.0.dev0</title>
     
-    <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-  
+
     
-    <link rel="stylesheet"
-      href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-  
-    
-      
-  
-    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
@@ -32,8 +29,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
     
-    <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
-  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
@@ -52,7 +50,7 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -320,7 +318,7 @@
               
               <div class="toc-item">
                 
-<div class="tocsection onthispage pt-5 pb-3">
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
     <i class="fas fa-list"></i> On this page
 </div>
 
@@ -380,7 +378,7 @@
 to download the full example code</p>
 </div>
 <section class="sphx-glr-example-title" id="bagging-classifiers-using-sampler">
-<span id="sphx-glr-auto-examples-ensemble-plot-bagging-classifier-py"></span><h1>Bagging classifiers using sampler<a class="headerlink" href="#bagging-classifiers-using-sampler" title="Permalink to this headline">¶</a></h1>
+<span id="sphx-glr-auto-examples-ensemble-plot-bagging-classifier-py"></span><h1>Bagging classifiers using sampler<a class="headerlink" href="#bagging-classifiers-using-sampler" title="Permalink to this headline">#</a></h1>
 <p>In this example, we show how
 <a class="reference internal" href="../../references/generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="imblearn.ensemble.BalancedBaggingClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">BalancedBaggingClassifier</span></code></a> can be used to create a
 large variety of classifiers by giving different samplers.</p>
@@ -393,7 +391,7 @@ large variety of classifiers by giving different samplers.</p>
 </pre></div>
 </div>
 <section id="generate-an-imbalanced-dataset">
-<h2>Generate an imbalanced dataset<a class="headerlink" href="#generate-an-imbalanced-dataset" title="Permalink to this headline">¶</a></h2>
+<h2>Generate an imbalanced dataset<a class="headerlink" href="#generate-an-imbalanced-dataset" title="Permalink to this headline">#</a></h2>
 <p>For this example, we will create a synthetic dataset using the function
 <code class="xref py py-func docutils literal notranslate"><span class="pre">make_classification</span></code>. The problem will be a toy
 classification problem with a ratio of 1:9 between the two classes.</p>
@@ -433,12 +431,12 @@ sampler.</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0.711 +/- 0.011
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0.713 +/- 0.019
 </pre></div>
 </div>
 </section>
 <section id="exactly-balanced-bagging-and-over-bagging">
-<h2>Exactly Balanced Bagging and Over-Bagging<a class="headerlink" href="#exactly-balanced-bagging-and-over-bagging" title="Permalink to this headline">¶</a></h2>
+<h2>Exactly Balanced Bagging and Over-Bagging<a class="headerlink" href="#exactly-balanced-bagging-and-over-bagging" title="Permalink to this headline">#</a></h2>
 <p>The <a class="reference internal" href="../../references/generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="imblearn.ensemble.BalancedBaggingClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">BalancedBaggingClassifier</span></code></a> can use in
 conjunction with a <a class="reference internal" href="../../references/generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="imblearn.under_sampling.RandomUnderSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomUnderSampler</span></code></a> or
 <a class="reference internal" href="../../references/generated/imblearn.over_sampling.RandomOverSampler.html#imblearn.over_sampling.RandomOverSampler" title="imblearn.over_sampling.RandomOverSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomOverSampler</span></code></a>. These methods are
@@ -455,7 +453,7 @@ been proposed first in <a class="footnote-reference brackets" href="#id4" id="id
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0.758 +/- 0.009
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0.750 +/- 0.009
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <a href="../../references/generated/imblearn.over_sampling.RandomOverSampler.html#imblearn.over_sampling.RandomOverSampler" title="imblearn.over_sampling.RandomOverSampler" class="sphx-glr-backref-module-imblearn-over_sampling sphx-glr-backref-type-py-class"><span class="n">RandomOverSampler</span></a>
@@ -468,12 +466,12 @@ been proposed first in <a class="footnote-reference brackets" href="#id4" id="id
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0.705 +/- 0.009
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0.702 +/- 0.012
 </pre></div>
 </div>
 </section>
 <section id="smote-bagging">
-<h2>SMOTE-Bagging<a class="headerlink" href="#smote-bagging" title="Permalink to this headline">¶</a></h2>
+<h2>SMOTE-Bagging<a class="headerlink" href="#smote-bagging" title="Permalink to this headline">#</a></h2>
 <p>Instead of using a <a class="reference internal" href="../../references/generated/imblearn.over_sampling.RandomOverSampler.html#imblearn.over_sampling.RandomOverSampler" title="imblearn.over_sampling.RandomOverSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomOverSampler</span></code></a> that
 make a bootstrap, an alternative is to use
 <a class="reference internal" href="../../references/generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTE</span></code></a> as an over-sampler. This is known as
@@ -488,12 +486,12 @@ SMOTE-Bagging <a class="footnote-reference brackets" href="#id5" id="id2">2</a>.
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0.740 +/- 0.013
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0.746 +/- 0.011
 </pre></div>
 </div>
 </section>
 <section id="roughly-balanced-bagging">
-<h2>Roughly Balanced Bagging<a class="headerlink" href="#roughly-balanced-bagging" title="Permalink to this headline">¶</a></h2>
+<h2>Roughly Balanced Bagging<a class="headerlink" href="#roughly-balanced-bagging" title="Permalink to this headline">#</a></h2>
 <p>While using a <a class="reference internal" href="../../references/generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="imblearn.under_sampling.RandomUnderSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomUnderSampler</span></code></a> or
 <a class="reference internal" href="../../references/generated/imblearn.over_sampling.RandomOverSampler.html#imblearn.over_sampling.RandomOverSampler" title="imblearn.over_sampling.RandomOverSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomOverSampler</span></code></a> will create exactly the
 desired number of samples, it does not follow the statistical spirit wanted
@@ -547,7 +545,7 @@ within a <a class="reference internal" href="../../references/generated/imblearn
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0.761 +/- 0.013
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0.757 +/- 0.015
 </pre></div>
 </div>
 <div class="topic">
@@ -569,7 +567,7 @@ Data Science Journal 2.5‐6 (2009): 412-426.</p>
 </dd>
 </dl>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  21.502 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  19.651 seconds)</p>
 <p><strong>Estimated memory usage:</strong>  8 MB</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-ensemble-plot-bagging-classifier-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
@@ -611,8 +609,9 @@ Data Science Journal 2.5‐6 (2009): 412-426.</p>
       </div>
     </div>
   
-    <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-  <footer class="footer mt-5 mt-md-0">
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
