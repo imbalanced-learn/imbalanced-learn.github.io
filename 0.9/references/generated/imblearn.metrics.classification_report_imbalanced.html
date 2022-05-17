@@ -6,10 +6,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>classification_report_imbalanced &#8212; Version 0.9.0</title>
+    <title>classification_report_imbalanced &#8212; Version 0.9.1</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -19,10 +20,6 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
@@ -32,7 +29,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -52,7 +50,7 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -128,10 +126,8 @@
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/scikit-learn-contrib/imbalanced-learn" rel="noopener" target="_blank" title="GitHub">
-            <span><i class="fab fa-github-square"></i></span>
-            <label class="sr-only">GitHub</label>
-          </a>
+          <a class="nav-link" href="https://github.com/scikit-learn-contrib/imbalanced-learn" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
         </li>
       </ul>
       </div>
@@ -147,7 +143,8 @@
           
             
             <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
@@ -519,6 +516,9 @@
 
   </div>
 </nav>
+              </div>
+              <div class="sidebar-end-items">
+              </div>
             </div>
             
           
@@ -529,7 +529,7 @@
               
               <div class="toc-item">
                 
-<div class="tocsection onthispage pt-5 pb-3">
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
     <i class="fas fa-list"></i> On this page
 </div>
 
@@ -574,10 +574,10 @@
               <div>
                 
   <section id="classification-report-imbalanced">
-<h1>classification_report_imbalanced<a class="headerlink" href="#classification-report-imbalanced" title="Permalink to this headline">¶</a></h1>
+<h1>classification_report_imbalanced<a class="headerlink" href="#classification-report-imbalanced" title="Permalink to this headline">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="imblearn.metrics.classification_report_imbalanced">
-<span class="sig-prename descclassname"><span class="pre">imblearn.metrics.</span></span><span class="sig-name descname"><span class="pre">classification_report_imbalanced</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zero_division</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'warn'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/ef4edde/imblearn/utils/_validation.py#L779"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.metrics.classification_report_imbalanced" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">imblearn.metrics.</span></span><span class="sig-name descname"><span class="pre">classification_report_imbalanced</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zero_division</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'warn'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9f8830e/imblearn/utils/_validation.py#L779"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.metrics.classification_report_imbalanced" title="Permalink to this definition">#</a></dt>
 <dd><p>Build a classification report based on metrics used with imbalanced dataset.</p>
 <p>Specific metrics have been proposed to evaluate the classification
 performed on imbalanced dataset. This report compiles the
@@ -655,23 +655,23 @@ following structure:</p>
 </dd></dl>
 
 <section id="examples-using-imblearn-metrics-classification-report-imbalanced">
-<h2>Examples using <code class="docutils literal notranslate"><span class="pre">imblearn.metrics.classification_report_imbalanced</span></code><a class="headerlink" href="#examples-using-imblearn-metrics-classification-report-imbalanced" title="Permalink to this headline">¶</a></h2>
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">imblearn.metrics.classification_report_imbalanced</span></code><a class="headerlink" href="#examples-using-imblearn-metrics-classification-report-imbalanced" title="Permalink to this headline">#</a></h2>
 <div class="sphx-glr-thumbcontainer" tooltip="Some balancing methods allow for balancing dataset with multiples classes. We provide an exampl..."><figure class="align-default" id="id1">
 <img alt="Multiclass classification with under-sampling" src="../../_images/sphx_glr_plot_multi_class_under_sampling_thumb.png" />
 <figcaption>
-<p><span class="caption-text"><a class="reference internal" href="../../auto_examples/applications/plot_multi_class_under_sampling.html#sphx-glr-auto-examples-applications-plot-multi-class-under-sampling-py"><span class="std std-ref">Multiclass classification with under-sampling</span></a></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text"><a class="reference internal" href="../../auto_examples/applications/plot_multi_class_under_sampling.html#sphx-glr-auto-examples-applications-plot-multi-class-under-sampling-py"><span class="std std-ref">Multiclass classification with under-sampling</span></a></span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to balance the text data before to train a classifier."><figure class="align-default" id="id2">
 <img alt="Example of topic classification in text documents" src="../../_images/sphx_glr_plot_topic_classication_thumb.png" />
 <figcaption>
-<p><span class="caption-text"><a class="reference internal" href="../../auto_examples/applications/plot_topic_classication.html#sphx-glr-auto-examples-applications-plot-topic-classication-py"><span class="std std-ref">Example of topic classification in text documents</span></a></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text"><a class="reference internal" href="../../auto_examples/applications/plot_topic_classication.html#sphx-glr-auto-examples-applications-plot-topic-classication-py"><span class="std std-ref">Example of topic classification in text documents</span></a></span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Specific metrics have been developed to evaluate classifier which has been trained using imbala..."><figure class="align-default" id="id3">
 <img alt="Evaluate classification by compiling a report" src="../../_images/sphx_glr_plot_classification_report_thumb.png" />
 <figcaption>
-<p><span class="caption-text"><a class="reference internal" href="../../auto_examples/evaluation/plot_classification_report.html#sphx-glr-auto-examples-evaluation-plot-classification-report-py"><span class="std std-ref">Evaluate classification by compiling a report</span></a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text"><a class="reference internal" href="../../auto_examples/evaluation/plot_classification_report.html#sphx-glr-auto-examples-evaluation-plot-classification-report-py"><span class="std std-ref">Evaluate classification by compiling a report</span></a></span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </div><div style='clear:both'></div></section>
@@ -682,7 +682,7 @@ following structure:</p>
               
               
               <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="../metrics.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -705,7 +705,8 @@ following structure:</p>
       </div>
     </div>
   
-  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 <footer class="footer mt-5 mt-md-0">
   <div class="container">
     

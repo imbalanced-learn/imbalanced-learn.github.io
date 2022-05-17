@@ -6,10 +6,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>10. Developer guideline &#8212; Version 0.9.0</title>
+    <title>10. Developer guideline &#8212; Version 0.9.1</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -19,10 +20,6 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css" />
     <link rel="stylesheet" type="text/css" href="_static/basic.css" />
@@ -32,7 +29,8 @@
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -52,7 +50,7 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -128,10 +126,8 @@
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/scikit-learn-contrib/imbalanced-learn" rel="noopener" target="_blank" title="GitHub">
-            <span><i class="fab fa-github-square"></i></span>
-            <label class="sr-only">GitHub</label>
-          </a>
+          <a class="nav-link" href="https://github.com/scikit-learn-contrib/imbalanced-learn" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
         </li>
       </ul>
       </div>
@@ -147,7 +143,8 @@
           
             
             <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
@@ -212,6 +209,9 @@
 
   </div>
 </nav>
+              </div>
+              <div class="sidebar-end-items">
+              </div>
             </div>
             
           
@@ -222,7 +222,7 @@
               
               <div class="toc-item">
                 
-<div class="tocsection onthispage pt-5 pb-3">
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
     <i class="fas fa-list"></i> On this page
 </div>
 
@@ -296,9 +296,9 @@
               <div>
                 
   <section id="developer-guideline">
-<span id="developers-utils"></span><h1><span class="section-number">10. </span>Developer guideline<a class="headerlink" href="#developer-guideline" title="Permalink to this headline">¶</a></h1>
+<span id="developers-utils"></span><h1><span class="section-number">10. </span>Developer guideline<a class="headerlink" href="#developer-guideline" title="Permalink to this headline">#</a></h1>
 <section id="developer-utilities">
-<h2><span class="section-number">10.1. </span>Developer utilities<a class="headerlink" href="#developer-utilities" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.1. </span>Developer utilities<a class="headerlink" href="#developer-utilities" title="Permalink to this headline">#</a></h2>
 <p>Imbalanced-learn contains a number of utilities to help with development. These are
 located in <a class="reference internal" href="references/utils.html#module-imblearn.utils" title="imblearn.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.utils</span></code></a>, and include tools in a number of categories.
 All the following functions and classes are in the module <a class="reference internal" href="references/utils.html#module-imblearn.utils" title="imblearn.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.utils</span></code></a>.</p>
@@ -310,7 +310,7 @@ imbalanced-learn. Backports, in particular, will be removed as the
 imbalanced-learn dependencies evolve.</p>
 </div>
 <section id="validation-tools">
-<h3><span class="section-number">10.1.1. </span>Validation Tools<a class="headerlink" href="#validation-tools" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.1.1. </span>Validation Tools<a class="headerlink" href="#validation-tools" title="Permalink to this headline">#</a></h3>
 <p>These are tools used to check and validate input. When you write a function
 which accepts arrays, matrices, or sparse matrices as arguments, the following
 should be used when applicable.</p>
@@ -323,7 +323,7 @@ corresponding number of pixel.</p></li>
 </ul>
 </section>
 <section id="deprecation">
-<h3><span class="section-number">10.1.2. </span>Deprecation<a class="headerlink" href="#deprecation" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.1.2. </span>Deprecation<a class="headerlink" href="#deprecation" title="Permalink to this headline">#</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Apart from <code class="xref py py-func docutils literal notranslate"><span class="pre">deprecate_parameter</span></code> the rest of this section is taken from
@@ -390,7 +390,7 @@ provides <code class="xref py py-func docutils literal notranslate"><span class=
 parameter (attribute) by another one.</p>
 </section>
 <section id="testing-utilities">
-<h3><span class="section-number">10.1.3. </span>Testing utilities<a class="headerlink" href="#testing-utilities" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.1.3. </span>Testing utilities<a class="headerlink" href="#testing-utilities" title="Permalink to this headline">#</a></h3>
 <p>Currently, imbalanced-learn provide a warning management utility. This feature
 is going to be merge in pytest and will be removed when the pytest release will
 have it.</p>
@@ -434,11 +434,11 @@ that the exception matches a text or regex:</p>
 </section>
 </section>
 <section id="making-a-release">
-<h2><span class="section-number">10.2. </span>Making a release<a class="headerlink" href="#making-a-release" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.2. </span>Making a release<a class="headerlink" href="#making-a-release" title="Permalink to this headline">#</a></h2>
 <p>This section document the different steps that are necessary to make a new
 imbalanced-learn release.</p>
 <section id="major-release">
-<h3><span class="section-number">10.2.1. </span>Major release<a class="headerlink" href="#major-release" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.2.1. </span>Major release<a class="headerlink" href="#major-release" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Update the release note <code class="docutils literal notranslate"><span class="pre">whats_new/v0.&lt;version</span> <span class="pre">number&gt;.rst</span></code> by giving a date
 and removing the status “Under development” from the title.</p></li>
@@ -477,7 +477,7 @@ available.</p></li>
 </ul>
 </section>
 <section id="bug-fix-release">
-<h3><span class="section-number">10.2.2. </span>Bug fix release<a class="headerlink" href="#bug-fix-release" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.2.2. </span>Bug fix release<a class="headerlink" href="#bug-fix-release" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Find the commit(s) hash of the bug fix commit you wish to back port using
 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code>.</p></li>
@@ -504,7 +504,7 @@ example from <code class="docutils literal notranslate"><span class="pre">0.X.*<
               
               
               <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="datasets/index.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -527,7 +527,8 @@ example from <code class="docutils literal notranslate"><span class="pre">0.X.*<
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 <footer class="footer mt-5 mt-md-0">
   <div class="container">
     

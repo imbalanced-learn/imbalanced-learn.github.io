@@ -6,10 +6,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Create an imbalanced dataset &#8212; Version 0.9.0</title>
+    <title>Create an imbalanced dataset &#8212; Version 0.9.1</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -19,10 +20,6 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
@@ -32,7 +29,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -52,7 +50,7 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -128,10 +126,8 @@
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/scikit-learn-contrib/imbalanced-learn" rel="noopener" target="_blank" title="GitHub">
-            <span><i class="fab fa-github-square"></i></span>
-            <label class="sr-only">GitHub</label>
-          </a>
+          <a class="nav-link" href="https://github.com/scikit-learn-contrib/imbalanced-learn" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
         </li>
       </ul>
       </div>
@@ -147,7 +143,8 @@
           
             
             <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
@@ -308,6 +305,9 @@
 
   </div>
 </nav>
+              </div>
+              <div class="sidebar-end-items">
+              </div>
             </div>
             
           
@@ -318,7 +318,7 @@
               
               <div class="toc-item">
                 
-<div class="tocsection onthispage pt-5 pb-3">
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
     <i class="fas fa-list"></i> On this page
 </div>
 
@@ -368,7 +368,7 @@
 to download the full example code</p>
 </div>
 <section class="sphx-glr-example-title" id="create-an-imbalanced-dataset">
-<span id="sphx-glr-auto-examples-datasets-plot-make-imbalance-py"></span><h1>Create an imbalanced dataset<a class="headerlink" href="#create-an-imbalanced-dataset" title="Permalink to this headline">¶</a></h1>
+<span id="sphx-glr-auto-examples-datasets-plot-make-imbalance-py"></span><h1>Create an imbalanced dataset<a class="headerlink" href="#create-an-imbalanced-dataset" title="Permalink to this headline">#</a></h1>
 <p>An illustration of the <a class="reference internal" href="../../references/generated/imblearn.datasets.make_imbalance.html#imblearn.datasets.make_imbalance" title="imblearn.datasets.make_imbalance"><code class="xref py py-func docutils literal notranslate"><span class="pre">make_imbalance</span></code></a> function to
 create an imbalanced dataset from a balanced dataset. We show the ability of
 <a class="reference internal" href="../../references/generated/imblearn.datasets.make_imbalance.html#imblearn.datasets.make_imbalance" title="imblearn.datasets.make_imbalance"><code class="xref py py-func docutils literal notranslate"><span class="pre">make_imbalance</span></code></a> of dealing with Pandas DataFrame.</p>
@@ -386,36 +386,36 @@ create an imbalanced dataset from a balanced dataset. We show the ability of
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/miniconda/envs/testenv/lib/python3.9/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;rocket&#39; which already exists.
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;rocket&#39; which already exists.
   mpl_cm.register_cmap(_name, _cmap)
-/home/circleci/miniconda/envs/testenv/lib/python3.9/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;rocket_r&#39; which already exists.
+/home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;rocket_r&#39; which already exists.
   mpl_cm.register_cmap(_name + &quot;_r&quot;, _cmap_r)
-/home/circleci/miniconda/envs/testenv/lib/python3.9/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;mako&#39; which already exists.
+/home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;mako&#39; which already exists.
   mpl_cm.register_cmap(_name, _cmap)
-/home/circleci/miniconda/envs/testenv/lib/python3.9/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;mako_r&#39; which already exists.
+/home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;mako_r&#39; which already exists.
   mpl_cm.register_cmap(_name + &quot;_r&quot;, _cmap_r)
-/home/circleci/miniconda/envs/testenv/lib/python3.9/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;icefire&#39; which already exists.
+/home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;icefire&#39; which already exists.
   mpl_cm.register_cmap(_name, _cmap)
-/home/circleci/miniconda/envs/testenv/lib/python3.9/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;icefire_r&#39; which already exists.
+/home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;icefire_r&#39; which already exists.
   mpl_cm.register_cmap(_name + &quot;_r&quot;, _cmap_r)
-/home/circleci/miniconda/envs/testenv/lib/python3.9/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;vlag&#39; which already exists.
+/home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;vlag&#39; which already exists.
   mpl_cm.register_cmap(_name, _cmap)
-/home/circleci/miniconda/envs/testenv/lib/python3.9/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;vlag_r&#39; which already exists.
+/home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;vlag_r&#39; which already exists.
   mpl_cm.register_cmap(_name + &quot;_r&quot;, _cmap_r)
-/home/circleci/miniconda/envs/testenv/lib/python3.9/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;flare&#39; which already exists.
+/home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;flare&#39; which already exists.
   mpl_cm.register_cmap(_name, _cmap)
-/home/circleci/miniconda/envs/testenv/lib/python3.9/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;flare_r&#39; which already exists.
+/home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;flare_r&#39; which already exists.
   mpl_cm.register_cmap(_name + &quot;_r&quot;, _cmap_r)
-/home/circleci/miniconda/envs/testenv/lib/python3.9/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;crest&#39; which already exists.
+/home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap &#39;crest&#39; which already exists.
   mpl_cm.register_cmap(_name, _cmap)
-/home/circleci/miniconda/envs/testenv/lib/python3.9/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;crest_r&#39; which already exists.
+/home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap &#39;crest_r&#39; which already exists.
   mpl_cm.register_cmap(_name + &quot;_r&quot;, _cmap_r)
 </pre></div>
 </div>
 <section id="generate-the-dataset">
-<h2>Generate the dataset<a class="headerlink" href="#generate-the-dataset" title="Permalink to this headline">¶</a></h2>
+<h2>Generate the dataset<a class="headerlink" href="#generate-the-dataset" title="Permalink to this headline">#</a></h2>
 <p>First, we will generate a dataset and convert it to a
-<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v1.3.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a> with arbitrary column names. We will plot the
+<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v1.4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a> with arbitrary column names. We will plot the
 original dataset.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -431,12 +431,12 @@ original dataset.</p>
     <span class="n">colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span>
 <a href="https://seaborn.pydata.org/generated/seaborn.despine.html#seaborn.despine" title="seaborn.despine" class="sphx-glr-backref-module-seaborn sphx-glr-backref-type-py-function"><span class="n">sns</span><span class="o">.</span><span class="n">despine</span></a><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.tight_layout.html#matplotlib.pyplot.tight_layout" title="matplotlib.pyplot.tight_layout" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.tight_layout.html#matplotlib.pyplot.tight_layout" title="matplotlib.pyplot.tight_layout" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
 </pre></div>
 </div>
 <img src="../../_images/sphx_glr_plot_make_imbalance_001.png" srcset="../../_images/sphx_glr_plot_make_imbalance_001.png" alt="plot make imbalance" class = "sphx-glr-single-img"/></section>
 <section id="make-a-dataset-imbalanced">
-<h2>Make a dataset imbalanced<a class="headerlink" href="#make-a-dataset-imbalanced" title="Permalink to this headline">¶</a></h2>
+<h2>Make a dataset imbalanced<a class="headerlink" href="#make-a-dataset-imbalanced" title="Permalink to this headline">#</a></h2>
 <p>Now, we will show the helpers <a class="reference internal" href="../../references/generated/imblearn.datasets.make_imbalance.html#imblearn.datasets.make_imbalance" title="imblearn.datasets.make_imbalance"><code class="xref py py-func docutils literal notranslate"><span class="pre">make_imbalance</span></code></a>
 that is useful to random select a subset of samples. It will impact the
 class distribution as specified by the parameters.</p>
@@ -450,7 +450,7 @@ class distribution as specified by the parameters.</p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imblearn.datasets</span> <span class="kn">import</span> <a href="../../references/generated/imblearn.datasets.make_imbalance.html#imblearn.datasets.make_imbalance" title="imblearn.datasets.make_imbalance" class="sphx-glr-backref-module-imblearn-datasets sphx-glr-backref-type-py-function"><span class="n">make_imbalance</span></a>
 
-<a href="https://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fig</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">axs</span></a> <span class="o">=</span> <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<a href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fig</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">axs</span></a> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
 <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
     <span class="n">x</span><span class="o">=</span><span class="s2">&quot;feature 1&quot;</span><span class="p">,</span>
@@ -479,15 +479,15 @@ class distribution as specified by the parameters.</p>
         <span class="n">colormap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span>
         <span class="n">colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span>
-    <a href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.set_title.html#matplotlib.axes.Axes.set_title" title="matplotlib.axes.Axes.set_title" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span></a><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sampling ratio = </span><span class="si">{</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">multiplier</span></a><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_title.html#matplotlib.axes.Axes.set_title" title="matplotlib.axes.Axes.set_title" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span></a><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sampling ratio = </span><span class="si">{</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">multiplier</span></a><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <a href="https://seaborn.pydata.org/generated/seaborn.despine.html#seaborn.despine" title="seaborn.despine" class="sphx-glr-backref-module-seaborn sphx-glr-backref-type-py-function"><span class="n">sns</span><span class="o">.</span><span class="n">despine</span></a><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
-<a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.tight_layout.html#matplotlib.pyplot.tight_layout" title="matplotlib.pyplot.tight_layout" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
-<a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.tight_layout.html#matplotlib.pyplot.tight_layout" title="matplotlib.pyplot.tight_layout" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_make_imbalance_002.png" srcset="../../_images/sphx_glr_plot_make_imbalance_002.png" alt="Original set, Sampling ratio = 0.9, Sampling ratio = 0.75, Sampling ratio = 0.5, Sampling ratio = 0.25, Sampling ratio = 0.1" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.755 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  9 MB</p>
+<img src="../../_images/sphx_glr_plot_make_imbalance_002.png" srcset="../../_images/sphx_glr_plot_make_imbalance_002.png" alt="Original set, Sampling ratio = 0.9, Sampling ratio = 0.75, Sampling ratio = 0.5, Sampling ratio = 0.25, Sampling ratio = 0.1" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.494 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  8 MB</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-datasets-plot-make-imbalance-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/acc875b458f90796ca4e3b955c0e86d6/plot_make_imbalance.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_make_imbalance.py</span></code></a></p>
@@ -505,7 +505,7 @@ class distribution as specified by the parameters.</p>
               
               
               <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="../combine/plot_comparison_combine.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -528,7 +528,8 @@ class distribution as specified by the parameters.</p>
       </div>
     </div>
   
-  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 <footer class="footer mt-5 mt-md-0">
   <div class="container">
     

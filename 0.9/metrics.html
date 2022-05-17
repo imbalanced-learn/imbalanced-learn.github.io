@@ -6,10 +6,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>7. Metrics &#8212; Version 0.9.0</title>
+    <title>7. Metrics &#8212; Version 0.9.1</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -19,10 +20,6 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css" />
     <link rel="stylesheet" type="text/css" href="_static/basic.css" />
@@ -32,7 +29,8 @@
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -52,7 +50,7 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -128,10 +126,8 @@
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/scikit-learn-contrib/imbalanced-learn" rel="noopener" target="_blank" title="GitHub">
-            <span><i class="fab fa-github-square"></i></span>
-            <label class="sr-only">GitHub</label>
-          </a>
+          <a class="nav-link" href="https://github.com/scikit-learn-contrib/imbalanced-learn" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
         </li>
       </ul>
       </div>
@@ -147,7 +143,8 @@
           
             
             <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
@@ -212,6 +209,9 @@
 
   </div>
 </nav>
+              </div>
+              <div class="sidebar-end-items">
+              </div>
             </div>
             
           
@@ -222,7 +222,7 @@
               
               <div class="toc-item">
                 
-<div class="tocsection onthispage pt-5 pb-3">
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
     <i class="fas fa-list"></i> On this page
 </div>
 
@@ -296,16 +296,16 @@
               <div>
                 
   <section id="metrics">
-<span id="id1"></span><h1><span class="section-number">7. </span>Metrics<a class="headerlink" href="#metrics" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1><span class="section-number">7. </span>Metrics<a class="headerlink" href="#metrics" title="Permalink to this headline">#</a></h1>
 <section id="classification-metrics">
-<h2><span class="section-number">7.1. </span>Classification metrics<a class="headerlink" href="#classification-metrics" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.1. </span>Classification metrics<a class="headerlink" href="#classification-metrics" title="Permalink to this headline">#</a></h2>
 <p>Currently, scikit-learn only offers the
 <code class="docutils literal notranslate"><span class="pre">sklearn.metrics.balanced_accuracy_score</span></code> (in 0.20) as metric to deal with
 imbalanced datasets. The module <a class="reference internal" href="references/metrics.html#module-imblearn.metrics" title="imblearn.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code></a> offers a couple of
 other metrics which are used in the literature to evaluate the quality of
 classifiers.</p>
 <section id="sensitivity-and-specificity-metrics">
-<span id="sensitivity-specificity"></span><h3><span class="section-number">7.1.1. </span>Sensitivity and specificity metrics<a class="headerlink" href="#sensitivity-and-specificity-metrics" title="Permalink to this headline">¶</a></h3>
+<span id="sensitivity-specificity"></span><h3><span class="section-number">7.1.1. </span>Sensitivity and specificity metrics<a class="headerlink" href="#sensitivity-and-specificity-metrics" title="Permalink to this headline">#</a></h3>
 <p>Sensitivity and specificity are metrics which are well known in medical
 imaging. Sensitivity (also called true positive rate or recall) is the
 proportion of the positive samples which is well classified while specificity
@@ -319,7 +319,7 @@ are implemented in scikit-learn. <a class="reference internal" href="references/
 use those metrics.</p>
 </section>
 <section id="additional-metrics-specific-to-imbalanced-datasets">
-<span id="imbalanced-metrics"></span><h3><span class="section-number">7.1.2. </span>Additional metrics specific to imbalanced datasets<a class="headerlink" href="#additional-metrics-specific-to-imbalanced-datasets" title="Permalink to this headline">¶</a></h3>
+<span id="imbalanced-metrics"></span><h3><span class="section-number">7.1.2. </span>Additional metrics specific to imbalanced datasets<a class="headerlink" href="#additional-metrics-specific-to-imbalanced-datasets" title="Permalink to this headline">#</a></h3>
 <p>The <a class="reference internal" href="references/generated/imblearn.metrics.geometric_mean_score.html#imblearn.metrics.geometric_mean_score" title="imblearn.metrics.geometric_mean_score"><code class="xref py py-func docutils literal notranslate"><span class="pre">geometric_mean_score</span></code></a>
 <span id="id2">[<a class="reference internal" href="zzz_references.html#id9" title="Ricardo Barandela, José Salvador Sánchez, V Garca, and Edgar Rangel. Strategies for learning in class imbalance problems. Pattern Recognition, 36(3):849–851, 2003.">BSanchezGR03</a>, <a class="reference internal" href="zzz_references.html#id8" title="Miroslav Kubat, Stan Matwin, and others. Addressing the curse of imbalanced training sets: one-sided selection. In Icml, volume 97, 179–186. Nashville, USA, 1997.">KM+97</a>]</span> is the root of the product
 of class-wise sensitivity. This measure tries to maximize the accuracy on each
@@ -329,7 +329,7 @@ wrap any metric and give more importance to a specific class using the
 parameter <code class="docutils literal notranslate"><span class="pre">alpha</span></code>.</p>
 </section>
 <section id="macro-averaged-mean-absolute-error-ma-mae">
-<span id="macro-averaged-mean-absolute-error"></span><h3><span class="section-number">7.1.3. </span>Macro-Averaged Mean Absolute Error (MA-MAE)<a class="headerlink" href="#macro-averaged-mean-absolute-error-ma-mae" title="Permalink to this headline">¶</a></h3>
+<span id="macro-averaged-mean-absolute-error"></span><h3><span class="section-number">7.1.3. </span>Macro-Averaged Mean Absolute Error (MA-MAE)<a class="headerlink" href="#macro-averaged-mean-absolute-error-ma-mae" title="Permalink to this headline">#</a></h3>
 <p>Ordinal classification is used when there is a rank among classes, for example
 levels of functionality or movie ratings.</p>
 <p>The <a class="reference internal" href="references/generated/imblearn.metrics.macro_averaged_mean_absolute_error.html#imblearn.metrics.macro_averaged_mean_absolute_error" title="imblearn.metrics.macro_averaged_mean_absolute_error"><code class="xref py py-func docutils literal notranslate"><span class="pre">macro_averaged_mean_absolute_error</span></code></a> <span id="id4">[<a class="reference internal" href="zzz_references.html#id23" title="A. Esuli, S. Baccianella, and F. Sebastiani. Evaluation measures for ordinal regression. Intelligent Systems Design and Applications, International Conference on, 1:283-287, dec 2009. URL: https://doi.ieeecomputersociety.org/10.1109/ISDA.2009.230, doi:10.1109/ISDA.2009.230.">EBS09</a>]</span> is used
@@ -337,7 +337,7 @@ for imbalanced ordinal classification. The mean absolute error is computed for
 each class and averaged over classes, giving an equal weight to each class.</p>
 </section>
 <section id="summary-of-important-metrics">
-<span id="classification-report"></span><h3><span class="section-number">7.1.4. </span>Summary of important metrics<a class="headerlink" href="#summary-of-important-metrics" title="Permalink to this headline">¶</a></h3>
+<span id="classification-report"></span><h3><span class="section-number">7.1.4. </span>Summary of important metrics<a class="headerlink" href="#summary-of-important-metrics" title="Permalink to this headline">#</a></h3>
 <p>The <a class="reference internal" href="references/generated/imblearn.metrics.classification_report_imbalanced.html#imblearn.metrics.classification_report_imbalanced" title="imblearn.metrics.classification_report_imbalanced"><code class="xref py py-func docutils literal notranslate"><span class="pre">classification_report_imbalanced</span></code></a> will compute a set of metrics per
 class and summarize it in a table. The parameter <code class="docutils literal notranslate"><span class="pre">output_dict</span></code> allows to get a
 string or a Python dictionary. This dictionary can be reused to create a Pandas
@@ -349,12 +349,12 @@ classification accuracy.</p>
 </section>
 </section>
 <section id="pairwise-metrics">
-<span id="id5"></span><h2><span class="section-number">7.2. </span>Pairwise metrics<a class="headerlink" href="#pairwise-metrics" title="Permalink to this headline">¶</a></h2>
+<span id="id5"></span><h2><span class="section-number">7.2. </span>Pairwise metrics<a class="headerlink" href="#pairwise-metrics" title="Permalink to this headline">#</a></h2>
 <p>The <a class="reference internal" href="references/metrics.html#module-imblearn.metrics.pairwise" title="imblearn.metrics.pairwise"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics.pairwise</span></code></a> submodule implements pairwise distances
 that are available in scikit-learn while used in some of the methods in
 imbalanced-learn.</p>
 <section id="value-difference-metric">
-<span id="vdm"></span><h3><span class="section-number">7.2.1. </span>Value Difference Metric<a class="headerlink" href="#value-difference-metric" title="Permalink to this headline">¶</a></h3>
+<span id="vdm"></span><h3><span class="section-number">7.2.1. </span>Value Difference Metric<a class="headerlink" href="#value-difference-metric" title="Permalink to this headline">#</a></h3>
 <p>The class <a class="reference internal" href="references/generated/imblearn.metrics.pairwise.ValueDifferenceMetric.html#imblearn.metrics.pairwise.ValueDifferenceMetric" title="imblearn.metrics.pairwise.ValueDifferenceMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">ValueDifferenceMetric</span></code></a> is
 implementing the Value Difference Metric proposed in
 <span id="id6">[<a class="reference internal" href="zzz_references.html#id24" title="Craig Stanfill and David Waltz. Toward memory-based reasoning. Communications of the ACM, 29(12):1213–1228, 1986.">SW86</a>]</span>. This measure is used to compute the proximity
@@ -416,7 +416,7 @@ defined equal to 1 or 2.</p>
               
               
               <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="miscellaneous.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -439,7 +439,8 @@ defined equal to 1 or 2.</p>
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 <footer class="footer mt-5 mt-md-0">
   <div class="container">
     

@@ -6,10 +6,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Example of topic classification in text documents &#8212; Version 0.9.0</title>
+    <title>Example of topic classification in text documents &#8212; Version 0.9.1</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -19,10 +20,6 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
@@ -32,7 +29,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -52,7 +50,7 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -128,10 +126,8 @@
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/scikit-learn-contrib/imbalanced-learn" rel="noopener" target="_blank" title="GitHub">
-            <span><i class="fab fa-github-square"></i></span>
-            <label class="sr-only">GitHub</label>
-          </a>
+          <a class="nav-link" href="https://github.com/scikit-learn-contrib/imbalanced-learn" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
         </li>
       </ul>
       </div>
@@ -147,7 +143,8 @@
           
             
             <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
@@ -308,6 +305,9 @@
 
   </div>
 </nav>
+              </div>
+              <div class="sidebar-end-items">
+              </div>
             </div>
             
           
@@ -318,7 +318,7 @@
               
               <div class="toc-item">
                 
-<div class="tocsection onthispage pt-5 pb-3">
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
     <i class="fas fa-list"></i> On this page
 </div>
 
@@ -373,7 +373,7 @@
 to download the full example code</p>
 </div>
 <section class="sphx-glr-example-title" id="example-of-topic-classification-in-text-documents">
-<span id="sphx-glr-auto-examples-applications-plot-topic-classication-py"></span><h1>Example of topic classification in text documents<a class="headerlink" href="#example-of-topic-classification-in-text-documents" title="Permalink to this headline">¶</a></h1>
+<span id="sphx-glr-auto-examples-applications-plot-topic-classication-py"></span><h1>Example of topic classification in text documents<a class="headerlink" href="#example-of-topic-classification-in-text-documents" title="Permalink to this headline">#</a></h1>
 <p>This example shows how to balance the text data before to train a classifier.</p>
 <p>Note that for this example, the data are slightly imbalanced but it can happen
 that for some data sets, the imbalanced ratio is more significant.</p>
@@ -385,7 +385,7 @@ that for some data sets, the imbalanced ratio is more significant.</p>
 </pre></div>
 </div>
 <section id="setting-the-data-set">
-<h2>Setting the data set<a class="headerlink" href="#setting-the-data-set" title="Permalink to this headline">¶</a></h2>
+<h2>Setting the data set<a class="headerlink" href="#setting-the-data-set" title="Permalink to this headline">#</a></h2>
 <p>We use a part of the 20 newsgroups data set by loading 4 topics. Using the
 scikit-learn loader, the data are split into a training and a testing set.</p>
 <p>Note the class #3 is the minority class and has almost twice less samples
@@ -421,7 +421,7 @@ Test class distributions summary: Counter({2: 394, 1: 389, 0: 319, 3: 251})
 </div>
 </section>
 <section id="the-usual-scikit-learn-pipeline">
-<h2>The usual scikit-learn pipeline<a class="headerlink" href="#the-usual-scikit-learn-pipeline" title="Permalink to this headline">¶</a></h2>
+<h2>The usual scikit-learn pipeline<a class="headerlink" href="#the-usual-scikit-learn-pipeline" title="Permalink to this headline">#</a></h2>
 <p>You might usually use scikit-learn pipeline by combining the TF-IDF
 vectorizer to feed a multinomial naive bayes classifier. A classification
 report summarized the results on the testing set.</p>
@@ -433,7 +433,7 @@ imbalanced.</p>
 
 <a href="../../references/generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="imblearn.pipeline.Pipeline" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">model</span></a> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">TfidfVectorizer</span><span class="p">(),</span> <span class="n">MultinomialNB</span><span class="p">())</span>
 <a href="../../references/generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline.fit" title="imblearn.pipeline.Pipeline.fit" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-method"><span class="n">model</span><span class="o">.</span><span class="n">fit</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_train</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_train</span></a><span class="p">)</span>
-<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred</span></a> <span class="o">=</span> <a href="../../references/generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="imblearn.pipeline.Pipeline" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">model</span></a><span class="o">.</span><span class="n">predict</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_test</span></a><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred</span></a> <span class="o">=</span> <a href="../../references/generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline.predict" title="imblearn.pipeline.Pipeline.predict" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-method"><span class="n">model</span><span class="o">.</span><span class="n">predict</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_test</span></a><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imblearn.metrics</span> <span class="kn">import</span> <a href="../../references/generated/imblearn.metrics.classification_report_imbalanced.html#imblearn.metrics.classification_report_imbalanced" title="imblearn.metrics.classification_report_imbalanced" class="sphx-glr-backref-module-imblearn-metrics sphx-glr-backref-type-py-function"><span class="n">classification_report_imbalanced</span></a>
@@ -454,7 +454,7 @@ avg / total       0.87      0.84      0.94      0.82      0.88      0.78      13
 </div>
 </section>
 <section id="balancing-the-class-before-classification">
-<h2>Balancing the class before classification<a class="headerlink" href="#balancing-the-class-before-classification" title="Permalink to this headline">¶</a></h2>
+<h2>Balancing the class before classification<a class="headerlink" href="#balancing-the-class-before-classification" title="Permalink to this headline">#</a></h2>
 <p>To improve the prediction of the class #3, it could be interesting to apply
 a balancing before to train the naive bayes classifier. Therefore, we will
 use a <a class="reference internal" href="../../references/generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="imblearn.under_sampling.RandomUnderSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomUnderSampler</span></code></a> to equalize the
@@ -468,7 +468,7 @@ imbalanced-learn to properly handle the samplers.</p>
 <a href="../../references/generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="imblearn.pipeline.Pipeline" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">model</span></a> <span class="o">=</span> <a href="../../references/generated/imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="imblearn.pipeline.make_pipeline" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline_imb</span></a><span class="p">(</span><span class="n">TfidfVectorizer</span><span class="p">(),</span> <a href="../../references/generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="imblearn.under_sampling.RandomUnderSampler" class="sphx-glr-backref-module-imblearn-under_sampling sphx-glr-backref-type-py-class"><span class="n">RandomUnderSampler</span></a><span class="p">(),</span> <span class="n">MultinomialNB</span><span class="p">())</span>
 
 <a href="../../references/generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline.fit" title="imblearn.pipeline.Pipeline.fit" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-method"><span class="n">model</span><span class="o">.</span><span class="n">fit</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_train</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_train</span></a><span class="p">)</span>
-<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred</span></a> <span class="o">=</span> <a href="../../references/generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="imblearn.pipeline.Pipeline" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">model</span></a><span class="o">.</span><span class="n">predict</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_test</span></a><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred</span></a> <span class="o">=</span> <a href="../../references/generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline.predict" title="imblearn.pipeline.Pipeline.predict" class="sphx-glr-backref-module-imblearn-pipeline sphx-glr-backref-type-py-method"><span class="n">model</span><span class="o">.</span><span class="n">predict</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_test</span></a><span class="p">)</span>
 </pre></div>
 </div>
 <p>Although the results are almost identical, it can be seen that the resampling
@@ -483,13 +483,13 @@ slightly better.</p>
 
           0       0.69      0.91      0.88      0.79      0.89      0.80       319
           1       0.98      0.84      0.99      0.90      0.91      0.82       389
-          2       0.94      0.91      0.98      0.92      0.94      0.88       394
-          3       0.81      0.72      0.96      0.76      0.83      0.68       251
+          2       0.93      0.91      0.97      0.92      0.94      0.88       394
+          3       0.83      0.73      0.97      0.78      0.84      0.68       251
 
-avg / total       0.87      0.85      0.96      0.86      0.90      0.81      1353
+avg / total       0.87      0.85      0.95      0.86      0.90      0.81      1353
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  10.461 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  11.260 seconds)</p>
 <p><strong>Estimated memory usage:</strong>  108 MB</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-applications-plot-topic-classication-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
@@ -508,7 +508,7 @@ avg / total       0.87      0.85      0.96      0.86      0.90      0.81      13
               
               
               <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="plot_multi_class_under_sampling.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -531,7 +531,8 @@ avg / total       0.87      0.85      0.96      0.86      0.90      0.81      13
       </div>
     </div>
   
-  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 <footer class="footer mt-5 mt-md-0">
   <div class="container">
     
