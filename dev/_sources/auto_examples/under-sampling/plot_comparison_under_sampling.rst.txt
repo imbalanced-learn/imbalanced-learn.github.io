@@ -54,38 +54,6 @@ different under-sampling algorithms available in the imbalanced-learn package.
 
 
 
-.. rst-class:: sphx-glr-script-out
-
- Out:
-
- .. code-block:: none
-
-
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap 'rocket' which already exists.
-      mpl_cm.register_cmap(_name, _cmap)
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap 'rocket_r' which already exists.
-      mpl_cm.register_cmap(_name + "_r", _cmap_r)
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap 'mako' which already exists.
-      mpl_cm.register_cmap(_name, _cmap)
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap 'mako_r' which already exists.
-      mpl_cm.register_cmap(_name + "_r", _cmap_r)
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap 'icefire' which already exists.
-      mpl_cm.register_cmap(_name, _cmap)
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap 'icefire_r' which already exists.
-      mpl_cm.register_cmap(_name + "_r", _cmap_r)
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap 'vlag' which already exists.
-      mpl_cm.register_cmap(_name, _cmap)
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap 'vlag_r' which already exists.
-      mpl_cm.register_cmap(_name + "_r", _cmap_r)
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap 'flare' which already exists.
-      mpl_cm.register_cmap(_name, _cmap)
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap 'flare_r' which already exists.
-      mpl_cm.register_cmap(_name + "_r", _cmap_r)
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap 'crest' which already exists.
-      mpl_cm.register_cmap(_name, _cmap)
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap 'crest_r' which already exists.
-      mpl_cm.register_cmap(_name + "_r", _cmap_r)
-
 
 
 
@@ -244,7 +212,7 @@ the original samples by the centroids of the cluster found.
 
 
 .. image-sg:: /auto_examples/under-sampling/images/sphx_glr_plot_comparison_under_sampling_001.png
-   :alt: Decision function with FunctionSampler, Resampling with FunctionSampler, Decision function with ClusterCentroids, Resampling with ClusterCentroids
+   :alt: Decision function with ClusterCentroids, Resampling with ClusterCentroids, Decision function with FunctionSampler, Resampling with FunctionSampler
    :srcset: /auto_examples/under-sampling/images/sphx_glr_plot_comparison_under_sampling_001.png
    :class: sphx-glr-single-img
 
@@ -354,8 +322,6 @@ largest.
 
 
 .. rst-class:: sphx-glr-script-out
-
- Out:
 
  .. code-block:: none
 
@@ -477,6 +443,19 @@ do not agree with this rule.
    :class: sphx-glr-single-img
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /home/circleci/project/imblearn/under_sampling/_prototype_selection/_edited_nearest_neighbours.py:158: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims` will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+      nnhood_label, _ = mode(nnhood_label, axis=1)
+    /home/circleci/project/imblearn/under_sampling/_prototype_selection/_edited_nearest_neighbours.py:158: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims` will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+      nnhood_label, _ = mode(nnhood_label, axis=1)
+    /home/circleci/project/imblearn/under_sampling/_prototype_selection/_edited_nearest_neighbours.py:158: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims` will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+      nnhood_label, _ = mode(nnhood_label, axis=1)
+    /home/circleci/project/imblearn/under_sampling/_prototype_selection/_edited_nearest_neighbours.py:158: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims` will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+      nnhood_label, _ = mode(nnhood_label, axis=1)
+
 
 
 
@@ -520,7 +499,7 @@ with a low probability will be removed.
 
 
 .. image-sg:: /auto_examples/under-sampling/images/sphx_glr_plot_comparison_under_sampling_006.png
-   :alt: Decision function with  InstanceHardnessThreshold, Resampling using  InstanceHardnessThreshold, Decision function with  FunctionSampler, Resampling using  FunctionSampler
+   :alt: Decision function with  FunctionSampler, Resampling using  FunctionSampler, Decision function with  InstanceHardnessThreshold, Resampling using  InstanceHardnessThreshold
    :srcset: /auto_examples/under-sampling/images/sphx_glr_plot_comparison_under_sampling_006.png
    :class: sphx-glr-single-img
 
@@ -531,30 +510,25 @@ with a low probability will be removed.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  7.984 seconds)
+   **Total running time of the script:** ( 0 minutes  8.233 seconds)
 
 **Estimated memory usage:**  53 MB
 
 
 .. _sphx_glr_download_auto_examples_under-sampling_plot_comparison_under_sampling.py:
 
+.. only:: html
 
-.. only :: html
-
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_comparison_under_sampling.py <plot_comparison_under_sampling.py>`
 
-     :download:`Download Python source code: plot_comparison_under_sampling.py <plot_comparison_under_sampling.py>`
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_comparison_under_sampling.ipynb <plot_comparison_under_sampling.ipynb>`
+      :download:`Download Jupyter notebook: plot_comparison_under_sampling.ipynb <plot_comparison_under_sampling.ipynb>`
 
 
 .. only:: html

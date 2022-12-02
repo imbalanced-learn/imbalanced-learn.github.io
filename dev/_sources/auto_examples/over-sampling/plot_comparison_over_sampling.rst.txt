@@ -55,38 +55,6 @@ different over-sampling algorithms available in the imbalanced-learn package.
 
 
 
-.. rst-class:: sphx-glr-script-out
-
- Out:
-
- .. code-block:: none
-
-
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap 'rocket' which already exists.
-      mpl_cm.register_cmap(_name, _cmap)
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap 'rocket_r' which already exists.
-      mpl_cm.register_cmap(_name + "_r", _cmap_r)
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap 'mako' which already exists.
-      mpl_cm.register_cmap(_name, _cmap)
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap 'mako_r' which already exists.
-      mpl_cm.register_cmap(_name + "_r", _cmap_r)
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap 'icefire' which already exists.
-      mpl_cm.register_cmap(_name, _cmap)
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap 'icefire_r' which already exists.
-      mpl_cm.register_cmap(_name + "_r", _cmap_r)
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap 'vlag' which already exists.
-      mpl_cm.register_cmap(_name, _cmap)
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap 'vlag_r' which already exists.
-      mpl_cm.register_cmap(_name + "_r", _cmap_r)
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap 'flare' which already exists.
-      mpl_cm.register_cmap(_name, _cmap)
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap 'flare_r' which already exists.
-      mpl_cm.register_cmap(_name + "_r", _cmap_r)
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1582: UserWarning: Trying to register the cmap 'crest' which already exists.
-      mpl_cm.register_cmap(_name, _cmap)
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/seaborn/cm.py:1583: UserWarning: Trying to register the cmap 'crest_r' which already exists.
-      mpl_cm.register_cmap(_name + "_r", _cmap_r)
-
 
 
 
@@ -556,8 +524,6 @@ this case.
 
 .. rst-class:: sphx-glr-script-out
 
- Out:
-
  .. code-block:: none
 
     The original imbalanced dataset
@@ -616,8 +582,6 @@ should use :class:`~imblearn.over_sampling.SMOTEN`.
 
 .. rst-class:: sphx-glr-script-out
 
- Out:
-
  .. code-block:: none
 
     Original class counts: Counter({1: 40, 0: 20})
@@ -628,6 +592,8 @@ should use :class:`~imblearn.over_sampling.SMOTEN`.
      ['A']
      ['A']]
 
+    /home/circleci/project/imblearn/over_sampling/_smote/base.py:789: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims` will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
+      stats.mode(X_class[nn_indices[samples_indices]], axis=1).mode, axis=1
     Class counts after resampling Counter({0: 40, 1: 40})
 
     [['B']
@@ -643,30 +609,25 @@ should use :class:`~imblearn.over_sampling.SMOTEN`.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  11.112 seconds)
+   **Total running time of the script:** ( 0 minutes  11.926 seconds)
 
-**Estimated memory usage:**  29 MB
+**Estimated memory usage:**  39 MB
 
 
 .. _sphx_glr_download_auto_examples_over-sampling_plot_comparison_over_sampling.py:
 
+.. only:: html
 
-.. only :: html
-
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_comparison_over_sampling.py <plot_comparison_over_sampling.py>`
 
-     :download:`Download Python source code: plot_comparison_over_sampling.py <plot_comparison_over_sampling.py>`
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_comparison_over_sampling.ipynb <plot_comparison_over_sampling.ipynb>`
+      :download:`Download Jupyter notebook: plot_comparison_over_sampling.ipynb <plot_comparison_over_sampling.ipynb>`
 
 
 .. only:: html
