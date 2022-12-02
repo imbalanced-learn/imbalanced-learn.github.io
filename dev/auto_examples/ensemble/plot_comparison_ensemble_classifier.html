@@ -492,7 +492,7 @@ imbalanced set.</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Decision tree classifier performance:
-Balanced accuracy: 0.73 - Geometric mean 0.70
+Balanced accuracy: 0.75 - Geometric mean 0.72
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -641,6 +641,12 @@ achieve worse performance.</p>
 <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred_rusboost</span></a> <span class="o">=</span> <a href="../../references/generated/imblearn.ensemble.RUSBoostClassifier.html#imblearn.ensemble.RUSBoostClassifier.predict" title="imblearn.ensemble.RUSBoostClassifier.predict" class="sphx-glr-backref-module-imblearn-ensemble sphx-glr-backref-type-py-method"><span class="n">rusboost</span><span class="o">.</span><span class="n">predict</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_test</span></a><span class="p">)</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/project/imblearn/ensemble/_easy_ensemble.py:254: FutureWarning: `base_estimator` was renamed to `estimator` in version 0.10 and will be removed in 0.12.
+  warnings.warn(
+/home/circleci/project/imblearn/ensemble/_weight_boosting.py:250: FutureWarning: `base_estimator` was renamed to `estimator` in version 0.10 and will be removed in 0.12.
+  warnings.warn(
+</pre></div>
+</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Easy ensemble classifier performance:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span>
     <span class="sa">f</span><span class="s2">&quot;Balanced accuracy: </span><span class="si">{</span><span class="n">balanced_accuracy_score</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_test</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred_eec</span></a><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> - &quot;</span>
@@ -676,8 +682,8 @@ Balanced accuracy: 0.85 - Geometric mean 0.85
   warnings.warn(msg, category=FutureWarning)
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 1 minutes  44.216 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  241 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  13.802 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  243 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-ensemble-plot-comparison-ensemble-classifier-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/e6a7a05ca7f23057d0cbfa6b70cc7982/plot_comparison_ensemble_classifier.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_comparison_ensemble_classifier.py</span></code></a></p>
