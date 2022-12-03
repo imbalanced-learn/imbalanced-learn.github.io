@@ -373,6 +373,13 @@
 <span id="changes-0-10"></span><h2>Version 0.10.0 (ongoing)<a class="headerlink" href="#version-0-10-0-ongoing" title="Permalink to this headline">#</a></h2>
 <section id="changelog">
 <h3>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">#</a></h3>
+<section id="compatibility">
+<h4>Compatibility<a class="headerlink" href="#compatibility" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>Maintenance release for be compatible with scikit-learn &gt;= 1.0.2.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/946">#946</a>, <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/947">#947</a>, <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/949">#949</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+</ul>
+</section>
 <section id="deprecation">
 <h4>Deprecation<a class="headerlink" href="#deprecation" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
@@ -385,6 +392,12 @@
 <a class="reference internal" href="references/generated/imblearn.over_sampling.SVMSMOTE.html#imblearn.over_sampling.SVMSMOTE" title="imblearn.over_sampling.SVMSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SVMSMOTE</span></code></a>. Instead, pass a nearest neighbors
 estimator where <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> is set.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/887">#887</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+<li><p>The parameter <code class="docutils literal notranslate"><span class="pre">base_estimator</span></code> is deprecated and will be removed in version
+0.12. It is impacted the following classes:
+<a class="reference internal" href="references/generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="imblearn.ensemble.BalancedBaggingClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">BalancedBaggingClassifier</span></code></a>,
+<a class="reference internal" href="references/generated/imblearn.ensemble.EasyEnsembleClassifier.html#imblearn.ensemble.EasyEnsembleClassifier" title="imblearn.ensemble.EasyEnsembleClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">EasyEnsembleClassifier</span></code></a>,
+<a class="reference internal" href="references/generated/imblearn.ensemble.RUSBoostClassifier.html#imblearn.ensemble.RUSBoostClassifier" title="imblearn.ensemble.RUSBoostClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">RUSBoostClassifier</span></code></a>.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/946">#946</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </section>
 <section id="enhancements">
@@ -1260,6 +1273,11 @@ and <a class="reference external" href="https://github.com/dvro">Dayvid Oliveira
      Changelog
     </a>
     <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#compatibility">
+       Compatibility
+      </a>
+     </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#deprecation">
        Deprecation

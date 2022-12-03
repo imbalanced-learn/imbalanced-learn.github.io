@@ -44,6 +44,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/js/copybutton.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'metrics';</script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="about.html" />
@@ -491,18 +492,18 @@ the different categories:</p>
 are compared. Whenever comparing with “blue”, the distance is much larger.</p>
 <p><strong>Mathematical formulation</strong></p>
 <p>The distance between feature values of two samples is defined as:</p>
-<div class="math">
-<p><img src="_images/math/7a57f288c6c439cfca344f841e7fb441589ad53a.svg" alt="\delta(x, y) = \sum_{c=1}^{C} |p(c|x_{f}) - p(c|y_{f})|^{k} \ ,"/></p>
-</div><p>where <img class="math" src="_images/math/888f7c323ac0341871e867220ae2d76467d74d6e.svg" alt="x"/> and <img class="math" src="_images/math/1b5e577d6216dca3af7d87aa122a0b9b360d6cb3.svg" alt="y"/> are two samples and <img class="math" src="_images/math/5b7752c757e0b691a80ab8227eadb8a8389dc58a.svg" alt="f"/> a given
-feature, <img class="math" src="_images/math/4db5b6e16e06f929ce3f675c5e535d06ffb02ff7.svg" alt="C"/> is the number of classes, <img class="math" src="_images/math/d1601f8f533fab64ae2f2e8d6d9aaab202519b6b.svg" alt="p(c|x_{f})"/> is the
-conditional probability that the output class is <img class="math" src="_images/math/d520a12f1579170834c32ad5f656de081bbb36fe.svg" alt="c"/> given that
-the feature value <img class="math" src="_images/math/5b7752c757e0b691a80ab8227eadb8a8389dc58a.svg" alt="f"/> has the value <img class="math" src="_images/math/888f7c323ac0341871e867220ae2d76467d74d6e.svg" alt="x"/> and <img class="math" src="_images/math/9630132210b904754c9ab272b61cb527d12263ca.svg" alt="k"/> an
+<div class="math notranslate nohighlight">
+\[\delta(x, y) = \sum_{c=1}^{C} |p(c|x_{f}) - p(c|y_{f})|^{k} \ ,\]</div>
+<p>where <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are two samples and <span class="math notranslate nohighlight">\(f\)</span> a given
+feature, <span class="math notranslate nohighlight">\(C\)</span> is the number of classes, <span class="math notranslate nohighlight">\(p(c|x_{f})\)</span> is the
+conditional probability that the output class is <span class="math notranslate nohighlight">\(c\)</span> given that
+the feature value <span class="math notranslate nohighlight">\(f\)</span> has the value <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(k\)</span> an
 exponent usually defined to 1 or 2.</p>
-<p>The distance for the feature vectors <img class="math" src="_images/math/ed38fa24f1c94891bd312012aab3f6673be3eb83.svg" alt="X"/> and <img class="math" src="_images/math/7daf0d4815e763eb90f0d5f1dc406f668c1e21db.svg" alt="Y"/> is
+<p>The distance for the feature vectors <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> is
 subsequently defined as:</p>
-<div class="math">
-<p><img src="_images/math/52e929f30f2fc50a201fed72f097fca608f7d66a.svg" alt="\Delta(X, Y) = \sum_{f=1}^{F} \delta(X_{f}, Y_{f})^{r} \ ,"/></p>
-</div><p>where <img class="math" src="_images/math/df00656702b70b4b6f7ffbf6a9aa9a334bab1914.svg" alt="F"/> is the number of feature and <img class="math" src="_images/math/79a3d439d28652c547386f39b555d90d3aaf102d.svg" alt="r"/> an exponent usually
+<div class="math notranslate nohighlight">
+\[\Delta(X, Y) = \sum_{f=1}^{F} \delta(X_{f}, Y_{f})^{r} \ ,\]</div>
+<p>where <span class="math notranslate nohighlight">\(F\)</span> is the number of feature and <span class="math notranslate nohighlight">\(r\)</span> an exponent usually
 defined equal to 1 or 2.</p>
 </section>
 </section>

@@ -156,23 +156,12 @@ performed through cross-validation and we will plot the mean ROC curve.
 
 We will create different pipelines and evaluate them.
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-77
+.. GENERATED FROM PYTHON SOURCE LINES 74-90
 
 .. code-block:: default
 
 
     from sklearn.neighbors import KNeighborsClassifier
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 78-91
-
-.. code-block:: default
 
     from imblearn import FunctionSampler
     from imblearn.over_sampling import ADASYN, SMOTE, RandomOverSampler
@@ -194,7 +183,7 @@ We will create different pipelines and evaluate them.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-96
+.. GENERATED FROM PYTHON SOURCE LINES 91-95
 
 .. code-block:: default
 
@@ -209,13 +198,13 @@ We will create different pipelines and evaluate them.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 97-100
+.. GENERATED FROM PYTHON SOURCE LINES 96-99
 
 We will compute the mean ROC curve for each pipeline using a different splits
 provided by the :class:`~sklearn.model_selection.StratifiedKFold`
 cross-validation.
 
-.. GENERATED FROM PYTHON SOURCE LINES 102-134
+.. GENERATED FROM PYTHON SOURCE LINES 101-133
 
 .. code-block:: default
 
@@ -258,12 +247,12 @@ cross-validation.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 135-137
+.. GENERATED FROM PYTHON SOURCE LINES 134-136
 
 In the previous cell, we created the different mean ROC curve and we can plot
 them on the same plot.
 
-.. GENERATED FROM PYTHON SOURCE LINES 139-151
+.. GENERATED FROM PYTHON SOURCE LINES 138-151
 
 .. code-block:: default
 
@@ -276,6 +265,7 @@ them on the same plot.
     ax.set_xlim([0, 1])
     ax.set_ylim([0, 1])
     sns.despine(offset=10, ax=ax)
+    plt.legend(loc="lower right", fontsize=16)
     plt.tight_layout()
     plt.show()
 
@@ -300,9 +290,9 @@ over-sampling or no resampling.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  45.376 seconds)
+   **Total running time of the script:** ( 0 minutes  46.851 seconds)
 
-**Estimated memory usage:**  267 MB
+**Estimated memory usage:**  223 MB
 
 
 .. _sphx_glr_download_auto_examples_applications_plot_over_sampling_benchmark_lfw.py:

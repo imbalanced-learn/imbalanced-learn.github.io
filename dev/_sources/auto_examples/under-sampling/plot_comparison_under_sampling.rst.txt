@@ -182,11 +182,12 @@ Prototype generation: under-sampling by generating new samples
 :class:`~imblearn.under_sampling.ClusterCentroids` under-samples by replacing
 the original samples by the centroids of the cluster found.
 
-.. GENERATED FROM PYTHON SOURCE LINES 105-128
+.. GENERATED FROM PYTHON SOURCE LINES 105-131
 
 .. code-block:: default
 
     import matplotlib.pyplot as plt
+    from sklearn.cluster import MiniBatchKMeans
 
     from imblearn import FunctionSampler
     from imblearn.pipeline import make_pipeline
@@ -196,7 +197,9 @@ the original samples by the centroids of the cluster found.
 
     samplers = {
         FunctionSampler(),  # identity resampler
-        ClusterCentroids(random_state=0),
+        ClusterCentroids(
+            estimator=MiniBatchKMeans(n_init=1, random_state=0), random_state=0
+        ),
     }
 
     fig, axs = plt.subplots(nrows=2, ncols=2, figsize=(15, 15))
@@ -221,7 +224,7 @@ the original samples by the centroids of the cluster found.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 129-141
+.. GENERATED FROM PYTHON SOURCE LINES 132-144
 
 Prototype selection: under-sampling by selecting existing samples
 -----------------------------------------------------------------
@@ -236,7 +239,7 @@ selected can be specified.
 performing such selection by randomly selecting a given number of samples by
 the targetted class.
 
-.. GENERATED FROM PYTHON SOURCE LINES 143-162
+.. GENERATED FROM PYTHON SOURCE LINES 146-165
 
 .. code-block:: default
 
@@ -263,7 +266,7 @@ the targetted class.
 
 
 .. image-sg:: /auto_examples/under-sampling/images/sphx_glr_plot_comparison_under_sampling_002.png
-   :alt: Decision function with RandomUnderSampler, Resampling with RandomUnderSampler, Decision function with FunctionSampler, Resampling with FunctionSampler
+   :alt: Decision function with FunctionSampler, Resampling with FunctionSampler, Decision function with RandomUnderSampler, Resampling with RandomUnderSampler
    :srcset: /auto_examples/under-sampling/images/sphx_glr_plot_comparison_under_sampling_002.png
    :class: sphx-glr-single-img
 
@@ -271,7 +274,7 @@ the targetted class.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 163-173
+.. GENERATED FROM PYTHON SOURCE LINES 166-176
 
 :class:`~imblearn.under_sampling.NearMiss` algorithms implement some
 heuristic rules in order to select samples. NearMiss-1 selects samples from
@@ -284,7 +287,7 @@ nearest-neighbors will be kept; then, the majority samples selected are the
 on for which the average distance to the :math:`k` nearest neighbors is the
 largest.
 
-.. GENERATED FROM PYTHON SOURCE LINES 175-200
+.. GENERATED FROM PYTHON SOURCE LINES 178-203
 
 .. code-block:: default
 
@@ -338,7 +341,7 @@ largest.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 201-209
+.. GENERATED FROM PYTHON SOURCE LINES 204-212
 
 :class:`~imblearn.under_sampling.EditedNearestNeighbours` removes samples of
 the majority class for which their class differ from the one of their
@@ -349,7 +352,7 @@ nearest-neighbors. This sieve can be repeated which is the principle of the
 the :math:`k` parameter of the internal nearest neighors algorithm,
 increasing it at each iteration.
 
-.. GENERATED FROM PYTHON SOURCE LINES 211-237
+.. GENERATED FROM PYTHON SOURCE LINES 214-240
 
 .. code-block:: default
 
@@ -391,7 +394,7 @@ increasing it at each iteration.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 238-249
+.. GENERATED FROM PYTHON SOURCE LINES 241-252
 
 :class:`~imblearn.under_sampling.CondensedNearestNeighbour` makes use of a
 1-NN to iteratively decide if a sample should be kept in a dataset or not.
@@ -405,7 +408,7 @@ considered noisy. The
 sample. Additionally, they use a 3 nearest-neighbors to remove samples which
 do not agree with this rule.
 
-.. GENERATED FROM PYTHON SOURCE LINES 251-277
+.. GENERATED FROM PYTHON SOURCE LINES 254-280
 
 .. code-block:: default
 
@@ -447,13 +450,13 @@ do not agree with this rule.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 278-281
+.. GENERATED FROM PYTHON SOURCE LINES 281-284
 
 :class:`~imblearn.under_sampling.InstanceHardnessThreshold` uses the
 prediction of classifier to exclude samples. All samples which are classified
 with a low probability will be removed.
 
-.. GENERATED FROM PYTHON SOURCE LINES 283-309
+.. GENERATED FROM PYTHON SOURCE LINES 286-312
 
 .. code-block:: default
 
@@ -487,7 +490,7 @@ with a low probability will be removed.
 
 
 .. image-sg:: /auto_examples/under-sampling/images/sphx_glr_plot_comparison_under_sampling_006.png
-   :alt: Decision function with  FunctionSampler, Resampling using  FunctionSampler, Decision function with  InstanceHardnessThreshold, Resampling using  InstanceHardnessThreshold
+   :alt: Decision function with  InstanceHardnessThreshold, Resampling using  InstanceHardnessThreshold, Decision function with  FunctionSampler, Resampling using  FunctionSampler
    :srcset: /auto_examples/under-sampling/images/sphx_glr_plot_comparison_under_sampling_006.png
    :class: sphx-glr-single-img
 
@@ -498,9 +501,9 @@ with a low probability will be removed.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  7.746 seconds)
+   **Total running time of the script:** ( 0 minutes  8.061 seconds)
 
-**Estimated memory usage:**  53 MB
+**Estimated memory usage:**  30 MB
 
 
 .. _sphx_glr_download_auto_examples_under-sampling_plot_comparison_under_sampling.py:

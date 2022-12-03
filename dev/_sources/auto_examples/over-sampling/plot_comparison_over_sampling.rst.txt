@@ -453,9 +453,11 @@ found using an SVM algorithm to create new sample while the KMeans version
 to generate samples in each cluster independently depending each cluster
 density.
 
-.. GENERATED FROM PYTHON SOURCE LINES 265-289
+.. GENERATED FROM PYTHON SOURCE LINES 265-293
 
 .. code-block:: default
+
+    from sklearn.cluster import MiniBatchKMeans
 
     from imblearn.over_sampling import SVMSMOTE, BorderlineSMOTE, KMeansSMOTE
 
@@ -467,7 +469,9 @@ density.
         SMOTE(random_state=0),
         BorderlineSMOTE(random_state=0, kind="borderline-1"),
         BorderlineSMOTE(random_state=0, kind="borderline-2"),
-        KMeansSMOTE(random_state=0),
+        KMeansSMOTE(
+            kmeans_estimator=MiniBatchKMeans(n_init=1, random_state=0), random_state=0
+        ),
         SVMSMOTE(random_state=0),
     ]
 
@@ -493,13 +497,13 @@ density.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 290-293
+.. GENERATED FROM PYTHON SOURCE LINES 294-297
 
 When dealing with a mixed of continuous and categorical features,
 :class:`~imblearn.over_sampling.SMOTENC` is the only method which can handle
 this case.
 
-.. GENERATED FROM PYTHON SOURCE LINES 295-324
+.. GENERATED FROM PYTHON SOURCE LINES 299-328
 
 .. code-block:: default
 
@@ -564,12 +568,12 @@ this case.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 325-327
+.. GENERATED FROM PYTHON SOURCE LINES 329-331
 
 However, if the dataset is composed of only categorical features then one
 should use :class:`~imblearn.over_sampling.SMOTEN`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 329-346
+.. GENERATED FROM PYTHON SOURCE LINES 333-350
 
 .. code-block:: default
 
@@ -621,9 +625,9 @@ should use :class:`~imblearn.over_sampling.SMOTEN`.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  11.396 seconds)
+   **Total running time of the script:** ( 0 minutes  11.442 seconds)
 
-**Estimated memory usage:**  43 MB
+**Estimated memory usage:**  29 MB
 
 
 .. _sphx_glr_download_auto_examples_over-sampling_plot_comparison_over_sampling.py:

@@ -44,6 +44,7 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/copybutton.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/api/plot_sampling_strategy_usage';</script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
@@ -483,9 +484,9 @@ cleaning methods).</p>
 <section id="sampling-strategy-as-a-float">
 <h2><code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> as a <code class="docutils literal notranslate"><span class="pre">float</span></code><a class="headerlink" href="#sampling-strategy-as-a-float" title="Permalink to this headline">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> can be given a <code class="docutils literal notranslate"><span class="pre">float</span></code>. For <strong>under-sampling
-methods</strong>, it corresponds to the ratio <img class="math" src="../../_images/math/5641af957e7a4488ddb8bf6c140c6293b20b1914.svg" alt="\\alpha_{us}"/> defined by
-<img class="math" src="../../_images/math/b4027af4d612905f56d45c4dc4d0d5edeff6bfb1.svg" alt="N_{rM} = \\alpha_{us} \\times N_{m}"/> where <img class="math" src="../../_images/math/af8cae27cbce4d779c6fd83f408d0115b6312d73.svg" alt="N_{rM}"/> and
-<img class="math" src="../../_images/math/c291c39375eec8dbd9df5c7a77dfc3f720e67450.svg" alt="N_{m}"/> are the number of samples in the majority class after
+methods</strong>, it corresponds to the ratio <span class="math notranslate nohighlight">\(\alpha_{us}\)</span> defined by
+<span class="math notranslate nohighlight">\(N_{rM} = \alpha_{us} \times N_{m}\)</span> where <span class="math notranslate nohighlight">\(N_{rM}\)</span> and
+<span class="math notranslate nohighlight">\(N_{m}\)</span> are the number of samples in the majority class after
 resampling and the number of samples in the minority class, respectively.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -505,8 +506,8 @@ resampling and the number of samples in the minority class, respectively.</p>
 </pre></div>
 </div>
 <img src="../../_images/sphx_glr_plot_sampling_strategy_usage_002.png" srcset="../../_images/sphx_glr_plot_sampling_strategy_usage_002.png" alt="Under-sampling" class = "sphx-glr-single-img"/><p>For <strong>over-sampling methods</strong>, it correspond to the ratio
-<img class="math" src="../../_images/math/411c06054649d67da644e14427c414d0287a3295.svg" alt="\\alpha_{os}"/> defined by <img class="math" src="../../_images/math/5e9742d444323d8a037cfad00b11bd876969d539.svg" alt="N_{rm} = \\alpha_{os} \\times N_{M}"/>
-where <img class="math" src="../../_images/math/4985d2eacb2937e16c6bf7ae35392a2ab86f26b5.svg" alt="N_{rm}"/> and <img class="math" src="../../_images/math/2be1533ae94a10e0b0cdc0bb4456aa7afe6062ba.svg" alt="N_{M}"/> are the number of samples in the
+<span class="math notranslate nohighlight">\(\alpha_{os}\)</span> defined by <span class="math notranslate nohighlight">\(N_{rm} = \alpha_{os} \times N_{M}\)</span>
+where <span class="math notranslate nohighlight">\(N_{rm}\)</span> and <span class="math notranslate nohighlight">\(N_{M}\)</span> are the number of samples in the
 minority class after resampling and the number of samples in the majority
 class, respectively.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <a href="../../references/generated/imblearn.over_sampling.RandomOverSampler.html#imblearn.over_sampling.RandomOverSampler" title="imblearn.over_sampling.RandomOverSampler" class="sphx-glr-backref-module-imblearn-over_sampling sphx-glr-backref-type-py-class"><span class="n">RandomOverSampler</span></a>
@@ -608,8 +609,8 @@ number of samples for each class.</p>
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_sampling_strategy_usage_008.png" srcset="../../_images/sphx_glr_plot_sampling_strategy_usage_008.png" alt="Under-sampling" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  2.336 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  35 MB</p>
+<img src="../../_images/sphx_glr_plot_sampling_strategy_usage_008.png" srcset="../../_images/sphx_glr_plot_sampling_strategy_usage_008.png" alt="Under-sampling" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  2.578 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  34 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-api-plot-sampling-strategy-usage-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/e920fc6aec38afa60ab51b8447cb5e77/plot_sampling_strategy_usage.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_sampling_strategy_usage.py</span></code></a></p>
