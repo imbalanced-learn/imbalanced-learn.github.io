@@ -419,7 +419,7 @@ to retain the 10 first elements of the array <code class="docutils literal notra
 <span class="go">True</span>
 </pre></div>
 </div>
-<p>In addition, the parameter <code class="docutils literal notranslate"><span class="pre">validate</span></code> control input checking. For instance,
+<p>In addition, the parameter <code class="docutils literal notranslate"><span class="pre">validate</span></code> controls input checking. For instance,
 turning <code class="docutils literal notranslate"><span class="pre">validate=False</span></code> allows to pass any type of target <code class="docutils literal notranslate"><span class="pre">y</span></code> and do some
 sampling for regression targets:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_regression</span>
@@ -436,7 +436,7 @@ sampling for regression targets:</p>
 <span class="go">        211.95889757,  211.95889757])</span>
 </pre></div>
 </div>
-<p>We illustrate the use of such sampler to implement an outlier rejection
+<p>We illustrated the use of such sampler to implement an outlier rejection
 estimator which can be easily used within a
 <a class="reference internal" href="references/generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="imblearn.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>:
 <a class="reference internal" href="auto_examples/applications/plot_outlier_rejections.html#sphx-glr-auto-examples-applications-plot-outlier-rejections-py"><span class="std std-ref">Customized sampler to implement an outlier rejections estimator</span></a></p>
@@ -447,10 +447,10 @@ estimator which can be easily used within a
 will generate balanced mini-batches.</p>
 <section id="tensorflow-generator">
 <span id="id1"></span><h3><span class="section-number">6.2.1. </span>TensorFlow generator<a class="headerlink" href="#tensorflow-generator" title="Permalink to this headline">#</a></h3>
-<p>The <a class="reference internal" href="references/generated/imblearn.tensorflow.balanced_batch_generator.html#imblearn.tensorflow.balanced_batch_generator" title="imblearn.tensorflow.balanced_batch_generator"><code class="xref py py-func docutils literal notranslate"><span class="pre">balanced_batch_generator</span></code></a> allow to generate
+<p>The <a class="reference internal" href="references/generated/imblearn.tensorflow.balanced_batch_generator.html#imblearn.tensorflow.balanced_batch_generator" title="imblearn.tensorflow.balanced_batch_generator"><code class="xref py py-func docutils literal notranslate"><span class="pre">balanced_batch_generator</span></code></a> allows to generate
 balanced mini-batches using an imbalanced-learn sampler which returns indices.</p>
-<dl>
-<dt>Let’s first generate some data::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n_features</span><span class="p">,</span> <span class="n">n_classes</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span>
+<p>Let’s first generate some data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n_features</span><span class="p">,</span> <span class="n">n_classes</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">n_samples</span><span class="o">=</span><span class="mi">10_000</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="n">n_features</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">n_redundant</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_repeated</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="n">n_classes</span><span class="p">,</span>
@@ -460,8 +460,6 @@ balanced mini-batches using an imbalanced-learn sampler which returns indices.</
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 </pre></div>
 </div>
-</dd>
-</dl>
 <p>Then, we can create the generator that will yield mini-batches that will be
 balanced:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <span class="n">RandomUnderSampler</span>
@@ -476,7 +474,7 @@ balanced:</p>
 <span class="gp">... </span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">generator</span></code> and <code class="docutils literal notranslate"><span class="pre">steps_per_epoch</span></code> is used during the training of the
+<p>The <code class="docutils literal notranslate"><span class="pre">generator</span></code> and <code class="docutils literal notranslate"><span class="pre">steps_per_epoch</span></code> are used during the training of a
 Tensorflow model. We will illustrate how to use this generator. First, we can
 define a logistic regression model which will be optimized by a gradient
 descent:</p>
