@@ -182,11 +182,12 @@ Prototype generation: under-sampling by generating new samples
 :class:`~imblearn.under_sampling.ClusterCentroids` under-samples by replacing
 the original samples by the centroids of the cluster found.
 
-.. GENERATED FROM PYTHON SOURCE LINES 105-127
+.. GENERATED FROM PYTHON SOURCE LINES 105-128
 
 .. code-block:: default
 
     import matplotlib.pyplot as plt
+
     from imblearn import FunctionSampler
     from imblearn.pipeline import make_pipeline
     from imblearn.under_sampling import ClusterCentroids
@@ -220,7 +221,7 @@ the original samples by the centroids of the cluster found.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 128-140
+.. GENERATED FROM PYTHON SOURCE LINES 129-141
 
 Prototype selection: under-sampling by selecting existing samples
 -----------------------------------------------------------------
@@ -235,7 +236,7 @@ selected can be specified.
 performing such selection by randomly selecting a given number of samples by
 the targetted class.
 
-.. GENERATED FROM PYTHON SOURCE LINES 142-161
+.. GENERATED FROM PYTHON SOURCE LINES 143-162
 
 .. code-block:: default
 
@@ -270,7 +271,7 @@ the targetted class.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 162-172
+.. GENERATED FROM PYTHON SOURCE LINES 163-173
 
 :class:`~imblearn.under_sampling.NearMiss` algorithms implement some
 heuristic rules in order to select samples. NearMiss-1 selects samples from
@@ -283,7 +284,7 @@ nearest-neighbors will be kept; then, the majority samples selected are the
 on for which the average distance to the :math:`k` nearest neighbors is the
 largest.
 
-.. GENERATED FROM PYTHON SOURCE LINES 174-199
+.. GENERATED FROM PYTHON SOURCE LINES 175-200
 
 .. code-block:: default
 
@@ -325,19 +326,19 @@ largest.
 
  .. code-block:: none
 
-    /home/circleci/project/imblearn/under_sampling/_prototype_selection/_nearmiss.py:188: UserWarning: The number of the samples to be selected is larger than the number of samples available. The balancing ratio cannot be ensure and all samples will be returned.
+    /home/circleci/project/imblearn/under_sampling/_prototype_selection/_nearmiss.py:186: UserWarning: The number of the samples to be selected is larger than the number of samples available. The balancing ratio cannot be ensure and all samples will be returned.
       warnings.warn(
-    /home/circleci/project/imblearn/under_sampling/_prototype_selection/_nearmiss.py:188: UserWarning: The number of the samples to be selected is larger than the number of samples available. The balancing ratio cannot be ensure and all samples will be returned.
+    /home/circleci/project/imblearn/under_sampling/_prototype_selection/_nearmiss.py:186: UserWarning: The number of the samples to be selected is larger than the number of samples available. The balancing ratio cannot be ensure and all samples will be returned.
       warnings.warn(
-    /home/circleci/project/imblearn/under_sampling/_prototype_selection/_nearmiss.py:188: UserWarning: The number of the samples to be selected is larger than the number of samples available. The balancing ratio cannot be ensure and all samples will be returned.
+    /home/circleci/project/imblearn/under_sampling/_prototype_selection/_nearmiss.py:186: UserWarning: The number of the samples to be selected is larger than the number of samples available. The balancing ratio cannot be ensure and all samples will be returned.
       warnings.warn(
-    /home/circleci/project/imblearn/under_sampling/_prototype_selection/_nearmiss.py:188: UserWarning: The number of the samples to be selected is larger than the number of samples available. The balancing ratio cannot be ensure and all samples will be returned.
+    /home/circleci/project/imblearn/under_sampling/_prototype_selection/_nearmiss.py:186: UserWarning: The number of the samples to be selected is larger than the number of samples available. The balancing ratio cannot be ensure and all samples will be returned.
       warnings.warn(
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 200-208
+.. GENERATED FROM PYTHON SOURCE LINES 201-209
 
 :class:`~imblearn.under_sampling.EditedNearestNeighbours` removes samples of
 the majority class for which their class differ from the one of their
@@ -348,14 +349,14 @@ nearest-neighbors. This sieve can be repeated which is the principle of the
 the :math:`k` parameter of the internal nearest neighors algorithm,
 increasing it at each iteration.
 
-.. GENERATED FROM PYTHON SOURCE LINES 210-236
+.. GENERATED FROM PYTHON SOURCE LINES 211-237
 
 .. code-block:: default
 
     from imblearn.under_sampling import (
+        AllKNN,
         EditedNearestNeighbours,
         RepeatedEditedNearestNeighbours,
-        AllKNN,
     )
 
     X, y = create_dataset(n_samples=500, weights=(0.2, 0.3, 0.5), class_sep=0.8)
@@ -390,7 +391,7 @@ increasing it at each iteration.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 237-248
+.. GENERATED FROM PYTHON SOURCE LINES 238-249
 
 :class:`~imblearn.under_sampling.CondensedNearestNeighbour` makes use of a
 1-NN to iteratively decide if a sample should be kept in a dataset or not.
@@ -404,14 +405,14 @@ considered noisy. The
 sample. Additionally, they use a 3 nearest-neighbors to remove samples which
 do not agree with this rule.
 
-.. GENERATED FROM PYTHON SOURCE LINES 250-276
+.. GENERATED FROM PYTHON SOURCE LINES 251-277
 
 .. code-block:: default
 
     from imblearn.under_sampling import (
         CondensedNearestNeighbour,
-        OneSidedSelection,
         NeighbourhoodCleaningRule,
+        OneSidedSelection,
     )
 
     X, y = create_dataset(n_samples=500, weights=(0.2, 0.3, 0.5), class_sep=0.8)
@@ -446,13 +447,13 @@ do not agree with this rule.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 277-280
+.. GENERATED FROM PYTHON SOURCE LINES 278-281
 
 :class:`~imblearn.under_sampling.InstanceHardnessThreshold` uses the
 prediction of classifier to exclude samples. All samples which are classified
 with a low probability will be removed.
 
-.. GENERATED FROM PYTHON SOURCE LINES 282-308
+.. GENERATED FROM PYTHON SOURCE LINES 283-309
 
 .. code-block:: default
 
@@ -497,9 +498,9 @@ with a low probability will be removed.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  8.396 seconds)
+   **Total running time of the script:** ( 0 minutes  8.470 seconds)
 
-**Estimated memory usage:**  30 MB
+**Estimated memory usage:**  29 MB
 
 
 .. _sphx_glr_download_auto_examples_under-sampling_plot_comparison_under_sampling.py:

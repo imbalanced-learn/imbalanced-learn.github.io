@@ -64,11 +64,12 @@ Create an imbalanced dataset
 
 First, we will create an imbalanced data set from a the iris data set.
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-36
+.. GENERATED FROM PYTHON SOURCE LINES 28-37
 
 .. code-block:: default
 
     from sklearn.datasets import load_iris
+
     from imblearn.datasets import make_imbalance
 
     iris = load_iris(as_frame=True)
@@ -83,7 +84,7 @@ First, we will create an imbalanced data set from a the iris data set.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 37-47
+.. GENERATED FROM PYTHON SOURCE LINES 38-48
 
 .. code-block:: default
 
@@ -109,7 +110,7 @@ First, we will create an imbalanced data set from a the iris data set.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-59
+.. GENERATED FROM PYTHON SOURCE LINES 49-60
 
 Using ``sampling_strategy`` in resampling algorithms
 ====================================================
@@ -123,7 +124,7 @@ methods**, it corresponds to the ratio :math:`\\alpha_{us}` defined by
 :math:`N_{m}` are the number of samples in the majority class after
 resampling and the number of samples in the minority class, respectively.
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-68
+.. GENERATED FROM PYTHON SOURCE LINES 62-69
 
 .. code-block:: default
 
@@ -141,7 +142,7 @@ resampling and the number of samples in the minority class, respectively.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-77
+.. GENERATED FROM PYTHON SOURCE LINES 70-78
 
 .. code-block:: default
 
@@ -165,7 +166,7 @@ resampling and the number of samples in the minority class, respectively.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 78-83
+.. GENERATED FROM PYTHON SOURCE LINES 79-84
 
 For **over-sampling methods**, it correspond to the ratio
 :math:`\\alpha_{os}` defined by :math:`N_{rm} = \\alpha_{os} \\times N_{M}`
@@ -173,7 +174,7 @@ where :math:`N_{rm}` and :math:`N_{M}` are the number of samples in the
 minority class after resampling and the number of samples in the majority
 class, respectively.
 
-.. GENERATED FROM PYTHON SOURCE LINES 85-92
+.. GENERATED FROM PYTHON SOURCE LINES 86-93
 
 .. code-block:: default
 
@@ -196,7 +197,7 @@ class, respectively.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 93-101
+.. GENERATED FROM PYTHON SOURCE LINES 94-102
 
 `sampling_strategy` has a `str`
 -------------------------------
@@ -207,7 +208,7 @@ samples will be equalized.
 
 Note that we are using multiple classes from now on.
 
-.. GENERATED FROM PYTHON SOURCE LINES 103-117
+.. GENERATED FROM PYTHON SOURCE LINES 104-118
 
 .. code-block:: default
 
@@ -237,12 +238,12 @@ Note that we are using multiple classes from now on.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 118-120
+.. GENERATED FROM PYTHON SOURCE LINES 119-121
 
 With **cleaning method**, the number of samples in each class will not be
 equalized even if targeted.
 
-.. GENERATED FROM PYTHON SOURCE LINES 122-130
+.. GENERATED FROM PYTHON SOURCE LINES 123-131
 
 .. code-block:: default
 
@@ -266,7 +267,7 @@ equalized even if targeted.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 131-138
+.. GENERATED FROM PYTHON SOURCE LINES 132-139
 
 `sampling_strategy as a `dict`
 ------------------------------
@@ -276,7 +277,7 @@ classes. The values correspond to the desired number of samples for each
 targeted class. This is working for both **under- and over-sampling**
 algorithms but not for the **cleaning algorithms**. Use a `list` instead.
 
-.. GENERATED FROM PYTHON SOURCE LINES 140-154
+.. GENERATED FROM PYTHON SOURCE LINES 141-155
 
 .. code-block:: default
 
@@ -306,7 +307,7 @@ algorithms but not for the **cleaning algorithms**. Use a `list` instead.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 155-161
+.. GENERATED FROM PYTHON SOURCE LINES 156-162
 
 `sampling_strategy` as a `list`
 -------------------------------
@@ -315,7 +316,7 @@ When `sampling_strategy` is a `list`, the list contains the targeted
 classes. It is used only for **cleaning methods** and raise an error
 otherwise.
 
-.. GENERATED FROM PYTHON SOURCE LINES 163-169
+.. GENERATED FROM PYTHON SOURCE LINES 164-170
 
 .. code-block:: default
 
@@ -337,7 +338,7 @@ otherwise.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 170-176
+.. GENERATED FROM PYTHON SOURCE LINES 171-177
 
 `sampling_strategy` as a callable
 ---------------------------------
@@ -346,7 +347,7 @@ When callable, function taking `y` and returns a `dict`. The keys
 correspond to the targeted classes. The values correspond to the desired
 number of samples for each class.
 
-.. GENERATED FROM PYTHON SOURCE LINES 179-194
+.. GENERATED FROM PYTHON SOURCE LINES 180-195
 
 .. code-block:: default
 
@@ -380,7 +381,7 @@ number of samples for each class.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.201 seconds)
+   **Total running time of the script:** ( 0 minutes  2.565 seconds)
 
 **Estimated memory usage:**  34 MB
 

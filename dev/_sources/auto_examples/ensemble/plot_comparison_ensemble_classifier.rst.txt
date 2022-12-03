@@ -68,12 +68,25 @@ We will load the UCI SatImage dataset which has an imbalanced ratio of 9.3:1
 (number of majority sample for a minority sample). The data are then split
 into training and testing.
 
-.. GENERATED FROM PYTHON SOURCE LINES 31-38
+.. GENERATED FROM PYTHON SOURCE LINES 29-32
+
+.. code-block:: default
+
+
+    from sklearn.model_selection import train_test_split
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 33-39
 
 .. code-block:: default
 
     from imblearn.datasets import fetch_datasets
-    from sklearn.model_selection import train_test_split
 
     satimage = fetch_datasets()["satimage"]
     X, y = satimage.data, satimage.target
@@ -86,7 +99,7 @@ into training and testing.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-48
+.. GENERATED FROM PYTHON SOURCE LINES 40-49
 
 Classification using a single decision tree
 -------------------------------------------
@@ -98,7 +111,7 @@ The results are reported in terms of balanced accuracy and geometric mean
 which are metrics widely used in the literature to validate model trained on
 imbalanced set.
 
-.. GENERATED FROM PYTHON SOURCE LINES 50-56
+.. GENERATED FROM PYTHON SOURCE LINES 51-57
 
 .. code-block:: default
 
@@ -115,11 +128,12 @@ imbalanced set.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 57-66
+.. GENERATED FROM PYTHON SOURCE LINES 58-68
 
 .. code-block:: default
 
     from sklearn.metrics import balanced_accuracy_score
+
     from imblearn.metrics import geometric_mean_score
 
     print("Decision tree classifier performance:")
@@ -142,7 +156,7 @@ imbalanced set.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-75
+.. GENERATED FROM PYTHON SOURCE LINES 69-77
 
 .. code-block:: default
 
@@ -173,7 +187,7 @@ imbalanced set.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 76-83
+.. GENERATED FROM PYTHON SOURCE LINES 78-85
 
 Classification using bagging classifier with and without sampling
 -----------------------------------------------------------------
@@ -183,11 +197,12 @@ can actually alleviate the issue induced by the class imbalancing. First, we
 will use a bagging classifier and its counter part which internally uses a
 random under-sampling to balanced each boostrap sample.
 
-.. GENERATED FROM PYTHON SOURCE LINES 85-97
+.. GENERATED FROM PYTHON SOURCE LINES 87-100
 
 .. code-block:: default
 
     from sklearn.ensemble import BaggingClassifier
+
     from imblearn.ensemble import BalancedBaggingClassifier
 
     bagging = BaggingClassifier(n_estimators=50, random_state=0)
@@ -206,12 +221,12 @@ random under-sampling to balanced each boostrap sample.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 98-100
+.. GENERATED FROM PYTHON SOURCE LINES 101-103
 
 Balancing each bootstrap sample allows to increase significantly the balanced
 accuracy and the geometric mean.
 
-.. GENERATED FROM PYTHON SOURCE LINES 102-113
+.. GENERATED FROM PYTHON SOURCE LINES 105-116
 
 .. code-block:: default
 
@@ -242,7 +257,7 @@ accuracy and the geometric mean.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 114-125
+.. GENERATED FROM PYTHON SOURCE LINES 117-128
 
 .. code-block:: default
 
@@ -278,7 +293,7 @@ accuracy and the geometric mean.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-132
+.. GENERATED FROM PYTHON SOURCE LINES 129-135
 
 Classification using random forest classifier with and without sampling
 -----------------------------------------------------------------------
@@ -287,11 +302,12 @@ Random forest is another popular ensemble method and it is usually
 outperforming bagging. Here, we used a vanilla random forest and its balanced
 counterpart in which each bootstrap sample is balanced.
 
-.. GENERATED FROM PYTHON SOURCE LINES 134-146
+.. GENERATED FROM PYTHON SOURCE LINES 137-150
 
 .. code-block:: default
 
     from sklearn.ensemble import RandomForestClassifier
+
     from imblearn.ensemble import BalancedRandomForestClassifier
 
     rf = RandomForestClassifier(n_estimators=50, random_state=0)
@@ -310,13 +326,13 @@ counterpart in which each bootstrap sample is balanced.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 147-150
+.. GENERATED FROM PYTHON SOURCE LINES 151-154
 
 Similarly to the previous experiment, the balanced classifier outperform the
 classifier which learn from imbalanced bootstrap samples. In addition, random
 forest outsperforms the bagging classifier.
 
-.. GENERATED FROM PYTHON SOURCE LINES 152-163
+.. GENERATED FROM PYTHON SOURCE LINES 156-167
 
 .. code-block:: default
 
@@ -347,7 +363,7 @@ forest outsperforms the bagging classifier.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 164-173
+.. GENERATED FROM PYTHON SOURCE LINES 168-177
 
 .. code-block:: default
 
@@ -381,7 +397,7 @@ forest outsperforms the bagging classifier.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 174-180
+.. GENERATED FROM PYTHON SOURCE LINES 178-184
 
 Boosting classifier
 -------------------
@@ -390,11 +406,12 @@ In the same manner, easy ensemble classifier is a bag of balanced AdaBoost
 classifier. However, it will be slower to train than random forest and will
 achieve worse performance.
 
-.. GENERATED FROM PYTHON SOURCE LINES 182-194
+.. GENERATED FROM PYTHON SOURCE LINES 186-199
 
 .. code-block:: default
 
     from sklearn.ensemble import AdaBoostClassifier
+
     from imblearn.ensemble import EasyEnsembleClassifier, RUSBoostClassifier
 
     base_estimator = AdaBoostClassifier(n_estimators=10)
@@ -414,15 +431,15 @@ achieve worse performance.
 
  .. code-block:: none
 
-    /home/circleci/project/imblearn/ensemble/_easy_ensemble.py:254: FutureWarning: `base_estimator` was renamed to `estimator` in version 0.10 and will be removed in 0.12.
+    /home/circleci/project/imblearn/ensemble/_easy_ensemble.py:251: FutureWarning: `base_estimator` was renamed to `estimator` in version 0.10 and will be removed in 0.12.
       warnings.warn(
-    /home/circleci/project/imblearn/ensemble/_weight_boosting.py:250: FutureWarning: `base_estimator` was renamed to `estimator` in version 0.10 and will be removed in 0.12.
+    /home/circleci/project/imblearn/ensemble/_weight_boosting.py:249: FutureWarning: `base_estimator` was renamed to `estimator` in version 0.10 and will be removed in 0.12.
       warnings.warn(
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 195-206
+.. GENERATED FROM PYTHON SOURCE LINES 200-211
 
 .. code-block:: default
 
@@ -446,14 +463,14 @@ achieve worse performance.
  .. code-block:: none
 
     Easy ensemble classifier performance:
-    Balanced accuracy: 0.84 - Geometric mean 0.84
+    Balanced accuracy: 0.85 - Geometric mean 0.85
     RUSBoost classifier performance:
     Balanced accuracy: 0.86 - Geometric mean 0.86
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 207-216
+.. GENERATED FROM PYTHON SOURCE LINES 212-221
 
 .. code-block:: default
 
@@ -490,9 +507,9 @@ achieve worse performance.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  43.274 seconds)
+   **Total running time of the script:** ( 1 minutes  43.217 seconds)
 
-**Estimated memory usage:**  224 MB
+**Estimated memory usage:**  240 MB
 
 
 .. _sphx_glr_download_auto_examples_ensemble_plot_comparison_ensemble_classifier.py:

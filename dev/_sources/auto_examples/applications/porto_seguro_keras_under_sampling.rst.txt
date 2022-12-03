@@ -48,22 +48,23 @@ References
 Data loading
 ##############################################################################
 
-.. GENERATED FROM PYTHON SOURCE LINES 26-31
+.. GENERATED FROM PYTHON SOURCE LINES 26-32
 
 .. code-block:: default
 
 
     from collections import Counter
-    import pandas as pd
+
     import numpy as np
+    import pandas as pd
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 32-34
+.. GENERATED FROM PYTHON SOURCE LINES 33-35
 
 First, you should download the Porto Seguro data set from Kaggle. See the
 link in the introduction.
 
-.. GENERATED FROM PYTHON SOURCE LINES 34-42
+.. GENERATED FROM PYTHON SOURCE LINES 35-43
 
 .. code-block:: default
 
@@ -76,11 +77,11 @@ link in the introduction.
     X_test = testing_data.set_index("id")
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 43-44
+.. GENERATED FROM PYTHON SOURCE LINES 44-45
 
 The data set is imbalanced and it will have an effect on the fitting.
 
-.. GENERATED FROM PYTHON SOURCE LINES 44-47
+.. GENERATED FROM PYTHON SOURCE LINES 45-48
 
 .. code-block:: default
 
@@ -88,22 +89,20 @@ The data set is imbalanced and it will have an effect on the fitting.
     print(f"The data set is imbalanced: {Counter(y_train['target'])}")
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-50
+.. GENERATED FROM PYTHON SOURCE LINES 49-51
 
 Define the pre-processing pipeline
 ##############################################################################
 
-.. GENERATED FROM PYTHON SOURCE LINES 50-63
+.. GENERATED FROM PYTHON SOURCE LINES 51-62
 
 .. code-block:: default
 
 
     from sklearn.compose import ColumnTransformer
-    from sklearn.pipeline import make_pipeline
-    from sklearn.preprocessing import OneHotEncoder
-    from sklearn.preprocessing import StandardScaler
-    from sklearn.preprocessing import FunctionTransformer
     from sklearn.impute import SimpleImputer
+    from sklearn.pipeline import make_pipeline
+    from sklearn.preprocessing import FunctionTransformer, OneHotEncoder, StandardScaler
 
 
     def convert_float64(X):
@@ -111,13 +110,13 @@ Define the pre-processing pipeline
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-67
+.. GENERATED FROM PYTHON SOURCE LINES 63-66
 
 We want to standard scale the numerical features while we want to one-hot
 encode the categorical features. In this regard, we make use of the
 :class:`~sklearn.compose.ColumnTransformer`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-98
+.. GENERATED FROM PYTHON SOURCE LINES 66-99
 
 .. code-block:: default
 
@@ -152,23 +151,19 @@ encode the categorical features. In this regard, we make use of the
 
     os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
+    from tensorflow.keras.layers import Activation, BatchNormalization, Dense, Dropout
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-101
+
+.. GENERATED FROM PYTHON SOURCE LINES 100-102
 
 Create a neural-network
 ##############################################################################
 
-.. GENERATED FROM PYTHON SOURCE LINES 101-135
+.. GENERATED FROM PYTHON SOURCE LINES 102-130
 
 .. code-block:: default
 
     from tensorflow.keras.models import Sequential
-    from tensorflow.keras.layers import (
-        Activation,
-        Dense,
-        Dropout,
-        BatchNormalization,
-    )
 
 
     def make_model(n_features):
@@ -197,11 +192,11 @@ Create a neural-network
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 136-137
+.. GENERATED FROM PYTHON SOURCE LINES 131-132
 
 We create a decorator to report the computation time
 
-.. GENERATED FROM PYTHON SOURCE LINES 137-154
+.. GENERATED FROM PYTHON SOURCE LINES 132-149
 
 .. code-block:: default
 
@@ -223,12 +218,12 @@ We create a decorator to report the computation time
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 155-157
+.. GENERATED FROM PYTHON SOURCE LINES 150-152
 
 The first model will be trained using the ``fit`` method and with imbalanced
 mini-batches.
 
-.. GENERATED FROM PYTHON SOURCE LINES 157-169
+.. GENERATED FROM PYTHON SOURCE LINES 152-164
 
 .. code-block:: default
 
@@ -245,12 +240,12 @@ mini-batches.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 170-172
+.. GENERATED FROM PYTHON SOURCE LINES 165-167
 
 In the contrary, we will use imbalanced-learn to create a generator of
 mini-batches which will yield balanced mini-batches.
 
-.. GENERATED FROM PYTHON SOURCE LINES 172-187
+.. GENERATED FROM PYTHON SOURCE LINES 167-182
 
 .. code-block:: default
 
@@ -270,17 +265,17 @@ mini-batches which will yield balanced mini-batches.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 188-190
+.. GENERATED FROM PYTHON SOURCE LINES 183-185
 
 Classification loop
 ##############################################################################
 
-.. GENERATED FROM PYTHON SOURCE LINES 192-194
+.. GENERATED FROM PYTHON SOURCE LINES 187-189
 
 We will perform a 10-fold cross-validation and train the neural-network with
 the two different strategies previously presented.
 
-.. GENERATED FROM PYTHON SOURCE LINES 194-221
+.. GENERATED FROM PYTHON SOURCE LINES 189-216
 
 .. code-block:: default
 
@@ -312,12 +307,12 @@ the two different strategies previously presented.
         cv_results_balanced.append(roc_auc)
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 222-224
+.. GENERATED FROM PYTHON SOURCE LINES 217-219
 
 Plot of the results and computation time
 ##############################################################################
 
-.. GENERATED FROM PYTHON SOURCE LINES 224-256
+.. GENERATED FROM PYTHON SOURCE LINES 219-251
 
 .. code-block:: default
 
@@ -335,8 +330,8 @@ Plot of the results and computation time
     )
     df_time = df_time.unstack().reset_index()
 
-    import seaborn as sns
     import matplotlib.pyplot as plt
+    import seaborn as sns
 
     plt.figure()
     sns.boxplot(y="level_0", x=0, data=df_time)

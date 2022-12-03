@@ -63,11 +63,12 @@ smoothed bootstrap using the
 First, we will generate a toy classification dataset with only few samples.
 The ratio between the classes will be imbalanced.
 
-.. GENERATED FROM PYTHON SOURCE LINES 24-37
+.. GENERATED FROM PYTHON SOURCE LINES 24-38
 
 .. code-block:: default
 
     from collections import Counter
+
     from sklearn.datasets import make_classification
 
     X, y = make_classification(
@@ -93,7 +94,7 @@ The ratio between the classes will be imbalanced.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 38-48
+.. GENERATED FROM PYTHON SOURCE LINES 39-49
 
 .. code-block:: default
 
@@ -119,13 +120,13 @@ The ratio between the classes will be imbalanced.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 49-52
+.. GENERATED FROM PYTHON SOURCE LINES 50-53
 
 Now, we will use a :class:`~imblearn.over_sampling.RandomOverSampler` to
 generate a bootstrap for the minority class with as many samples as in the
 majority class.
 
-.. GENERATED FROM PYTHON SOURCE LINES 52-58
+.. GENERATED FROM PYTHON SOURCE LINES 53-59
 
 .. code-block:: default
 
@@ -148,7 +149,7 @@ majority class.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-66
+.. GENERATED FROM PYTHON SOURCE LINES 60-67
 
 .. code-block:: default
 
@@ -171,7 +172,7 @@ majority class.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-73
+.. GENERATED FROM PYTHON SOURCE LINES 68-74
 
 We observe that the minority samples are less transparent than the samples
 from the majority class. Indeed, it is due to the fact that these samples
@@ -180,7 +181,7 @@ of the minority class are repeated during the bootstrap generation.
 We can set `shrinkage` to a floating value to add a small perturbation to the
 samples created and therefore create a smoothed bootstrap.
 
-.. GENERATED FROM PYTHON SOURCE LINES 73-77
+.. GENERATED FROM PYTHON SOURCE LINES 74-78
 
 .. code-block:: default
 
@@ -201,7 +202,7 @@ samples created and therefore create a smoothed bootstrap.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 78-86
+.. GENERATED FROM PYTHON SOURCE LINES 79-87
 
 .. code-block:: default
 
@@ -225,7 +226,7 @@ samples created and therefore create a smoothed bootstrap.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 87-92
+.. GENERATED FROM PYTHON SOURCE LINES 88-93
 
 In this case, we see that the samples in the minority class are not
 overlapping anymore due to the added noise.
@@ -233,7 +234,7 @@ overlapping anymore due to the added noise.
 The parameter `shrinkage` allows to add more or less perturbation. Let's
 add more perturbation when generating the smoothed bootstrap.
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-96
+.. GENERATED FROM PYTHON SOURCE LINES 93-97
 
 .. code-block:: default
 
@@ -254,7 +255,7 @@ add more perturbation when generating the smoothed bootstrap.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 97-105
+.. GENERATED FROM PYTHON SOURCE LINES 98-106
 
 .. code-block:: default
 
@@ -278,12 +279,12 @@ add more perturbation when generating the smoothed bootstrap.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 106-108
+.. GENERATED FROM PYTHON SOURCE LINES 107-109
 
 Increasing the value of `shrinkage` will disperse the new samples. Forcing
 the shrinkage to 0 will be equivalent to generating a normal bootstrap.
 
-.. GENERATED FROM PYTHON SOURCE LINES 108-112
+.. GENERATED FROM PYTHON SOURCE LINES 109-113
 
 .. code-block:: default
 
@@ -304,7 +305,7 @@ the shrinkage to 0 will be equivalent to generating a normal bootstrap.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 113-121
+.. GENERATED FROM PYTHON SOURCE LINES 114-122
 
 .. code-block:: default
 
@@ -328,7 +329,7 @@ the shrinkage to 0 will be equivalent to generating a normal bootstrap.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 122-124
+.. GENERATED FROM PYTHON SOURCE LINES 123-125
 
 Therefore, the `shrinkage` is handy to manually tune the dispersion of the
 new samples.
@@ -336,7 +337,7 @@ new samples.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  4.483 seconds)
+   **Total running time of the script:** ( 0 minutes  4.880 seconds)
 
 **Estimated memory usage:**  9 MB
 

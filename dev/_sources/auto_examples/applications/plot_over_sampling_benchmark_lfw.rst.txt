@@ -156,14 +156,27 @@ performed through cross-validation and we will plot the mean ROC curve.
 
 We will create different pipelines and evaluate them.
 
-.. GENERATED FROM PYTHON SOURCE LINES 76-90
+.. GENERATED FROM PYTHON SOURCE LINES 74-77
+
+.. code-block:: default
+
+
+    from sklearn.neighbors import KNeighborsClassifier
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 78-91
 
 .. code-block:: default
 
     from imblearn import FunctionSampler
-    from imblearn.over_sampling import ADASYN, RandomOverSampler, SMOTE
+    from imblearn.over_sampling import ADASYN, SMOTE, RandomOverSampler
     from imblearn.pipeline import make_pipeline
-    from sklearn.neighbors import KNeighborsClassifier
 
     classifier = KNeighborsClassifier(n_neighbors=3)
 
@@ -181,7 +194,7 @@ We will create different pipelines and evaluate them.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 91-95
+.. GENERATED FROM PYTHON SOURCE LINES 92-96
 
 .. code-block:: default
 
@@ -196,17 +209,17 @@ We will create different pipelines and evaluate them.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 96-99
+.. GENERATED FROM PYTHON SOURCE LINES 97-100
 
 We will compute the mean ROC curve for each pipeline using a different splits
 provided by the :class:`~sklearn.model_selection.StratifiedKFold`
 cross-validation.
 
-.. GENERATED FROM PYTHON SOURCE LINES 101-133
+.. GENERATED FROM PYTHON SOURCE LINES 102-134
 
 .. code-block:: default
 
-    from sklearn.metrics import RocCurveDisplay, roc_curve, auc
+    from sklearn.metrics import RocCurveDisplay, auc, roc_curve
 
     disp = []
     for model in pipeline:
@@ -245,12 +258,12 @@ cross-validation.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 134-136
+.. GENERATED FROM PYTHON SOURCE LINES 135-137
 
 In the previous cell, we created the different mean ROC curve and we can plot
 them on the same plot.
 
-.. GENERATED FROM PYTHON SOURCE LINES 138-150
+.. GENERATED FROM PYTHON SOURCE LINES 139-151
 
 .. code-block:: default
 
@@ -278,7 +291,7 @@ them on the same plot.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 151-154
+.. GENERATED FROM PYTHON SOURCE LINES 152-155
 
 We see that for this task, methods that are generating new samples with some
 interpolation (i.e. ADASYN and SMOTE) perform better than random
@@ -287,9 +300,9 @@ over-sampling or no resampling.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  47.778 seconds)
+   **Total running time of the script:** ( 0 minutes  46.638 seconds)
 
-**Estimated memory usage:**  291 MB
+**Estimated memory usage:**  213 MB
 
 
 .. _sphx_glr_download_auto_examples_applications_plot_over_sampling_benchmark_lfw.py:

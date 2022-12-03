@@ -191,12 +191,25 @@ It is also important to note that we are using the
 :class:`~imblearn.pipeline.make_pipeline` function implemented in
 imbalanced-learn to properly handle the samplers.
 
-.. GENERATED FROM PYTHON SOURCE LINES 91-99
+.. GENERATED FROM PYTHON SOURCE LINES 89-92
+
+.. code-block:: default
+
+
+    from imblearn.pipeline import make_pipeline as make_pipeline_imb
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 93-100
 
 .. code-block:: default
 
     from imblearn.under_sampling import RandomUnderSampler
-    from imblearn.pipeline import make_pipeline as make_pipeline_imb
 
     model = make_pipeline_imb(TfidfVectorizer(), RandomUnderSampler(), MultinomialNB())
 
@@ -210,14 +223,14 @@ imbalanced-learn to properly handle the samplers.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 100-104
+.. GENERATED FROM PYTHON SOURCE LINES 101-105
 
 Although the results are almost identical, it can be seen that the resampling
 allowed to correct the poor recall of the class \#3 at the cost of reducing
 the other metrics for the other classes. However, the overall results are
 slightly better.
 
-.. GENERATED FROM PYTHON SOURCE LINES 106-107
+.. GENERATED FROM PYTHON SOURCE LINES 107-108
 
 .. code-block:: default
 
@@ -232,12 +245,12 @@ slightly better.
 
                        pre       rec       spe        f1       geo       iba       sup
 
-              0       0.70      0.91      0.88      0.79      0.89      0.80       319
-              1       0.97      0.82      0.99      0.89      0.90      0.80       389
-              2       0.94      0.91      0.98      0.92      0.94      0.88       394
-              3       0.80      0.73      0.96      0.77      0.84      0.69       251
+              0       0.71      0.90      0.89      0.80      0.89      0.80       319
+              1       0.97      0.87      0.99      0.92      0.93      0.85       389
+              2       0.96      0.89      0.98      0.92      0.93      0.87       394
+              3       0.79      0.74      0.96      0.77      0.84      0.69       251
 
-    avg / total       0.87      0.85      0.95      0.85      0.90      0.80      1353
+    avg / total       0.87      0.86      0.96      0.86      0.91      0.81      1353
 
 
 
@@ -246,9 +259,9 @@ slightly better.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  10.035 seconds)
+   **Total running time of the script:** ( 0 minutes  10.474 seconds)
 
-**Estimated memory usage:**  108 MB
+**Estimated memory usage:**  126 MB
 
 
 .. _sphx_glr_download_auto_examples_applications_plot_topic_classication.py:

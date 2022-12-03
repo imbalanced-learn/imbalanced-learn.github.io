@@ -27,7 +27,7 @@ rejections estimator. It can be used easily within a pipeline in which the
 number of samples can vary during training, which usually is a limitation of
 the current scikit-learn pipeline.
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-41
+.. GENERATED FROM PYTHON SOURCE LINES 12-40
 
 .. code-block:: default
 
@@ -35,10 +35,9 @@ the current scikit-learn pipeline.
     # Authors: Guillaume Lemaitre <g.lemaitre58@gmail.com>
     # License: MIT
 
-    import numpy as np
     import matplotlib.pyplot as plt
-
-    from sklearn.datasets import make_moons, make_blobs
+    import numpy as np
+    from sklearn.datasets import make_blobs, make_moons
     from sklearn.ensemble import IsolationForest
     from sklearn.linear_model import LogisticRegression
     from sklearn.metrics import classification_report
@@ -67,17 +66,17 @@ the current scikit-learn pipeline.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 42-44
+.. GENERATED FROM PYTHON SOURCE LINES 41-43
 
 Toy data generation
 #############################################################################
 
-.. GENERATED FROM PYTHON SOURCE LINES 46-48
+.. GENERATED FROM PYTHON SOURCE LINES 45-47
 
 We are generating some non Gaussian data set contaminated with some unform
 noise.
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-65
+.. GENERATED FROM PYTHON SOURCE LINES 47-64
 
 .. code-block:: default
 
@@ -110,11 +109,11 @@ noise.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-67
+.. GENERATED FROM PYTHON SOURCE LINES 65-66
 
 We will generate some cleaned test data without outliers.
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-79
+.. GENERATED FROM PYTHON SOURCE LINES 66-78
 
 .. code-block:: default
 
@@ -142,12 +141,12 @@ We will generate some cleaned test data without outliers.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 80-82
+.. GENERATED FROM PYTHON SOURCE LINES 79-81
 
 How to use the :class:`~imblearn.FunctionSampler`
 #############################################################################
 
-.. GENERATED FROM PYTHON SOURCE LINES 84-89
+.. GENERATED FROM PYTHON SOURCE LINES 83-88
 
 We first define a function which will use
 :class:`~sklearn.ensemble.IsolationForest` to eliminate some outliers from
@@ -155,7 +154,7 @@ our dataset during training. The function passed to the
 :class:`~imblearn.FunctionSampler` will be called when using the method
 ``fit_resample``.
 
-.. GENERATED FROM PYTHON SOURCE LINES 89-103
+.. GENERATED FROM PYTHON SOURCE LINES 88-102
 
 .. code-block:: default
 
@@ -185,17 +184,17 @@ our dataset during training. The function passed to the
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 104-106
+.. GENERATED FROM PYTHON SOURCE LINES 103-105
 
 Integrate it within a pipeline
 #############################################################################
 
-.. GENERATED FROM PYTHON SOURCE LINES 108-110
+.. GENERATED FROM PYTHON SOURCE LINES 107-109
 
 By elimnating outliers before the training, the classifier will be less
 affected during the prediction.
 
-.. GENERATED FROM PYTHON SOURCE LINES 110-123
+.. GENERATED FROM PYTHON SOURCE LINES 109-122
 
 .. code-block:: default
 
@@ -231,12 +230,12 @@ affected during the prediction.
 
                   precision    recall  f1-score   support
 
-               0       0.83      1.00      0.91        50
-               1       1.00      0.80      0.89        50
+               0       0.86      1.00      0.93        50
+               1       1.00      0.84      0.91        50
 
-        accuracy                           0.90       100
-       macro avg       0.92      0.90      0.90       100
-    weighted avg       0.92      0.90      0.90       100
+        accuracy                           0.92       100
+       macro avg       0.93      0.92      0.92       100
+    weighted avg       0.93      0.92      0.92       100
 
 
 
@@ -245,7 +244,7 @@ affected during the prediction.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  1.751 seconds)
+   **Total running time of the script:** ( 0 minutes  1.826 seconds)
 
 **Estimated memory usage:**  9 MB
 

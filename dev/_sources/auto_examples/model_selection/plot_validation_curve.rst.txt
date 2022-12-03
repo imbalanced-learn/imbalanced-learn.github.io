@@ -100,13 +100,26 @@ by a :class:`~sklearn.tree.DecisionTreeClassifier`. The aim will be to
 search which `k_neighbors` parameter is the most adequate with the dataset
 that we generated.
 
-.. GENERATED FROM PYTHON SOURCE LINES 52-60
+.. GENERATED FROM PYTHON SOURCE LINES 50-53
+
+.. code-block:: default
+
+
+    from sklearn.tree import DecisionTreeClassifier
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 54-61
 
 .. code-block:: default
 
     from imblearn.over_sampling import SMOTE
     from imblearn.pipeline import make_pipeline
-    from sklearn.tree import DecisionTreeClassifier
 
     model = make_pipeline(
         SMOTE(random_state=RANDOM_STATE), DecisionTreeClassifier(random_state=RANDOM_STATE)
@@ -119,14 +132,14 @@ that we generated.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-65
+.. GENERATED FROM PYTHON SOURCE LINES 62-66
 
 We can use the :class:`~sklearn.model_selection.validation_curve` to inspect
 the impact of varying the parameter `k_neighbors`. In this case, we need
 to use a score to evaluate the generalization score during the
 cross-validation.
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-82
+.. GENERATED FROM PYTHON SOURCE LINES 68-83
 
 .. code-block:: default
 
@@ -152,7 +165,7 @@ cross-validation.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 83-88
+.. GENERATED FROM PYTHON SOURCE LINES 84-89
 
 .. code-block:: default
 
@@ -168,12 +181,12 @@ cross-validation.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 89-91
+.. GENERATED FROM PYTHON SOURCE LINES 90-92
 
 We can now plot the results of the cross-validation for the different
 parameter values that we tried.
 
-.. GENERATED FROM PYTHON SOURCE LINES 93-123
+.. GENERATED FROM PYTHON SOURCE LINES 94-124
 
 .. code-block:: default
 
@@ -222,7 +235,7 @@ parameter values that we tried.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  5.360 seconds)
+   **Total running time of the script:** ( 0 minutes  6.137 seconds)
 
 **Estimated memory usage:**  9 MB
 

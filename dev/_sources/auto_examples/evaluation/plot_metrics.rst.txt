@@ -113,14 +113,28 @@ We will split the data into a training and testing set.
 We will create a pipeline made of a :class:`~imblearn.over_sampling.SMOTE`
 over-sampler followed by a :class:`~sklearn.svm.LinearSVC` classifier.
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-65
+.. GENERATED FROM PYTHON SOURCE LINES 52-58
+
+.. code-block:: default
+
+
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.svm import LinearSVC
+
+    from imblearn.over_sampling import SMOTE
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 59-67
 
 .. code-block:: default
 
     from imblearn.pipeline import make_pipeline
-    from sklearn.preprocessing import StandardScaler
-    from imblearn.over_sampling import SMOTE
-    from sklearn.svm import LinearSVC
 
     model = make_pipeline(
         StandardScaler(),
@@ -135,14 +149,14 @@ over-sampler followed by a :class:`~sklearn.svm.LinearSVC` classifier.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-70
+.. GENERATED FROM PYTHON SOURCE LINES 68-72
 
 Now, we will train the model on the training set and get the prediction
 associated with the testing set. Be aware that the resampling will happen
 only when calling `fit`: the number of samples in `y_pred` is the same than
 in `y_test`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-75
+.. GENERATED FROM PYTHON SOURCE LINES 74-77
 
 .. code-block:: default
 
@@ -156,13 +170,13 @@ in `y_test`.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 76-79
+.. GENERATED FROM PYTHON SOURCE LINES 78-81
 
 The geometric mean corresponds to the square root of the product of the
 sensitivity and specificity. Combining the two metrics should account for
 the balancing of the dataset.
 
-.. GENERATED FROM PYTHON SOURCE LINES 81-85
+.. GENERATED FROM PYTHON SOURCE LINES 83-87
 
 .. code-block:: default
 
@@ -183,12 +197,12 @@ the balancing of the dataset.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-88
+.. GENERATED FROM PYTHON SOURCE LINES 88-90
 
 The index balanced accuracy can transform any metric to be used in
 imbalanced learning problems.
 
-.. GENERATED FROM PYTHON SOURCE LINES 90-100
+.. GENERATED FROM PYTHON SOURCE LINES 92-102
 
 .. code-block:: default
 
@@ -215,7 +229,7 @@ imbalanced learning problems.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 101-108
+.. GENERATED FROM PYTHON SOURCE LINES 103-110
 
 .. code-block:: default
 
@@ -242,7 +256,7 @@ imbalanced learning problems.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.153 seconds)
+   **Total running time of the script:** ( 0 minutes  2.559 seconds)
 
 **Estimated memory usage:**  9 MB
 

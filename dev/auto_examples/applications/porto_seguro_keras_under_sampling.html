@@ -459,8 +459,9 @@ time.</p>
 <section id="data-loading">
 <h3>Data loading<a class="headerlink" href="#data-loading" title="Permalink to this headline">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <a href="https://docs.python.org/3/library/collections.html#collections.Counter" title="collections.Counter" class="sphx-glr-backref-module-collections sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Counter</span></a>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 </div>
 <p>First, you should download the Porto Seguro data set from Kaggle. See the
@@ -481,11 +482,9 @@ link in the introduction.</p>
 <section id="define-the-pre-processing-pipeline">
 <h3>Define the pre-processing pipeline<a class="headerlink" href="#define-the-pre-processing-pipeline" title="Permalink to this headline">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">FunctionTransformer</span>
 <span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">FunctionTransformer</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">StandardScaler</span>
 
 
 <span class="k">def</span> <span class="nf">convert_float64</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
@@ -524,18 +523,14 @@ encode the categorical features. In this regard, we make use of the
 <span class="kn">import</span> <span class="nn">os</span>
 
 <a href="https://docs.python.org/3/library/os.html#os.environ" title="os.environ" class="sphx-glr-backref-module-os sphx-glr-backref-type-py-data"><span class="n">os</span><span class="o">.</span><span class="n">environ</span></a><span class="p">[</span><span class="s2">&quot;CUDA_VISIBLE_DEVICES&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;-1&quot;</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Activation</span><span class="p">,</span> <span class="n">BatchNormalization</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span>
 </pre></div>
 </div>
 </section>
 <section id="create-a-neural-network">
 <h3>Create a neural-network<a class="headerlink" href="#create-a-neural-network" title="Permalink to this headline">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">Activation</span><span class="p">,</span>
-    <span class="n">Dense</span><span class="p">,</span>
-    <span class="n">Dropout</span><span class="p">,</span>
-    <span class="n">BatchNormalization</span><span class="p">,</span>
-<span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">make_model</span><span class="p">(</span><span class="n">n_features</span><span class="p">):</span>
@@ -657,8 +652,8 @@ the two different strategies previously presented.</p>
 <span class="p">)</span>
 <span class="n">df_time</span> <span class="o">=</span> <span class="n">df_time</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.figure.html#matplotlib.pyplot.figure" title="matplotlib.pyplot.figure" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">()</span>
 <a href="https://seaborn.pydata.org/generated/seaborn.boxplot.html#seaborn.boxplot" title="seaborn.boxplot" class="sphx-glr-backref-module-seaborn sphx-glr-backref-type-py-function"><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span></a><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;level_0&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_time</span><span class="p">)</span>

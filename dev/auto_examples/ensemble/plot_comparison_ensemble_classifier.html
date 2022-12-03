@@ -458,8 +458,10 @@ set.</p>
 <p>We will load the UCI SatImage dataset which has an imbalanced ratio of 9.3:1
 (number of majority sample for a minority sample). The data are then split
 into training and testing.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+</pre></div>
+</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imblearn.datasets</span> <span class="kn">import</span> <a href="../../references/generated/imblearn.datasets.fetch_datasets.html#imblearn.datasets.fetch_datasets" title="imblearn.datasets.fetch_datasets" class="sphx-glr-backref-module-imblearn-datasets sphx-glr-backref-type-py-function"><span class="n">fetch_datasets</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
 <span class="n">satimage</span> <span class="o">=</span> <a href="../../references/generated/imblearn.datasets.fetch_datasets.html#imblearn.datasets.fetch_datasets" title="imblearn.datasets.fetch_datasets" class="sphx-glr-backref-module-imblearn-datasets sphx-glr-backref-type-py-function"><span class="n">fetch_datasets</span></a><span class="p">()[</span><span class="s2">&quot;satimage&quot;</span><span class="p">]</span>
 <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">satimage</span><span class="o">.</span><span class="n">data</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">satimage</span><span class="o">.</span><span class="n">target</span></a>
@@ -482,6 +484,7 @@ imbalanced set.</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">balanced_accuracy_score</span>
+
 <span class="kn">from</span> <span class="nn">imblearn.metrics</span> <span class="kn">import</span> <a href="../../references/generated/imblearn.metrics.geometric_mean_score.html#imblearn.metrics.geometric_mean_score" title="imblearn.metrics.geometric_mean_score" class="sphx-glr-backref-module-imblearn-metrics sphx-glr-backref-type-py-function"><span class="n">geometric_mean_score</span></a>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Decision tree classifier performance:&quot;</span><span class="p">)</span>
@@ -516,6 +519,7 @@ can actually alleviate the issue induced by the class imbalancing. First, we
 will use a bagging classifier and its counter part which internally uses a
 random under-sampling to balanced each boostrap sample.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">BaggingClassifier</span>
+
 <span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="kn">import</span> <a href="../../references/generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="imblearn.ensemble.BalancedBaggingClassifier" class="sphx-glr-backref-module-imblearn-ensemble sphx-glr-backref-type-py-class"><span class="n">BalancedBaggingClassifier</span></a>
 
 <span class="n">bagging</span> <span class="o">=</span> <span class="n">BaggingClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -573,6 +577,7 @@ Balanced accuracy: 0.86 - Geometric mean 0.86
 outperforming bagging. Here, we used a vanilla random forest and its balanced
 counterpart in which each bootstrap sample is balanced.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
 <span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="kn">import</span> <a href="../../references/generated/imblearn.ensemble.BalancedRandomForestClassifier.html#imblearn.ensemble.BalancedRandomForestClassifier" title="imblearn.ensemble.BalancedRandomForestClassifier" class="sphx-glr-backref-module-imblearn-ensemble sphx-glr-backref-type-py-class"><span class="n">BalancedRandomForestClassifier</span></a>
 
 <span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -629,6 +634,7 @@ Balanced accuracy: 0.88 - Geometric mean 0.88
 classifier. However, it will be slower to train than random forest and will
 achieve worse performance.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">AdaBoostClassifier</span>
+
 <span class="kn">from</span> <span class="nn">imblearn.ensemble</span> <span class="kn">import</span> <a href="../../references/generated/imblearn.ensemble.EasyEnsembleClassifier.html#imblearn.ensemble.EasyEnsembleClassifier" title="imblearn.ensemble.EasyEnsembleClassifier" class="sphx-glr-backref-module-imblearn-ensemble sphx-glr-backref-type-py-class"><span class="n">EasyEnsembleClassifier</span></a><span class="p">,</span> <a href="../../references/generated/imblearn.ensemble.RUSBoostClassifier.html#imblearn.ensemble.RUSBoostClassifier" title="imblearn.ensemble.RUSBoostClassifier" class="sphx-glr-backref-module-imblearn-ensemble sphx-glr-backref-type-py-class"><span class="n">RUSBoostClassifier</span></a>
 
 <span class="n">base_estimator</span> <span class="o">=</span> <span class="n">AdaBoostClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -641,9 +647,9 @@ achieve worse performance.</p>
 <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred_rusboost</span></a> <span class="o">=</span> <a href="../../references/generated/imblearn.ensemble.RUSBoostClassifier.html#imblearn.ensemble.RUSBoostClassifier.predict" title="imblearn.ensemble.RUSBoostClassifier.predict" class="sphx-glr-backref-module-imblearn-ensemble sphx-glr-backref-type-py-method"><span class="n">rusboost</span><span class="o">.</span><span class="n">predict</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_test</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/project/imblearn/ensemble/_easy_ensemble.py:254: FutureWarning: `base_estimator` was renamed to `estimator` in version 0.10 and will be removed in 0.12.
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/project/imblearn/ensemble/_easy_ensemble.py:251: FutureWarning: `base_estimator` was renamed to `estimator` in version 0.10 and will be removed in 0.12.
   warnings.warn(
-/home/circleci/project/imblearn/ensemble/_weight_boosting.py:250: FutureWarning: `base_estimator` was renamed to `estimator` in version 0.10 and will be removed in 0.12.
+/home/circleci/project/imblearn/ensemble/_weight_boosting.py:249: FutureWarning: `base_estimator` was renamed to `estimator` in version 0.10 and will be removed in 0.12.
   warnings.warn(
 </pre></div>
 </div>
@@ -660,7 +666,7 @@ achieve worse performance.</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Easy ensemble classifier performance:
-Balanced accuracy: 0.84 - Geometric mean 0.84
+Balanced accuracy: 0.85 - Geometric mean 0.85
 RUSBoost classifier performance:
 Balanced accuracy: 0.86 - Geometric mean 0.86
 </pre></div>
@@ -682,8 +688,8 @@ Balanced accuracy: 0.86 - Geometric mean 0.86
   warnings.warn(msg, category=FutureWarning)
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 1 minutes  43.274 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  224 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 1 minutes  43.217 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  240 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-ensemble-plot-comparison-ensemble-classifier-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/e6a7a05ca7f23057d0cbfa6b70cc7982/plot_comparison_ensemble_classifier.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_comparison_ensemble_classifier.py</span></code></a></p>

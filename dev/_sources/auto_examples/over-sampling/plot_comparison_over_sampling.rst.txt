@@ -232,12 +232,25 @@ approach the boundary decision is already less biased toward the majority
 class. The class :class:`~imblearn.over_sampling.RandomOverSampler`
 implements such of a strategy.
 
-.. GENERATED FROM PYTHON SOURCE LINES 138-155
+.. GENERATED FROM PYTHON SOURCE LINES 136-139
+
+.. code-block:: default
+
+
+    from imblearn.over_sampling import RandomOverSampler
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 140-156
 
 .. code-block:: default
 
     from imblearn.pipeline import make_pipeline
-    from imblearn.over_sampling import RandomOverSampler
 
     X, y = create_dataset(n_samples=100, weights=(0.05, 0.25, 0.7))
 
@@ -265,14 +278,14 @@ implements such of a strategy.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 156-160
+.. GENERATED FROM PYTHON SOURCE LINES 157-161
 
 By default, random over-sampling generates a bootstrap. The parameter
 `shrinkage` allows adding a small perturbation to the generated data
 to generate a smoothed bootstrap instead. The plot below shows the difference
 between the two data generation strategies.
 
-.. GENERATED FROM PYTHON SOURCE LINES 162-173
+.. GENERATED FROM PYTHON SOURCE LINES 163-174
 
 .. code-block:: default
 
@@ -299,7 +312,7 @@ between the two data generation strategies.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 174-185
+.. GENERATED FROM PYTHON SOURCE LINES 175-186
 
 It looks like more samples are generated with smoothed bootstrap. This is due
 to the fact that the samples generated are not superimposing with the
@@ -313,12 +326,12 @@ generated bootstrap samples, one can use some specific heuristic instead.
 :class:`~imblearn.over_sampling.ADASYN` and
 :class:`~imblearn.over_sampling.SMOTE` can be used in this case.
 
-.. GENERATED FROM PYTHON SOURCE LINES 187-206
+.. GENERATED FROM PYTHON SOURCE LINES 188-207
 
 .. code-block:: default
 
     from imblearn import FunctionSampler  # to use a idendity sampler
-    from imblearn.over_sampling import SMOTE, ADASYN
+    from imblearn.over_sampling import ADASYN, SMOTE
 
     X, y = create_dataset(n_samples=150, weights=(0.1, 0.2, 0.7))
 
@@ -348,7 +361,7 @@ generated bootstrap samples, one can use some specific heuristic instead.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 207-214
+.. GENERATED FROM PYTHON SOURCE LINES 208-215
 
 The following plot illustrates the difference between
 :class:`~imblearn.over_sampling.ADASYN` and
@@ -358,7 +371,7 @@ difficult to classify with a nearest-neighbors rule while regular
 :class:`~imblearn.over_sampling.SMOTE` will not make any distinction.
 Therefore, the decision function depending of the algorithm.
 
-.. GENERATED FROM PYTHON SOURCE LINES 214-232
+.. GENERATED FROM PYTHON SOURCE LINES 215-233
 
 .. code-block:: default
 
@@ -392,12 +405,12 @@ Therefore, the decision function depending of the algorithm.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 233-235
+.. GENERATED FROM PYTHON SOURCE LINES 234-236
 
 Due to those sampling particularities, it can give rise to some specific
 issues as illustrated below.
 
-.. GENERATED FROM PYTHON SOURCE LINES 237-252
+.. GENERATED FROM PYTHON SOURCE LINES 238-253
 
 .. code-block:: default
 
@@ -428,7 +441,7 @@ issues as illustrated below.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 253-262
+.. GENERATED FROM PYTHON SOURCE LINES 254-263
 
 SMOTE proposes several variants by identifying specific samples to consider
 during the resampling. The borderline version
@@ -440,11 +453,11 @@ found using an SVM algorithm to create new sample while the KMeans version
 to generate samples in each cluster independently depending each cluster
 density.
 
-.. GENERATED FROM PYTHON SOURCE LINES 264-288
+.. GENERATED FROM PYTHON SOURCE LINES 265-289
 
 .. code-block:: default
 
-    from imblearn.over_sampling import BorderlineSMOTE, KMeansSMOTE, SVMSMOTE
+    from imblearn.over_sampling import SVMSMOTE, BorderlineSMOTE, KMeansSMOTE
 
     X, y = create_dataset(n_samples=5000, weights=(0.01, 0.05, 0.94), class_sep=0.8)
 
@@ -480,17 +493,18 @@ density.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 289-292
+.. GENERATED FROM PYTHON SOURCE LINES 290-293
 
 When dealing with a mixed of continuous and categorical features,
 :class:`~imblearn.over_sampling.SMOTENC` is the only method which can handle
 this case.
 
-.. GENERATED FROM PYTHON SOURCE LINES 294-322
+.. GENERATED FROM PYTHON SOURCE LINES 295-324
 
 .. code-block:: default
 
     from collections import Counter
+
     from imblearn.over_sampling import SMOTENC
 
     rng = np.random.RandomState(42)
@@ -550,12 +564,12 @@ this case.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 323-325
+.. GENERATED FROM PYTHON SOURCE LINES 325-327
 
 However, if the dataset is composed of only categorical features then one
 should use :class:`~imblearn.over_sampling.SMOTEN`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 327-344
+.. GENERATED FROM PYTHON SOURCE LINES 329-346
 
 .. code-block:: default
 
@@ -607,9 +621,9 @@ should use :class:`~imblearn.over_sampling.SMOTEN`.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  11.951 seconds)
+   **Total running time of the script:** ( 0 minutes  12.479 seconds)
 
-**Estimated memory usage:**  29 MB
+**Estimated memory usage:**  31 MB
 
 
 .. _sphx_glr_download_auto_examples_over-sampling_plot_comparison_over_sampling.py:

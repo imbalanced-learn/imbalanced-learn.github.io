@@ -116,12 +116,25 @@ been proposed over the years. We intend to illustrate how one can reuse the
 :class:`~imblearn.ensemble.BalancedBaggingClassifier` by passing different
 sampler.
 
-.. GENERATED FROM PYTHON SOURCE LINES 50-58
+.. GENERATED FROM PYTHON SOURCE LINES 48-51
+
+.. code-block:: default
+
+
+    from sklearn.ensemble import BaggingClassifier
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 52-59
 
 .. code-block:: default
 
     from sklearn.model_selection import cross_validate
-    from sklearn.ensemble import BaggingClassifier
 
     ebb = BaggingClassifier()
     cv_results = cross_validate(ebb, X, y, scoring="balanced_accuracy")
@@ -136,12 +149,12 @@ sampler.
 
  .. code-block:: none
 
-    0.706 +/- 0.012
+    0.714 +/- 0.016
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-67
+.. GENERATED FROM PYTHON SOURCE LINES 60-68
 
 Exactly Balanced Bagging and Over-Bagging
 -----------------------------------------
@@ -152,7 +165,7 @@ conjunction with a :class:`~imblearn.under_sampling.RandomUnderSampler` or
 referred as Exactly Balanced Bagging and Over-Bagging, respectively and have
 been proposed first in [1]_.
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-78
+.. GENERATED FROM PYTHON SOURCE LINES 70-79
 
 .. code-block:: default
 
@@ -173,12 +186,12 @@ been proposed first in [1]_.
 
  .. code-block:: none
 
-    0.757 +/- 0.016
+    0.763 +/- 0.011
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 79-87
+.. GENERATED FROM PYTHON SOURCE LINES 80-88
 
 .. code-block:: default
 
@@ -198,12 +211,12 @@ been proposed first in [1]_.
 
  .. code-block:: none
 
-    0.704 +/- 0.013
+    0.697 +/- 0.012
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 88-95
+.. GENERATED FROM PYTHON SOURCE LINES 89-96
 
 SMOTE-Bagging
 -------------
@@ -213,7 +226,7 @@ make a bootstrap, an alternative is to use
 :class:`~imblearn.over_sampling.SMOTE` as an over-sampler. This is known as
 SMOTE-Bagging [2]_.
 
-.. GENERATED FROM PYTHON SOURCE LINES 97-105
+.. GENERATED FROM PYTHON SOURCE LINES 98-106
 
 .. code-block:: default
 
@@ -233,12 +246,12 @@ SMOTE-Bagging [2]_.
 
  .. code-block:: none
 
-    0.742 +/- 0.015
+    0.746 +/- 0.018
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 106-119
+.. GENERATED FROM PYTHON SOURCE LINES 107-120
 
 Roughly Balanced Bagging
 ------------------------
@@ -254,12 +267,14 @@ resampling and use the :class:`~imblearn.FunctionSampler` to integrate it
 within a :class:`~imblearn.pipeline.Pipeline` and
 :class:`~sklearn.model_selection.cross_validate`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 121-163
+.. GENERATED FROM PYTHON SOURCE LINES 122-166
 
 .. code-block:: default
 
     from collections import Counter
+
     import numpy as np
+
     from imblearn import FunctionSampler
 
 
@@ -308,12 +323,12 @@ within a :class:`~imblearn.pipeline.Pipeline` and
 
  .. code-block:: none
 
-    0.759 +/- 0.011
+    0.752 +/- 0.015
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 164-176
+.. GENERATED FROM PYTHON SOURCE LINES 167-179
 
 .. topic:: References:
 
@@ -331,7 +346,7 @@ within a :class:`~imblearn.pipeline.Pipeline` and
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  20.851 seconds)
+   **Total running time of the script:** ( 0 minutes  21.190 seconds)
 
 **Estimated memory usage:**  9 MB
 

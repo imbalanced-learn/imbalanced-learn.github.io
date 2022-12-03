@@ -92,14 +92,15 @@ Let's first create an imbalanced dataset and split in to two sets.
 
 Now, we will create each individual steps that we would like later to combine
 
-.. GENERATED FROM PYTHON SOURCE LINES 44-54
+.. GENERATED FROM PYTHON SOURCE LINES 44-55
 
 .. code-block:: default
 
     from sklearn.decomposition import PCA
     from sklearn.neighbors import KNeighborsClassifier
-    from imblearn.under_sampling import EditedNearestNeighbours
+
     from imblearn.over_sampling import SMOTE
+    from imblearn.under_sampling import EditedNearestNeighbours
 
     pca = PCA(n_components=2)
     enn = EditedNearestNeighbours()
@@ -113,13 +114,13 @@ Now, we will create each individual steps that we would like later to combine
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 55-58
+.. GENERATED FROM PYTHON SOURCE LINES 56-59
 
 Now, we can finally create a pipeline to specify in which order the different
 transformers and samplers should be executed before to provide the data to
 the final classifier.
 
-.. GENERATED FROM PYTHON SOURCE LINES 60-64
+.. GENERATED FROM PYTHON SOURCE LINES 61-65
 
 .. code-block:: default
 
@@ -134,13 +135,13 @@ the final classifier.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-68
+.. GENERATED FROM PYTHON SOURCE LINES 66-69
 
 We can now use the pipeline created as a normal classifier where resampling
 will happen when calling `fit` and disabled when calling `decision_function`,
 `predict_proba`, or `predict`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 70-75
+.. GENERATED FROM PYTHON SOURCE LINES 71-76
 
 .. code-block:: default
 
@@ -173,7 +174,7 @@ will happen when calling `fit` and disabled when calling `decision_function`,
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  1.487 seconds)
+   **Total running time of the script:** ( 0 minutes  1.595 seconds)
 
 **Estimated memory usage:**  9 MB
 

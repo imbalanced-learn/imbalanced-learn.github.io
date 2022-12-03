@@ -150,12 +150,25 @@ score.
 As a baseline, we could use a classifier which will always predict the
 majority class independently of the features provided.
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-72
+.. GENERATED FROM PYTHON SOURCE LINES 62-65
+
+.. code-block:: default
+
+
+    from sklearn.dummy import DummyClassifier
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 66-73
 
 .. code-block:: default
 
     from sklearn.model_selection import cross_validate
-    from sklearn.dummy import DummyClassifier
 
     dummy_clf = DummyClassifier(strategy="most_frequent")
     scoring = ["accuracy", "balanced_accuracy"]
@@ -175,12 +188,12 @@ majority class independently of the features provided.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 73-75
+.. GENERATED FROM PYTHON SOURCE LINES 74-76
 
 Instead of using the accuracy, we can use the balanced accuracy which will
 take into account the balancing issue.
 
-.. GENERATED FROM PYTHON SOURCE LINES 77-82
+.. GENERATED FROM PYTHON SOURCE LINES 78-83
 
 .. code-block:: default
 
@@ -202,14 +215,14 @@ take into account the balancing issue.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 83-87
+.. GENERATED FROM PYTHON SOURCE LINES 84-88
 
 Strategies to learn from an imbalanced dataset
 ----------------------------------------------
 We will use a dictionary and a list to continuously store the results of
 our experiments and show them as a pandas dataframe.
 
-.. GENERATED FROM PYTHON SOURCE LINES 89-92
+.. GENERATED FROM PYTHON SOURCE LINES 90-93
 
 .. code-block:: default
 
@@ -223,7 +236,7 @@ our experiments and show them as a pandas dataframe.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 93-98
+.. GENERATED FROM PYTHON SOURCE LINES 94-99
 
 Dummy baseline
 ..............
@@ -231,7 +244,7 @@ Dummy baseline
 Before to train a real machine learning model, we can store the results
 obtained with our :class:`~sklearn.dummy.DummyClassifier`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 100-110
+.. GENERATED FROM PYTHON SOURCE LINES 101-111
 
 .. code-block:: default
 
@@ -288,7 +301,7 @@ obtained with our :class:`~sklearn.dummy.DummyClassifier`.
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 111-121
+.. GENERATED FROM PYTHON SOURCE LINES 112-122
 
 Linear classifier baseline
 ..........................
@@ -301,14 +314,13 @@ numerical columns before to inject the data into the
 
 First, we define our numerical and categorical pipelines.
 
-.. GENERATED FROM PYTHON SOURCE LINES 123-136
+.. GENERATED FROM PYTHON SOURCE LINES 124-136
 
 .. code-block:: default
 
     from sklearn.impute import SimpleImputer
-    from sklearn.preprocessing import StandardScaler
-    from sklearn.preprocessing import OneHotEncoder
     from sklearn.pipeline import make_pipeline
+    from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
     num_pipe = make_pipeline(
         StandardScaler(), SimpleImputer(strategy="mean", add_indicator=True)
@@ -335,8 +347,8 @@ numerical pipeline
 
 .. code-block:: default
 
-    from sklearn.compose import make_column_transformer
     from sklearn.compose import make_column_selector as selector
+    from sklearn.compose import make_column_transformer
 
     preprocessor_linear = make_column_transformer(
         (num_pipe, selector(dtype_include="number")),
@@ -422,8 +434,8 @@ model.
         </tr>
         <tr>
           <th>Logistic regression</th>
-          <td>0.970307</td>
-          <td>0.568452</td>
+          <td>0.971115</td>
+          <td>0.577098</td>
         </tr>
       </tbody>
     </table>
@@ -442,12 +454,25 @@ such as :class:`~sklearn.ensemble.RandomForestClassifier`. With this type of
 classifier, we will not need to scale the numerical data, and we will only
 need to ordinal encode the categorical data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 180-199
+.. GENERATED FROM PYTHON SOURCE LINES 178-181
+
+.. code-block:: default
+
+
+    from sklearn.ensemble import RandomForestClassifier
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 182-200
 
 .. code-block:: default
 
     from sklearn.preprocessing import OrdinalEncoder
-    from sklearn.ensemble import RandomForestClassifier
 
     num_pipe = SimpleImputer(strategy="mean", add_indicator=True)
     cat_pipe = make_pipeline(
@@ -472,7 +497,7 @@ need to ordinal encode the categorical data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 200-208
+.. GENERATED FROM PYTHON SOURCE LINES 201-209
 
 .. code-block:: default
 
@@ -522,13 +547,13 @@ need to ordinal encode the categorical data.
         </tr>
         <tr>
           <th>Logistic regression</th>
-          <td>0.970307</td>
-          <td>0.568452</td>
+          <td>0.971115</td>
+          <td>0.577098</td>
         </tr>
         <tr>
           <th>Random forest</th>
-          <td>0.971557</td>
-          <td>0.633136</td>
+          <td>0.971323</td>
+          <td>0.635376</td>
         </tr>
       </tbody>
     </table>
@@ -537,7 +562,7 @@ need to ordinal encode the categorical data.
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 209-223
+.. GENERATED FROM PYTHON SOURCE LINES 210-224
 
 The :class:`~sklearn.ensemble.RandomForestClassifier` is as well affected by
 the class imbalanced, slightly less than the linear model. Now, we will
@@ -554,7 +579,7 @@ classification from the minority and majority class. We can set
 proportional to the class frequency. We test this parametrization in both
 linear model and tree-based model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 225-235
+.. GENERATED FROM PYTHON SOURCE LINES 226-236
 
 .. code-block:: default
 
@@ -606,18 +631,18 @@ linear model and tree-based model.
         </tr>
         <tr>
           <th>Logistic regression</th>
-          <td>0.970307</td>
-          <td>0.568452</td>
+          <td>0.971115</td>
+          <td>0.577098</td>
         </tr>
         <tr>
           <th>Random forest</th>
-          <td>0.971557</td>
-          <td>0.633136</td>
+          <td>0.971323</td>
+          <td>0.635376</td>
         </tr>
         <tr>
           <th>Logistic regression with balanced class weights</th>
-          <td>0.805434</td>
-          <td>0.817496</td>
+          <td>0.805694</td>
+          <td>0.820728</td>
         </tr>
       </tbody>
     </table>
@@ -626,7 +651,7 @@ linear model and tree-based model.
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 236-246
+.. GENERATED FROM PYTHON SOURCE LINES 237-247
 
 .. code-block:: default
 
@@ -678,23 +703,23 @@ linear model and tree-based model.
         </tr>
         <tr>
           <th>Logistic regression</th>
-          <td>0.970307</td>
-          <td>0.568452</td>
+          <td>0.971115</td>
+          <td>0.577098</td>
         </tr>
         <tr>
           <th>Random forest</th>
-          <td>0.971557</td>
-          <td>0.633136</td>
+          <td>0.971323</td>
+          <td>0.635376</td>
         </tr>
         <tr>
           <th>Logistic regression with balanced class weights</th>
-          <td>0.805434</td>
-          <td>0.817496</td>
+          <td>0.805694</td>
+          <td>0.820728</td>
         </tr>
         <tr>
           <th>Random forest with balanced class weights</th>
-          <td>0.964681</td>
-          <td>0.627633</td>
+          <td>0.965228</td>
+          <td>0.632611</td>
         </tr>
       </tbody>
     </table>
@@ -703,7 +728,7 @@ linear model and tree-based model.
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 247-259
+.. GENERATED FROM PYTHON SOURCE LINES 248-260
 
 We can see that using `class_weight` was really effective for the linear
 model, alleviating the issue of learning from imbalanced classes. However,
@@ -718,7 +743,7 @@ Another way is to resample the training set by under-sampling or
 over-sampling some of the samples. `imbalanced-learn` provides some samplers
 to do such processing.
 
-.. GENERATED FROM PYTHON SOURCE LINES 261-270
+.. GENERATED FROM PYTHON SOURCE LINES 262-271
 
 .. code-block:: default
 
@@ -738,7 +763,7 @@ to do such processing.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 271-279
+.. GENERATED FROM PYTHON SOURCE LINES 272-280
 
 .. code-block:: default
 
@@ -788,28 +813,28 @@ to do such processing.
         </tr>
         <tr>
           <th>Logistic regression</th>
-          <td>0.970307</td>
-          <td>0.568452</td>
+          <td>0.971115</td>
+          <td>0.577098</td>
         </tr>
         <tr>
           <th>Random forest</th>
-          <td>0.971557</td>
-          <td>0.633136</td>
+          <td>0.971323</td>
+          <td>0.635376</td>
         </tr>
         <tr>
           <th>Logistic regression with balanced class weights</th>
-          <td>0.805434</td>
-          <td>0.817496</td>
+          <td>0.805694</td>
+          <td>0.820728</td>
         </tr>
         <tr>
           <th>Random forest with balanced class weights</th>
-          <td>0.964681</td>
-          <td>0.627633</td>
+          <td>0.965228</td>
+          <td>0.632611</td>
         </tr>
         <tr>
           <th>Under-sampling + Logistic regression</th>
-          <td>0.797698</td>
-          <td>0.811934</td>
+          <td>0.798974</td>
+          <td>0.821163</td>
         </tr>
       </tbody>
     </table>
@@ -818,7 +843,7 @@ to do such processing.
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 280-286
+.. GENERATED FROM PYTHON SOURCE LINES 281-287
 
 .. code-block:: default
 
@@ -835,7 +860,7 @@ to do such processing.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 287-295
+.. GENERATED FROM PYTHON SOURCE LINES 288-296
 
 .. code-block:: default
 
@@ -885,33 +910,33 @@ to do such processing.
         </tr>
         <tr>
           <th>Logistic regression</th>
-          <td>0.970307</td>
-          <td>0.568452</td>
+          <td>0.971115</td>
+          <td>0.577098</td>
         </tr>
         <tr>
           <th>Random forest</th>
-          <td>0.971557</td>
-          <td>0.633136</td>
+          <td>0.971323</td>
+          <td>0.635376</td>
         </tr>
         <tr>
           <th>Logistic regression with balanced class weights</th>
-          <td>0.805434</td>
-          <td>0.817496</td>
+          <td>0.805694</td>
+          <td>0.820728</td>
         </tr>
         <tr>
           <th>Random forest with balanced class weights</th>
-          <td>0.964681</td>
-          <td>0.627633</td>
+          <td>0.965228</td>
+          <td>0.632611</td>
         </tr>
         <tr>
           <th>Under-sampling + Logistic regression</th>
-          <td>0.797698</td>
-          <td>0.811934</td>
+          <td>0.798974</td>
+          <td>0.821163</td>
         </tr>
         <tr>
           <th>Under-sampling + Random forest</th>
-          <td>0.791681</td>
-          <td>0.813889</td>
+          <td>0.792801</td>
+          <td>0.807039</td>
         </tr>
       </tbody>
     </table>
@@ -920,7 +945,7 @@ to do such processing.
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 296-315
+.. GENERATED FROM PYTHON SOURCE LINES 297-316
 
 Applying a random under-sampler before the training of the linear model or
 random forest, allows to not focus on the majority class at the cost of
@@ -942,7 +967,7 @@ under-sample the original dataset before to take a bootstrap sample. This is
 the base of the :class:`imblearn.ensemble.BalancedRandomForestClassifier` and
 :class:`~imblearn.ensemble.BalancedBaggingClassifier`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 317-324
+.. GENERATED FROM PYTHON SOURCE LINES 318-325
 
 .. code-block:: default
 
@@ -960,7 +985,7 @@ the base of the :class:`imblearn.ensemble.BalancedRandomForestClassifier` and
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 325-333
+.. GENERATED FROM PYTHON SOURCE LINES 326-334
 
 .. code-block:: default
 
@@ -1010,38 +1035,38 @@ the base of the :class:`imblearn.ensemble.BalancedRandomForestClassifier` and
         </tr>
         <tr>
           <th>Logistic regression</th>
-          <td>0.970307</td>
-          <td>0.568452</td>
+          <td>0.971115</td>
+          <td>0.577098</td>
         </tr>
         <tr>
           <th>Random forest</th>
-          <td>0.971557</td>
-          <td>0.633136</td>
+          <td>0.971323</td>
+          <td>0.635376</td>
         </tr>
         <tr>
           <th>Logistic regression with balanced class weights</th>
-          <td>0.805434</td>
-          <td>0.817496</td>
+          <td>0.805694</td>
+          <td>0.820728</td>
         </tr>
         <tr>
           <th>Random forest with balanced class weights</th>
-          <td>0.964681</td>
-          <td>0.627633</td>
+          <td>0.965228</td>
+          <td>0.632611</td>
         </tr>
         <tr>
           <th>Under-sampling + Logistic regression</th>
-          <td>0.797698</td>
-          <td>0.811934</td>
+          <td>0.798974</td>
+          <td>0.821163</td>
         </tr>
         <tr>
           <th>Under-sampling + Random forest</th>
-          <td>0.791681</td>
-          <td>0.813889</td>
+          <td>0.792801</td>
+          <td>0.807039</td>
         </tr>
         <tr>
           <th>Balanced random forest</th>
-          <td>0.791447</td>
-          <td>0.820808</td>
+          <td>0.789233</td>
+          <td>0.820434</td>
         </tr>
       </tbody>
     </table>
@@ -1050,20 +1075,21 @@ the base of the :class:`imblearn.ensemble.BalancedRandomForestClassifier` and
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 334-338
+.. GENERATED FROM PYTHON SOURCE LINES 335-339
 
 The performance with the
 :class:`~imblearn.ensemble.BalancedRandomForestClassifier` is better than
 applying a single random under-sampling. We will use a gradient-boosting
 classifier within a :class:`~imblearn.ensemble.BalancedBaggingClassifier`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 338-361
+.. GENERATED FROM PYTHON SOURCE LINES 339-363
 
 .. code-block:: default
 
 
-    from sklearn.experimental import enable_hist_gradient_boosting  # noqa
     from sklearn.ensemble import HistGradientBoostingClassifier
+    from sklearn.experimental import enable_hist_gradient_boosting  # noqa
+
     from imblearn.ensemble import BalancedBaggingClassifier
 
     bag_clf = make_pipeline(
@@ -1094,15 +1120,15 @@ classifier within a :class:`~imblearn.ensemble.BalancedBaggingClassifier`.
 
     /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/experimental/enable_hist_gradient_boosting.py:16: UserWarning: Since version 1.0, it is not needed to import enable_hist_gradient_boosting anymore. HistGradientBoostingClassifier and HistGradientBoostingRegressor are now stable and can be normally imported from sklearn.ensemble.
       warnings.warn(
-    /home/circleci/project/imblearn/ensemble/_bagging.py:338: FutureWarning: `base_estimator` was renamed to `estimator` in version 0.10 and will be removed in 0.12.
+    /home/circleci/project/imblearn/ensemble/_bagging.py:336: FutureWarning: `base_estimator` was renamed to `estimator` in version 0.10 and will be removed in 0.12.
       warnings.warn(
-    /home/circleci/project/imblearn/ensemble/_bagging.py:338: FutureWarning: `base_estimator` was renamed to `estimator` in version 0.10 and will be removed in 0.12.
+    /home/circleci/project/imblearn/ensemble/_bagging.py:336: FutureWarning: `base_estimator` was renamed to `estimator` in version 0.10 and will be removed in 0.12.
       warnings.warn(
-    /home/circleci/project/imblearn/ensemble/_bagging.py:338: FutureWarning: `base_estimator` was renamed to `estimator` in version 0.10 and will be removed in 0.12.
+    /home/circleci/project/imblearn/ensemble/_bagging.py:336: FutureWarning: `base_estimator` was renamed to `estimator` in version 0.10 and will be removed in 0.12.
       warnings.warn(
-    /home/circleci/project/imblearn/ensemble/_bagging.py:338: FutureWarning: `base_estimator` was renamed to `estimator` in version 0.10 and will be removed in 0.12.
+    /home/circleci/project/imblearn/ensemble/_bagging.py:336: FutureWarning: `base_estimator` was renamed to `estimator` in version 0.10 and will be removed in 0.12.
       warnings.warn(
-    /home/circleci/project/imblearn/ensemble/_bagging.py:338: FutureWarning: `base_estimator` was renamed to `estimator` in version 0.10 and will be removed in 0.12.
+    /home/circleci/project/imblearn/ensemble/_bagging.py:336: FutureWarning: `base_estimator` was renamed to `estimator` in version 0.10 and will be removed in 0.12.
       warnings.warn(
 
 
@@ -1139,43 +1165,43 @@ classifier within a :class:`~imblearn.ensemble.BalancedBaggingClassifier`.
         </tr>
         <tr>
           <th>Logistic regression</th>
-          <td>0.970307</td>
-          <td>0.568452</td>
+          <td>0.971115</td>
+          <td>0.577098</td>
         </tr>
         <tr>
           <th>Random forest</th>
-          <td>0.971557</td>
-          <td>0.633136</td>
+          <td>0.971323</td>
+          <td>0.635376</td>
         </tr>
         <tr>
           <th>Logistic regression with balanced class weights</th>
-          <td>0.805434</td>
-          <td>0.817496</td>
+          <td>0.805694</td>
+          <td>0.820728</td>
         </tr>
         <tr>
           <th>Random forest with balanced class weights</th>
-          <td>0.964681</td>
-          <td>0.627633</td>
+          <td>0.965228</td>
+          <td>0.632611</td>
         </tr>
         <tr>
           <th>Under-sampling + Logistic regression</th>
-          <td>0.797698</td>
-          <td>0.811934</td>
+          <td>0.798974</td>
+          <td>0.821163</td>
         </tr>
         <tr>
           <th>Under-sampling + Random forest</th>
-          <td>0.791681</td>
-          <td>0.813889</td>
+          <td>0.792801</td>
+          <td>0.807039</td>
         </tr>
         <tr>
           <th>Balanced random forest</th>
-          <td>0.791447</td>
-          <td>0.820808</td>
+          <td>0.789233</td>
+          <td>0.820434</td>
         </tr>
         <tr>
           <th>Balanced bag of histogram gradient boosting</th>
-          <td>0.833459</td>
-          <td>0.826505</td>
+          <td>0.834423</td>
+          <td>0.823087</td>
         </tr>
       </tbody>
     </table>
@@ -1184,7 +1210,7 @@ classifier within a :class:`~imblearn.ensemble.BalancedBaggingClassifier`.
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 362-365
+.. GENERATED FROM PYTHON SOURCE LINES 364-367
 
 This last approach is the most effective. The different under-sampling allows
 to bring some diversity for the different GBDT to learn and not focus on a
@@ -1193,9 +1219,9 @@ portion of the majority class.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  49.373 seconds)
+   **Total running time of the script:** ( 0 minutes  52.109 seconds)
 
-**Estimated memory usage:**  128 MB
+**Estimated memory usage:**  125 MB
 
 
 .. _sphx_glr_download_auto_examples_applications_plot_impact_imbalanced_classes.py:
