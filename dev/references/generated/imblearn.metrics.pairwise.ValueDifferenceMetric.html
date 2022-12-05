@@ -465,7 +465,7 @@
 <h1>ValueDifferenceMetric<a class="headerlink" href="#valuedifferencemetric" title="Permalink to this headline">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="imblearn.metrics.pairwise.ValueDifferenceMetric">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">imblearn.metrics.pairwise.</span></span><span class="sig-name descname"><span class="pre">ValueDifferenceMetric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_categories</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/ad71707/imblearn/metrics/pairwise.py#L19"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.metrics.pairwise.ValueDifferenceMetric" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">imblearn.metrics.pairwise.</span></span><span class="sig-name descname"><span class="pre">ValueDifferenceMetric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_categories</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/54a7b5b/imblearn/metrics/pairwise.py#L19"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.metrics.pairwise.ValueDifferenceMetric" title="Permalink to this definition">#</a></dt>
 <dd><p>Class implementing the Value Difference Metric.</p>
 <p>This metric computes the distance between samples containing only
 categorical features. The distance between feature values of two samples is
@@ -488,7 +488,7 @@ defined equal to 1 or 2.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.8.</span></p>
 </div>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>n_categories</strong><span class="classifier">“auto” or array-like of shape (n_features,), default=”auto”</span></dt><dd><p>The number of unique categories per features. If <code class="docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code>, the number
@@ -504,11 +504,22 @@ the fitted attribute <code class="docutils literal notranslate"><span class="pre
 </dl>
 </dd>
 <dt class="field-even">Attributes</dt>
-<dd class="field-even"><dl class="simple">
+<dd class="field-even"><dl>
 <dt><strong>n_categories_</strong><span class="classifier">ndarray of shape (n_features,)</span></dt><dd><p>The number of categories per features.</p>
 </dd>
 <dt><strong>proba_per_class_</strong><span class="classifier">list of ndarray of shape (n_categories, n_classes)</span></dt><dd><p>List of length <code class="docutils literal notranslate"><span class="pre">n_features</span></code> containing the conditional probabilities
 for each category given a class.</p>
+</dd>
+<dt><strong>n_features_in_</strong><span class="classifier">int</span></dt><dd><p>Number of features in the input dataset.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.10.</span></p>
+</div>
+</dd>
+<dt><strong>feature_names_in_</strong><span class="classifier">ndarray of shape (<code class="docutils literal notranslate"><span class="pre">n_features_in_</span></code>,)</span></dt><dd><p>Names of features seen during <code class="docutils literal notranslate"><span class="pre">fit</span></code>. Defined only when <code class="docutils literal notranslate"><span class="pre">X</span></code> has feature
+names that are all strings.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.10.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -575,7 +586,7 @@ Communications of the ACM 29.12 (1986): 1213-1228.</p>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.metrics.pairwise.ValueDifferenceMetric.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/ad71707/imblearn/metrics/pairwise.py#L121"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.metrics.pairwise.ValueDifferenceMetric.fit" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/54a7b5b/imblearn/metrics/pairwise.py#L132"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.metrics.pairwise.ValueDifferenceMetric.fit" title="Permalink to this definition">#</a></dt>
 <dd><p>Compute the necessary statistics from the training set.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -598,7 +609,7 @@ Communications of the ACM 29.12 (1986): 1213-1228.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.metrics.pairwise.ValueDifferenceMetric.get_params">
-<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/ad71707/imblearn/../../miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/base.py#L194"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.metrics.pairwise.ValueDifferenceMetric.get_params" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/54a7b5b/imblearn/../../miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/base.py#L194"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.metrics.pairwise.ValueDifferenceMetric.get_params" title="Permalink to this definition">#</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -619,7 +630,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.metrics.pairwise.ValueDifferenceMetric.pairwise">
-<span class="sig-name descname"><span class="pre">pairwise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/ad71707/imblearn/metrics/pairwise.py#L180"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.metrics.pairwise.ValueDifferenceMetric.pairwise" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">pairwise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/54a7b5b/imblearn/metrics/pairwise.py#L191"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.metrics.pairwise.ValueDifferenceMetric.pairwise" title="Permalink to this definition">#</a></dt>
 <dd><p>Compute the VDM distance pairwise.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -643,7 +654,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.metrics.pairwise.ValueDifferenceMetric.set_params">
-<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/ad71707/imblearn/../../miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/base.py#L218"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.metrics.pairwise.ValueDifferenceMetric.set_params" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/54a7b5b/imblearn/../../miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/base.py#L218"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.metrics.pairwise.ValueDifferenceMetric.set_params" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>). The latter have

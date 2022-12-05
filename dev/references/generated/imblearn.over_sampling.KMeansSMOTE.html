@@ -465,7 +465,7 @@
 <h1>KMeansSMOTE<a class="headerlink" href="#kmeanssmote" title="Permalink to this headline">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="imblearn.over_sampling.KMeansSMOTE">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">imblearn.over_sampling.</span></span><span class="sig-name descname"><span class="pre">KMeansSMOTE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_strategy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kmeans_estimator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cluster_balance_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density_exponent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/ad71707/imblearn/over_sampling/_smote/cluster.py#L25"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.over_sampling.KMeansSMOTE" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">imblearn.over_sampling.</span></span><span class="sig-name descname"><span class="pre">KMeansSMOTE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_strategy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kmeans_estimator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cluster_balance_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density_exponent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/54a7b5b/imblearn/over_sampling/_smote/cluster.py#L25"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.over_sampling.KMeansSMOTE" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply a KMeans clustering before to over-sample using SMOTE.</p>
 <p>This is an implementation of the algorithm described in <a class="reference internal" href="#rea5937a049dc-1" id="id1">[1]</a>.</p>
 <p>Read more in the <a class="reference internal" href="../../over_sampling.html#smote-adasyn"><span class="std std-ref">User Guide</span></a>.</p>
@@ -570,6 +570,12 @@ are the number of samples to sample.</p>
 <p><span class="versionmodified added">New in version 0.9.</span></p>
 </div>
 </dd>
+<dt><strong>feature_names_in_</strong><span class="classifier">ndarray of shape (<code class="docutils literal notranslate"><span class="pre">n_features_in_</span></code>,)</span></dt><dd><p>Names of features seen during <code class="docutils literal notranslate"><span class="pre">fit</span></code>. Defined only when <code class="docutils literal notranslate"><span class="pre">X</span></code> has feature
+names that are all strings.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.10.</span></p>
+</div>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -636,17 +642,20 @@ Imbalanced Learning Based on K-Means and SMOTE”
 <tr class="row-even"><td><p><a class="reference internal" href="#imblearn.over_sampling.KMeansSMOTE.fit_resample" title="imblearn.over_sampling.KMeansSMOTE.fit_resample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit_resample</span></code></a>(X, y)</p></td>
 <td><p>Resample the dataset.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#imblearn.over_sampling.KMeansSMOTE.get_params" title="imblearn.over_sampling.KMeansSMOTE.get_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_params</span></code></a>([deep])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#imblearn.over_sampling.KMeansSMOTE.get_feature_names_out" title="imblearn.over_sampling.KMeansSMOTE.get_feature_names_out"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_feature_names_out</span></code></a>([input_features])</p></td>
+<td><p>Get output feature names for transformation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#imblearn.over_sampling.KMeansSMOTE.get_params" title="imblearn.over_sampling.KMeansSMOTE.get_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_params</span></code></a>([deep])</p></td>
 <td><p>Get parameters for this estimator.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#imblearn.over_sampling.KMeansSMOTE.set_params" title="imblearn.over_sampling.KMeansSMOTE.set_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_params</span></code></a>(**params)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#imblearn.over_sampling.KMeansSMOTE.set_params" title="imblearn.over_sampling.KMeansSMOTE.set_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_params</span></code></a>(**params)</p></td>
 <td><p>Set the parameters of this estimator.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.over_sampling.KMeansSMOTE.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/ad71707/imblearn/base.py#L153"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.over_sampling.KMeansSMOTE.fit" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/54a7b5b/imblearn/base.py#L159"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.over_sampling.KMeansSMOTE.fit" title="Permalink to this definition">#</a></dt>
 <dd><p>Check inputs and statistics of the sampler.</p>
 <p>You should use <code class="docutils literal notranslate"><span class="pre">fit_resample</span></code> in all cases.</p>
 <dl class="field-list simple">
@@ -669,7 +678,7 @@ Imbalanced Learning Based on K-Means and SMOTE”
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.over_sampling.KMeansSMOTE.fit_resample">
-<span class="sig-name descname"><span class="pre">fit_resample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/ad71707/imblearn/base.py#L175"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.over_sampling.KMeansSMOTE.fit_resample" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit_resample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/54a7b5b/imblearn/base.py#L181"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.over_sampling.KMeansSMOTE.fit_resample" title="Permalink to this definition">#</a></dt>
 <dd><p>Resample the dataset.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -692,8 +701,36 @@ Imbalanced Learning Based on K-Means and SMOTE”
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="imblearn.over_sampling.KMeansSMOTE.get_feature_names_out">
+<span class="sig-name descname"><span class="pre">get_feature_names_out</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/54a7b5b/imblearn/../../miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/base.py#L880"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.over_sampling.KMeansSMOTE.get_feature_names_out" title="Permalink to this definition">#</a></dt>
+<dd><p>Get output feature names for transformation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>input_features</strong><span class="classifier">array-like of str or None, default=None</span></dt><dd><p>Input features.</p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">input_features</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>, then <code class="docutils literal notranslate"><span class="pre">feature_names_in_</span></code> is
+used as feature names in. If <code class="docutils literal notranslate"><span class="pre">feature_names_in_</span></code> is not defined,
+then the following input feature names are generated:
+<code class="docutils literal notranslate"><span class="pre">[&quot;x0&quot;,</span> <span class="pre">&quot;x1&quot;,</span> <span class="pre">...,</span> <span class="pre">&quot;x(n_features_in_</span> <span class="pre">-</span> <span class="pre">1)&quot;]</span></code>.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">input_features</span></code> is an array-like, then <code class="docutils literal notranslate"><span class="pre">input_features</span></code> must
+match <code class="docutils literal notranslate"><span class="pre">feature_names_in_</span></code> if <code class="docutils literal notranslate"><span class="pre">feature_names_in_</span></code> is defined.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>feature_names_out</strong><span class="classifier">ndarray of str objects</span></dt><dd><p>Same as input features.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="imblearn.over_sampling.KMeansSMOTE.get_params">
-<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/ad71707/imblearn/../../miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/base.py#L194"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.over_sampling.KMeansSMOTE.get_params" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/54a7b5b/imblearn/../../miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/base.py#L194"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.over_sampling.KMeansSMOTE.get_params" title="Permalink to this definition">#</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -714,7 +751,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.over_sampling.KMeansSMOTE.set_params">
-<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/ad71707/imblearn/../../miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/base.py#L218"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.over_sampling.KMeansSMOTE.set_params" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/54a7b5b/imblearn/../../miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/base.py#L218"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.over_sampling.KMeansSMOTE.set_params" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>). The latter have
