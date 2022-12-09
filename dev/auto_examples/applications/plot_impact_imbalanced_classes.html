@@ -464,6 +464,10 @@ Thus, we are removing one of these 2 features.</p></li>
 <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">df</span></a> <span class="o">=</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.drop.html#pandas.DataFrame.drop" title="pandas.DataFrame.drop" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-method"><span class="n">df</span><span class="o">.</span><span class="n">drop</span></a><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;fnlwgt&quot;</span><span class="p">,</span> <span class="s2">&quot;education-num&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/datasets/_openml.py:932: FutureWarning: The default value of `parser` will change from `&#39;liac-arff&#39;` to `&#39;auto&#39;` in 1.4. You can set `parser=&#39;auto&#39;` to silence this warning. Therefore, an `ImportError` will be raised from 1.4 if the dataset is dense and pandas is not installed. Note that the pandas parser may return different data types. See the Notes Section in fetch_openml&#39;s API doc for details.
+  warn(
+</pre></div>
+</div>
 <p>The “adult” dataset as a class ratio of about 3:1</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="pandas.core.series.Series" class="sphx-glr-backref-module-pandas-core-series sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">classes_count</span></a> <span class="o">=</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.value_counts.html#pandas.Series.value_counts" title="pandas.Series.value_counts" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-method"><span class="n">y</span><span class="o">.</span><span class="n">value_counts</span></a><span class="p">()</span>
 <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="pandas.core.series.Series" class="sphx-glr-backref-module-pandas-core-series sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">classes_count</span></a>
@@ -662,8 +666,8 @@ model.</p>
     </tr>
     <tr>
       <th>Logistic regression</th>
-      <td>0.971271</td>
-      <td>0.580302</td>
+      <td>0.971010</td>
+      <td>0.575094</td>
     </tr>
   </tbody>
 </table>
@@ -738,13 +742,13 @@ need to ordinal encode the categorical data.</p>
     </tr>
     <tr>
       <th>Logistic regression</th>
-      <td>0.971271</td>
-      <td>0.580302</td>
+      <td>0.971010</td>
+      <td>0.575094</td>
     </tr>
     <tr>
       <th>Random forest</th>
-      <td>0.971531</td>
-      <td>0.636653</td>
+      <td>0.971974</td>
+      <td>0.643135</td>
     </tr>
   </tbody>
 </table>
@@ -806,18 +810,18 @@ linear model and tree-based model.</p>
     </tr>
     <tr>
       <th>Logistic regression</th>
-      <td>0.971271</td>
-      <td>0.580302</td>
+      <td>0.971010</td>
+      <td>0.575094</td>
     </tr>
     <tr>
       <th>Random forest</th>
-      <td>0.971531</td>
-      <td>0.636653</td>
+      <td>0.971974</td>
+      <td>0.643135</td>
     </tr>
     <tr>
       <th>Logistic regression with balanced class weights</th>
-      <td>0.802230</td>
-      <td>0.819351</td>
+      <td>0.800458</td>
+      <td>0.818054</td>
     </tr>
   </tbody>
 </table>
@@ -866,23 +870,23 @@ linear model and tree-based model.</p>
     </tr>
     <tr>
       <th>Logistic regression</th>
-      <td>0.971271</td>
-      <td>0.580302</td>
+      <td>0.971010</td>
+      <td>0.575094</td>
     </tr>
     <tr>
       <th>Random forest</th>
-      <td>0.971531</td>
-      <td>0.636653</td>
+      <td>0.971974</td>
+      <td>0.643135</td>
     </tr>
     <tr>
       <th>Logistic regression with balanced class weights</th>
-      <td>0.802230</td>
-      <td>0.819351</td>
+      <td>0.800458</td>
+      <td>0.818054</td>
     </tr>
     <tr>
       <th>Random forest with balanced class weights</th>
-      <td>0.965436</td>
-      <td>0.633504</td>
+      <td>0.964290</td>
+      <td>0.636428</td>
     </tr>
   </tbody>
 </table>
@@ -950,28 +954,28 @@ to do such processing.</p>
     </tr>
     <tr>
       <th>Logistic regression</th>
-      <td>0.971271</td>
-      <td>0.580302</td>
+      <td>0.971010</td>
+      <td>0.575094</td>
     </tr>
     <tr>
       <th>Random forest</th>
-      <td>0.971531</td>
-      <td>0.636653</td>
+      <td>0.971974</td>
+      <td>0.643135</td>
     </tr>
     <tr>
       <th>Logistic regression with balanced class weights</th>
-      <td>0.802230</td>
-      <td>0.819351</td>
+      <td>0.800458</td>
+      <td>0.818054</td>
     </tr>
     <tr>
       <th>Random forest with balanced class weights</th>
-      <td>0.965436</td>
-      <td>0.633504</td>
+      <td>0.964290</td>
+      <td>0.636428</td>
     </tr>
     <tr>
       <th>Under-sampling + Logistic regression</th>
-      <td>0.795379</td>
-      <td>0.817364</td>
+      <td>0.791108</td>
+      <td>0.815946</td>
     </tr>
   </tbody>
 </table>
@@ -1025,33 +1029,33 @@ to do such processing.</p>
     </tr>
     <tr>
       <th>Logistic regression</th>
-      <td>0.971271</td>
-      <td>0.580302</td>
+      <td>0.971010</td>
+      <td>0.575094</td>
     </tr>
     <tr>
       <th>Random forest</th>
-      <td>0.971531</td>
-      <td>0.636653</td>
+      <td>0.971974</td>
+      <td>0.643135</td>
     </tr>
     <tr>
       <th>Logistic regression with balanced class weights</th>
-      <td>0.802230</td>
-      <td>0.819351</td>
+      <td>0.800458</td>
+      <td>0.818054</td>
     </tr>
     <tr>
       <th>Random forest with balanced class weights</th>
-      <td>0.965436</td>
-      <td>0.633504</td>
+      <td>0.964290</td>
+      <td>0.636428</td>
     </tr>
     <tr>
       <th>Under-sampling + Logistic regression</th>
-      <td>0.795379</td>
-      <td>0.817364</td>
+      <td>0.791108</td>
+      <td>0.815946</td>
     </tr>
     <tr>
       <th>Under-sampling + Random forest</th>
-      <td>0.791655</td>
-      <td>0.804903</td>
+      <td>0.798609</td>
+      <td>0.807343</td>
     </tr>
   </tbody>
 </table>
@@ -1122,38 +1126,38 @@ the base of the <a class="reference internal" href="../../references/generated/i
     </tr>
     <tr>
       <th>Logistic regression</th>
-      <td>0.971271</td>
-      <td>0.580302</td>
+      <td>0.971010</td>
+      <td>0.575094</td>
     </tr>
     <tr>
       <th>Random forest</th>
-      <td>0.971531</td>
-      <td>0.636653</td>
+      <td>0.971974</td>
+      <td>0.643135</td>
     </tr>
     <tr>
       <th>Logistic regression with balanced class weights</th>
-      <td>0.802230</td>
-      <td>0.819351</td>
+      <td>0.800458</td>
+      <td>0.818054</td>
     </tr>
     <tr>
       <th>Random forest with balanced class weights</th>
-      <td>0.965436</td>
-      <td>0.633504</td>
+      <td>0.964290</td>
+      <td>0.636428</td>
     </tr>
     <tr>
       <th>Under-sampling + Logistic regression</th>
-      <td>0.795379</td>
-      <td>0.817364</td>
+      <td>0.791108</td>
+      <td>0.815946</td>
     </tr>
     <tr>
       <th>Under-sampling + Random forest</th>
-      <td>0.791655</td>
-      <td>0.804903</td>
+      <td>0.798609</td>
+      <td>0.807343</td>
     </tr>
     <tr>
       <th>Balanced random forest</th>
-      <td>0.785716</td>
-      <td>0.816281</td>
+      <td>0.795301</td>
+      <td>0.819287</td>
     </tr>
   </tbody>
 </table>
@@ -1223,43 +1227,43 @@ classifier within a <a class="reference internal" href="../../references/generat
     </tr>
     <tr>
       <th>Logistic regression</th>
-      <td>0.971271</td>
-      <td>0.580302</td>
+      <td>0.971010</td>
+      <td>0.575094</td>
     </tr>
     <tr>
       <th>Random forest</th>
-      <td>0.971531</td>
-      <td>0.636653</td>
+      <td>0.971974</td>
+      <td>0.643135</td>
     </tr>
     <tr>
       <th>Logistic regression with balanced class weights</th>
-      <td>0.802230</td>
-      <td>0.819351</td>
+      <td>0.800458</td>
+      <td>0.818054</td>
     </tr>
     <tr>
       <th>Random forest with balanced class weights</th>
-      <td>0.965436</td>
-      <td>0.633504</td>
+      <td>0.964290</td>
+      <td>0.636428</td>
     </tr>
     <tr>
       <th>Under-sampling + Logistic regression</th>
-      <td>0.795379</td>
-      <td>0.817364</td>
+      <td>0.791108</td>
+      <td>0.815946</td>
     </tr>
     <tr>
       <th>Under-sampling + Random forest</th>
-      <td>0.791655</td>
-      <td>0.804903</td>
+      <td>0.798609</td>
+      <td>0.807343</td>
     </tr>
     <tr>
       <th>Balanced random forest</th>
-      <td>0.785716</td>
-      <td>0.816281</td>
+      <td>0.795301</td>
+      <td>0.819287</td>
     </tr>
     <tr>
       <th>Balanced bag of histogram gradient boosting</th>
-      <td>0.829761</td>
-      <td>0.826549</td>
+      <td>0.834449</td>
+      <td>0.823513</td>
     </tr>
   </tbody>
 </table>
@@ -1269,8 +1273,8 @@ classifier within a <a class="reference internal" href="../../references/generat
 <br /><p>This last approach is the most effective. The different under-sampling allows
 to bring some diversity for the different GBDT to learn and not focus on a
 portion of the majority class.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  57.495 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  128 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  51.082 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  139 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-applications-plot-impact-imbalanced-classes-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/5062100d8bac1656efa83b45d062ada3/plot_impact_imbalanced_classes.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_impact_imbalanced_classes.py</span></code></a></p>
