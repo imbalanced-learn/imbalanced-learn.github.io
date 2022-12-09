@@ -1,0 +1,1273 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Pipeline &#8212; Version 0.10.0</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/copybutton.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'references/generated/imblearn.pipeline.Pipeline';</script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="make_pipeline" href="imblearn.pipeline.make_pipeline.html" />
+    <link rel="prev" title="Pipeline" href="../pipeline.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="None">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../../_static/logo_wide.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/logo_wide.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../install.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../user_guide.html">
+                        User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../auto_examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../whats_new.html">
+                        Release history
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../about.html">
+                        About us
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-learn-contrib/imbalanced-learn" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../install.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../user_guide.html">
+                        User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../auto_examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../whats_new.html">
+                        Release history
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../about.html">
+                        About us
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-learn-contrib/imbalanced-learn" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Section navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+    Section Navigation
+  </p>
+  <div class="bd-toc-item navbar-nav">
+    <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../under_sampling.html">Under-sampling methods</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.ClusterCentroids.html">ClusterCentroids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.CondensedNearestNeighbour.html">CondensedNearestNeighbour</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.EditedNearestNeighbours.html">EditedNearestNeighbours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.RepeatedEditedNearestNeighbours.html">RepeatedEditedNearestNeighbours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.AllKNN.html">AllKNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.InstanceHardnessThreshold.html">InstanceHardnessThreshold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.NearMiss.html">NearMiss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.NeighbourhoodCleaningRule.html">NeighbourhoodCleaningRule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.OneSidedSelection.html">OneSidedSelection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.RandomUnderSampler.html">RandomUnderSampler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.TomekLinks.html">TomekLinks</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../over_sampling.html">Over-sampling methods</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.RandomOverSampler.html">RandomOverSampler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.SMOTE.html">SMOTE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.SMOTENC.html">SMOTENC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.SMOTEN.html">SMOTEN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.ADASYN.html">ADASYN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.BorderlineSMOTE.html">BorderlineSMOTE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.KMeansSMOTE.html">KMeansSMOTE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.SVMSMOTE.html">SVMSMOTE</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../combine.html">Combination of over- and under-sampling methods</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.combine.SMOTEENN.html">SMOTEENN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.combine.SMOTETomek.html">SMOTETomek</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ensemble.html">Ensemble methods</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.ensemble.EasyEnsembleClassifier.html">EasyEnsembleClassifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.ensemble.RUSBoostClassifier.html">RUSBoostClassifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.ensemble.BalancedBaggingClassifier.html">BalancedBaggingClassifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.ensemble.BalancedRandomForestClassifier.html">BalancedRandomForestClassifier</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../keras.html">Batch generator for Keras</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.keras.BalancedBatchGenerator.html">BalancedBatchGenerator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.keras.balanced_batch_generator.html">balanced_batch_generator</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tensorflow.html">Batch generator for TensorFlow</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.tensorflow.balanced_batch_generator.html">balanced_batch_generator</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../miscellaneous.html">Miscellaneous</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.FunctionSampler.html">FunctionSampler</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../pipeline.html">Pipeline</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.pipeline.make_pipeline.html">make_pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../metrics.html">Metrics</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.classification_report_imbalanced.html">classification_report_imbalanced</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.sensitivity_specificity_support.html">sensitivity_specificity_support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.sensitivity_score.html">sensitivity_score</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.specificity_score.html">specificity_score</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.geometric_mean_score.html">geometric_mean_score</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.macro_averaged_mean_absolute_error.html">macro_averaged_mean_absolute_error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.make_index_balanced_accuracy.html">make_index_balanced_accuracy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.pairwise.ValueDifferenceMetric.html">ValueDifferenceMetric</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../datasets.html">Datasets</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.datasets.make_imbalance.html">make_imbalance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.datasets.fetch_datasets.html">fetch_datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../utils.html">Utilities</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.utils.estimator_checks.parametrize_with_checks.html">parametrize_with_checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.utils.check_neighbors_object.html">check_neighbors_object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.utils.check_sampling_strategy.html">check_sampling_strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.utils.check_target_type.html">check_target_type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.utils.estimator_checks.parametrize_with_checks.html">parametrize_with_checks</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <section id="pipeline">
+<h1>Pipeline<a class="headerlink" href="#pipeline" title="Permalink to this headline">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="imblearn.pipeline.Pipeline">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">imblearn.pipeline.</span></span><span class="sig-name descname"><span class="pre">Pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">steps</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9ca2145/imblearn/pipeline.py#L27"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.pipeline.Pipeline" title="Permalink to this definition">#</a></dt>
+<dd><p>Pipeline of transforms and resamples with a final estimator.</p>
+<p>Sequentially apply a list of transforms, sampling, and a final estimator.
+Intermediate steps of the pipeline must be transformers or resamplers,
+that is, they must implement fit, transform and sample methods.
+The samplers are only applied during fit.
+The final estimator only needs to implement fit.
+The transformers and samplers in the pipeline can be cached using
+<code class="docutils literal notranslate"><span class="pre">memory</span></code> argument.</p>
+<p>The purpose of the pipeline is to assemble several steps that can be
+cross-validated together while setting different parameters.
+For this, it enables setting parameters of the various steps using their
+names and the parameter name separated by a ‘__’, as in the example below.
+A step’s estimator may be replaced entirely by setting the parameter
+with its name to another estimator, or a transformer removed by setting
+it to ‘passthrough’ or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>steps</strong><span class="classifier">list</span></dt><dd><p>List of (name, transform) tuples (implementing
+fit/transform/fit_resample) that are chained, in the order in which
+they are chained, with the last object an estimator.</p>
+</dd>
+<dt><strong>memory</strong><span class="classifier">Instance of joblib.Memory or str, default=None</span></dt><dd><p>Used to cache the fitted transformers of the pipeline. By default,
+no caching is performed. If a string is given, it is the path to
+the caching directory. Enabling caching triggers a clone of
+the transformers before fitting. Therefore, the transformer
+instance given to the pipeline cannot be inspected
+directly. Use the attribute <code class="docutils literal notranslate"><span class="pre">named_steps</span></code> or <code class="docutils literal notranslate"><span class="pre">steps</span></code> to
+inspect estimators within the pipeline. Caching the
+transformers is advantageous when fitting is time consuming.</p>
+</dd>
+<dt><strong>verbose</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, the time elapsed while fitting each step will be printed as it
+is completed.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><dl>
+<dt><a class="reference internal" href="#imblearn.pipeline.Pipeline.named_steps" title="imblearn.pipeline.Pipeline.named_steps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">named_steps</span></code></a><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bunch</span></code></span></dt><dd><p>Access the steps by name.</p>
+</dd>
+<dt><a class="reference internal" href="#imblearn.pipeline.Pipeline.classes_" title="imblearn.pipeline.Pipeline.classes_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">classes_</span></code></a><span class="classifier">ndarray of shape (n_classes,)</span></dt><dd><p>The classes labels.</p>
+</dd>
+<dt><a class="reference internal" href="#imblearn.pipeline.Pipeline.n_features_in_" title="imblearn.pipeline.Pipeline.n_features_in_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">n_features_in_</span></code></a><span class="classifier">int</span></dt><dd><p>Number of features seen during first step <code class="docutils literal notranslate"><span class="pre">fit</span></code> method.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="imblearn.pipeline.make_pipeline.html#imblearn.pipeline.make_pipeline" title="imblearn.pipeline.make_pipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_pipeline</span></code></a></dt><dd><p>Helper function to make pipeline.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>See <a class="reference internal" href="../../auto_examples/pipeline/plot_pipeline_classification.html#sphx-glr-auto-examples-pipeline-plot-pipeline-classification-py"><span class="std std-ref">Usage of pipeline embedding samplers</span></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>A surprising behaviour of the <code class="docutils literal notranslate"><span class="pre">imbalanced-learn</span></code> pipeline is that it
+breaks the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> contract where one expects
+<code class="docutils literal notranslate"><span class="pre">estimmator.fit_transform(X,</span> <span class="pre">y)</span></code> to be equivalent to
+<code class="docutils literal notranslate"><span class="pre">estimator.fit(X,</span> <span class="pre">y).transform(X)</span></code>.</p>
+<p>The semantic of <code class="docutils literal notranslate"><span class="pre">fit_resample</span></code> is to be applied only during the fit
+stage. Therefore, resampling will happen when calling <code class="docutils literal notranslate"><span class="pre">fit_transform</span></code>
+while it will only happen on the <code class="docutils literal notranslate"><span class="pre">fit</span></code> stage when calling <code class="docutils literal notranslate"><span class="pre">fit</span></code> and
+<code class="docutils literal notranslate"><span class="pre">transform</span></code> separately. Practically, <code class="docutils literal notranslate"><span class="pre">fit_transform</span></code> will lead to a
+resampled dataset while <code class="docutils literal notranslate"><span class="pre">fit</span></code> and <code class="docutils literal notranslate"><span class="pre">transform</span></code> will not.</p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span> <span class="k">as</span> <span class="n">tts</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span> <span class="k">as</span> <span class="n">KNN</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <span class="n">SMOTE</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">class_sep</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_redundant</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">flip_y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">n_features</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">n_clusters_per_class</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Original dataset shape </span><span class="si">{</span><span class="n">Counter</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">Original dataset shape Counter({1: 900, 0: 100})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">smt</span> <span class="o">=</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">knn</span> <span class="o">=</span> <span class="n">KNN</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;smt&#39;</span><span class="p">,</span> <span class="n">smt</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;pca&#39;</span><span class="p">,</span> <span class="n">pca</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;knn&#39;</span><span class="p">,</span> <span class="n">knn</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">tts</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="go">Pipeline(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_hat</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_hat</span><span class="p">))</span>
+<span class="go">              precision    recall  f1-score   support</span>
+
+<span class="go">           0       0.87      1.00      0.93        26</span>
+<span class="go">           1       1.00      0.98      0.99       224</span>
+
+<span class="go">    accuracy                           0.98       250</span>
+<span class="go">   macro avg       0.93      0.99      0.96       250</span>
+<span class="go">weighted avg       0.99      0.98      0.98       250</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#imblearn.pipeline.Pipeline.decision_function" title="imblearn.pipeline.Pipeline.decision_function"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decision_function</span></code></a>(X)</p></td>
+<td><p>Transform the data, and apply <code class="docutils literal notranslate"><span class="pre">decision_function</span></code> with the final estimator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#imblearn.pipeline.Pipeline.fit" title="imblearn.pipeline.Pipeline.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(X[, y])</p></td>
+<td><p>Fit the model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#imblearn.pipeline.Pipeline.fit_predict" title="imblearn.pipeline.Pipeline.fit_predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit_predict</span></code></a>(X[, y])</p></td>
+<td><p>Apply <code class="docutils literal notranslate"><span class="pre">fit_predict</span></code> of last step in pipeline after transforms.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#imblearn.pipeline.Pipeline.fit_resample" title="imblearn.pipeline.Pipeline.fit_resample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit_resample</span></code></a>(X[, y])</p></td>
+<td><p>Fit the model and sample with the final estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#imblearn.pipeline.Pipeline.fit_transform" title="imblearn.pipeline.Pipeline.fit_transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit_transform</span></code></a>(X[, y])</p></td>
+<td><p>Fit the model and transform with the final estimator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#imblearn.pipeline.Pipeline.get_feature_names_out" title="imblearn.pipeline.Pipeline.get_feature_names_out"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_feature_names_out</span></code></a>([input_features])</p></td>
+<td><p>Get output feature names for transformation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#imblearn.pipeline.Pipeline.get_params" title="imblearn.pipeline.Pipeline.get_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_params</span></code></a>([deep])</p></td>
+<td><p>Get parameters for this estimator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#imblearn.pipeline.Pipeline.inverse_transform" title="imblearn.pipeline.Pipeline.inverse_transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inverse_transform</span></code></a>(Xt)</p></td>
+<td><p>Apply <code class="docutils literal notranslate"><span class="pre">inverse_transform</span></code> for each step in a reverse order.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#imblearn.pipeline.Pipeline.predict" title="imblearn.pipeline.Pipeline.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a>(X, **predict_params)</p></td>
+<td><p>Transform the data, and apply <code class="docutils literal notranslate"><span class="pre">predict</span></code> with the final estimator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#imblearn.pipeline.Pipeline.predict_log_proba" title="imblearn.pipeline.Pipeline.predict_log_proba"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict_log_proba</span></code></a>(X, **predict_log_proba_params)</p></td>
+<td><p>Transform the data, and apply <code class="docutils literal notranslate"><span class="pre">predict_log_proba</span></code> with the final estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#imblearn.pipeline.Pipeline.predict_proba" title="imblearn.pipeline.Pipeline.predict_proba"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict_proba</span></code></a>(X, **predict_proba_params)</p></td>
+<td><p>Transform the data, and apply <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> with the final estimator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#imblearn.pipeline.Pipeline.score" title="imblearn.pipeline.Pipeline.score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">score</span></code></a>(X[, y, sample_weight])</p></td>
+<td><p>Transform the data, and apply <code class="docutils literal notranslate"><span class="pre">score</span></code> with the final estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#imblearn.pipeline.Pipeline.score_samples" title="imblearn.pipeline.Pipeline.score_samples"><code class="xref py py-obj docutils literal notranslate"><span class="pre">score_samples</span></code></a>(X)</p></td>
+<td><p>Transform the data, and apply <code class="docutils literal notranslate"><span class="pre">score_samples</span></code> with the final estimator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#imblearn.pipeline.Pipeline.set_output" title="imblearn.pipeline.Pipeline.set_output"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_output</span></code></a>(*[, transform])</p></td>
+<td><p>Set the output container when <code class="docutils literal notranslate"><span class="pre">&quot;transform&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;fit_transform&quot;</span></code> are called.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#imblearn.pipeline.Pipeline.set_params" title="imblearn.pipeline.Pipeline.set_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_params</span></code></a>(**kwargs)</p></td>
+<td><p>Set the parameters of this estimator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#imblearn.pipeline.Pipeline.transform" title="imblearn.pipeline.Pipeline.transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform</span></code></a>(X)</p></td>
+<td><p>Transform the data, and apply <code class="docutils literal notranslate"><span class="pre">transform</span></code> with the final estimator.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="imblearn.pipeline.Pipeline.classes_">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">classes_</span></span><a class="headerlink" href="#imblearn.pipeline.Pipeline.classes_" title="Permalink to this definition">#</a></dt>
+<dd><p>The classes labels. Only exist if the last step is a classifier.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imblearn.pipeline.Pipeline.decision_function">
+<span class="sig-name descname"><span class="pre">decision_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9ca2145/imblearn/../../miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/utils/_available_if.py#L550"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.pipeline.Pipeline.decision_function" title="Permalink to this definition">#</a></dt>
+<dd><p>Transform the data, and apply <code class="docutils literal notranslate"><span class="pre">decision_function</span></code> with the final estimator.</p>
+<p>Call <code class="docutils literal notranslate"><span class="pre">transform</span></code> of each transformer in the pipeline. The transformed
+data are finally passed to the final estimator that calls
+<code class="docutils literal notranslate"><span class="pre">decision_function</span></code> method. Only valid if the final estimator
+implements <code class="docutils literal notranslate"><span class="pre">decision_function</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">iterable</span></dt><dd><p>Data to predict on. Must fulfill input requirements of first step
+of the pipeline.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>y_score</strong><span class="classifier">ndarray of shape (n_samples, n_classes)</span></dt><dd><p>Result of calling <code class="docutils literal notranslate"><span class="pre">decision_function</span></code> on the final estimator.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="imblearn.pipeline.Pipeline.feature_names_in_">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">feature_names_in_</span></span><a class="headerlink" href="#imblearn.pipeline.Pipeline.feature_names_in_" title="Permalink to this definition">#</a></dt>
+<dd><p>Names of features seen during first step <code class="docutils literal notranslate"><span class="pre">fit</span></code> method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imblearn.pipeline.Pipeline.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fit_params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9ca2145/imblearn/pipeline.py#L264"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.pipeline.Pipeline.fit" title="Permalink to this definition">#</a></dt>
+<dd><p>Fit the model.</p>
+<p>Fit all the transforms/samplers one after the other and
+transform/sample the data, then fit the transformed/sampled
+data using the final estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">iterable</span></dt><dd><p>Training data. Must fulfill input requirements of first step of the
+pipeline.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">iterable, default=None</span></dt><dd><p>Training targets. Must fulfill label requirements for all steps of
+the pipeline.</p>
+</dd>
+<dt><strong>**fit_params</strong><span class="classifier">dict of str -&gt; object</span></dt><dd><p>Parameters passed to the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method of each step, where
+each parameter name is prefixed such that parameter <code class="docutils literal notranslate"><span class="pre">p</span></code> for step
+<code class="docutils literal notranslate"><span class="pre">s</span></code> has key <code class="docutils literal notranslate"><span class="pre">s__p</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">Pipeline</span></dt><dd><p>This estimator.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imblearn.pipeline.Pipeline.fit_predict">
+<span class="sig-name descname"><span class="pre">fit_predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fit_params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9ca2145/imblearn/../../miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/utils/_available_if.py#L382"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.pipeline.Pipeline.fit_predict" title="Permalink to this definition">#</a></dt>
+<dd><p>Apply <code class="docutils literal notranslate"><span class="pre">fit_predict</span></code> of last step in pipeline after transforms.</p>
+<p>Applies fit_transforms of a pipeline to the data, followed by the
+fit_predict method of the final estimator in the pipeline. Valid
+only if the final estimator implements fit_predict.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">iterable</span></dt><dd><p>Training data. Must fulfill input requirements of first step of
+the pipeline.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">iterable, default=None</span></dt><dd><p>Training targets. Must fulfill label requirements for all steps
+of the pipeline.</p>
+</dd>
+<dt><strong>**fit_params</strong><span class="classifier">dict of string -&gt; object</span></dt><dd><p>Parameters passed to the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method of each step, where
+each parameter name is prefixed such that parameter <code class="docutils literal notranslate"><span class="pre">p</span></code> for step
+<code class="docutils literal notranslate"><span class="pre">s</span></code> has key <code class="docutils literal notranslate"><span class="pre">s__p</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>y_pred</strong><span class="classifier">ndarray of shape (n_samples,)</span></dt><dd><p>The predicted target.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imblearn.pipeline.Pipeline.fit_resample">
+<span class="sig-name descname"><span class="pre">fit_resample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fit_params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9ca2145/imblearn/pipeline.py#L341"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.pipeline.Pipeline.fit_resample" title="Permalink to this definition">#</a></dt>
+<dd><p>Fit the model and sample with the final estimator.</p>
+<p>Fits all the transformers/samplers one after the other and
+transform/sample the data, then uses fit_resample on transformed
+data with the final estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">iterable</span></dt><dd><p>Training data. Must fulfill input requirements of first step of the
+pipeline.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">iterable, default=None</span></dt><dd><p>Training targets. Must fulfill label requirements for all steps of
+the pipeline.</p>
+</dd>
+<dt><strong>**fit_params</strong><span class="classifier">dict of string -&gt; object</span></dt><dd><p>Parameters passed to the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method of each step, where
+each parameter name is prefixed such that parameter <code class="docutils literal notranslate"><span class="pre">p</span></code> for step
+<code class="docutils literal notranslate"><span class="pre">s</span></code> has key <code class="docutils literal notranslate"><span class="pre">s__p</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>Xt</strong><span class="classifier">array-like of shape (n_samples, n_transformed_features)</span></dt><dd><p>Transformed samples.</p>
+</dd>
+<dt><strong>yt</strong><span class="classifier">array-like of shape (n_samples, n_transformed_features)</span></dt><dd><p>Transformed target.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imblearn.pipeline.Pipeline.fit_transform">
+<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fit_params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9ca2145/imblearn/pipeline.py#L300"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.pipeline.Pipeline.fit_transform" title="Permalink to this definition">#</a></dt>
+<dd><p>Fit the model and transform with the final estimator.</p>
+<p>Fits all the transformers/samplers one after the other and
+transform/sample the data, then uses fit_transform on
+transformed data with the final estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">iterable</span></dt><dd><p>Training data. Must fulfill input requirements of first step of the
+pipeline.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">iterable, default=None</span></dt><dd><p>Training targets. Must fulfill label requirements for all steps of
+the pipeline.</p>
+</dd>
+<dt><strong>**fit_params</strong><span class="classifier">dict of string -&gt; object</span></dt><dd><p>Parameters passed to the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method of each step, where
+each parameter name is prefixed such that parameter <code class="docutils literal notranslate"><span class="pre">p</span></code> for step
+<code class="docutils literal notranslate"><span class="pre">s</span></code> has key <code class="docutils literal notranslate"><span class="pre">s__p</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>Xt</strong><span class="classifier">array-like of shape (n_samples, n_transformed_features)</span></dt><dd><p>Transformed samples.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imblearn.pipeline.Pipeline.get_feature_names_out">
+<span class="sig-name descname"><span class="pre">get_feature_names_out</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9ca2145/imblearn/../../miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/pipeline.py#L734"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.pipeline.Pipeline.get_feature_names_out" title="Permalink to this definition">#</a></dt>
+<dd><p>Get output feature names for transformation.</p>
+<p>Transform input features using the pipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>input_features</strong><span class="classifier">array-like of str or None, default=None</span></dt><dd><p>Input features.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>feature_names_out</strong><span class="classifier">ndarray of str objects</span></dt><dd><p>Transformed feature names.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imblearn.pipeline.Pipeline.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9ca2145/imblearn/../../miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/pipeline.py#L174"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.pipeline.Pipeline.get_params" title="Permalink to this definition">#</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<p>Returns the parameters given in the constructor as well as the
+estimators contained within the <code class="docutils literal notranslate"><span class="pre">steps</span></code> of the <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>deep</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">mapping of string to any</span></dt><dd><p>Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imblearn.pipeline.Pipeline.inverse_transform">
+<span class="sig-name descname"><span class="pre">inverse_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Xt</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9ca2145/imblearn/../../miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/utils/_available_if.py#L665"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.pipeline.Pipeline.inverse_transform" title="Permalink to this definition">#</a></dt>
+<dd><p>Apply <code class="docutils literal notranslate"><span class="pre">inverse_transform</span></code> for each step in a reverse order.</p>
+<p>All estimators in the pipeline must support <code class="docutils literal notranslate"><span class="pre">inverse_transform</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Xt</strong><span class="classifier">array-like of shape (n_samples, n_transformed_features)</span></dt><dd><p>Data samples, where <code class="docutils literal notranslate"><span class="pre">n_samples</span></code> is the number of samples and
+<code class="docutils literal notranslate"><span class="pre">n_features</span></code> is the number of features. Must fulfill
+input requirements of last step of pipeline’s
+<code class="docutils literal notranslate"><span class="pre">inverse_transform</span></code> method.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>Xt</strong><span class="classifier">ndarray of shape (n_samples, n_features)</span></dt><dd><p>Inverse transformed data, that is, data in the original feature
+space.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="imblearn.pipeline.Pipeline.n_features_in_">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">n_features_in_</span></span><a class="headerlink" href="#imblearn.pipeline.Pipeline.n_features_in_" title="Permalink to this definition">#</a></dt>
+<dd><p>Number of features seen during first step <code class="docutils literal notranslate"><span class="pre">fit</span></code> method.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="imblearn.pipeline.Pipeline.named_steps">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">named_steps</span></span><a class="headerlink" href="#imblearn.pipeline.Pipeline.named_steps" title="Permalink to this definition">#</a></dt>
+<dd><p>Access the steps by name.</p>
+<p>Read-only attribute to access any step by given name.
+Keys are steps names and values are the steps objects.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imblearn.pipeline.Pipeline.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">predict_params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9ca2145/imblearn/../../miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/utils/_available_if.py#L450"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.pipeline.Pipeline.predict" title="Permalink to this definition">#</a></dt>
+<dd><p>Transform the data, and apply <code class="docutils literal notranslate"><span class="pre">predict</span></code> with the final estimator.</p>
+<p>Call <code class="docutils literal notranslate"><span class="pre">transform</span></code> of each transformer in the pipeline. The transformed
+data are finally passed to the final estimator that calls <code class="docutils literal notranslate"><span class="pre">predict</span></code>
+method. Only valid if the final estimator implements <code class="docutils literal notranslate"><span class="pre">predict</span></code>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>X</strong><span class="classifier">iterable</span></dt><dd><p>Data to predict on. Must fulfill input requirements of first step
+of the pipeline.</p>
+</dd>
+<dt><strong>**predict_params</strong><span class="classifier">dict of string -&gt; object</span></dt><dd><p>Parameters to the <code class="docutils literal notranslate"><span class="pre">predict</span></code> called at the end of all
+transformations in the pipeline. Note that while this may be
+used to return uncertainties from some models with return_std
+or return_cov, uncertainties that are generated by the
+transformations in the pipeline are not propagated to the
+final estimator.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.20.</span></p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>y_pred</strong><span class="classifier">ndarray</span></dt><dd><p>Result of calling <code class="docutils literal notranslate"><span class="pre">predict</span></code> on the final estimator.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imblearn.pipeline.Pipeline.predict_log_proba">
+<span class="sig-name descname"><span class="pre">predict_log_proba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">predict_log_proba_params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9ca2145/imblearn/../../miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/utils/_available_if.py#L600"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.pipeline.Pipeline.predict_log_proba" title="Permalink to this definition">#</a></dt>
+<dd><p>Transform the data, and apply <code class="docutils literal notranslate"><span class="pre">predict_log_proba</span></code> with the final estimator.</p>
+<p>Call <code class="docutils literal notranslate"><span class="pre">transform</span></code> of each transformer in the pipeline. The transformed
+data are finally passed to the final estimator that calls
+<code class="docutils literal notranslate"><span class="pre">predict_log_proba</span></code> method. Only valid if the final estimator
+implements <code class="docutils literal notranslate"><span class="pre">predict_log_proba</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">iterable</span></dt><dd><p>Data to predict on. Must fulfill input requirements of first step
+of the pipeline.</p>
+</dd>
+<dt><strong>**predict_log_proba_params</strong><span class="classifier">dict of string -&gt; object</span></dt><dd><p>Parameters to the <code class="docutils literal notranslate"><span class="pre">predict_log_proba</span></code> called at the end of all
+transformations in the pipeline.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>y_log_proba</strong><span class="classifier">ndarray of shape (n_samples, n_classes)</span></dt><dd><p>Result of calling <code class="docutils literal notranslate"><span class="pre">predict_log_proba</span></code> on the final estimator.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imblearn.pipeline.Pipeline.predict_proba">
+<span class="sig-name descname"><span class="pre">predict_proba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">predict_proba_params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9ca2145/imblearn/../../miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/utils/_available_if.py#L521"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.pipeline.Pipeline.predict_proba" title="Permalink to this definition">#</a></dt>
+<dd><p>Transform the data, and apply <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> with the final estimator.</p>
+<p>Call <code class="docutils literal notranslate"><span class="pre">transform</span></code> of each transformer in the pipeline. The transformed
+data are finally passed to the final estimator that calls
+<code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> method. Only valid if the final estimator implements
+<code class="docutils literal notranslate"><span class="pre">predict_proba</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">iterable</span></dt><dd><p>Data to predict on. Must fulfill input requirements of first step
+of the pipeline.</p>
+</dd>
+<dt><strong>**predict_proba_params</strong><span class="classifier">dict of string -&gt; object</span></dt><dd><p>Parameters to the <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> called at the end of all
+transformations in the pipeline.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>y_proba</strong><span class="classifier">ndarray of shape (n_samples, n_classes)</span></dt><dd><p>Result of calling <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> on the final estimator.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imblearn.pipeline.Pipeline.score">
+<span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9ca2145/imblearn/../../miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/utils/_available_if.py#L690"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.pipeline.Pipeline.score" title="Permalink to this definition">#</a></dt>
+<dd><p>Transform the data, and apply <code class="docutils literal notranslate"><span class="pre">score</span></code> with the final estimator.</p>
+<p>Call <code class="docutils literal notranslate"><span class="pre">transform</span></code> of each transformer in the pipeline. The transformed
+data are finally passed to the final estimator that calls
+<code class="docutils literal notranslate"><span class="pre">score</span></code> method. Only valid if the final estimator implements <code class="docutils literal notranslate"><span class="pre">score</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">iterable</span></dt><dd><p>Data to predict on. Must fulfill input requirements of first step
+of the pipeline.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">iterable, default=None</span></dt><dd><p>Targets used for scoring. Must fulfill label requirements for all
+steps of the pipeline.</p>
+</dd>
+<dt><strong>sample_weight</strong><span class="classifier">array-like, default=None</span></dt><dd><p>If not None, this argument is passed as <code class="docutils literal notranslate"><span class="pre">sample_weight</span></code> keyword
+argument to the <code class="docutils literal notranslate"><span class="pre">score</span></code> method of the final estimator.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>score</strong><span class="classifier">float</span></dt><dd><p>Result of calling <code class="docutils literal notranslate"><span class="pre">score</span></code> on the final estimator.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imblearn.pipeline.Pipeline.score_samples">
+<span class="sig-name descname"><span class="pre">score_samples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9ca2145/imblearn/../../miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/utils/_available_if.py#L575"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.pipeline.Pipeline.score_samples" title="Permalink to this definition">#</a></dt>
+<dd><p>Transform the data, and apply <code class="docutils literal notranslate"><span class="pre">score_samples</span></code> with the final estimator.</p>
+<p>Call <code class="docutils literal notranslate"><span class="pre">transform</span></code> of each transformer in the pipeline. The transformed
+data are finally passed to the final estimator that calls
+<code class="docutils literal notranslate"><span class="pre">score_samples</span></code> method. Only valid if the final estimator implements
+<code class="docutils literal notranslate"><span class="pre">score_samples</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">iterable</span></dt><dd><p>Data to predict on. Must fulfill input requirements of first step
+of the pipeline.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>y_score</strong><span class="classifier">ndarray of shape (n_samples,)</span></dt><dd><p>Result of calling <code class="docutils literal notranslate"><span class="pre">score_samples</span></code> on the final estimator.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imblearn.pipeline.Pipeline.set_output">
+<span class="sig-name descname"><span class="pre">set_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9ca2145/imblearn/../../miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/pipeline.py#L151"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.pipeline.Pipeline.set_output" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the output container when <code class="docutils literal notranslate"><span class="pre">&quot;transform&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;fit_transform&quot;</span></code> are called.</p>
+<p>Calling <code class="docutils literal notranslate"><span class="pre">set_output</span></code> will set the output of all estimators in <code class="docutils literal notranslate"><span class="pre">steps</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>transform</strong><span class="classifier">{“default”, “pandas”}, default=None</span></dt><dd><p>Configure output of <code class="docutils literal notranslate"><span class="pre">transform</span></code> and <code class="docutils literal notranslate"><span class="pre">fit_transform</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;default&quot;</span></code>: Default output format of a transformer</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;pandas&quot;</span></code>: DataFrame output</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: Transform configuration is unchanged</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">estimator instance</span></dt><dd><p>Estimator instance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imblearn.pipeline.Pipeline.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9ca2145/imblearn/../../miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/pipeline.py#L193"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.pipeline.Pipeline.set_params" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>Valid parameter keys can be listed with <code class="docutils literal notranslate"><span class="pre">get_params()</span></code>. Note that
+you can directly set the parameters of the estimators contained in
+<code class="docutils literal notranslate"><span class="pre">steps</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>**kwargs</strong><span class="classifier">dict</span></dt><dd><p>Parameters of this estimator or parameters of estimators contained
+in <code class="docutils literal notranslate"><span class="pre">steps</span></code>. Parameters of the steps may be set using its name and
+the parameter name separated by a ‘__’.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">object</span></dt><dd><p>Pipeline class instance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imblearn.pipeline.Pipeline.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9ca2145/imblearn/../../miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/utils/_available_if.py#L634"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.pipeline.Pipeline.transform" title="Permalink to this definition">#</a></dt>
+<dd><p>Transform the data, and apply <code class="docutils literal notranslate"><span class="pre">transform</span></code> with the final estimator.</p>
+<p>Call <code class="docutils literal notranslate"><span class="pre">transform</span></code> of each transformer in the pipeline. The transformed
+data are finally passed to the final estimator that calls
+<code class="docutils literal notranslate"><span class="pre">transform</span></code> method. Only valid if the final estimator
+implements <code class="docutils literal notranslate"><span class="pre">transform</span></code>.</p>
+<p>This also works where final estimator is <code class="docutils literal notranslate"><span class="pre">None</span></code> in which case all prior
+transformations are applied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">iterable</span></dt><dd><p>Data to transform. Must fulfill input requirements of first step
+of the pipeline.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>Xt</strong><span class="classifier">ndarray of shape (n_samples, n_transformed_features)</span></dt><dd><p>Transformed data.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<section id="examples-using-imblearn-pipeline-pipeline">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">imblearn.pipeline.Pipeline</span></code><a class="headerlink" href="#examples-using-imblearn-pipeline-pipeline" title="Permalink to this headline">#</a></h2>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Some balancing methods allow for balancing dataset with multiples classes. We provide an exampl..."><img alt="Multiclass classification with under-sampling" src="../../_images/sphx_glr_plot_multi_class_under_sampling_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/applications/plot_multi_class_under_sampling.html#sphx-glr-auto-examples-applications-plot-multi-class-under-sampling-py"><span class="std std-ref">Multiclass classification with under-sampling</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Multiclass classification with under-sampling</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to balance the text data before to train a classifier."><img alt="Example of topic classification in text documents" src="../../_images/sphx_glr_plot_topic_classication_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/applications/plot_topic_classication.html#sphx-glr-auto-examples-applications-plot-topic-classication-py"><span class="std std-ref">Example of topic classification in text documents</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Example of topic classification in text documents</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of a custom sampler to implement an outlier rejections estimat..."><img alt="Customized sampler to implement an outlier rejections estimator" src="../../_images/sphx_glr_plot_outlier_rejections_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/applications/plot_outlier_rejections.html#sphx-glr-auto-examples-applications-plot-outlier-rejections-py"><span class="std std-ref">Customized sampler to implement an outlier rejections estimator</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Customized sampler to implement an outlier rejections estimator</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this face recognition example two faces are used from the LFW (Faces in the Wild) dataset. S..."><img alt="Benchmark over-sampling methods in a face recognition task" src="../../_images/sphx_glr_plot_over_sampling_benchmark_lfw_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/applications/plot_over_sampling_benchmark_lfw.html#sphx-glr-auto-examples-applications-plot-over-sampling-benchmark-lfw-py"><span class="std std-ref">Benchmark over-sampling methods in a face recognition task</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Benchmark over-sampling methods in a face recognition task</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the problem induced by learning on datasets having imbalanced classes...."><img alt="Fitting model on imbalanced datasets and how to fight bias" src="../../_images/sphx_glr_plot_impact_imbalanced_classes_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/applications/plot_impact_imbalanced_classes.html#sphx-glr-auto-examples-applications-plot-impact-imbalanced-classes-py"><span class="std std-ref">Fitting model on imbalanced datasets and how to fight bias</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Fitting model on imbalanced datasets and how to fight bias</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows the effect of applying an under-sampling algorithms after SMOTE over-samplin..."><img alt="Compare sampler combining over- and under-sampling" src="../../_images/sphx_glr_plot_comparison_combine_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/combine/plot_comparison_combine.html#sphx-glr-auto-examples-combine-plot-comparison-combine-py"><span class="std std-ref">Compare sampler combining over- and under-sampling</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Compare sampler combining over- and under-sampling</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how BalancedBaggingClassifier can be used to create a large variety of..."><img alt="Bagging classifiers using sampler" src="../../_images/sphx_glr_plot_bagging_classifier_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/ensemble/plot_bagging_classifier.html#sphx-glr-auto-examples-ensemble-plot-bagging-classifier-py"><span class="std std-ref">Bagging classifiers using sampler</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Bagging classifiers using sampler</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Specific metrics have been developed to evaluate classifier which has been trained using imbala..."><img alt="Evaluate classification by compiling a report" src="../../_images/sphx_glr_plot_classification_report_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/evaluation/plot_classification_report.html#sphx-glr-auto-examples-evaluation-plot-classification-report-py"><span class="std std-ref">Evaluate classification by compiling a report</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Evaluate classification by compiling a report</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Specific metrics have been developed to evaluate classifier which has been trained using imbala..."><img alt="Metrics specific to imbalanced learning" src="../../_images/sphx_glr_plot_metrics_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/evaluation/plot_metrics.html#sphx-glr-auto-examples-evaluation-plot-metrics-py"><span class="std std-ref">Metrics specific to imbalanced learning</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Metrics specific to imbalanced learning</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this example the impact of the SMOTE&#x27;s k_neighbors parameter is examined. In the plot you ca..."><img alt="Plotting Validation Curves" src="../../_images/sphx_glr_plot_validation_curve_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/model_selection/plot_validation_curve.html#sphx-glr-auto-examples-model-selection-plot-validation-curve-py"><span class="std std-ref">Plotting Validation Curves</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Plotting Validation Curves</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The following example attends to make a qualitative comparison between the different over-sampl..."><img alt="Compare over-sampling samplers" src="../../_images/sphx_glr_plot_comparison_over_sampling_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/over-sampling/plot_comparison_over_sampling.html#sphx-glr-auto-examples-over-sampling-plot-comparison-over-sampling-py"><span class="std std-ref">Compare over-sampling samplers</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Compare over-sampling samplers</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example of the :class:~imblearn.pipeline.Pipeline` object (or make_pipeline helper function)..."><img alt="Usage of pipeline embedding samplers" src="../../_images/sphx_glr_plot_pipeline_classification_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/pipeline/plot_pipeline_classification.html#sphx-glr-auto-examples-pipeline-plot-pipeline-classification-py"><span class="std std-ref">Usage of pipeline embedding samplers</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Usage of pipeline embedding samplers</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The following example attends to make a qualitative comparison between the different under-samp..."><img alt="Compare under-sampling samplers" src="../../_images/sphx_glr_plot_comparison_under_sampling_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/under-sampling/plot_comparison_under_sampling.html#sphx-glr-auto-examples-under-sampling-plot-comparison-under-sampling-py"><span class="std std-ref">Compare under-sampling samplers</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Compare under-sampling samplers</div>
+</div></div><div style='clear:both'></div></section>
+</section>
+
+
+            </article>
+            
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="../pipeline.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">Pipeline</p>
+      </div>
+  </a>
+  <a class='right-next' id="next-link" href="imblearn.pipeline.make_pipeline.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">make_pipeline</p>
+  </div>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples-using-imblearn-pipeline-pipeline">
+   Examples using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     imblearn.pipeline.Pipeline
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/scikit-learn-contrib/imbalanced-learn/edit/master/doc/references/generated/imblearn.pipeline.Pipeline.rst">
+        <i class="fa-solid fa-pencil"></i> Edit this page
+    </a>
+</div>
+
+</div>
+
+<div class="toc-item">
+  
+<div class="tocsection sourcelink">
+    <a href="../../_sources/references/generated/imblearn.pipeline.Pipeline.rst.txt">
+        <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+</div>
+
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2014-2022, The imbalanced-learn developers.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="theme-version">
+    Built with the
+    <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">
+        PyData Sphinx Theme
+    </a>
+    0.12.0.
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
+  </body>
+</html>

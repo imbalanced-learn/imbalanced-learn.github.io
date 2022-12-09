@@ -1,0 +1,673 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>7. Metrics &#8212; Version 0.10.0</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/js/copybutton.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'metrics';</script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="8. Common pitfalls and recommended practices" href="common_pitfalls.html" />
+    <link rel="prev" title="6. Miscellaneous samplers" href="miscellaneous.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="None">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="_static/logo_wide.png" class="logo__image only-light" alt="Logo image">
+    <img src="_static/logo_wide.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="install.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="user_guide.html">
+                        User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="references/index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="auto_examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="whats_new.html">
+                        Release history
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="about.html">
+                        About us
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-learn-contrib/imbalanced-learn" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="install.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="user_guide.html">
+                        User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="references/index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="auto_examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="whats_new.html">
+                        Release history
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="about.html">
+                        About us
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-learn-contrib/imbalanced-learn" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Section navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+    Section Navigation
+  </p>
+  <div class="bd-toc-item navbar-nav">
+    <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="over_sampling.html">2. Over-sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="under_sampling.html">3. Under-sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="combine.html">4. Combination of over- and under-sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ensemble.html">5. Ensemble of samplers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="miscellaneous.html">6. Miscellaneous samplers</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common_pitfalls.html">8. Common pitfalls and recommended practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets/index.html">9. Dataset loading utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers_utils.html">10. Developer guideline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zzz_references.html">11. References</a></li>
+</ul>
+
+  </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <section id="metrics">
+<span id="id1"></span><h1><span class="section-number">7. </span>Metrics<a class="headerlink" href="#metrics" title="Permalink to this headline">#</a></h1>
+<section id="classification-metrics">
+<h2><span class="section-number">7.1. </span>Classification metrics<a class="headerlink" href="#classification-metrics" title="Permalink to this headline">#</a></h2>
+<p>Currently, scikit-learn only offers the
+<code class="docutils literal notranslate"><span class="pre">sklearn.metrics.balanced_accuracy_score</span></code> (in 0.20) as metric to deal with
+imbalanced datasets. The module <a class="reference internal" href="references/metrics.html#module-imblearn.metrics" title="imblearn.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics</span></code></a> offers a couple of
+other metrics which are used in the literature to evaluate the quality of
+classifiers.</p>
+<section id="sensitivity-and-specificity-metrics">
+<span id="sensitivity-specificity"></span><h3><span class="section-number">7.1.1. </span>Sensitivity and specificity metrics<a class="headerlink" href="#sensitivity-and-specificity-metrics" title="Permalink to this headline">#</a></h3>
+<p>Sensitivity and specificity are metrics which are well known in medical
+imaging. Sensitivity (also called true positive rate or recall) is the
+proportion of the positive samples which is well classified while specificity
+(also called true negative rate) is the proportion of the negative samples
+which are well classified. Therefore, depending of the field of application,
+either the sensitivity/specificity or the precision/recall pair of metrics are
+used.</p>
+<p>Currently, only the <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_fscore_support.html">precision and recall metrics</a>
+are implemented in scikit-learn. <a class="reference internal" href="references/generated/imblearn.metrics.sensitivity_specificity_support.html#imblearn.metrics.sensitivity_specificity_support" title="imblearn.metrics.sensitivity_specificity_support"><code class="xref py py-func docutils literal notranslate"><span class="pre">sensitivity_specificity_support</span></code></a>,
+<a class="reference internal" href="references/generated/imblearn.metrics.sensitivity_score.html#imblearn.metrics.sensitivity_score" title="imblearn.metrics.sensitivity_score"><code class="xref py py-func docutils literal notranslate"><span class="pre">sensitivity_score</span></code></a>, and <a class="reference internal" href="references/generated/imblearn.metrics.specificity_score.html#imblearn.metrics.specificity_score" title="imblearn.metrics.specificity_score"><code class="xref py py-func docutils literal notranslate"><span class="pre">specificity_score</span></code></a> add the possibility to
+use those metrics.</p>
+</section>
+<section id="additional-metrics-specific-to-imbalanced-datasets">
+<span id="imbalanced-metrics"></span><h3><span class="section-number">7.1.2. </span>Additional metrics specific to imbalanced datasets<a class="headerlink" href="#additional-metrics-specific-to-imbalanced-datasets" title="Permalink to this headline">#</a></h3>
+<p>The <a class="reference internal" href="references/generated/imblearn.metrics.geometric_mean_score.html#imblearn.metrics.geometric_mean_score" title="imblearn.metrics.geometric_mean_score"><code class="xref py py-func docutils literal notranslate"><span class="pre">geometric_mean_score</span></code></a>
+<span id="id2">[<a class="reference internal" href="zzz_references.html#id9" title="Ricardo Barandela, José Salvador Sánchez, V Garca, and Edgar Rangel. Strategies for learning in class imbalance problems. Pattern Recognition, 36(3):849–851, 2003.">BSanchezGR03</a>, <a class="reference internal" href="zzz_references.html#id8" title="Miroslav Kubat, Stan Matwin, and others. Addressing the curse of imbalanced training sets: one-sided selection. In Icml, volume 97, 179–186. Nashville, USA, 1997.">KM+97</a>]</span> is the root of the product
+of class-wise sensitivity. This measure tries to maximize the accuracy on each
+of the classes while keeping these accuracies balanced.</p>
+<p>The <a class="reference internal" href="references/generated/imblearn.metrics.make_index_balanced_accuracy.html#imblearn.metrics.make_index_balanced_accuracy" title="imblearn.metrics.make_index_balanced_accuracy"><code class="xref py py-func docutils literal notranslate"><span class="pre">make_index_balanced_accuracy</span></code></a> <span id="id3">[<a class="reference internal" href="zzz_references.html#id10" title="Vicente García, José Salvador Sánchez, and Ramón Alberto Mollineda. On the effectiveness of preprocessing methods when dealing with different levels of class imbalance. Knowledge-Based Systems, 25(1):13–21, 2012.">GarciaSanchezM12</a>]</span> can
+wrap any metric and give more importance to a specific class using the
+parameter <code class="docutils literal notranslate"><span class="pre">alpha</span></code>.</p>
+</section>
+<section id="macro-averaged-mean-absolute-error-ma-mae">
+<span id="macro-averaged-mean-absolute-error"></span><h3><span class="section-number">7.1.3. </span>Macro-Averaged Mean Absolute Error (MA-MAE)<a class="headerlink" href="#macro-averaged-mean-absolute-error-ma-mae" title="Permalink to this headline">#</a></h3>
+<p>Ordinal classification is used when there is a rank among classes, for example
+levels of functionality or movie ratings.</p>
+<p>The <a class="reference internal" href="references/generated/imblearn.metrics.macro_averaged_mean_absolute_error.html#imblearn.metrics.macro_averaged_mean_absolute_error" title="imblearn.metrics.macro_averaged_mean_absolute_error"><code class="xref py py-func docutils literal notranslate"><span class="pre">macro_averaged_mean_absolute_error</span></code></a> <span id="id4">[<a class="reference internal" href="zzz_references.html#id23" title="A. Esuli, S. Baccianella, and F. Sebastiani. Evaluation measures for ordinal regression. Intelligent Systems Design and Applications, International Conference on, 1:283-287, dec 2009. URL: https://doi.ieeecomputersociety.org/10.1109/ISDA.2009.230, doi:10.1109/ISDA.2009.230.">EBS09</a>]</span> is used
+for imbalanced ordinal classification. The mean absolute error is computed for
+each class and averaged over classes, giving an equal weight to each class.</p>
+</section>
+<section id="summary-of-important-metrics">
+<span id="classification-report"></span><h3><span class="section-number">7.1.4. </span>Summary of important metrics<a class="headerlink" href="#summary-of-important-metrics" title="Permalink to this headline">#</a></h3>
+<p>The <a class="reference internal" href="references/generated/imblearn.metrics.classification_report_imbalanced.html#imblearn.metrics.classification_report_imbalanced" title="imblearn.metrics.classification_report_imbalanced"><code class="xref py py-func docutils literal notranslate"><span class="pre">classification_report_imbalanced</span></code></a> will compute a set of metrics per
+class and summarize it in a table. The parameter <code class="docutils literal notranslate"><span class="pre">output_dict</span></code> allows to get a
+string or a Python dictionary. This dictionary can be reused to create a Pandas
+dataframe for instance.</p>
+<p>The bottom row (i.e “avg/total”) contains the weighted average by the support
+(i.e column “sup”) of each column.</p>
+<p>Note that the weighted average of the class recalls is also known as the
+classification accuracy.</p>
+</section>
+</section>
+<section id="pairwise-metrics">
+<span id="id5"></span><h2><span class="section-number">7.2. </span>Pairwise metrics<a class="headerlink" href="#pairwise-metrics" title="Permalink to this headline">#</a></h2>
+<p>The <a class="reference internal" href="references/metrics.html#module-imblearn.metrics.pairwise" title="imblearn.metrics.pairwise"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.metrics.pairwise</span></code></a> submodule implements pairwise distances
+that are available in scikit-learn while used in some of the methods in
+imbalanced-learn.</p>
+<section id="value-difference-metric">
+<span id="vdm"></span><h3><span class="section-number">7.2.1. </span>Value Difference Metric<a class="headerlink" href="#value-difference-metric" title="Permalink to this headline">#</a></h3>
+<p>The class <a class="reference internal" href="references/generated/imblearn.metrics.pairwise.ValueDifferenceMetric.html#imblearn.metrics.pairwise.ValueDifferenceMetric" title="imblearn.metrics.pairwise.ValueDifferenceMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">ValueDifferenceMetric</span></code></a> is
+implementing the Value Difference Metric proposed in
+<span id="id6">[<a class="reference internal" href="zzz_references.html#id24" title="Craig Stanfill and David Waltz. Toward memory-based reasoning. Communications of the ACM, 29(12):1213–1228, 1986.">SW86</a>]</span>. This measure is used to compute the proximity
+of two samples composed of only categorical values.</p>
+<p>Given a single feature, categories with similar correlation with the target
+vector will be considered closer. Let’s give an example to illustrate this
+behaviour as given in <span id="id7">[<a class="reference internal" href="zzz_references.html#id25" title="D Randall Wilson and Tony R Martinez. Improved heterogeneous distance functions. Journal of artificial intelligence research, 6:1–34, 1997.">WM97</a>]</span>. <code class="docutils literal notranslate"><span class="pre">X</span></code> will be represented by a
+single feature which will be some color and the target will be if a sample is
+whether or not an apple:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;green&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;not apple&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">7</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;not apple&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">9</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>In this dataset, the categories “red” and “green” are more correlated to the
+target <code class="docutils literal notranslate"><span class="pre">y</span></code> and should have a smaller distance than with the category “blue”.
+We should this behaviour. Be aware that we need to encode the <code class="docutils literal notranslate"><span class="pre">X</span></code> to work with
+numerical values:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OrdinalEncoder</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">encoder</span> <span class="o">=</span> <span class="n">OrdinalEncoder</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_encoded</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now, we can compute the distance between three different samples representing
+the different categories:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">ValueDifferenceMetric</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vdm</span> <span class="o">=</span> <span class="n">ValueDifferenceMetric</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_encoded</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_test_encoded</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vdm</span><span class="o">.</span><span class="n">pairwise</span><span class="p">(</span><span class="n">X_test_encoded</span><span class="p">)</span>
+<span class="go">array([[0.  ,  0.04,  1.96],</span>
+<span class="go">       [0.04,  0.  ,  1.44],</span>
+<span class="go">       [1.96,  1.44,  0.  ]])</span>
+</pre></div>
+</div>
+<p>We see that the minimum distance happen when the categories “red” and “green”
+are compared. Whenever comparing with “blue”, the distance is much larger.</p>
+<p><strong>Mathematical formulation</strong></p>
+<p>The distance between feature values of two samples is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\delta(x, y) = \sum_{c=1}^{C} |p(c|x_{f}) - p(c|y_{f})|^{k} \ ,\]</div>
+<p>where <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are two samples and <span class="math notranslate nohighlight">\(f\)</span> a given
+feature, <span class="math notranslate nohighlight">\(C\)</span> is the number of classes, <span class="math notranslate nohighlight">\(p(c|x_{f})\)</span> is the
+conditional probability that the output class is <span class="math notranslate nohighlight">\(c\)</span> given that
+the feature value <span class="math notranslate nohighlight">\(f\)</span> has the value <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(k\)</span> an
+exponent usually defined to 1 or 2.</p>
+<p>The distance for the feature vectors <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> is
+subsequently defined as:</p>
+<div class="math notranslate nohighlight">
+\[\Delta(X, Y) = \sum_{f=1}^{F} \delta(X_{f}, Y_{f})^{r} \ ,\]</div>
+<p>where <span class="math notranslate nohighlight">\(F\)</span> is the number of feature and <span class="math notranslate nohighlight">\(r\)</span> an exponent usually
+defined equal to 1 or 2.</p>
+</section>
+</section>
+</section>
+
+
+            </article>
+            
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="miscellaneous.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title"><span class="section-number">6. </span>Miscellaneous samplers</p>
+      </div>
+  </a>
+  <a class='right-next' id="next-link" href="common_pitfalls.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title"><span class="section-number">8. </span>Common pitfalls and recommended practices</p>
+  </div>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classification-metrics">
+   7.1. Classification metrics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sensitivity-and-specificity-metrics">
+     7.1.1. Sensitivity and specificity metrics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#additional-metrics-specific-to-imbalanced-datasets">
+     7.1.2. Additional metrics specific to imbalanced datasets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#macro-averaged-mean-absolute-error-ma-mae">
+     7.1.3. Macro-Averaged Mean Absolute Error (MA-MAE)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary-of-important-metrics">
+     7.1.4. Summary of important metrics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pairwise-metrics">
+   7.2. Pairwise metrics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#value-difference-metric">
+     7.2.1. Value Difference Metric
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/scikit-learn-contrib/imbalanced-learn/edit/master/doc/metrics.rst">
+        <i class="fa-solid fa-pencil"></i> Edit this page
+    </a>
+</div>
+
+</div>
+
+<div class="toc-item">
+  
+<div class="tocsection sourcelink">
+    <a href="_sources/metrics.rst.txt">
+        <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+</div>
+
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2014-2022, The imbalanced-learn developers.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="theme-version">
+    Built with the
+    <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">
+        PyData Sphinx Theme
+    </a>
+    0.12.0.
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
+  </body>
+</html>
