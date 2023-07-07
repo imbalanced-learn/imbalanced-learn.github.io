@@ -10,7 +10,7 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_evaluation_plot_classification_report.py>`
+        :ref:`Go to the end <sphx_glr_download_auto_examples_evaluation_plot_classification_report.py>`
         to download the full example code
 
 .. rst-class:: sphx-glr-example-title
@@ -39,10 +39,10 @@ learning problem.
 
                        pre       rec       spe        f1       geo       iba       sup
 
-              0       0.42      0.84      0.87      0.56      0.86      0.73       123
-              1       0.98      0.87      0.84      0.92      0.86      0.73      1127
+              0       0.42      0.84      0.88      0.56      0.86      0.73       123
+              1       0.98      0.88      0.84      0.93      0.86      0.74      1127
 
-    avg / total       0.93      0.87      0.84      0.89      0.86      0.73      1250
+    avg / total       0.93      0.87      0.84      0.89      0.86      0.74      1250
 
 
 
@@ -60,9 +60,9 @@ learning problem.
 
 
     from sklearn import datasets
+    from sklearn.linear_model import LogisticRegression
     from sklearn.model_selection import train_test_split
     from sklearn.preprocessing import StandardScaler
-    from sklearn.svm import LinearSVC
 
     from imblearn import over_sampling as os
     from imblearn import pipeline as pl
@@ -89,7 +89,7 @@ learning problem.
     pipeline = pl.make_pipeline(
         StandardScaler(),
         os.SMOTE(random_state=RANDOM_STATE),
-        LinearSVC(max_iter=10_000, random_state=RANDOM_STATE),
+        LogisticRegression(max_iter=10_000),
     )
 
     # Split the data
@@ -107,9 +107,9 @@ learning problem.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.675 seconds)
+   **Total running time of the script:** ( 0 minutes  0.391 seconds)
 
-**Estimated memory usage:**  8 MB
+**Estimated memory usage:**  9 MB
 
 
 .. _sphx_glr_download_auto_examples_evaluation_plot_classification_report.py:
@@ -117,6 +117,8 @@ learning problem.
 .. only:: html
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
+
+
 
 
     .. container:: sphx-glr-download sphx-glr-download-python

@@ -10,7 +10,7 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_applications_plot_multi_class_under_sampling.py>`
+        :ref:`Go to the end <sphx_glr_download_auto_examples_applications_plot_multi_class_under_sampling.py>`
         to download the full example code
 
 .. rst-class:: sphx-glr-example-title
@@ -26,7 +26,7 @@ Some balancing methods allow for balancing dataset with multiples classes.
 We provide an example to illustrate the use of those methods which do
 not differ from the binary case.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-53
+.. GENERATED FROM PYTHON SOURCE LINES 11-51
 
 
 
@@ -91,9 +91,7 @@ not differ from the binary case.
     print(f"Testing target statistics: {Counter(y_test)}")
 
     # Create a pipeline
-    pipeline = make_pipeline(
-        NearMiss(version=2), StandardScaler(), LogisticRegression(random_state=RANDOM_STATE)
-    )
+    pipeline = make_pipeline(NearMiss(version=2), StandardScaler(), LogisticRegression())
     pipeline.fit(X_train, y_train)
 
     # Classify and report the results
@@ -102,7 +100,7 @@ not differ from the binary case.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.266 seconds)
+   **Total running time of the script:** ( 0 minutes  0.257 seconds)
 
 **Estimated memory usage:**  9 MB
 
@@ -112,6 +110,8 @@ not differ from the binary case.
 .. only:: html
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
+
+
 
 
     .. container:: sphx-glr-download sphx-glr-download-python

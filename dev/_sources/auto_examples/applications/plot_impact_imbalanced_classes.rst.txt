@@ -10,7 +10,7 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_applications_plot_impact_imbalanced_classes.py>`
+        :ref:`Go to the end <sphx_glr_download_auto_examples_applications_plot_impact_imbalanced_classes.py>`
         to download the full example code
 
 .. rst-class:: sphx-glr-example-title
@@ -83,7 +83,7 @@ We are dropping the following features:
 
  .. code-block:: none
 
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/datasets/_openml.py:932: FutureWarning: The default value of `parser` will change from `'liac-arff'` to `'auto'` in 1.4. You can set `parser='auto'` to silence this warning. Therefore, an `ImportError` will be raised from 1.4 if the dataset is dense and pandas is not installed. Note that the pandas parser may return different data types. See the Notes Section in fetch_openml's API doc for details.
+    /home/circleci/mambaforge/envs/testenv/lib/python3.10/site-packages/sklearn/datasets/_openml.py:1002: FutureWarning: The default value of `parser` will change from `'liac-arff'` to `'auto'` in 1.4. You can set `parser='auto'` to silence this warning. Therefore, an `ImportError` will be raised from 1.4 if the dataset is dense and pandas is not installed. Note that the pandas parser may return different data types. See the Notes Section in fetch_openml's API doc for details.
       warn(
 
 
@@ -109,9 +109,10 @@ The "adult" dataset as a class ratio of about 3:1
  .. code-block:: none
 
 
+    class
     <=50K    37155
     >50K     11687
-    Name: class, dtype: int64
+    Name: count, dtype: int64
 
 
 
@@ -143,9 +144,10 @@ learning from an imbalanced dataset, we will increase its ratio to 30:1
  .. code-block:: none
 
 
+    class
     <=50K    37155
     >50K      1238
-    Name: class, dtype: int64
+    Name: count, dtype: int64
 
 
 
@@ -441,8 +443,8 @@ model.
         </tr>
         <tr>
           <th>Logistic regression</th>
-          <td>0.970542</td>
-          <td>0.568601</td>
+          <td>0.971010</td>
+          <td>0.574329</td>
         </tr>
       </tbody>
     </table>
@@ -554,13 +556,13 @@ need to ordinal encode the categorical data.
         </tr>
         <tr>
           <th>Logistic regression</th>
-          <td>0.970542</td>
-          <td>0.568601</td>
+          <td>0.971010</td>
+          <td>0.574329</td>
         </tr>
         <tr>
           <th>Random forest</th>
-          <td>0.970750</td>
-          <td>0.632350</td>
+          <td>0.971297</td>
+          <td>0.629125</td>
         </tr>
       </tbody>
     </table>
@@ -638,18 +640,18 @@ linear model and tree-based model.
         </tr>
         <tr>
           <th>Logistic regression</th>
-          <td>0.970542</td>
-          <td>0.568601</td>
+          <td>0.971010</td>
+          <td>0.574329</td>
         </tr>
         <tr>
           <th>Random forest</th>
-          <td>0.970750</td>
-          <td>0.632350</td>
+          <td>0.971297</td>
+          <td>0.629125</td>
         </tr>
         <tr>
           <th>Logistic regression with balanced class weights</th>
-          <td>0.801995</td>
-          <td>0.818049</td>
+          <td>0.802021</td>
+          <td>0.817686</td>
         </tr>
       </tbody>
     </table>
@@ -710,23 +712,23 @@ linear model and tree-based model.
         </tr>
         <tr>
           <th>Logistic regression</th>
-          <td>0.970542</td>
-          <td>0.568601</td>
+          <td>0.971010</td>
+          <td>0.574329</td>
         </tr>
         <tr>
           <th>Random forest</th>
-          <td>0.970750</td>
-          <td>0.632350</td>
+          <td>0.971297</td>
+          <td>0.629125</td>
         </tr>
         <tr>
           <th>Logistic regression with balanced class weights</th>
-          <td>0.801995</td>
-          <td>0.818049</td>
+          <td>0.802021</td>
+          <td>0.817686</td>
         </tr>
         <tr>
           <th>Random forest with balanced class weights</th>
-          <td>0.964447</td>
-          <td>0.629865</td>
+          <td>0.964837</td>
+          <td>0.629695</td>
         </tr>
       </tbody>
     </table>
@@ -820,28 +822,28 @@ to do such processing.
         </tr>
         <tr>
           <th>Logistic regression</th>
-          <td>0.970542</td>
-          <td>0.568601</td>
+          <td>0.971010</td>
+          <td>0.574329</td>
         </tr>
         <tr>
           <th>Random forest</th>
-          <td>0.970750</td>
-          <td>0.632350</td>
+          <td>0.971297</td>
+          <td>0.629125</td>
         </tr>
         <tr>
           <th>Logistic regression with balanced class weights</th>
-          <td>0.801995</td>
-          <td>0.818049</td>
+          <td>0.802021</td>
+          <td>0.817686</td>
         </tr>
         <tr>
           <th>Random forest with balanced class weights</th>
-          <td>0.964447</td>
-          <td>0.629865</td>
+          <td>0.964837</td>
+          <td>0.629695</td>
         </tr>
         <tr>
           <th>Under-sampling + Logistic regression</th>
-          <td>0.796760</td>
-          <td>0.818855</td>
+          <td>0.791681</td>
+          <td>0.814294</td>
         </tr>
       </tbody>
     </table>
@@ -917,33 +919,33 @@ to do such processing.
         </tr>
         <tr>
           <th>Logistic regression</th>
-          <td>0.970542</td>
-          <td>0.568601</td>
+          <td>0.971010</td>
+          <td>0.574329</td>
         </tr>
         <tr>
           <th>Random forest</th>
-          <td>0.970750</td>
-          <td>0.632350</td>
+          <td>0.971297</td>
+          <td>0.629125</td>
         </tr>
         <tr>
           <th>Logistic regression with balanced class weights</th>
-          <td>0.801995</td>
-          <td>0.818049</td>
+          <td>0.802021</td>
+          <td>0.817686</td>
         </tr>
         <tr>
           <th>Random forest with balanced class weights</th>
-          <td>0.964447</td>
-          <td>0.629865</td>
+          <td>0.964837</td>
+          <td>0.629695</td>
         </tr>
         <tr>
           <th>Under-sampling + Logistic regression</th>
-          <td>0.796760</td>
-          <td>0.818855</td>
+          <td>0.791681</td>
+          <td>0.814294</td>
         </tr>
         <tr>
           <th>Under-sampling + Random forest</th>
-          <td>0.800745</td>
-          <td>0.806863</td>
+          <td>0.799573</td>
+          <td>0.806270</td>
         </tr>
       </tbody>
     </table>
@@ -1042,38 +1044,38 @@ the base of the :class:`imblearn.ensemble.BalancedRandomForestClassifier` and
         </tr>
         <tr>
           <th>Logistic regression</th>
-          <td>0.970542</td>
-          <td>0.568601</td>
+          <td>0.971010</td>
+          <td>0.574329</td>
         </tr>
         <tr>
           <th>Random forest</th>
-          <td>0.970750</td>
-          <td>0.632350</td>
+          <td>0.971297</td>
+          <td>0.629125</td>
         </tr>
         <tr>
           <th>Logistic regression with balanced class weights</th>
-          <td>0.801995</td>
-          <td>0.818049</td>
+          <td>0.802021</td>
+          <td>0.817686</td>
         </tr>
         <tr>
           <th>Random forest with balanced class weights</th>
-          <td>0.964447</td>
-          <td>0.629865</td>
+          <td>0.964837</td>
+          <td>0.629695</td>
         </tr>
         <tr>
           <th>Under-sampling + Logistic regression</th>
-          <td>0.796760</td>
-          <td>0.818855</td>
+          <td>0.791681</td>
+          <td>0.814294</td>
         </tr>
         <tr>
           <th>Under-sampling + Random forest</th>
-          <td>0.800745</td>
-          <td>0.806863</td>
+          <td>0.799573</td>
+          <td>0.806270</td>
         </tr>
         <tr>
           <th>Balanced random forest</th>
-          <td>0.793895</td>
-          <td>0.818945</td>
+          <td>0.792462</td>
+          <td>0.818215</td>
         </tr>
       </tbody>
     </table>
@@ -1089,13 +1091,12 @@ The performance with the
 applying a single random under-sampling. We will use a gradient-boosting
 classifier within a :class:`~imblearn.ensemble.BalancedBaggingClassifier`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 339-363
+.. GENERATED FROM PYTHON SOURCE LINES 339-362
 
 .. code-block:: default
 
 
     from sklearn.ensemble import HistGradientBoostingClassifier
-    from sklearn.experimental import enable_hist_gradient_boosting  # noqa
 
     from imblearn.ensemble import BalancedBaggingClassifier
 
@@ -1120,13 +1121,6 @@ classifier within a :class:`~imblearn.ensemble.BalancedBaggingClassifier`.
 
 
 
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    /home/circleci/miniconda/envs/testenv/lib/python3.10/site-packages/sklearn/experimental/enable_hist_gradient_boosting.py:16: UserWarning: Since version 1.0, it is not needed to import enable_hist_gradient_boosting anymore. HistGradientBoostingClassifier and HistGradientBoostingRegressor are now stable and can be normally imported from sklearn.ensemble.
-      warnings.warn(
 
 
 .. raw:: html
@@ -1162,43 +1156,43 @@ classifier within a :class:`~imblearn.ensemble.BalancedBaggingClassifier`.
         </tr>
         <tr>
           <th>Logistic regression</th>
-          <td>0.970542</td>
-          <td>0.568601</td>
+          <td>0.971010</td>
+          <td>0.574329</td>
         </tr>
         <tr>
           <th>Random forest</th>
-          <td>0.970750</td>
-          <td>0.632350</td>
+          <td>0.971297</td>
+          <td>0.629125</td>
         </tr>
         <tr>
           <th>Logistic regression with balanced class weights</th>
-          <td>0.801995</td>
-          <td>0.818049</td>
+          <td>0.802021</td>
+          <td>0.817686</td>
         </tr>
         <tr>
           <th>Random forest with balanced class weights</th>
-          <td>0.964447</td>
-          <td>0.629865</td>
+          <td>0.964837</td>
+          <td>0.629695</td>
         </tr>
         <tr>
           <th>Under-sampling + Logistic regression</th>
-          <td>0.796760</td>
-          <td>0.818855</td>
+          <td>0.791681</td>
+          <td>0.814294</td>
         </tr>
         <tr>
           <th>Under-sampling + Random forest</th>
-          <td>0.800745</td>
-          <td>0.806863</td>
+          <td>0.799573</td>
+          <td>0.806270</td>
         </tr>
         <tr>
           <th>Balanced random forest</th>
-          <td>0.793895</td>
-          <td>0.818945</td>
+          <td>0.792462</td>
+          <td>0.818215</td>
         </tr>
         <tr>
           <th>Balanced bag of histogram gradient boosting</th>
-          <td>0.830386</td>
-          <td>0.821407</td>
+          <td>0.828641</td>
+          <td>0.822857</td>
         </tr>
       </tbody>
     </table>
@@ -1207,7 +1201,7 @@ classifier within a :class:`~imblearn.ensemble.BalancedBaggingClassifier`.
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 364-367
+.. GENERATED FROM PYTHON SOURCE LINES 363-366
 
 This last approach is the most effective. The different under-sampling allows
 to bring some diversity for the different GBDT to learn and not focus on a
@@ -1216,9 +1210,9 @@ portion of the majority class.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  58.906 seconds)
+   **Total running time of the script:** ( 0 minutes  49.325 seconds)
 
-**Estimated memory usage:**  145 MB
+**Estimated memory usage:**  116 MB
 
 
 .. _sphx_glr_download_auto_examples_applications_plot_impact_imbalanced_classes.py:
@@ -1226,6 +1220,8 @@ portion of the majority class.
 .. only:: html
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
+
+
 
 
     .. container:: sphx-glr-download sphx-glr-download-python

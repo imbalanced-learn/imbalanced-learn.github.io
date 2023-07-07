@@ -10,7 +10,7 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_over-sampling_plot_comparison_over_sampling.py>`
+        :ref:`Go to the end <sphx_glr_download_auto_examples_over-sampling_plot_comparison_over_sampling.py>`
         to download the full example code
 
 .. rst-class:: sphx-glr-example-title
@@ -453,7 +453,7 @@ found using an SVM algorithm to create new sample while the KMeans version
 to generate samples in each cluster independently depending each cluster
 density.
 
-.. GENERATED FROM PYTHON SOURCE LINES 265-293
+.. GENERATED FROM PYTHON SOURCE LINES 265-294
 
 .. code-block:: default
 
@@ -470,7 +470,8 @@ density.
         BorderlineSMOTE(random_state=0, kind="borderline-1"),
         BorderlineSMOTE(random_state=0, kind="borderline-2"),
         KMeansSMOTE(
-            kmeans_estimator=MiniBatchKMeans(n_init=1, random_state=0), random_state=0
+            kmeans_estimator=MiniBatchKMeans(n_clusters=10, n_init=1, random_state=0),
+            random_state=0,
         ),
         SVMSMOTE(random_state=0),
     ]
@@ -497,13 +498,13 @@ density.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 294-297
+.. GENERATED FROM PYTHON SOURCE LINES 295-298
 
 When dealing with a mixed of continuous and categorical features,
 :class:`~imblearn.over_sampling.SMOTENC` is the only method which can handle
 this case.
 
-.. GENERATED FROM PYTHON SOURCE LINES 299-328
+.. GENERATED FROM PYTHON SOURCE LINES 300-329
 
 .. code-block:: default
 
@@ -568,12 +569,12 @@ this case.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 329-331
+.. GENERATED FROM PYTHON SOURCE LINES 330-332
 
 However, if the dataset is composed of only categorical features then one
 should use :class:`~imblearn.over_sampling.SMOTEN`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 333-350
+.. GENERATED FROM PYTHON SOURCE LINES 334-351
 
 .. code-block:: default
 
@@ -625,9 +626,9 @@ should use :class:`~imblearn.over_sampling.SMOTEN`.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  12.483 seconds)
+   **Total running time of the script:** ( 0 minutes  12.365 seconds)
 
-**Estimated memory usage:**  40 MB
+**Estimated memory usage:**  33 MB
 
 
 .. _sphx_glr_download_auto_examples_over-sampling_plot_comparison_over_sampling.py:
@@ -635,6 +636,8 @@ should use :class:`~imblearn.over_sampling.SMOTEN`.
 .. only:: html
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
+
+
 
 
     .. container:: sphx-glr-download sphx-glr-download-python

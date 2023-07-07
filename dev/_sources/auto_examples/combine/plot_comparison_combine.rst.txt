@@ -10,7 +10,7 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_combine_plot_comparison_combine.py>`
+        :ref:`Go to the end <sphx_glr_download_auto_examples_combine_plot_comparison_combine.py>`
         to download the full example code
 
 .. rst-class:: sphx-glr-example-title
@@ -196,7 +196,7 @@ ready-to-use samplers :class:`~imblearn.combine.SMOTETomek` and
 .. code-block:: default
 
 
-    from sklearn.svm import LinearSVC
+    from sklearn.linear_model import LogisticRegression
 
     from imblearn.combine import SMOTEENN, SMOTETomek
 
@@ -218,7 +218,7 @@ ready-to-use samplers :class:`~imblearn.combine.SMOTETomek` and
 
     fig, axs = plt.subplots(3, 2, figsize=(15, 25))
     for ax, sampler in zip(axs, samplers):
-        clf = make_pipeline(sampler, LinearSVC()).fit(X, y)
+        clf = make_pipeline(sampler, LogisticRegression()).fit(X, y)
         plot_decision_function(X, y, clf, ax[0])
         plot_resampling(X, y, sampler, ax[1])
     fig.tight_layout()
@@ -239,9 +239,9 @@ ready-to-use samplers :class:`~imblearn.combine.SMOTETomek` and
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  3.036 seconds)
+   **Total running time of the script:** ( 0 minutes  2.646 seconds)
 
-**Estimated memory usage:**  9 MB
+**Estimated memory usage:**  10 MB
 
 
 .. _sphx_glr_download_auto_examples_combine_plot_comparison_combine.py:
@@ -249,6 +249,8 @@ ready-to-use samplers :class:`~imblearn.combine.SMOTETomek` and
 .. only:: html
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
+
+
 
 
     .. container:: sphx-glr-download sphx-glr-download-python
