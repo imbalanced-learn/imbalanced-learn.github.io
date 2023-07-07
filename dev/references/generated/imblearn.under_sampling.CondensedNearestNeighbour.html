@@ -31,6 +31,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
@@ -45,7 +46,8 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
-    <script src="../../_static/js/copybutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'references/generated/imblearn.under_sampling.CondensedNearestNeighbour';</script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
@@ -519,7 +521,7 @@ document.write(`
 <h1>CondensedNearestNeighbour<a class="headerlink" href="#condensednearestneighbour" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="imblearn.under_sampling.CondensedNearestNeighbour">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imblearn.under_sampling.</span></span><span class="sig-name descname"><span class="pre">CondensedNearestNeighbour</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_strategy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_seeds_S</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2013939/imblearn/under_sampling/_prototype_selection/_condensed_nearest_neighbour.py#L23"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.CondensedNearestNeighbour" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imblearn.under_sampling.</span></span><span class="sig-name descname"><span class="pre">CondensedNearestNeighbour</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_strategy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_seeds_S</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/758cd92/imblearn/under_sampling/_prototype_selection/_condensed_nearest_neighbour.py#L23"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.CondensedNearestNeighbour" title="Permalink to this definition">#</a></dt>
 <dd><p>Undersample based on the condensed nearest neighbour method.</p>
 <p>Read more in the <a class="reference internal" href="../../under_sampling.html#condensed-nearest-neighbors"><span class="std std-ref">User Guide</span></a>.</p>
 <dl class="field-list">
@@ -663,7 +665,7 @@ pp. 515-516, 1968.</p>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.under_sampling.CondensedNearestNeighbour.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2013939/imblearn/base.py#L164"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.CondensedNearestNeighbour.fit" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/758cd92/imblearn/base.py#L164"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.CondensedNearestNeighbour.fit" title="Permalink to this definition">#</a></dt>
 <dd><p>Check inputs and statistics of the sampler.</p>
 <p>You should use <code class="docutils literal notranslate"><span class="pre">fit_resample</span></code> in all cases.</p>
 <dl class="field-list simple">
@@ -686,7 +688,7 @@ pp. 515-516, 1968.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.under_sampling.CondensedNearestNeighbour.fit_resample">
-<span class="sig-name descname"><span class="pre">fit_resample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2013939/imblearn/base.py#L186"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.CondensedNearestNeighbour.fit_resample" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit_resample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/758cd92/imblearn/base.py#L186"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.CondensedNearestNeighbour.fit_resample" title="Permalink to this definition">#</a></dt>
 <dd><p>Resample the dataset.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -710,7 +712,7 @@ pp. 515-516, 1968.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.under_sampling.CondensedNearestNeighbour.get_feature_names_out">
-<span class="sig-name descname"><span class="pre">get_feature_names_out</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2013939/imblearn/../../mambaforge/envs/testenv/lib/python3.10/site-packages/sklearn/base.py#L928"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.CondensedNearestNeighbour.get_feature_names_out" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_feature_names_out</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/758cd92/imblearn/../../mambaforge/envs/testenv/lib/python3.10/site-packages/sklearn/base.py#L928"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.CondensedNearestNeighbour.get_feature_names_out" title="Permalink to this definition">#</a></dt>
 <dd><p>Get output feature names for transformation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -738,7 +740,7 @@ match <code class="docutils literal notranslate"><span class="pre">feature_names
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.under_sampling.CondensedNearestNeighbour.get_metadata_routing">
-<span class="sig-name descname"><span class="pre">get_metadata_routing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2013939/imblearn/../../mambaforge/envs/testenv/lib/python3.10/site-packages/sklearn/utils/_metadata_requests.py#L1243"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.CondensedNearestNeighbour.get_metadata_routing" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_metadata_routing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/758cd92/imblearn/../../mambaforge/envs/testenv/lib/python3.10/site-packages/sklearn/utils/_metadata_requests.py#L1243"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.CondensedNearestNeighbour.get_metadata_routing" title="Permalink to this definition">#</a></dt>
 <dd><p>Get metadata routing of this object.</p>
 <p>Please check <span class="xref std std-ref">User Guide</span> on how the routing
 mechanism works.</p>
@@ -755,7 +757,7 @@ routing information.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.under_sampling.CondensedNearestNeighbour.get_params">
-<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2013939/imblearn/../../mambaforge/envs/testenv/lib/python3.10/site-packages/sklearn/base.py#L177"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.CondensedNearestNeighbour.get_params" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/758cd92/imblearn/../../mambaforge/envs/testenv/lib/python3.10/site-packages/sklearn/base.py#L177"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.CondensedNearestNeighbour.get_params" title="Permalink to this definition">#</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -776,7 +778,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.under_sampling.CondensedNearestNeighbour.set_params">
-<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/2013939/imblearn/../../mambaforge/envs/testenv/lib/python3.10/site-packages/sklearn/base.py#L201"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.CondensedNearestNeighbour.set_params" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/758cd92/imblearn/../../mambaforge/envs/testenv/lib/python3.10/site-packages/sklearn/base.py#L201"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.CondensedNearestNeighbour.set_params" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>). The latter have
