@@ -425,8 +425,25 @@ document.write(`
 <section id="compatibility">
 <h3>Compatibility<a class="headerlink" href="#compatibility" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Maintenance release for be compatible with scikit-learn &gt;= 1.3.0.
+<li><p>Maintenance release for being compatible with scikit-learn &gt;= 1.3.0.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/999">#999</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+</ul>
+</section>
+<section id="enhancements">
+<h3>Enhancements<a class="headerlink" href="#enhancements" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../references/generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTENC</span></code></a> now accepts a parameter <code class="docutils literal notranslate"><span class="pre">categorical_encoder</span></code>
+allowing to specify a <code class="xref py py-class docutils literal notranslate"><span class="pre">OneHotEncoder</span></code> with custom
+parameters.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/1000">#1000</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+</ul>
+</section>
+<section id="deprecation">
+<h3>Deprecation<a class="headerlink" href="#deprecation" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The fitted attribute <code class="docutils literal notranslate"><span class="pre">ohe_</span></code> in <a class="reference internal" href="../references/generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTENC</span></code></a> is deprecated
+and will be removed in version 0.13. Use <code class="docutils literal notranslate"><span class="pre">categorical_encoder_</span></code> instead.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/1000">#1000</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </section>
 </section>
@@ -463,6 +480,8 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changelog">Changelog</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compatibility">Compatibility</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enhancements">Enhancements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecation">Deprecation</a></li>
 </ul>
 </li>
 </ul>
