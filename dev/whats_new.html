@@ -426,11 +426,27 @@ document.write(`
 <span id="changes-0-11"></span><h2>Version 0.11.0 (Under development)<a class="headerlink" href="#version-0-11-0-under-development" title="Permalink to this heading">#</a></h2>
 <section id="changelog">
 <h3>Changelog<a class="headerlink" href="#changelog" title="Permalink to this heading">#</a></h3>
+<section id="bug-fixes">
+<h4>Bug fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p><a class="reference internal" href="references/generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTENC</span></code></a> now handles mix types of data type such as
+<code class="docutils literal notranslate"><span class="pre">bool</span></code> and <code class="docutils literal notranslate"><span class="pre">pd.category</span></code> by delegating the conversion to scikit-learn encoder.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/1002">#1002</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+</ul>
+</section>
 <section id="compatibility">
 <h4>Compatibility<a class="headerlink" href="#compatibility" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Maintenance release for being compatible with scikit-learn &gt;= 1.3.0.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/999">#999</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+</ul>
+</section>
+<section id="deprecation">
+<h4>Deprecation<a class="headerlink" href="#deprecation" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>The fitted attribute <code class="docutils literal notranslate"><span class="pre">ohe_</span></code> in <a class="reference internal" href="references/generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTENC</span></code></a> is deprecated
+and will be removed in version 0.13. Use <code class="docutils literal notranslate"><span class="pre">categorical_encoder_</span></code> instead.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/1000">#1000</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </section>
 <section id="enhancements">
@@ -442,14 +458,6 @@ parameters.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/1000">#1000</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </section>
-<section id="deprecation">
-<h4>Deprecation<a class="headerlink" href="#deprecation" title="Permalink to this heading">#</a></h4>
-<ul class="simple">
-<li><p>The fitted attribute <code class="docutils literal notranslate"><span class="pre">ohe_</span></code> in <a class="reference internal" href="references/generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTENC</span></code></a> is deprecated
-and will be removed in version 0.13. Use <code class="docutils literal notranslate"><span class="pre">categorical_encoder_</span></code> instead.
-<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/1000">#1000</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
-</ul>
-</section>
 </section>
 </section>
 <section id="version-0-10-1">
@@ -457,8 +465,8 @@ and will be removed in version 0.13. Use <code class="docutils literal notransla
 <p><strong>December 28, 2022</strong></p>
 <section id="id1">
 <h3>Changelog<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
-<section id="bug-fixes">
-<h4>Bug fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this heading">#</a></h4>
+<section id="id2">
+<h4>Bug fixes<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Fix a regression in over-sampler where the string <code class="docutils literal notranslate"><span class="pre">minority</span></code> was rejected as
 an unvalid sampling strategy.
@@ -470,18 +478,18 @@ an unvalid sampling strategy.
 <section id="version-0-10-0">
 <h2>Version 0.10.0<a class="headerlink" href="#version-0-10-0" title="Permalink to this heading">#</a></h2>
 <p><strong>December 9, 2022</strong></p>
-<section id="id2">
-<h3>Changelog<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <section id="id3">
-<h4>Bug fixes<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<h3>Changelog<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<section id="id4">
+<h4>Bug fixes<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Make sure that <code class="xref py py-class docutils literal notranslate"><span class="pre">Substitution</span></code> is
 working with <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-OO</span></code> that replace <code class="docutils literal notranslate"><span class="pre">__doc__</span></code> by <code class="docutils literal notranslate"><span class="pre">None</span></code>.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/953">#953</a> bu <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </section>
-<section id="id4">
-<h4>Compatibility<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
+<section id="id5">
+<h4>Compatibility<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Maintenance release for be compatible with scikit-learn &gt;= 1.0.2.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/946">#946</a>, <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/947">#947</a>, <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/949">#949</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
@@ -492,8 +500,8 @@ all samplers.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/959">#959</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </section>
-<section id="id5">
-<h4>Deprecation<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
+<section id="id6">
+<h4>Deprecation<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>The parameter <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> has been deprecated from the classes
 <a class="reference internal" href="references/generated/imblearn.over_sampling.ADASYN.html#imblearn.over_sampling.ADASYN" title="imblearn.over_sampling.ADASYN"><code class="xref py py-class docutils literal notranslate"><span class="pre">ADASYN</span></code></a>,
@@ -512,8 +520,8 @@ estimator where <code class="docutils literal notranslate"><span class="pre">n_j
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/946">#946</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </section>
-<section id="id6">
-<h4>Enhancements<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
+<section id="id7">
+<h4>Enhancements<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Add support to accept compatible <code class="docutils literal notranslate"><span class="pre">NearestNeighbors</span></code> objects by only
 duck-typing. For instance, it allows to accept cuML instances.
@@ -526,8 +534,8 @@ duck-typing. For instance, it allows to accept cuML instances.
 <section id="version-0-9-1">
 <span id="changes-0-9"></span><h2>Version 0.9.1<a class="headerlink" href="#version-0-9-1" title="Permalink to this heading">#</a></h2>
 <p><strong>May 16, 2022</strong></p>
-<section id="id7">
-<h3>Changelog<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<section id="id8">
+<h3>Changelog<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
 <p>This release provides fixes that make <code class="docutils literal notranslate"><span class="pre">imbalanced-learn</span></code> works with the
 latest release (<code class="docutils literal notranslate"><span class="pre">1.1.0</span></code>) of <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>.</p>
 </section>
@@ -535,8 +543,8 @@ latest release (<code class="docutils literal notranslate"><span class="pre">1.1
 <section id="version-0-9-0">
 <h2>Version 0.9.0<a class="headerlink" href="#version-0-9-0" title="Permalink to this heading">#</a></h2>
 <p><strong>January 11, 2022</strong></p>
-<section id="id8">
-<h3>Changelog<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<section id="id9">
+<h3>Changelog<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <p>This release is mainly providing fixes that make <code class="docutils literal notranslate"><span class="pre">imbalanced-learn</span></code> works
 with the latest release (<code class="docutils literal notranslate"><span class="pre">1.0.2</span></code>) of <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>.</p>
 </section>
@@ -544,8 +552,8 @@ with the latest release (<code class="docutils literal notranslate"><span class=
 <section id="version-0-8-1">
 <span id="changes-0-8"></span><h2>Version 0.8.1<a class="headerlink" href="#version-0-8-1" title="Permalink to this heading">#</a></h2>
 <p><strong>September 29, 2020</strong></p>
-<section id="id9">
-<h3>Changelog<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<section id="id10">
+<h3>Changelog<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
 <section id="maintenance">
 <h4>Maintenance<a class="headerlink" href="#maintenance" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
@@ -558,8 +566,8 @@ with the latest release (<code class="docutils literal notranslate"><span class=
 <section id="version-0-8-0">
 <h2>Version 0.8.0<a class="headerlink" href="#version-0-8-0" title="Permalink to this heading">#</a></h2>
 <p><strong>February 18, 2021</strong></p>
-<section id="id10">
-<h3>Changelog<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<section id="id11">
+<h3>Changelog<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
 <section id="new-features">
 <h4>New features<a class="headerlink" href="#new-features" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
@@ -581,8 +589,8 @@ implementation of methods based on resampled bagging.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/808">#808</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </section>
-<section id="id11">
-<h4>Enhancements<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h4>
+<section id="id12">
+<h4>Enhancements<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Add option <code class="docutils literal notranslate"><span class="pre">output_dict</span></code> in
 <a class="reference internal" href="references/generated/imblearn.metrics.classification_report_imbalanced.html#imblearn.metrics.classification_report_imbalanced" title="imblearn.metrics.classification_report_imbalanced"><code class="xref py py-func docutils literal notranslate"><span class="pre">imblearn.metrics.classification_report_imbalanced</span></code></a> to return a
@@ -596,8 +604,8 @@ Examples (ROSE).
 <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </section>
-<section id="id12">
-<h4>Bug fixes<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h4>
+<section id="id13">
+<h4>Bug fixes<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Fix a bug in <a class="reference internal" href="references/generated/imblearn.under_sampling.ClusterCentroids.html#imblearn.under_sampling.ClusterCentroids" title="imblearn.under_sampling.ClusterCentroids"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.under_sampling.ClusterCentroids</span></code></a> where
 <code class="docutils literal notranslate"><span class="pre">voting=&quot;hard&quot;</span></code> could have lead to select a sample from any class instead of
@@ -608,8 +616,8 @@ even with <code class="docutils literal notranslate"><span class="pre">validate=
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/790">#790</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </section>
-<section id="id13">
-<h4>Maintenance<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h4>
+<section id="id14">
+<h4>Maintenance<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Remove requirements files in favour of adding the packages in the
 <code class="docutils literal notranslate"><span class="pre">extras_require</span></code> within the <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file.
@@ -618,8 +626,8 @@ even with <code class="docutils literal notranslate"><span class="pre">validate=
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/801">#801</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </section>
-<section id="id14">
-<h4>Deprecation<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h4>
+<section id="id15">
+<h4>Deprecation<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>The context manager <code class="xref py py-func docutils literal notranslate"><span class="pre">imblearn.utils.testing.warns</span></code> is deprecated in 0.8
 and will be removed 1.0.
@@ -631,10 +639,10 @@ and will be removed 1.0.
 <section id="version-0-7-0">
 <span id="changes-0-7"></span><h2>Version 0.7.0<a class="headerlink" href="#version-0-7-0" title="Permalink to this heading">#</a></h2>
 <p><strong>June 9, 2020</strong></p>
-<section id="id15">
-<h3>Changelog<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
 <section id="id16">
-<h4>Maintenance<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h4>
+<h3>Changelog<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
+<section id="id17">
+<h4>Maintenance<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Ensure that <a class="reference internal" href="references/generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="imblearn.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.pipeline.Pipeline</span></code></a> is working when <code class="docutils literal notranslate"><span class="pre">memory</span></code>
 is activated and <code class="docutils literal notranslate"><span class="pre">joblib==0.11</span></code>.
@@ -654,8 +662,8 @@ is activated and <code class="docutils literal notranslate"><span class="pre">jo
 <li><p><a class="reference internal" href="references/generated/imblearn.ensemble.BalancedRandomForestClassifier.html#imblearn.ensemble.BalancedRandomForestClassifier" title="imblearn.ensemble.BalancedRandomForestClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.ensemble.BalancedRandomForestClassifier</span></code></a></p></li>
 </ul>
 </section>
-<section id="id17">
-<h4>Bug fixes<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h4>
+<section id="id18">
+<h4>Bug fixes<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Change the default value <code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code> to be consistent with
 scikit-learn.
@@ -672,8 +680,8 @@ are given in <a class="reference internal" href="references/generated/imblearn.o
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/675">#675</a> by <a class="reference external" href="https://github.com/bganglia">bganglia</a>.</p></li>
 </ul>
 </section>
-<section id="id18">
-<h4>Enhancements<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h4>
+<section id="id19">
+<h4>Enhancements<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>The classifier implemented in imbalanced-learn,
 <a class="reference internal" href="references/generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" title="imblearn.ensemble.BalancedBaggingClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.ensemble.BalancedBaggingClassifier</span></code></a>,
@@ -686,8 +694,8 @@ with the same key than in <code class="docutils literal notranslate"><span class
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/719">#719</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </section>
-<section id="id19">
-<h4>Deprecation<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h4>
+<section id="id20">
+<h4>Deprecation<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Deprecation of the parameters <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> in
 <a class="reference internal" href="references/generated/imblearn.under_sampling.ClusterCentroids.html#imblearn.under_sampling.ClusterCentroids" title="imblearn.under_sampling.ClusterCentroids"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.under_sampling.ClusterCentroids</span></code></a> since it was used by
@@ -705,8 +713,8 @@ with the same key than in <code class="docutils literal notranslate"><span class
 <p><strong>February 16, 2020</strong></p>
 <p>This is a bug-fix release to resolve some issues regarding the handling the
 input and the output format of the arrays.</p>
-<section id="id20">
-<h3>Changelog<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h3>
+<section id="id21">
+<h3>Changelog<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Allow column vectors to be passed as targets.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/673">#673</a> by <a class="reference external" href="https://github.com/chkoar">Christos Aridas</a>.</p></li>
@@ -720,10 +728,10 @@ input and the output format of the arrays.</p>
 <p><strong>December 7, 2019</strong></p>
 <p>This is a bug-fix release to primarily resolve some packaging issues in version
 0.6.0. It also includes minor documentation improvements and some bug fixes.</p>
-<section id="id21">
-<h3>Changelog<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h3>
 <section id="id22">
-<h4>Bug fixes<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h4>
+<h3>Changelog<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h3>
+<section id="id23">
+<h4>Bug fixes<a class="headerlink" href="#id23" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Fix a bug in <a class="reference internal" href="references/generated/imblearn.ensemble.BalancedRandomForestClassifier.html#imblearn.ensemble.BalancedRandomForestClassifier" title="imblearn.ensemble.BalancedRandomForestClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.ensemble.BalancedRandomForestClassifier</span></code></a>
 leading to a wrong number of samples used during fitting due <code class="docutils literal notranslate"><span class="pre">max_samples</span></code>
@@ -736,10 +744,10 @@ and therefore a bad computation of the OOB score.
 <section id="version-0-6-0">
 <span id="changes-0-6"></span><h2>Version 0.6.0<a class="headerlink" href="#version-0-6-0" title="Permalink to this heading">#</a></h2>
 <p><strong>December 5, 2019</strong></p>
-<section id="id23">
-<h3>Changelog<a class="headerlink" href="#id23" title="Permalink to this heading">#</a></h3>
 <section id="id24">
-<h4>Changed models<a class="headerlink" href="#id24" title="Permalink to this heading">#</a></h4>
+<h3>Changelog<a class="headerlink" href="#id24" title="Permalink to this heading">#</a></h3>
+<section id="id25">
+<h4>Changed models<a class="headerlink" href="#id25" title="Permalink to this heading">#</a></h4>
 <p>The following models might give some different sampling due to changes in
 scikit-learn:</p>
 <ul class="simple">
@@ -753,8 +761,8 @@ the random state internal usage:</p>
 <li><p><a class="reference internal" href="references/generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.SMOTENC</span></code></a></p></li>
 </ul>
 </section>
-<section id="id25">
-<h4>Bug fixes<a class="headerlink" href="#id25" title="Permalink to this heading">#</a></h4>
+<section id="id26">
+<h4>Bug fixes<a class="headerlink" href="#id26" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p><a class="reference internal" href="references/generated/imblearn.under_sampling.InstanceHardnessThreshold.html#imblearn.under_sampling.InstanceHardnessThreshold" title="imblearn.under_sampling.InstanceHardnessThreshold"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.under_sampling.InstanceHardnessThreshold</span></code></a> now take into
 account the <code class="docutils literal notranslate"><span class="pre">random_state</span></code> and will give deterministic results. In addition,
@@ -765,8 +773,8 @@ leading to a wrong computation of the OOB score.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/656">#656</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </section>
-<section id="id26">
-<h4>Maintenance<a class="headerlink" href="#id26" title="Permalink to this heading">#</a></h4>
+<section id="id27">
+<h4>Maintenance<a class="headerlink" href="#id27" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Update imports from scikit-learn after that some modules have been privatize.
 The following import have been changed:
@@ -817,8 +825,8 @@ an additional speed-up when <code class="docutils literal notranslate"><span cla
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/596">#596</a> and <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/649">#649</a> by <a class="reference external" href="https://github.com/MattEding">Matt Eding</a>.</p></li>
 </ul>
 </section>
-<section id="id27">
-<h4>Deprecation<a class="headerlink" href="#id27" title="Permalink to this heading">#</a></h4>
+<section id="id28">
+<h4>Deprecation<a class="headerlink" href="#id28" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>The following classes have been removed after 2 deprecation cycles:
 <code class="docutils literal notranslate"><span class="pre">ensemble.BalanceCascade</span></code> and <code class="docutils literal notranslate"><span class="pre">ensemble.EasyEnsemble</span></code>.
@@ -839,10 +847,10 @@ have been removed from the <a class="reference internal" href="references/genera
 <section id="version-0-5-0">
 <span id="changes-0-5"></span><h2>Version 0.5.0<a class="headerlink" href="#version-0-5-0" title="Permalink to this heading">#</a></h2>
 <p><strong>June 28, 2019</strong></p>
-<section id="id28">
-<h3>Changelog<a class="headerlink" href="#id28" title="Permalink to this heading">#</a></h3>
 <section id="id29">
-<h4>Changed models<a class="headerlink" href="#id29" title="Permalink to this heading">#</a></h4>
+<h3>Changelog<a class="headerlink" href="#id29" title="Permalink to this heading">#</a></h3>
+<section id="id30">
+<h4>Changed models<a class="headerlink" href="#id30" title="Permalink to this heading">#</a></h4>
 <p>The following models or function might give different results even if the
 same data <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are the same.</p>
 <ul class="simple">
@@ -862,8 +870,8 @@ strategy for the over-sampling and under-sampling.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/issues/530">#530</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </section>
-<section id="id30">
-<h4>Enhancement<a class="headerlink" href="#id30" title="Permalink to this heading">#</a></h4>
+<section id="id31">
+<h4>Enhancement<a class="headerlink" href="#id31" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Add Parallelisation for SMOTEENN and SMOTETomek.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/547">#547</a> by <a class="reference external" href="https://github.com/Microsheep">Michael Hsieh</a>.</p></li>
@@ -875,8 +883,8 @@ clustering points before to apply SMOTE.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/435">#435</a> by <a class="reference external" href="https://github.com/StephanHeijl">Stephan Heijl</a>.</p></li>
 </ul>
 </section>
-<section id="id31">
-<h4>Maintenance<a class="headerlink" href="#id31" title="Permalink to this heading">#</a></h4>
+<section id="id32">
+<h4>Maintenance<a class="headerlink" href="#id32" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Make it possible to <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">imblearn</span></code> and access submodule.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/500">#500</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
@@ -917,10 +925,10 @@ weak learner as in the original paper.
 <section id="version-0-4-2">
 <span id="changes-0-4"></span><h2>Version 0.4.2<a class="headerlink" href="#version-0-4-2" title="Permalink to this heading">#</a></h2>
 <p><strong>October 21, 2018</strong></p>
-<section id="id32">
-<h3>Changelog<a class="headerlink" href="#id32" title="Permalink to this heading">#</a></h3>
 <section id="id33">
-<h4>Bug fixes<a class="headerlink" href="#id33" title="Permalink to this heading">#</a></h4>
+<h3>Changelog<a class="headerlink" href="#id33" title="Permalink to this heading">#</a></h3>
+<section id="id34">
+<h4>Bug fixes<a class="headerlink" href="#id34" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Fix a bug in <a class="reference internal" href="references/generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.SMOTENC</span></code></a> in which the the median
 of the standard deviation instead of half of the median of the standard
@@ -973,8 +981,8 @@ the parameter <code class="docutils literal notranslate"><span class="pre">sampl
 deprecated and all samplers will exposed a <code class="docutils literal notranslate"><span class="pre">sample_indices_</span></code> whenever this is
 possible.</p>
 </section>
-<section id="id34">
-<h3>Changelog<a class="headerlink" href="#id34" title="Permalink to this heading">#</a></h3>
+<section id="id35">
+<h3>Changelog<a class="headerlink" href="#id35" title="Permalink to this heading">#</a></h3>
 <section id="api">
 <h4>API<a class="headerlink" href="#api" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
@@ -990,8 +998,8 @@ resampling on different set of data.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/issues/462">#462</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </section>
-<section id="id35">
-<h4>New features<a class="headerlink" href="#id35" title="Permalink to this heading">#</a></h4>
+<section id="id36">
+<h4>New features<a class="headerlink" href="#id36" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Add a <code class="xref py py-mod docutils literal notranslate"><span class="pre">keras</span></code> and <code class="xref py py-mod docutils literal notranslate"><span class="pre">tensorflow</span></code> modules to create balanced
 mini-batches generator.
@@ -1012,8 +1020,8 @@ features).
 <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </section>
-<section id="id36">
-<h4>Enhancement<a class="headerlink" href="#id36" title="Permalink to this heading">#</a></h4>
+<section id="id37">
+<h4>Enhancement<a class="headerlink" href="#id37" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Add a documentation node to create a balanced random forest from a balanced
 bagging classifier. <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/issues/372">#372</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
@@ -1034,8 +1042,8 @@ containing strings.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/issues/451">#451</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </section>
-<section id="id37">
-<h4>Bug fixes<a class="headerlink" href="#id37" title="Permalink to this heading">#</a></h4>
+<section id="id38">
+<h4>Bug fixes<a class="headerlink" href="#id38" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Fix bug in <a class="reference internal" href="references/generated/imblearn.metrics.classification_report_imbalanced.html#imblearn.metrics.classification_report_imbalanced" title="imblearn.metrics.classification_report_imbalanced"><code class="xref py py-func docutils literal notranslate"><span class="pre">metrics.classification_report_imbalanced</span></code></a> for which
 <code class="docutils literal notranslate"><span class="pre">y_pred</span></code> and <code class="docutils literal notranslate"><span class="pre">y_true</span></code> where inversed. <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/issues/394">#394</a> by <a class="reference external" href="https://github.com/Ole Silvig &lt;klizter&gt;.">&#64;Ole Silvig
@@ -1055,8 +1063,8 @@ in <a class="reference internal" href="references/generated/imblearn.pipeline.Pi
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/issues/458">#458</a> by <a class="reference external" href="https://github.com/chkoar">Christos Aridas</a>.</p></li>
 </ul>
 </section>
-<section id="id38">
-<h4>Maintenance<a class="headerlink" href="#id38" title="Permalink to this heading">#</a></h4>
+<section id="id39">
+<h4>Maintenance<a class="headerlink" href="#id39" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Remove deprecated parameters in 0.2 - <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/issues/331">#331</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume
 Lemaitre</a>.</p></li>
@@ -1070,8 +1078,8 @@ Lemaitre</a>.</p></li>
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/issues/470">#470</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </section>
-<section id="id39">
-<h4>Documentation<a class="headerlink" href="#id39" title="Permalink to this heading">#</a></h4>
+<section id="id40">
+<h4>Documentation<a class="headerlink" href="#id40" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Remove some docstring which are not necessary.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/issues/454">#454</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
@@ -1080,8 +1088,8 @@ float.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/issues/480">#480</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </section>
-<section id="id40">
-<h4>Deprecation<a class="headerlink" href="#id40" title="Permalink to this heading">#</a></h4>
+<section id="id41">
+<h4>Deprecation<a class="headerlink" href="#id41" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Deprecate <code class="docutils literal notranslate"><span class="pre">ratio</span></code> in favor of <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code>. <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/issues/411">#411</a> by
 <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
@@ -1116,8 +1124,8 @@ the original samples.
 <section id="version-0-3">
 <span id="changes-0-3"></span><h2>Version 0.3<a class="headerlink" href="#version-0-3" title="Permalink to this heading">#</a></h2>
 <p><strong>February 22, 2018</strong></p>
-<section id="id41">
-<h3>Changelog<a class="headerlink" href="#id41" title="Permalink to this heading">#</a></h3>
+<section id="id42">
+<h3>Changelog<a class="headerlink" href="#id42" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Pytest is used instead of nosetests. <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/issues/321">#321</a> by <a class="reference external" href="https://github.com/massich">Joan Massich</a>.</p></li>
 </ul>
@@ -1183,8 +1191,8 @@ callable. <a class="reference external" href="https://github.com/scikit-learn-co
 <section id="version-0-2">
 <span id="changes-0-2"></span><h2>Version 0.2<a class="headerlink" href="#version-0-2" title="Permalink to this heading">#</a></h2>
 <p><strong>January 1, 2017</strong></p>
-<section id="id42">
-<h3>Changelog<a class="headerlink" href="#id42" title="Permalink to this heading">#</a></h3>
+<section id="id43">
+<h3>Changelog<a class="headerlink" href="#id43" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Fixed a bug in <a class="reference internal" href="references/generated/imblearn.under_sampling.NearMiss.html#imblearn.under_sampling.NearMiss" title="imblearn.under_sampling.NearMiss"><code class="xref py py-class docutils literal notranslate"><span class="pre">under_sampling.NearMiss</span></code></a> which was not picking the
 right samples during under sampling for the method 3. By <a class="reference external" href="https://github.com/glemaitre">Guillaume
@@ -1292,8 +1300,8 @@ By <a class="reference external" href="https://github.com/Linkid">Francois Magim
 <section id="version-0-1">
 <span id="changes-0-1"></span><h2>Version 0.1<a class="headerlink" href="#version-0-1" title="Permalink to this heading">#</a></h2>
 <p><strong>December 26, 2016</strong></p>
-<section id="id43">
-<h3>Changelog<a class="headerlink" href="#id43" title="Permalink to this heading">#</a></h3>
+<section id="id44">
+<h3>Changelog<a class="headerlink" href="#id44" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>First release of the stable API. By :user;`Fernando Nogueira &lt;fmfn&gt;`,
 <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>, <a class="reference external" href="https://github.com/chkoar">Christos Aridas</a>,
@@ -1397,131 +1405,132 @@ and <a class="reference external" href="https://github.com/dvro">Dayvid Oliveira
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-11-0-under-development">Version 0.11.0 (Under development)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changelog">Changelog</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-fixes">Bug fixes</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compatibility">Compatibility</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#enhancements">Enhancements</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecation">Deprecation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#enhancements">Enhancements</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-10-1">Version 0.10.1</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Changelog</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-fixes">Bug fixes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Bug fixes</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-10-0">Version 0.10.0</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Changelog</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Bug fixes</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Compatibility</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Deprecation</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Enhancements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Changelog</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Bug fixes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Compatibility</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Deprecation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Enhancements</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-9-1">Version 0.9.1</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Changelog</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-9-0">Version 0.9.0</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Changelog</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-9-0">Version 0.9.0</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Changelog</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-8-1">Version 0.8.1</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Changelog</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Changelog</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#maintenance">Maintenance</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-8-0">Version 0.8.0</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Changelog</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Changelog</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#new-features">New features</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Enhancements</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Bug fixes</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Maintenance</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Deprecation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Enhancements</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Bug fixes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Maintenance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Deprecation</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-7-0">Version 0.7.0</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Changelog</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Maintenance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Changelog</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Maintenance</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#changed-models">Changed models</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Bug fixes</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Enhancements</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Deprecation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Bug fixes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Enhancements</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Deprecation</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-6-2">Version 0.6.2</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Changelog</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Changelog</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-6-1">Version 0.6.1</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Changelog</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Bug fixes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Changelog</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Bug fixes</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-6-0">Version 0.6.0</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Changelog</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Changed models</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">Bug fixes</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">Maintenance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Changelog</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">Changed models</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">Bug fixes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">Maintenance</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#enhancement">Enhancement</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">Deprecation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">Deprecation</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-5-0">Version 0.5.0</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">Changelog</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">Changed models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">Changelog</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">Changed models</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">Enhancement</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">Maintenance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">Enhancement</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id32">Maintenance</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bug">Bug</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-4-2">Version 0.4.2</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id32">Changelog</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">Bug fixes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">Changelog</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">Bug fixes</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-4">Version 0.4</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#highlights">Highlights</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">Changelog</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id35">Changelog</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#api">API</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id35">New features</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id36">Enhancement</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id37">Bug fixes</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id38">Maintenance</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id39">Documentation</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id40">Deprecation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id36">New features</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id37">Enhancement</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id38">Bug fixes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id39">Maintenance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id40">Documentation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id41">Deprecation</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-3">Version 0.3</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id41">Changelog</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-2">Version 0.2</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id42">Changelog</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-1">Version 0.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-2">Version 0.2</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id43">Changelog</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-1">Version 0.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id44">Changelog</a></li>
 </ul>
 </li>
 </ul>
