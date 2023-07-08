@@ -635,14 +635,23 @@ encode the categorical features. In this regard, we make use of the
 </div>
 <p>The first model will be trained using the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method and with imbalanced
 mini-batches.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_auc_score</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_auc_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">parse_version</span>
+
+<span class="n">tf_version</span> <span class="o">=</span> <span class="n">parse_version</span><span class="p">(</span><span class="n">tensorflow</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
 
 
 <span class="nd">@timeit</span>
 <span class="k">def</span> <span class="nf">fit_predict_imbalanced_model</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">):</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">make_model</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">tf_version</span> <span class="o">&lt;</span> <span class="n">parse_version</span><span class="p">(</span><span class="s2">&quot;2.6&quot;</span><span class="p">):</span>
+        <span class="c1"># predict_proba was removed in tensorflow 2.6</span>
+        <span class="n">predict_method</span> <span class="o">=</span> <span class="s2">&quot;predict_proba&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">predict_method</span> <span class="o">=</span> <span class="s2">&quot;predict&quot;</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">predict_method</span><span class="p">)(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 </pre></div>
 </div>

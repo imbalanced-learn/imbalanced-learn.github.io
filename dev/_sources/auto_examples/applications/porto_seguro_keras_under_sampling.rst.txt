@@ -223,29 +223,37 @@ We create a decorator to report the computation time
 The first model will be trained using the ``fit`` method and with imbalanced
 mini-batches.
 
-.. GENERATED FROM PYTHON SOURCE LINES 152-164
+.. GENERATED FROM PYTHON SOURCE LINES 152-172
 
 .. code-block:: default
 
-
+    import tensorflow
     from sklearn.metrics import roc_auc_score
+    from sklearn.utils import parse_version
+
+    tf_version = parse_version(tensorflow.__version__)
 
 
     @timeit
     def fit_predict_imbalanced_model(X_train, y_train, X_test, y_test):
         model = make_model(X_train.shape[1])
         model.fit(X_train, y_train, epochs=2, verbose=1, batch_size=1000)
-        y_pred = model.predict_proba(X_test, batch_size=1000)
+        if tf_version < parse_version("2.6"):
+            # predict_proba was removed in tensorflow 2.6
+            predict_method = "predict_proba"
+        else:
+            predict_method = "predict"
+        y_pred = getattr(model, predict_method)(X_test, batch_size=1000)
         return roc_auc_score(y_test, y_pred)
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 165-167
+.. GENERATED FROM PYTHON SOURCE LINES 173-175
 
 In the contrary, we will use imbalanced-learn to create a generator of
 mini-batches which will yield balanced mini-batches.
 
-.. GENERATED FROM PYTHON SOURCE LINES 167-182
+.. GENERATED FROM PYTHON SOURCE LINES 175-190
 
 .. code-block:: default
 
@@ -265,17 +273,17 @@ mini-batches which will yield balanced mini-batches.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 183-185
+.. GENERATED FROM PYTHON SOURCE LINES 191-193
 
 Classification loop
 ##############################################################################
 
-.. GENERATED FROM PYTHON SOURCE LINES 187-189
+.. GENERATED FROM PYTHON SOURCE LINES 195-197
 
 We will perform a 10-fold cross-validation and train the neural-network with
 the two different strategies previously presented.
 
-.. GENERATED FROM PYTHON SOURCE LINES 189-216
+.. GENERATED FROM PYTHON SOURCE LINES 197-224
 
 .. code-block:: default
 
@@ -307,12 +315,12 @@ the two different strategies previously presented.
         cv_results_balanced.append(roc_auc)
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 217-219
+.. GENERATED FROM PYTHON SOURCE LINES 225-227
 
 Plot of the results and computation time
 ##############################################################################
 
-.. GENERATED FROM PYTHON SOURCE LINES 219-251
+.. GENERATED FROM PYTHON SOURCE LINES 227-259
 
 .. code-block:: default
 
