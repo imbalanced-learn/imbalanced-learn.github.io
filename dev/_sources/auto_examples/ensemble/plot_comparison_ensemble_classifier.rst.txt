@@ -151,7 +151,7 @@ imbalanced set.
  .. code-block:: none
 
     Decision tree classifier performance:
-    Balanced accuracy: 0.76 - Geometric mean 0.73
+    Balanced accuracy: 0.72 - Geometric mean 0.68
 
 
 
@@ -290,7 +290,7 @@ Random forest is another popular ensemble method and it is usually
 outperforming bagging. Here, we used a vanilla random forest and its balanced
 counterpart in which each bootstrap sample is balanced.
 
-.. GENERATED FROM PYTHON SOURCE LINES 141-156
+.. GENERATED FROM PYTHON SOURCE LINES 141-160
 
 .. code-block:: default
 
@@ -300,7 +300,11 @@ counterpart in which each bootstrap sample is balanced.
 
     rf = RandomForestClassifier(n_estimators=50, random_state=0)
     brf = BalancedRandomForestClassifier(
-        n_estimators=50, sampling_strategy="all", replacement=True, random_state=0
+        n_estimators=50,
+        sampling_strategy="all",
+        replacement=True,
+        bootstrap=False,
+        random_state=0,
     )
 
     rf.fit(X_train, y_train)
@@ -316,13 +320,13 @@ counterpart in which each bootstrap sample is balanced.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 157-160
+.. GENERATED FROM PYTHON SOURCE LINES 161-164
 
 Similarly to the previous experiment, the balanced classifier outperform the
 classifier which learn from imbalanced bootstrap samples. In addition, random
 forest outperforms the bagging classifier.
 
-.. GENERATED FROM PYTHON SOURCE LINES 162-173
+.. GENERATED FROM PYTHON SOURCE LINES 166-177
 
 .. code-block:: default
 
@@ -348,12 +352,12 @@ forest outperforms the bagging classifier.
     Random Forest classifier performance:
     Balanced accuracy: 0.73 - Geometric mean 0.68
     Balanced Random Forest classifier performance:
-    Balanced accuracy: 0.87 - Geometric mean 0.86
+    Balanced accuracy: 0.87 - Geometric mean 0.87
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 174-183
+.. GENERATED FROM PYTHON SOURCE LINES 178-187
 
 .. code-block:: default
 
@@ -378,7 +382,7 @@ forest outperforms the bagging classifier.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 184-190
+.. GENERATED FROM PYTHON SOURCE LINES 188-194
 
 Boosting classifier
 -------------------
@@ -387,7 +391,7 @@ In the same manner, easy ensemble classifier is a bag of balanced AdaBoost
 classifier. However, it will be slower to train than random forest and will
 achieve worse performance.
 
-.. GENERATED FROM PYTHON SOURCE LINES 192-205
+.. GENERATED FROM PYTHON SOURCE LINES 196-209
 
 .. code-block:: default
 
@@ -411,7 +415,7 @@ achieve worse performance.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 206-217
+.. GENERATED FROM PYTHON SOURCE LINES 210-221
 
 .. code-block:: default
 
@@ -435,14 +439,14 @@ achieve worse performance.
  .. code-block:: none
 
     Easy ensemble classifier performance:
-    Balanced accuracy: 0.85 - Geometric mean 0.85
+    Balanced accuracy: 0.84 - Geometric mean 0.84
     RUSBoost classifier performance:
-    Balanced accuracy: 0.85 - Geometric mean 0.85
+    Balanced accuracy: 0.86 - Geometric mean 0.86
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 218-229
+.. GENERATED FROM PYTHON SOURCE LINES 222-233
 
 .. code-block:: default
 
@@ -472,7 +476,7 @@ achieve worse performance.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  15.174 seconds)
+   **Total running time of the script:** ( 0 minutes  15.390 seconds)
 
 **Estimated memory usage:**  229 MB
 
