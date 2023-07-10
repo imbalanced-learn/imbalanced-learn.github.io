@@ -465,6 +465,14 @@ in 0.14.
 one-hot encoding should be divided by <code class="docutils literal notranslate"><span class="pre">sqrt(2)</span></code> and not <code class="docutils literal notranslate"><span class="pre">2</span></code>, taking into account that
 they are plugged into an Euclidean distance computation.
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/1014">#1014</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+<li><p>Fix a bug in <a class="reference internal" href="references/generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTENC</span></code></a> where the median of standard
+deviation of the continuous features was only computed on the minority class. Now,
+we are computing this statistic for each class that is up-sampled.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/1015">#1015</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+<li><p>Fix a bug in <a class="reference internal" href="references/generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTENC</span></code></a> such that the case where
+the median of standard deviation of the continuous features is null is handled
+in the multiclass case as well.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/1015">#1015</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
 </ul>
 </section>
 </section>
