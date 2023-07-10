@@ -424,6 +424,15 @@ document.write(`
 <span id="changes-0-11"></span><h1>Version 0.11.1<a class="headerlink" href="#version-0-11-1" title="Permalink to this heading">#</a></h1>
 <section id="changelog">
 <h2>Changelog<a class="headerlink" href="#changelog" title="Permalink to this heading">#</a></h2>
+<section id="bug-fixes">
+<h3>Bug fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Fix a bug in <a class="reference internal" href="../references/generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTENC</span></code></a> where the entries of the
+one-hot encoding should be divided by <code class="docutils literal notranslate"><span class="pre">sqrt(2)</span></code> and not <code class="docutils literal notranslate"><span class="pre">2</span></code>, taking into account that
+they are plugged into an Euclidean distance computation.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/1014">#1014</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+</ul>
+</section>
 </section>
 </section>
 <section id="version-0-11-0">
@@ -431,8 +440,8 @@ document.write(`
 <p><strong>July 8, 2023</strong></p>
 <section id="id1">
 <h2>Changelog<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<section id="bug-fixes">
-<h3>Bug fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this heading">#</a></h3>
+<section id="id2">
+<h3>Bug fixes<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Fix a bug in <a class="reference internal" href="../references/generated/imblearn.metrics.classification_report_imbalanced.html#imblearn.metrics.classification_report_imbalanced" title="imblearn.metrics.classification_report_imbalanced"><code class="xref py py-func docutils literal notranslate"><span class="pre">classification_report_imbalanced</span></code></a> where the
 parameter <code class="docutils literal notranslate"><span class="pre">target_names</span></code> was not taken into account when <code class="docutils literal notranslate"><span class="pre">output_dict=True</span></code>.
@@ -526,12 +535,15 @@ when <code class="docutils literal notranslate"><span class="pre">categorical_fe
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Version 0.11.1</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changelog">Changelog</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changelog">Changelog</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-fixes">Bug fixes</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-11-0">Version 0.11.0</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Changelog</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-fixes">Bug fixes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Bug fixes</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compatibility">Compatibility</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecation">Deprecation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enhancements">Enhancements</a></li>
