@@ -818,11 +818,26 @@ and the output a 3 nearest neighbors classifier. The class can be used as:</p>
 <a class="reference external image-reference" href="./auto_examples/under-sampling/plot_comparison_under_sampling.html"><img alt="_images/sphx_glr_plot_comparison_under_sampling_005.png" class="align-center" src="_images/sphx_glr_plot_comparison_under_sampling_005.png" style="width: 900.0px; height: 1500.0px;" /></a>
 </section>
 </section>
-<section id="instance-hardness-threshold">
-<span id="id11"></span><h4><span class="section-number">3.2.2.4. </span>Instance hardness threshold<a class="headerlink" href="#instance-hardness-threshold" title="Permalink to this heading">#</a></h4>
-<p><a class="reference internal" href="references/generated/imblearn.under_sampling.InstanceHardnessThreshold.html#imblearn.under_sampling.InstanceHardnessThreshold" title="imblearn.under_sampling.InstanceHardnessThreshold"><code class="xref py py-class docutils literal notranslate"><span class="pre">InstanceHardnessThreshold</span></code></a> is a specific algorithm in which a
-classifier is trained on the data and the samples with lower probabilities are
-removed <span id="id12">[<a class="reference internal" href="zzz_references.html#id21" title="Michael R Smith, Tony Martinez, and Christophe Giraud-Carrier. An instance level analysis of data complexity. Machine learning, 95(2):225–256, 2014.">SMGC14</a>]</span>. The class can be used as:</p>
+</section>
+<section id="additional-undersampling-techniques">
+<span id="instance-hardness-threshold"></span><h3><span class="section-number">3.2.3. </span>Additional undersampling techniques<a class="headerlink" href="#additional-undersampling-techniques" title="Permalink to this heading">#</a></h3>
+<section id="id11">
+<h4><span class="section-number">3.2.3.1. </span>Instance hardness threshold<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h4>
+<p><strong>Instance Hardness</strong> is a measure of how difficult it is to classify an instance or
+observation correctly. In other words, hard instances are observations that are hard to
+classify correctly.</p>
+<p>Fundamentally, instances that are hard to classify correctly are those for which the
+learning algorithm or classifier produces a low probability of predicting the correct
+class label.</p>
+<p>If we removed these hard instances from the dataset, the logic goes, we would help the
+classifier better identify the different classes <span id="id12">[<a class="reference internal" href="zzz_references.html#id21" title="Michael R Smith, Tony Martinez, and Christophe Giraud-Carrier. An instance level analysis of data complexity. Machine learning, 95(2):225–256, 2014.">SMGC14</a>]</span>.</p>
+<p><a class="reference internal" href="references/generated/imblearn.under_sampling.InstanceHardnessThreshold.html#imblearn.under_sampling.InstanceHardnessThreshold" title="imblearn.under_sampling.InstanceHardnessThreshold"><code class="xref py py-class docutils literal notranslate"><span class="pre">InstanceHardnessThreshold</span></code></a> trains a classifier on the data and then removes the
+samples with lower probabilities <span id="id13">[<a class="reference internal" href="zzz_references.html#id21" title="Michael R Smith, Tony Martinez, and Christophe Giraud-Carrier. An instance level analysis of data complexity. Machine learning, 95(2):225–256, 2014.">SMGC14</a>]</span>. Or in other words, it
+retains the observations with the higher class probabilities.</p>
+<p>In our implementation, <a class="reference internal" href="references/generated/imblearn.under_sampling.InstanceHardnessThreshold.html#imblearn.under_sampling.InstanceHardnessThreshold" title="imblearn.under_sampling.InstanceHardnessThreshold"><code class="xref py py-class docutils literal notranslate"><span class="pre">InstanceHardnessThreshold</span></code></a> is (almost) a controlled
+under-sampling method: it will retain a specific number of observations of the target
+class(es), which is specified by the user (see caveat below).</p>
+<p>The class can be used as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <span class="n">InstanceHardnessThreshold</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">iht</span> <span class="o">=</span> <span class="n">InstanceHardnessThreshold</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
@@ -833,17 +848,17 @@ removed <span id="id12">[<a class="reference internal" href="zzz_references.html
 <span class="go">[(0, 64), (1, 64), (2, 64)]</span>
 </pre></div>
 </div>
-<p>This class has 2 important parameters. <code class="docutils literal notranslate"><span class="pre">estimator</span></code> will accept any
-scikit-learn classifier which has a method <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code>. The classifier
-training is performed using a cross-validation and the parameter <code class="docutils literal notranslate"><span class="pre">cv</span></code> can set
-the number of folds to use.</p>
+<p><a class="reference internal" href="references/generated/imblearn.under_sampling.InstanceHardnessThreshold.html#imblearn.under_sampling.InstanceHardnessThreshold" title="imblearn.under_sampling.InstanceHardnessThreshold"><code class="xref py py-class docutils literal notranslate"><span class="pre">InstanceHardnessThreshold</span></code></a> has 2 important parameters. The parameter
+<code class="docutils literal notranslate"><span class="pre">estimator</span></code> accepts any scikit-learn classifier with a method <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code>.
+This classifier will be used to identify the hard instances. The training is performed
+with cross-validation which can be specified through the parameter <a href="#id14"><span class="problematic" id="id15">``</span></a>cv`.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><a class="reference internal" href="references/generated/imblearn.under_sampling.InstanceHardnessThreshold.html#imblearn.under_sampling.InstanceHardnessThreshold" title="imblearn.under_sampling.InstanceHardnessThreshold"><code class="xref py py-class docutils literal notranslate"><span class="pre">InstanceHardnessThreshold</span></code></a> could almost be considered as a
 controlled under-sampling method. However, due to the probability outputs, it
-is not always possible to get a specific number of samples.</p>
+is not always possible to get the specified number of samples.</p>
 </div>
-<p>The figure below gives another examples on some toy data.</p>
+<p>The figure below shows examples of instance hardness undersampling on a toy dataset.</p>
 <a class="reference external image-reference" href="./auto_examples/under-sampling/plot_comparison_under_sampling.html"><img alt="_images/sphx_glr_plot_comparison_under_sampling_006.png" class="align-center" src="_images/sphx_glr_plot_comparison_under_sampling_006.png" style="width: 900.0px; height: 900.0px;" /></a>
 </section>
 </section>
@@ -916,7 +931,10 @@ is not always possible to get a specific number of samples.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#one-sided-selection">3.2.2.3.1. One Sided Selection</a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-hardness-threshold">3.2.2.4. Instance hardness threshold</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-undersampling-techniques">3.2.3. Additional undersampling techniques</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">3.2.3.1. Instance hardness threshold</a></li>
 </ul>
 </li>
 </ul>
