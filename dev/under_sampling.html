@@ -504,6 +504,10 @@ contrast, cleaning under-sampling techniques do not allow this specification
 and are meant for cleaning the feature space.</p>
 <section id="controlled-under-sampling-techniques">
 <span id="controlled-under-sampling"></span><h3><span class="section-number">3.2.1. </span>Controlled under-sampling techniques<a class="headerlink" href="#controlled-under-sampling-techniques" title="Permalink to this heading">#</a></h3>
+<p>Controlled under-sampling techniques reduce the number of observations from the
+targeted classes to a number specified by the user.</p>
+<section id="random-under-sampling">
+<h4><span class="section-number">3.2.1.1. </span>Random under-sampling<a class="headerlink" href="#random-under-sampling" title="Permalink to this heading">#</a></h4>
 <p><a class="reference internal" href="references/generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="imblearn.under_sampling.RandomUnderSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomUnderSampler</span></code></a> is a fast and easy way to balance the data by
 randomly selecting a subset of data for the targeted classes:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <span class="n">RandomUnderSampler</span>
@@ -514,9 +518,9 @@ randomly selecting a subset of data for the targeted classes:</p>
 </pre></div>
 </div>
 <a class="reference external image-reference" href="./auto_examples/under-sampling/plot_comparison_under_sampling.html"><img alt="_images/sphx_glr_plot_comparison_under_sampling_002.png" class="align-center" src="_images/sphx_glr_plot_comparison_under_sampling_002.png" style="width: 900.0px; height: 900.0px;" /></a>
-<p><a class="reference internal" href="references/generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="imblearn.under_sampling.RandomUnderSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomUnderSampler</span></code></a> allows to bootstrap the data by setting
-<code class="docutils literal notranslate"><span class="pre">replacement</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code>. The resampling with multiple classes is performed
-by considering independently each targeted class:</p>
+<p><a class="reference internal" href="references/generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="imblearn.under_sampling.RandomUnderSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomUnderSampler</span></code></a> allows bootstrapping the data by setting
+<code class="docutils literal notranslate"><span class="pre">replacement</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code>. When there are multiple classes, each targeted class is
+under-sampled independently:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="nb">tuple</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">X_resampled</span><span class="p">])</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="go">(192, 2)</span>
@@ -526,8 +530,8 @@ by considering independently each targeted class:</p>
 <span class="go">(181, 2)</span>
 </pre></div>
 </div>
-<p>In addition, <a class="reference internal" href="references/generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="imblearn.under_sampling.RandomUnderSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomUnderSampler</span></code></a> allows to sample heterogeneous data
-(e.g. containing some strings):</p>
+<p><a class="reference internal" href="references/generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="imblearn.under_sampling.RandomUnderSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomUnderSampler</span></code></a> handles heterogeneous data types, i.e. numerical,
+categorical, dates, etc.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X_hetero</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="s1">&#39;xxx&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;yyy&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;zzz&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">]],</span>
 <span class="gp">... </span>                    <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_hetero</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
@@ -539,7 +543,8 @@ by considering independently each targeted class:</p>
 <span class="go">[0 1]</span>
 </pre></div>
 </div>
-<p>It would also work with pandas dataframe:</p>
+<p><a class="reference internal" href="references/generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="imblearn.under_sampling.RandomUnderSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomUnderSampler</span></code></a> also supports pandas dataframes as input for
+undersampling:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df_adult</span><span class="p">,</span> <span class="n">y_adult</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="s1">&#39;adult&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -564,8 +569,9 @@ and <code class="docutils literal notranslate"><span class="pre">n_neighbors_ver
 from scikit-learn. The former parameter is used to compute the average distance
 to the neighbors while the latter is used for the pre-selection of the samples
 of interest.</p>
+</section>
 <section id="mathematical-formulation">
-<h4><span class="section-number">3.2.1.1. </span>Mathematical formulation<a class="headerlink" href="#mathematical-formulation" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">3.2.1.2. </span>Mathematical formulation<a class="headerlink" href="#mathematical-formulation" title="Permalink to this heading">#</a></h4>
 <p>Let <em>positive samples</em> be the samples belonging to the targeted class to be
 under-sampled. <em>Negative sample</em> refers to the samples from the minority class
 (i.e., the most under-represented class).</p>
@@ -857,7 +863,8 @@ is not always possible to get a specific number of samples.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prototype-generation">3.1. Prototype generation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prototype-selection">3.2. Prototype selection</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#controlled-under-sampling-techniques">3.2.1. Controlled under-sampling techniques</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-formulation">3.2.1.1. Mathematical formulation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#random-under-sampling">3.2.1.1. Random under-sampling</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-formulation">3.2.1.2. Mathematical formulation</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-under-sampling-techniques">3.2.2. Cleaning under-sampling techniques</a><ul class="nav section-nav flex-column">
