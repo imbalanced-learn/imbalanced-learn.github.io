@@ -548,13 +548,29 @@ document.write(`
 <h3>From PyPi or conda-forge repositories<a class="headerlink" href="#from-pypi-or-conda-forge-repositories" title="Permalink to this heading">#</a></h3>
 <p>imbalanced-learn is currently available on the PyPi’s repositories and you can
 install it via <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">imbalanced</span><span class="o">-</span><span class="n">learn</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">imbalanced</span><span class="o">-</span><span class="n">learn</span>
 </pre></div>
 </div>
-<p>The package is released also on the Anaconda Cloud platform:</p>
+<p>The package is released also on the conda-forge repositories and you can install
+it with <code class="docutils literal notranslate"><span class="pre">conda</span></code> (or <code class="docutils literal notranslate"><span class="pre">mamba</span></code>):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">imbalanced</span><span class="o">-</span><span class="n">learn</span>
 </pre></div>
 </div>
+</section>
+<section id="intel-optimizations-via-scikit-learn-intelex">
+<h3>Intel optimizations via scikit-learn-intelex<a class="headerlink" href="#intel-optimizations-via-scikit-learn-intelex" title="Permalink to this heading">#</a></h3>
+<p>Imbalanced-learn relies entirely on scikit-learn algorithms. Intel provides an
+optimized version of scikit-learn for Intel hardwares, called scikit-learn-intelex.
+Installing scikit-learn-intelex and patching scikit-learn will activate the
+Intel optimizations.</p>
+<p>You can refer to the following
+<a class="reference external" href="https://medium.com/intel-analytics-software/why-pay-more-for-machine-learning-893683bd78e4">blog post</a>
+for some benchmarks.</p>
+<p>Refer to the following documentation for instructions:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://intel.github.io/scikit-learn-intelex/installation.html">Installation guide</a>.</p></li>
+<li><p><a class="reference external" href="https://intel.github.io/scikit-learn-intelex/what-is-patching.html">Patching guide</a>.</p></li>
+</ul>
 </section>
 <section id="from-source-available-on-github">
 <h3>From source available on GitHub<a class="headerlink" href="#from-source-available-on-github" title="Permalink to this heading">#</a></h3>
@@ -650,6 +666,7 @@ continuous integration in the API.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install">Install</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-pypi-or-conda-forge-repositories">From PyPi or conda-forge repositories</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intel-optimizations-via-scikit-learn-intelex">Intel optimizations via scikit-learn-intelex</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-source-available-on-github">From source available on GitHub</a></li>
 </ul>
 </li>
