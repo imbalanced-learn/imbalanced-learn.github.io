@@ -603,26 +603,33 @@ affected by noise due to the first step sample selection.</p>
 </section>
 <section id="cleaning-under-sampling-techniques">
 <h3><span class="section-number">3.2.2. </span>Cleaning under-sampling techniques<a class="headerlink" href="#cleaning-under-sampling-techniques" title="Permalink to this heading">#</a></h3>
-<p>Cleaning under-sampling techniques do not allow to specify the number of
-samples to have in each class. In fact, each algorithm implement an heuristic
-which will clean the dataset.</p>
+<p>Cleaning under-sampling methods “clean” the feature space by removing
+either “noisy” observations or observations that are “too easy to classify”, depending
+on the method. The final number of observations in each targeted class varies with the
+cleaning method and cannot be specified by the user.</p>
 <section id="tomek-s-links">
 <span id="tomek-links"></span><h4><span class="section-number">3.2.2.1. </span>Tomek’s links<a class="headerlink" href="#tomek-s-links" title="Permalink to this heading">#</a></h4>
-<p><a class="reference internal" href="references/generated/imblearn.under_sampling.TomekLinks.html#imblearn.under_sampling.TomekLinks" title="imblearn.under_sampling.TomekLinks"><code class="xref py py-class docutils literal notranslate"><span class="pre">TomekLinks</span></code></a> detects the so-called Tomek’s links <span id="id3">[<a class="reference internal" href="zzz_references.html#id16" title="Ivan Tomek. Two modifications of cnn. IEEE Trans. Systems, Man and Cybernetics, 6:769–772, 1976.">Tom76b</a>]</span>. A
-Tomek’s link between two samples of different class <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> is
-defined such that for any sample <span class="math notranslate nohighlight">\(z\)</span>:</p>
+<p>A Tomek’s link exists when two samples from different classes are closest neighbors to
+each other.</p>
+<p>Mathematically, a Tomek’s link between two samples from different classes <span class="math notranslate nohighlight">\(x\)</span>
+and <span class="math notranslate nohighlight">\(y\)</span> is defined such that for any sample <span class="math notranslate nohighlight">\(z\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[d(x, y) &lt; d(x, z) \text{ and } d(x, y) &lt; d(y, z)\]</div>
-<p>where <span class="math notranslate nohighlight">\(d(.)\)</span> is the distance between the two samples. In some other
-words, a Tomek’s link exist if the two samples are the nearest neighbors of
-each other. In the figure below, a Tomek’s link is illustrated by highlighting
-the samples of interest in green.</p>
+<p>where <span class="math notranslate nohighlight">\(d(.)\)</span> is the distance between the two samples.</p>
+<p><a class="reference internal" href="references/generated/imblearn.under_sampling.TomekLinks.html#imblearn.under_sampling.TomekLinks" title="imblearn.under_sampling.TomekLinks"><code class="xref py py-class docutils literal notranslate"><span class="pre">TomekLinks</span></code></a> detects and removes Tomek’s links <span id="id3">[<a class="reference internal" href="zzz_references.html#id16" title="Ivan Tomek. Two modifications of cnn. IEEE Trans. Systems, Man and Cybernetics, 6:769–772, 1976.">Tom76b</a>]</span>. The
+underlying idea is that Tomek’s links are noisy or hard to classify observations and
+would not help the algorithm find a suitable discrimination boundary.</p>
+<p>In the following figure, a Tomek’s link between an observation of class <span class="math notranslate nohighlight">\(+\)</span> and
+class <span class="math notranslate nohighlight">\(-\)</span> is highlighted in green:</p>
 <a class="reference external image-reference" href="./auto_examples/under-sampling/plot_illustration_tomek_links.html"><img alt="_images/sphx_glr_plot_illustration_tomek_links_001.png" class="align-center" src="_images/sphx_glr_plot_illustration_tomek_links_001.png" style="width: 480.0px; height: 480.0px;" /></a>
-<p>The parameter <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> control which sample of the link will be
-removed. For instance, the default (i.e., <code class="docutils literal notranslate"><span class="pre">sampling_strategy='auto'</span></code>) will
-remove the sample from the majority class. Both samples from the majority and
-minority class can be removed by setting <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> to <code class="docutils literal notranslate"><span class="pre">'all'</span></code>. The
-figure illustrates this behaviour.</p>
+<p>When <a class="reference internal" href="references/generated/imblearn.under_sampling.TomekLinks.html#imblearn.under_sampling.TomekLinks" title="imblearn.under_sampling.TomekLinks"><code class="xref py py-class docutils literal notranslate"><span class="pre">TomekLinks</span></code></a> finds a Tomek’s link, it can either remove the sample of the
+majority class, or both. The parameter <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> controls which samples
+from the link will be removed. By default (i.e., <code class="docutils literal notranslate"><span class="pre">sampling_strategy='auto'</span></code>), it will
+remove the sample from the majority class. Both samples, that is that from the majority
+and the one from the minority class, can be removed by setting <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> to
+<code class="docutils literal notranslate"><span class="pre">'all'</span></code>.</p>
+<p>The following figure illustrates this behaviour: on the left, only the sample from the
+majority class is removed, whereas on the right, the entire Tomek’s link is removed.</p>
 <a class="reference external image-reference" href="./auto_examples/under-sampling/plot_illustration_tomek_links.html"><img alt="_images/sphx_glr_plot_illustration_tomek_links_002.png" class="align-center" src="_images/sphx_glr_plot_illustration_tomek_links_002.png" style="width: 960.0px; height: 480.0px;" /></a>
 </section>
 <section id="edited-data-set-using-nearest-neighbours">
