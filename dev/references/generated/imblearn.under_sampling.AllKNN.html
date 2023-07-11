@@ -521,10 +521,13 @@ document.write(`
 <h1>AllKNN<a class="headerlink" href="#allknn" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="imblearn.under_sampling.AllKNN">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imblearn.under_sampling.</span></span><span class="sig-name descname"><span class="pre">AllKNN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_strategy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind_sel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_minority</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/bcb675e/imblearn/under_sampling/_prototype_selection/_edited_nearest_neighbours.py#L409"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.AllKNN" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imblearn.under_sampling.</span></span><span class="sig-name descname"><span class="pre">AllKNN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_strategy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind_sel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_minority</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9a59070/imblearn/under_sampling/_prototype_selection/_edited_nearest_neighbours.py#L417"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.AllKNN" title="Permalink to this definition">#</a></dt>
 <dd><p>Undersample based on the AllKNN method.</p>
-<p>This method will apply ENN several time and will vary the number of nearest
-neighbours.</p>
+<p>This method will apply <a class="reference internal" href="imblearn.under_sampling.EditedNearestNeighbours.html#imblearn.under_sampling.EditedNearestNeighbours" title="imblearn.under_sampling.EditedNearestNeighbours"><code class="xref py py-class docutils literal notranslate"><span class="pre">EditedNearestNeighbours</span></code></a> several times varying the
+number of nearest neighbours at each round. It begins by examining 1 closest
+neighbour, and it incrases the neighbourhood by 1 at each round.</p>
+<p>The algorithm stops when the maximum number of neighbours are examined or
+when the majority class becomes the minority class, whichever comes first.</p>
 <p>Read more in the <a class="reference internal" href="../../under_sampling.html#edited-nearest-neighbors"><span class="std std-ref">User Guide</span></a>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -549,20 +552,22 @@ correspond to the targeted classes. The values correspond to the
 desired number of samples for each class.</p></li>
 </ul>
 </dd>
-<dt><strong>n_neighbors</strong><span class="classifier">int or estimator object, default=3</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">int</span></code>, size of the neighbourhood to consider to compute the
-nearest neighbors. If object, an estimator that inherits from
-<code class="xref py py-class docutils literal notranslate"><span class="pre">KNeighborsMixin</span></code> that will be used to
-find the nearest-neighbors. By default, it will be a 3-NN.</p>
+<dt><strong>n_neighbors</strong><span class="classifier">int or estimator object, default=3</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">int</span></code>, size of the maximum neighbourhood to examine for the undersampling.
+If <code class="docutils literal notranslate"><span class="pre">n_neighbors=3</span></code>, in the first iteration the algorithm will examine 1 closest
+neigbhour, in the second round 2, and in the final round 3. If object, an
+estimator that inherits from <code class="xref py py-class docutils literal notranslate"><span class="pre">KNeighborsMixin</span></code>
+that will be used to find the nearest-neighbors. Note that if you want to
+examine the 3 closest neighbours of a sample, you need to pass a 4-KNN.</p>
 </dd>
-<dt><strong>kind_sel</strong><span class="classifier">{‘all’, ‘mode’}, default=’all’</span></dt><dd><p>Strategy to use in order to exclude samples.</p>
+<dt><strong>kind_sel</strong><span class="classifier">{‘all’, ‘mode’}, default=’all’</span></dt><dd><p>Strategy to use to exclude samples.</p>
 <ul class="simple">
-<li><p>If <code class="docutils literal notranslate"><span class="pre">'all'</span></code>, all neighbours will have to agree with the samples of
-interest to not be excluded.</p></li>
-<li><p>If <code class="docutils literal notranslate"><span class="pre">'mode'</span></code>, the majority vote of the neighbours will be used in
-order to exclude a sample.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">'all'</span></code>, all neighbours should be of the same class of the examined
+sample for it not be excluded.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">'mode'</span></code>, most neighbours should be of the same class of the examined
+sample for it not be excluded.</p></li>
 </ul>
 <p>The strategy <code class="docutils literal notranslate"><span class="pre">&quot;all&quot;</span></code> will be less conservative than <code class="docutils literal notranslate"><span class="pre">'mode'</span></code>. Thus,
-more samples will be removed when <code class="docutils literal notranslate"><span class="pre">kind_sel=&quot;all&quot;</span></code> generally.</p>
+more samples will be removed when <code class="docutils literal notranslate"><span class="pre">kind_sel=&quot;all&quot;</span></code>, generally.</p>
 </dd>
 <dt><strong>allow_minority</strong><span class="classifier">bool, default=False</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, it allows the majority classes to become the minority
 class without early stopping.</p>
@@ -581,7 +586,7 @@ for more details.</p>
 <dt class="field-even">Attributes<span class="colon">:</span></dt>
 <dd class="field-even"><dl>
 <dt><strong>sampling_strategy_</strong><span class="classifier">dict</span></dt><dd><p>Dictionary containing the information to sample the dataset. The keys
-corresponds to the class labels from which to sample and the values
+correspond to the class labels from which to sample and the values
 are the number of samples to sample.</p>
 </dd>
 <dt><strong>nn_</strong><span class="classifier">estimator object</span></dt><dd><p>Validated K-nearest Neighbours estimator linked to the parameter <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code>.</p>
@@ -673,7 +678,7 @@ pp. 448-452, June 1976.</p>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.under_sampling.AllKNN.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/bcb675e/imblearn/base.py#L164"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.AllKNN.fit" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9a59070/imblearn/base.py#L164"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.AllKNN.fit" title="Permalink to this definition">#</a></dt>
 <dd><p>Check inputs and statistics of the sampler.</p>
 <p>You should use <code class="docutils literal notranslate"><span class="pre">fit_resample</span></code> in all cases.</p>
 <dl class="field-list simple">
@@ -696,7 +701,7 @@ pp. 448-452, June 1976.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.under_sampling.AllKNN.fit_resample">
-<span class="sig-name descname"><span class="pre">fit_resample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/bcb675e/imblearn/base.py#L186"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.AllKNN.fit_resample" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit_resample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9a59070/imblearn/base.py#L186"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.AllKNN.fit_resample" title="Permalink to this definition">#</a></dt>
 <dd><p>Resample the dataset.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -720,7 +725,7 @@ pp. 448-452, June 1976.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.under_sampling.AllKNN.get_feature_names_out">
-<span class="sig-name descname"><span class="pre">get_feature_names_out</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/bcb675e/imblearn/../../mambaforge/envs/testenv/lib/python3.10/site-packages/sklearn/base.py#L928"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.AllKNN.get_feature_names_out" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_feature_names_out</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9a59070/imblearn/../../mambaforge/envs/testenv/lib/python3.10/site-packages/sklearn/base.py#L928"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.AllKNN.get_feature_names_out" title="Permalink to this definition">#</a></dt>
 <dd><p>Get output feature names for transformation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -748,7 +753,7 @@ match <code class="docutils literal notranslate"><span class="pre">feature_names
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.under_sampling.AllKNN.get_metadata_routing">
-<span class="sig-name descname"><span class="pre">get_metadata_routing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/bcb675e/imblearn/../../mambaforge/envs/testenv/lib/python3.10/site-packages/sklearn/utils/_metadata_requests.py#L1243"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.AllKNN.get_metadata_routing" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_metadata_routing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9a59070/imblearn/../../mambaforge/envs/testenv/lib/python3.10/site-packages/sklearn/utils/_metadata_requests.py#L1243"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.AllKNN.get_metadata_routing" title="Permalink to this definition">#</a></dt>
 <dd><p>Get metadata routing of this object.</p>
 <p>Please check <span class="xref std std-ref">User Guide</span> on how the routing
 mechanism works.</p>
@@ -765,7 +770,7 @@ routing information.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.under_sampling.AllKNN.get_params">
-<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/bcb675e/imblearn/../../mambaforge/envs/testenv/lib/python3.10/site-packages/sklearn/base.py#L177"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.AllKNN.get_params" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9a59070/imblearn/../../mambaforge/envs/testenv/lib/python3.10/site-packages/sklearn/base.py#L177"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.AllKNN.get_params" title="Permalink to this definition">#</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -786,7 +791,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.under_sampling.AllKNN.set_params">
-<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/bcb675e/imblearn/../../mambaforge/envs/testenv/lib/python3.10/site-packages/sklearn/base.py#L201"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.AllKNN.set_params" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/9a59070/imblearn/../../mambaforge/envs/testenv/lib/python3.10/site-packages/sklearn/base.py#L201"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.under_sampling.AllKNN.set_params" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>). The latter have
