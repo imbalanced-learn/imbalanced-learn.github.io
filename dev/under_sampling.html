@@ -654,6 +654,8 @@ the former strategy than the latest:</p>
 <p>The parameter <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> allows to give a classifier subclassed from
 <code class="docutils literal notranslate"><span class="pre">KNeighborsMixin</span></code> from scikit-learn to find the nearest neighbors and make
 the decision to keep a given sample or not.</p>
+<section id="repeated-edited-nearest-neighbours">
+<h5><span class="section-number">3.2.2.2.1. </span>Repeated Edited Nearest Neighbours<a class="headerlink" href="#repeated-edited-nearest-neighbours" title="Permalink to this heading">#</a></h5>
 <p><a class="reference internal" href="references/generated/imblearn.under_sampling.RepeatedEditedNearestNeighbours.html#imblearn.under_sampling.RepeatedEditedNearestNeighbours" title="imblearn.under_sampling.RepeatedEditedNearestNeighbours"><code class="xref py py-class docutils literal notranslate"><span class="pre">RepeatedEditedNearestNeighbours</span></code></a> extends
 <a class="reference internal" href="references/generated/imblearn.under_sampling.EditedNearestNeighbours.html#imblearn.under_sampling.EditedNearestNeighbours" title="imblearn.under_sampling.EditedNearestNeighbours"><code class="xref py py-class docutils literal notranslate"><span class="pre">EditedNearestNeighbours</span></code></a> by repeating the algorithm multiple times
 <span id="id5">[<a class="reference internal" href="zzz_references.html#id18" title="Ivan Tomek. An experiment with the edited nearest-neighbor rule. IEEE Transactions on systems, Man, and Cybernetics, 6(6):448–452, 1976.">Tom76a</a>]</span>. Generally, repeating the algorithm will delete
@@ -665,9 +667,22 @@ more data:</p>
 <span class="go">[(0, 64), (1, 208), (2, 4551)]</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="references/generated/imblearn.under_sampling.AllKNN.html#imblearn.under_sampling.AllKNN" title="imblearn.under_sampling.AllKNN"><code class="xref py py-class docutils literal notranslate"><span class="pre">AllKNN</span></code></a> differs from the previous
-<a class="reference internal" href="references/generated/imblearn.under_sampling.RepeatedEditedNearestNeighbours.html#imblearn.under_sampling.RepeatedEditedNearestNeighbours" title="imblearn.under_sampling.RepeatedEditedNearestNeighbours"><code class="xref py py-class docutils literal notranslate"><span class="pre">RepeatedEditedNearestNeighbours</span></code></a> since the number of neighbors of the
-internal nearest neighbors algorithm is increased at each iteration
+<p>The user can set up the number of times the edited nearest neighbours method should be
+repeated through the parameter <code class="docutils literal notranslate"><span class="pre">max_iter</span></code>.</p>
+<p>The repetitions will stop when:</p>
+<ol class="arabic simple">
+<li><p>the maximum number of iterations is reached, or</p></li>
+<li><p>no more observations are removed, or</p></li>
+<li><p>one of the majority classes becomes a minority class, or</p></li>
+<li><p>one of the majority classes disappears during the undersampling.</p></li>
+</ol>
+</section>
+<section id="all-knn">
+<h5><span class="section-number">3.2.2.2.2. </span>All KNN<a class="headerlink" href="#all-knn" title="Permalink to this heading">#</a></h5>
+<p><a class="reference internal" href="references/generated/imblearn.under_sampling.AllKNN.html#imblearn.under_sampling.AllKNN" title="imblearn.under_sampling.AllKNN"><code class="xref py py-class docutils literal notranslate"><span class="pre">AllKNN</span></code></a> is a variation of the
+<a class="reference internal" href="references/generated/imblearn.under_sampling.RepeatedEditedNearestNeighbours.html#imblearn.under_sampling.RepeatedEditedNearestNeighbours" title="imblearn.under_sampling.RepeatedEditedNearestNeighbours"><code class="xref py py-class docutils literal notranslate"><span class="pre">RepeatedEditedNearestNeighbours</span></code></a> where the number of neighbours evaluated at
+each round of <a class="reference internal" href="references/generated/imblearn.under_sampling.EditedNearestNeighbours.html#imblearn.under_sampling.EditedNearestNeighbours" title="imblearn.under_sampling.EditedNearestNeighbours"><code class="xref py py-class docutils literal notranslate"><span class="pre">EditedNearestNeighbours</span></code></a> increases. It starts by editing based on
+1-Nearest Neighbour, and it increases the neighbourhood by 1 at each iteration
 <span id="id6">[<a class="reference internal" href="zzz_references.html#id18" title="Ivan Tomek. An experiment with the edited nearest-neighbor rule. IEEE Transactions on systems, Man, and Cybernetics, 6(6):448–452, 1976.">Tom76a</a>]</span>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <span class="n">AllKNN</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">allknn</span> <span class="o">=</span> <span class="n">AllKNN</span><span class="p">()</span>
@@ -676,9 +691,14 @@ internal nearest neighbors algorithm is increased at each iteration
 <span class="go">[(0, 64), (1, 220), (2, 4601)]</span>
 </pre></div>
 </div>
-<p>In the example below, it can be seen that the three algorithms have similar
-impact by cleaning noisy samples next to the boundaries of the classes.</p>
+<p><a class="reference internal" href="references/generated/imblearn.under_sampling.AllKNN.html#imblearn.under_sampling.AllKNN" title="imblearn.under_sampling.AllKNN"><code class="xref py py-class docutils literal notranslate"><span class="pre">AllKNN</span></code></a> stops cleaning when the maximum number of neighbours to examine, which
+is determined by the user through the parameter <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> is reached, or when the
+majority class becomes the minority class.</p>
+<p>In the example below, we see that <a class="reference internal" href="references/generated/imblearn.under_sampling.EditedNearestNeighbours.html#imblearn.under_sampling.EditedNearestNeighbours" title="imblearn.under_sampling.EditedNearestNeighbours"><code class="xref py py-class docutils literal notranslate"><span class="pre">EditedNearestNeighbours</span></code></a>,
+<a class="reference internal" href="references/generated/imblearn.under_sampling.RepeatedEditedNearestNeighbours.html#imblearn.under_sampling.RepeatedEditedNearestNeighbours" title="imblearn.under_sampling.RepeatedEditedNearestNeighbours"><code class="xref py py-class docutils literal notranslate"><span class="pre">RepeatedEditedNearestNeighbours</span></code></a> and <a class="reference internal" href="references/generated/imblearn.under_sampling.AllKNN.html#imblearn.under_sampling.AllKNN" title="imblearn.under_sampling.AllKNN"><code class="xref py py-class docutils literal notranslate"><span class="pre">AllKNN</span></code></a> have similar impact when
+cleaning “noisy” samples at the boundaries between classes.</p>
 <a class="reference external image-reference" href="./auto_examples/under-sampling/plot_comparison_under_sampling.html"><img alt="_images/sphx_glr_plot_comparison_under_sampling_004.png" class="align-center" src="_images/sphx_glr_plot_comparison_under_sampling_004.png" style="width: 900.0px; height: 1500.0px;" /></a>
+</section>
 </section>
 <section id="condensed-nearest-neighbors">
 <span id="id7"></span><h4><span class="section-number">3.2.2.3. </span>Condensed nearest neighbors<a class="headerlink" href="#condensed-nearest-neighbors" title="Permalink to this heading">#</a></h4>
@@ -842,7 +862,11 @@ is not always possible to get a specific number of samples.</p>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-under-sampling-techniques">3.2.2. Cleaning under-sampling techniques</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tomek-s-links">3.2.2.1. Tomek’s links</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#edited-data-set-using-nearest-neighbours">3.2.2.2. Edited data set using nearest neighbours</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#edited-data-set-using-nearest-neighbours">3.2.2.2. Edited data set using nearest neighbours</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#repeated-edited-nearest-neighbours">3.2.2.2.1. Repeated Edited Nearest Neighbours</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#all-knn">3.2.2.2.2. All KNN</a></li>
+</ul>
+</li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#condensed-nearest-neighbors">3.2.2.3. Condensed nearest neighbors</a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#one-sided-selection">3.2.2.3.1. One Sided Selection</a></li>
 </ul>
