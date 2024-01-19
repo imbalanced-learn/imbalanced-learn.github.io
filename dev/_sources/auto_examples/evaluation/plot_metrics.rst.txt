@@ -29,7 +29,7 @@ geometric mean and (ii) index balanced accuracy.
 
 .. GENERATED FROM PYTHON SOURCE LINES 11-15
 
-.. code-block:: default
+.. code-block:: Python
 
 
     # Authors: Guillaume Lemaitre <g.lemaitre58@gmail.com>
@@ -44,7 +44,7 @@ geometric mean and (ii) index balanced accuracy.
 
 .. GENERATED FROM PYTHON SOURCE LINES 16-20
 
-.. code-block:: default
+.. code-block:: Python
 
     print(__doc__)
 
@@ -63,7 +63,7 @@ First, we will generate some imbalanced dataset.
 
 .. GENERATED FROM PYTHON SOURCE LINES 24-39
 
-.. code-block:: default
+.. code-block:: Python
 
     from sklearn.datasets import make_classification
 
@@ -93,7 +93,7 @@ We will split the data into a training and testing set.
 
 .. GENERATED FROM PYTHON SOURCE LINES 43-49
 
-.. code-block:: default
+.. code-block:: Python
 
     from sklearn.model_selection import train_test_split
 
@@ -116,7 +116,7 @@ classifier.
 
 .. GENERATED FROM PYTHON SOURCE LINES 53-59
 
-.. code-block:: default
+.. code-block:: Python
 
 
     from sklearn.linear_model import LogisticRegression
@@ -133,7 +133,7 @@ classifier.
 
 .. GENERATED FROM PYTHON SOURCE LINES 60-68
 
-.. code-block:: default
+.. code-block:: Python
 
     from imblearn.pipeline import make_pipeline
 
@@ -159,7 +159,7 @@ in `y_test`.
 
 .. GENERATED FROM PYTHON SOURCE LINES 75-78
 
-.. code-block:: default
+.. code-block:: Python
 
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
@@ -179,7 +179,7 @@ the balancing of the dataset.
 
 .. GENERATED FROM PYTHON SOURCE LINES 84-88
 
-.. code-block:: default
+.. code-block:: Python
 
     from imblearn.metrics import geometric_mean_score
 
@@ -205,7 +205,7 @@ imbalanced learning problems.
 
 .. GENERATED FROM PYTHON SOURCE LINES 93-103
 
-.. code-block:: default
+.. code-block:: Python
 
     from imblearn.metrics import make_index_balanced_accuracy
 
@@ -232,7 +232,7 @@ imbalanced learning problems.
 
 .. GENERATED FROM PYTHON SOURCE LINES 104-111
 
-.. code-block:: default
+.. code-block:: Python
 
     alpha = 0.5
     geo_mean = make_index_balanced_accuracy(alpha=alpha, squared=True)(geometric_mean_score)
@@ -257,7 +257,7 @@ imbalanced learning problems.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.148 seconds)
+   **Total running time of the script:** (0 minutes 2.719 seconds)
 
 **Estimated memory usage:**  10 MB
 
@@ -268,16 +268,13 @@ imbalanced learning problems.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_metrics.ipynb <plot_metrics.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_metrics.py <plot_metrics.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_metrics.ipynb <plot_metrics.ipynb>`
 
 
 .. only:: html

@@ -28,7 +28,7 @@ these negative effects.
 
 .. GENERATED FROM PYTHON SOURCE LINES 10-14
 
-.. code-block:: default
+.. code-block:: Python
 
 
     # Authors: Guillaume Lemaitre <g.lemaitre58@gmail.com>
@@ -43,7 +43,7 @@ these negative effects.
 
 .. GENERATED FROM PYTHON SOURCE LINES 15-17
 
-.. code-block:: default
+.. code-block:: Python
 
     print(__doc__)
 
@@ -68,7 +68,7 @@ We are dropping the following features:
 
 .. GENERATED FROM PYTHON SOURCE LINES 29-34
 
-.. code-block:: default
+.. code-block:: Python
 
     from sklearn.datasets import fetch_openml
 
@@ -79,13 +79,6 @@ We are dropping the following features:
 
 
 
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    /home/circleci/mambaforge/envs/testenv/lib/python3.11/site-packages/sklearn/datasets/_openml.py:1022: FutureWarning: The default value of `parser` will change from `'liac-arff'` to `'auto'` in 1.4. You can set `parser='auto'` to silence this warning. Therefore, an `ImportError` will be raised from 1.4 if the dataset is dense and pandas is not installed. Note that the pandas parser may return different data types. See the Notes Section in fetch_openml's API doc for details.
-      warn(
-
 
 
 
@@ -95,7 +88,7 @@ The "adult" dataset as a class ratio of about 3:1
 
 .. GENERATED FROM PYTHON SOURCE LINES 38-41
 
-.. code-block:: default
+.. code-block:: Python
 
     classes_count = y.value_counts()
     classes_count
@@ -123,7 +116,7 @@ learning from an imbalanced dataset, we will increase its ratio to 30:1
 
 .. GENERATED FROM PYTHON SOURCE LINES 46-56
 
-.. code-block:: default
+.. code-block:: Python
 
     from imblearn.datasets import make_imbalance
 
@@ -161,7 +154,7 @@ majority class independently of the features provided.
 
 .. GENERATED FROM PYTHON SOURCE LINES 62-65
 
-.. code-block:: default
+.. code-block:: Python
 
 
     from sklearn.dummy import DummyClassifier
@@ -175,7 +168,7 @@ majority class independently of the features provided.
 
 .. GENERATED FROM PYTHON SOURCE LINES 66-73
 
-.. code-block:: default
+.. code-block:: Python
 
     from sklearn.model_selection import cross_validate
 
@@ -204,7 +197,7 @@ take into account the balancing issue.
 
 .. GENERATED FROM PYTHON SOURCE LINES 78-83
 
-.. code-block:: default
+.. code-block:: Python
 
     print(
         f"Balanced accuracy score of a dummy classifier: "
@@ -233,7 +226,7 @@ our experiments and show them as a pandas dataframe.
 
 .. GENERATED FROM PYTHON SOURCE LINES 90-93
 
-.. code-block:: default
+.. code-block:: Python
 
     index = []
     scores = {"Accuracy": [], "Balanced accuracy": []}
@@ -255,7 +248,7 @@ obtained with our :class:`~sklearn.dummy.DummyClassifier`.
 
 .. GENERATED FROM PYTHON SOURCE LINES 101-111
 
-.. code-block:: default
+.. code-block:: Python
 
     import pandas as pd
 
@@ -325,7 +318,7 @@ First, we define our numerical and categorical pipelines.
 
 .. GENERATED FROM PYTHON SOURCE LINES 124-136
 
-.. code-block:: default
+.. code-block:: Python
 
     from sklearn.impute import SimpleImputer
     from sklearn.pipeline import make_pipeline
@@ -354,7 +347,7 @@ numerical pipeline
 
 .. GENERATED FROM PYTHON SOURCE LINES 142-151
 
-.. code-block:: default
+.. code-block:: Python
 
     from sklearn.compose import make_column_selector as selector
     from sklearn.compose import make_column_transformer
@@ -380,7 +373,7 @@ model.
 
 .. GENERATED FROM PYTHON SOURCE LINES 157-161
 
-.. code-block:: default
+.. code-block:: Python
 
     from sklearn.linear_model import LogisticRegression
 
@@ -395,7 +388,7 @@ model.
 
 .. GENERATED FROM PYTHON SOURCE LINES 162-170
 
-.. code-block:: default
+.. code-block:: Python
 
     index += ["Logistic regression"]
     cv_result = cross_validate(lr_clf, df_res, y_res, scoring=scoring)
@@ -439,12 +432,12 @@ model.
         <tr>
           <th>Dummy classifier</th>
           <td>0.967755</td>
-          <td>0.500000</td>
+          <td>0.50000</td>
         </tr>
         <tr>
           <th>Logistic regression</th>
           <td>0.971010</td>
-          <td>0.573922</td>
+          <td>0.57587</td>
         </tr>
       </tbody>
     </table>
@@ -465,7 +458,7 @@ need to ordinal encode the categorical data.
 
 .. GENERATED FROM PYTHON SOURCE LINES 178-181
 
-.. code-block:: default
+.. code-block:: Python
 
 
     from sklearn.ensemble import RandomForestClassifier
@@ -479,7 +472,7 @@ need to ordinal encode the categorical data.
 
 .. GENERATED FROM PYTHON SOURCE LINES 182-200
 
-.. code-block:: default
+.. code-block:: Python
 
     from sklearn.preprocessing import OrdinalEncoder
 
@@ -508,7 +501,7 @@ need to ordinal encode the categorical data.
 
 .. GENERATED FROM PYTHON SOURCE LINES 201-209
 
-.. code-block:: default
+.. code-block:: Python
 
     index += ["Random forest"]
     cv_result = cross_validate(rf_clf, df_res, y_res, scoring=scoring)
@@ -557,12 +550,12 @@ need to ordinal encode the categorical data.
         <tr>
           <th>Logistic regression</th>
           <td>0.971010</td>
-          <td>0.573922</td>
+          <td>0.575870</td>
         </tr>
         <tr>
           <th>Random forest</th>
-          <td>0.971766</td>
-          <td>0.642608</td>
+          <td>0.971662</td>
+          <td>0.637109</td>
         </tr>
       </tbody>
     </table>
@@ -590,7 +583,7 @@ linear model and tree-based model.
 
 .. GENERATED FROM PYTHON SOURCE LINES 226-236
 
-.. code-block:: default
+.. code-block:: Python
 
     lr_clf.set_params(logisticregression__class_weight="balanced")
 
@@ -641,17 +634,17 @@ linear model and tree-based model.
         <tr>
           <th>Logistic regression</th>
           <td>0.971010</td>
-          <td>0.573922</td>
+          <td>0.575870</td>
         </tr>
         <tr>
           <th>Random forest</th>
-          <td>0.971766</td>
-          <td>0.642608</td>
+          <td>0.971662</td>
+          <td>0.637109</td>
         </tr>
         <tr>
           <th>Logistic regression with balanced class weights</th>
-          <td>0.802308</td>
-          <td>0.817809</td>
+          <td>0.798818</td>
+          <td>0.812503</td>
         </tr>
       </tbody>
     </table>
@@ -662,7 +655,7 @@ linear model and tree-based model.
 
 .. GENERATED FROM PYTHON SOURCE LINES 237-247
 
-.. code-block:: default
+.. code-block:: Python
 
     rf_clf.set_params(randomforestclassifier__class_weight="balanced")
 
@@ -713,22 +706,22 @@ linear model and tree-based model.
         <tr>
           <th>Logistic regression</th>
           <td>0.971010</td>
-          <td>0.573922</td>
+          <td>0.575870</td>
         </tr>
         <tr>
           <th>Random forest</th>
-          <td>0.971766</td>
-          <td>0.642608</td>
+          <td>0.971662</td>
+          <td>0.637109</td>
         </tr>
         <tr>
           <th>Logistic regression with balanced class weights</th>
-          <td>0.802308</td>
-          <td>0.817809</td>
+          <td>0.798818</td>
+          <td>0.812503</td>
         </tr>
         <tr>
           <th>Random forest with balanced class weights</th>
-          <td>0.965410</td>
-          <td>0.637384</td>
+          <td>0.963457</td>
+          <td>0.625462</td>
         </tr>
       </tbody>
     </table>
@@ -754,7 +747,7 @@ to do such processing.
 
 .. GENERATED FROM PYTHON SOURCE LINES 262-271
 
-.. code-block:: default
+.. code-block:: Python
 
     from imblearn.pipeline import make_pipeline as make_pipeline_with_sampler
     from imblearn.under_sampling import RandomUnderSampler
@@ -774,7 +767,7 @@ to do such processing.
 
 .. GENERATED FROM PYTHON SOURCE LINES 272-280
 
-.. code-block:: default
+.. code-block:: Python
 
     index += ["Under-sampling + Logistic regression"]
     cv_result = cross_validate(lr_clf, df_res, y_res, scoring=scoring)
@@ -823,27 +816,27 @@ to do such processing.
         <tr>
           <th>Logistic regression</th>
           <td>0.971010</td>
-          <td>0.573922</td>
+          <td>0.575870</td>
         </tr>
         <tr>
           <th>Random forest</th>
-          <td>0.971766</td>
-          <td>0.642608</td>
+          <td>0.971662</td>
+          <td>0.637109</td>
         </tr>
         <tr>
           <th>Logistic regression with balanced class weights</th>
-          <td>0.802308</td>
-          <td>0.817809</td>
+          <td>0.798818</td>
+          <td>0.812503</td>
         </tr>
         <tr>
           <th>Random forest with balanced class weights</th>
-          <td>0.965410</td>
-          <td>0.637384</td>
+          <td>0.963457</td>
+          <td>0.625462</td>
         </tr>
         <tr>
           <th>Under-sampling + Logistic regression</th>
-          <td>0.794338</td>
-          <td>0.820712</td>
+          <td>0.792931</td>
+          <td>0.816109</td>
         </tr>
       </tbody>
     </table>
@@ -854,7 +847,7 @@ to do such processing.
 
 .. GENERATED FROM PYTHON SOURCE LINES 281-287
 
-.. code-block:: default
+.. code-block:: Python
 
     rf_clf = make_pipeline_with_sampler(
         preprocessor_tree,
@@ -871,7 +864,7 @@ to do such processing.
 
 .. GENERATED FROM PYTHON SOURCE LINES 288-296
 
-.. code-block:: default
+.. code-block:: Python
 
     index += ["Under-sampling + Random forest"]
     cv_result = cross_validate(rf_clf, df_res, y_res, scoring=scoring)
@@ -920,32 +913,32 @@ to do such processing.
         <tr>
           <th>Logistic regression</th>
           <td>0.971010</td>
-          <td>0.573922</td>
+          <td>0.575870</td>
         </tr>
         <tr>
           <th>Random forest</th>
-          <td>0.971766</td>
-          <td>0.642608</td>
+          <td>0.971662</td>
+          <td>0.637109</td>
         </tr>
         <tr>
           <th>Logistic regression with balanced class weights</th>
-          <td>0.802308</td>
-          <td>0.817809</td>
+          <td>0.798818</td>
+          <td>0.812503</td>
         </tr>
         <tr>
           <th>Random forest with balanced class weights</th>
-          <td>0.965410</td>
-          <td>0.637384</td>
+          <td>0.963457</td>
+          <td>0.625462</td>
         </tr>
         <tr>
           <th>Under-sampling + Logistic regression</th>
-          <td>0.794338</td>
-          <td>0.820712</td>
+          <td>0.792931</td>
+          <td>0.816109</td>
         </tr>
         <tr>
           <th>Under-sampling + Random forest</th>
-          <td>0.794520</td>
-          <td>0.808697</td>
+          <td>0.792358</td>
+          <td>0.807611</td>
         </tr>
       </tbody>
     </table>
@@ -978,7 +971,7 @@ the base of the :class:`imblearn.ensemble.BalancedRandomForestClassifier` and
 
 .. GENERATED FROM PYTHON SOURCE LINES 318-331
 
-.. code-block:: default
+.. code-block:: Python
 
     from imblearn.ensemble import BalancedRandomForestClassifier
 
@@ -1002,7 +995,7 @@ the base of the :class:`imblearn.ensemble.BalancedRandomForestClassifier` and
 
 .. GENERATED FROM PYTHON SOURCE LINES 332-340
 
-.. code-block:: default
+.. code-block:: Python
 
     index += ["Balanced random forest"]
     cv_result = cross_validate(rf_clf, df_res, y_res, scoring=scoring)
@@ -1051,37 +1044,37 @@ the base of the :class:`imblearn.ensemble.BalancedRandomForestClassifier` and
         <tr>
           <th>Logistic regression</th>
           <td>0.971010</td>
-          <td>0.573922</td>
+          <td>0.575870</td>
         </tr>
         <tr>
           <th>Random forest</th>
-          <td>0.971766</td>
-          <td>0.642608</td>
+          <td>0.971662</td>
+          <td>0.637109</td>
         </tr>
         <tr>
           <th>Logistic regression with balanced class weights</th>
-          <td>0.802308</td>
-          <td>0.817809</td>
+          <td>0.798818</td>
+          <td>0.812503</td>
         </tr>
         <tr>
           <th>Random forest with balanced class weights</th>
-          <td>0.965410</td>
-          <td>0.637384</td>
+          <td>0.963457</td>
+          <td>0.625462</td>
         </tr>
         <tr>
           <th>Under-sampling + Logistic regression</th>
-          <td>0.794338</td>
-          <td>0.820712</td>
+          <td>0.792931</td>
+          <td>0.816109</td>
         </tr>
         <tr>
           <th>Under-sampling + Random forest</th>
-          <td>0.794520</td>
-          <td>0.808697</td>
+          <td>0.792358</td>
+          <td>0.807611</td>
         </tr>
         <tr>
           <th>Balanced random forest</th>
-          <td>0.849947</td>
-          <td>0.811192</td>
+          <td>0.846951</td>
+          <td>0.801454</td>
         </tr>
       </tbody>
     </table>
@@ -1099,7 +1092,7 @@ classifier within a :class:`~imblearn.ensemble.BalancedBaggingClassifier`.
 
 .. GENERATED FROM PYTHON SOURCE LINES 345-368
 
-.. code-block:: default
+.. code-block:: Python
 
 
     from sklearn.ensemble import HistGradientBoostingClassifier
@@ -1163,42 +1156,42 @@ classifier within a :class:`~imblearn.ensemble.BalancedBaggingClassifier`.
         <tr>
           <th>Logistic regression</th>
           <td>0.971010</td>
-          <td>0.573922</td>
+          <td>0.575870</td>
         </tr>
         <tr>
           <th>Random forest</th>
-          <td>0.971766</td>
-          <td>0.642608</td>
+          <td>0.971662</td>
+          <td>0.637109</td>
         </tr>
         <tr>
           <th>Logistic regression with balanced class weights</th>
-          <td>0.802308</td>
-          <td>0.817809</td>
+          <td>0.798818</td>
+          <td>0.812503</td>
         </tr>
         <tr>
           <th>Random forest with balanced class weights</th>
-          <td>0.965410</td>
-          <td>0.637384</td>
+          <td>0.963457</td>
+          <td>0.625462</td>
         </tr>
         <tr>
           <th>Under-sampling + Logistic regression</th>
-          <td>0.794338</td>
-          <td>0.820712</td>
+          <td>0.792931</td>
+          <td>0.816109</td>
         </tr>
         <tr>
           <th>Under-sampling + Random forest</th>
-          <td>0.794520</td>
-          <td>0.808697</td>
+          <td>0.792358</td>
+          <td>0.807611</td>
         </tr>
         <tr>
           <th>Balanced random forest</th>
-          <td>0.849947</td>
-          <td>0.811192</td>
+          <td>0.846951</td>
+          <td>0.801454</td>
         </tr>
         <tr>
           <th>Balanced bag of histogram gradient boosting</th>
-          <td>0.832782</td>
-          <td>0.818329</td>
+          <td>0.829604</td>
+          <td>0.813595</td>
         </tr>
       </tbody>
     </table>
@@ -1216,9 +1209,9 @@ portion of the majority class.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 45.508 seconds)
+   **Total running time of the script:** (0 minutes 43.840 seconds)
 
-**Estimated memory usage:**  111 MB
+**Estimated memory usage:**  80 MB
 
 
 .. _sphx_glr_download_auto_examples_applications_plot_impact_imbalanced_classes.py:
@@ -1227,16 +1220,13 @@ portion of the majority class.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_impact_imbalanced_classes.ipynb <plot_impact_imbalanced_classes.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_impact_imbalanced_classes.py <plot_impact_imbalanced_classes.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_impact_imbalanced_classes.ipynb <plot_impact_imbalanced_classes.ipynb>`
 
 
 .. only:: html

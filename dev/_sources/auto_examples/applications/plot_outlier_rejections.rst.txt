@@ -29,7 +29,7 @@ the current scikit-learn pipeline.
 
 .. GENERATED FROM PYTHON SOURCE LINES 12-40
 
-.. code-block:: default
+.. code-block:: Python
 
 
     # Authors: Guillaume Lemaitre <g.lemaitre58@gmail.com>
@@ -78,7 +78,7 @@ noise.
 
 .. GENERATED FROM PYTHON SOURCE LINES 47-64
 
-.. code-block:: default
+.. code-block:: Python
 
 
     moons, _ = make_moons(n_samples=500, noise=0.05)
@@ -115,7 +115,7 @@ We will generate some cleaned test data without outliers.
 
 .. GENERATED FROM PYTHON SOURCE LINES 66-78
 
-.. code-block:: default
+.. code-block:: Python
 
 
     moons, _ = make_moons(n_samples=50, noise=0.05)
@@ -156,7 +156,7 @@ our dataset during training. The function passed to the
 
 .. GENERATED FROM PYTHON SOURCE LINES 88-102
 
-.. code-block:: default
+.. code-block:: Python
 
 
 
@@ -196,7 +196,7 @@ affected during the prediction.
 
 .. GENERATED FROM PYTHON SOURCE LINES 109-122
 
-.. code-block:: default
+.. code-block:: Python
 
 
     pipe = make_pipeline(
@@ -230,12 +230,12 @@ affected during the prediction.
 
                   precision    recall  f1-score   support
 
-               0       0.85      1.00      0.92        50
-               1       1.00      0.82      0.90        50
+               0       0.88      1.00      0.93        50
+               1       1.00      0.86      0.92        50
 
-        accuracy                           0.91       100
-       macro avg       0.92      0.91      0.91       100
-    weighted avg       0.92      0.91      0.91       100
+        accuracy                           0.93       100
+       macro avg       0.94      0.93      0.93       100
+    weighted avg       0.94      0.93      0.93       100
 
 
 
@@ -244,7 +244,7 @@ affected during the prediction.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.816 seconds)
+   **Total running time of the script:** (0 minutes 2.021 seconds)
 
 **Estimated memory usage:**  11 MB
 
@@ -255,16 +255,13 @@ affected during the prediction.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_outlier_rejections.ipynb <plot_outlier_rejections.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_outlier_rejections.py <plot_outlier_rejections.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_outlier_rejections.ipynb <plot_outlier_rejections.ipynb>`
 
 
 .. only:: html

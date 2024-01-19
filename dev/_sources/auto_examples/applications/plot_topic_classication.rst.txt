@@ -29,7 +29,7 @@ that for some data sets, the imbalanced ratio is more significant.
 
 .. GENERATED FROM PYTHON SOURCE LINES 11-15
 
-.. code-block:: default
+.. code-block:: Python
 
 
     # Authors: Guillaume Lemaitre <g.lemaitre58@gmail.com>
@@ -44,7 +44,7 @@ that for some data sets, the imbalanced ratio is more significant.
 
 .. GENERATED FROM PYTHON SOURCE LINES 16-18
 
-.. code-block:: default
+.. code-block:: Python
 
     print(__doc__)
 
@@ -68,7 +68,7 @@ than the majority class.
 
 .. GENERATED FROM PYTHON SOURCE LINES 29-46
 
-.. code-block:: default
+.. code-block:: Python
 
     from sklearn.datasets import fetch_20newsgroups
 
@@ -96,7 +96,7 @@ than the majority class.
 
 .. GENERATED FROM PYTHON SOURCE LINES 47-52
 
-.. code-block:: default
+.. code-block:: Python
 
     from collections import Counter
 
@@ -131,7 +131,7 @@ imbalanced.
 
 .. GENERATED FROM PYTHON SOURCE LINES 64-72
 
-.. code-block:: default
+.. code-block:: Python
 
     from sklearn.feature_extraction.text import TfidfVectorizer
     from sklearn.naive_bayes import MultinomialNB
@@ -150,7 +150,7 @@ imbalanced.
 
 .. GENERATED FROM PYTHON SOURCE LINES 73-77
 
-.. code-block:: default
+.. code-block:: Python
 
     from imblearn.metrics import classification_report_imbalanced
 
@@ -193,7 +193,7 @@ imbalanced-learn to properly handle the samplers.
 
 .. GENERATED FROM PYTHON SOURCE LINES 89-92
 
-.. code-block:: default
+.. code-block:: Python
 
 
     from imblearn.pipeline import make_pipeline as make_pipeline_imb
@@ -207,7 +207,7 @@ imbalanced-learn to properly handle the samplers.
 
 .. GENERATED FROM PYTHON SOURCE LINES 93-100
 
-.. code-block:: default
+.. code-block:: Python
 
     from imblearn.under_sampling import RandomUnderSampler
 
@@ -232,7 +232,7 @@ slightly better.
 
 .. GENERATED FROM PYTHON SOURCE LINES 107-108
 
-.. code-block:: default
+.. code-block:: Python
 
     print(classification_report_imbalanced(y_test, y_pred))
 
@@ -245,12 +245,12 @@ slightly better.
 
                        pre       rec       spe        f1       geo       iba       sup
 
-              0       0.72      0.90      0.89      0.80      0.90      0.81       319
-              1       0.97      0.86      0.99      0.91      0.92      0.84       389
-              2       0.95      0.90      0.98      0.93      0.94      0.88       394
+              0       0.70      0.91      0.88      0.79      0.89      0.80       319
+              1       0.97      0.85      0.99      0.91      0.92      0.83       389
+              2       0.95      0.89      0.98      0.92      0.93      0.86       394
               3       0.80      0.74      0.96      0.77      0.84      0.69       251
 
-    avg / total       0.87      0.86      0.96      0.86      0.91      0.82      1353
+    avg / total       0.87      0.85      0.96      0.86      0.90      0.81      1353
 
 
 
@@ -259,9 +259,9 @@ slightly better.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 9.517 seconds)
+   **Total running time of the script:** (0 minutes 14.533 seconds)
 
-**Estimated memory usage:**  117 MB
+**Estimated memory usage:**  114 MB
 
 
 .. _sphx_glr_download_auto_examples_applications_plot_topic_classication.py:
@@ -270,16 +270,13 @@ slightly better.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_topic_classication.ipynb <plot_topic_classication.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_topic_classication.py <plot_topic_classication.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_topic_classication.ipynb <plot_topic_classication.ipynb>`
 
 
 .. only:: html

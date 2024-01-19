@@ -28,7 +28,7 @@ smoothed bootstrap using the
 
 .. GENERATED FROM PYTHON SOURCE LINES 10-14
 
-.. code-block:: default
+.. code-block:: Python
 
 
     # Authors: Guillaume Lemaitre <g.lemaitre58@gmail.com>
@@ -43,7 +43,7 @@ smoothed bootstrap using the
 
 .. GENERATED FROM PYTHON SOURCE LINES 15-21
 
-.. code-block:: default
+.. code-block:: Python
 
     print(__doc__)
 
@@ -65,7 +65,7 @@ The ratio between the classes will be imbalanced.
 
 .. GENERATED FROM PYTHON SOURCE LINES 24-38
 
-.. code-block:: default
+.. code-block:: Python
 
     from collections import Counter
 
@@ -96,7 +96,7 @@ The ratio between the classes will be imbalanced.
 
 .. GENERATED FROM PYTHON SOURCE LINES 39-49
 
-.. code-block:: default
+.. code-block:: Python
 
     import matplotlib.pyplot as plt
 
@@ -128,7 +128,7 @@ majority class.
 
 .. GENERATED FROM PYTHON SOURCE LINES 53-59
 
-.. code-block:: default
+.. code-block:: Python
 
     from imblearn.over_sampling import RandomOverSampler
 
@@ -151,7 +151,7 @@ majority class.
 
 .. GENERATED FROM PYTHON SOURCE LINES 60-67
 
-.. code-block:: default
+.. code-block:: Python
 
     fig, ax = plt.subplots(figsize=(7, 7))
     scatter = plt.scatter(X_res[:, 0], X_res[:, 1], c=y_res, alpha=0.4)
@@ -183,7 +183,7 @@ samples created and therefore create a smoothed bootstrap.
 
 .. GENERATED FROM PYTHON SOURCE LINES 74-78
 
-.. code-block:: default
+.. code-block:: Python
 
     sampler = RandomOverSampler(shrinkage=1, random_state=0)
     X_res, y_res = sampler.fit_resample(X, y)
@@ -204,7 +204,7 @@ samples created and therefore create a smoothed bootstrap.
 
 .. GENERATED FROM PYTHON SOURCE LINES 79-87
 
-.. code-block:: default
+.. code-block:: Python
 
     fig, ax = plt.subplots(figsize=(7, 7))
     scatter = plt.scatter(X_res[:, 0], X_res[:, 1], c=y_res, alpha=0.4)
@@ -236,7 +236,7 @@ add more perturbation when generating the smoothed bootstrap.
 
 .. GENERATED FROM PYTHON SOURCE LINES 93-97
 
-.. code-block:: default
+.. code-block:: Python
 
     sampler = RandomOverSampler(shrinkage=3, random_state=0)
     X_res, y_res = sampler.fit_resample(X, y)
@@ -257,7 +257,7 @@ add more perturbation when generating the smoothed bootstrap.
 
 .. GENERATED FROM PYTHON SOURCE LINES 98-106
 
-.. code-block:: default
+.. code-block:: Python
 
     fig, ax = plt.subplots(figsize=(7, 7))
     scatter = plt.scatter(X_res[:, 0], X_res[:, 1], c=y_res, alpha=0.4)
@@ -286,7 +286,7 @@ the shrinkage to 0 will be equivalent to generating a normal bootstrap.
 
 .. GENERATED FROM PYTHON SOURCE LINES 109-113
 
-.. code-block:: default
+.. code-block:: Python
 
     sampler = RandomOverSampler(shrinkage=0, random_state=0)
     X_res, y_res = sampler.fit_resample(X, y)
@@ -307,7 +307,7 @@ the shrinkage to 0 will be equivalent to generating a normal bootstrap.
 
 .. GENERATED FROM PYTHON SOURCE LINES 114-122
 
-.. code-block:: default
+.. code-block:: Python
 
     fig, ax = plt.subplots(figsize=(7, 7))
     scatter = plt.scatter(X_res[:, 0], X_res[:, 1], c=y_res, alpha=0.4)
@@ -337,7 +337,7 @@ new samples.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 4.445 seconds)
+   **Total running time of the script:** (0 minutes 5.068 seconds)
 
 **Estimated memory usage:**  10 MB
 
@@ -348,16 +348,13 @@ new samples.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_shrinkage_effect.ipynb <plot_shrinkage_effect.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_shrinkage_effect.py <plot_shrinkage_effect.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_shrinkage_effect.ipynb <plot_shrinkage_effect.ipynb>`
 
 
 .. only:: html

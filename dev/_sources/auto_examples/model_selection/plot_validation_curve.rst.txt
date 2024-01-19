@@ -29,7 +29,7 @@ scores of a SMOTE-CART classifier for different values of the
 
 .. GENERATED FROM PYTHON SOURCE LINES 11-16
 
-.. code-block:: default
+.. code-block:: Python
 
 
     # Authors: Christos Aridas
@@ -45,7 +45,7 @@ scores of a SMOTE-CART classifier for different values of the
 
 .. GENERATED FROM PYTHON SOURCE LINES 17-26
 
-.. code-block:: default
+.. code-block:: Python
 
     print(__doc__)
 
@@ -69,7 +69,7 @@ Let's first generate a dataset with imbalanced class distribution.
 
 .. GENERATED FROM PYTHON SOURCE LINES 30-45
 
-.. code-block:: default
+.. code-block:: Python
 
     from sklearn.datasets import make_classification
 
@@ -102,7 +102,7 @@ that we generated.
 
 .. GENERATED FROM PYTHON SOURCE LINES 50-53
 
-.. code-block:: default
+.. code-block:: Python
 
 
     from sklearn.tree import DecisionTreeClassifier
@@ -116,7 +116,7 @@ that we generated.
 
 .. GENERATED FROM PYTHON SOURCE LINES 54-61
 
-.. code-block:: default
+.. code-block:: Python
 
     from imblearn.over_sampling import SMOTE
     from imblearn.pipeline import make_pipeline
@@ -141,7 +141,7 @@ cross-validation.
 
 .. GENERATED FROM PYTHON SOURCE LINES 68-83
 
-.. code-block:: default
+.. code-block:: Python
 
     from sklearn.metrics import cohen_kappa_score, make_scorer
     from sklearn.model_selection import validation_curve
@@ -167,7 +167,7 @@ cross-validation.
 
 .. GENERATED FROM PYTHON SOURCE LINES 84-89
 
-.. code-block:: default
+.. code-block:: Python
 
     train_scores_mean = train_scores.mean(axis=1)
     train_scores_std = train_scores.std(axis=1)
@@ -188,7 +188,7 @@ parameter values that we tried.
 
 .. GENERATED FROM PYTHON SOURCE LINES 94-124
 
-.. code-block:: default
+.. code-block:: Python
 
     import matplotlib.pyplot as plt
 
@@ -235,7 +235,7 @@ parameter values that we tried.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 6.761 seconds)
+   **Total running time of the script:** (0 minutes 7.767 seconds)
 
 **Estimated memory usage:**  10 MB
 
@@ -246,16 +246,13 @@ parameter values that we tried.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_validation_curve.ipynb <plot_validation_curve.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_validation_curve.py <plot_validation_curve.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_validation_curve.ipynb <plot_validation_curve.ipynb>`
 
 
 .. only:: html

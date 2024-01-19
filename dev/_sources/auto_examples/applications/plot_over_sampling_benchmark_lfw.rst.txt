@@ -30,7 +30,7 @@ by using an over-sampler.
 
 .. GENERATED FROM PYTHON SOURCE LINES 12-17
 
-.. code-block:: default
+.. code-block:: Python
 
 
     # Authors: Christos Aridas
@@ -46,7 +46,7 @@ by using an over-sampler.
 
 .. GENERATED FROM PYTHON SOURCE LINES 18-24
 
-.. code-block:: default
+.. code-block:: Python
 
     print(__doc__)
 
@@ -72,7 +72,7 @@ a binary problem by taking picture of only George W. Bush and Bill Clinton.
 
 .. GENERATED FROM PYTHON SOURCE LINES 33-42
 
-.. code-block:: default
+.. code-block:: Python
 
     import numpy as np
     from sklearn.datasets import fetch_lfw_people
@@ -92,7 +92,7 @@ a binary problem by taking picture of only George W. Bush and Bill Clinton.
 
 .. GENERATED FROM PYTHON SOURCE LINES 43-48
 
-.. code-block:: default
+.. code-block:: Python
 
     mask_photos = np.isin(data.target, classes)
     X, y = data.data[mask_photos], data.target[mask_photos]
@@ -112,7 +112,7 @@ We can check the ratio between the two classes.
 
 .. GENERATED FROM PYTHON SOURCE LINES 52-62
 
-.. code-block:: default
+.. code-block:: Python
 
     import matplotlib.pyplot as plt
     import pandas as pd
@@ -158,7 +158,7 @@ We will create different pipelines and evaluate them.
 
 .. GENERATED FROM PYTHON SOURCE LINES 74-90
 
-.. code-block:: default
+.. code-block:: Python
 
 
     from sklearn.neighbors import KNeighborsClassifier
@@ -185,7 +185,7 @@ We will create different pipelines and evaluate them.
 
 .. GENERATED FROM PYTHON SOURCE LINES 91-95
 
-.. code-block:: default
+.. code-block:: Python
 
     from sklearn.model_selection import StratifiedKFold
 
@@ -206,7 +206,7 @@ cross-validation.
 
 .. GENERATED FROM PYTHON SOURCE LINES 101-133
 
-.. code-block:: default
+.. code-block:: Python
 
     from sklearn.metrics import RocCurveDisplay, auc, roc_curve
 
@@ -254,7 +254,7 @@ them on the same plot.
 
 .. GENERATED FROM PYTHON SOURCE LINES 138-151
 
-.. code-block:: default
+.. code-block:: Python
 
     fig, ax = plt.subplots(figsize=(9, 9))
     for d in disp:
@@ -290,9 +290,9 @@ over-sampling or no resampling.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 34.064 seconds)
+   **Total running time of the script:** (0 minutes 37.586 seconds)
 
-**Estimated memory usage:**  241 MB
+**Estimated memory usage:**  231 MB
 
 
 .. _sphx_glr_download_auto_examples_applications_plot_over_sampling_benchmark_lfw.py:
@@ -301,16 +301,13 @@ over-sampling or no resampling.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_over_sampling_benchmark_lfw.ipynb <plot_over_sampling_benchmark_lfw.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_over_sampling_benchmark_lfw.py <plot_over_sampling_benchmark_lfw.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_over_sampling_benchmark_lfw.ipynb <plot_over_sampling_benchmark_lfw.ipynb>`
 
 
 .. only:: html

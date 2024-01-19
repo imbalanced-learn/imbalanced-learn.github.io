@@ -28,7 +28,7 @@ cleaning methods).
 
 .. GENERATED FROM PYTHON SOURCE LINES 11-15
 
-.. code-block:: default
+.. code-block:: Python
 
 
     # Authors: Guillaume Lemaitre <g.lemaitre58@gmail.com>
@@ -43,7 +43,7 @@ cleaning methods).
 
 .. GENERATED FROM PYTHON SOURCE LINES 16-21
 
-.. code-block:: default
+.. code-block:: Python
 
     print(__doc__)
     import seaborn as sns
@@ -66,7 +66,7 @@ First, we will create an imbalanced data set from a the iris data set.
 
 .. GENERATED FROM PYTHON SOURCE LINES 28-37
 
-.. code-block:: default
+.. code-block:: Python
 
     from sklearn.datasets import load_iris
 
@@ -86,7 +86,7 @@ First, we will create an imbalanced data set from a the iris data set.
 
 .. GENERATED FROM PYTHON SOURCE LINES 38-48
 
-.. code-block:: default
+.. code-block:: Python
 
     import matplotlib.pyplot as plt
 
@@ -126,7 +126,7 @@ resampling and the number of samples in the minority class, respectively.
 
 .. GENERATED FROM PYTHON SOURCE LINES 62-68
 
-.. code-block:: default
+.. code-block:: Python
 
 
     # select only 2 classes since the ratio make sense in this case
@@ -143,7 +143,7 @@ resampling and the number of samples in the minority class, respectively.
 
 .. GENERATED FROM PYTHON SOURCE LINES 69-77
 
-.. code-block:: default
+.. code-block:: Python
 
     from imblearn.under_sampling import RandomUnderSampler
 
@@ -175,7 +175,7 @@ class, respectively.
 
 .. GENERATED FROM PYTHON SOURCE LINES 85-92
 
-.. code-block:: default
+.. code-block:: Python
 
     from imblearn.over_sampling import RandomOverSampler
 
@@ -209,7 +209,7 @@ Note that we are using multiple classes from now on.
 
 .. GENERATED FROM PYTHON SOURCE LINES 103-117
 
-.. code-block:: default
+.. code-block:: Python
 
     sampling_strategy = "not minority"
 
@@ -244,7 +244,7 @@ equalized even if targeted.
 
 .. GENERATED FROM PYTHON SOURCE LINES 122-130
 
-.. code-block:: default
+.. code-block:: Python
 
     from imblearn.under_sampling import TomekLinks
 
@@ -278,7 +278,7 @@ algorithms but not for the **cleaning algorithms**. Use a `list` instead.
 
 .. GENERATED FROM PYTHON SOURCE LINES 140-154
 
-.. code-block:: default
+.. code-block:: Python
 
     fig, axs = plt.subplots(ncols=2, figsize=(10, 5))
 
@@ -317,7 +317,7 @@ otherwise.
 
 .. GENERATED FROM PYTHON SOURCE LINES 163-169
 
-.. code-block:: default
+.. code-block:: Python
 
     sampling_strategy = [0, 1, 2]
     tl = TomekLinks(sampling_strategy=sampling_strategy)
@@ -348,7 +348,7 @@ number of samples for each class.
 
 .. GENERATED FROM PYTHON SOURCE LINES 179-194
 
-.. code-block:: default
+.. code-block:: Python
 
     def ratio_multiplier(y):
         from collections import Counter
@@ -380,7 +380,7 @@ number of samples for each class.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.345 seconds)
+   **Total running time of the script:** (0 minutes 2.787 seconds)
 
 **Estimated memory usage:**  36 MB
 
@@ -391,16 +391,13 @@ number of samples for each class.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_sampling_strategy_usage.ipynb <plot_sampling_strategy_usage.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_sampling_strategy_usage.py <plot_sampling_strategy_usage.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_sampling_strategy_usage.ipynb <plot_sampling_strategy_usage.ipynb>`
 
 
 .. only:: html

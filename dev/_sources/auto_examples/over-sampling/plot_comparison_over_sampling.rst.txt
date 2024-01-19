@@ -27,7 +27,7 @@ different over-sampling algorithms available in the imbalanced-learn package.
 
 .. GENERATED FROM PYTHON SOURCE LINES 9-13
 
-.. code-block:: default
+.. code-block:: Python
 
 
     # Authors: Guillaume Lemaitre <g.lemaitre58@gmail.com>
@@ -42,7 +42,7 @@ different over-sampling algorithms available in the imbalanced-learn package.
 
 .. GENERATED FROM PYTHON SOURCE LINES 14-21
 
-.. code-block:: default
+.. code-block:: Python
 
     print(__doc__)
 
@@ -66,7 +66,7 @@ some parameters.
 
 .. GENERATED FROM PYTHON SOURCE LINES 28-52
 
-.. code-block:: default
+.. code-block:: Python
 
     from sklearn.datasets import make_classification
 
@@ -106,7 +106,7 @@ to illustrate the specificities of an algorithm.
 
 .. GENERATED FROM PYTHON SOURCE LINES 58-67
 
-.. code-block:: default
+.. code-block:: Python
 
     def plot_resampling(X, y, sampler, ax, title=None):
         X_res, y_res = sampler.fit_resample(X, y)
@@ -131,7 +131,7 @@ classifier given some data.
 
 .. GENERATED FROM PYTHON SOURCE LINES 73-92
 
-.. code-block:: default
+.. code-block:: Python
 
     import numpy as np
 
@@ -169,7 +169,7 @@ data using a logistic regression classifier which is a linear model.
 
 .. GENERATED FROM PYTHON SOURCE LINES 100-104
 
-.. code-block:: default
+.. code-block:: Python
 
     from sklearn.linear_model import LogisticRegression
 
@@ -189,7 +189,7 @@ dealing with imbalanced classes.
 
 .. GENERATED FROM PYTHON SOURCE LINES 109-124
 
-.. code-block:: default
+.. code-block:: Python
 
     fig, axs = plt.subplots(nrows=2, ncols=2, figsize=(15, 12))
 
@@ -234,7 +234,7 @@ implements such of a strategy.
 
 .. GENERATED FROM PYTHON SOURCE LINES 136-139
 
-.. code-block:: default
+.. code-block:: Python
 
 
     from imblearn.over_sampling import RandomOverSampler
@@ -248,7 +248,7 @@ implements such of a strategy.
 
 .. GENERATED FROM PYTHON SOURCE LINES 140-156
 
-.. code-block:: default
+.. code-block:: Python
 
     from imblearn.pipeline import make_pipeline
 
@@ -287,7 +287,7 @@ between the two data generation strategies.
 
 .. GENERATED FROM PYTHON SOURCE LINES 163-174
 
-.. code-block:: default
+.. code-block:: Python
 
     fig, axs = plt.subplots(nrows=1, ncols=2, figsize=(15, 7))
 
@@ -328,7 +328,7 @@ generated bootstrap samples, one can use some specific heuristic instead.
 
 .. GENERATED FROM PYTHON SOURCE LINES 188-207
 
-.. code-block:: default
+.. code-block:: Python
 
     from imblearn import FunctionSampler  # to use a idendity sampler
     from imblearn.over_sampling import ADASYN, SMOTE
@@ -373,7 +373,7 @@ Therefore, the decision function depending of the algorithm.
 
 .. GENERATED FROM PYTHON SOURCE LINES 215-233
 
-.. code-block:: default
+.. code-block:: Python
 
 
     X, y = create_dataset(n_samples=150, weights=(0.05, 0.25, 0.7))
@@ -412,7 +412,7 @@ issues as illustrated below.
 
 .. GENERATED FROM PYTHON SOURCE LINES 238-253
 
-.. code-block:: default
+.. code-block:: Python
 
     X, y = create_dataset(n_samples=5000, weights=(0.01, 0.05, 0.94), class_sep=0.8)
 
@@ -455,7 +455,7 @@ density.
 
 .. GENERATED FROM PYTHON SOURCE LINES 265-294
 
-.. code-block:: default
+.. code-block:: Python
 
     from sklearn.cluster import MiniBatchKMeans
 
@@ -506,7 +506,7 @@ this case.
 
 .. GENERATED FROM PYTHON SOURCE LINES 300-329
 
-.. code-block:: default
+.. code-block:: Python
 
     from collections import Counter
 
@@ -576,7 +576,7 @@ should use :class:`~imblearn.over_sampling.SMOTEN`.
 
 .. GENERATED FROM PYTHON SOURCE LINES 334-351
 
-.. code-block:: default
+.. code-block:: Python
 
     from imblearn.over_sampling import SMOTEN
 
@@ -626,9 +626,9 @@ should use :class:`~imblearn.over_sampling.SMOTEN`.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 11.408 seconds)
+   **Total running time of the script:** (0 minutes 12.600 seconds)
 
-**Estimated memory usage:**  122 MB
+**Estimated memory usage:**  134 MB
 
 
 .. _sphx_glr_download_auto_examples_over-sampling_plot_comparison_over_sampling.py:
@@ -637,16 +637,13 @@ should use :class:`~imblearn.over_sampling.SMOTEN`.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_comparison_over_sampling.ipynb <plot_comparison_over_sampling.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_comparison_over_sampling.py <plot_comparison_over_sampling.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_comparison_over_sampling.ipynb <plot_comparison_over_sampling.ipynb>`
 
 
 .. only:: html

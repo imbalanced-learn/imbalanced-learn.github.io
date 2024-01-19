@@ -27,7 +27,7 @@ different under-sampling algorithms available in the imbalanced-learn package.
 
 .. GENERATED FROM PYTHON SOURCE LINES 9-13
 
-.. code-block:: default
+.. code-block:: Python
 
 
     # Authors: Guillaume Lemaitre <g.lemaitre58@gmail.com>
@@ -42,7 +42,7 @@ different under-sampling algorithms available in the imbalanced-learn package.
 
 .. GENERATED FROM PYTHON SOURCE LINES 14-20
 
-.. code-block:: default
+.. code-block:: Python
 
     print(__doc__)
 
@@ -65,7 +65,7 @@ some parameters.
 
 .. GENERATED FROM PYTHON SOURCE LINES 27-51
 
-.. code-block:: default
+.. code-block:: Python
 
     from sklearn.datasets import make_classification
 
@@ -105,7 +105,7 @@ to illustrate the specificities of an algorithm.
 
 .. GENERATED FROM PYTHON SOURCE LINES 57-66
 
-.. code-block:: default
+.. code-block:: Python
 
     def plot_resampling(X, y, sampler, ax, title=None):
         X_res, y_res = sampler.fit_resample(X, y)
@@ -130,7 +130,7 @@ classifier given some data.
 
 .. GENERATED FROM PYTHON SOURCE LINES 72-91
 
-.. code-block:: default
+.. code-block:: Python
 
     import numpy as np
 
@@ -160,7 +160,7 @@ classifier given some data.
 
 .. GENERATED FROM PYTHON SOURCE LINES 92-97
 
-.. code-block:: default
+.. code-block:: Python
 
     from sklearn.linear_model import LogisticRegression
 
@@ -184,7 +184,7 @@ the original samples by the centroids of the cluster found.
 
 .. GENERATED FROM PYTHON SOURCE LINES 105-131
 
-.. code-block:: default
+.. code-block:: Python
 
     import matplotlib.pyplot as plt
     from sklearn.cluster import MiniBatchKMeans
@@ -216,7 +216,7 @@ the original samples by the centroids of the cluster found.
 
 
 .. image-sg:: /auto_examples/under-sampling/images/sphx_glr_plot_comparison_under_sampling_001.png
-   :alt: Decision function with FunctionSampler, Resampling with FunctionSampler, Decision function with ClusterCentroids, Resampling with ClusterCentroids
+   :alt: Decision function with ClusterCentroids, Resampling with ClusterCentroids, Decision function with FunctionSampler, Resampling with FunctionSampler
    :srcset: /auto_examples/under-sampling/images/sphx_glr_plot_comparison_under_sampling_001.png
    :class: sphx-glr-single-img
 
@@ -241,7 +241,7 @@ the targeted class.
 
 .. GENERATED FROM PYTHON SOURCE LINES 146-165
 
-.. code-block:: default
+.. code-block:: Python
 
     from imblearn.under_sampling import RandomUnderSampler
 
@@ -289,7 +289,7 @@ largest.
 
 .. GENERATED FROM PYTHON SOURCE LINES 178-203
 
-.. code-block:: default
+.. code-block:: Python
 
     from imblearn.under_sampling import NearMiss
 
@@ -354,7 +354,7 @@ increasing it at each iteration.
 
 .. GENERATED FROM PYTHON SOURCE LINES 214-240
 
-.. code-block:: default
+.. code-block:: Python
 
     from imblearn.under_sampling import (
         AllKNN,
@@ -410,7 +410,7 @@ do not agree with this rule.
 
 .. GENERATED FROM PYTHON SOURCE LINES 254-280
 
-.. code-block:: default
+.. code-block:: Python
 
     from imblearn.under_sampling import (
         CondensedNearestNeighbour,
@@ -458,7 +458,7 @@ with a low probability will be removed.
 
 .. GENERATED FROM PYTHON SOURCE LINES 286-312
 
-.. code-block:: default
+.. code-block:: Python
 
     from imblearn.under_sampling import InstanceHardnessThreshold
 
@@ -501,7 +501,7 @@ with a low probability will be removed.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 9.075 seconds)
+   **Total running time of the script:** (0 minutes 10.111 seconds)
 
 **Estimated memory usage:**  50 MB
 
@@ -512,16 +512,13 @@ with a low probability will be removed.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_comparison_under_sampling.ipynb <plot_comparison_under_sampling.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_comparison_under_sampling.py <plot_comparison_under_sampling.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_comparison_under_sampling.ipynb <plot_comparison_under_sampling.ipynb>`
 
 
 .. only:: html

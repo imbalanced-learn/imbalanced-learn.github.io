@@ -34,7 +34,7 @@ References
 
 .. GENERATED FROM PYTHON SOURCE LINES 17-23
 
-.. code-block:: default
+.. code-block:: Python
 
 
     # Authors: Guillaume Lemaitre <g.lemaitre58@gmail.com>
@@ -50,7 +50,7 @@ Data loading
 
 .. GENERATED FROM PYTHON SOURCE LINES 26-32
 
-.. code-block:: default
+.. code-block:: Python
 
 
     from collections import Counter
@@ -66,7 +66,7 @@ link in the introduction.
 
 .. GENERATED FROM PYTHON SOURCE LINES 35-43
 
-.. code-block:: default
+.. code-block:: Python
 
 
     training_data = pd.read_csv("./input/train.csv")
@@ -83,7 +83,7 @@ The data set is imbalanced and it will have an effect on the fitting.
 
 .. GENERATED FROM PYTHON SOURCE LINES 45-48
 
-.. code-block:: default
+.. code-block:: Python
 
 
     print(f"The data set is imbalanced: {Counter(y_train['target'])}")
@@ -96,7 +96,7 @@ Define the pre-processing pipeline
 
 .. GENERATED FROM PYTHON SOURCE LINES 51-62
 
-.. code-block:: default
+.. code-block:: Python
 
 
     from sklearn.compose import ColumnTransformer
@@ -118,7 +118,7 @@ encode the categorical features. In this regard, we make use of the
 
 .. GENERATED FROM PYTHON SOURCE LINES 66-99
 
-.. code-block:: default
+.. code-block:: Python
 
 
     numerical_columns = [
@@ -161,7 +161,7 @@ Create a neural-network
 
 .. GENERATED FROM PYTHON SOURCE LINES 102-130
 
-.. code-block:: default
+.. code-block:: Python
 
     from tensorflow.keras.models import Sequential
 
@@ -198,7 +198,7 @@ We create a decorator to report the computation time
 
 .. GENERATED FROM PYTHON SOURCE LINES 132-149
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import time
@@ -225,7 +225,7 @@ mini-batches.
 
 .. GENERATED FROM PYTHON SOURCE LINES 152-172
 
-.. code-block:: default
+.. code-block:: Python
 
     import tensorflow
     from sklearn.metrics import roc_auc_score
@@ -255,7 +255,7 @@ mini-batches which will yield balanced mini-batches.
 
 .. GENERATED FROM PYTHON SOURCE LINES 175-190
 
-.. code-block:: default
+.. code-block:: Python
 
 
     from imblearn.keras import BalancedBatchGenerator
@@ -285,7 +285,7 @@ the two different strategies previously presented.
 
 .. GENERATED FROM PYTHON SOURCE LINES 197-224
 
-.. code-block:: default
+.. code-block:: Python
 
 
     from sklearn.model_selection import StratifiedKFold
@@ -322,7 +322,7 @@ Plot of the results and computation time
 
 .. GENERATED FROM PYTHON SOURCE LINES 227-259
 
-.. code-block:: default
+.. code-block:: Python
 
 
     df_results = pd.DataFrame(
@@ -357,11 +357,6 @@ Plot of the results and computation time
     plt.ylabel("")
     plt.title("Difference in terms of ROC-AUC using a random under-sampling")
 
-
-.. rst-class:: sphx-glr-timing
-
-   **Total running time of the script:** (0 minutes 0.000 seconds)
-
 **Estimated memory usage:**  0 MB
 
 
@@ -371,16 +366,13 @@ Plot of the results and computation time
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: porto_seguro_keras_under_sampling.ipynb <porto_seguro_keras_under_sampling.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: porto_seguro_keras_under_sampling.py <porto_seguro_keras_under_sampling.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: porto_seguro_keras_under_sampling.ipynb <porto_seguro_keras_under_sampling.ipynb>`
 
 
 .. only:: html
