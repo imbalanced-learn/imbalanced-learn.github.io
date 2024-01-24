@@ -1,0 +1,709 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Version 0.6.2 &#8212; Version 0.12.0</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/imbalanced-learn.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/imbalanced-learn.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'whats_new/v0.6';</script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo_wide.png" class="logo__image only-light" alt="Version 0.12.0 - Home"/>
+    <script>document.write(`<img src="../_static/logo_wide.png" class="logo__image only-dark" alt="Version 0.12.0 - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../install.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../user_guide.html">
+                        User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../references/index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../auto_examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../whats_new.html">
+                        Release history
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../about.html">
+                        About us
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-learn-contrib/imbalanced-learn" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../install.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../user_guide.html">
+                        User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../references/index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../auto_examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../whats_new.html">
+                        Release history
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../about.html">
+                        About us
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-learn-contrib/imbalanced-learn" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Version 0.6.2</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="version-0-6-2">
+<span id="changes-0-6-2"></span><h1>Version 0.6.2<a class="headerlink" href="#version-0-6-2" title="Permalink to this heading">#</a></h1>
+<p><strong>February 16, 2020</strong></p>
+<p>This is a bug-fix release to resolve some issues regarding the handling the
+input and the output format of the arrays.</p>
+<section id="changelog">
+<h2>Changelog<a class="headerlink" href="#changelog" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Allow column vectors to be passed as targets.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/673">#673</a> by <a class="reference external" href="https://github.com/chkoar">Christos Aridas</a>.</p></li>
+<li><p>Better input/output handling for pandas, numpy and plain lists.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/681">#681</a> by <a class="reference external" href="https://github.com/chkoar">Christos Aridas</a>.</p></li>
+</ul>
+</section>
+</section>
+<section id="version-0-6-1">
+<span id="changes-0-6-1"></span><h1>Version 0.6.1<a class="headerlink" href="#version-0-6-1" title="Permalink to this heading">#</a></h1>
+<p><strong>December 7, 2019</strong></p>
+<p>This is a bug-fix release to primarily resolve some packaging issues in version
+0.6.0. It also includes minor documentation improvements and some bug fixes.</p>
+<section id="id1">
+<h2>Changelog<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<section id="bug-fixes">
+<h3>Bug fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Fix a bug in <a class="reference internal" href="../references/generated/imblearn.ensemble.BalancedRandomForestClassifier.html#imblearn.ensemble.BalancedRandomForestClassifier" title="imblearn.ensemble.BalancedRandomForestClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.ensemble.BalancedRandomForestClassifier</span></code></a>
+leading to a wrong number of samples used during fitting due <code class="docutils literal notranslate"><span class="pre">max_samples</span></code>
+and therefore a bad computation of the OOB score.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/656">#656</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="version-0-6-0">
+<span id="changes-0-6"></span><h1>Version 0.6.0<a class="headerlink" href="#version-0-6-0" title="Permalink to this heading">#</a></h1>
+<p><strong>December 5, 2019</strong></p>
+<section id="id2">
+<h2>Changelog<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<section id="changed-models">
+<h3>Changed models<a class="headerlink" href="#changed-models" title="Permalink to this heading">#</a></h3>
+<p>The following models might give some different sampling due to changes in
+scikit-learn:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../references/generated/imblearn.under_sampling.ClusterCentroids.html#imblearn.under_sampling.ClusterCentroids" title="imblearn.under_sampling.ClusterCentroids"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.under_sampling.ClusterCentroids</span></code></a></p></li>
+<li><p><a class="reference internal" href="../references/generated/imblearn.under_sampling.InstanceHardnessThreshold.html#imblearn.under_sampling.InstanceHardnessThreshold" title="imblearn.under_sampling.InstanceHardnessThreshold"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.under_sampling.InstanceHardnessThreshold</span></code></a></p></li>
+</ul>
+<p>The following samplers will give different results due to change linked to
+the random state internal usage:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../references/generated/imblearn.over_sampling.ADASYN.html#imblearn.over_sampling.ADASYN" title="imblearn.over_sampling.ADASYN"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.ADASYN</span></code></a></p></li>
+<li><p><a class="reference internal" href="../references/generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.SMOTENC</span></code></a></p></li>
+</ul>
+</section>
+<section id="id3">
+<h3>Bug fixes<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../references/generated/imblearn.under_sampling.InstanceHardnessThreshold.html#imblearn.under_sampling.InstanceHardnessThreshold" title="imblearn.under_sampling.InstanceHardnessThreshold"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.under_sampling.InstanceHardnessThreshold</span></code></a> now take into
+account the <code class="docutils literal notranslate"><span class="pre">random_state</span></code> and will give deterministic results. In addition,
+<code class="docutils literal notranslate"><span class="pre">cross_val_predict</span></code> is used to take advantage of the parallelism.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/599">#599</a> by <a class="reference external" href="https://github.com/Shihab-Shahriar">Shihab Shahriar Khan</a>.</p></li>
+<li><p>Fix a bug in <a class="reference internal" href="../references/generated/imblearn.ensemble.BalancedRandomForestClassifier.html#imblearn.ensemble.BalancedRandomForestClassifier" title="imblearn.ensemble.BalancedRandomForestClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.ensemble.BalancedRandomForestClassifier</span></code></a>
+leading to a wrong computation of the OOB score.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/656">#656</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+</ul>
+</section>
+<section id="maintenance">
+<h3>Maintenance<a class="headerlink" href="#maintenance" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Update imports from scikit-learn after that some modules have been privatize.
+The following import have been changed:
+<code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.ensemble._base._set_random_states</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.ensemble._forest._parallel_build_trees</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.metrics._classification._check_targets</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.metrics._classification._prf_divide</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.utils.Bunch</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.utils._safe_indexing</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.utils._testing.assert_allclose</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.utils._testing.assert_array_equal</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.utils._testing.SkipTest</span></code>.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/617">#617</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+<li><p>Synchronize <a class="reference internal" href="../references/pipeline.html#module-imblearn.pipeline" title="imblearn.pipeline"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.pipeline</span></code></a> with <code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.pipeline</span></code>.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/620">#620</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+<li><p>Synchronize <a class="reference internal" href="../references/generated/imblearn.ensemble.BalancedRandomForestClassifier.html#imblearn.ensemble.BalancedRandomForestClassifier" title="imblearn.ensemble.BalancedRandomForestClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.ensemble.BalancedRandomForestClassifier</span></code></a> and add
+parameters <code class="docutils literal notranslate"><span class="pre">max_samples</span></code> and <code class="docutils literal notranslate"><span class="pre">ccp_alpha</span></code>.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/621">#621</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+</ul>
+</section>
+<section id="enhancement">
+<h3>Enhancement<a class="headerlink" href="#enhancement" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.under_sampling.RandomUnderSampling</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.RandomOverSampling</span></code>,
+<a class="reference internal" href="../references/generated/imblearn.datasets.make_imbalance.html#imblearn.datasets.make_imbalance" title="imblearn.datasets.make_imbalance"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.datasets.make_imbalance</span></code></a> accepts Pandas DataFrame in and
+will output Pandas DataFrame. Similarly, it will accepts Pandas Series in and
+will output Pandas Series.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/636">#636</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+<li><p><a class="reference internal" href="../references/generated/imblearn.FunctionSampler.html#imblearn.FunctionSampler" title="imblearn.FunctionSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.FunctionSampler</span></code></a> accepts a parameter <code class="docutils literal notranslate"><span class="pre">validate</span></code> allowing
+to check or not the input <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/637">#637</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+<li><p><a class="reference internal" href="../references/generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="imblearn.under_sampling.RandomUnderSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.under_sampling.RandomUnderSampler</span></code></a>,
+<a class="reference internal" href="../references/generated/imblearn.over_sampling.RandomOverSampler.html#imblearn.over_sampling.RandomOverSampler" title="imblearn.over_sampling.RandomOverSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.RandomOverSampler</span></code></a> can resample when non
+finite values are present in <code class="docutils literal notranslate"><span class="pre">X</span></code>.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/643">#643</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+<li><p>All samplers will output a Pandas DataFrame if a Pandas DataFrame was given
+as an input.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/644">#644</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+<li><p>The samples generation in
+<a class="reference internal" href="../references/generated/imblearn.over_sampling.ADASYN.html#imblearn.over_sampling.ADASYN" title="imblearn.over_sampling.ADASYN"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.ADASYN</span></code></a>,
+<a class="reference internal" href="../references/generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.SMOTE</span></code></a>,
+<a class="reference internal" href="../references/generated/imblearn.over_sampling.BorderlineSMOTE.html#imblearn.over_sampling.BorderlineSMOTE" title="imblearn.over_sampling.BorderlineSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.BorderlineSMOTE</span></code></a>,
+<a class="reference internal" href="../references/generated/imblearn.over_sampling.SVMSMOTE.html#imblearn.over_sampling.SVMSMOTE" title="imblearn.over_sampling.SVMSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.SVMSMOTE</span></code></a>,
+<a class="reference internal" href="../references/generated/imblearn.over_sampling.KMeansSMOTE.html#imblearn.over_sampling.KMeansSMOTE" title="imblearn.over_sampling.KMeansSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.KMeansSMOTE</span></code></a>,
+<a class="reference internal" href="../references/generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.SMOTENC</span></code></a> is now vectorize with giving
+an additional speed-up when <code class="docutils literal notranslate"><span class="pre">X</span></code> in sparse.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/596">#596</a> and <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/649">#649</a> by <a class="reference external" href="https://github.com/MattEding">Matt Eding</a>.</p></li>
+</ul>
+</section>
+<section id="deprecation">
+<h3>Deprecation<a class="headerlink" href="#deprecation" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The following classes have been removed after 2 deprecation cycles:
+<code class="docutils literal notranslate"><span class="pre">ensemble.BalanceCascade</span></code> and <code class="docutils literal notranslate"><span class="pre">ensemble.EasyEnsemble</span></code>.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/617">#617</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+<li><p>The following functions have been removed after 2 deprecation cycles:
+<code class="docutils literal notranslate"><span class="pre">utils.check_ratio</span></code>.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/617">#617</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+<li><p>The parameter <code class="docutils literal notranslate"><span class="pre">ratio</span></code> and <code class="docutils literal notranslate"><span class="pre">return_indices</span></code> has been removed from all
+samplers.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/617">#617</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+<li><p>The parameters <code class="docutils literal notranslate"><span class="pre">m_neighbors</span></code>, <code class="docutils literal notranslate"><span class="pre">out_step</span></code>, <code class="docutils literal notranslate"><span class="pre">kind</span></code>, <code class="docutils literal notranslate"><span class="pre">svm_estimator</span></code>
+have been removed from the <a class="reference internal" href="../references/generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">imblearn.over_sampling.SMOTE</span></code></a>.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/617">#617</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Version 0.6.2</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changelog">Changelog</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-6-1">Version 0.6.1</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Changelog</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-fixes">Bug fixes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-6-0">Version 0.6.0</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Changelog</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changed-models">Changed models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Bug fixes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maintenance">Maintenance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enhancement">Enhancement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecation">Deprecation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/scikit-learn-contrib/imbalanced-learn/edit/master/doc/whats_new/v0.6.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/whats_new/v0.6.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2014-2024, The imbalanced-learn developers.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.0.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

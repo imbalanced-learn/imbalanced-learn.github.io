@@ -1,0 +1,59 @@
+.. _changes_0_12:
+
+.. _changes_0_12:
+
+Version 0.12.0
+==============
+
+**January 24, 2024**
+
+Changelog
+---------
+
+Bug fixes
+.........
+
+- Fix a bug in :class:`~imblearn.under_sampling.NeighbourhoodCleaningRule` where the
+  `kind_sel="all"` was not working as explained in the literature.
+  :pr:`1012` by :user:`Guillaume Lemaitre <glemaitre>`.
+
+- Fix a bug in :class:`~imblearn.under_sampling.NeighbourhoodCleaningRule` where the
+  `threshold_cleaning` ratio was multiplied on the total number of samples instead of
+  the number of samples in the minority class.
+  :pr:`1012` by :user:`Guillaume Lemaitre <glemaitre>`.
+
+- Fix a bug in :class:`~imblearn.under_sampling.RandomUnderSampler` and
+  :class:`~imblearn.over_sampling.RandomOverSampler` where a column containing only
+  NaT was not handled correctly.
+  :pr:`1059` by :user:`Guillaume Lemaitre <glemaitre>`.
+
+Compatibility
+.............
+
+- :class:`~imblearn.ensemble.BalancedRandomForestClassifier` now support missing values
+  and monotonic constraints if scikit-learn >= 1.4 is installed.
+
+- :class:`~imblearn.pipeline.Pipeline` support metadata routing if scikit-learn >= 1.4
+  is installed.
+
+- Compatibility with scikit-learn 1.4.
+  :pr:`1058` by :user:`Guillaume Lemaitre <glemaitre>`.
+
+Deprecations
+............
+
+- Deprecate `estimator_` argument in favor of `estimators_` for the classes
+  :class:`~imblearn.under_sampling.CondensedNearestNeighbour` and
+  :class:`~imblearn.under_sampling.OneSidedSelection`. `estimator_` will be removed
+  in 0.14.
+  :pr:`1011` by :user:`Guillaume Lemaitre <glemaitre>`.
+
+- Deprecate `kind_sel` in :class:`~imblearn.under_sampling.NeighbourhoodCleaningRule.
+  It will be removed in 0.14. The parameter does not have any effect.
+  :pr:`1012` by :user:`Guillaume Lemaitre <glemaitre>`.
+
+Enhancements
+............
+
+- Allows to output dataframe with sparse format if provided as input.
+  :pr:`1059` by :user:`ts2095 <ts2095>`.
