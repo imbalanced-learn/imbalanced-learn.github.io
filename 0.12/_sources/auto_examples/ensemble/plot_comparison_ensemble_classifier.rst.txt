@@ -151,7 +151,7 @@ imbalanced set.
  .. code-block:: none
 
     Decision tree classifier performance:
-    Balanced accuracy: 0.75 - Geometric mean 0.72
+    Balanced accuracy: 0.75 - Geometric mean 0.73
 
 
 
@@ -399,7 +399,7 @@ achieve worse performance.
 
     from imblearn.ensemble import EasyEnsembleClassifier, RUSBoostClassifier
 
-    estimator = AdaBoostClassifier(n_estimators=10)
+    estimator = AdaBoostClassifier(n_estimators=10, algorithm="SAMME")
     eec = EasyEnsembleClassifier(n_estimators=10, estimator=estimator)
     eec.fit(X_train, y_train)
     y_pred_eec = eec.predict(X_test)
@@ -411,51 +411,6 @@ achieve worse performance.
 
 
 
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    /home/circleci/mambaforge/envs/testenv/lib/python3.11/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
-      warnings.warn(
-    /home/circleci/mambaforge/envs/testenv/lib/python3.11/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
-      warnings.warn(
-    /home/circleci/mambaforge/envs/testenv/lib/python3.11/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
-      warnings.warn(
-    /home/circleci/mambaforge/envs/testenv/lib/python3.11/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
-      warnings.warn(
-    /home/circleci/mambaforge/envs/testenv/lib/python3.11/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
-      warnings.warn(
-    /home/circleci/mambaforge/envs/testenv/lib/python3.11/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
-      warnings.warn(
-    /home/circleci/mambaforge/envs/testenv/lib/python3.11/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
-      warnings.warn(
-    /home/circleci/mambaforge/envs/testenv/lib/python3.11/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
-      warnings.warn(
-    /home/circleci/mambaforge/envs/testenv/lib/python3.11/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
-      warnings.warn(
-    /home/circleci/mambaforge/envs/testenv/lib/python3.11/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
-      warnings.warn(
-    /home/circleci/mambaforge/envs/testenv/lib/python3.11/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
-      warnings.warn(
-    /home/circleci/mambaforge/envs/testenv/lib/python3.11/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
-      warnings.warn(
-    /home/circleci/mambaforge/envs/testenv/lib/python3.11/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
-      warnings.warn(
-    /home/circleci/mambaforge/envs/testenv/lib/python3.11/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
-      warnings.warn(
-    /home/circleci/mambaforge/envs/testenv/lib/python3.11/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
-      warnings.warn(
-    /home/circleci/mambaforge/envs/testenv/lib/python3.11/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
-      warnings.warn(
-    /home/circleci/mambaforge/envs/testenv/lib/python3.11/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
-      warnings.warn(
-    /home/circleci/mambaforge/envs/testenv/lib/python3.11/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
-      warnings.warn(
-    /home/circleci/mambaforge/envs/testenv/lib/python3.11/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
-      warnings.warn(
-    /home/circleci/mambaforge/envs/testenv/lib/python3.11/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
-      warnings.warn(
 
 
 
@@ -484,9 +439,9 @@ achieve worse performance.
  .. code-block:: none
 
     Easy ensemble classifier performance:
-    Balanced accuracy: 0.85 - Geometric mean 0.85
+    Balanced accuracy: 0.83 - Geometric mean 0.83
     RUSBoost classifier performance:
-    Balanced accuracy: 0.85 - Geometric mean 0.85
+    Balanced accuracy: 0.84 - Geometric mean 0.84
 
 
 
@@ -521,9 +476,9 @@ achieve worse performance.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 12.798 seconds)
+   **Total running time of the script:** (0 minutes 12.039 seconds)
 
-**Estimated memory usage:**  200 MB
+**Estimated memory usage:**  236 MB
 
 
 .. _sphx_glr_download_auto_examples_ensemble_plot_comparison_ensemble_classifier.py:
