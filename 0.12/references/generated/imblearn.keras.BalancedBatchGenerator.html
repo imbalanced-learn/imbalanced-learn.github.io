@@ -535,7 +535,7 @@ document.write(`
 <h1>BalancedBatchGenerator<a class="headerlink" href="#balancedbatchgenerator" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="imblearn.keras.BalancedBatchGenerator">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imblearn.keras.</span></span><span class="sig-name descname"><span class="pre">BalancedBatchGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampler</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_sparse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/d91a4cd/imblearn/keras/_generator.py#L64"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.keras.BalancedBatchGenerator" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imblearn.keras.</span></span><span class="sig-name descname"><span class="pre">BalancedBatchGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampler</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_sparse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/bb7e34a/imblearn/keras/_generator.py#L64"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.keras.BalancedBatchGenerator" title="Permalink to this definition">#</a></dt>
 <dd><p>Create balanced batches when training a keras model.</p>
 <p>Create a keras <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> which is given to <code class="docutils literal notranslate"><span class="pre">fit</span></code>. The
 sampler defines the sampling strategy used to balance the dataset ahead of
@@ -616,9 +616,20 @@ instance used by <code class="docutils literal notranslate"><span class="pre">np
 </tr>
 </tbody>
 </table>
+<dl class="py property">
+<dt class="sig sig-object py" id="imblearn.keras.BalancedBatchGenerator.num_batches">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_batches</span></span><a class="headerlink" href="#imblearn.keras.BalancedBatchGenerator.num_batches" title="Permalink to this definition">#</a></dt>
+<dd><p>Number of batches in the PyDataset.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>The number of batches in the PyDataset or <code class="docutils literal notranslate"><span class="pre">None</span></code> to indicate that
+the dataset is infinite.</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="imblearn.keras.BalancedBatchGenerator.on_epoch_end">
-<span class="sig-name descname"><span class="pre">on_epoch_end</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/d91a4cd/imblearn/../../mambaforge/envs/testenv/lib/python3.11/site-packages/keras/src/utils/data_utils.py#L561"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.keras.BalancedBatchGenerator.on_epoch_end" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">on_epoch_end</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/bb7e34a/imblearn/../../mambaforge/envs/testenv/lib/python3.11/site-packages/keras/src/trainers/data_adapters/py_dataset_adapter.py#L173"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.keras.BalancedBatchGenerator.on_epoch_end" title="Permalink to this definition">#</a></dt>
 <dd><p>Method called at the end of every epoch.</p>
 </dd></dl>
 
@@ -679,6 +690,7 @@ instance used by <code class="docutils literal notranslate"><span class="pre">np
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imblearn.keras.BalancedBatchGenerator"><code class="docutils literal notranslate"><span class="pre">BalancedBatchGenerator</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imblearn.keras.BalancedBatchGenerator.num_batches"><code class="docutils literal notranslate"><span class="pre">BalancedBatchGenerator.num_batches</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imblearn.keras.BalancedBatchGenerator.on_epoch_end"><code class="docutils literal notranslate"><span class="pre">BalancedBatchGenerator.on_epoch_end</span></code></a></li>
 </ul>
 </li>
