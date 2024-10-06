@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>2. Over-sampling &#8212; Version 0.13.0.dev0</title>
   
@@ -29,30 +28,30 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
-    <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css?v=1a527b83" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css?v=1a527b83" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/documentation_options.js?v=323ffc05"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=ccdb6887"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'over_sampling';</script>
-    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="icon" href="_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -460,13 +459,13 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="over-sampling">
-<span id="id1"></span><h1><span class="section-number">2. </span>Over-sampling<a class="headerlink" href="#over-sampling" title="Permalink to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">2. </span>Over-sampling<a class="headerlink" href="#over-sampling" title="Link to this heading">#</a></h1>
 <section id="a-practical-guide">
-<h2><span class="section-number">2.1. </span>A practical guide<a class="headerlink" href="#a-practical-guide" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.1. </span>A practical guide<a class="headerlink" href="#a-practical-guide" title="Link to this heading">#</a></h2>
 <p>You can refer to
 <a class="reference internal" href="auto_examples/over-sampling/plot_comparison_over_sampling.html#sphx-glr-auto-examples-over-sampling-plot-comparison-over-sampling-py"><span class="std std-ref">Compare over-sampling samplers</span></a>.</p>
 <section id="naive-random-over-sampling">
-<span id="random-over-sampler"></span><h3><span class="section-number">2.1.1. </span>Naive random over-sampling<a class="headerlink" href="#naive-random-over-sampling" title="Permalink to this heading">#</a></h3>
+<span id="random-over-sampler"></span><h3><span class="section-number">2.1.1. </span>Naive random over-sampling<a class="headerlink" href="#naive-random-over-sampling" title="Link to this heading">#</a></h3>
 <p>One way to fight this issue is to generate new samples in the classes which are
 under-represented. The most naive strategy is to generate new samples by
 randomly sampling with replacement the current available samples. The
@@ -495,7 +494,8 @@ a classifier:</p>
 </div>
 <p>In the figure below, we compare the decision functions of a classifier trained
 using the over-sampled data set and the original data set.</p>
-<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_002.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_002.png" style="width: 900.0px; height: 420.0px;" /></a>
+<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_002.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_002.png" style="width: 900.0px; height: 420.0px;" />
+</a>
 <p>As a result, the majority class does not take over the other classes during the
 training process. Consequently, all classes are represented by the decision
 function.</p>
@@ -531,10 +531,11 @@ show an example illustrate that the new samples are not overlapping anymore
 once using a smoothed bootstrap. This ways of generating smoothed bootstrap is
 also known a Random Over-Sampling Examples
 (ROSE) <span id="id2">[<a class="reference internal" href="zzz_references.html#id22" title="Giovanna Menardi and Nicola Torelli. Training and assessing classification rules with imbalanced data. Data Mining and Knowledge Discovery, 28:92-122, 2014. URL: https://doi.org/10.1007/s10618-012-0295-5, doi:10.1007/s10618-012-0295-5.">MT14</a>]</span>.</p>
-<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_003.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_003.png" style="width: 900.0px; height: 420.0px;" /></a>
+<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_003.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_003.png" style="width: 900.0px; height: 420.0px;" />
+</a>
 </section>
 <section id="from-random-over-sampling-to-smote-and-adasyn">
-<span id="smote-adasyn"></span><h3><span class="section-number">2.1.2. </span>From random over-sampling to SMOTE and ADASYN<a class="headerlink" href="#from-random-over-sampling-to-smote-and-adasyn" title="Permalink to this heading">#</a></h3>
+<span id="smote-adasyn"></span><h3><span class="section-number">2.1.2. </span>From random over-sampling to SMOTE and ADASYN<a class="headerlink" href="#from-random-over-sampling-to-smote-and-adasyn" title="Link to this heading">#</a></h3>
 <p>Apart from the random sampling with replacement, there are two popular methods
 to over-sample minority classes: (i) the Synthetic Minority Oversampling
 Technique (SMOTE) <span id="id3">[<a class="reference internal" href="zzz_references.html#id12" title="Nitesh V Chawla, Kevin W Bowyer, Lawrence O Hall, and W Philip Kegelmeyer. Smote: synthetic minority over-sampling technique. Journal of artificial intelligence research, 16:321–357, 2002.">CBHK02</a>]</span> and (ii) the Adaptive Synthetic
@@ -553,10 +554,11 @@ the same manner:</p>
 </div>
 <p>The figure below illustrates the major difference of the different
 over-sampling methods.</p>
-<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_004.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_004.png" style="width: 900.0px; height: 900.0px;" /></a>
+<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_004.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_004.png" style="width: 900.0px; height: 900.0px;" />
+</a>
 </section>
 <section id="ill-posed-examples">
-<h3><span class="section-number">2.1.3. </span>Ill-posed examples<a class="headerlink" href="#ill-posed-examples" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.1.3. </span>Ill-posed examples<a class="headerlink" href="#ill-posed-examples" title="Link to this heading">#</a></h3>
 <p>While the <a class="reference internal" href="references/generated/imblearn.over_sampling.RandomOverSampler.html#imblearn.over_sampling.RandomOverSampler" title="imblearn.over_sampling.RandomOverSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomOverSampler</span></code></a> is over-sampling by duplicating some of
 the original samples of the minority class, <a class="reference internal" href="references/generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTE</span></code></a> and <a class="reference internal" href="references/generated/imblearn.over_sampling.ADASYN.html#imblearn.over_sampling.ADASYN" title="imblearn.over_sampling.ADASYN"><code class="xref py py-class docutils literal notranslate"><span class="pre">ADASYN</span></code></a>
 generate new samples in by interpolation. However, the samples used to
@@ -566,20 +568,23 @@ classified using a k-Nearest Neighbors classifier while the basic
 implementation of <a class="reference internal" href="references/generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTE</span></code></a> will not make any distinction between easy and
 hard samples to be classified using the nearest neighbors rule. Therefore, the
 decision function found during training will be different among the algorithms.</p>
-<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_005.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_005.png" /></a>
+<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_005.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_005.png" />
+</a>
 <p>The sampling particularities of these two algorithms can lead to some peculiar
 behavior as shown below.</p>
-<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_006.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_006.png" style="width: 900.0px; height: 900.0px;" /></a>
+<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_006.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_006.png" style="width: 900.0px; height: 900.0px;" />
+</a>
 </section>
 <section id="smote-variants">
-<h3><span class="section-number">2.1.4. </span>SMOTE variants<a class="headerlink" href="#smote-variants" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.1.4. </span>SMOTE variants<a class="headerlink" href="#smote-variants" title="Link to this heading">#</a></h3>
 <p>SMOTE might connect inliers and outliers while ADASYN might focus solely on
 outliers which, in both cases, might lead to a sub-optimal decision
 function. In this regard, SMOTE offers three additional options to generate
 samples. Those methods focus on samples near the border of the optimal
 decision function and will generate samples in the opposite direction of the
 nearest neighbors class. Those variants are presented in the figure below.</p>
-<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_007.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_007.png" style="width: 900.0px; height: 1800.0px;" /></a>
+<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_007.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_007.png" style="width: 900.0px; height: 1800.0px;" />
+</a>
 <p>The <a class="reference internal" href="references/generated/imblearn.over_sampling.BorderlineSMOTE.html#imblearn.over_sampling.BorderlineSMOTE" title="imblearn.over_sampling.BorderlineSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">BorderlineSMOTE</span></code></a> <span id="id5">[<a class="reference internal" href="zzz_references.html#id13" title="Hui Han, Wen-Yuan Wang, and Bing-Huan Mao. Borderline-smote: a new over-sampling method in imbalanced data sets learning. In International conference on intelligent computing, 878–887. Springer, 2005.">HWM05</a>]</span>,
 <a class="reference internal" href="references/generated/imblearn.over_sampling.SVMSMOTE.html#imblearn.over_sampling.SVMSMOTE" title="imblearn.over_sampling.SVMSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SVMSMOTE</span></code></a> <span id="id6">[<a class="reference internal" href="zzz_references.html#id14" title="Hien M Nguyen, Eric W Cooper, and Katsuari Kamei. Borderline over-sampling for imbalanced data classification. In Proceedings: Fifth International Workshop on Computational Intelligence &amp; Applications, volume 2009, 24–29. IEEE SMC Hiroshima Chapter, 2009.">NCK09</a>]</span>, and
 <a class="reference internal" href="references/generated/imblearn.over_sampling.KMeansSMOTE.html#imblearn.over_sampling.KMeansSMOTE" title="imblearn.over_sampling.KMeansSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">KMeansSMOTE</span></code></a> <span id="id7">[<a class="reference internal" href="zzz_references.html#id15" title="Felix Last, Georgios Douzas, and Fernando Bacao. Oversampling for imbalanced learning based on k-means and smote. arXiv preprint arXiv:1711.00837, 2017.">LDB17</a>]</span> offer some variant of the
@@ -670,9 +675,9 @@ being “not apple”, we expect new data generated belonging to the category
 </section>
 </section>
 <section id="mathematical-formulation">
-<h2><span class="section-number">2.2. </span>Mathematical formulation<a class="headerlink" href="#mathematical-formulation" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.2. </span>Mathematical formulation<a class="headerlink" href="#mathematical-formulation" title="Link to this heading">#</a></h2>
 <section id="sample-generation">
-<h3><span class="section-number">2.2.1. </span>Sample generation<a class="headerlink" href="#sample-generation" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.2.1. </span>Sample generation<a class="headerlink" href="#sample-generation" title="Link to this heading">#</a></h3>
 <p>Both <a class="reference internal" href="references/generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTE</span></code></a> and <a class="reference internal" href="references/generated/imblearn.over_sampling.ADASYN.html#imblearn.over_sampling.ADASYN" title="imblearn.over_sampling.ADASYN"><code class="xref py py-class docutils literal notranslate"><span class="pre">ADASYN</span></code></a> use the same algorithm to generate new
 samples. Considering a sample <span class="math notranslate nohighlight">\(x_i\)</span>, a new sample <span class="math notranslate nohighlight">\(x_{new}\)</span> will be
 generated considering its k neareast-neighbors (corresponding to
@@ -685,7 +690,8 @@ follows:</p>
 <p>where <span class="math notranslate nohighlight">\(\lambda\)</span> is a random number in the range <span class="math notranslate nohighlight">\([0, 1]\)</span>. This
 interpolation will create a sample on the line between <span class="math notranslate nohighlight">\(x_{i}\)</span> and
 <span class="math notranslate nohighlight">\(x_{zi}\)</span> as illustrated in the image below:</p>
-<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_illustration_generation_sample.html"><img alt="_images/sphx_glr_plot_illustration_generation_sample_001.png" class="align-center" src="_images/sphx_glr_plot_illustration_generation_sample_001.png" style="width: 480.0px; height: 480.0px;" /></a>
+<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_illustration_generation_sample.html"><img alt="_images/sphx_glr_plot_illustration_generation_sample_001.png" class="align-center" src="_images/sphx_glr_plot_illustration_generation_sample_001.png" style="width: 480.0px; height: 480.0px;" />
+</a>
 <p>SMOTE-NC slightly change the way a new sample is generated by performing
 something specific for the categorical features. In fact, the categories of a
 new generated sample are decided by picking the most frequent category of the
@@ -725,7 +731,7 @@ nearest neighbor rule is not respected. The parameter <code class="docutils lite
 equivalent to <code class="docutils literal notranslate"><span class="pre">k_neighbors</span></code> in <a class="reference internal" href="references/generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTE</span></code></a>.</p>
 </section>
 <section id="multi-class-management">
-<h3><span class="section-number">2.2.2. </span>Multi-class management<a class="headerlink" href="#multi-class-management" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.2.2. </span>Multi-class management<a class="headerlink" href="#multi-class-management" title="Link to this heading">#</a></h3>
 <p>All algorithms can be used with multiple classes as well as binary classes
 classification.  <a class="reference internal" href="references/generated/imblearn.over_sampling.RandomOverSampler.html#imblearn.over_sampling.RandomOverSampler" title="imblearn.over_sampling.RandomOverSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomOverSampler</span></code></a> does not require any inter-class
 information during the sample generation. Therefore, each targeted class is
@@ -858,7 +864,7 @@ data set which are grouped in a single class.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.0.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
     <br/>
   </p>
 </div>

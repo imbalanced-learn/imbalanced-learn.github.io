@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>How to use sampling_strategy in imbalanced-learn &#8212; Version 0.13.0.dev0</title>
   
@@ -29,30 +28,30 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css?v=1a527b83" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css?v=1a527b83" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/design-tabs.js"></script>
+    <script src="../../_static/documentation_options.js?v=323ffc05"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/api/plot_sampling_strategy_usage';</script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -508,7 +507,7 @@ document.write(`
 to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="how-to-use-sampling-strategy-in-imbalanced-learn">
-<span id="sphx-glr-auto-examples-api-plot-sampling-strategy-usage-py"></span><h1>How to use <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> in imbalanced-learn<a class="headerlink" href="#how-to-use-sampling-strategy-in-imbalanced-learn" title="Permalink to this heading">#</a></h1>
+<span id="sphx-glr-auto-examples-api-plot-sampling-strategy-usage-py"></span><h1>How to use <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> in imbalanced-learn<a class="headerlink" href="#how-to-use-sampling-strategy-in-imbalanced-learn" title="Link to this heading">#</a></h1>
 <p>This example shows the different usage of the parameter <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code>
 for the different family of samplers (i.e. over-sampling, under-sampling. or
 cleaning methods).</p>
@@ -523,7 +522,7 @@ cleaning methods).</p>
 </pre></div>
 </div>
 <section id="create-an-imbalanced-dataset">
-<h2>Create an imbalanced dataset<a class="headerlink" href="#create-an-imbalanced-dataset" title="Permalink to this heading">#</a></h2>
+<h2>Create an imbalanced dataset<a class="headerlink" href="#create-an-imbalanced-dataset" title="Link to this heading">#</a></h2>
 <p>First, we will create an imbalanced data set from a the iris data set.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
 
@@ -547,11 +546,11 @@ cleaning methods).</p>
 </pre></div>
 </div>
 <img src="../../_images/sphx_glr_plot_sampling_strategy_usage_001.png" srcset="../../_images/sphx_glr_plot_sampling_strategy_usage_001.png" alt="Original, Imbalanced" class = "sphx-glr-single-img"/><section id="using-sampling-strategy-in-resampling-algorithms">
-<h3>Using <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> in resampling algorithms<a class="headerlink" href="#using-sampling-strategy-in-resampling-algorithms" title="Permalink to this heading">#</a></h3>
+<h3>Using <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> in resampling algorithms<a class="headerlink" href="#using-sampling-strategy-in-resampling-algorithms" title="Link to this heading">#</a></h3>
 </section>
 </section>
 <section id="sampling-strategy-as-a-float">
-<h2><code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> as a <code class="docutils literal notranslate"><span class="pre">float</span></code><a class="headerlink" href="#sampling-strategy-as-a-float" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> as a <code class="docutils literal notranslate"><span class="pre">float</span></code><a class="headerlink" href="#sampling-strategy-as-a-float" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> can be given a <code class="docutils literal notranslate"><span class="pre">float</span></code>. For <strong>under-sampling
 methods</strong>, it corresponds to the ratio <span class="math notranslate nohighlight">\(\alpha_{us}\)</span> defined by
 <span class="math notranslate nohighlight">\(N_{rM} = \alpha_{us} \times N_{m}\)</span> where <span class="math notranslate nohighlight">\(N_{rM}\)</span> and
@@ -587,7 +586,7 @@ class, respectively.</p>
 </div>
 <img src="../../_images/sphx_glr_plot_sampling_strategy_usage_003.png" srcset="../../_images/sphx_glr_plot_sampling_strategy_usage_003.png" alt="Over-sampling" class = "sphx-glr-single-img"/></section>
 <section id="sampling-strategy-as-a-str">
-<h2><code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> as a <code class="docutils literal notranslate"><span class="pre">str</span></code><a class="headerlink" href="#sampling-strategy-as-a-str" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> as a <code class="docutils literal notranslate"><span class="pre">str</span></code><a class="headerlink" href="#sampling-strategy-as-a-str" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> can be given as a string which specify the class
 targeted by the resampling. With under- and over-sampling, the number of
 samples will be equalized.</p>
@@ -620,7 +619,7 @@ equalized even if targeted.</p>
 </div>
 <img src="../../_images/sphx_glr_plot_sampling_strategy_usage_005.png" srcset="../../_images/sphx_glr_plot_sampling_strategy_usage_005.png" alt="Cleaning" class = "sphx-glr-single-img"/></section>
 <section id="sampling-strategy-as-a-dict">
-<h2><code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> as a <code class="docutils literal notranslate"><span class="pre">dict</span></code><a class="headerlink" href="#sampling-strategy-as-a-dict" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> as a <code class="docutils literal notranslate"><span class="pre">dict</span></code><a class="headerlink" href="#sampling-strategy-as-a-dict" title="Link to this heading">#</a></h2>
 <p>When <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> is a <code class="docutils literal notranslate"><span class="pre">dict</span></code>, the keys correspond to the targeted
 classes. The values correspond to the desired number of samples for each
 targeted class. This is working for both <strong>under- and over-sampling</strong>
@@ -642,7 +641,7 @@ algorithms but not for the <strong>cleaning algorithms</strong>. Use a <code cla
 </div>
 <img src="../../_images/sphx_glr_plot_sampling_strategy_usage_006.png" srcset="../../_images/sphx_glr_plot_sampling_strategy_usage_006.png" alt="Under-sampling, Under-sampling" class = "sphx-glr-single-img"/></section>
 <section id="sampling-strategy-as-a-list">
-<h2><code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> as a <code class="docutils literal notranslate"><span class="pre">list</span></code><a class="headerlink" href="#sampling-strategy-as-a-list" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> as a <code class="docutils literal notranslate"><span class="pre">list</span></code><a class="headerlink" href="#sampling-strategy-as-a-list" title="Link to this heading">#</a></h2>
 <p>When <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> is a <code class="docutils literal notranslate"><span class="pre">list</span></code>, the list contains the targeted
 classes. It is used only for <strong>cleaning methods</strong> and raise an error
 otherwise.</p>
@@ -655,7 +654,7 @@ otherwise.</p>
 </div>
 <img src="../../_images/sphx_glr_plot_sampling_strategy_usage_007.png" srcset="../../_images/sphx_glr_plot_sampling_strategy_usage_007.png" alt="Cleaning" class = "sphx-glr-single-img"/></section>
 <section id="sampling-strategy-as-a-callable">
-<h2><code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> as a callable<a class="headerlink" href="#sampling-strategy-as-a-callable" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> as a callable<a class="headerlink" href="#sampling-strategy-as-a-callable" title="Link to this heading">#</a></h2>
 <p>When callable, function taking <code class="docutils literal notranslate"><span class="pre">y</span></code> and returns a <code class="docutils literal notranslate"><span class="pre">dict</span></code>. The keys
 correspond to the targeted classes. The values correspond to the desired
 number of samples for each class.</p>
@@ -676,8 +675,8 @@ number of samples for each class.</p>
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_sampling_strategy_usage_008.png" srcset="../../_images/sphx_glr_plot_sampling_strategy_usage_008.png" alt="Under-sampling" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.532 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  205 MB</p>
+<img src="../../_images/sphx_glr_plot_sampling_strategy_usage_008.png" srcset="../../_images/sphx_glr_plot_sampling_strategy_usage_008.png" alt="Under-sampling" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.030 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  209 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-api-plot-sampling-strategy-usage-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/53e29f04bb34688394fc8f1edf4dd978/plot_sampling_strategy_usage.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_sampling_strategy_usage.ipynb</span></code></a></p>
@@ -810,7 +809,7 @@ number of samples for each class.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.0.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
     <br/>
   </p>
 </div>

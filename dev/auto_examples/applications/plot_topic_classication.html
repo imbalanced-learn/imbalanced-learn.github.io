@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Example of topic classification in text documents &#8212; Version 0.13.0.dev0</title>
   
@@ -29,29 +28,29 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css?v=1a527b83" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css?v=1a527b83" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/design-tabs.js"></script>
+    <script src="../../_static/documentation_options.js?v=323ffc05"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/applications/plot_topic_classication';</script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -507,7 +506,7 @@ document.write(`
 to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="example-of-topic-classification-in-text-documents">
-<span id="sphx-glr-auto-examples-applications-plot-topic-classication-py"></span><h1>Example of topic classification in text documents<a class="headerlink" href="#example-of-topic-classification-in-text-documents" title="Permalink to this heading">#</a></h1>
+<span id="sphx-glr-auto-examples-applications-plot-topic-classication-py"></span><h1>Example of topic classification in text documents<a class="headerlink" href="#example-of-topic-classification-in-text-documents" title="Link to this heading">#</a></h1>
 <p>This example shows how to balance the text data before to train a classifier.</p>
 <p>Note that for this example, the data are slightly imbalanced but it can happen
 that for some data sets, the imbalanced ratio is more significant.</p>
@@ -519,7 +518,7 @@ that for some data sets, the imbalanced ratio is more significant.</p>
 </pre></div>
 </div>
 <section id="setting-the-data-set">
-<h2>Setting the data set<a class="headerlink" href="#setting-the-data-set" title="Permalink to this heading">#</a></h2>
+<h2>Setting the data set<a class="headerlink" href="#setting-the-data-set" title="Link to this heading">#</a></h2>
 <p>We use a part of the 20 newsgroups data set by loading 4 topics. Using the
 scikit-learn loader, the data are split into a training and a testing set.</p>
 <p>Note the class #3 is the minority class and has almost twice less samples
@@ -554,7 +553,7 @@ Test class distributions summary: Counter({2: 394, 1: 389, 0: 319, 3: 251})
 </div>
 </section>
 <section id="the-usual-scikit-learn-pipeline">
-<h2>The usual scikit-learn pipeline<a class="headerlink" href="#the-usual-scikit-learn-pipeline" title="Permalink to this heading">#</a></h2>
+<h2>The usual scikit-learn pipeline<a class="headerlink" href="#the-usual-scikit-learn-pipeline" title="Link to this heading">#</a></h2>
 <p>You might usually use scikit-learn pipeline by combining the TF-IDF
 vectorizer to feed a multinomial naive bayes classifier. A classification
 report summarized the results on the testing set.</p>
@@ -586,7 +585,7 @@ avg / total       0.87      0.84      0.94      0.82      0.88      0.78      13
 </div>
 </section>
 <section id="balancing-the-class-before-classification">
-<h2>Balancing the class before classification<a class="headerlink" href="#balancing-the-class-before-classification" title="Permalink to this heading">#</a></h2>
+<h2>Balancing the class before classification<a class="headerlink" href="#balancing-the-class-before-classification" title="Link to this heading">#</a></h2>
 <p>To improve the prediction of the class #3, it could be interesting to apply
 a balancing before to train the naive bayes classifier. Therefore, we will
 use a <a class="reference internal" href="../../references/generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="imblearn.under_sampling.RandomUnderSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomUnderSampler</span></code></a> to equalize the
@@ -614,16 +613,16 @@ slightly better.</p>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>                   pre       rec       spe        f1       geo       iba       sup
 
-          0       0.69      0.91      0.88      0.79      0.89      0.80       319
-          1       0.97      0.85      0.99      0.91      0.92      0.83       389
-          2       0.95      0.89      0.98      0.91      0.93      0.86       394
-          3       0.81      0.73      0.96      0.77      0.84      0.68       251
+          0       0.72      0.90      0.89      0.80      0.89      0.80       319
+          1       0.97      0.86      0.99      0.91      0.92      0.84       389
+          2       0.94      0.90      0.97      0.92      0.94      0.87       394
+          3       0.80      0.74      0.96      0.77      0.84      0.69       251
 
-avg / total       0.87      0.85      0.95      0.86      0.90      0.81      1353
+avg / total       0.87      0.86      0.96      0.86      0.90      0.81      1353
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 11.937 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  295 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 12.680 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  311 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-applications-plot-topic-classication-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/53cf3da930dd2d6f08413f4a9bdb8a83/plot_topic_classication.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_topic_classication.ipynb</span></code></a></p>
@@ -750,7 +749,7 @@ avg / total       0.87      0.85      0.95      0.86      0.90      0.81      13
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.0.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
     <br/>
   </p>
 </div>
