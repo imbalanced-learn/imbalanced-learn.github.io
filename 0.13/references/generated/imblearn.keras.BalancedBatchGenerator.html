@@ -1,0 +1,774 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>BalancedBatchGenerator &#8212; Version 0.13.0.dev0</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css?v=1a527b83" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css?v=1a527b83" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=323ffc05"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'references/generated/imblearn.keras.BalancedBatchGenerator';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="balanced_batch_generator" href="imblearn.keras.balanced_batch_generator.html" />
+    <link rel="prev" title="Batch generator for Keras" href="../keras.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.13.0.dev0" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo_wide.png" class="logo__image only-light" alt="Version 0.13.0.dev0 - Home"/>
+    <img src="https://imbalanced-learn.org/stable/_static/img/logo_wide_dark.png" class="logo__image only-dark pst-js-only" alt="Version 0.13.0.dev0 - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../install.html">
+    Getting Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../auto_examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whats_new.html">
+    Release history
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../about.html">
+    About us
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-learn-contrib/imbalanced-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../install.html">
+    Getting Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../auto_examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whats_new.html">
+    Release history
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../about.html">
+    About us
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-learn-contrib/imbalanced-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../under_sampling.html">Under-sampling methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.ClusterCentroids.html">ClusterCentroids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.CondensedNearestNeighbour.html">CondensedNearestNeighbour</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.EditedNearestNeighbours.html">EditedNearestNeighbours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.RepeatedEditedNearestNeighbours.html">RepeatedEditedNearestNeighbours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.AllKNN.html">AllKNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.InstanceHardnessThreshold.html">InstanceHardnessThreshold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.NearMiss.html">NearMiss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.NeighbourhoodCleaningRule.html">NeighbourhoodCleaningRule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.OneSidedSelection.html">OneSidedSelection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.RandomUnderSampler.html">RandomUnderSampler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.TomekLinks.html">TomekLinks</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../over_sampling.html">Over-sampling methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.RandomOverSampler.html">RandomOverSampler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.SMOTE.html">SMOTE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.SMOTENC.html">SMOTENC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.SMOTEN.html">SMOTEN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.ADASYN.html">ADASYN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.BorderlineSMOTE.html">BorderlineSMOTE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.KMeansSMOTE.html">KMeansSMOTE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.SVMSMOTE.html">SVMSMOTE</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../combine.html">Combination of over- and under-sampling methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.combine.SMOTEENN.html">SMOTEENN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.combine.SMOTETomek.html">SMOTETomek</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ensemble.html">Ensemble methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.ensemble.EasyEnsembleClassifier.html">EasyEnsembleClassifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.ensemble.RUSBoostClassifier.html">RUSBoostClassifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.ensemble.BalancedBaggingClassifier.html">BalancedBaggingClassifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.ensemble.BalancedRandomForestClassifier.html">BalancedRandomForestClassifier</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../keras.html">Batch generator for Keras</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">BalancedBatchGenerator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.keras.balanced_batch_generator.html">balanced_batch_generator</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tensorflow.html">Batch generator for TensorFlow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.tensorflow.balanced_batch_generator.html">balanced_batch_generator</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../miscellaneous.html">Miscellaneous</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.FunctionSampler.html">FunctionSampler</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pipeline.html">Pipeline</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.pipeline.Pipeline.html">Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.pipeline.make_pipeline.html">make_pipeline</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../metrics.html">Metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.classification_report_imbalanced.html">classification_report_imbalanced</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.sensitivity_specificity_support.html">sensitivity_specificity_support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.sensitivity_score.html">sensitivity_score</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.specificity_score.html">specificity_score</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.geometric_mean_score.html">geometric_mean_score</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.macro_averaged_mean_absolute_error.html">macro_averaged_mean_absolute_error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.make_index_balanced_accuracy.html">make_index_balanced_accuracy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.pairwise.ValueDifferenceMetric.html">ValueDifferenceMetric</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../datasets.html">Datasets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.datasets.make_imbalance.html">make_imbalance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.datasets.fetch_datasets.html">fetch_datasets</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../utils.html">Utilities</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.utils.estimator_checks.parametrize_with_checks.html">parametrize_with_checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.utils.check_neighbors_object.html">check_neighbors_object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.utils.check_sampling_strategy.html">check_sampling_strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.utils.check_target_type.html">check_target_type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.utils.estimator_checks.parametrize_with_checks.html">parametrize_with_checks</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">API reference</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../keras.html" class="nav-link">Batch generator for Keras</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">BalancedBatchGenerator</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="balancedbatchgenerator">
+<h1>BalancedBatchGenerator<a class="headerlink" href="#balancedbatchgenerator" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="imblearn.keras.BalancedBatchGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imblearn.keras.</span></span><span class="sig-name descname"><span class="pre">BalancedBatchGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampler</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_sparse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/646c389/imblearn/keras/_generator.py#L64"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.keras.BalancedBatchGenerator" title="Link to this definition">#</a></dt>
+<dd><p>Create balanced batches when training a keras model.</p>
+<p>Create a keras <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> which is given to <code class="docutils literal notranslate"><span class="pre">fit</span></code>. The
+sampler defines the sampling strategy used to balance the dataset ahead of
+creating the batch. The sampler should have an attribute
+<code class="docutils literal notranslate"><span class="pre">sample_indices_</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">ndarray of shape (n_samples, n_features)</span></dt><dd><p>Original imbalanced dataset.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">ndarray of shape (n_samples,) or (n_samples, n_classes)</span></dt><dd><p>Associated targets.</p>
+</dd>
+<dt><strong>sample_weight</strong><span class="classifier">ndarray of shape (n_samples,)</span></dt><dd><p>Sample weight.</p>
+</dd>
+<dt><strong>sampler</strong><span class="classifier">sampler object, default=None</span></dt><dd><p>A sampler instance which has an attribute <code class="docutils literal notranslate"><span class="pre">sample_indices_</span></code>.
+By default, the sampler used is a
+<a class="reference internal" href="imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="imblearn.under_sampling.RandomUnderSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomUnderSampler</span></code></a>.</p>
+</dd>
+<dt><strong>batch_size</strong><span class="classifier">int, default=32</span></dt><dd><p>Number of samples per gradient update.</p>
+</dd>
+<dt><strong>keep_sparse</strong><span class="classifier">bool, default=False</span></dt><dd><p>Either or not to conserve or not the sparsity of the input (i.e. <code class="docutils literal notranslate"><span class="pre">X</span></code>,
+<code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">sample_weight</span></code>). By default, the returned batches will be
+dense.</p>
+</dd>
+<dt><strong>random_state</strong><span class="classifier">int, RandomState instance or None, default=None</span></dt><dd><p>Control the randomization of the algorithm:</p>
+<ul class="simple">
+<li><p>If int, <code class="docutils literal notranslate"><span class="pre">random_state</span></code> is the seed used by the random number
+generator;</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">RandomState</span></code> instance, random_state is the random number
+generator;</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">None</span></code>, the random number generator is the <code class="docutils literal notranslate"><span class="pre">RandomState</span></code>
+instance used by <code class="docutils literal notranslate"><span class="pre">np.random</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>sampler_</strong><span class="classifier">sampler object</span></dt><dd><p>The sampler used to balance the dataset.</p>
+</dd>
+<dt><strong>indices_</strong><span class="classifier">ndarray of shape (n_samples, n_features)</span></dt><dd><p>The indices of the samples selected during sampling.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.datasets</span> <span class="kn">import</span> <span class="n">make_imbalance</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">class_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">class_dict</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span> <span class="n">class_dict</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">50</span><span class="p">;</span> <span class="n">class_dict</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_imbalance</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">sampling_strategy</span><span class="o">=</span><span class="n">class_dict</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tensorflow</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">tensorflow</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">to_categorical</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">tensorflow</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">tensorflow</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">input_dim</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;sgd&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span>
+<span class="gp">... </span>              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.keras</span> <span class="kn">import</span> <span class="n">BalancedBatchGenerator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <span class="n">NearMiss</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">training_generator</span> <span class="o">=</span> <span class="n">BalancedBatchGenerator</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sampler</span><span class="o">=</span><span class="n">NearMiss</span><span class="p">(),</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">callback_history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">training_generator</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#imblearn.keras.BalancedBatchGenerator.on_epoch_begin" title="imblearn.keras.BalancedBatchGenerator.on_epoch_begin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_epoch_begin</span></code></a>()</p></td>
+<td><p>Method called at the beginning of every epoch.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#imblearn.keras.BalancedBatchGenerator.on_epoch_end" title="imblearn.keras.BalancedBatchGenerator.on_epoch_end"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_epoch_end</span></code></a>()</p></td>
+<td><p>Method called at the end of every epoch.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py property">
+<dt class="sig sig-object py" id="imblearn.keras.BalancedBatchGenerator.num_batches">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_batches</span></span><a class="headerlink" href="#imblearn.keras.BalancedBatchGenerator.num_batches" title="Link to this definition">#</a></dt>
+<dd><p>Number of batches in the PyDataset.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>The number of batches in the PyDataset or <code class="docutils literal notranslate"><span class="pre">None</span></code> to indicate that
+the dataset is infinite.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imblearn.keras.BalancedBatchGenerator.on_epoch_begin">
+<span class="sig-name descname"><span class="pre">on_epoch_begin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/646c389/imblearn/../.pixi/envs/docs/lib/python3.12/site-packages/keras/src/trainers/data_adapters/py_dataset_adapter.py#L173"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.keras.BalancedBatchGenerator.on_epoch_begin" title="Link to this definition">#</a></dt>
+<dd><p>Method called at the beginning of every epoch.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imblearn.keras.BalancedBatchGenerator.on_epoch_end">
+<span class="sig-name descname"><span class="pre">on_epoch_end</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/646c389/imblearn/../.pixi/envs/docs/lib/python3.12/site-packages/keras/src/trainers/data_adapters/py_dataset_adapter.py#L177"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.keras.BalancedBatchGenerator.on_epoch_end" title="Link to this definition">#</a></dt>
+<dd><p>Method called at the end of every epoch.</p>
+</dd></dl>
+
+</dd></dl>
+
+<section id="examples-using-imblearn-keras-balancedbatchgenerator">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">imblearn.keras.BalancedBatchGenerator</span></code><a class="headerlink" href="#examples-using-imblearn-keras-balancedbatchgenerator" title="Link to this heading">#</a></h2>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example compares two strategies to train a neural-network on the Porto Seguro Kaggle data set [1]_. The data set is imbalanced and we show that balancing each mini-batch allows to improve performance and reduce the training time."><img alt="" src="../../_images/sphx_glr_porto_seguro_keras_under_sampling_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/applications/porto_seguro_keras_under_sampling.html#sphx-glr-auto-examples-applications-porto-seguro-keras-under-sampling-py"><span class="std std-ref">Porto Seguro: balancing samples in mini-batches with Keras</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Porto Seguro: balancing samples in mini-batches with Keras</div>
+</div></div><div style='clear:both'></div></section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../keras.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Batch generator for Keras</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="imblearn.keras.balanced_batch_generator.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">balanced_batch_generator</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imblearn.keras.BalancedBatchGenerator"><code class="docutils literal notranslate"><span class="pre">BalancedBatchGenerator</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imblearn.keras.BalancedBatchGenerator.num_batches"><code class="docutils literal notranslate"><span class="pre">BalancedBatchGenerator.num_batches</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imblearn.keras.BalancedBatchGenerator.on_epoch_begin"><code class="docutils literal notranslate"><span class="pre">BalancedBatchGenerator.on_epoch_begin</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imblearn.keras.BalancedBatchGenerator.on_epoch_end"><code class="docutils literal notranslate"><span class="pre">BalancedBatchGenerator.on_epoch_end</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-using-imblearn-keras-balancedbatchgenerator">Examples using <code class="docutils literal notranslate"><span class="pre">imblearn.keras.BalancedBatchGenerator</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/scikit-learn-contrib/imbalanced-learn/edit/master/doc/references/generated/imblearn.keras.BalancedBatchGenerator.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/references/generated/imblearn.keras.BalancedBatchGenerator.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2014-2024, The imbalanced-learn developers.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
