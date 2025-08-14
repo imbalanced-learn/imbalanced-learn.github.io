@@ -546,7 +546,7 @@ this case.
  .. code-block:: none
 
     The original imbalanced dataset
-    [(0, 20), (1, 30)]
+    [(np.int64(0), 20), (np.int64(1), 30)]
 
     The first and last columns are containing categorical features:
     [['C' -0.14021849735700803 2]
@@ -556,7 +556,7 @@ this case.
      ['A' 0.948842857719016 2]]
 
     Dataset after resampling:
-    [(0, 30), (1, 30)]
+    [(np.int64(0), 30), (np.int64(1), 30)]
 
     SMOTE-NC will generate categories for the categorical features:
     [['A' 0.1989993778979113 2]
@@ -603,7 +603,7 @@ should use :class:`~imblearn.over_sampling.SMOTEN`.
 
  .. code-block:: none
 
-    Original class counts: Counter({1: 40, 0: 20})
+    Original class counts: Counter({np.int32(1): 40, np.int32(0): 20})
 
     [['A']
      ['A']
@@ -611,7 +611,7 @@ should use :class:`~imblearn.over_sampling.SMOTEN`.
      ['A']
      ['A']]
 
-    Class counts after resampling Counter({0: 40, 1: 40})
+    Class counts after resampling Counter({np.int32(0): 40, np.int32(1): 40})
 
     [['B']
      ['B']
@@ -626,9 +626,9 @@ should use :class:`~imblearn.over_sampling.SMOTEN`.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 13.740 seconds)
+   **Total running time of the script:** (0 minutes 12.123 seconds)
 
-**Estimated memory usage:**  324 MB
+**Estimated memory usage:**  315 MB
 
 
 .. _sphx_glr_download_auto_examples_over-sampling_plot_comparison_over_sampling.py:

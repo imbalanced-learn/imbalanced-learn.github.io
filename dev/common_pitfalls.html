@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>8. Common pitfalls and recommended practices &#8212; Version 0.14.dev0</title>
+    <title>9. Common pitfalls and recommended practices &#8212; Version 0.14.dev0</title>
   
   
   
@@ -30,7 +30,7 @@
   <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css?v=1a527b83" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
@@ -57,8 +57,8 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="9. Dataset loading utilities" href="datasets/index.html" />
-    <link rel="prev" title="7. Metrics" href="metrics.html" />
+    <link rel="next" title="10. Dataset loading utilities" href="datasets/index.html" />
+    <link rel="prev" title="8. Cross validation" href="model_selection.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.14.dev0" />
@@ -375,10 +375,11 @@
 <li class="toctree-l1"><a class="reference internal" href="ensemble.html">5. Ensemble of samplers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="miscellaneous.html">6. Miscellaneous samplers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="metrics.html">7. Metrics</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Common pitfalls and recommended practices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datasets/index.html">9. Dataset loading utilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="developers_utils.html">10. Developer guideline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="zzz_references.html">11. References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_selection.html">8. Cross validation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Common pitfalls and recommended practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets/index.html">10. Dataset loading utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers_utils.html">11. Developer guideline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zzz_references.html">12. References</a></li>
 </ul>
 </div>
 </nav></div>
@@ -422,7 +423,7 @@
     
     <li class="breadcrumb-item"><a href="user_guide.html" class="nav-link">User Guide</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><span class="section-number">8. </span>Common pitfalls and recommended practices</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><span class="section-number">9. </span>Common pitfalls and recommended practices</span></li>
   </ul>
 </nav>
 </div>
@@ -440,14 +441,14 @@
                 <article class="bd-article">
                   
   <section id="common-pitfalls-and-recommended-practices">
-<span id="common-pitfalls"></span><h1><span class="section-number">8. </span>Common pitfalls and recommended practices<a class="headerlink" href="#common-pitfalls-and-recommended-practices" title="Link to this heading">#</a></h1>
+<span id="common-pitfalls"></span><h1><span class="section-number">9. </span>Common pitfalls and recommended practices<a class="headerlink" href="#common-pitfalls-and-recommended-practices" title="Link to this heading">#</a></h1>
 <p>This section is a complement to the documentation given
 <a class="reference external" href="https://scikit-learn.org/dev/common_pitfalls.html">[here]</a> in scikit-learn.
 Indeed, we will highlight the issue of misusing resampling, leading to a
 <strong>data leakage</strong>. Due to this leakage, the performance of a model reported
 will be over-optimistic.</p>
 <section id="data-leakage">
-<h2><span class="section-number">8.1. </span>Data leakage<a class="headerlink" href="#data-leakage" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.1. </span>Data leakage<a class="headerlink" href="#data-leakage" title="Link to this heading">#</a></h2>
 <p>As mentioned in the scikit-learn documentation, data leakage occurs when
 information that would not be available at prediction time is used when
 building the model.</p>
@@ -472,8 +473,8 @@ the tools that one should use, avoiding to fall in the trap.</p>
 <p>We will use the adult census dataset. For the sake of simplicity, we will only
 use the numerical features. Also, we will make the dataset more imbalanced to
 increase the effect of the wrongdoings:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.datasets</span> <span class="kn">import</span> <span class="n">make_imbalance</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">fetch_openml</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_imbalance</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">data_id</span><span class="o">=</span><span class="mi">1119</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span>
 <span class="gp">... </span><span class="p">)</span>
@@ -484,14 +485,14 @@ increase the effect of the wrongdoings:</p>
 </pre></div>
 </div>
 <p>Let’s first check the balancing ratio on this dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">value</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
 <span class="go">{&#39;&lt;=50K&#39;: 0.988..., &#39;&gt;50K&#39;: 0.011...}</span>
 </pre></div>
 </div>
 <p>To later highlight some of the issue, we will keep aside a left-out set that we
 will not use for the evaluation of the model:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">X_left_out</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y_left_out</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span>
 <span class="gp">... </span><span class="p">)</span>
@@ -502,8 +503,8 @@ baseline classifier. First, we will train and check the performance of this
 classifier, without any preprocessing to alleviate the bias toward the majority
 class. We evaluate the generalization performance of the classifier via
 cross-validation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">HistGradientBoostingClassifier</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_validate</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">HistGradientBoostingClassifier</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">cross_validate</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">HistGradientBoostingClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cv_results</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;balanced_accuracy&quot;</span><span class="p">,</span>
@@ -523,8 +524,8 @@ accuracy mainly due to the class imbalance issue.</p>
 <p>In the cross-validation, we stored the different classifiers of all folds. We
 will show that evaluating these classifiers on the left-out data will give
 close statistical performance:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">balanced_accuracy_score</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">balanced_accuracy_score</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">fold_id</span><span class="p">,</span> <span class="n">cv_model</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cv_results</span><span class="p">[</span><span class="s2">&quot;estimator&quot;</span><span class="p">]):</span>
 <span class="gp">... </span>    <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
@@ -543,7 +544,7 @@ close statistical performance:</p>
 alleviate the class imbalance issue. We will use a sampler to balance the
 <strong>entire</strong> dataset and check the statistical performance of our classifier via
 cross-validation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <span class="n">RandomUnderSampler</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.under_sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomUnderSampler</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sampler</span> <span class="o">=</span> <span class="n">RandomUnderSampler</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">HistGradientBoostingClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -583,7 +584,7 @@ stated earlier in this section.</p>
 using a <a class="reference internal" href="references/generated/imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="imblearn.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a> avoids to make any data leakage
 because the resampling will be delegated to imbalanced-learn and does not
 require any manual steps:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_pipeline</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">RandomUnderSampler</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">HistGradientBoostingClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -634,12 +635,12 @@ study that we perform, without any sign of over-optimistic results.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="metrics.html"
+       href="model_selection.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>Metrics</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Cross validation</p>
       </div>
     </a>
     <a class="right-next"
@@ -647,7 +648,7 @@ study that we perform, without any sign of over-optimistic results.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>Dataset loading utilities</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Dataset loading utilities</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -670,7 +671,7 @@ study that we perform, without any sign of over-optimistic results.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-leakage">8.1. Data leakage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-leakage">9.1. Data leakage</a></li>
 </ul>
   </nav></div>
 
@@ -733,7 +734,7 @@ study that we perform, without any sign of over-optimistic results.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
     <br/>
   </p>
 </div>

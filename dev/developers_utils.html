@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>10. Developer guideline &#8212; Version 0.14.dev0</title>
+    <title>11. Developer guideline &#8212; Version 0.14.dev0</title>
   
   
   
@@ -30,7 +30,7 @@
   <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css?v=1a527b83" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
@@ -57,8 +57,8 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="11. References" href="zzz_references.html" />
-    <link rel="prev" title="9. Dataset loading utilities" href="datasets/index.html" />
+    <link rel="next" title="12. References" href="zzz_references.html" />
+    <link rel="prev" title="10. Dataset loading utilities" href="datasets/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.14.dev0" />
@@ -375,10 +375,11 @@
 <li class="toctree-l1"><a class="reference internal" href="ensemble.html">5. Ensemble of samplers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="miscellaneous.html">6. Miscellaneous samplers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="metrics.html">7. Metrics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="common_pitfalls.html">8. Common pitfalls and recommended practices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datasets/index.html">9. Dataset loading utilities</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Developer guideline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="zzz_references.html">11. References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_selection.html">8. Cross validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common_pitfalls.html">9. Common pitfalls and recommended practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets/index.html">10. Dataset loading utilities</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Developer guideline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zzz_references.html">12. References</a></li>
 </ul>
 </div>
 </nav></div>
@@ -422,7 +423,7 @@
     
     <li class="breadcrumb-item"><a href="user_guide.html" class="nav-link">User Guide</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><span class="section-number">10. </span>Developer guideline</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><span class="section-number">11. </span>Developer guideline</span></li>
   </ul>
 </nav>
 </div>
@@ -440,9 +441,9 @@
                 <article class="bd-article">
                   
   <section id="developer-guideline">
-<span id="developers-utils"></span><h1><span class="section-number">10. </span>Developer guideline<a class="headerlink" href="#developer-guideline" title="Link to this heading">#</a></h1>
+<span id="developers-utils"></span><h1><span class="section-number">11. </span>Developer guideline<a class="headerlink" href="#developer-guideline" title="Link to this heading">#</a></h1>
 <section id="developer-utilities">
-<h2><span class="section-number">10.1. </span>Developer utilities<a class="headerlink" href="#developer-utilities" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.1. </span>Developer utilities<a class="headerlink" href="#developer-utilities" title="Link to this heading">#</a></h2>
 <p>Imbalanced-learn contains a number of utilities to help with development. These are
 located in <a class="reference internal" href="references/utils.html#module-imblearn.utils" title="imblearn.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.utils</span></code></a>, and include tools in a number of categories.
 All the following functions and classes are in the module <a class="reference internal" href="references/utils.html#module-imblearn.utils" title="imblearn.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.utils</span></code></a>.</p>
@@ -454,7 +455,7 @@ imbalanced-learn. Backports, in particular, will be removed as the
 imbalanced-learn dependencies evolve.</p>
 </div>
 <section id="validation-tools">
-<h3><span class="section-number">10.1.1. </span>Validation Tools<a class="headerlink" href="#validation-tools" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.1.1. </span>Validation Tools<a class="headerlink" href="#validation-tools" title="Link to this heading">#</a></h3>
 <p>These are tools used to check and validate input. When you write a function
 which accepts arrays, matrices, or sparse matrices as arguments, the following
 should be used when applicable.</p>
@@ -468,7 +469,7 @@ corresponding number of pixel.</p></li>
 </ul>
 </section>
 <section id="deprecation">
-<h3><span class="section-number">10.1.2. </span>Deprecation<a class="headerlink" href="#deprecation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.1.2. </span>Deprecation<a class="headerlink" href="#deprecation" title="Link to this heading">#</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Apart from <code class="xref py py-func docutils literal notranslate"><span class="pre">deprecate_parameter</span></code> the rest of this section is taken from
@@ -480,9 +481,9 @@ a deprecation warning when it is called/passed/accessed.
 E.g., if the function <code class="docutils literal notranslate"><span class="pre">zero_one</span></code> is renamed to <code class="docutils literal notranslate"><span class="pre">zero_one_loss</span></code>,
 we add the decorator <code class="docutils literal notranslate"><span class="pre">deprecated</span></code> (from <code class="docutils literal notranslate"><span class="pre">sklearn.utils</span></code>)
 to <code class="docutils literal notranslate"><span class="pre">zero_one</span></code> and call <code class="docutils literal notranslate"><span class="pre">zero_one_loss</span></code> from that function:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">deprecated</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">..utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">deprecated</span>
 
-<span class="k">def</span> <span class="nf">zero_one_loss</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">zero_one_loss</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="c1"># actual implementation</span>
     <span class="k">pass</span>
 
@@ -490,7 +491,7 @@ to <code class="docutils literal notranslate"><span class="pre">zero_one</span><
             <span class="s2">&quot;in version 0.13 and will be removed in release 0.15. &quot;</span>
             <span class="s2">&quot;Default behavior is changed from &#39;normalize=False&#39; to &quot;</span>
             <span class="s2">&quot;&#39;normalize=True&#39;&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">zero_one</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">zero_one</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">zero_one_loss</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">normalize</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -500,15 +501,15 @@ E.g., renaming an attribute <code class="docutils literal notranslate"><span cla
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@property</span>
 <span class="nd">@deprecated</span><span class="p">(</span><span class="s2">&quot;Attribute labels_ was deprecated in version 0.13 and &quot;</span>
             <span class="s2">&quot;will be removed in 0.15. Use &#39;classes_&#39; instead&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">labels_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">labels_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span>
 </pre></div>
 </div>
 <p>If a parameter has to be deprecated, use <code class="docutils literal notranslate"><span class="pre">FutureWarning</span></code> appropriately.
 In the following example, k is deprecated and renamed to n_clusters:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 
-<span class="k">def</span> <span class="nf">example_function</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">example_function</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">k</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;&#39;k&#39; was renamed to n_clusters in version 0.13 and &quot;</span>
                       <span class="s2">&quot;will be removed in 0.15.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span>
@@ -536,11 +537,11 @@ parameter (attribute) by another one.</p>
 </section>
 </section>
 <section id="making-a-release">
-<h2><span class="section-number">10.2. </span>Making a release<a class="headerlink" href="#making-a-release" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.2. </span>Making a release<a class="headerlink" href="#making-a-release" title="Link to this heading">#</a></h2>
 <p>This section document the different steps that are necessary to make a new
 imbalanced-learn release.</p>
 <section id="major-release">
-<h3><span class="section-number">10.2.1. </span>Major release<a class="headerlink" href="#major-release" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.2.1. </span>Major release<a class="headerlink" href="#major-release" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Update the release note <code class="docutils literal notranslate"><span class="pre">whats_new/v0.&lt;version</span> <span class="pre">number&gt;.rst</span></code> by giving a date
 and removing the status “Under development” from the title.</p></li>
@@ -579,7 +580,7 @@ available.</p></li>
 </ul>
 </section>
 <section id="bug-fix-release">
-<h3><span class="section-number">10.2.2. </span>Bug fix release<a class="headerlink" href="#bug-fix-release" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.2.2. </span>Bug fix release<a class="headerlink" href="#bug-fix-release" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Find the commit(s) hash of the bug fix commit you wish to back port using
 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code>.</p></li>
@@ -617,7 +618,7 @@ example from <code class="docutils literal notranslate"><span class="pre">0.X.*<
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>Dataset loading utilities</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Dataset loading utilities</p>
       </div>
     </a>
     <a class="right-next"
@@ -625,7 +626,7 @@ example from <code class="docutils literal notranslate"><span class="pre">0.X.*<
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>References</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>References</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -648,14 +649,14 @@ example from <code class="docutils literal notranslate"><span class="pre">0.X.*<
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#developer-utilities">10.1. Developer utilities</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-tools">10.1.1. Validation Tools</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecation">10.1.2. Deprecation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#developer-utilities">11.1. Developer utilities</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-tools">11.1.1. Validation Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecation">11.1.2. Deprecation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-a-release">10.2. Making a release</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#major-release">10.2.1. Major release</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-fix-release">10.2.2. Bug fix release</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-a-release">11.2. Making a release</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#major-release">11.2.1. Major release</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-fix-release">11.2.2. Bug fix release</a></li>
 </ul>
 </li>
 </ul>
@@ -720,7 +721,7 @@ example from <code class="docutils literal notranslate"><span class="pre">0.X.*<
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
     <br/>
   </p>
 </div>

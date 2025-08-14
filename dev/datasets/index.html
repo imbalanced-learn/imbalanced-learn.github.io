@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>9. Dataset loading utilities &#8212; Version 0.14.dev0</title>
+    <title>10. Dataset loading utilities &#8212; Version 0.14.dev0</title>
   
   
   
@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/css/imbalanced-learn.css?v=1a527b83" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
@@ -57,8 +57,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="10. Developer guideline" href="../developers_utils.html" />
-    <link rel="prev" title="8. Common pitfalls and recommended practices" href="../common_pitfalls.html" />
+    <link rel="next" title="11. Developer guideline" href="../developers_utils.html" />
+    <link rel="prev" title="9. Common pitfalls and recommended practices" href="../common_pitfalls.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.14.dev0" />
@@ -375,10 +375,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../ensemble.html">5. Ensemble of samplers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../miscellaneous.html">6. Miscellaneous samplers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../metrics.html">7. Metrics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../common_pitfalls.html">8. Common pitfalls and recommended practices</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Dataset loading utilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../developers_utils.html">10. Developer guideline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../zzz_references.html">11. References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_selection.html">8. Cross validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_pitfalls.html">9. Common pitfalls and recommended practices</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Dataset loading utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers_utils.html">11. Developer guideline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zzz_references.html">12. References</a></li>
 </ul>
 </div>
 </nav></div>
@@ -422,7 +423,7 @@
     
     <li class="breadcrumb-item"><a href="../user_guide.html" class="nav-link">User Guide</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><span class="section-number">9. </span>Dataset loading utilities</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><span class="section-number">10. </span>Dataset loading utilities</span></li>
   </ul>
 </nav>
 </div>
@@ -440,13 +441,13 @@
                 <article class="bd-article">
                   
   <section id="dataset-loading-utilities">
-<span id="datasets"></span><h1><span class="section-number">9. </span>Dataset loading utilities<a class="headerlink" href="#dataset-loading-utilities" title="Link to this heading">#</a></h1>
+<span id="datasets"></span><h1><span class="section-number">10. </span>Dataset loading utilities<a class="headerlink" href="#dataset-loading-utilities" title="Link to this heading">#</a></h1>
 <p>The <a class="reference internal" href="../references/datasets.html#module-imblearn.datasets" title="imblearn.datasets"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.datasets</span></code></a> package is complementing the
 <code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code> package. The package provides both: (i) a set of
 imbalanced datasets to perform systematic benchmark and (ii) a utility to
 create an imbalanced dataset from an original balanced dataset.</p>
 <section id="imbalanced-datasets-for-benchmark">
-<span id="zenodo"></span><h2><span class="section-number">9.1. </span>Imbalanced datasets for benchmark<a class="headerlink" href="#imbalanced-datasets-for-benchmark" title="Link to this heading">#</a></h2>
+<span id="zenodo"></span><h2><span class="section-number">10.1. </span>Imbalanced datasets for benchmark<a class="headerlink" href="#imbalanced-datasets-for-benchmark" title="Link to this heading">#</a></h2>
 <p><a class="reference internal" href="../references/generated/imblearn.datasets.fetch_datasets.html#imblearn.datasets.fetch_datasets" title="imblearn.datasets.fetch_datasets"><code class="xref py py-func docutils literal notranslate"><span class="pre">fetch_datasets</span></code></a> allows to fetch 27 datasets which are imbalanced and
 binarized. The following data sets are available:</p>
 <blockquote>
@@ -655,8 +656,8 @@ binarized. The following data sets are available:</p>
 </div>
 </div></blockquote>
 <p>A specific data set can be selected as:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_datasets</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">fetch_datasets</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ecoli</span> <span class="o">=</span> <span class="n">fetch_datasets</span><span class="p">()[</span><span class="s1">&#39;ecoli&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ecoli</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span>
 <span class="go">(336, 7)</span>
@@ -666,14 +667,14 @@ binarized. The following data sets are available:</p>
 </div>
 </section>
 <section id="imbalanced-generator">
-<span id="make-imbalanced"></span><h2><span class="section-number">9.2. </span>Imbalanced generator<a class="headerlink" href="#imbalanced-generator" title="Link to this heading">#</a></h2>
+<span id="make-imbalanced"></span><h2><span class="section-number">10.2. </span>Imbalanced generator<a class="headerlink" href="#imbalanced-generator" title="Link to this heading">#</a></h2>
 <p><a class="reference internal" href="../references/generated/imblearn.datasets.make_imbalance.html#imblearn.datasets.make_imbalance" title="imblearn.datasets.make_imbalance"><code class="xref py py-func docutils literal notranslate"><span class="pre">make_imbalance</span></code></a> turns an original dataset into an imbalanced
 dataset. This behaviour is driven by the parameter <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> which
 behave similarly to other resampling algorithm. <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> can be
 given as a dictionary where the key corresponds to the class and the value is
 the number of samples in the class:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">imblearn.datasets</span> <span class="kn">import</span> <span class="n">make_imbalance</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_iris</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_imbalance</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sampling_strategy</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">40</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_imb</span><span class="p">,</span> <span class="n">y_imb</span> <span class="o">=</span> <span class="n">make_imbalance</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">,</span>
@@ -693,7 +694,7 @@ in the dictionary:</p>
 </div>
 <p>Instead of a dictionary, a function can be defined and directly pass to
 <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">ratio_multiplier</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">ratio_multiplier</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">multiplier</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mf">0.95</span><span class="p">}</span>
 <span class="gp">... </span>    <span class="n">target_stats</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">target_stats</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -706,7 +707,7 @@ in the dictionary:</p>
 </pre></div>
 </div>
 <p>It would also work with pandas dataframe:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">fetch_openml</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="s1">&#39;iris&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">make_imbalance</span><span class="p">(</span>
@@ -744,7 +745,7 @@ in the dictionary:</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Common pitfalls and recommended practices</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Common pitfalls and recommended practices</p>
       </div>
     </a>
     <a class="right-next"
@@ -752,7 +753,7 @@ in the dictionary:</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>Developer guideline</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Developer guideline</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -775,8 +776,8 @@ in the dictionary:</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imbalanced-datasets-for-benchmark">9.1. Imbalanced datasets for benchmark</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imbalanced-generator">9.2. Imbalanced generator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imbalanced-datasets-for-benchmark">10.1. Imbalanced datasets for benchmark</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imbalanced-generator">10.2. Imbalanced generator</a></li>
 </ul>
   </nav></div>
 
@@ -839,7 +840,7 @@ in the dictionary:</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
     <br/>
   </p>
 </div>
