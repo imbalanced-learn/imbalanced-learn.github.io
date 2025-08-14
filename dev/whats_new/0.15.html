@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Version 0.11.0 &#8212; Version 0.15.dev0</title>
+    <title>Version 0.15.dev0 (In development) &#8212; Version 0.15.dev0</title>
   
   
   
@@ -52,7 +52,7 @@
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=ccdb6887"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'whats_new/v0.11';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'whats_new/0.15';</script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -397,7 +397,7 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Version 0.11.0</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Version 0.15.dev0 (In development)</span></li>
   </ul>
 </nav>
 </div>
@@ -414,72 +414,22 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="version-0-11-0">
-<span id="changes-0-11"></span><h1>Version 0.11.0<a class="headerlink" href="#version-0-11-0" title="Link to this heading">#</a></h1>
-<p><strong>July 8, 2023</strong></p>
+  <section id="version-0-15-dev0-in-development">
+<span id="changes-0-15"></span><h1>Version 0.15.dev0 (In development)<a class="headerlink" href="#version-0-15-dev0-in-development" title="Link to this heading">#</a></h1>
+<p><strong>TBD</strong></p>
 <section id="changelog">
 <h2>Changelog<a class="headerlink" href="#changelog" title="Link to this heading">#</a></h2>
 <section id="bug-fixes">
 <h3>Bug fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Fix a bug in <a class="reference internal" href="../references/generated/imblearn.metrics.classification_report_imbalanced.html#imblearn.metrics.classification_report_imbalanced" title="imblearn.metrics.classification_report_imbalanced"><code class="xref py py-func docutils literal notranslate"><span class="pre">classification_report_imbalanced</span></code></a> where the
-parameter <code class="docutils literal notranslate"><span class="pre">target_names</span></code> was not taken into account when <code class="docutils literal notranslate"><span class="pre">output_dict=True</span></code>.
-<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/989">#989</a> by <a class="reference external" href="https://github.com/AYY7">AYY7</a>.</p></li>
-<li><p><a class="reference internal" href="../references/generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTENC</span></code></a> now handles mix types of data type such as
-<code class="docutils literal notranslate"><span class="pre">bool</span></code> and <code class="docutils literal notranslate"><span class="pre">pd.category</span></code> by delegating the conversion to scikit-learn encoder.
-<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/1002">#1002</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
-<li><p>Handle sparse matrices in <a class="reference internal" href="../references/generated/imblearn.over_sampling.SMOTEN.html#imblearn.over_sampling.SMOTEN" title="imblearn.over_sampling.SMOTEN"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTEN</span></code></a> and raise a warning
-since it requires a conversion to dense matrices.
-<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/1003">#1003</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
-<li><p>Remove spurious warning raised when minority class get over-sampled more than the
-number of sample in the majority class.
-<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/1007">#1007</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
-</ul>
-</section>
-<section id="compatibility">
-<h3>Compatibility<a class="headerlink" href="#compatibility" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Maintenance release for being compatible with scikit-learn &gt;= 1.3.0.
-<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/999">#999</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
-</ul>
-</section>
-<section id="deprecation">
-<h3>Deprecation<a class="headerlink" href="#deprecation" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>The fitted attribute <code class="docutils literal notranslate"><span class="pre">ohe_</span></code> in <a class="reference internal" href="../references/generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTENC</span></code></a> is deprecated
-and will be removed in version 0.13. Use <code class="docutils literal notranslate"><span class="pre">categorical_encoder_</span></code> instead.
-<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/1000">#1000</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
-<li><p>The default of the parameters <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code>, <code class="docutils literal notranslate"><span class="pre">bootstrap</span></code> and
-<code class="docutils literal notranslate"><span class="pre">replacement</span></code> will change in
-<a class="reference internal" href="../references/generated/imblearn.ensemble.BalancedRandomForestClassifier.html#imblearn.ensemble.BalancedRandomForestClassifier" title="imblearn.ensemble.BalancedRandomForestClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">BalancedRandomForestClassifier</span></code></a> to follow the
-implementation of the original paper. This changes will take effect in
-version 0.13.
-<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/1006">#1006</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
-</ul>
 </section>
 <section id="enhancements">
 <h3>Enhancements<a class="headerlink" href="#enhancements" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference internal" href="../references/generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTENC</span></code></a> now accepts a parameter <code class="docutils literal notranslate"><span class="pre">categorical_encoder</span></code>
-allowing to specify a <code class="xref py py-class docutils literal notranslate"><span class="pre">OneHotEncoder</span></code> with custom
-parameters.
-<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/1000">#1000</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
-<li><p><a class="reference internal" href="../references/generated/imblearn.over_sampling.SMOTEN.html#imblearn.over_sampling.SMOTEN" title="imblearn.over_sampling.SMOTEN"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTEN</span></code></a> now accepts a parameter <code class="docutils literal notranslate"><span class="pre">categorical_encoder</span></code>
-allowing to specify a <code class="xref py py-class docutils literal notranslate"><span class="pre">OrdinalEncoder</span></code> with custom
-parameters. A new fitted parameter <code class="docutils literal notranslate"><span class="pre">categorical_encoder_</span></code> is exposed to access the
-fitted encoder.
-<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/1001">#1001</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
-<li><p><a class="reference internal" href="../references/generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" title="imblearn.under_sampling.RandomUnderSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomUnderSampler</span></code></a> and
-<a class="reference internal" href="../references/generated/imblearn.over_sampling.RandomOverSampler.html#imblearn.over_sampling.RandomOverSampler" title="imblearn.over_sampling.RandomOverSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomOverSampler</span></code></a> (when <code class="docutils literal notranslate"><span class="pre">shrinkage</span> <span class="pre">is</span> <span class="pre">not</span>
-<span class="pre">None</span></code>) now accept any data types and will not attempt any data conversion.
-<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/1004">#1004</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
-<li><p><a class="reference internal" href="../references/generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTENC</span></code></a> now support passing array-like of <code class="docutils literal notranslate"><span class="pre">str</span></code>
-when passing the <code class="docutils literal notranslate"><span class="pre">categorical_features</span></code> parameter.
-<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/1008">#1008</a> by :user`Guillaume Lemaitre &lt;glemaitre&gt;`.</p></li>
-<li><p><a class="reference internal" href="../references/generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTENC</span></code></a> now support automatic categorical inference
-when <code class="docutils literal notranslate"><span class="pre">categorical_features</span></code> is set to <code class="docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code>.
-<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/1009">#1009</a> by :user`Guillaume Lemaitre &lt;glemaitre&gt;`.</p></li>
-</ul>
+</section>
+<section id="compatibility">
+<h3>Compatibility<a class="headerlink" href="#compatibility" title="Link to this heading">#</a></h3>
+</section>
+<section id="deprecations">
+<h3>Deprecations<a class="headerlink" href="#deprecations" title="Link to this heading">#</a></h3>
 </section>
 </section>
 </section>
@@ -515,9 +465,9 @@ when <code class="docutils literal notranslate"><span class="pre">categorical_fe
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changelog">Changelog</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-fixes">Bug fixes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compatibility">Compatibility</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecation">Deprecation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enhancements">Enhancements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compatibility">Compatibility</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecations">Deprecations</a></li>
 </ul>
 </li>
 </ul>
@@ -527,7 +477,7 @@ when <code class="docutils literal notranslate"><span class="pre">categorical_fe
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/scikit-learn-contrib/imbalanced-learn/edit/master/doc/whats_new/v0.11.rst">
+    <a href="https://github.com/scikit-learn-contrib/imbalanced-learn/edit/master/doc/whats_new/0.15.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -543,7 +493,7 @@ when <code class="docutils literal notranslate"><span class="pre">categorical_fe
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/whats_new/v0.11.rst.txt"
+      <li><a href="../_sources/whats_new/0.15.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div></div>
