@@ -1,0 +1,874 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2. Over-sampling &#8212; Version 0.14.0</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css?v=1a527b83" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/css/imbalanced-learn.css?v=1a527b83" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9e420a66"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=ccdb6887"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'over_sampling';</script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3. Under-sampling" href="under_sampling.html" />
+    <link rel="prev" title="1. Introduction" href="introduction.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.14.0" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo_wide.png" class="logo__image only-light" alt="Version 0.14.0 - Home"/>
+    <img src="https://imbalanced-learn.org/stable/_static/img/logo_wide_dark.png" class="logo__image only-dark pst-js-only" alt="Version 0.14.0 - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="install.html">
+    Getting Started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="user_guide.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="references/index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="auto_examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="whats_new.html">
+    Release history
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="about.html">
+    About us
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-learn-contrib/imbalanced-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="install.html">
+    Getting Started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="user_guide.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="references/index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="auto_examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="whats_new.html">
+    Release history
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="about.html">
+    About us
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-learn-contrib/imbalanced-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Over-sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="under_sampling.html">3. Under-sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="combine.html">4. Combination of over- and under-sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ensemble.html">5. Ensemble of samplers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="miscellaneous.html">6. Miscellaneous samplers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">7. Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_selection.html">8. Cross validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common_pitfalls.html">9. Common pitfalls and recommended practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets/index.html">10. Dataset loading utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers_utils.html">11. Developer guideline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zzz_references.html">12. References</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="user_guide.html" class="nav-link">User Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><span class="section-number">2. </span>Over-sampling</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="over-sampling">
+<span id="id1"></span><h1><span class="section-number">2. </span>Over-sampling<a class="headerlink" href="#over-sampling" title="Link to this heading">#</a></h1>
+<section id="a-practical-guide">
+<h2><span class="section-number">2.1. </span>A practical guide<a class="headerlink" href="#a-practical-guide" title="Link to this heading">#</a></h2>
+<p>You can refer to
+<a class="reference internal" href="auto_examples/over-sampling/plot_comparison_over_sampling.html#sphx-glr-auto-examples-over-sampling-plot-comparison-over-sampling-py"><span class="std std-ref">Compare over-sampling samplers</span></a>.</p>
+<section id="naive-random-over-sampling">
+<span id="random-over-sampler"></span><h3><span class="section-number">2.1.1. </span>Naive random over-sampling<a class="headerlink" href="#naive-random-over-sampling" title="Link to this heading">#</a></h3>
+<p>One way to fight this issue is to generate new samples in the classes which are
+under-represented. The most naive strategy is to generate new samples by
+randomly sampling with replacement the current available samples. The
+<a class="reference internal" href="references/generated/imblearn.over_sampling.RandomOverSampler.html#imblearn.over_sampling.RandomOverSampler" title="imblearn.over_sampling.RandomOverSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomOverSampler</span></code></a> offers such scheme:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_classification</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>                           <span class="n">n_redundant</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_repeated</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>                           <span class="n">n_clusters_per_class</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>                           <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.94</span><span class="p">],</span>
+<span class="gp">... </span>                           <span class="n">class_sep</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.over_sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomOverSampler</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ros</span> <span class="o">=</span> <span class="n">RandomOverSampler</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">ros</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y_resampled</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+<span class="go">[(0, 4674), (1, 4674), (2, 4674)]</span>
+</pre></div>
+</div>
+<p>The augmented data set should be used instead of the original data set to train
+a classifier:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span><span class="p">)</span>
+<span class="go">LogisticRegression(...)</span>
+</pre></div>
+</div>
+<p>In the figure below, we compare the decision functions of a classifier trained
+using the over-sampled data set and the original data set.</p>
+<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_002.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_002.png" style="width: 900.0px; height: 420.0px;" />
+</a>
+<p>As a result, the majority class does not take over the other classes during the
+training process. Consequently, all classes are represented by the decision
+function.</p>
+<p>In addition, <a class="reference internal" href="references/generated/imblearn.over_sampling.RandomOverSampler.html#imblearn.over_sampling.RandomOverSampler" title="imblearn.over_sampling.RandomOverSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomOverSampler</span></code></a> allows to sample heterogeneous data
+(e.g. containing some strings):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_hetero</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="s1">&#39;xxx&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;yyy&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;zzz&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">]],</span>
+<span class="gp">... </span>                    <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_hetero</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">ros</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X_hetero</span><span class="p">,</span> <span class="n">y_hetero</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">X_resampled</span><span class="p">)</span>
+<span class="go">[[&#39;xxx&#39; 1 1.0]</span>
+<span class="go"> [&#39;yyy&#39; 2 2.0]</span>
+<span class="go"> [&#39;zzz&#39; 3 3.0]</span>
+<span class="go"> [&#39;zzz&#39; 3 3.0]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">y_resampled</span><span class="p">)</span>
+<span class="go">[0 0 1 1]</span>
+</pre></div>
+</div>
+<p>It would also work with pandas dataframe:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">fetch_openml</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df_adult</span><span class="p">,</span> <span class="n">y_adult</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s1">&#39;adult&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df_adult</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">ros</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">df_adult</span><span class="p">,</span> <span class="n">y_adult</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df_resampled</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>If repeating samples is an issue, the parameter <code class="docutils literal notranslate"><span class="pre">shrinkage</span></code> allows to create a
+smoothed bootstrap. However, the original data needs to be numerical. The
+<code class="docutils literal notranslate"><span class="pre">shrinkage</span></code> parameter controls the dispersion of the new generated samples. We
+show an example illustrate that the new samples are not overlapping anymore
+once using a smoothed bootstrap. This ways of generating smoothed bootstrap is
+also known a Random Over-Sampling Examples
+(ROSE) <span id="id2">[<a class="reference internal" href="zzz_references.html#id22" title="Giovanna Menardi and Nicola Torelli. Training and assessing classification rules with imbalanced data. Data Mining and Knowledge Discovery, 28:92-122, 2014. URL: https://doi.org/10.1007/s10618-012-0295-5, doi:10.1007/s10618-012-0295-5.">MT14</a>]</span>.</p>
+<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_003.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_003.png" style="width: 900.0px; height: 420.0px;" />
+</a>
+</section>
+<section id="from-random-over-sampling-to-smote-and-adasyn">
+<span id="smote-adasyn"></span><h3><span class="section-number">2.1.2. </span>From random over-sampling to SMOTE and ADASYN<a class="headerlink" href="#from-random-over-sampling-to-smote-and-adasyn" title="Link to this heading">#</a></h3>
+<p>Apart from the random sampling with replacement, there are two popular methods
+to over-sample minority classes: (i) the Synthetic Minority Oversampling
+Technique (SMOTE) <span id="id3">[<a class="reference internal" href="zzz_references.html#id12" title="Nitesh V Chawla, Kevin W Bowyer, Lawrence O Hall, and W Philip Kegelmeyer. Smote: synthetic minority over-sampling technique. Journal of artificial intelligence research, 16:321–357, 2002.">CBHK02</a>]</span> and (ii) the Adaptive Synthetic
+(ADASYN) <span id="id4">[<a class="reference internal" href="zzz_references.html#id11" title="Haibo He, Yang Bai, Edwardo A Garcia, and Shutao Li. Adasyn: adaptive synthetic sampling approach for imbalanced learning. In 2008 IEEE International Joint Conference on Neural Networks (IEEE World Congress on Computational Intelligence), 1322–1328. IEEE, 2008.">HBGL08</a>]</span> sampling method. These algorithms can be used in
+the same manner:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.over_sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">SMOTE</span><span class="p">,</span> <span class="n">ADASYN</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">SMOTE</span><span class="p">()</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y_resampled</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+<span class="go">[(0, 4674), (1, 4674), (2, 4674)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf_smote</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">ADASYN</span><span class="p">()</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y_resampled</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+<span class="go">[(0, 4673), (1, 4662), (2, 4674)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf_adasyn</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The figure below illustrates the major difference of the different
+over-sampling methods.</p>
+<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_004.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_004.png" style="width: 900.0px; height: 900.0px;" />
+</a>
+</section>
+<section id="ill-posed-examples">
+<h3><span class="section-number">2.1.3. </span>Ill-posed examples<a class="headerlink" href="#ill-posed-examples" title="Link to this heading">#</a></h3>
+<p>While the <a class="reference internal" href="references/generated/imblearn.over_sampling.RandomOverSampler.html#imblearn.over_sampling.RandomOverSampler" title="imblearn.over_sampling.RandomOverSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomOverSampler</span></code></a> is over-sampling by duplicating some of
+the original samples of the minority class, <a class="reference internal" href="references/generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTE</span></code></a> and <a class="reference internal" href="references/generated/imblearn.over_sampling.ADASYN.html#imblearn.over_sampling.ADASYN" title="imblearn.over_sampling.ADASYN"><code class="xref py py-class docutils literal notranslate"><span class="pre">ADASYN</span></code></a>
+generate new samples in by interpolation. However, the samples used to
+interpolate/generate new synthetic samples differ. In fact, <a class="reference internal" href="references/generated/imblearn.over_sampling.ADASYN.html#imblearn.over_sampling.ADASYN" title="imblearn.over_sampling.ADASYN"><code class="xref py py-class docutils literal notranslate"><span class="pre">ADASYN</span></code></a>
+focuses on generating samples next to the original samples which are wrongly
+classified using a k-Nearest Neighbors classifier while the basic
+implementation of <a class="reference internal" href="references/generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTE</span></code></a> will not make any distinction between easy and
+hard samples to be classified using the nearest neighbors rule. Therefore, the
+decision function found during training will be different among the algorithms.</p>
+<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_005.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_005.png" />
+</a>
+<p>The sampling particularities of these two algorithms can lead to some peculiar
+behavior as shown below.</p>
+<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_006.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_006.png" style="width: 900.0px; height: 900.0px;" />
+</a>
+</section>
+<section id="smote-variants">
+<h3><span class="section-number">2.1.4. </span>SMOTE variants<a class="headerlink" href="#smote-variants" title="Link to this heading">#</a></h3>
+<p>SMOTE might connect inliers and outliers while ADASYN might focus solely on
+outliers which, in both cases, might lead to a sub-optimal decision
+function. In this regard, SMOTE offers three additional options to generate
+samples. Those methods focus on samples near the border of the optimal
+decision function and will generate samples in the opposite direction of the
+nearest neighbors class. Those variants are presented in the figure below.</p>
+<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_comparison_over_sampling.html"><img alt="_images/sphx_glr_plot_comparison_over_sampling_007.png" class="align-center" src="_images/sphx_glr_plot_comparison_over_sampling_007.png" style="width: 900.0px; height: 1800.0px;" />
+</a>
+<p>The <a class="reference internal" href="references/generated/imblearn.over_sampling.BorderlineSMOTE.html#imblearn.over_sampling.BorderlineSMOTE" title="imblearn.over_sampling.BorderlineSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">BorderlineSMOTE</span></code></a> <span id="id5">[<a class="reference internal" href="zzz_references.html#id13" title="Hui Han, Wen-Yuan Wang, and Bing-Huan Mao. Borderline-smote: a new over-sampling method in imbalanced data sets learning. In International conference on intelligent computing, 878–887. Springer, 2005.">HWM05</a>]</span>,
+<a class="reference internal" href="references/generated/imblearn.over_sampling.SVMSMOTE.html#imblearn.over_sampling.SVMSMOTE" title="imblearn.over_sampling.SVMSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SVMSMOTE</span></code></a> <span id="id6">[<a class="reference internal" href="zzz_references.html#id14" title="Hien M Nguyen, Eric W Cooper, and Katsuari Kamei. Borderline over-sampling for imbalanced data classification. In Proceedings: Fifth International Workshop on Computational Intelligence &amp; Applications, volume 2009, 24–29. IEEE SMC Hiroshima Chapter, 2009.">NCK09</a>]</span>, and
+<a class="reference internal" href="references/generated/imblearn.over_sampling.KMeansSMOTE.html#imblearn.over_sampling.KMeansSMOTE" title="imblearn.over_sampling.KMeansSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">KMeansSMOTE</span></code></a> <span id="id7">[<a class="reference internal" href="zzz_references.html#id15" title="Felix Last, Georgios Douzas, and Fernando Bacao. Oversampling for imbalanced learning based on k-means and smote. arXiv preprint arXiv:1711.00837, 2017.">LDB17</a>]</span> offer some variant of the
+SMOTE algorithm:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.over_sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">BorderlineSMOTE</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">BorderlineSMOTE</span><span class="p">()</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y_resampled</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+<span class="go">[(0, 4674), (1, 4674), (2, 4674)]</span>
+</pre></div>
+</div>
+<p>When dealing with mixed data type such as continuous and categorical features,
+none of the presented methods (apart of the class <a class="reference internal" href="references/generated/imblearn.over_sampling.RandomOverSampler.html#imblearn.over_sampling.RandomOverSampler" title="imblearn.over_sampling.RandomOverSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomOverSampler</span></code></a>)
+can deal with the categorical features. The <a class="reference internal" href="references/generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTENC</span></code></a>
+<span id="id8">[<a class="reference internal" href="zzz_references.html#id12" title="Nitesh V Chawla, Kevin W Bowyer, Lawrence O Hall, and W Philip Kegelmeyer. Smote: synthetic minority over-sampling technique. Journal of artificial intelligence research, 16:321–357, 2002.">CBHK02</a>]</span> is an extension of the <a class="reference internal" href="references/generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTE</span></code></a> algorithm for
+which categorical data are treated differently:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create a synthetic data set with continuous and categorical features</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n_samples</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n_samples</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">n_samples</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_samples</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">20</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+<span class="go">[(0, 20), (1, 30)]</span>
+</pre></div>
+</div>
+<p>In this data set, the first and last features are considered as categorical
+features. One needs to provide this information to <a class="reference internal" href="references/generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTENC</span></code></a> via the
+parameters <code class="docutils literal notranslate"><span class="pre">categorical_features</span></code> either by passing the indices, the feature
+names when <code class="docutils literal notranslate"><span class="pre">X</span></code> is a pandas DataFrame, a boolean mask marking these features,
+or relying on <code class="docutils literal notranslate"><span class="pre">dtype</span></code> inference if the columns are using the
+<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.CategoricalDtype.html#pandas.CategoricalDtype" title="(in pandas v2.3.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.CategoricalDtype</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.over_sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">SMOTENC</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">smote_nc</span> <span class="o">=</span> <span class="n">SMOTENC</span><span class="p">(</span><span class="n">categorical_features</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">smote_nc</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y_resampled</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+<span class="go">[(0, 30), (1, 30)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">X_resampled</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:])</span>
+<span class="go">[[&#39;A&#39; 0.19... 2]</span>
+<span class="go"> [&#39;B&#39; -0.36... 2]</span>
+<span class="go"> [&#39;B&#39; 0.87... 2]</span>
+<span class="go"> [&#39;B&#39; 0.37... 2]</span>
+<span class="go"> [&#39;B&#39; 0.33... 2]]</span>
+</pre></div>
+</div>
+<p>Therefore, it can be seen that the samples generated in the first and last
+columns are belonging to the same categories originally presented without any
+other extra interpolation.</p>
+<p>However, <a class="reference internal" href="references/generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTENC</span></code></a> is only working when data is a mixed of numerical and
+categorical features. If data are made of only categorical data, one can use
+the <a class="reference internal" href="references/generated/imblearn.over_sampling.SMOTEN.html#imblearn.over_sampling.SMOTEN" title="imblearn.over_sampling.SMOTEN"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTEN</span></code></a> variant <span id="id9">[<a class="reference internal" href="zzz_references.html#id12" title="Nitesh V Chawla, Kevin W Bowyer, Lawrence O Hall, and W Philip Kegelmeyer. Smote: synthetic minority over-sampling technique. Journal of artificial intelligence research, 16:321–357, 2002.">CBHK02</a>]</span>. The algorithm changes in
+two ways:</p>
+<ul class="simple">
+<li><p>the nearest neighbors search does not rely on the Euclidean distance. Indeed,
+the value difference metric (VDM) also implemented in the class
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ValueDifferenceMetric</span></code> is used.</p></li>
+<li><p>a new sample is generated where each feature value corresponds to the most
+common category seen in the neighbors samples belonging to the same class.</p></li>
+</ul>
+<p>Let’s take the following example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;green&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">7</span><span class="p">,</span>
+<span class="gp">... </span>             <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;apple&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;not apple&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">7</span> <span class="o">+</span>
+<span class="gp">... </span>             <span class="p">[</span><span class="s2">&quot;not apple&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We generate a dataset associating a color to being an apple or not an apple.
+We strongly associated “green” and “red” to being an apple. The minority class
+being “not apple”, we expect new data generated belonging to the category
+“blue”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.over_sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">SMOTEN</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sampler</span> <span class="o">=</span> <span class="n">SMOTEN</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_res</span><span class="p">[</span><span class="n">y</span><span class="o">.</span><span class="n">size</span><span class="p">:]</span>
+<span class="go">array([[&#39;blue&#39;],</span>
+<span class="go">        [&#39;blue&#39;],</span>
+<span class="go">        [&#39;blue&#39;],</span>
+<span class="go">        [&#39;blue&#39;],</span>
+<span class="go">        [&#39;blue&#39;],</span>
+<span class="go">        [&#39;blue&#39;]], dtype=object)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_res</span><span class="p">[</span><span class="n">y</span><span class="o">.</span><span class="n">size</span><span class="p">:]</span>
+<span class="go">array([&#39;not apple&#39;, &#39;not apple&#39;, &#39;not apple&#39;, &#39;not apple&#39;, &#39;not apple&#39;,</span>
+<span class="go">       &#39;not apple&#39;], dtype=object)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="mathematical-formulation">
+<h2><span class="section-number">2.2. </span>Mathematical formulation<a class="headerlink" href="#mathematical-formulation" title="Link to this heading">#</a></h2>
+<section id="sample-generation">
+<h3><span class="section-number">2.2.1. </span>Sample generation<a class="headerlink" href="#sample-generation" title="Link to this heading">#</a></h3>
+<p>Both <a class="reference internal" href="references/generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTE</span></code></a> and <a class="reference internal" href="references/generated/imblearn.over_sampling.ADASYN.html#imblearn.over_sampling.ADASYN" title="imblearn.over_sampling.ADASYN"><code class="xref py py-class docutils literal notranslate"><span class="pre">ADASYN</span></code></a> use the same algorithm to generate new
+samples. Considering a sample <span class="math notranslate nohighlight">\(x_i\)</span>, a new sample <span class="math notranslate nohighlight">\(x_{new}\)</span> will be
+generated considering its k neareast-neighbors (corresponding to
+<code class="docutils literal notranslate"><span class="pre">k_neighbors</span></code>). For instance, the 3 nearest-neighbors are included in the
+blue circle as illustrated in the figure below. Then, one of these
+nearest-neighbors <span class="math notranslate nohighlight">\(x_{zi}\)</span> is selected and a sample is generated as
+follows:</p>
+<div class="math notranslate nohighlight">
+\[x_{new} = x_i + \lambda \times (x_{zi} - x_i)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda\)</span> is a random number in the range <span class="math notranslate nohighlight">\([0, 1]\)</span>. This
+interpolation will create a sample on the line between <span class="math notranslate nohighlight">\(x_{i}\)</span> and
+<span class="math notranslate nohighlight">\(x_{zi}\)</span> as illustrated in the image below:</p>
+<a class="reference external image-reference" href="./auto_examples/over-sampling/plot_illustration_generation_sample.html"><img alt="_images/sphx_glr_plot_illustration_generation_sample_001.png" class="align-center" src="_images/sphx_glr_plot_illustration_generation_sample_001.png" style="width: 480.0px; height: 480.0px;" />
+</a>
+<p>SMOTE-NC slightly change the way a new sample is generated by performing
+something specific for the categorical features. In fact, the categories of a
+new generated sample are decided by picking the most frequent category of the
+nearest neighbors present during the generation.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Be aware that SMOTE-NC is not designed to work with only categorical data.</p>
+</div>
+<p>The other SMOTE variants and ADASYN differ from each other by selecting the
+samples <span class="math notranslate nohighlight">\(x_i\)</span> ahead of generating the new samples.</p>
+<p>The <strong>regular</strong> SMOTE algorithm — cf. to the <a class="reference internal" href="references/generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTE</span></code></a> object — does not
+impose any rule and will randomly pick-up all possible <span class="math notranslate nohighlight">\(x_i\)</span> available.</p>
+<p>The <strong>borderline</strong> SMOTE — cf. to the <a class="reference internal" href="references/generated/imblearn.over_sampling.BorderlineSMOTE.html#imblearn.over_sampling.BorderlineSMOTE" title="imblearn.over_sampling.BorderlineSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">BorderlineSMOTE</span></code></a> with the
+parameters <code class="docutils literal notranslate"><span class="pre">kind='borderline-1'</span></code> and <code class="docutils literal notranslate"><span class="pre">kind='borderline-2'</span></code> — will
+classify each sample <span class="math notranslate nohighlight">\(x_i\)</span> to be (i) noise (i.e. all nearest-neighbors
+are from a different class than the one of <span class="math notranslate nohighlight">\(x_i\)</span>), (ii) in danger
+(i.e. at least half of the nearest neighbors are from the same class than
+<span class="math notranslate nohighlight">\(x_i\)</span>, or (iii) safe (i.e. all nearest neighbors are from the same class
+than <span class="math notranslate nohighlight">\(x_i\)</span>). <strong>Borderline-1</strong> and <strong>Borderline-2</strong> SMOTE will use the
+samples <em>in danger</em> to generate new samples. In <strong>Borderline-1</strong> SMOTE,
+<span class="math notranslate nohighlight">\(x_{zi}\)</span> will belong to the same class than the one of the sample
+<span class="math notranslate nohighlight">\(x_i\)</span>. On the contrary, <strong>Borderline-2</strong> SMOTE will consider
+<span class="math notranslate nohighlight">\(x_{zi}\)</span> which can be from any class.</p>
+<p><strong>SVM</strong> SMOTE — cf. to <a class="reference internal" href="references/generated/imblearn.over_sampling.SVMSMOTE.html#imblearn.over_sampling.SVMSMOTE" title="imblearn.over_sampling.SVMSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SVMSMOTE</span></code></a> — uses an SVM classifier to find
+support vectors and generate samples considering them. Note that the <code class="docutils literal notranslate"><span class="pre">C</span></code>
+parameter of the SVM classifier allows to select more or less support vectors.</p>
+<p>For both borderline and SVM SMOTE, a neighborhood is defined using the
+parameter <code class="docutils literal notranslate"><span class="pre">m_neighbors</span></code> to decide if a sample is in danger, safe, or noise.</p>
+<p><strong>KMeans</strong> SMOTE — cf. to <a class="reference internal" href="references/generated/imblearn.over_sampling.KMeansSMOTE.html#imblearn.over_sampling.KMeansSMOTE" title="imblearn.over_sampling.KMeansSMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">KMeansSMOTE</span></code></a> — uses a KMeans clustering
+method before to apply SMOTE. The clustering will group samples together and
+generate new samples depending of the cluster density.</p>
+<p>ADASYN works similarly to the regular SMOTE. However, the number of
+samples generated for each <span class="math notranslate nohighlight">\(x_i\)</span> is proportional to the number of samples
+which are not from the same class than <span class="math notranslate nohighlight">\(x_i\)</span> in a given
+neighborhood. Therefore, more samples will be generated in the area that the
+nearest neighbor rule is not respected. The parameter <code class="docutils literal notranslate"><span class="pre">m_neighbors</span></code> is
+equivalent to <code class="docutils literal notranslate"><span class="pre">k_neighbors</span></code> in <a class="reference internal" href="references/generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTE</span></code></a>.</p>
+</section>
+<section id="multi-class-management">
+<h3><span class="section-number">2.2.2. </span>Multi-class management<a class="headerlink" href="#multi-class-management" title="Link to this heading">#</a></h3>
+<p>All algorithms can be used with multiple classes as well as binary classes
+classification.  <a class="reference internal" href="references/generated/imblearn.over_sampling.RandomOverSampler.html#imblearn.over_sampling.RandomOverSampler" title="imblearn.over_sampling.RandomOverSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomOverSampler</span></code></a> does not require any inter-class
+information during the sample generation. Therefore, each targeted class is
+resampled independently. In the contrary, both <a class="reference internal" href="references/generated/imblearn.over_sampling.ADASYN.html#imblearn.over_sampling.ADASYN" title="imblearn.over_sampling.ADASYN"><code class="xref py py-class docutils literal notranslate"><span class="pre">ADASYN</span></code></a> and
+<a class="reference internal" href="references/generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTE</span></code></a> need information regarding the neighbourhood of each sample used
+for sample generation. They are using a one-vs-rest approach by selecting each
+targeted class and computing the necessary statistics against the rest of the
+data set which are grouped in a single class.</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="introduction.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Introduction</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="under_sampling.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Under-sampling</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-practical-guide">2.1. A practical guide</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-random-over-sampling">2.1.1. Naive random over-sampling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-random-over-sampling-to-smote-and-adasyn">2.1.2. From random over-sampling to SMOTE and ADASYN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ill-posed-examples">2.1.3. Ill-posed examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smote-variants">2.1.4. SMOTE variants</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-formulation">2.2. Mathematical formulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-generation">2.2.1. Sample generation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-class-management">2.2.2. Multi-class management</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/scikit-learn-contrib/imbalanced-learn/edit/master/doc/over_sampling.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/over_sampling.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2014-2025, The imbalanced-learn developers.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

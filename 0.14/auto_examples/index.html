@@ -1,0 +1,755 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Examples &#8212; Version 0.14.0</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/imbalanced-learn.css?v=1a527b83" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/imbalanced-learn.css?v=1a527b83" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9e420a66"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/index';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Examples showing API imbalanced-learn usage" href="api/index.html" />
+    <link rel="prev" title="check_target_type" href="../references/generated/imblearn.utils.check_target_type.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.14.0" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo_wide.png" class="logo__image only-light" alt="Version 0.14.0 - Home"/>
+    <img src="https://imbalanced-learn.org/stable/_static/img/logo_wide_dark.png" class="logo__image only-dark pst-js-only" alt="Version 0.14.0 - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../install.html">
+    Getting Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../references/index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../whats_new.html">
+    Release history
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../about.html">
+    About us
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-learn-contrib/imbalanced-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../install.html">
+    Getting Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../references/index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../whats_new.html">
+    Release history
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../about.html">
+    About us
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-learn-contrib/imbalanced-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="api/index.html">Examples showing API imbalanced-learn usage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/plot_sampling_strategy_usage.html">How to use <code class="docutils literal notranslate"><span class="pre">sampling_strategy</span></code> in imbalanced-learn</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="applications/index.html">Examples based on real world datasets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="applications/plot_multi_class_under_sampling.html">Multiclass classification with under-sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="applications/plot_topic_classication.html">Example of topic classification in text documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="applications/plot_outlier_rejections.html">Customized sampler to implement an outlier rejections estimator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="applications/plot_over_sampling_benchmark_lfw.html">Benchmark over-sampling methods in a face recognition task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="applications/porto_seguro_keras_under_sampling.html">Porto Seguro: balancing samples in mini-batches with Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="applications/plot_impact_imbalanced_classes.html">Fitting model on imbalanced datasets and how to fight bias</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="combine/index.html">Examples using combine class methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="combine/plot_comparison_combine.html">Compare sampler combining over- and under-sampling</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="datasets/index.html">Dataset examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="datasets/plot_make_imbalance.html">Create an imbalanced dataset</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ensemble/index.html">Example using ensemble class methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="ensemble/plot_bagging_classifier.html">Bagging classifiers using sampler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ensemble/plot_comparison_ensemble_classifier.html">Compare ensemble classifiers using resampling</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="evaluation/index.html">Evaluation examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="evaluation/plot_classification_report.html">Evaluate classification by compiling a report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation/plot_metrics.html">Metrics specific to imbalanced learning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="model_selection/index.html">Model Selection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="model_selection/plot_instance_hardness_cv.html">Distribute hard-to-classify datapoints over CV folds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_selection/plot_validation_curve.html">Plotting Validation Curves</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="over-sampling/index.html">Example using over-sampling class methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="over-sampling/plot_illustration_generation_sample.html">Sample generator used in SMOTE-like samplers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="over-sampling/plot_shrinkage_effect.html">Effect of the shrinkage factor in random over-sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="over-sampling/plot_comparison_over_sampling.html">Compare over-sampling samplers</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pipeline/index.html">Pipeline examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/plot_pipeline_classification.html">Usage of pipeline embedding samplers</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="under-sampling/index.html">Example using under-sampling class methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="under-sampling/plot_illustration_tomek_links.html">Illustration of the definition of a Tomek link</a></li>
+<li class="toctree-l2"><a class="reference internal" href="under-sampling/plot_illustration_nearmiss.html">Sample selection in NearMiss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="under-sampling/plot_comparison_under_sampling.html">Compare under-sampling samplers</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Examples</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="examples">
+<span id="general-examples"></span><h1>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h1>
+<p>General-purpose and introductory examples for the <code class="docutils literal notranslate"><span class="pre">imbalanced-learn</span></code> toolbox.</p>
+<div class="sphx-glr-thumbnails"></div></section>
+<section id="examples-showing-api-imbalanced-learn-usage">
+<h1>Examples showing API imbalanced-learn usage<a class="headerlink" href="#examples-showing-api-imbalanced-learn-usage" title="Link to this heading">#</a></h1>
+<p>Examples that show some details regarding the API of imbalanced-learn.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example shows the different usage of the parameter sampling_strategy for the different family of samplers (i.e. over-sampling, under-sampling. or cleaning methods)."><img alt="" src="../_images/sphx_glr_plot_sampling_strategy_usage_thumb.png" />
+<p><a class="reference internal" href="api/plot_sampling_strategy_usage.html#sphx-glr-auto-examples-api-plot-sampling-strategy-usage-py"><span class="std std-ref">How to use sampling_strategy in imbalanced-learn</span></a></p>
+  <div class="sphx-glr-thumbnail-title">How to use sampling_strategy in imbalanced-learn</div>
+</div></div></section>
+<section id="examples-based-on-real-world-datasets">
+<h1>Examples based on real world datasets<a class="headerlink" href="#examples-based-on-real-world-datasets" title="Link to this heading">#</a></h1>
+<p>Examples which use real-word dataset.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Some balancing methods allow for balancing dataset with multiples classes. We provide an example to illustrate the use of those methods which do not differ from the binary case."><img alt="" src="../_images/sphx_glr_plot_multi_class_under_sampling_thumb.png" />
+<p><a class="reference internal" href="applications/plot_multi_class_under_sampling.html#sphx-glr-auto-examples-applications-plot-multi-class-under-sampling-py"><span class="std std-ref">Multiclass classification with under-sampling</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Multiclass classification with under-sampling</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to balance the text data before to train a classifier."><img alt="" src="../_images/sphx_glr_plot_topic_classication_thumb.png" />
+<p><a class="reference internal" href="applications/plot_topic_classication.html#sphx-glr-auto-examples-applications-plot-topic-classication-py"><span class="std std-ref">Example of topic classification in text documents</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Example of topic classification in text documents</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of a custom sampler to implement an outlier rejections estimator. It can be used easily within a pipeline in which the number of samples can vary during training, which usually is a limitation of the current scikit-learn pipeline."><img alt="" src="../_images/sphx_glr_plot_outlier_rejections_thumb.png" />
+<p><a class="reference internal" href="applications/plot_outlier_rejections.html#sphx-glr-auto-examples-applications-plot-outlier-rejections-py"><span class="std std-ref">Customized sampler to implement an outlier rejections estimator</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Customized sampler to implement an outlier rejections estimator</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this face recognition example two faces are used from the LFW (Faces in the Wild) dataset. Several implemented over-sampling methods are used in conjunction with a 3NN classifier in order to examine the improvement of the classifier&#x27;s output quality by using an over-sampler."><img alt="" src="../_images/sphx_glr_plot_over_sampling_benchmark_lfw_thumb.png" />
+<p><a class="reference internal" href="applications/plot_over_sampling_benchmark_lfw.html#sphx-glr-auto-examples-applications-plot-over-sampling-benchmark-lfw-py"><span class="std std-ref">Benchmark over-sampling methods in a face recognition task</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Benchmark over-sampling methods in a face recognition task</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example compares two strategies to train a neural-network on the Porto Seguro Kaggle data set [1]_. The data set is imbalanced and we show that balancing each mini-batch allows to improve performance and reduce the training time."><img alt="" src="../_images/sphx_glr_porto_seguro_keras_under_sampling_thumb.png" />
+<p><a class="reference internal" href="applications/porto_seguro_keras_under_sampling.html#sphx-glr-auto-examples-applications-porto-seguro-keras-under-sampling-py"><span class="std std-ref">Porto Seguro: balancing samples in mini-batches with Keras</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Porto Seguro: balancing samples in mini-batches with Keras</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the problem induced by learning on datasets having imbalanced classes. Subsequently, we compare different approaches alleviating these negative effects."><img alt="" src="../_images/sphx_glr_plot_impact_imbalanced_classes_thumb.png" />
+<p><a class="reference internal" href="applications/plot_impact_imbalanced_classes.html#sphx-glr-auto-examples-applications-plot-impact-imbalanced-classes-py"><span class="std std-ref">Fitting model on imbalanced datasets and how to fight bias</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Fitting model on imbalanced datasets and how to fight bias</div>
+</div></div><section id="examples-using-combine-class-methods">
+<h2>Examples using combine class methods<a class="headerlink" href="#examples-using-combine-class-methods" title="Link to this heading">#</a></h2>
+<p>Combine methods mixed over- and under-sampling methods. Generally SMOTE is used for over-sampling while some cleaning methods (i.e., ENN and Tomek links) are used to under-sample.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example shows the effect of applying an under-sampling algorithms after SMOTE over-sampling. In the literature, Tomek&#x27;s link and edited nearest neighbours are the two methods which have been used and are available in imbalanced-learn."><img alt="" src="../_images/sphx_glr_plot_comparison_combine_thumb.png" />
+<p><a class="reference internal" href="combine/plot_comparison_combine.html#sphx-glr-auto-examples-combine-plot-comparison-combine-py"><span class="std std-ref">Compare sampler combining over- and under-sampling</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Compare sampler combining over- and under-sampling</div>
+</div></div></section>
+</section>
+<section id="dataset-examples">
+<h1>Dataset examples<a class="headerlink" href="#dataset-examples" title="Link to this heading">#</a></h1>
+<p>Examples concerning the <a class="reference internal" href="../references/datasets.html#module-imblearn.datasets" title="imblearn.datasets"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imblearn.datasets</span></code></a> module.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An illustration of the make_imbalance function to create an imbalanced dataset from a balanced dataset. We show the ability of make_imbalance of dealing with Pandas DataFrame."><img alt="" src="../_images/sphx_glr_plot_make_imbalance_thumb.png" />
+<p><a class="reference internal" href="datasets/plot_make_imbalance.html#sphx-glr-auto-examples-datasets-plot-make-imbalance-py"><span class="std std-ref">Create an imbalanced dataset</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Create an imbalanced dataset</div>
+</div></div><section id="example-using-ensemble-class-methods">
+<h2>Example using ensemble class methods<a class="headerlink" href="#example-using-ensemble-class-methods" title="Link to this heading">#</a></h2>
+<p>Under-sampling methods implies that samples of the majority class are lost during the balancing procedure.
+Ensemble methods offer an alternative to use most of the samples.
+In fact, an ensemble of balanced sets is created and used to later train any classifier.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how BalancedBaggingClassifier can be used to create a large variety of classifiers by giving different samplers."><img alt="" src="../_images/sphx_glr_plot_bagging_classifier_thumb.png" />
+<p><a class="reference internal" href="ensemble/plot_bagging_classifier.html#sphx-glr-auto-examples-ensemble-plot-bagging-classifier-py"><span class="std std-ref">Bagging classifiers using sampler</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Bagging classifiers using sampler</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Ensemble classifiers have shown to improve classification performance compare to single learner. However, they will be affected by class imbalance. This example shows the benefit of balancing the training set before to learn learners. We are making the comparison with non-balanced ensemble methods."><img alt="" src="../_images/sphx_glr_plot_comparison_ensemble_classifier_thumb.png" />
+<p><a class="reference internal" href="ensemble/plot_comparison_ensemble_classifier.html#sphx-glr-auto-examples-ensemble-plot-comparison-ensemble-classifier-py"><span class="std std-ref">Compare ensemble classifiers using resampling</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Compare ensemble classifiers using resampling</div>
+</div></div></section>
+</section>
+<section id="evaluation-examples">
+<h1>Evaluation examples<a class="headerlink" href="#evaluation-examples" title="Link to this heading">#</a></h1>
+<p>Examples illustrating how classification using imbalanced dataset can be done.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Specific metrics have been developed to evaluate classifier which has been trained using imbalanced data. imblearn provides a classification report similar to sklearn, with additional metrics specific to imbalanced learning problem."><img alt="" src="../_images/sphx_glr_plot_classification_report_thumb.png" />
+<p><a class="reference internal" href="evaluation/plot_classification_report.html#sphx-glr-auto-examples-evaluation-plot-classification-report-py"><span class="std std-ref">Evaluate classification by compiling a report</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Evaluate classification by compiling a report</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Specific metrics have been developed to evaluate classifier which has been trained using imbalanced data. imblearn provides mainly two additional metrics which are not implemented in sklearn: (i) geometric mean and (ii) index balanced accuracy."><img alt="" src="../_images/sphx_glr_plot_metrics_thumb.png" />
+<p><a class="reference internal" href="evaluation/plot_metrics.html#sphx-glr-auto-examples-evaluation-plot-metrics-py"><span class="std std-ref">Metrics specific to imbalanced learning</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Metrics specific to imbalanced learning</div>
+</div></div></section>
+<section id="model-selection">
+<h1>Model Selection<a class="headerlink" href="#model-selection" title="Link to this heading">#</a></h1>
+<p>Examples related to the selection of balancing methods.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="&#x27;Instance hardness&#x27; refers to the difficulty to classify an instance. The way hard-to-classify instances are distributed over train and test sets has significant effect on the test set performance metrics. In this example we show how to deal with this problem. We are making the comparison with normal StratifiedKFold cross-validation splitter."><img alt="" src="../_images/sphx_glr_plot_instance_hardness_cv_thumb.png" />
+<p><a class="reference internal" href="model_selection/plot_instance_hardness_cv.html#sphx-glr-auto-examples-model-selection-plot-instance-hardness-cv-py"><span class="std std-ref">Distribute hard-to-classify datapoints over CV folds</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Distribute hard-to-classify datapoints over CV folds</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this example the impact of the SMOTE&#x27;s k_neighbors parameter is examined. In the plot you can see the validation scores of a SMOTE-CART classifier for different values of the SMOTE&#x27;s k_neighbors parameter."><img alt="" src="../_images/sphx_glr_plot_validation_curve_thumb.png" />
+<p><a class="reference internal" href="model_selection/plot_validation_curve.html#sphx-glr-auto-examples-model-selection-plot-validation-curve-py"><span class="std std-ref">Plotting Validation Curves</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Plotting Validation Curves</div>
+</div></div><section id="example-using-over-sampling-class-methods">
+<h2>Example using over-sampling class methods<a class="headerlink" href="#example-using-over-sampling-class-methods" title="Link to this heading">#</a></h2>
+<p>Data balancing can be performed by over-sampling such that new samples are generated in the minority class to reach a given balancing ratio.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates how a new sample is generated taking into account the neighbourhood of this sample. A new sample is generated by selecting the randomly 2 samples of the same class and interpolating a point between these samples."><img alt="" src="../_images/sphx_glr_plot_illustration_generation_sample_thumb.png" />
+<p><a class="reference internal" href="over-sampling/plot_illustration_generation_sample.html#sphx-glr-auto-examples-over-sampling-plot-illustration-generation-sample-py"><span class="std std-ref">Sample generator used in SMOTE-like samplers</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Sample generator used in SMOTE-like samplers</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows the effect of the shrinkage factor used to generate the smoothed bootstrap using the RandomOverSampler."><img alt="" src="../_images/sphx_glr_plot_shrinkage_effect_thumb.png" />
+<p><a class="reference internal" href="over-sampling/plot_shrinkage_effect.html#sphx-glr-auto-examples-over-sampling-plot-shrinkage-effect-py"><span class="std std-ref">Effect of the shrinkage factor in random over-sampling</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Effect of the shrinkage factor in random over-sampling</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The following example attends to make a qualitative comparison between the different over-sampling algorithms available in the imbalanced-learn package."><img alt="" src="../_images/sphx_glr_plot_comparison_over_sampling_thumb.png" />
+<p><a class="reference internal" href="over-sampling/plot_comparison_over_sampling.html#sphx-glr-auto-examples-over-sampling-plot-comparison-over-sampling-py"><span class="std std-ref">Compare over-sampling samplers</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Compare over-sampling samplers</div>
+</div></div></section>
+<section id="pipeline-examples">
+<h2>Pipeline examples<a class="headerlink" href="#pipeline-examples" title="Link to this heading">#</a></h2>
+<p>Example of how to use the a pipeline to include under-sampling with <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> estimators.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example of the :class:~imblearn.pipeline.Pipeline` object (or make_pipeline helper function) working with transformers and resamplers."><img alt="" src="../_images/sphx_glr_plot_pipeline_classification_thumb.png" />
+<p><a class="reference internal" href="pipeline/plot_pipeline_classification.html#sphx-glr-auto-examples-pipeline-plot-pipeline-classification-py"><span class="std std-ref">Usage of pipeline embedding samplers</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Usage of pipeline embedding samplers</div>
+</div></div></section>
+<section id="example-using-under-sampling-class-methods">
+<h2>Example using under-sampling class methods<a class="headerlink" href="#example-using-under-sampling-class-methods" title="Link to this heading">#</a></h2>
+<p>Under-sampling refers to the process of reducing the number of samples in the majority classes.
+The implemented methods can be categorized into 2 groups: (i) fixed under-sampling and (ii) cleaning under-sampling.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates what is a Tomek link."><img alt="" src="../_images/sphx_glr_plot_illustration_tomek_links_thumb.png" />
+<p><a class="reference internal" href="under-sampling/plot_illustration_tomek_links.html#sphx-glr-auto-examples-under-sampling-plot-illustration-tomek-links-py"><span class="std std-ref">Illustration of the definition of a Tomek link</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Illustration of the definition of a Tomek link</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the different way of selecting example in NearMiss."><img alt="" src="../_images/sphx_glr_plot_illustration_nearmiss_thumb.png" />
+<p><a class="reference internal" href="under-sampling/plot_illustration_nearmiss.html#sphx-glr-auto-examples-under-sampling-plot-illustration-nearmiss-py"><span class="std std-ref">Sample selection in NearMiss</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Sample selection in NearMiss</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The following example attends to make a qualitative comparison between the different under-sampling algorithms available in the imbalanced-learn package."><img alt="" src="../_images/sphx_glr_plot_comparison_under_sampling_thumb.png" />
+<p><a class="reference internal" href="under-sampling/plot_comparison_under_sampling.html#sphx-glr-auto-examples-under-sampling-plot-comparison-under-sampling-py"><span class="std std-ref">Compare under-sampling samplers</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Compare under-sampling samplers</div>
+</div></div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-footer sphx-glr-footer-gallery docutils container">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/07fcc19ba03226cd3d83d4e40ec44385/auto_examples_python.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">auto_examples_python.zip</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/6f1e7a639e0699d6164445b55e6c116d/auto_examples_jupyter.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Jupyter</span> <span class="pre">notebooks:</span> <span class="pre">auto_examples_jupyter.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../references/generated/imblearn.utils.check_target_type.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">check_target_type</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="api/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Examples showing API imbalanced-learn usage</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Examples</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-showing-api-imbalanced-learn-usage">Examples showing API imbalanced-learn usage</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-based-on-real-world-datasets">Examples based on real world datasets</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-using-combine-class-methods">Examples using combine class methods</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-examples">Dataset examples</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-using-ensemble-class-methods">Example using ensemble class methods</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-examples">Evaluation examples</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#model-selection">Model Selection</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-using-over-sampling-class-methods">Example using over-sampling class methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-examples">Pipeline examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-using-under-sampling-class-methods">Example using under-sampling class methods</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/scikit-learn-contrib/imbalanced-learn/edit/master/doc/auto_examples/index.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/auto_examples/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2014-2025, The imbalanced-learn developers.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

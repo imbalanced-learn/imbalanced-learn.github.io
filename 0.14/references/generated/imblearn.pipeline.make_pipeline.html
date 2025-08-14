@@ -1,0 +1,754 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>make_pipeline &#8212; Version 0.14.0</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css?v=1a527b83" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css?v=1a527b83" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9e420a66"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'references/generated/imblearn.pipeline.make_pipeline';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Metrics" href="../metrics.html" />
+    <link rel="prev" title="Pipeline" href="imblearn.pipeline.Pipeline.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.14.0" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo_wide.png" class="logo__image only-light" alt="Version 0.14.0 - Home"/>
+    <img src="https://imbalanced-learn.org/stable/_static/img/logo_wide_dark.png" class="logo__image only-dark pst-js-only" alt="Version 0.14.0 - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../install.html">
+    Getting Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../auto_examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whats_new.html">
+    Release history
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../about.html">
+    About us
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-learn-contrib/imbalanced-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../install.html">
+    Getting Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../auto_examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whats_new.html">
+    Release history
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../about.html">
+    About us
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-learn-contrib/imbalanced-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../under_sampling.html">Under-sampling methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.ClusterCentroids.html">ClusterCentroids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.CondensedNearestNeighbour.html">CondensedNearestNeighbour</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.EditedNearestNeighbours.html">EditedNearestNeighbours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.RepeatedEditedNearestNeighbours.html">RepeatedEditedNearestNeighbours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.AllKNN.html">AllKNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.InstanceHardnessThreshold.html">InstanceHardnessThreshold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.NearMiss.html">NearMiss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.NeighbourhoodCleaningRule.html">NeighbourhoodCleaningRule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.OneSidedSelection.html">OneSidedSelection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.RandomUnderSampler.html">RandomUnderSampler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.TomekLinks.html">TomekLinks</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../over_sampling.html">Over-sampling methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.RandomOverSampler.html">RandomOverSampler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.SMOTE.html">SMOTE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.SMOTENC.html">SMOTENC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.SMOTEN.html">SMOTEN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.ADASYN.html">ADASYN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.BorderlineSMOTE.html">BorderlineSMOTE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.KMeansSMOTE.html">KMeansSMOTE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.SVMSMOTE.html">SVMSMOTE</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../combine.html">Combination of over- and under-sampling methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.combine.SMOTEENN.html">SMOTEENN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.combine.SMOTETomek.html">SMOTETomek</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ensemble.html">Ensemble methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.ensemble.EasyEnsembleClassifier.html">EasyEnsembleClassifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.ensemble.RUSBoostClassifier.html">RUSBoostClassifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.ensemble.BalancedBaggingClassifier.html">BalancedBaggingClassifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.ensemble.BalancedRandomForestClassifier.html">BalancedRandomForestClassifier</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../keras.html">Batch generator for Keras</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.keras.BalancedBatchGenerator.html">BalancedBatchGenerator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.keras.balanced_batch_generator.html">balanced_batch_generator</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tensorflow.html">Batch generator for TensorFlow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.tensorflow.balanced_batch_generator.html">balanced_batch_generator</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../miscellaneous.html">Miscellaneous</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.FunctionSampler.html">FunctionSampler</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../pipeline.html">Pipeline</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="imblearn.pipeline.Pipeline.html">Pipeline</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">make_pipeline</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../metrics.html">Metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.classification_report_imbalanced.html">classification_report_imbalanced</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.sensitivity_specificity_support.html">sensitivity_specificity_support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.sensitivity_score.html">sensitivity_score</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.specificity_score.html">specificity_score</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.geometric_mean_score.html">geometric_mean_score</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.macro_averaged_mean_absolute_error.html">macro_averaged_mean_absolute_error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.make_index_balanced_accuracy.html">make_index_balanced_accuracy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.pairwise.ValueDifferenceMetric.html">ValueDifferenceMetric</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../model_selection.html">Model selection methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.model_selection.InstanceHardnessCV.html">InstanceHardnessCV</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../datasets.html">Datasets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.datasets.make_imbalance.html">make_imbalance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.datasets.fetch_datasets.html">fetch_datasets</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../utils.html">Utilities</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.utils.estimator_checks.parametrize_with_checks.html">parametrize_with_checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.utils.check_neighbors_object.html">check_neighbors_object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.utils.check_sampling_strategy.html">check_sampling_strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.utils.check_target_type.html">check_target_type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.utils.estimator_checks.parametrize_with_checks.html">parametrize_with_checks</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">API reference</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../pipeline.html" class="nav-link">Pipeline</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">make_pipeline</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="make-pipeline">
+<h1>make_pipeline<a class="headerlink" href="#make-pipeline" title="Link to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="imblearn.pipeline.make_pipeline">
+<span class="sig-prename descclassname"><span class="pre">imblearn.pipeline.</span></span><span class="sig-name descname"><span class="pre">make_pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">steps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/5018e4c/imblearn/pipeline.py#L1394"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.pipeline.make_pipeline" title="Link to this definition">#</a></dt>
+<dd><p>Construct a Pipeline from the given estimators.</p>
+<p>This is a shorthand for the Pipeline constructor; it does not require, and
+does not permit, naming the estimators. Instead, their names will be set
+to the lowercase of their types automatically.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>*steps</strong><span class="classifier">list of estimators</span></dt><dd><p>A list of estimators.</p>
+</dd>
+<dt><strong>memory</strong><span class="classifier">None, str or object with the joblib.Memory interface, default=None</span></dt><dd><p>Used to cache the fitted transformers of the pipeline. By default,
+no caching is performed. If a string is given, it is the path to
+the caching directory. Enabling caching triggers a clone of
+the transformers before fitting. Therefore, the transformer
+instance given to the pipeline cannot be inspected
+directly. Use the attribute <code class="docutils literal notranslate"><span class="pre">named_steps</span></code> or <code class="docutils literal notranslate"><span class="pre">steps</span></code> to
+inspect estimators within the pipeline. Caching the
+transformers is advantageous when fitting is time consuming.</p>
+</dd>
+<dt><strong>transform_input</strong><span class="classifier">list of str, default=None</span></dt><dd><p>This enables transforming some input arguments to <code class="docutils literal notranslate"><span class="pre">fit</span></code> (other than <code class="docutils literal notranslate"><span class="pre">X</span></code>)
+to be transformed by the steps of the pipeline up to the step which requires
+them. Requirement is defined via <span class="xref std std-ref">metadata routing</span>.
+This can be used to pass a validation set through the pipeline for instance.</p>
+<p>You can only set this if metadata routing is enabled, which you
+can enable using <code class="docutils literal notranslate"><span class="pre">sklearn.set_config(enable_metadata_routing=True)</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 1.6.</span></p>
+</div>
+</dd>
+<dt><strong>verbose</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, the time elapsed while fitting each step will be printed as it
+is completed.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>p</strong><span class="classifier">Pipeline</span></dt><dd><p>Returns an imbalanced-learn <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> instance that handles samplers.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="imblearn.pipeline.Pipeline.html#imblearn.pipeline.Pipeline" title="imblearn.pipeline.Pipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">imblearn.pipeline.Pipeline</span></code></a></dt><dd><p>Class for creating a pipeline of transforms with a final estimator.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.naive_bayes</span><span class="w"> </span><span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">GaussianNB</span><span class="p">(</span><span class="n">priors</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
+<span class="go">Pipeline(steps=[(&#39;standardscaler&#39;, StandardScaler()),</span>
+<span class="go">                (&#39;gaussiannb&#39;, GaussianNB())])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<section id="examples-using-imblearn-pipeline-make-pipeline">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">imblearn.pipeline.make_pipeline</span></code><a class="headerlink" href="#examples-using-imblearn-pipeline-make-pipeline" title="Link to this heading">#</a></h2>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Some balancing methods allow for balancing dataset with multiples classes. We provide an example to illustrate the use of those methods which do not differ from the binary case."><img alt="" src="../../_images/sphx_glr_plot_multi_class_under_sampling_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/applications/plot_multi_class_under_sampling.html#sphx-glr-auto-examples-applications-plot-multi-class-under-sampling-py"><span class="std std-ref">Multiclass classification with under-sampling</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Multiclass classification with under-sampling</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to balance the text data before to train a classifier."><img alt="" src="../../_images/sphx_glr_plot_topic_classication_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/applications/plot_topic_classication.html#sphx-glr-auto-examples-applications-plot-topic-classication-py"><span class="std std-ref">Example of topic classification in text documents</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Example of topic classification in text documents</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of a custom sampler to implement an outlier rejections estimator. It can be used easily within a pipeline in which the number of samples can vary during training, which usually is a limitation of the current scikit-learn pipeline."><img alt="" src="../../_images/sphx_glr_plot_outlier_rejections_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/applications/plot_outlier_rejections.html#sphx-glr-auto-examples-applications-plot-outlier-rejections-py"><span class="std std-ref">Customized sampler to implement an outlier rejections estimator</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Customized sampler to implement an outlier rejections estimator</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this face recognition example two faces are used from the LFW (Faces in the Wild) dataset. Several implemented over-sampling methods are used in conjunction with a 3NN classifier in order to examine the improvement of the classifier&#x27;s output quality by using an over-sampler."><img alt="" src="../../_images/sphx_glr_plot_over_sampling_benchmark_lfw_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/applications/plot_over_sampling_benchmark_lfw.html#sphx-glr-auto-examples-applications-plot-over-sampling-benchmark-lfw-py"><span class="std std-ref">Benchmark over-sampling methods in a face recognition task</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Benchmark over-sampling methods in a face recognition task</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the problem induced by learning on datasets having imbalanced classes. Subsequently, we compare different approaches alleviating these negative effects."><img alt="" src="../../_images/sphx_glr_plot_impact_imbalanced_classes_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/applications/plot_impact_imbalanced_classes.html#sphx-glr-auto-examples-applications-plot-impact-imbalanced-classes-py"><span class="std std-ref">Fitting model on imbalanced datasets and how to fight bias</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Fitting model on imbalanced datasets and how to fight bias</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows the effect of applying an under-sampling algorithms after SMOTE over-sampling. In the literature, Tomek&#x27;s link and edited nearest neighbours are the two methods which have been used and are available in imbalanced-learn."><img alt="" src="../../_images/sphx_glr_plot_comparison_combine_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/combine/plot_comparison_combine.html#sphx-glr-auto-examples-combine-plot-comparison-combine-py"><span class="std std-ref">Compare sampler combining over- and under-sampling</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Compare sampler combining over- and under-sampling</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Specific metrics have been developed to evaluate classifier which has been trained using imbalanced data. imblearn provides a classification report similar to sklearn, with additional metrics specific to imbalanced learning problem."><img alt="" src="../../_images/sphx_glr_plot_classification_report_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/evaluation/plot_classification_report.html#sphx-glr-auto-examples-evaluation-plot-classification-report-py"><span class="std std-ref">Evaluate classification by compiling a report</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Evaluate classification by compiling a report</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Specific metrics have been developed to evaluate classifier which has been trained using imbalanced data. imblearn provides mainly two additional metrics which are not implemented in sklearn: (i) geometric mean and (ii) index balanced accuracy."><img alt="" src="../../_images/sphx_glr_plot_metrics_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/evaluation/plot_metrics.html#sphx-glr-auto-examples-evaluation-plot-metrics-py"><span class="std std-ref">Metrics specific to imbalanced learning</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Metrics specific to imbalanced learning</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this example the impact of the SMOTE&#x27;s k_neighbors parameter is examined. In the plot you can see the validation scores of a SMOTE-CART classifier for different values of the SMOTE&#x27;s k_neighbors parameter."><img alt="" src="../../_images/sphx_glr_plot_validation_curve_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/model_selection/plot_validation_curve.html#sphx-glr-auto-examples-model-selection-plot-validation-curve-py"><span class="std std-ref">Plotting Validation Curves</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Plotting Validation Curves</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The following example attends to make a qualitative comparison between the different over-sampling algorithms available in the imbalanced-learn package."><img alt="" src="../../_images/sphx_glr_plot_comparison_over_sampling_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/over-sampling/plot_comparison_over_sampling.html#sphx-glr-auto-examples-over-sampling-plot-comparison-over-sampling-py"><span class="std std-ref">Compare over-sampling samplers</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Compare over-sampling samplers</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example of the :class:~imblearn.pipeline.Pipeline` object (or make_pipeline helper function) working with transformers and resamplers."><img alt="" src="../../_images/sphx_glr_plot_pipeline_classification_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/pipeline/plot_pipeline_classification.html#sphx-glr-auto-examples-pipeline-plot-pipeline-classification-py"><span class="std std-ref">Usage of pipeline embedding samplers</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Usage of pipeline embedding samplers</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The following example attends to make a qualitative comparison between the different under-sampling algorithms available in the imbalanced-learn package."><img alt="" src="../../_images/sphx_glr_plot_comparison_under_sampling_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/under-sampling/plot_comparison_under_sampling.html#sphx-glr-auto-examples-under-sampling-plot-comparison-under-sampling-py"><span class="std std-ref">Compare under-sampling samplers</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Compare under-sampling samplers</div>
+</div></div><div style='clear:both'></div></section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="imblearn.pipeline.Pipeline.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Pipeline</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../metrics.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Metrics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imblearn.pipeline.make_pipeline"><code class="docutils literal notranslate"><span class="pre">make_pipeline</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-using-imblearn-pipeline-make-pipeline">Examples using <code class="docutils literal notranslate"><span class="pre">imblearn.pipeline.make_pipeline</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/scikit-learn-contrib/imbalanced-learn/edit/master/doc/references/generated/imblearn.pipeline.make_pipeline.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/references/generated/imblearn.pipeline.make_pipeline.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2014-2025, The imbalanced-learn developers.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

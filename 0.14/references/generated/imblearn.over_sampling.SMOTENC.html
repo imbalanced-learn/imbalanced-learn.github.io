@@ -1,0 +1,1012 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SMOTENC &#8212; Version 0.14.0</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css?v=1a527b83" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/imbalanced-learn.css?v=1a527b83" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9e420a66"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'references/generated/imblearn.over_sampling.SMOTENC';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="SMOTEN" href="imblearn.over_sampling.SMOTEN.html" />
+    <link rel="prev" title="SMOTE" href="imblearn.over_sampling.SMOTE.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.14.0" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo_wide.png" class="logo__image only-light" alt="Version 0.14.0 - Home"/>
+    <img src="https://imbalanced-learn.org/stable/_static/img/logo_wide_dark.png" class="logo__image only-dark pst-js-only" alt="Version 0.14.0 - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../install.html">
+    Getting Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../auto_examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whats_new.html">
+    Release history
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../about.html">
+    About us
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-learn-contrib/imbalanced-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../install.html">
+    Getting Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../auto_examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whats_new.html">
+    Release history
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../about.html">
+    About us
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-learn-contrib/imbalanced-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../under_sampling.html">Under-sampling methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.ClusterCentroids.html">ClusterCentroids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.CondensedNearestNeighbour.html">CondensedNearestNeighbour</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.EditedNearestNeighbours.html">EditedNearestNeighbours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.RepeatedEditedNearestNeighbours.html">RepeatedEditedNearestNeighbours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.AllKNN.html">AllKNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.InstanceHardnessThreshold.html">InstanceHardnessThreshold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.NearMiss.html">NearMiss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.NeighbourhoodCleaningRule.html">NeighbourhoodCleaningRule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.OneSidedSelection.html">OneSidedSelection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.RandomUnderSampler.html">RandomUnderSampler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.under_sampling.TomekLinks.html">TomekLinks</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../over_sampling.html">Over-sampling methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.RandomOverSampler.html">RandomOverSampler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.SMOTE.html">SMOTE</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">SMOTENC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.SMOTEN.html">SMOTEN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.ADASYN.html">ADASYN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.BorderlineSMOTE.html">BorderlineSMOTE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.KMeansSMOTE.html">KMeansSMOTE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.over_sampling.SVMSMOTE.html">SVMSMOTE</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../combine.html">Combination of over- and under-sampling methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.combine.SMOTEENN.html">SMOTEENN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.combine.SMOTETomek.html">SMOTETomek</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ensemble.html">Ensemble methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.ensemble.EasyEnsembleClassifier.html">EasyEnsembleClassifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.ensemble.RUSBoostClassifier.html">RUSBoostClassifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.ensemble.BalancedBaggingClassifier.html">BalancedBaggingClassifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.ensemble.BalancedRandomForestClassifier.html">BalancedRandomForestClassifier</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../keras.html">Batch generator for Keras</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.keras.BalancedBatchGenerator.html">BalancedBatchGenerator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.keras.balanced_batch_generator.html">balanced_batch_generator</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tensorflow.html">Batch generator for TensorFlow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.tensorflow.balanced_batch_generator.html">balanced_batch_generator</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../miscellaneous.html">Miscellaneous</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.FunctionSampler.html">FunctionSampler</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pipeline.html">Pipeline</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.pipeline.Pipeline.html">Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.pipeline.make_pipeline.html">make_pipeline</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../metrics.html">Metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.classification_report_imbalanced.html">classification_report_imbalanced</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.sensitivity_specificity_support.html">sensitivity_specificity_support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.sensitivity_score.html">sensitivity_score</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.specificity_score.html">specificity_score</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.geometric_mean_score.html">geometric_mean_score</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.macro_averaged_mean_absolute_error.html">macro_averaged_mean_absolute_error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.make_index_balanced_accuracy.html">make_index_balanced_accuracy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.metrics.pairwise.ValueDifferenceMetric.html">ValueDifferenceMetric</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../model_selection.html">Model selection methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.model_selection.InstanceHardnessCV.html">InstanceHardnessCV</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../datasets.html">Datasets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.datasets.make_imbalance.html">make_imbalance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.datasets.fetch_datasets.html">fetch_datasets</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../utils.html">Utilities</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.utils.estimator_checks.parametrize_with_checks.html">parametrize_with_checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.utils.check_neighbors_object.html">check_neighbors_object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.utils.check_sampling_strategy.html">check_sampling_strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.utils.check_target_type.html">check_target_type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imblearn.utils.estimator_checks.parametrize_with_checks.html">parametrize_with_checks</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">API reference</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../over_sampling.html" class="nav-link">Over-sampling methods</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">SMOTENC</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="smotenc">
+<h1>SMOTENC<a class="headerlink" href="#smotenc" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="imblearn.over_sampling.SMOTENC">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imblearn.over_sampling.</span></span><span class="sig-name descname"><span class="pre">SMOTENC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">categorical_features</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_encoder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_strategy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/5018e4c/imblearn/over_sampling/_smote/base.py#L375"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.over_sampling.SMOTENC" title="Link to this definition">#</a></dt>
+<dd><p>Synthetic Minority Over-sampling Technique for Nominal and Continuous.</p>
+<p>Unlike <a class="reference internal" href="imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTE</span></code></a>, SMOTE-NC for dataset containing numerical and
+categorical features. However, it is not designed to work with only
+categorical features.</p>
+<p>Read more in the <a class="reference internal" href="../../over_sampling.html#smote-adasyn"><span class="std std-ref">User Guide</span></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.</span></p>
+</div>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>categorical_features</strong><span class="classifier">“infer” or array-like of shape (n_cat_features,) or             (n_features,), dtype={bool, int, str}</span></dt><dd><p>Specified which features are categorical. Can either be:</p>
+<ul class="simple">
+<li><p>“auto” (default) to automatically detect categorical features. Only
+supported when <code class="docutils literal notranslate"><span class="pre">X</span></code> is a <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.3.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> and it corresponds
+to columns that have a <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.CategoricalDtype.html#pandas.CategoricalDtype" title="(in pandas v2.3.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.CategoricalDtype</span></code></a>;</p></li>
+<li><p>array of <code class="docutils literal notranslate"><span class="pre">int</span></code> corresponding to the indices specifying the categorical
+features;</p></li>
+<li><p>array of <code class="docutils literal notranslate"><span class="pre">str</span></code> corresponding to the feature names. <code class="docutils literal notranslate"><span class="pre">X</span></code> should be a pandas
+<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.3.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> in this case.</p></li>
+<li><p>mask array of shape (n_features, ) and <code class="docutils literal notranslate"><span class="pre">bool</span></code> dtype for which
+<code class="docutils literal notranslate"><span class="pre">True</span></code> indicates the categorical features.</p></li>
+</ul>
+</dd>
+<dt><strong>categorical_encoder</strong><span class="classifier">estimator, default=None</span></dt><dd><p>One-hot encoder used to encode the categorical features. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">OneHotEncoder</span></code> is used with default parameters
+apart from <code class="docutils literal notranslate"><span class="pre">handle_unknown</span></code> which is set to ‘ignore’.</p>
+</dd>
+<dt><strong>sampling_strategy</strong><span class="classifier">float, str, dict or callable, default=’auto’</span></dt><dd><p>Sampling information to resample the data set.</p>
+<ul>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">float</span></code>, it corresponds to the desired ratio of the number of
+samples in the minority class over the number of samples in the
+majority class after resampling. Therefore, the ratio is expressed as
+<span class="math notranslate nohighlight">\(\alpha_{os} = N_{rm} / N_{M}\)</span> where <span class="math notranslate nohighlight">\(N_{rm}\)</span> is the
+number of samples in the minority class after resampling and
+<span class="math notranslate nohighlight">\(N_{M}\)</span> is the number of samples in the majority class.</p>
+<blockquote>
+<div><div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">float</span></code> is only available for <strong>binary</strong> classification. An
+error is raised for multi-class classification.</p>
+</div>
+</div></blockquote>
+</li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">str</span></code>, specify the class targeted by the resampling. The
+number of samples in the different classes will be equalized.
+Possible choices are:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">'minority'</span></code>: resample only the minority class;</p>
+<p><code class="docutils literal notranslate"><span class="pre">'not</span> <span class="pre">minority'</span></code>: resample all classes but the minority class;</p>
+<p><code class="docutils literal notranslate"><span class="pre">'not</span> <span class="pre">majority'</span></code>: resample all classes but the majority class;</p>
+<p><code class="docutils literal notranslate"><span class="pre">'all'</span></code>: resample all classes;</p>
+<p><code class="docutils literal notranslate"><span class="pre">'auto'</span></code>: equivalent to <code class="docutils literal notranslate"><span class="pre">'not</span> <span class="pre">majority'</span></code>.</p>
+</div></blockquote>
+</li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">dict</span></code>, the keys correspond to the targeted classes. The
+values correspond to the desired number of samples for each targeted
+class.</p></li>
+<li><p>When callable, function taking <code class="docutils literal notranslate"><span class="pre">y</span></code> and returns a <code class="docutils literal notranslate"><span class="pre">dict</span></code>. The keys
+correspond to the targeted classes. The values correspond to the
+desired number of samples for each class.</p></li>
+</ul>
+</dd>
+<dt><strong>random_state</strong><span class="classifier">int, RandomState instance, default=None</span></dt><dd><p>Control the randomization of the algorithm.</p>
+<ul class="simple">
+<li><p>If int, <code class="docutils literal notranslate"><span class="pre">random_state</span></code> is the seed used by the random number
+generator;</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">RandomState</span></code> instance, random_state is the random number
+generator;</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">None</span></code>, the random number generator is the <code class="docutils literal notranslate"><span class="pre">RandomState</span></code>
+instance used by <code class="docutils literal notranslate"><span class="pre">np.random</span></code>.</p></li>
+</ul>
+</dd>
+<dt><strong>k_neighbors</strong><span class="classifier">int or object, default=5</span></dt><dd><p>The nearest neighbors used to define the neighborhood of samples to use
+to generate the synthetic samples. You can pass:</p>
+<ul class="simple">
+<li><p>an <code class="docutils literal notranslate"><span class="pre">int</span></code> corresponding to the number of neighbors to use. A
+<code class="docutils literal notranslate"><span class="pre">~sklearn.neighbors.NearestNeighbors</span></code> instance will be fitted in this
+case.</p></li>
+<li><p>an instance of a compatible nearest neighbors algorithm that should
+implement both methods <code class="docutils literal notranslate"><span class="pre">kneighbors</span></code> and <code class="docutils literal notranslate"><span class="pre">kneighbors_graph</span></code>. For
+instance, it could correspond to a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">NearestNeighbors</span></code> but could be extended to
+any compatible class.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl>
+<dt><strong>sampling_strategy_</strong><span class="classifier">dict</span></dt><dd><p>Dictionary containing the information to sample the dataset. The keys
+corresponds to the class labels from which to sample and the values
+are the number of samples to sample.</p>
+</dd>
+<dt><strong>nn_k_</strong><span class="classifier">estimator object</span></dt><dd><p>Validated k-nearest neighbours created from the <code class="docutils literal notranslate"><span class="pre">k_neighbors</span></code> parameter.</p>
+</dd>
+<dt><strong>categorical_encoder_</strong><span class="classifier">estimator</span></dt><dd><p>The encoder used to encode the categorical features.</p>
+</dd>
+<dt><strong>categorical_features_</strong><span class="classifier">ndarray of shape (n_cat_features,), dtype=np.int64</span></dt><dd><p>Indices of the categorical features.</p>
+</dd>
+<dt><strong>continuous_features_</strong><span class="classifier">ndarray of shape (n_cont_features,), dtype=np.int64</span></dt><dd><p>Indices of the continuous features.</p>
+</dd>
+<dt><strong>median_std_</strong><span class="classifier">dict of int -&gt; float</span></dt><dd><p>Median of the standard deviation of the continuous features for each
+class to be over-sampled.</p>
+</dd>
+<dt><strong>n_features_</strong><span class="classifier">int</span></dt><dd><p>Number of features observed at <code class="docutils literal notranslate"><span class="pre">fit</span></code>.</p>
+</dd>
+<dt><strong>n_features_in_</strong><span class="classifier">int</span></dt><dd><p>Number of features in the input dataset.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.9.</span></p>
+</div>
+</dd>
+<dt><strong>feature_names_in_</strong><span class="classifier">ndarray of shape (<code class="docutils literal notranslate"><span class="pre">n_features_in_</span></code>,)</span></dt><dd><p>Names of features seen during <code class="docutils literal notranslate"><span class="pre">fit</span></code>. Defined only when <code class="docutils literal notranslate"><span class="pre">X</span></code> has feature
+names that are all strings.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.10.</span></p>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" title="imblearn.over_sampling.SMOTE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SMOTE</span></code></a></dt><dd><p>Over-sample using SMOTE.</p>
+</dd>
+<dt><a class="reference internal" href="imblearn.over_sampling.SMOTEN.html#imblearn.over_sampling.SMOTEN" title="imblearn.over_sampling.SMOTEN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SMOTEN</span></code></a></dt><dd><p>Over-sample using the SMOTE variant specifically for categorical features only.</p>
+</dd>
+<dt><a class="reference internal" href="imblearn.over_sampling.SVMSMOTE.html#imblearn.over_sampling.SVMSMOTE" title="imblearn.over_sampling.SVMSMOTE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SVMSMOTE</span></code></a></dt><dd><p>Over-sample using SVM-SMOTE variant.</p>
+</dd>
+<dt><a class="reference internal" href="imblearn.over_sampling.BorderlineSMOTE.html#imblearn.over_sampling.BorderlineSMOTE" title="imblearn.over_sampling.BorderlineSMOTE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BorderlineSMOTE</span></code></a></dt><dd><p>Over-sample using Borderline-SMOTE variant.</p>
+</dd>
+<dt><a class="reference internal" href="imblearn.over_sampling.ADASYN.html#imblearn.over_sampling.ADASYN" title="imblearn.over_sampling.ADASYN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ADASYN</span></code></a></dt><dd><p>Over-sample using ADASYN.</p>
+</dd>
+<dt><a class="reference internal" href="imblearn.over_sampling.KMeansSMOTE.html#imblearn.over_sampling.KMeansSMOTE" title="imblearn.over_sampling.KMeansSMOTE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KMeansSMOTE</span></code></a></dt><dd><p>Over-sample applying a clustering before to oversample using SMOTE.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>See the original paper <a class="reference internal" href="#r7c6df8790298-1" id="id1">[1]</a> for more details.</p>
+<p>Supports multi-class resampling. A one-vs.-rest scheme is used as
+originally proposed in <a class="reference internal" href="#r7c6df8790298-1" id="id2">[1]</a>.</p>
+<p>See
+<a class="reference internal" href="../../auto_examples/over-sampling/plot_comparison_over_sampling.html#sphx-glr-auto-examples-over-sampling-plot-comparison-over-sampling-py"><span class="std std-ref">Compare over-sampling samplers</span></a>,
+and
+<a class="reference internal" href="../../auto_examples/over-sampling/plot_illustration_generation_sample.html#sphx-glr-auto-examples-over-sampling-plot-illustration-generation-sample-py"><span class="std std-ref">Sample generator used in SMOTE-like samplers</span></a>.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r7c6df8790298-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>)</span>
+<p>N. V. Chawla, K. W. Bowyer, L. O.Hall, W. P. Kegelmeyer, “SMOTE:
+synthetic minority over-sampling technique,” Journal of artificial
+intelligence research, 321-357, 2002.</p>
+</div>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">numpy.random</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomState</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_classification</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.over_sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">SMOTENC</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">class_sep</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_redundant</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">flip_y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">n_features</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">n_clusters_per_class</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Original dataset shape </span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">Original dataset shape (1000, 20)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Original dataset samples per class </span><span class="si">{</span><span class="n">Counter</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">Original dataset samples per class Counter({1: 900, 0: 100})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># simulate the 2 last columns to be categorical features</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">=</span> <span class="n">RandomState</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sm</span> <span class="o">=</span> <span class="n">SMOTENC</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">categorical_features</span><span class="o">=</span><span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Resampled dataset samples per class </span><span class="si">{</span><span class="n">Counter</span><span class="p">(</span><span class="n">y_res</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">Resampled dataset samples per class Counter({0: 900, 1: 900})</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#imblearn.over_sampling.SMOTENC.fit" title="imblearn.over_sampling.SMOTENC.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(X, y, **params)</p></td>
+<td><p>Check inputs and statistics of the sampler.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#imblearn.over_sampling.SMOTENC.fit_resample" title="imblearn.over_sampling.SMOTENC.fit_resample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit_resample</span></code></a>(X, y, **params)</p></td>
+<td><p>Resample the dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#imblearn.over_sampling.SMOTENC.get_feature_names_out" title="imblearn.over_sampling.SMOTENC.get_feature_names_out"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_feature_names_out</span></code></a>([input_features])</p></td>
+<td><p>Get output feature names for transformation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#imblearn.over_sampling.SMOTENC.get_metadata_routing" title="imblearn.over_sampling.SMOTENC.get_metadata_routing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_metadata_routing</span></code></a>()</p></td>
+<td><p>Get metadata routing of this object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#imblearn.over_sampling.SMOTENC.get_params" title="imblearn.over_sampling.SMOTENC.get_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_params</span></code></a>([deep])</p></td>
+<td><p>Get parameters for this estimator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#imblearn.over_sampling.SMOTENC.set_params" title="imblearn.over_sampling.SMOTENC.set_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_params</span></code></a>(**params)</p></td>
+<td><p>Set the parameters of this estimator.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="imblearn.over_sampling.SMOTENC.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/5018e4c/imblearn/base.py#L160"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.over_sampling.SMOTENC.fit" title="Link to this definition">#</a></dt>
+<dd><p>Check inputs and statistics of the sampler.</p>
+<p>You should use <code class="docutils literal notranslate"><span class="pre">fit_resample</span></code> in all cases.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">{array-like, dataframe, sparse matrix} of shape                 (n_samples, n_features)</span></dt><dd><p>Data array.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>Target array.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">object</span></dt><dd><p>Return the instance itself.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imblearn.over_sampling.SMOTENC.fit_resample">
+<span class="sig-name descname"><span class="pre">fit_resample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/5018e4c/imblearn/base.py#L181"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.over_sampling.SMOTENC.fit_resample" title="Link to this definition">#</a></dt>
+<dd><p>Resample the dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">{array-like, dataframe, sparse matrix} of shape                 (n_samples, n_features)</span></dt><dd><p>Matrix containing the data which have to be sampled.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>Corresponding label for each sample in X.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>X_resampled</strong><span class="classifier">{array-like, dataframe, sparse matrix} of shape                 (n_samples_new, n_features)</span></dt><dd><p>The array containing the resampled data.</p>
+</dd>
+<dt><strong>y_resampled</strong><span class="classifier">array-like of shape (n_samples_new,)</span></dt><dd><p>The corresponding label of <code class="docutils literal notranslate"><span class="pre">X_resampled</span></code>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imblearn.over_sampling.SMOTENC.get_feature_names_out">
+<span class="sig-name descname"><span class="pre">get_feature_names_out</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/5018e4c/imblearn/../.pixi/envs/docs/lib/python3.12/site-packages/sklearn/base.py#L919"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.over_sampling.SMOTENC.get_feature_names_out" title="Link to this definition">#</a></dt>
+<dd><p>Get output feature names for transformation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>input_features</strong><span class="classifier">array-like of str or None, default=None</span></dt><dd><p>Input features.</p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">input_features</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>, then <code class="docutils literal notranslate"><span class="pre">feature_names_in_</span></code> is
+used as feature names in. If <code class="docutils literal notranslate"><span class="pre">feature_names_in_</span></code> is not defined,
+then the following input feature names are generated:
+<code class="docutils literal notranslate"><span class="pre">[&quot;x0&quot;,</span> <span class="pre">&quot;x1&quot;,</span> <span class="pre">...,</span> <span class="pre">&quot;x(n_features_in_</span> <span class="pre">-</span> <span class="pre">1)&quot;]</span></code>.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">input_features</span></code> is an array-like, then <code class="docutils literal notranslate"><span class="pre">input_features</span></code> must
+match <code class="docutils literal notranslate"><span class="pre">feature_names_in_</span></code> if <code class="docutils literal notranslate"><span class="pre">feature_names_in_</span></code> is defined.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>feature_names_out</strong><span class="classifier">ndarray of str objects</span></dt><dd><p>Same as input features.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imblearn.over_sampling.SMOTENC.get_metadata_routing">
+<span class="sig-name descname"><span class="pre">get_metadata_routing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/5018e4c/imblearn/../.pixi/envs/docs/lib/python3.12/site-packages/sklearn/utils/_metadata_requests.py#L1532"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.over_sampling.SMOTENC.get_metadata_routing" title="Link to this definition">#</a></dt>
+<dd><p>Get metadata routing of this object.</p>
+<p>Please check <span class="xref std std-ref">User Guide</span> on how the routing
+mechanism works.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>routing</strong><span class="classifier">MetadataRequest</span></dt><dd><p>A <code class="xref py py-class docutils literal notranslate"><span class="pre">MetadataRequest</span></code> encapsulating
+routing information.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imblearn.over_sampling.SMOTENC.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/5018e4c/imblearn/../.pixi/envs/docs/lib/python3.12/site-packages/sklearn/base.py#L233"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.over_sampling.SMOTENC.get_params" title="Link to this definition">#</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>deep</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">dict</span></dt><dd><p>Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imblearn.over_sampling.SMOTENC.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/5018e4c/imblearn/../.pixi/envs/docs/lib/python3.12/site-packages/sklearn/base.py#L317"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#imblearn.over_sampling.SMOTENC.set_params" title="Link to this definition">#</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>). The latter have
+parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
+possible to update each component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>**params</strong><span class="classifier">dict</span></dt><dd><p>Estimator parameters.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">estimator instance</span></dt><dd><p>Estimator instance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<section id="examples-using-imblearn-over-sampling-smotenc">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">imblearn.over_sampling.SMOTENC</span></code><a class="headerlink" href="#examples-using-imblearn-over-sampling-smotenc" title="Link to this heading">#</a></h2>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="The following example attends to make a qualitative comparison between the different over-sampling algorithms available in the imbalanced-learn package."><img alt="" src="../../_images/sphx_glr_plot_comparison_over_sampling_thumb.png" />
+<p><a class="reference internal" href="../../auto_examples/over-sampling/plot_comparison_over_sampling.html#sphx-glr-auto-examples-over-sampling-plot-comparison-over-sampling-py"><span class="std std-ref">Compare over-sampling samplers</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Compare over-sampling samplers</div>
+</div></div><div style='clear:both'></div></section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="imblearn.over_sampling.SMOTE.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">SMOTE</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="imblearn.over_sampling.SMOTEN.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">SMOTEN</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imblearn.over_sampling.SMOTENC"><code class="docutils literal notranslate"><span class="pre">SMOTENC</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imblearn.over_sampling.SMOTENC.fit"><code class="docutils literal notranslate"><span class="pre">SMOTENC.fit</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imblearn.over_sampling.SMOTENC.fit_resample"><code class="docutils literal notranslate"><span class="pre">SMOTENC.fit_resample</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imblearn.over_sampling.SMOTENC.get_feature_names_out"><code class="docutils literal notranslate"><span class="pre">SMOTENC.get_feature_names_out</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imblearn.over_sampling.SMOTENC.get_metadata_routing"><code class="docutils literal notranslate"><span class="pre">SMOTENC.get_metadata_routing</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imblearn.over_sampling.SMOTENC.get_params"><code class="docutils literal notranslate"><span class="pre">SMOTENC.get_params</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imblearn.over_sampling.SMOTENC.set_params"><code class="docutils literal notranslate"><span class="pre">SMOTENC.set_params</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-using-imblearn-over-sampling-smotenc">Examples using <code class="docutils literal notranslate"><span class="pre">imblearn.over_sampling.SMOTENC</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/scikit-learn-contrib/imbalanced-learn/edit/master/doc/references/generated/imblearn.over_sampling.SMOTENC.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/references/generated/imblearn.over_sampling.SMOTENC.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2014-2025, The imbalanced-learn developers.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
