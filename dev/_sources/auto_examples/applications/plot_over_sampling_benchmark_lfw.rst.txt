@@ -236,26 +236,13 @@ cross-validation.
                 fpr=mean_fpr,
                 tpr=mean_tpr,
                 roc_auc=mean_auc,
-                estimator_name=f"{model[0].__class__.__name__}",
+                name=f"{model[0].__class__.__name__}",
             )
         )
 
 
 
 
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    /home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/utils/_plotting.py:379: FutureWarning: `estimator_name` is deprecated in 1.7 and will be removed in 1.9. Use `name` instead.
-      warnings.warn(
-    /home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/utils/_plotting.py:379: FutureWarning: `estimator_name` is deprecated in 1.7 and will be removed in 1.9. Use `name` instead.
-      warnings.warn(
-    /home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/utils/_plotting.py:379: FutureWarning: `estimator_name` is deprecated in 1.7 and will be removed in 1.9. Use `name` instead.
-      warnings.warn(
-    /home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/utils/_plotting.py:379: FutureWarning: `estimator_name` is deprecated in 1.7 and will be removed in 1.9. Use `name` instead.
-      warnings.warn(
 
 
 
@@ -271,7 +258,7 @@ them on the same plot.
 
     fig, ax = plt.subplots(figsize=(9, 9))
     for d in disp:
-        d.plot(ax=ax, linestyle="--")
+        d.plot(ax=ax, curve_kwargs={"linestyle": "--"})
     ax.plot([0, 1], [0, 1], linestyle="--", color="k")
     ax.axis("square")
     fig.suptitle("Comparison of over-sampling methods \nwith a 3NN classifier")
@@ -291,13 +278,6 @@ them on the same plot.
    :class: sphx-glr-single-img
 
 
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    /home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/utils/_plotting.py:175: FutureWarning: `**kwargs` is deprecated and will be removed in 1.9. Pass all matplotlib arguments to `curve_kwargs` as a dictionary instead.
-      warnings.warn(
-
 
 
 
@@ -310,9 +290,9 @@ over-sampling or no resampling.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 35.683 seconds)
+   **Total running time of the script:** (0 minutes 44.654 seconds)
 
-**Estimated memory usage:**  473 MB
+**Estimated memory usage:**  476 MB
 
 
 .. _sphx_glr_download_auto_examples_applications_plot_over_sampling_benchmark_lfw.py:

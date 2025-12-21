@@ -151,7 +151,7 @@ imbalanced set.
  .. code-block:: none
 
     Decision tree classifier performance:
-    Balanced accuracy: 0.74 - Geometric mean 0.71
+    Balanced accuracy: 0.76 - Geometric mean 0.74
 
 
 
@@ -399,7 +399,7 @@ achieve worse performance.
 
     from imblearn.ensemble import EasyEnsembleClassifier, RUSBoostClassifier
 
-    estimator = AdaBoostClassifier(n_estimators=10, algorithm="SAMME")
+    estimator = AdaBoostClassifier(n_estimators=10)
     eec = EasyEnsembleClassifier(n_estimators=10, estimator=estimator)
     eec.fit(X_train, y_train)
     y_pred_eec = eec.predict(X_test)
@@ -411,43 +411,6 @@ achieve worse performance.
 
 
 
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    /home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter 'algorithm' is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-      warnings.warn(
-    /home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter 'algorithm' is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-      warnings.warn(
-    /home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter 'algorithm' is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-      warnings.warn(
-    /home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter 'algorithm' is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-      warnings.warn(
-    /home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter 'algorithm' is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-      warnings.warn(
-    /home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter 'algorithm' is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-      warnings.warn(
-    /home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter 'algorithm' is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-      warnings.warn(
-    /home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter 'algorithm' is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-      warnings.warn(
-    /home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter 'algorithm' is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-      warnings.warn(
-    /home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter 'algorithm' is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-      warnings.warn(
-    /home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter 'algorithm' is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-      warnings.warn(
-    /home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter 'algorithm' is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-      warnings.warn(
-    /home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter 'algorithm' is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-      warnings.warn(
-    /home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter 'algorithm' is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-      warnings.warn(
-    /home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter 'algorithm' is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-      warnings.warn(
-    /home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter 'algorithm' is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-      warnings.warn(
 
 
 
@@ -478,7 +441,7 @@ achieve worse performance.
     Easy ensemble classifier performance:
     Balanced accuracy: 0.83 - Geometric mean 0.83
     RUSBoost classifier performance:
-    Balanced accuracy: 0.50 - Geometric mean 0.00
+    Balanced accuracy: 0.82 - Geometric mean 0.82
 
 
 
@@ -513,9 +476,9 @@ achieve worse performance.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 48.376 seconds)
+   **Total running time of the script:** (0 minutes 17.763 seconds)
 
-**Estimated memory usage:**  413 MB
+**Estimated memory usage:**  428 MB
 
 
 .. _sphx_glr_download_auto_examples_ensemble_plot_comparison_ensemble_classifier.py:
