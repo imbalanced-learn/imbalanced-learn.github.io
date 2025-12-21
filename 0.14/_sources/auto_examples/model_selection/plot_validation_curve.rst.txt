@@ -186,7 +186,7 @@ cross-validation.
 We can now plot the results of the cross-validation for the different
 parameter values that we tried.
 
-.. GENERATED FROM PYTHON SOURCE LINES 94-124
+.. GENERATED FROM PYTHON SOURCE LINES 94-125
 
 .. code-block:: Python
 
@@ -204,8 +204,9 @@ parameter values that we tried.
     ax.scatter(
         param_range[idx_max],
         test_scores_mean[idx_max],
-        label=r"Cohen Kappa: ${:.2f}\pm{:.2f}$".format(
-            test_scores_mean[idx_max], test_scores_std[idx_max]
+        label=(
+            r"Cohen Kappa:"
+            rf" ${test_scores_mean[idx_max]:.2f}\pm{test_scores_std[idx_max]:.2f}$"
         ),
     )
 
@@ -235,9 +236,9 @@ parameter values that we tried.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 7.252 seconds)
+   **Total running time of the script:** (0 minutes 6.407 seconds)
 
-**Estimated memory usage:**  204 MB
+**Estimated memory usage:**  201 MB
 
 
 .. _sphx_glr_download_auto_examples_model_selection_plot_validation_curve.py:

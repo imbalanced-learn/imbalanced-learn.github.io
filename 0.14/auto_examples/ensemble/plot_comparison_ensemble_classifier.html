@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Compare ensemble classifiers using resampling &#8212; Version 0.14.0</title>
+    <title>Compare ensemble classifiers using resampling &#8212; Version 0.14.1</title>
   
   
   
@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=9e420a66"></script>
+    <script src="../../_static/documentation_options.js?v=3a3a8e7f"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -61,7 +61,7 @@
     <link rel="prev" title="Bagging classifiers using sampler" href="plot_bagging_classifier.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.14.0" />
+  <meta name="docsearch:version" content="0.14.1" />
   </head>
   
   
@@ -127,8 +127,8 @@
       
     
     
-    <img src="../../_static/logo_wide.png" class="logo__image only-light" alt="Version 0.14.0 - Home"/>
-    <img src="https://imbalanced-learn.org/stable/_static/img/logo_wide_dark.png" class="logo__image only-dark pst-js-only" alt="Version 0.14.0 - Home"/>
+    <img src="../../_static/logo_wide.png" class="logo__image only-light" alt="Version 0.14.1 - Home"/>
+    <img src="https://imbalanced-learn.org/stable/_static/img/logo_wide_dark.png" class="logo__image only-dark pst-js-only" alt="Version 0.14.1 - Home"/>
   
   
 </a></div>
@@ -546,7 +546,7 @@ imbalanced set.</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Decision tree classifier performance:
-Balanced accuracy: 0.73 - Geometric mean 0.70
+Balanced accuracy: 0.75 - Geometric mean 0.73
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
@@ -682,7 +682,7 @@ achieve worse performance.</p>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <a href="../../references/generated/imblearn.ensemble.EasyEnsembleClassifier.html#imblearn.ensemble.EasyEnsembleClassifier" title="imblearn.ensemble.EasyEnsembleClassifier" class="sphx-glr-backref-module-imblearn-ensemble sphx-glr-backref-type-py-class"><span class="n">EasyEnsembleClassifier</span></a><span class="p">,</span> <a href="../../references/generated/imblearn.ensemble.RUSBoostClassifier.html#imblearn.ensemble.RUSBoostClassifier" title="imblearn.ensemble.RUSBoostClassifier" class="sphx-glr-backref-module-imblearn-ensemble sphx-glr-backref-type-py-class"><span class="n">RUSBoostClassifier</span></a>
 
-<span class="n">estimator</span> <span class="o">=</span> <span class="n">AdaBoostClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;SAMME&quot;</span><span class="p">)</span>
+<span class="n">estimator</span> <span class="o">=</span> <span class="n">AdaBoostClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <a href="../../references/generated/imblearn.ensemble.EasyEnsembleClassifier.html#imblearn.ensemble.EasyEnsembleClassifier" title="imblearn.ensemble.EasyEnsembleClassifier" class="sphx-glr-backref-module-imblearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">eec</span></a> <span class="o">=</span> <a href="../../references/generated/imblearn.ensemble.EasyEnsembleClassifier.html#imblearn.ensemble.EasyEnsembleClassifier" title="imblearn.ensemble.EasyEnsembleClassifier" class="sphx-glr-backref-module-imblearn-ensemble sphx-glr-backref-type-py-class"><span class="n">EasyEnsembleClassifier</span></a><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="n">estimator</span><span class="p">)</span>
 <a href="../../references/generated/imblearn.ensemble.EasyEnsembleClassifier.html#imblearn.ensemble.EasyEnsembleClassifier.fit" title="imblearn.ensemble.EasyEnsembleClassifier.fit" class="sphx-glr-backref-module-imblearn-ensemble sphx-glr-backref-type-py-method"><span class="n">eec</span><span class="o">.</span><span class="n">fit</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_train</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_train</span></a><span class="p">)</span>
 <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred_eec</span></a> <span class="o">=</span> <a href="../../references/generated/imblearn.ensemble.EasyEnsembleClassifier.html#imblearn.ensemble.EasyEnsembleClassifier.predict" title="imblearn.ensemble.EasyEnsembleClassifier.predict" class="sphx-glr-backref-module-imblearn-ensemble sphx-glr-backref-type-py-method"><span class="n">eec</span><span class="o">.</span><span class="n">predict</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_test</span></a><span class="p">)</span>
@@ -690,32 +690,6 @@ achieve worse performance.</p>
 <a href="../../references/generated/imblearn.ensemble.RUSBoostClassifier.html#imblearn.ensemble.RUSBoostClassifier" title="imblearn.ensemble.RUSBoostClassifier" class="sphx-glr-backref-module-imblearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rusboost</span></a> <span class="o">=</span> <a href="../../references/generated/imblearn.ensemble.RUSBoostClassifier.html#imblearn.ensemble.RUSBoostClassifier" title="imblearn.ensemble.RUSBoostClassifier" class="sphx-glr-backref-module-imblearn-ensemble sphx-glr-backref-type-py-class"><span class="n">RUSBoostClassifier</span></a><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="n">estimator</span><span class="p">)</span>
 <a href="../../references/generated/imblearn.ensemble.RUSBoostClassifier.html#imblearn.ensemble.RUSBoostClassifier.fit" title="imblearn.ensemble.RUSBoostClassifier.fit" class="sphx-glr-backref-module-imblearn-ensemble sphx-glr-backref-type-py-method"><span class="n">rusboost</span><span class="o">.</span><span class="n">fit</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_train</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_train</span></a><span class="p">)</span>
 <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_pred_rusboost</span></a> <span class="o">=</span> <a href="../../references/generated/imblearn.ensemble.RUSBoostClassifier.html#imblearn.ensemble.RUSBoostClassifier.predict" title="imblearn.ensemble.RUSBoostClassifier.predict" class="sphx-glr-backref-module-imblearn-ensemble sphx-glr-backref-type-py-method"><span class="n">rusboost</span><span class="o">.</span><span class="n">predict</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_test</span></a><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter &#39;algorithm&#39; is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-  warnings.warn(
-/home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter &#39;algorithm&#39; is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-  warnings.warn(
-/home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter &#39;algorithm&#39; is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-  warnings.warn(
-/home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter &#39;algorithm&#39; is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-  warnings.warn(
-/home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter &#39;algorithm&#39; is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-  warnings.warn(
-/home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter &#39;algorithm&#39; is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-  warnings.warn(
-/home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter &#39;algorithm&#39; is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-  warnings.warn(
-/home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter &#39;algorithm&#39; is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-  warnings.warn(
-/home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter &#39;algorithm&#39; is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-  warnings.warn(
-/home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter &#39;algorithm&#39; is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-  warnings.warn(
-/home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter &#39;algorithm&#39; is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-  warnings.warn(
-/home/circleci/project/.pixi/envs/docs/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The parameter &#39;algorithm&#39; is deprecated in 1.6 and has no effect. It will be removed in version 1.8.
-  warnings.warn(
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Easy ensemble classifier performance:&quot;</span><span class="p">)</span>
@@ -731,9 +705,9 @@ achieve worse performance.</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Easy ensemble classifier performance:
-Balanced accuracy: 0.84 - Geometric mean 0.84
-RUSBoost classifier performance:
 Balanced accuracy: 0.83 - Geometric mean 0.83
+RUSBoost classifier performance:
+Balanced accuracy: 0.80 - Geometric mean 0.79
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fig</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">axs</span></a> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -749,8 +723,8 @@ Balanced accuracy: 0.83 - Geometric mean 0.83
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_comparison_ensemble_classifier_004.png" srcset="../../_images/sphx_glr_plot_comparison_ensemble_classifier_004.png" alt="Easy Ensemble, RUSBoost classifier" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 37.131 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  438 MB</p>
+<img src="../../_images/sphx_glr_plot_comparison_ensemble_classifier_004.png" srcset="../../_images/sphx_glr_plot_comparison_ensemble_classifier_004.png" alt="Easy Ensemble, RUSBoost classifier" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 50.892 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  429 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-ensemble-plot-comparison-ensemble-classifier-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/a98044ef9eeb36baf7dce076a6d9789c/plot_comparison_ensemble_classifier.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_comparison_ensemble_classifier.ipynb</span></code></a></p>
