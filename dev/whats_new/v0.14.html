@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Version 0.14.1 &#8212; Version 0.15.dev0</title>
+    <title>Version 0.14.2 &#8212; Version 0.15.dev0</title>
   
   
   
@@ -407,7 +407,7 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Version 0.14.1</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Version 0.14.2</span></li>
   </ul>
 </nav>
 </div>
@@ -424,13 +424,38 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="version-0-14-1">
-<span id="changes-0-14"></span><h1>Version 0.14.1<a class="headerlink" href="#version-0-14-1" title="Link to this heading">#</a></h1>
-<p><strong>December 21, 2025</strong></p>
+  <section id="version-0-14-2">
+<span id="changes-0-14"></span><h1>Version 0.14.2<a class="headerlink" href="#version-0-14-2" title="Link to this heading">#</a></h1>
+<p><strong>June 7, 2026</strong></p>
 <section id="changelog">
 <h2>Changelog<a class="headerlink" href="#changelog" title="Link to this heading">#</a></h2>
 <section id="maintenance">
 <h3>Maintenance<a class="headerlink" href="#maintenance" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Compatibility with scikit-learn 1.9
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/1178">#1178</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a>.</p></li>
+</ul>
+</section>
+<section id="bug-fixes">
+<h3>Bug fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Raise an informative error in <a class="reference internal" href="../references/generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTENC</span></code></a> when the
+provided <code class="docutils literal notranslate"><span class="pre">categorical_encoder</span></code> does not keep one column per category (e.g.
+<code class="docutils literal notranslate"><span class="pre">OneHotEncoder(drop=...)</span></code> or an encoder merging infrequent categories), instead
+of failing with an opaque <code class="docutils literal notranslate"><span class="pre">zero-size</span> <span class="pre">array</span></code> NumPy error.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/issues/1035">#1035</a> by <a class="reference external" href="https://github.com/immu4989">Imran Ahamed</a>.</p></li>
+<li><p>Compatibility</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="version-0-14-1">
+<h1>Version 0.14.1<a class="headerlink" href="#version-0-14-1" title="Link to this heading">#</a></h1>
+<p><strong>December 21, 2025</strong></p>
+<section id="id1">
+<h2>Changelog<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="id2">
+<h3>Maintenance<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Compatibility with scikit-learn 1.8
 <a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/pull/1158">#1158</a> by <a class="reference external" href="https://github.com/glemaitre">Guillaume Lemaitre</a> and
@@ -442,10 +467,10 @@
 <section id="version-0-14-0">
 <h1>Version 0.14.0<a class="headerlink" href="#version-0-14-0" title="Link to this heading">#</a></h1>
 <p><strong>August 14, 2025</strong></p>
-<section id="id1">
-<h2>Changelog<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<section id="bug-fixes">
-<h3>Bug fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading">#</a></h3>
+<section id="id3">
+<h2>Changelog<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h3>Bug fixes<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 </section>
 <section id="enhancements">
 <h3>Enhancements<a class="headerlink" href="#enhancements" title="Link to this heading">#</a></h3>
@@ -494,16 +519,24 @@ that samples are distributed in folds based on their instance hardness.
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Version 0.14.1</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Version 0.14.2</a><ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changelog">Changelog</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maintenance">Maintenance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-fixes">Bug fixes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-14-1">Version 0.14.1</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Changelog</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Maintenance</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-14-0">Version 0.14.0</a><ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Changelog</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-fixes">Bug fixes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Changelog</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Bug fixes</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enhancements">Enhancements</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compatibility">Compatibility</a></li>
 </ul>
