@@ -416,6 +416,13 @@
 <h2>Changelog<a class="headerlink" href="#changelog" title="Link to this heading">#</a></h2>
 <section id="bug-fixes">
 <h3>Bug fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Raise an informative error in <a class="reference internal" href="../references/generated/imblearn.over_sampling.SMOTENC.html#imblearn.over_sampling.SMOTENC" title="imblearn.over_sampling.SMOTENC"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMOTENC</span></code></a> when the
+provided <code class="docutils literal notranslate"><span class="pre">categorical_encoder</span></code> does not keep one column per category (e.g.
+<code class="docutils literal notranslate"><span class="pre">OneHotEncoder(drop=...)</span></code> or an encoder merging infrequent categories), instead
+of failing with an opaque <code class="docutils literal notranslate"><span class="pre">zero-size</span> <span class="pre">array</span></code> NumPy error.
+<a class="reference external" href="https://github.com/scikit-learn-contrib/imbalanced-learn/issues/1035">#1035</a> by <a class="reference external" href="https://github.com/immu4989">Imran Ahamed</a>.</p></li>
+</ul>
 </section>
 <section id="enhancements">
 <h3>Enhancements<a class="headerlink" href="#enhancements" title="Link to this heading">#</a></h3>
